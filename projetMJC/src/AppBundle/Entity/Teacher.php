@@ -7,12 +7,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Student
+ * Teacher
  *
- * @ORM\Table(name="student")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\StudentRepository")
+ * @ORM\Table(name="teacher")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TeacherRepository")
  */
-class Student
+class Teacher
 {
     /**
      * @var int
@@ -82,7 +82,6 @@ class Student
 
 
 
-
     /**
      * Get id
      *
@@ -98,7 +97,7 @@ class Student
      *
      * @param string $lastName
      *
-     * @return Student
+     * @return Teacher
      */
     public function setLastName($lastName)
     {
@@ -122,7 +121,7 @@ class Student
      *
      * @param string $firstName
      *
-     * @return Student
+     * @return Teacher
      */
     public function setFirstName($firstName)
     {
@@ -146,7 +145,7 @@ class Student
      *
      * @param \DateTime $birthDate
      *
-     * @return Student
+     * @return Teacher
      */
     public function setBirthDate($birthDate)
     {
@@ -170,7 +169,7 @@ class Student
      *
      * @param string $password
      *
-     * @return Student
+     * @return Teacher
      */
     public function setPassword($password)
     {
@@ -194,7 +193,7 @@ class Student
      *
      * @param string $email
      *
-     * @return Student
+     * @return Teacher
      */
     public function setEmail($email)
     {
@@ -218,7 +217,7 @@ class Student
      *
      * @param string $role
      *
-     * @return Student
+     * @return Teacher
      */
     public function setRole($role)
     {
@@ -242,7 +241,7 @@ class Student
      *
      * @param boolean $isActive
      *
-     * @return Student
+     * @return Teacher
      */
     public function setIsActive($isActive)
     {
