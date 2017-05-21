@@ -66,22 +66,6 @@ class Student
      */
     private $role;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="isActive", type="boolean")
-     */
-    private $isActive;
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
-    }
-
-
-
 
     /**
      * Get id
@@ -237,27 +221,5 @@ class Student
         return $this->role;
     }
 
-    /**
-     * Set isActive
-     *
-     * @param boolean $isActive
-     *
-     * @return Student
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
 
-        return $this;
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return boolean
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
 }
