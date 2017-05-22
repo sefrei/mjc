@@ -43,7 +43,6 @@ class Student
      * @var \DateTime
      *
      * @ORM\Column(name="birthDate", type="datetime")
-     * @Assert\NotBlank()
      */
     private $birthDate;
 
@@ -65,8 +64,7 @@ class Student
 
     /**
      * Juste un rôle unique pour le moment
-     * @ORM\Column(name="role", type="string")
-     * @Assert\NotBlank()
+     * @ORM\Column(name="role", type="string", options={"default" : "ROLE_USER"})
      */
     private $role;
 
