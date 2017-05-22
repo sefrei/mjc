@@ -8,6 +8,10 @@ exports.config =
     javascripts:
       joinTo: 'js/app.js'
 
+  paths: {
+     public: '../web'
+  }
+
   plugins:
     babel:
       presets: ['latest', 'react']
