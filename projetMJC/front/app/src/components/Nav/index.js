@@ -19,10 +19,14 @@ const App = ({ currentDate, actions }) => {
   const onChange = (evt) => {
     actions.changeDate(evt);
   };
+  // click
+  const onClick = () => {
+  };
 
   return (
     <div id="notebook-navigation">
-      <button className="toto"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
+      <p>{currentDate.format()}</p>
+      <button onClick={actions.changeDay} className="toto"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
       <DatePicker
         dateFormat="DD/MM/YYYY"
         selected={currentDate}
@@ -30,7 +34,7 @@ const App = ({ currentDate, actions }) => {
         className="tata"
         locale="fr"
       />
-      <button><i className="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+    <button onClick={actions.changeDay}><i className="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
     </div>
   );
 };

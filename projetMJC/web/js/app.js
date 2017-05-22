@@ -38246,13 +38246,20 @@ var App = function App(_ref) {
   var onChange = function onChange(evt) {
     actions.changeDate(evt);
   };
+  // click
+  var onClick = function onClick() {};
 
   return _react2.default.createElement(
     'div',
     { id: 'notebook-navigation' },
     _react2.default.createElement(
+      'p',
+      null,
+      currentDate.format()
+    ),
+    _react2.default.createElement(
       'button',
-      { className: 'toto' },
+      { onClick: actions.changeDay, className: 'toto' },
       _react2.default.createElement('i', { className: 'fa fa-arrow-circle-left', 'aria-hidden': 'true' })
     ),
     _react2.default.createElement(_reactDatepicker2.default, {
@@ -38264,7 +38271,7 @@ var App = function App(_ref) {
     }),
     _react2.default.createElement(
       'button',
-      null,
+      { onClick: actions.changeDay },
       _react2.default.createElement('i', { className: 'fa fa-arrow-circle-right', 'aria-hidden': 'true' })
     )
   );
@@ -38323,7 +38330,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    actions: (0, _redux.bindActionCreators)({ changeDate: _reducer.changeDate }, dispatch)
+    actions: (0, _redux.bindActionCreators)({ changeDate: _reducer.changeDate, changeDay: _reducer.changeDay }, dispatch)
   };
 };
 
@@ -38479,7 +38486,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.changeDate = undefined;
+exports.changeDay = exports.changeDate = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -38496,14 +38503,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Types
  */
 var CHANGE_DATE = 'CHANGE_DATE';
+var CHANGE_DAY = 'CHANGE_DAY';
 /*
  * initialState
  */
 var initialState = {
-  currentDate: (0, _moment2.default)(),
-  lecons: [
-    //{1, '22/05/2017', duration, speciality, TisPresent, SisPresent},
-  ]
+  currentDate: (0, _moment2.default)()
 };
 
 /*
@@ -38516,9 +38521,21 @@ exports.default = function () {
 
   switch (action.type) {
     case CHANGE_DATE:
-      return _extends({}, state, {
-        currentDate: action.date
-      });
+      {
+        return _extends({}, state, {
+          currentDate: action.date
+        });
+      }
+    case CHANGE_DAY:
+      {
+        console.log('CHANGE_DAY');
+        var newDate = state.currentDate;
+        newDate.add(1, 'days');
+        console.log(newDate);
+        return _extends({}, state, {
+          currentDate: newDate
+        });
+      }
     default:
       return state;
   }
@@ -38530,10 +38547,16 @@ exports.default = function () {
 
 
 var changeDate = exports.changeDate = function changeDate(date) {
-  console.log(date);
+  //console.log(date);
   return {
     type: CHANGE_DATE,
     date: date
+  };
+};
+var changeDay = exports.changeDay = function changeDay() {
+  //console.log('day');
+  return {
+    type: CHANGE_DAY
   };
 };
 
