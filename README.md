@@ -11,11 +11,11 @@ Dans un deuxième temps, une autre vue qui sera le lien d'un seul cours avec une
 
 1. ![1re ébauche](/captures/ebauche.png)
 
-2. ![schéma 1 avec entités Teacher et Student](schema_entité.png)
+2. ![schéma 1 avec entités Teacher et Student](/captures/schema_entité.png)
 
-3. ![schéma avec attributs](schema_attributs_et_contraintes.png)
+3. ![schéma avec attributs](/captures/schema_attributs_et_contraintes.png)
 
-4. ![changement de cap avec une seule entité User](Entite_User.png)
+4. ![changement de cap avec une seule entité User](/captures/Entite_User.png)
 
 ## Question 1  
 × Est-ce qu'avec une seule entité User, je pourrai quand même faire le lien avec l'élève et le prof via leur id ?
