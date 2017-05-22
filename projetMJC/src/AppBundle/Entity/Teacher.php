@@ -27,6 +27,7 @@ class Teacher
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
+     * @Assert\NotBlank()     
      */
     private $lastName;
 
@@ -34,6 +35,7 @@ class Teacher
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $firstName;
 
@@ -41,6 +43,7 @@ class Teacher
      * @var \DateTime
      *
      * @ORM\Column(name="birthDate", type="datetime")
+     * @Assert\NotBlank()
      */
     private $birthDate;
 
@@ -48,6 +51,7 @@ class Teacher
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=64)
+     * @Assert\NotBlank()
      */
     private $password;
 
