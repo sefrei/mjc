@@ -8,9 +8,8 @@ exports.config =
     javascripts:
       joinTo: 'js/app.js'
 
-  paths: {
+  paths:
      public: '../web'
-  }
 
   plugins:
     babel:

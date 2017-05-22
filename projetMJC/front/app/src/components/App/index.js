@@ -7,13 +7,16 @@ import React from 'react';
 /*
  * Local import
  */
-
+import Nav from 'src/containers/Nav';
 
 /*
  * Code
  */
 const App = () => (
-  <div>Hello World!</div>
+  <div id="notebook">
+    <Nav />
+  </div>
+
 );
 
 
