@@ -64,6 +64,11 @@ class Subscription
      private $lessons;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Specialty", cascade={"persist"})
+     */
+    private $specialties;
+
+    /**
      * Get id
      *
      * @return int
@@ -232,5 +237,30 @@ class Subscription
     public function getLessons()
     {
         return $this->lessons;
+    }
+
+
+    /**
+     * Set specialties
+     *
+     * @param \AppBundle\Entity\Specialty $specialties
+     *
+     * @return Subscription
+     */
+    public function setSpecialties(\AppBundle\Entity\Specialty $specialties = null)
+    {
+        $this->specialties = $specialties;
+
+        return $this;
+    }
+
+    /**
+     * Get specialties
+     *
+     * @return \AppBundle\Entity\Specialty
+     */
+    public function getSpecialties()
+    {
+        return $this->specialties;
     }
 }

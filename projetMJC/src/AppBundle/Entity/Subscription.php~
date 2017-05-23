@@ -8,7 +8,7 @@ use AppBundle\Entity\User;
 /**
  * Subscription
  *
- * @ORM\Table(name="subsrciption")
+ * @ORM\Table(name="subscription")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SubscriptionRepository")
  */
 class Subscription
@@ -56,6 +56,18 @@ class Subscription
      * @ORM\JoinColumn(name="student_id", referencedColumnName="id")
      */
     private $student;
+
+    /**
+     * One Subscription for Many Lessons
+     * @ORM\OneToMany(targetEntity="Lesson", mappedBy="subscription", cascade={"persist"})
+     */
+     private $lessons;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Specialty", cascade={"persist"})
+     */
+    private $specialties;
+
     /**
      * Get id
      *
@@ -185,4 +197,46 @@ class Subscription
     {
         return $this->student;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->lessons = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add lesson
+     *
+     * @param \AppBundle\Entity\Lesson $lesson
+     *
+     * @return Subscription
+     */
+    public function addLesson(\AppBundle\Entity\Lesson $lesson)
+    {
+        $this->lessons[] = $lesson;
+
+        return $this;
+    }
+
+    /**
+     * Remove lesson
+     *
+     * @param \AppBundle\Entity\Lesson $lesson
+     */
+    public function removeLesson(\AppBundle\Entity\Lesson $lesson)
+    {
+        $this->lessons->removeElement($lesson);
+    }
+
+    /**
+     * Get lessons
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLessons()
+    {
+        return $this->lessons;
+    }
+
 }

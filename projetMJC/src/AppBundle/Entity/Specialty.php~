@@ -29,6 +29,9 @@ class Specialty
     private $name;
 
 
+
+
+
     /**
      * Get id
      *
@@ -62,4 +65,41 @@ class Specialty
     {
         return $this->name;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subsciptions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add subsciption
+     *
+     * @param \AppBundle\Entity\Subscription $subsciption
+     *
+     * @return Specialty
+     */
+    public function addSubsciption(\AppBundle\Entity\Subscription $subsciption)
+    {
+        $this->subsciptions[] = $subsciption;
+
+        return $this;
+    }
+
+
+    /**
+     * Add subscription
+     *
+     * @param \AppBundle\Entity\Subscription $subscription
+     *
+     * @return Specialty
+     */
+    public function addSubscription(\AppBundle\Entity\Subscription $subscription)
+    {
+        $this->subscriptions[] = $subscription;
+
+        return $this;
+    }
+
 }
