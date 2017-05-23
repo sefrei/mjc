@@ -2,90 +2,51 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
- * Teacher
- *
- * @ORM\Table(name="teacher")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TeacherRepository")
+ * User
  */
-class Teacher
+class User
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var integer
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="lastName", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="birthDate", type="datetime")
      */
     private $birthDate;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=64)
      */
     private $password;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=60, unique=true)
-     * @Assert\NotBlank()
      */
     private $email;
 
     /**
-     * Juste un rôle unique pour le moment
-     * @ORM\Column(name="role", type="string")
-     * @Assert\NotBlank()
+     * @var string
      */
     private $role;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="isActive", type="boolean")
-     */
-    private $isActive;
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
-    }
-
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -97,7 +58,7 @@ class Teacher
      *
      * @param string $lastName
      *
-     * @return Teacher
+     * @return User
      */
     public function setLastName($lastName)
     {
@@ -121,7 +82,7 @@ class Teacher
      *
      * @param string $firstName
      *
-     * @return Teacher
+     * @return User
      */
     public function setFirstName($firstName)
     {
@@ -145,7 +106,7 @@ class Teacher
      *
      * @param \DateTime $birthDate
      *
-     * @return Teacher
+     * @return User
      */
     public function setBirthDate($birthDate)
     {
@@ -169,7 +130,7 @@ class Teacher
      *
      * @param string $password
      *
-     * @return Teacher
+     * @return User
      */
     public function setPassword($password)
     {
@@ -193,7 +154,7 @@ class Teacher
      *
      * @param string $email
      *
-     * @return Teacher
+     * @return User
      */
     public function setEmail($email)
     {
@@ -217,7 +178,7 @@ class Teacher
      *
      * @param string $role
      *
-     * @return Teacher
+     * @return User
      */
     public function setRole($role)
     {
@@ -234,29 +195,5 @@ class Teacher
     public function getRole()
     {
         return $this->role;
-    }
-
-    /**
-     * Set isActive
-     *
-     * @param boolean $isActive
-     *
-     * @return Teacher
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return boolean
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
     }
 }
