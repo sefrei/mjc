@@ -45,6 +45,16 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //J'appelle le service pour encoder
+            $encoder = $this->container->get('security.password_encoder');
+            //Je récupère le mot de passe de l'utilisateur à l'inscription
+            $password = $user->getPassword();
+            //J'encode le mot de passe
+            $encoded = $encoder->encodePassword($user, $password);
+            //Je fais l'update
+            $user->setPassword($encoded);
+            //J'enregistre en base de données
             $em->persist($user);
             $em->flush();
 
