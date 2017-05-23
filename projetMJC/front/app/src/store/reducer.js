@@ -2,17 +2,24 @@
  * Npm Import
  */
 import moment from 'moment';
-
+import 'moment/locale/fr';
+/*
+ * Local import
+ */
+import datas from 'src/datas';
 /*
  * Types
  */
-const CHANGE_DATE = 'CHANGE_DATE';
-const CHANGE_DAY = 'CHANGE_DAY';
+export const CHANGE_DATE = 'CHANGE_DATE';
+const SET_ACTIVITIES = 'SET_ACTIVITIES';
+const SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
+
 /*
  * initialState
  */
 const initialState = {
   currentDate: moment(),
+  activities: datas,
 };
 
 
@@ -28,15 +35,25 @@ export default (state = initialState, action = {}) => {
           currentDate: action.date,
         };
       }
-    case CHANGE_DAY:
+    case SET_ACTIVITIES:
       {
-        console.log('CHANGE_DAY');
-        const newDate = state.currentDate;
-        newDate.add(1, 'days');
-        console.log(newDate);
         return {
           ...state,
-          currentDate: newDate,
+          activities: action.activities,
+        };
+      }
+    case SWITCH_PRESENCE_TEACHER:
+      {
+        const { id } = action;
+        const activities = [...state.activities];
+        activities.forEach((activity) => {
+          if (activity.id === id) {
+            activity.teacher = !activity.teacher;
+          }
+        });
+        return {
+          ...state,
+          activities,
         };
       }
     default:
@@ -44,12 +61,11 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-
 /*
  * Action creators
  */
 export const changeDate = (date) => {
-  //console.log(date);
+  console.log('changeDate');
   return (
   {
     type: CHANGE_DATE,
@@ -57,11 +73,19 @@ export const changeDate = (date) => {
   }
   );
 };
-export const changeDay = () => {
-  //console.log('day');
+export const switchPresenceTeacher = (id) => {
+  console.log('switchPresenceTeacher');
+  return ({
+    type: SWITCH_PRESENCE_TEACHER,
+    id,
+  });
+};
+export const setActivities = (activities) => {
+  console.log('SetActivities');
   return (
   {
-    type: CHANGE_DAY,
+    type: SET_ACTIVITIES,
+    activities,
   }
   );
 };

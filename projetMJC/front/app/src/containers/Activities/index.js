@@ -7,28 +7,28 @@ import { bindActionCreators } from 'redux';
 /*
  * Local import
  */
-import Nav from 'src/components/Nav';
-import { changeDate, changeDay } from 'src/store/reducer';
+import Activities from 'src/components/Activities';
+import { switchPresence } from 'src/store/reducer';
 
 /*
  * Code
  */
 const mapStateToProps = state => ({
-  currentDate: state.currentDate,
+  activities: state.activities,
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ changeDate, changeDay }, dispatch),
+  actions: bindActionCreators({ switchPresence }, dispatch),
 });
 
 /*
  * Component
  */
 const createContainer = connect(mapStateToProps, mapDispatchToProps);
-const NavContainer = createContainer(Nav);
+const ActivityContainer = createContainer(Activities);
 
 
 /*
  * Export default
  */
-export default NavContainer;
+export default ActivityContainer;
