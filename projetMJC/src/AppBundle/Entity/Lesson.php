@@ -49,6 +49,12 @@ class Lesson
      */
     private $appreciation;
 
+    /**
+    * Many Lessons for One Subscription
+    * @ORM\ManyToOne(targetEntity="Subscription", inversedBy="lessons", cascade={"persist"})
+    */
+    private $subscription;
+
 
     /**
      * Get id
@@ -154,5 +160,29 @@ class Lesson
     public function getAppreciation()
     {
         return $this->appreciation;
+    }
+
+    /**
+     * Set subscription
+     *
+     * @param \AppBundle\Entity\Subscription $subscription
+     *
+     * @return Lesson
+     */
+    public function setSubscription(\AppBundle\Entity\Subscription $subscription = null)
+    {
+        $this->subscription = $subscription;
+
+        return $this;
+    }
+
+    /**
+     * Get subscription
+     *
+     * @return \AppBundle\Entity\Subscription
+     */
+    public function getSubscription()
+    {
+        return $this->subscription;
     }
 }
