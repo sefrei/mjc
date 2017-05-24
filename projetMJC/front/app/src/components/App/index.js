@@ -2,24 +2,28 @@
  * Npm import
  */
 import React from 'react';
-
+import { Route, Switch } from 'react-router-dom';
 
 /*
  * Local import
  */
-import Nav from 'src/containers/Nav';
-
+import Diary from 'src/components/Diary';
+import Activity from 'src/components/Activity';
 /*
  * Code
  */
 const App = () => (
-  <div id="notebook">
-    <Nav />
-  </div>
-
+  <Switch>
+    <Route
+      path="/"
+      component={Diary}
+    />
+    <Route
+      path="/activity/:id"
+      component={Activity}
+    />
+  </Switch>
 );
-
-
 /*
  * Export default
  */

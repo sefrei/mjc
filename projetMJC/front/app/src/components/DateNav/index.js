@@ -13,33 +13,37 @@ import DatePicker from 'react-datepicker';
 /*
  * Code
  */
-const App = ({ currentDate, actions }) => {
-  console.info(currentDate.format('DD/MM/YYYY'));
+const Nav = ({ currentDate, actions }) => {
+  console.info(currentDate);
   // Change
   const onChange = (evt) => {
+    console.log(evt);
     actions.changeDate(evt);
   };
   // click
   const onClick = () => {
+    const newDate = currentDate;
+    newDate.add(1, 'days');
+    actions.changeDate(newDate);
   };
 
   return (
     <div id="notebook-navigation">
-      <p>{currentDate.format()}</p>
-      <button onClick={actions.changeDay} className="toto"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
+      <button onClick={onClick} id="left-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
       <DatePicker
         dateFormat="DD/MM/YYYY"
         selected={currentDate}
         onChange={onChange}
-        className="tata"
+        className="date-picker"
         locale="fr"
       />
-    <button onClick={actions.changeDay}><i className="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+      <button onClick={onClick} id="right-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+      <h2 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h2>
     </div>
   );
 };
 
-App.propTypes = {
+Nav.propTypes = {
   currentDate: PropTypes.object.isRequired,
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
 };
@@ -47,4 +51,4 @@ App.propTypes = {
 /*
  * Export default
  */
-export default App;
+export default Nav;
