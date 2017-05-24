@@ -26,6 +26,7 @@ class Subscription
      * @var \DateTime
      *
      * @ORM\Column(name="startAt", type="datetime")
+     * @Assert\NotBlank()
      */
     private $startAt;
 
@@ -33,6 +34,7 @@ class Subscription
      * @var \DateTime
      *
      * @ORM\Column(name="finishAt", type="datetime")
+     * @Assert\NotBlank()
      */
     private $finishAt;
 
@@ -40,6 +42,7 @@ class Subscription
      * @var \DateTime
      *
      * @ORM\Column(name="subscriptionAt", type="datetime")
+     * @Assert\NotBlank()
      */
     private $subscriptionAt;
 

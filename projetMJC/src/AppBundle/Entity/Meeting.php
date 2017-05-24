@@ -25,6 +25,7 @@ class Meeting
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -32,6 +33,7 @@ class Meeting
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\NotBlank()
      */
     private $date;
 
