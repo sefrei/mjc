@@ -25,6 +25,7 @@ class Lesson
      * @var \DateTime
      *
      * @ORM\Column(name="startAt", type="datetime")
+     * @Assert\NotBlank()
      */
     private $startAt;
 
@@ -32,6 +33,7 @@ class Lesson
      * @var bool
      *
      * @ORM\Column(name="teacher_isPresent", type="boolean")
+     * @Assert\NotBlank()
      */
     private $teacherIsPresent;
 
@@ -39,6 +41,7 @@ class Lesson
      * @var bool
      *
      * @ORM\Column(name="student_isPresent", type="boolean")
+     * @Assert\NotBlank()
      */
     private $studentIsPresent;
 
