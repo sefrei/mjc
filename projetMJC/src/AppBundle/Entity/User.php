@@ -325,4 +325,8 @@ class User implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized);
     }
+    public function __toString()
+    {
+        return $this->username;
+    }
 }

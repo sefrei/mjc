@@ -43,6 +43,9 @@ class SubscriptionController extends Controller
         $form = $this->createForm('AppBundle\Form\SubscriptionType', $subscription);
         $form->handleRequest($request);
 
+        // current date
+        $subscription->setSubscriptionAt(new \DateTime());
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($subscription);
