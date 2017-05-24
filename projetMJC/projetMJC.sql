@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 24 Mai 2017 à 12:12
+-- Généré le :  Mer 24 Mai 2017 à 17:51
 -- Version du serveur :  5.7.11-0ubuntu6
 -- Version de PHP :  7.0.15-0ubuntu0.16.04.4
 
@@ -69,6 +69,16 @@ CREATE TABLE `specialty` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `specialty`
+--
+
+INSERT INTO `specialty` (`id`, `name`) VALUES
+(1, 'guitare'),
+(2, 'piano'),
+(3, 'chant'),
+(4, 'accordéon');
 
 -- --------------------------------------------------------
 
@@ -186,7 +196,7 @@ ALTER TABLE `meeting`
 -- AUTO_INCREMENT pour la table `specialty`
 --
 ALTER TABLE `specialty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `subscription`
 --
