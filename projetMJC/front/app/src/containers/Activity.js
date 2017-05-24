@@ -2,7 +2,6 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 /*
  * Local import
  */

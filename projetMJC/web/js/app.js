@@ -43714,8 +43714,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _reactRedux = require('react-redux');
 
-var _redux = require('redux');
-
 var _Activity = require('src/components/Activity');
 
 var _Activity2 = _interopRequireDefault(_Activity);
