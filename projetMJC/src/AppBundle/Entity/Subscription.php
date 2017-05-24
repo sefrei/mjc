@@ -157,7 +157,7 @@ class Subscription
      *
      * @return Subscription
      */
-    public function setTeacher(\AppBundle\Entity\Subscription $teacher = null)
+    public function setTeacher(\AppBundle\Entity\User $teacher = null)
     {
         $this->teacher = $teacher;
 
@@ -181,7 +181,7 @@ class Subscription
      *
      * @return Subscription
      */
-    public function setStudent(\AppBundle\Entity\Subscription $student = null)
+    public function setStudent(\AppBundle\Entity\User $student = null)
     {
         $this->student = $student;
 

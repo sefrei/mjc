@@ -24,3 +24,18 @@ Je pensais faire une sélection ROLE_TEACHER et ROLE_STUDENT. Et ça serait plus
 ## Question 2
 × Un souscription comprends plusieurs leçons. L'admin entrais la date et l'heure du premier cours et la date et l'heure de la fin de ce premier cours avec dateTime. On pourrait alors calculer le temps du cours et enregistrer automatiquement les autres dates des cours avec DATE_ADD() + 7 DAY.
 Si startAt + 7 Day < Date des vacances => new Lesson
+
+
+# 24 MAI 2017
+## Ce que j'ai fait
+- encodage mot de passe
+- enregistrement des users en bd
+- enregistrement des spécialités
+-
+
+## Ce que je vais faire
+
+
+
+
+## Ce qu'il me manque
