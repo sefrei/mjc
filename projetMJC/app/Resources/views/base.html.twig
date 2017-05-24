@@ -2,13 +2,55 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}La fabrique{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('css/app.css')}}">
     </head>
     <body>
+      <header>
+		  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		<div class="user btn btn-lg">
+			  <span class="glyphicon glyphicon-user disable  "></span>
+			{{ app.user.username}}
+		</div>
+		{% endif %}
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+			</button> <a href="{{ path('homepage') }}" class="navbar-brand">La FABRIQUE</a>
+            </div>
+            <div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
+              <ul class="nav navbar-nav">
+                {# Pout tout le monde #}
+                <li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
+				<li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
+				{# Si l'user est admin #}
+				 {% if is_granted('ROLE_ADMIN') %}
+    				<li><a href="user_edit">Edition membres</a></li>
+					<li><a href="user_new">Création élève/prof</a></li>
+				{% endif %}
+                {# Si l'user est authentifié #}
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="{{ path('logout')}}">Déconnexion</a></li>
+				<li><a href="{{path('user_edit',  { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li>
+
+
+				{% else %}
+
+				<li><a href="{{ path('login')}}">Se connecter</a></li>
+				{% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
