@@ -7,20 +7,20 @@ import { Route, Switch } from 'react-router-dom';
 /*
  * Local import
  */
-import Diary from 'src/components/Diary';
-import Activity from 'src/components/Activity';
+import Notebook from 'src/components/Notebook';
+import Activity from 'src/containers/Activity';
 /*
  * Code
  */
 const App = () => (
   <Switch>
     <Route
-      path="/"
-      component={Diary}
+      path="/ProjectMJC/projetMJC/web/app_dev.php/activity/:id"
+      component={Activity}
     />
     <Route
-      path="/activity/:id"
-      component={Activity}
+      path="/"
+      component={Notebook}
     />
   </Switch>
 );

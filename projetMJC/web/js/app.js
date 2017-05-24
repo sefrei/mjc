@@ -1687,6 +1687,60 @@ define(String.prototype, "padRight", "".padEnd);
   })();
 });
 
+require.register("classnames/index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "classnames");
+  (function() {
+    /*!
+  Copyright (c) 2016 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(null, arg));
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', [], function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+}());
+  })();
+});
+
 require.register("core-js/fn/regexp/escape.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {}, "core-js");
   (function() {
@@ -43090,18 +43144,24 @@ var ActivityLine = function ActivityLine(_ref) {
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
-    'Activit\xE9 ',
-    id,
-    ' de ',
-    startTime,
-    ' \xE0 ',
-    endTime,
-    ' : Cours de ',
-    speciality,
-    ' avec ',
-    studentName,
-    ' | Statut : ',
-    !teacher || !student ? 'Annulé' : 'Pas annulé',
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      {
+        to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + id
+      },
+      'Activit\xE9 ',
+      id,
+      ' de ',
+      startTime,
+      ' \xE0 ',
+      endTime,
+      ' : Cours de ',
+      speciality,
+      ' avec ',
+      studentName,
+      ' | Statut : ',
+      !teacher || !student ? 'Annulé' : 'Pas annulé'
+    ),
     teacher ? _react2.default.createElement(
       'button',
       { onClick: actions.switchPresenceTeacher },
@@ -43213,6 +43273,12 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _reactRouterDom = require('react-router-dom');
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
@@ -43227,17 +43293,97 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Npm import
  */
-var Activity = function Activity() {
-  console.log('activity page');
+var Activity = function Activity(_ref) {
+  var currentDate = _ref.currentDate,
+      startDate = _ref.startDate,
+      endDate = _ref.endDate,
+      teacher = _ref.teacher,
+      student = _ref.student,
+      id = _ref.id,
+      observation = _ref.observation,
+      actions = _ref.actions;
+
+
+  var onChange = function onChange(evt) {
+    var value = evt.target.value;
+
+    actions.changeInputObservation(value);
+  };
+
+  var startTime = startDate.split(' ')[1].substr(0, 5);
+  var endTime = endDate.split(' ')[1].substr(0, 5);
+  var stateActivity = !teacher || !student;
   return _react2.default.createElement(
-    'p',
-    null,
-    ' hello '
+    'div',
+    { id: 'activity-view' },
+    _react2.default.createElement(
+      'h1',
+      { id: 'date-title' },
+      currentDate.format('dddd D MMMM YYYY')
+    ),
+    _react2.default.createElement(
+      'h2',
+      { id: 'activity-title' },
+      'Activit\xE9 ',
+      id,
+      ' de ',
+      startTime,
+      ' \xE0 ',
+      endTime
+    ),
+    _react2.default.createElement(
+      'label',
+      { id: 'label-observation', htmlFor: 'observation' },
+      'Observation :'
+    ),
+    _react2.default.createElement('textarea', { onChange: onChange, id: 'observation', placeholder: 'Votre observation...', value: observation }),
+    _react2.default.createElement(
+      'button',
+      { onClick: actions.resetObservation },
+      'Annuler Modification de l\'observation'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Vous \xEAtes actuellement',
+      _react2.default.createElement(
+        'span',
+        {
+          className: (0, _classnames2.default)('activity-state', { absent: stateActivity }, { present: !stateActivity })
+        },
+        teacher ? ' présent ' : ' absent '
+      ),
+      'pour ce cours'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Le cours est',
+      _react2.default.createElement(
+        'span',
+        {
+          className: (0, _classnames2.default)('activity-state', { absent: stateActivity }, { present: !stateActivity })
+        },
+        stateActivity ? ' est annulé' : ' n\'est pas annulé'
+      )
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/ProjectMJC/projetMJC/web/app_dev.php' },
+      'Retour Agenda'
+    )
   );
 };
 
 Activity.propTypes = {
-  activities: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired
+  currentDate: _propTypes2.default.object.isRequired,
+  startDate: _propTypes2.default.string.isRequired,
+  endDate: _propTypes2.default.string.isRequired,
+  id: _propTypes2.default.number.isRequired,
+  teacher: _propTypes2.default.bool.isRequired,
+  student: _propTypes2.default.bool.isRequired,
+  observation: _propTypes2.default.string.isRequired,
+  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
 };
 
 /*
@@ -43260,11 +43406,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = require('react-router-dom');
 
-var _Diary = require('src/components/Diary');
+var _Notebook = require('src/components/Notebook');
 
-var _Diary2 = _interopRequireDefault(_Diary);
+var _Notebook2 = _interopRequireDefault(_Notebook);
 
-var _Activity = require('src/components/Activity');
+var _Activity = require('src/containers/Activity');
 
 var _Activity2 = _interopRequireDefault(_Activity);
 
@@ -43286,12 +43432,12 @@ var App = function App() {
     _reactRouterDom.Switch,
     null,
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/',
-      component: _Diary2.default
+      path: '/ProjectMJC/projetMJC/web/app_dev.php/activity/:id',
+      component: _Activity2.default
     }),
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/activity/:id',
-      component: _Activity2.default
+      path: '/',
+      component: _Notebook2.default
     })
   );
 };
@@ -43392,7 +43538,7 @@ exports.default = Nav;
 
 });
 
-require.register("src/components/Diary/index.js", function(exports, require, module) {
+require.register("src/components/Notebook/index.js", function(exports, require, module) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43463,7 +43609,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Code
  */
 
-
 /*
  * Local import
  */
@@ -43477,7 +43622,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref) {
   return {
     actions: {
       switchPresenceTeacher: function switchPresenceTeacher() {
-        console.log(id);
         dispatch((0, _reducer.switchPresenceTeacher)(id));
       }
     }
@@ -43552,6 +43696,72 @@ exports.default = ActivityContainer;
 
 });
 
+require.register("src/containers/Activity.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
+                                                                                                                                                                                                                                                                   * Npm import
+                                                                                                                                                                                                                                                                   */
+
+/*
+ * Local import
+ */
+
+
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
+var _Activity = require('src/components/Activity');
+
+var _Activity2 = _interopRequireDefault(_Activity);
+
+var _reducer = require('src/store/reducer');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Code
+ */
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var activity = (0, _reducer.selectActivity)(state, ownProps.match.params.id);
+  return _extends({
+    currentDate: state.currentDate
+  }, activity, {
+    inputObservation: state.inputObservation
+  });
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    actions: {
+      changeInputObservation: function changeInputObservation(input) {
+        dispatch((0, _reducer.changeInputObservation)(input, ownProps.match.params.id));
+      },
+      resetObservation: function resetObservation() {
+        dispatch((0, _reducer.resetObservation)(ownProps.match.params.id));
+      }
+    }
+  };
+};
+
+/*
+ * Component
+ */
+var createContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps);
+var ActivityContainer = createContainer(_Activity2.default);
+
+/*
+ * Export default
+ */
+exports.default = ActivityContainer;
+
+});
+
 require.register("src/containers/DateNav.js", function(exports, require, module) {
 'use strict';
 
@@ -43590,7 +43800,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    actions: (0, _redux.bindActionCreators)({ changeDate: _reducer.changeDate, changeDay: _reducer.changeDay }, dispatch)
+    actions: (0, _redux.bindActionCreators)({ changeDate: _reducer.changeDate }, dispatch)
   };
 };
 
@@ -43621,7 +43831,8 @@ exports.default = [{
   speciality: 'guitare',
   studentName: 'Yves',
   teacher: true,
-  student: true
+  student: true,
+  observation: ''
 }, {
   id: 2,
   startDate: '2017-05-23 11:00:00',
@@ -43630,7 +43841,8 @@ exports.default = [{
   speciality: 'guitare',
   studentName: 'Séverine',
   teacher: true,
-  student: true
+  student: true,
+  observation: ''
 }, {
   id: 3,
   startDate: '2017-05-23 14:00:00',
@@ -43639,7 +43851,8 @@ exports.default = [{
   speciality: 'guitare',
   studentName: 'Julien',
   teacher: true,
-  student: true
+  student: true,
+  observation: ''
 }];
 
 });
@@ -43832,7 +44045,9 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setActivities = exports.switchPresenceTeacher = exports.changeDate = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.changeDate = exports.CHANGE_DATE = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -43863,13 +44078,16 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var CHANGE_DATE = exports.CHANGE_DATE = 'CHANGE_DATE';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
+var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
+var RESET_OBSERVATION = 'RESET_OBSERVATION';
 
 /*
  * initialState
  */
 var initialState = {
   currentDate: (0, _moment2.default)(),
-  activities: _datas2.default
+  activities: _datas2.default,
+  inputObservation: ''
 };
 
 /*
@@ -43897,6 +44115,7 @@ exports.default = function () {
       {
         var id = action.id;
 
+        console.info(typeof id === 'undefined' ? 'undefined' : _typeof(id));
         var activities = [].concat(_toConsumableArray(state.activities));
         activities.forEach(function (activity) {
           if (activity.id === id) {
@@ -43905,6 +44124,37 @@ exports.default = function () {
         });
         return _extends({}, state, {
           activities: activities
+        });
+      }
+    case INPUT_OBSERVATION_CHANGE:
+      {
+        var _id = action.id;
+        var input = action.input;
+
+        _id = parseInt(_id, 10);
+        var _activities = [].concat(_toConsumableArray(state.activities));
+        _activities.forEach(function (activity) {
+          if (activity.id === _id) {
+            activity.observation = input;
+          }
+        });
+        return _extends({}, state, {
+          activities: _activities
+        });
+      }
+    case RESET_OBSERVATION:
+      {
+        var _id2 = action.id;
+
+        _id2 = parseInt(_id2, 10);
+        var _activities2 = [].concat(_toConsumableArray(state.activities));
+        _activities2.forEach(function (activity) {
+          if (activity.id === _id2) {
+            activity.observation = 'Valeur dans la BDD';
+          }
+        });
+        return _extends({}, state, {
+          activities: _activities2
         });
       }
     default:
@@ -43937,6 +44187,32 @@ var setActivities = exports.setActivities = function setActivities(activities) {
     type: SET_ACTIVITIES,
     activities: activities
   };
+};
+var changeInputObservation = exports.changeInputObservation = function changeInputObservation(input, id) {
+  return {
+    type: INPUT_OBSERVATION_CHANGE,
+    input: input,
+    id: id
+  };
+};
+var resetObservation = exports.resetObservation = function resetObservation(id) {
+  return {
+    type: RESET_OBSERVATION,
+    id: id
+  };
+};
+/*
+ * Action Selectors
+ */
+var selectActivity = exports.selectActivity = function selectActivity(state, props) {
+  var id = parseInt(props, 10);
+  var activitySelected = state.activities.filter(function (activity) {
+    return activity.id === id;
+  });
+  if (activitySelected.length) {
+    return activitySelected[0];
+  }
+  return null;
 };
 
 });

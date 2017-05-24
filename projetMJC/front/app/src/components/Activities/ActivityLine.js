@@ -19,9 +19,13 @@ const ActivityLine = ({ startDate, endDate, id, speciality, studentName, teacher
   const endTime = endDate.split(' ')[1].substr(0, 5);
   return (
     <div className="activity">
+      <Link
+        to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
+      >
         Activité {id} de {startTime} à {endTime} :
         Cours de {speciality} avec {studentName} |
         Statut : {(!teacher || !student) ? 'Annulé' : 'Pas annulé'}
+      </Link>
       {
         (teacher) ?
           <button onClick={actions.switchPresenceTeacher}>Je serais absent</button>

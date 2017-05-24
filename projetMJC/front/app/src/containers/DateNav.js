@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
  * Local import
  */
 import Nav from 'src/components/DateNav';
-import { changeDate, changeDay } from 'src/store/reducer';
+import { changeDate } from 'src/store/reducer';
 
 /*
  * Code
@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ changeDate, changeDay }, dispatch),
+  actions: bindActionCreators({ changeDate }, dispatch),
 });
 
 /*

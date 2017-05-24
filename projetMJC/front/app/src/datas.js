@@ -8,6 +8,7 @@ export default [
     studentName: 'Yves',
     teacher: true,
     student: true,
+    observation: '',
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export default [
     studentName: 'Séverine',
     teacher: true,
     student: true,
+    observation: '',
   },
   {
     id: 3,
@@ -28,5 +30,6 @@ export default [
     studentName: 'Julien',
     teacher: true,
     student: true,
+    observation: '',
   },
 ];

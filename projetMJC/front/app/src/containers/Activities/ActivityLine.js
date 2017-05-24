@@ -3,7 +3,6 @@
  */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 /*
  * Local import
  */
@@ -18,7 +17,6 @@ const mapStateToProps = null;
 const mapDispatchToProps = (dispatch, { id }) => ({
   actions: {
     switchPresenceTeacher: () => {
-      console.log(id);
       dispatch(switchPresenceTeacher(id));
     },
   },

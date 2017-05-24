@@ -160,12 +160,37 @@ button {
   display: inline-block;
 }
 
-#notebook {
+#activity-view {
   width: 900px;
+  text-align: center;
   margin: 3em auto;
   background: rgba(169,219,233,0.9);
   padding: 1em;
 }
+#activity-view p {
+  margin: 0.5em;
+}
+#activity-title {
+  font-size: 1.5em;
+  margin: 1em auto;
+}
+#label-observation {
+  display: block;
+}
+#label-observation::first-letter {
+  text-transform: uppercase;
+}
+#observation {
+  resize: none;
+  width: 100%;
+}
+.present {
+  color: #008000;
+}
+.absent {
+  color: #f00;
+}
+
 
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle,
 .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,
@@ -1029,6 +1054,13 @@ button {
   text-transform: capitalize;
 }
 
+
+#notebook {
+  width: 900px;
+  margin: 3em auto;
+  background: rgba(169,219,233,0.9);
+  padding: 1em;
+}
 
 /*
  * My styles
