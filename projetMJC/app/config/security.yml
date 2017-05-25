@@ -28,7 +28,7 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             form_login:
                 login_path: login
-                check_path: /login
+                check_path: login
               # activate different ways to authenticate
 
             logout:
@@ -37,14 +37,14 @@ security:
 
     access_control:
         # # Rôle nécessaire pour accéder à la route /admin
-         - { path: ^/.*/new, roles: ROLE_ADMIN }
-         - { path: ^/.*/[0-9]+/edit, roles: ROLE_ADMIN }
+        # - { path: ^/.*/new, roles: ROLE_ADMIN }
+        # - { path: ^/.*/[0-9]+/edit, roles: ROLE_ADMIN }
         # # Routes accessibles par le professeur
-         - { path: ^/(specialty|user)/[0-9]+, roles: ROLE_TEACHER }
-         - { path: ^/(specialty|user), roles: ROLE_TEACHER }
+        # - { path: ^/(specialty|user)/[0-9]+, roles: ROLE_TEACHER }
+        # - { path: ^/(specialty|user), roles: ROLE_TEACHER }
         # # Routes accessibles par l'élève
-         - { path: ^/(specialty|user)/[0-9]+, roles: ROLE_STUDENT }
-         - { path: ^/(specialty|user), roles: ROLE_STUDENT }
+        # - { path: ^/(specialty|user)/[0-9]+, roles: ROLE_STUDENT }
+        # - { path: ^/(specialty|user), roles: ROLE_STUDENT }
         # # Routes accessibles par l'anonyme
         # - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

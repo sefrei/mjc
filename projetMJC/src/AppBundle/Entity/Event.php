@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Event
@@ -33,7 +35,7 @@ class Event
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
-     * @Assert\NotBlank()     
+     * @Assert\NotBlank()
      */
     private $date;
 
