@@ -80,18 +80,7 @@ class SubscriptionController extends Controller
     }
 
 
-    /**
-     * Finds and displays a subscription entity.
-     *
-     * @Route("/test", name="subscription_test")
-     * @Method("GET")
-     */
-    public function testAction()
-    {
-        $subscriptions = $em->getRepository('AppBundle:Subscription')->showAllAction();
-        dump($subscripions);
-        exit;
-    }
+
 
     /**
      * Displays a form to edit an existing subscription entity.

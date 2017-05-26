@@ -39,5 +39,13 @@ class DefaultController extends Controller
         ]);
     }
 
-
+        /**
+     * @Route("/ajax", name="ajax")
+     * @Method("POST")
+     */
+    public function ajaxAction(Request $request)
+    {
+        $message = 'Bonjour';
+        return new Response($message);
+    }
 }
