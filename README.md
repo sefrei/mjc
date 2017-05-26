@@ -34,8 +34,10 @@ Si startAt + 7 Day < Date des vacances => new Lesson
 -
 
 ## Ce que je vais faire
-
-
-
+- debug de l'enregistrement d'1 subscription
+- mettre la date en français
+- Ajouter durée plutôt que finishAt pour une inscription
+-
 
 ## Ce qu'il me manque
+-
