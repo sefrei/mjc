@@ -24,7 +24,6 @@ const Activity = ({ currentDate, startDate, endDate, teacher, student, id, obser
   };
   const onSubmit = (evt) => {
     evt.preventDefault();
-    console.log(evt);
     console.info("Actions : Enregistrer dans la BDD");
     //actions.addTask();
   };
