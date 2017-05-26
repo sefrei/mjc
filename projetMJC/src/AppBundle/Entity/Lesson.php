@@ -27,7 +27,6 @@ class Lesson
      * @var \DateTime
      *
      * @ORM\Column(name="startAt", type="datetime")
-     * @Assert\NotBlank()
      */
     private $startAt;
 
