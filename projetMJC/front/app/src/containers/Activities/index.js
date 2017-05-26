@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
  * Local import
  */
 import Activities from 'src/components/Activities';
-import { switchPresence } from 'src/store/reducer';
+import { } from 'src/store/reducer';
 
 /*
  * Code
@@ -17,9 +17,7 @@ const mapStateToProps = state => ({
   activities: state.activities,
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ switchPresence }, dispatch),
-});
+const mapDispatchToProps = null;
 
 /*
  * Component

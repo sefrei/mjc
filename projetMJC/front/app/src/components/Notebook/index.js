@@ -9,11 +9,13 @@ import React from 'react';
  */
 import Nav from 'src/containers/DateNav';
 import Activities from 'src/containers/Activities';
+import Notifications from 'src/containers/Notifications';
 /*
  * Code
  */
 const Diary = () => (
   <div id="notebook">
+    <Notifications />
     <Nav />
     <Activities />
   </div>

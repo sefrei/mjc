@@ -1062,6 +1062,49 @@ button {
   padding: 1em;
 }
 
+#notifications {
+  text-align: right;
+  margin-bottom: 5em;
+  position: relative;
+}
+#notifications-counter {
+  display: inline-block;
+  width: 80%;
+  margin: 1em auto;
+  padding: 1em 5%;
+  position: relative;
+  cursor: pointer;
+}
+#notifications-counter:after {
+  content: "\f111";
+  font-family: FontAwesome;
+  position: absolute;
+  font-size: 40px;
+  color: #f00;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+#notifications-counter-count {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  z-index: 2;
+  color: #fff;
+  font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.hide-notif {
+  display: none;
+}
+
+.presence {
+  display: inline-block;
+}
+
 /*
  * My styles
  */

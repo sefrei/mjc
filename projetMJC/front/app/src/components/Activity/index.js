@@ -9,17 +9,24 @@ import classNames from 'classnames';
 /*
  * Local import
  */
+import Presence from 'src/containers/Presence';
  // CSS Modules, react-datepicker-cssmodules.css
 
 
 /*
  * Code
  */
-const Activity = ({ currentDate, startDate, endDate, teacher, student, id,  observation, actions }) => {
+const Activity = ({ currentDate, startDate, endDate, teacher, student, id, observation, actions }) => {
 
   const onChange = (evt) => {
     const { value } = evt.target;
     actions.changeInputObservation(value);
+  };
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(evt);
+    console.info("Actions : Enregistrer dans la BDD");
+    //actions.addTask();
   };
 
   const startTime = startDate.split(' ')[1].substr(0, 5);
@@ -30,8 +37,11 @@ const Activity = ({ currentDate, startDate, endDate, teacher, student, id,  obse
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Activité {id} de {startTime} à {endTime}</h2>
       <label id="label-observation" htmlFor="observation">Observation :</label>
-      <textarea onChange={onChange} id="observation" placeholder="Votre observation..." value={observation} />
+      <form id="form" onSubmit={onSubmit}>
+        <input type="text" onChange={onChange} id="observation" placeholder="Votre observation..." value={observation} />
+      </form>
       <button onClick={actions.resetObservation}>Annuler Modification de l'observation</button>
+      <Presence teacher={teacher} id={id} />
       <p>Vous êtes actuellement
         <span
           className={classNames(
