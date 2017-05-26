@@ -47,10 +47,6 @@ class DefaultController extends Controller
     public function ajaxAction(Request $request)
     {
         $message = 'Bonjour';
-<<<<<<< HEAD
-        echo $message;
-=======
         return new JsonResponse($message);
->>>>>>> 389da4cdf934f37a1660f7c58cbd6b9d491f3cf5
     }
 }
