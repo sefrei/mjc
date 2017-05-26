@@ -20,6 +20,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           {notifications.length}
         </div>
       </div>
+      <i className="fa fa-circle" aria-hidden="true"></i>
       <div
         id="notifications-messages"
         className={classNames(
@@ -27,6 +28,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           { 'hide-notif': !displayNotifications },
         )}
       >
+        <p id="notifications-title">Notifications :</p>
         {notifications.map(notif => (
           <p key={notif.id}>{notif.message}</p>
         ))}

@@ -21,7 +21,16 @@ const createMiddleware = store => next => (action) => {
     console.log(action.currentDate.format());
       // On fait une requête ajax pour récupérer les infos de l'utilisateur +
       // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-
+      axios.post('/ajax', {
+        firstName: 'Fred',
+        lastName: 'Flintstone',
+      })
+      .then(function (response) {
+        console.info(response);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
       // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
       //  state activités + un dispatch pour enregistrer infos utilisateur
       // store.dispatch(setActivities('activities'));

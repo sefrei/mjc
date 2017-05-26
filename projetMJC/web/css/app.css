@@ -1064,8 +1064,22 @@ button {
 
 #notifications {
   text-align: right;
-  margin-bottom: 5em;
+  margin-bottom: 10em;
   position: relative;
+}
+#notifications-title {
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 0.3em;
+}
+#notifications-messages {
+  float: right;
+  text-align: left;
+  background-color: rgba(215,44,44,0.7);
+  padding: 1em;
+  position: absolute;
+  right: 20px;
+  top: 30px;
 }
 #notifications-counter {
   display: inline-block;

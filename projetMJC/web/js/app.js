@@ -43660,12 +43660,18 @@ var Notifications = function Notifications(_ref) {
         notifications.length
       )
     ),
+    _react2.default.createElement('i', { className: 'fa fa-circle', 'aria-hidden': 'true' }),
     _react2.default.createElement(
       'div',
       {
         id: 'notifications-messages',
         className: (0, _classnames2.default)('activity-state', { 'hide-notif': !displayNotifications })
       },
+      _react2.default.createElement(
+        'p',
+        { id: 'notifications-title' },
+        'Notifications :'
+      ),
       notifications.map(function (notif) {
         return _react2.default.createElement(
           'p',
@@ -44275,7 +44281,14 @@ var createMiddleware = function createMiddleware(store) {
           console.log(action.currentDate.format());
           // On fait une requête ajax pour récupérer les infos de l'utilisateur +
           // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-
+          _axios2.default.post('/ajax', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          }).then(function (response) {
+            console.info(response);
+          }).catch(function (error) {
+            console.error(error);
+          });
           // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
           //  state activités + un dispatch pour enregistrer infos utilisateur
           // store.dispatch(setActivities('activities'));

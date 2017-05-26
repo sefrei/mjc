@@ -1,7 +1,21 @@
 #notifications
   text-align:right
-  margin-bottom: 5em
+  margin-bottom: 10em
   position: relative
+
+  &-title
+    color: #FFF
+    font-size: 1.2em
+    margin-bottom: 0.3em
+
+  &-messages
+    float: right
+    text-align: left
+    background-color: rgba(215, 44, 44, 0.7);
+    padding: 1em
+    position: absolute
+    right: 20px
+    top: 30px
 
   &-counter
     display: inline-block
@@ -16,7 +30,7 @@
       font-family: FontAwesome
       position: absolute
       font-size: 40px
-      color: red
+      color: #F00
       top: 0
       right: 0
       z-index: 1
@@ -26,7 +40,7 @@
       right: 13px
       top: 13px
       z-index: 2
-      color: white
+      color: #FFF
       font-weight: bold
       user-select : none
 
