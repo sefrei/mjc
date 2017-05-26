@@ -19,10 +19,12 @@ const createMiddleware = store => next => (action) => {
   switch (action.type) {
     case LOAD_ACTIVITIES:
     console.log(action.currentDate.format());
+      // On fait une requête ajax pour récupérer les infos de l'utilisateur +
       // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
 
-      // Je dispatche mon action pour enregistrer ces nouvelles données dans mon state activités
-      //store.dispatch(setActivities('activities'));
+      // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
+      //  state activités + un dispatch pour enregistrer infos utilisateur
+      // store.dispatch(setActivities('activities'));
       break;
     case CHANGE_DATE:
         console.info('La date a changer : requete axios pour récupérer les nouvelles données');

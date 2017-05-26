@@ -15,14 +15,17 @@ const SET_ACTIVITIES = 'SET_ACTIVITIES';
 const SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 const RESET_OBSERVATION = 'RESET_OBSERVATION';
+const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
 
 /*
  * initialState
  */
 const initialState = {
   currentDate: moment(),
-  activities: datas,
+  activities: datas.activity,
+  notifications: datas.notifications,
   inputObservation: '',
+  displayNotifications: false,
 };
 
 
@@ -47,8 +50,8 @@ export default (state = initialState, action = {}) => {
       }
     case SWITCH_PRESENCE_TEACHER:
       {
-        const { id } = action;
-        console.info(typeof(id));
+        let { id } = action;
+        id = parseInt(id, 10);
         const activities = [...state.activities];
         activities.forEach((activity) => {
           if (activity.id === id) {
@@ -63,6 +66,7 @@ export default (state = initialState, action = {}) => {
     case INPUT_OBSERVATION_CHANGE:
       {
         let { id } = action;
+        console.info(typeof(id));
         const { input } = action;
         id = parseInt(id, 10);
         const activities = [...state.activities];
@@ -89,6 +93,16 @@ export default (state = initialState, action = {}) => {
         return {
           ...state,
           activities,
+        };
+      }
+    case DISPLAY_NOTIFICATIONS:
+      {
+        console.log('coucou');
+        const display = !state.displayNotifications;
+        console.log(display);
+        return {
+          ...state,
+          displayNotifications: display,
         };
       }
     default:
@@ -132,6 +146,9 @@ export const changeInputObservation = (input, id) => ({
 export const resetObservation = id => ({
   type: RESET_OBSERVATION,
   id,
+});
+export const displayNotifications = () => ({
+  type: DISPLAY_NOTIFICATIONS,
 });
 /*
  * Action Selectors

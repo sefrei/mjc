@@ -43117,11 +43117,16 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = require('react-router-dom');
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _Presence = require('src/containers/Presence');
+
+var _Presence2 = _interopRequireDefault(_Presence);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
- * Local import
- */
 // CSS Modules, react-datepicker-cssmodules.css
 
 
@@ -43135,12 +43140,12 @@ var ActivityLine = function ActivityLine(_ref) {
       speciality = _ref.speciality,
       studentName = _ref.studentName,
       teacher = _ref.teacher,
-      student = _ref.student,
-      actions = _ref.actions;
+      student = _ref.student;
 
   // Récupère l'heure sous le format Heure:Minutes du DateTime
   var startTime = startDate.split(' ')[1].substr(0, 5);
   var endTime = endDate.split(' ')[1].substr(0, 5);
+  var stateActivity = !teacher || !student;
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
@@ -43159,22 +43164,24 @@ var ActivityLine = function ActivityLine(_ref) {
       speciality,
       ' avec ',
       studentName,
-      ' | Statut : ',
-      !teacher || !student ? 'Annulé' : 'Pas annulé'
+      ' | Statut :',
+      _react2.default.createElement(
+        'span',
+        {
+          className: (0, _classnames2.default)('activity-state', { absent: stateActivity }, { present: !stateActivity })
+        },
+        stateActivity ? 'Annulé' : 'Pas annulé'
+      )
     ),
-    teacher ? _react2.default.createElement(
-      'button',
-      { onClick: actions.switchPresenceTeacher },
-      'Je serais absent'
-    ) : _react2.default.createElement(
-      'button',
-      { onClick: actions.switchPresenceTeacher },
-      'Je serais pr\xE9sent'
-    )
+    _react2.default.createElement(_Presence2.default, { teacher: teacher, id: id })
   );
-}; /*
-    * Npm import
-    */
+};
+/*
+ * Local import
+ */
+/*
+ * Npm import
+ */
 
 
 ActivityLine.propTypes = {
@@ -43184,8 +43191,7 @@ ActivityLine.propTypes = {
   speciality: _propTypes2.default.string.isRequired,
   studentName: _propTypes2.default.string.isRequired,
   teacher: _propTypes2.default.bool.isRequired,
-  student: _propTypes2.default.bool.isRequired,
-  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
+  student: _propTypes2.default.bool.isRequired
 };
 
 /*
@@ -43279,19 +43285,17 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _Presence = require('src/containers/Presence');
+
+var _Presence2 = _interopRequireDefault(_Presence);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
- * Local import
- */
 // CSS Modules, react-datepicker-cssmodules.css
 
 
 /*
  * Code
- */
-/*
- * Npm import
  */
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
@@ -43308,6 +43312,12 @@ var Activity = function Activity(_ref) {
     var value = evt.target.value;
 
     actions.changeInputObservation(value);
+  };
+  var onSubmit = function onSubmit(evt) {
+    evt.preventDefault();
+    console.log(evt);
+    console.info("Actions : Enregistrer dans la BDD");
+    //actions.addTask();
   };
 
   var startTime = startDate.split(' ')[1].substr(0, 5);
@@ -43336,12 +43346,17 @@ var Activity = function Activity(_ref) {
       { id: 'label-observation', htmlFor: 'observation' },
       'Observation :'
     ),
-    _react2.default.createElement('textarea', { onChange: onChange, id: 'observation', placeholder: 'Votre observation...', value: observation }),
+    _react2.default.createElement(
+      'form',
+      { id: 'form', onSubmit: onSubmit },
+      _react2.default.createElement('input', { type: 'text', onChange: onChange, id: 'observation', placeholder: 'Votre observation...', value: observation })
+    ),
     _react2.default.createElement(
       'button',
       { onClick: actions.resetObservation },
       'Annuler Modification de l\'observation'
     ),
+    _react2.default.createElement(_Presence2.default, { teacher: teacher, id: id }),
     _react2.default.createElement(
       'p',
       null,
@@ -43374,6 +43389,14 @@ var Activity = function Activity(_ref) {
     )
   );
 };
+
+/*
+ * Local import
+ */
+/*
+ * Npm import
+ */
+
 
 Activity.propTypes = {
   currentDate: _propTypes2.default.object.isRequired,
@@ -43557,20 +43580,23 @@ var _Activities = require('src/containers/Activities');
 
 var _Activities2 = _interopRequireDefault(_Activities);
 
+var _Notifications = require('src/containers/Notifications');
+
+var _Notifications2 = _interopRequireDefault(_Notifications);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * Code
  */
-
-
 /*
- * Local import
+ * Npm import
  */
 var Diary = function Diary() {
   return _react2.default.createElement(
     'div',
     { id: 'notebook' },
+    _react2.default.createElement(_Notifications2.default, null),
     _react2.default.createElement(_DateNav2.default, null),
     _react2.default.createElement(_Activities2.default, null)
   );
@@ -43579,10 +43605,151 @@ var Diary = function Diary() {
 /*
  * Export default
  */
+
+
+/*
+ * Local import
+ */
+exports.default = Diary;
+
+});
+
+require.register("src/components/Notifications/index.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Local import
+ */
+
+/*
+ * Code
+ */
+var Notifications = function Notifications(_ref) {
+  var notifications = _ref.notifications,
+      displayNotifications = _ref.displayNotifications,
+      actions = _ref.actions;
+
+  console.error(displayNotifications);
+  return _react2.default.createElement(
+    'div',
+    { id: 'notifications' },
+    _react2.default.createElement(
+      'div',
+      { onClick: actions.displayNotifications, id: 'notifications-counter' },
+      _react2.default.createElement(
+        'div',
+        { id: 'notifications-counter-count' },
+        notifications.length
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      {
+        id: 'notifications-messages',
+        className: (0, _classnames2.default)('activity-state', { 'hide-notif': !displayNotifications })
+      },
+      notifications.map(function (notif) {
+        return _react2.default.createElement(
+          'p',
+          { key: notif.id },
+          notif.message
+        );
+      })
+    )
+  );
+}; /*
+    * Npm import
+    */
+
+
+Notifications.propTypes = {
+  notifications: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired,
+  displayNotifications: _propTypes2.default.bool.isRequired,
+  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
+};
+
+/*
+ * Export default
+ */
+exports.default = Notifications;
+
+});
+
+require.register("src/components/Presence/index.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Local import
+ */
+
+// CSS Modules, react-datepicker-cssmodules.css
+
+
+/*
+ * Code
+ */
 /*
  * Npm import
  */
-exports.default = Diary;
+var Presence = function Presence(_ref) {
+  var teacher = _ref.teacher,
+      actions = _ref.actions;
+  return _react2.default.createElement(
+    'div',
+    { className: 'presence' },
+    teacher ? _react2.default.createElement(
+      'button',
+      { onClick: actions.switchPresenceTeacher },
+      'Je serais absent'
+    ) : _react2.default.createElement(
+      'button',
+      { onClick: actions.switchPresenceTeacher },
+      'Je serais pr\xE9sent'
+    )
+  );
+};
+
+Presence.propTypes = {
+  teacher: _propTypes2.default.bool.isRequired,
+  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
+};
+
+/*
+ * Export default
+ */
+exports.default = Presence;
 
 });
 
@@ -43595,38 +43762,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = require('react-redux');
 
-var _redux = require('redux');
-
 var _ActivityLine = require('src/components/Activities/ActivityLine');
 
 var _ActivityLine2 = _interopRequireDefault(_ActivityLine);
-
-var _reducer = require('src/store/reducer');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * Code
  */
-
-/*
- * Local import
- */
 /*
  * Npm import
  */
 var mapStateToProps = null;
+/*
+ * Local import
+ */
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref) {
-  var id = _ref.id;
-  return {
-    actions: {
-      switchPresenceTeacher: function switchPresenceTeacher() {
-        dispatch((0, _reducer.switchPresenceTeacher)(id));
-      }
-    }
-  };
-};
+
+var mapDispatchToProps = null;
 
 /*
  * Component
@@ -43656,7 +43810,7 @@ var _Activities = require('src/components/Activities');
 
 var _Activities2 = _interopRequireDefault(_Activities);
 
-var _reducer = require('src/store/reducer');
+require('src/store/reducer');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43677,11 +43831,7 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    actions: (0, _redux.bindActionCreators)({ switchPresence: _reducer.switchPresence }, dispatch)
-  };
-};
+var mapDispatchToProps = null;
 
 /*
  * Component
@@ -43815,43 +43965,164 @@ exports.default = NavContainer;
 
 });
 
+require.register("src/containers/Notifications.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
+var _Notifications = require('src/components/Notifications');
+
+var _Notifications2 = _interopRequireDefault(_Notifications);
+
+var _reducer = require('src/store/reducer');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Code
+ */
+
+/*
+ * Local import
+ */
+/*
+ * Npm import
+ */
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    notifications: state.notifications,
+    displayNotifications: state.displayNotifications
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: (0, _redux.bindActionCreators)({ displayNotifications: _reducer.displayNotifications }, dispatch)
+  };
+};
+
+/*
+ * Component
+ */
+var createContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps);
+var NotificationsLineContainer = createContainer(_Notifications2.default);
+
+/*
+ * Export default
+ */
+exports.default = NotificationsLineContainer;
+
+});
+
+require.register("src/containers/Presence.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _Presence = require('src/components/Presence');
+
+var _Presence2 = _interopRequireDefault(_Presence);
+
+var _reducer = require('src/store/reducer');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Code
+ */
+
+
+/*
+ * Local import
+ */
+var mapStateToProps = null; /*
+                             * Npm import
+                             */
+
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref) {
+  var id = _ref.id;
+  return {
+    actions: {
+      switchPresenceTeacher: function switchPresenceTeacher() {
+        dispatch((0, _reducer.switchPresenceTeacher)(id));
+      }
+    }
+  };
+};
+
+/*
+ * Component
+ */
+var createContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps);
+var PresenceContainer = createContainer(_Presence2.default);
+
+/*
+ * Export default
+ */
+exports.default = PresenceContainer;
+
+});
+
 require.register("src/datas.js", function(exports, require, module) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = [{
-  id: 1,
-  startDate: '2017-05-23 09:00:00',
-  endDate: '2017-05-23 10:00:00',
-  duration: '1h',
-  speciality: 'guitare',
-  studentName: 'Yves',
-  teacher: true,
-  student: true,
-  observation: ''
-}, {
-  id: 2,
-  startDate: '2017-05-23 11:00:00',
-  endDate: '2017-05-23 12:00:00',
-  duration: '1h',
-  speciality: 'guitare',
-  studentName: 'Séverine',
-  teacher: true,
-  student: true,
-  observation: ''
-}, {
-  id: 3,
-  startDate: '2017-05-23 14:00:00',
-  endDate: '2017-05-23 15:00:00',
-  duration: '1h',
-  speciality: 'guitare',
-  studentName: 'Julien',
-  teacher: true,
-  student: true,
-  observation: ''
-}];
+exports.default = {
+  activity: [{
+    id: 1,
+    startDate: '2017-05-23 09:00:00',
+    endDate: '2017-05-23 10:00:00',
+    duration: '1h',
+    speciality: 'guitare',
+    studentName: 'Yves',
+    teacher: true,
+    student: true,
+    observation: ''
+  }, {
+    id: 2,
+    startDate: '2017-05-23 11:00:00',
+    endDate: '2017-05-23 12:00:00',
+    duration: '1h',
+    speciality: 'guitare',
+    studentName: 'Séverine',
+    teacher: true,
+    student: true,
+    observation: ''
+  }, {
+    id: 3,
+    startDate: '2017-05-23 14:00:00',
+    endDate: '2017-05-23 15:00:00',
+    duration: '1h',
+    speciality: 'guitare',
+    studentName: 'Julien',
+    teacher: true,
+    student: false,
+    observation: ''
+  }],
+  notifications: [{
+    id: 1,
+    message: 'Vous avez un nouveau cours'
+  }, {
+    id: 2,
+    message: 'Un cours est annulé'
+  }, {
+    id: 3,
+    message: 'Vous avez un nouveau cours'
+  }]
+};
 
 });
 
@@ -44002,10 +44273,12 @@ var createMiddleware = function createMiddleware(store) {
       switch (action.type) {
         case LOAD_ACTIVITIES:
           console.log(action.currentDate.format());
+          // On fait une requête ajax pour récupérer les infos de l'utilisateur +
           // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
 
-          // Je dispatche mon action pour enregistrer ces nouvelles données dans mon state activités
-          //store.dispatch(setActivities('activities'));
+          // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
+          //  state activités + un dispatch pour enregistrer infos utilisateur
+          // store.dispatch(setActivities('activities'));
           break;
         case _reducer.CHANGE_DATE:
           console.info('La date a changer : requete axios pour récupérer les nouvelles données');
@@ -44043,7 +44316,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.changeDate = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.changeDate = exports.CHANGE_DATE = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -44078,14 +44351,17 @@ var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 var RESET_OBSERVATION = 'RESET_OBSERVATION';
+var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
 
 /*
  * initialState
  */
 var initialState = {
   currentDate: (0, _moment2.default)(),
-  activities: _datas2.default,
-  inputObservation: ''
+  activities: _datas2.default.activity,
+  notifications: _datas2.default.notifications,
+  inputObservation: '',
+  displayNotifications: false
 };
 
 /*
@@ -44113,7 +44389,7 @@ exports.default = function () {
       {
         var id = action.id;
 
-        console.info(typeof id === 'undefined' ? 'undefined' : _typeof(id));
+        id = parseInt(id, 10);
         var activities = [].concat(_toConsumableArray(state.activities));
         activities.forEach(function (activity) {
           if (activity.id === id) {
@@ -44127,6 +44403,8 @@ exports.default = function () {
     case INPUT_OBSERVATION_CHANGE:
       {
         var _id = action.id;
+
+        console.info(typeof _id === 'undefined' ? 'undefined' : _typeof(_id));
         var input = action.input;
 
         _id = parseInt(_id, 10);
@@ -44153,6 +44431,15 @@ exports.default = function () {
         });
         return _extends({}, state, {
           activities: _activities2
+        });
+      }
+    case DISPLAY_NOTIFICATIONS:
+      {
+        console.log('coucou');
+        var display = !state.displayNotifications;
+        console.log(display);
+        return _extends({}, state, {
+          displayNotifications: display
         });
       }
     default:
@@ -44197,6 +44484,11 @@ var resetObservation = exports.resetObservation = function resetObservation(id) 
   return {
     type: RESET_OBSERVATION,
     id: id
+  };
+};
+var displayNotifications = exports.displayNotifications = function displayNotifications() {
+  return {
+    type: DISPLAY_NOTIFICATIONS
   };
 };
 /*

@@ -4,19 +4,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 /*
  * Local import
  */
+import Presence from 'src/containers/Presence';
  // CSS Modules, react-datepicker-cssmodules.css
 
 
 /*
  * Code
  */
-const ActivityLine = ({ startDate, endDate, id, speciality, studentName, teacher, student, actions }) => {
+const ActivityLine = ({ startDate, endDate, id, speciality, studentName, teacher, student }) => {
   // Récupère l'heure sous le format Heure:Minutes du DateTime
   const startTime = startDate.split(' ')[1].substr(0, 5);
   const endTime = endDate.split(' ')[1].substr(0, 5);
+  const stateActivity = (!teacher || !student);
   return (
     <div className="activity">
       <Link
@@ -24,14 +27,18 @@ const ActivityLine = ({ startDate, endDate, id, speciality, studentName, teacher
       >
         Activité {id} de {startTime} à {endTime} :
         Cours de {speciality} avec {studentName} |
-        Statut : {(!teacher || !student) ? 'Annulé' : 'Pas annulé'}
+        Statut :
+        <span
+          className={classNames(
+          'activity-state',
+          { absent: stateActivity },
+          { present: !stateActivity },
+        )}
+        >
+          {stateActivity ? 'Annulé' : 'Pas annulé'}
+        </span>
       </Link>
-      {
-        (teacher) ?
-          <button onClick={actions.switchPresenceTeacher}>Je serais absent</button>
-          :
-          <button onClick={actions.switchPresenceTeacher}>Je serais présent</button>
-      }
+      <Presence teacher={teacher} id={id} />
     </div>
   );
 };
@@ -44,7 +51,6 @@ ActivityLine.propTypes = {
   studentName: PropTypes.string.isRequired,
   teacher: PropTypes.bool.isRequired,
   student: PropTypes.bool.isRequired,
-  actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
 };
 
 /*
