@@ -44280,7 +44280,7 @@ var createMiddleware = function createMiddleware(store) {
           console.log(action.currentDate.format());
           // On fait une requête ajax pour récupérer les infos de l'utilisateur +
           // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-          _axios2.default.post('/ajax', {
+          _axios2.default.get('/ajax', {
             firstName: 'Fred',
             lastName: 'Flintstone'
           }).then(function (response) {
