@@ -43659,7 +43659,6 @@ var Notifications = function Notifications(_ref) {
         notifications.length
       )
     ),
-    _react2.default.createElement('i', { className: 'fa fa-circle', 'aria-hidden': 'true' }),
     _react2.default.createElement(
       'div',
       {
@@ -43675,9 +43674,17 @@ var Notifications = function Notifications(_ref) {
         return _react2.default.createElement(
           'p',
           { key: notif.id },
-          notif.message
+          '- ',
+          notif.message,
+          ' ',
+          _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' })
         );
-      })
+      }),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Tout marquer comme vu'
+      )
     )
   );
 }; /*
@@ -44119,13 +44126,16 @@ exports.default = {
   }],
   notifications: [{
     id: 1,
-    message: 'Vous avez un nouveau cours'
+    message: 'Vous avez un nouveau cours',
+    etat: true
   }, {
     id: 2,
-    message: 'Un cours est annulé'
+    message: 'Un cours est annulé',
+    etat: false
   }, {
     id: 3,
-    message: 'Vous avez un nouveau cours'
+    message: 'Vous avez un nouveau cours',
+    etat: true
   }]
 };
 
