@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Subscription controller.
@@ -78,6 +79,20 @@ class SubscriptionController extends Controller
         ));
     }
 
+
+    /**
+     * Finds and displays a subscription entity.
+     *
+     * @Route("/test", name="subscription_test")
+     * @Method("GET")
+     */
+    public function testAction()
+    {
+        $subscriptions = $em->getRepository('AppBundle:Subscription')->showAllAction();
+        dump($subscripions);
+        exit;
+    }
+
     /**
      * Displays a form to edit an existing subscription entity.
      *
@@ -106,7 +121,7 @@ class SubscriptionController extends Controller
     /**
      * Deletes a subscription entity.
      *
-     * @Route("/{id}", name="subscription_delete")
+     * @Route("/{id}", name="subscription_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Subscription $subscription)

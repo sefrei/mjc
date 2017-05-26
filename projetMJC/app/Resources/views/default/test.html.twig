@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <div class="test">
+          <h1>Vos cours aujourd'hui : </h1>
+          {% for item in inscriptions %}
+              {{dump(item)}}
+          {% else %}
+
+          {% endfor %}
+          <p></p>
+  </div>
+		<div id="root">
+
+
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+{% block javascripts %}
+<script src="https://use.fontawesome.com/d21c915728.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script>require('src/index');</script>
+{% endblock %}
