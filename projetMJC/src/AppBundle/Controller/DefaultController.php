@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Subscription;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -41,11 +42,15 @@ class DefaultController extends Controller
 
         /**
      * @Route("/ajax", name="ajax")
-     * @Method("POST")
+     *
      */
     public function ajaxAction(Request $request)
     {
         $message = 'Bonjour';
+<<<<<<< HEAD
         echo $message;
+=======
+        return new JsonResponse($message);
+>>>>>>> 389da4cdf934f37a1660f7c58cbd6b9d491f3cf5
     }
 }
