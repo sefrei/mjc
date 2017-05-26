@@ -42,11 +42,11 @@ class DefaultController extends Controller
 
         /**
      * @Route("/ajax", name="ajax")
-     * 
+     *
      */
     public function ajaxAction(Request $request)
     {
         $message = 'Bonjour';
-        return new Response($message);
+        return new JsonResponse($message);
     }
 }
