@@ -41,6 +41,7 @@
                 {# Si l'user est authentifié #}
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li><a href="{{ path('logout')}}">Déconnexion</a></li>
+				<li><a href="{{ path('test')}}">Page test</a></li>
 				<li><a href="{{path('user_edit',  { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li>
 
 

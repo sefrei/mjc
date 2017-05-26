@@ -49,4 +49,20 @@ class DefaultController extends Controller
         $message = 'Bonjour';
         return new JsonResponse($message);
     }
+
+    /**
+ * @Route("/ajax/date/{id}", name="ajax_Date")
+ *
+ */
+    public function ajaxDateAction(Request $request)
+    {
+        if ($request->isXMLHttpRequest()) {
+            // $id = $request->get('id');
+            $teacherId = $request->get('teacher_id');
+            // Faire une fonction pour récupérer tous les cours de l'user en fonction de la date envoyée en ajax
+            $lessons =  getRepository('AppBundle:Subscription')->showLessonsByTeacherId($teacherId);
+            return new JsonResponse($lessons);
+        }
+
+    }
 }

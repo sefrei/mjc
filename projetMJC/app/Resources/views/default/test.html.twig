@@ -2,25 +2,26 @@
 
 {% block body %}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<h3>Id de {{ app.user.username }} : {{app.user.id}}</h3>
+<h3>Ici, affichage de l'inscription si l'ID de l'user courant est égal à l'id du prof ou de l'élève </h3>
+
   <div class="test">
           <h1>Vos cours aujourd'hui : </h1>
           {% for item in inscriptions %}
+		  {% if (app.user.id == item.teacher.id) or (app.user.id == item.student.id) %}
              <h2>______</h2>
 			  <p>Date du 1er cours : {{ item.startAt | date("d-m-Y")}}</p>
 			  <p>Heure du cours : {{ item.startAt | date("H\\hi")}}</p>
 			  <p>Activité N° : {{item.id}} </p>
 			  <p>  Cours de {{item.specialties.name}}</p>
-			  <p> Prof : {{item.teacher.username}}</p>
-			  <p>Elève : {{item.student.username}}</p>
+			  <p> Prof : {{item.teacher.username}} (id :  {{item.teacher.id}})</p>
+			  <p>Elève : {{item.student.username}} (id :  {{item.student.id}})</p>
+			  {% endif %}
           {% else %}
+
 
           {% endfor %}
 
-  </div>
-		<div id="root">
-
-
-		</div>
 	{% endif %}
 {% endblock %}
 
