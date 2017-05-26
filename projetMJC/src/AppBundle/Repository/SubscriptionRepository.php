@@ -15,10 +15,15 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
     $query = $this->getEntityManager()->createQuery(
         'SELECT s FROM AppBundle:Subscription s ORDER BY s.subscriptionAt DESC'
     );
-
-    
-
     return $query->getResult();
-
   }
+ // Fonction pour récuperer les insciptions pour un prof via son id à terminer
+    public function showSubscriptionByTeacherId($id)
+    {
+      $query = $this->getEntityManager()->createQuery(
+          'SELECT s FROM AppBundle:Subscription s WHERE teacher.id = ? ORDER BY s.subscriptionAt DESC'
+      );
+      $stmt =bb;
+      return $query->getResult();
+    }
 }

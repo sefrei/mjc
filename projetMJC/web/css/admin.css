@@ -26,3 +26,13 @@
 	font-weight: bold;
 	padding-bottom: 1em;
 }
+
+.test {
+	margin : 0 auto;
+	width : 50%;
+}
+
+.admin h3 {
+	font-size: 2em;
+	margin-bottom: 1em;
+}
