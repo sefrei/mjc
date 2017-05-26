@@ -20,7 +20,6 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           {notifications.length}
         </div>
       </div>
-      <i className="fa fa-circle" aria-hidden="true"></i>
       <div
         id="notifications-messages"
         className={classNames(
@@ -30,8 +29,9 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
       >
         <p id="notifications-title">Notifications :</p>
         {notifications.map(notif => (
-          <p key={notif.id}>{notif.message}</p>
+          <p key={notif.id}>- {notif.message} <i className="fa fa-times" aria-hidden="true"></i></p>
         ))}
+        <p>Tout marquer comme vu</p>
       </div>
     </div>
   );

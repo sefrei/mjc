@@ -46,6 +46,6 @@ class DefaultController extends Controller
     public function ajaxAction(Request $request)
     {
         $message = 'Bonjour';
-        return new Response($message);
+        echo $message;
     }
 }
