@@ -5,11 +5,17 @@
   <div class="test">
           <h1>Vos cours aujourd'hui : </h1>
           {% for item in inscriptions %}
-              {{dump(item)}}
+             <h2>______</h2>
+			  <p>Date du 1er cours : {{ item.startAt | date("d-m-Y")}}</p>
+			  <p>Heure du cours : {{ item.startAt | date("H\\hi")}}</p>
+			  <p>Activité N° : {{item.id}} </p>
+			  <p>  Cours de {{item.specialties.name}}</p>
+			  <p> Prof : {{item.teacher.username}}</p>
+			  <p>Elève : {{item.student.username}}</p>
           {% else %}
 
           {% endfor %}
-          <p></p>
+
   </div>
 		<div id="root">
 
