@@ -14,18 +14,13 @@ import ActivityLine from 'src/containers/Activities/ActivityLine';
 /*
  * Code
  */
-const Activities = ({ activities }) => {
-  console.log('activity');
-  console.info(activities);
-
-  return (
-    <div id="activity">
-      {activities.map(lesson => (
-        <ActivityLine key={lesson.id} {...lesson} />
-      ))}
-    </div>
-  );
-};
+const Activities = ({ activities }) => (
+  <div id="activity">
+    {activities.map(lesson => (
+      <ActivityLine key={lesson.id} {...lesson} />
+    ))}
+  </div>
+);
 
 Activities.propTypes = {
   activities: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
