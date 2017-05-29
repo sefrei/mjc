@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use AppBundle\Entity\User;
 
 class SubscriptionType extends AbstractType
@@ -32,6 +33,17 @@ class SubscriptionType extends AbstractType
             //  'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
         //  ]
         ])
+
+        ->add('duration', ChoiceType::class, [
+          'label' => 'durée',
+          'choices'  => array(
+          '30 min' => true,
+          '45 min' => true,
+          '1h' => true,
+          '1h30' => true,
+          '2h' => true,
+        )
+        ])
         ->add('finishAt', null, [
           'label' => 'fin du premier cours',
           'format' => 'HH:mm',
@@ -53,6 +65,7 @@ class SubscriptionType extends AbstractType
         ->add('specialties', null, [
           'label' => 'spécialité',
         ]);
+
     }
 
     /**
