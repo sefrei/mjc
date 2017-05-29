@@ -22,7 +22,7 @@ class SubscriptionType extends AbstractType
           'years' => range(date('Y'), date('Y') + 2),
           'months' => range(date('m'), date('m') + 12),
           'days' => range(date('d'), date('d') + 31),
-          'hours' => range(date('H'), date('H') + 24),
+          'hours' => range(1,24),
         //->add('startAt', DateTimeType::class, [
         //  'widget' => 'choice',
         //  'label' => '1er cours, date et heure',
