@@ -6,14 +6,14 @@
 
   		  {% if (app.user.id == item.teacher.id) or (app.user.id == item.student.id) %}
         {
-          "activity_id" : "{{ item.id }}",
+          "activity_id" : {{ item.id }},
           "speciality" : "{{ item.specialties.name }}",
           "startDate" : "{{ item.startAt | date("d-m-Y") }}",
           "startHour" : "{{ item.startAt | date("H\\hi") }}",
           "finishDate" : "{{ item.finishAt | date("d-m-Y") }}",
           "finishHour" : "{{ item.finishAt | date("H\\hi") }}",
-  			  "Prof" : "{{ item.teacher.firstname }} {{ item.teacher.lastname }}",
-  			  "Student" : "{{ item.student.firstname }} {{ item.student.lastname }}"  }
+  			  "prof" : "{{ item.teacher.firstname }} {{ item.teacher.lastname }}",
+  			  "student" : "{{ item.student.firstname }} {{ item.student.lastname }}"  }
           {% if loop.last %}{% else %}
           ,
           {% endif %}
