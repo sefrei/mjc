@@ -1104,12 +1104,19 @@ button {
   color: #fff;
   font-weight: bold;
   z-index: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .hide-notif {
   opacity: 0;
   right: -500px !important;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
+}
+.close-notif {
+  margin-left: 0.5em;
 }
 
 .presence {

@@ -16,6 +16,7 @@ const SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 const RESET_OBSERVATION = 'RESET_OBSERVATION';
 const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
+const CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 
 /*
  * initialState
@@ -106,6 +107,20 @@ export default (state = initialState, action = {}) => {
           displayNotifications: display,
         };
       }
+    case CHANGE_STATE_NOTIFICATION:
+      {
+        let { id } = action;
+        const notifications = [...state.notifications];
+        notifications.forEach((notif) => {
+          if (notif.id === id) {
+            console.info('action : Axios changer letat de la notif');
+            notif.state = false;
+          }
+        });
+        return {
+          ...state,
+        };
+      }
     default:
       return state;
   }
@@ -152,6 +167,12 @@ export const resetObservation = id => ({
 export const displayNotifications = () => ({
   type: DISPLAY_NOTIFICATIONS,
 });
+export const changeNotificationState = id => ({
+  type: CHANGE_STATE_NOTIFICATION,
+  id,
+});
+
+
 /*
  * Action Selectors
  */

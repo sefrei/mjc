@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
  * Local import
  */
 import Notifications from 'src/components/Notifications';
-import { displayNotifications } from 'src/store/reducer';
+import { displayNotifications, changeNotificationState } from 'src/store/reducer';
 /*
  * Code
  */
@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ displayNotifications }, dispatch),
+  actions: bindActionCreators({ displayNotifications, changeNotificationState }, dispatch),
 });
 
 /*

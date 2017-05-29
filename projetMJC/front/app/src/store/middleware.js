@@ -2,6 +2,8 @@
  * Npm import
  */
 import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/fr';
 
 /*
  * Local import
@@ -18,11 +20,16 @@ const LOAD_ACTIVITIES = 'LOAD_ACTIVITIES';
 const createMiddleware = store => next => (action) => {
   switch (action.type) {
     case LOAD_ACTIVITIES:
-    console.log(action.currentDate.format());
+      console.log(action.currentDate.format());
+      console.error(moment().format());
+      let CheminComplet = document.location.href;
+      if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+        CheminComplet += '/';
+      }
       // On fait une requête ajax pour récupérer les infos de l'utilisateur +
       // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-      axios.post('../web/app_dev.php/ajax', {
-        firstName: 'Fred',
+      axios.post(CheminComplet + 'ajax', {
+        date: action.currentDate.format(),
       })
       .then(function (response) {
         console.info(response);

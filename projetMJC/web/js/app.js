@@ -43633,6 +43633,8 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _reactRouterDom = require('react-router-dom');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
@@ -43642,10 +43644,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Code
  */
+/*
+ * Npm import
+ */
 var Notifications = function Notifications(_ref) {
   var notifications = _ref.notifications,
       displayNotifications = _ref.displayNotifications,
       actions = _ref.actions;
+
+  var onClick = function onClick(evt) {
+    actions.changeNotificationState(evt);
+  };
+  console.info(actions);
   return _react2.default.createElement(
     'div',
     { id: 'notifications' },
@@ -43670,14 +43680,22 @@ var Notifications = function Notifications(_ref) {
         'Notifications :'
       ),
       notifications.map(function (notif) {
-        return _react2.default.createElement(
-          'p',
-          { key: notif.id },
-          '- ',
-          notif.message,
-          ' ',
-          _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' })
-        );
+        if (notif.state) {
+          return _react2.default.createElement(
+            'p',
+            { key: notif.id, onClick: onClick.bind(undefined, notif.id) },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              {
+                to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.id_event
+              },
+              '- ',
+              notif.message
+            ),
+            _react2.default.createElement('i', { className: 'fa fa-times close-notif', 'aria-hidden': 'true' })
+          );
+        }
+        return '';
       }),
       _react2.default.createElement(
         'p',
@@ -43686,11 +43704,7 @@ var Notifications = function Notifications(_ref) {
       )
     )
   );
-}; /*
-    * Npm import
-    */
-
-
+};
 Notifications.propTypes = {
   notifications: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired,
   displayNotifications: _propTypes2.default.bool.isRequired,
@@ -44014,7 +44028,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    actions: (0, _redux.bindActionCreators)({ displayNotifications: _reducer.displayNotifications }, dispatch)
+    actions: (0, _redux.bindActionCreators)({ displayNotifications: _reducer.displayNotifications, changeNotificationState: _reducer.changeNotificationState }, dispatch)
   };
 };
 
@@ -44126,17 +44140,12 @@ exports.default = {
   notifications: [{
     id: 1,
     message: 'Vous avez un nouveau cours',
-    etat: true,
-    id_event: 2
+    state: true,
+    id_event: 1
   }, {
     id: 2,
     message: 'Un cours est annulé',
-    etat: false,
-    id_event: 3
-  }, {
-    id: 3,
-    message: 'Vous avez un nouveau cours',
-    etat: true,
+    state: true,
     id_event: 2
   }]
 };
@@ -44264,6 +44273,12 @@ var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+require('moment/locale/fr');
+
 var _reducer = require('./reducer');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -44290,10 +44305,15 @@ var createMiddleware = function createMiddleware(store) {
       switch (action.type) {
         case LOAD_ACTIVITIES:
           console.log(action.currentDate.format());
+          console.error((0, _moment2.default)().format());
+          var CheminComplet = document.location.href;
+          if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+            CheminComplet += '/';
+          }
           // On fait une requête ajax pour récupérer les infos de l'utilisateur +
           // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-          _axios2.default.post('../web/app_dev.php/ajax', {
-            firstName: 'Fred'
+          _axios2.default.post(CheminComplet + 'ajax', {
+            date: action.currentDate.format()
           }).then(function (response) {
             console.info(response);
             store.dispatch((0, _reducer.setActivities)(response.data.activities));
@@ -44339,7 +44359,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.changeDate = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.changeDate = exports.CHANGE_DATE = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -44375,6 +44395,7 @@ var SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 var RESET_OBSERVATION = 'RESET_OBSERVATION';
 var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
+var CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 
 /*
  * initialState
@@ -44466,6 +44487,19 @@ exports.default = function () {
           displayNotifications: display
         });
       }
+    case CHANGE_STATE_NOTIFICATION:
+      {
+        var _id3 = action.id;
+
+        var notifications = [].concat(_toConsumableArray(state.notifications));
+        notifications.forEach(function (notif) {
+          if (notif.id === _id3) {
+            console.info('action : Axios changer letat de la notif');
+            notif.state = false;
+          }
+        });
+        return _extends({}, state);
+      }
     default:
       return state;
   }
@@ -44516,6 +44550,13 @@ var displayNotifications = exports.displayNotifications = function displayNotifi
     type: DISPLAY_NOTIFICATIONS
   };
 };
+var changeNotificationState = exports.changeNotificationState = function changeNotificationState(id) {
+  return {
+    type: CHANGE_STATE_NOTIFICATION,
+    id: id
+  };
+};
+
 /*
  * Action Selectors
  */

@@ -38,19 +38,13 @@ export default {
     {
       id: 1,
       message: 'Vous avez un nouveau cours',
-      etat: true,
-      id_event: 2,
+      state: true,
+      id_event: 1,
     },
     {
       id: 2,
       message: 'Un cours est annulé',
-      etat: false,
-      id_event: 3,
-    },
-    {
-      id: 3,
-      message: 'Vous avez un nouveau cours',
-      etat: true,
+      state: true,
       id_event: 2,
     },
   ],
