@@ -97,7 +97,6 @@ export default (state = initialState, action = {}) => {
       }
     case DISPLAY_NOTIFICATIONS:
       {
-        console.log('coucou');
         const display = !state.displayNotifications;
         console.log(display);
         return {
