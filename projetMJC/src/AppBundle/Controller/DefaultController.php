@@ -63,6 +63,22 @@ class DefaultController extends Controller
             $lessons =  getRepository('AppBundle:Subscription')->showLessonsByTeacherId($teacherId);
             return new JsonResponse($lessons);
         }
-
     }
+
+        /**
+         * Finds and displays a subscription entity.
+         * @Route("/json/subscriptions", name="json_get_subscriptions")
+         * @Method("GET")
+         */
+        public function jsonGetSubscriptionsAction()
+        {
+            $em = $this->getDoctrine()->getManager();
+            $subscriptions = $em->getRepository('AppBundle:Subscription')->showAllAction();
+
+            return $this->render('default/test.json.twig', [
+                'inscriptions' => $subscriptions,
+            ],
+            new JsonResponse()
+        );
+        }
 }

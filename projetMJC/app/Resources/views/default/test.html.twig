@@ -4,7 +4,7 @@
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 <h3>Id de {{ app.user.username }} : {{app.user.id}}</h3>
 <h3>Ici, affichage de l'inscription si l'ID de l'user courant est égal à l'id du prof ou de l'élève </h3>
-
+{# dump(inscriptions)#}
   <div class="test">
           <h1>Vos cours aujourd'hui : </h1>
           {% for item in inscriptions %}

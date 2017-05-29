@@ -1,0 +1,21 @@
+{
+  "activities" : [       {
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {# dump(inscriptions)#}
+      {% for item in inscriptions %}
+
+  		  {% if (app.user.id == item.teacher.id) or (app.user.id == item.student.id) %}
+          "date" : "{{ item.startAt | date("d-m-Y") }}",
+          "Hour" : "{{ item.startAt | date("H\\hi") }}",
+  			  "activitie id" : "{{ item.id }}",
+  			  "speciality" : "{{ item.specialties.name }}",
+  			  "Prof" : "{{ item.teacher.firstname }} {{ item.teacher.lastname }}",
+  			  "Student" : "{{ item.student.firstname }} {{ item.student.lastname }}"
+  			{% endif %}
+
+        {% else %}
+        {% endfor %}
+  	{% endif %}
+    }
+  ]
+}
