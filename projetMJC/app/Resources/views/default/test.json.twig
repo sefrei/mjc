@@ -6,7 +6,7 @@
 
   		  {% if (app.user.id == item.teacher.id) or (app.user.id == item.student.id) %}
         {
-          "activitie id" : "{{ item.id }}",
+          "activity_id" : "{{ item.id }}",
           "speciality" : "{{ item.specialties.name }}",
           "startDate" : "{{ item.startAt | date("d-m-Y") }}",
           "startHour" : "{{ item.startAt | date("H\\hi") }}",

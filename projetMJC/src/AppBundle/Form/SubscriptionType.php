@@ -27,11 +27,13 @@ class SubscriptionType extends AbstractType
         ])
         ->add('finishAt', null, [
           'label' => 'fin du premier cours',
-          'format' => 'dd-MM-yyyy HH:mm',
+          'format' => 'HH:mm',
           'years' => range(date('Y'), date('Y') - 0),
-          'placeholder' => [
-              'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
-          ]
+          'months' => range(date('m'), date('m') + 12)
+          // 'placeholder' => [
+          //     'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
+          // ],
+          // 'html5' => true,
         ])
         ->add('teacher', null, [
           'label' => 'Professeur',
@@ -51,7 +53,8 @@ class SubscriptionType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Subscription',
-            'attr' => ['novalidate' => 'novalidate']
+          'attr' => ['novalidate' => 'novalidate'],
+
         ));
     }
 
