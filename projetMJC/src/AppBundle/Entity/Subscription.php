@@ -38,12 +38,15 @@ class Subscription
      */
     private $finishAt;
 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="subscriptionAt", type="datetime")
      */
     private $subscriptionAt;
+
+
 
     /**
      * One Subscription has One Teacher(in User with ROLE_TEACHER)
