@@ -10,12 +10,8 @@
 
 {% endblock %}
 {% block javascripts %}
-<script>
-    configJS = {
-        ajaxUrl: '{{ path('ajax') }}',
-    };
-</script>
+
 <script src="https://use.fontawesome.com/d21c915728.js"></script>
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script>require('src/index');</script>
 {% endblock %}

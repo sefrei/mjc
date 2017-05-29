@@ -46,8 +46,14 @@ class DefaultController extends Controller
      */
     public function ajaxAction(Request $request)
     {
-        $message = 'Bonjour';
-        return new JsonResponse($message);
+                    $em = $this->getDoctrine()->getManager();
+                    $subscriptions = $em->getRepository('AppBundle:Subscription')->showAllAction();
+
+                    return $this->render('default/test.json.twig', [
+                        'inscriptions' => $subscriptions,
+                    ],
+                    new JsonResponse()
+                );
     }
 
     /**
