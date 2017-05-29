@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Controller;
-
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +18,19 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        // $rawpostdata = file_get_contents("php://input");
+        // $rawpostdata = json_decode($rawpostdata);
+        // dump($rawpostdata);
+
+        // echo "<pre>";
+        // echo $_POST['firstName'];
+        // echo "</pre>";
+    // $essai=$request->request->get();
+    // dump($essai);
+    // exit;
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            // 'essai' => $rawpostdata,
         ]);
     }
 
@@ -49,8 +59,11 @@ class DefaultController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $subscriptions = $em->getRepository('AppBundle:Subscription')->showAllAction();
 
+                    $date = $request->request->get('data');
+
                     return $this->render('default/test.json.twig', [
                         'inscriptions' => $subscriptions,
+                        'date'=> $date,
                     ],
                     new JsonResponse()
                 );

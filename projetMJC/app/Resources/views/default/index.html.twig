@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{#dump(essai)#}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 		<div id="root"></div>
 	{% endif %}
@@ -12,6 +13,6 @@
 {% block javascripts %}
 
 <script src="https://use.fontawesome.com/d21c915728.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 <script>require('src/index');</script>
 {% endblock %}
