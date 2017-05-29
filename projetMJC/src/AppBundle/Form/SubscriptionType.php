@@ -28,8 +28,10 @@ class SubscriptionType extends AbstractType
         ->add('finishAt', null, [
           'label' => 'fin du premier cours',
           'format' => 'HH:mm',
-          'years' => range(date('Y'), date('Y') - 0),
-          'months' => range(date('m'), date('m') + 12)
+          'years' => range(date('Y'), date('Y') + 2),
+          'months' => range(date('m'), date('m') + 12),
+          'days' => range(date('d'), date('d') + 31),
+          'hours' => range(date('H'), date('H') + 24),
           // 'placeholder' => [
           //     'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
           // ],
