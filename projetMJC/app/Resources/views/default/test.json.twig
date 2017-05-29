@@ -13,6 +13,10 @@
           "finishDate" : "{{ item.finishAt | date("d-m-Y") }}",
           "finishHour" : "{{ item.finishAt | date("H\\hi") }}",
   			  "prof" : "{{ item.teacher.firstname }} {{ item.teacher.lastname }}",
+          "duration": "30 minutes",
+          "observation" : "L'élève s'améliore de jour en jour !",
+          "presenceTeacher" : true,
+          "presenceStudent" : true,
   			  "student" : "{{ item.student.firstname }} {{ item.student.lastname }}"  }
           {% if loop.last %}{% else %}
           ,
