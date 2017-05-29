@@ -47,15 +47,15 @@ class Subscription
 
     /**
      * One Subscription has One Teacher(in User with ROLE_TEACHER)
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id", unique=false)
      */
     private $teacher;
 
     /**
      * One Subscription has One Student(in User with ROLE_STUDENT)
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="student_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="student_id", referencedColumnName="id", unique=false)
      */
     private $student;
 
