@@ -14,7 +14,6 @@ import DatePicker from 'react-datepicker';
  * Code
  */
 const Nav = ({ currentDate, actions }) => {
-  console.info(currentDate);
   // Change
   const onChange = (evt) => {
     console.log(evt);
