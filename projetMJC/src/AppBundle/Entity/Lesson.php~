@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Lesson
@@ -32,6 +34,7 @@ class Lesson
      * @var bool
      *
      * @ORM\Column(name="teacher_isPresent", type="boolean")
+     * @Assert\NotBlank()
      */
     private $teacherIsPresent;
 
@@ -39,6 +42,7 @@ class Lesson
      * @var bool
      *
      * @ORM\Column(name="student_isPresent", type="boolean")
+     * @Assert\NotBlank()
      */
     private $studentIsPresent;
 

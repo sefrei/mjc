@@ -38,6 +38,12 @@ class Subscription
      */
     private $finishAt;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="duration", type="datetime")
+     */
+    private $duration;
 
     /**
      * @var \DateTime
@@ -45,8 +51,6 @@ class Subscription
      * @ORM\Column(name="subscriptionAt", type="datetime")
      */
     private $subscriptionAt;
-
-
 
     /**
      * One Subscription has One Teacher(in User with ROLE_TEACHER)
@@ -267,5 +271,29 @@ class Subscription
     public function getSpecialties()
     {
         return $this->specialties;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param \DateTime $duration
+     *
+     * @return Subscription
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return \DateTime
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 }
