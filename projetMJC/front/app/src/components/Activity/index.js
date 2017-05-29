@@ -16,7 +16,7 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const Activity = ({ currentDate, startDate, endDate, teacher, student, id, observation, actions }) => {
+const Activity = ({ currentDate, startDate, startHour,  finishDate, finishHour, presenceTeacher, presenceStudent, activity_id: id, observation, actions }) => {
 
   const onChange = (evt) => {
     const { value } = evt.target;
@@ -28,19 +28,19 @@ const Activity = ({ currentDate, startDate, endDate, teacher, student, id, obser
     //actions.addTask();
   };
 
-  const startTime = startDate.split(' ')[1].substr(0, 5);
-  const endTime = endDate.split(' ')[1].substr(0, 5);
-  const stateActivity = (!teacher || !student);
+  //const startTime = startDate.split(' ')[1].substr(0, 5);
+  //const endTime = endDate.split(' ')[1].substr(0, 5);
+  const stateActivity = (!presenceTeacher || !presenceStudent);
   return (
     <div id="activity-view">
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
-      <h2 id="activity-title">Activité {id} de {startTime} à {endTime}</h2>
+      <h2 id="activity-title">Activité {id} de {startHour} à {finishHour}</h2>
       <label id="label-observation" htmlFor="observation">Observation :</label>
       <form id="form" onSubmit={onSubmit}>
         <input type="text" onChange={onChange} id="observation" placeholder="Votre observation..." value={observation} />
       </form>
       <button onClick={actions.resetObservation}>Annuler Modification de l'observation</button>
-      <Presence teacher={teacher} id={id} />
+      <Presence teacher={presenceTeacher} id={id} />
       <p>Vous êtes actuellement
         <span
           className={classNames(
@@ -49,7 +49,7 @@ const Activity = ({ currentDate, startDate, endDate, teacher, student, id, obser
             { present: !stateActivity },
           )}
         >
-          {teacher ? ' présent ' : ' absent '}
+          {presenceTeacher ? ' présent ' : ' absent '}
         </span>
         pour ce cours
       </p>
@@ -76,10 +76,12 @@ const Activity = ({ currentDate, startDate, endDate, teacher, student, id, obser
 Activity.propTypes = {
   currentDate: PropTypes.object.isRequired,
   startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  teacher: PropTypes.bool.isRequired,
-  student: PropTypes.bool.isRequired,
+  startHour: PropTypes.string.isRequired,
+  finishDate: PropTypes.string.isRequired,
+  finishHour: PropTypes.string.isRequired,
+  activity_id: PropTypes.number.isRequired,
+  presenceTeacher: PropTypes.bool.isRequired,
+  presenceStudent: PropTypes.bool.isRequired,
   observation: PropTypes.string.isRequired,
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
 };

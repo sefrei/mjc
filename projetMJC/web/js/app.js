@@ -43135,17 +43135,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var ActivityLine = function ActivityLine(_ref) {
   var startDate = _ref.startDate,
-      endDate = _ref.endDate,
-      id = _ref.id,
+      startHour = _ref.startHour,
+      finishDate = _ref.finishDate,
+      finishHour = _ref.finishHour,
+      id = _ref.activity_id,
       speciality = _ref.speciality,
-      studentName = _ref.studentName,
-      teacher = _ref.teacher,
-      student = _ref.student;
+      student = _ref.student,
+      presenceTeacher = _ref.presenceTeacher;
 
   // Récupère l'heure sous le format Heure:Minutes du DateTime
-  var startTime = startDate.split(' ')[1].substr(0, 5);
-  var endTime = endDate.split(' ')[1].substr(0, 5);
-  var stateActivity = !teacher || !student;
+  //const startTime = startDate.split(' ')[1].substr(0, 5);
+  //const endTime = endDate.split(' ')[1].substr(0, 5);
+  var stateActivity = !presenceTeacher || !student;
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
@@ -43157,13 +43158,13 @@ var ActivityLine = function ActivityLine(_ref) {
       'Activit\xE9 ',
       id,
       ' de ',
-      startTime,
+      startHour,
       ' \xE0 ',
-      endTime,
+      finishHour,
       ' : Cours de ',
       speciality,
       ' avec ',
-      studentName,
+      student,
       ' | Statut :',
       _react2.default.createElement(
         'span',
@@ -43173,7 +43174,7 @@ var ActivityLine = function ActivityLine(_ref) {
         stateActivity ? 'Annulé' : 'Pas annulé'
       )
     ),
-    _react2.default.createElement(_Presence2.default, { teacher: teacher, id: id })
+    _react2.default.createElement(_Presence2.default, { teacher: presenceTeacher, id: id })
   );
 };
 /*
@@ -43186,12 +43187,13 @@ var ActivityLine = function ActivityLine(_ref) {
 
 ActivityLine.propTypes = {
   startDate: _propTypes2.default.string.isRequired,
-  endDate: _propTypes2.default.string.isRequired,
-  id: _propTypes2.default.number.isRequired,
+  startHour: _propTypes2.default.string.isRequired,
+  finishDate: _propTypes2.default.string.isRequired,
+  finishHour: _propTypes2.default.string.isRequired,
+  activity_id: _propTypes2.default.number.isRequired,
   speciality: _propTypes2.default.string.isRequired,
-  studentName: _propTypes2.default.string.isRequired,
-  teacher: _propTypes2.default.bool.isRequired,
-  student: _propTypes2.default.bool.isRequired
+  student: _propTypes2.default.string.isRequired,
+  presenceTeacher: _propTypes2.default.bool.isRequired
 };
 
 /*
@@ -43244,7 +43246,7 @@ var Activities = function Activities(_ref) {
     'div',
     { id: 'activity' },
     activities.map(function (lesson) {
-      return _react2.default.createElement(_ActivityLine2.default, _extends({ key: lesson.id }, lesson));
+      return _react2.default.createElement(_ActivityLine2.default, _extends({ key: lesson.activity_id }, lesson));
     })
   );
 };
@@ -43296,10 +43298,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
       startDate = _ref.startDate,
-      endDate = _ref.endDate,
-      teacher = _ref.teacher,
-      student = _ref.student,
-      id = _ref.id,
+      startHour = _ref.startHour,
+      finishDate = _ref.finishDate,
+      finishHour = _ref.finishHour,
+      presenceTeacher = _ref.presenceTeacher,
+      presenceStudent = _ref.presenceStudent,
+      id = _ref.activity_id,
       observation = _ref.observation,
       actions = _ref.actions;
 
@@ -43315,9 +43319,9 @@ var Activity = function Activity(_ref) {
     //actions.addTask();
   };
 
-  var startTime = startDate.split(' ')[1].substr(0, 5);
-  var endTime = endDate.split(' ')[1].substr(0, 5);
-  var stateActivity = !teacher || !student;
+  //const startTime = startDate.split(' ')[1].substr(0, 5);
+  //const endTime = endDate.split(' ')[1].substr(0, 5);
+  var stateActivity = !presenceTeacher || !presenceStudent;
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -43332,9 +43336,9 @@ var Activity = function Activity(_ref) {
       'Activit\xE9 ',
       id,
       ' de ',
-      startTime,
+      startHour,
       ' \xE0 ',
-      endTime
+      finishHour
     ),
     _react2.default.createElement(
       'label',
@@ -43351,7 +43355,7 @@ var Activity = function Activity(_ref) {
       { onClick: actions.resetObservation },
       'Annuler Modification de l\'observation'
     ),
-    _react2.default.createElement(_Presence2.default, { teacher: teacher, id: id }),
+    _react2.default.createElement(_Presence2.default, { teacher: presenceTeacher, id: id }),
     _react2.default.createElement(
       'p',
       null,
@@ -43361,7 +43365,7 @@ var Activity = function Activity(_ref) {
         {
           className: (0, _classnames2.default)('activity-state', { absent: stateActivity }, { present: !stateActivity })
         },
-        teacher ? ' présent ' : ' absent '
+        presenceTeacher ? ' présent ' : ' absent '
       ),
       'pour ce cours'
     ),
@@ -43396,10 +43400,12 @@ var Activity = function Activity(_ref) {
 Activity.propTypes = {
   currentDate: _propTypes2.default.object.isRequired,
   startDate: _propTypes2.default.string.isRequired,
-  endDate: _propTypes2.default.string.isRequired,
-  id: _propTypes2.default.number.isRequired,
-  teacher: _propTypes2.default.bool.isRequired,
-  student: _propTypes2.default.bool.isRequired,
+  startHour: _propTypes2.default.string.isRequired,
+  finishDate: _propTypes2.default.string.isRequired,
+  finishHour: _propTypes2.default.string.isRequired,
+  activity_id: _propTypes2.default.number.isRequired,
+  presenceTeacher: _propTypes2.default.bool.isRequired,
+  presenceStudent: _propTypes2.default.bool.isRequired,
   observation: _propTypes2.default.string.isRequired,
   actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
 };
@@ -44286,14 +44292,17 @@ var createMiddleware = function createMiddleware(store) {
           console.log(action.currentDate.format());
           // On fait une requête ajax pour récupérer les infos de l'utilisateur +
           // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-          _axios2.default.post('http://localhost/ProjectMJC/projetMJC/web/app_dev.php/ajax').then(function (response) {
+          _axios2.default.post('http://localhost/ProjectMJC/projetMJC/web/app_dev.php/ajax', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          }).then(function (response) {
             console.info(response);
+            store.dispatch((0, _reducer.setActivities)(response.data.activities));
           }).catch(function (error) {
             console.error(error);
           });
           // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
           //  state activités + un dispatch pour enregistrer infos utilisateur
-          // store.dispatch(setActivities('activities'));
           break;
         case _reducer.CHANGE_DATE:
           console.info('La date a changer : requete axios pour récupérer les nouvelles données');
@@ -44373,7 +44382,7 @@ var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
  */
 var initialState = {
   currentDate: (0, _moment2.default)(),
-  activities: _datas2.default.activity,
+  activities: [],
   notifications: _datas2.default.notifications,
   inputObservation: '',
   displayNotifications: false
@@ -44407,8 +44416,8 @@ exports.default = function () {
         id = parseInt(id, 10);
         var activities = [].concat(_toConsumableArray(state.activities));
         activities.forEach(function (activity) {
-          if (activity.id === id) {
-            activity.teacher = !activity.teacher;
+          if (activity.activity_id === id) {
+            activity.presenceTeacher = !activity.presenceTeacher;
           }
         });
         return _extends({}, state, {
@@ -44425,7 +44434,7 @@ exports.default = function () {
         _id = parseInt(_id, 10);
         var _activities = [].concat(_toConsumableArray(state.activities));
         _activities.forEach(function (activity) {
-          if (activity.id === _id) {
+          if (activity.activity_id === _id) {
             activity.observation = input;
           }
         });
@@ -44435,13 +44444,15 @@ exports.default = function () {
       }
     case RESET_OBSERVATION:
       {
+        console.log(action.id);
         var _id2 = action.id;
 
         _id2 = parseInt(_id2, 10);
         var _activities2 = [].concat(_toConsumableArray(state.activities));
         _activities2.forEach(function (activity) {
-          if (activity.id === _id2) {
-            activity.observation = 'Valeur dans la BDD';
+          if (activity.activity_id === _id2) {
+            console.info('action : Axios récupérer lobservation en bdd pour cette activité');
+            activity.observation = activity.observation;
           }
         });
         return _extends({}, state, {
@@ -44482,6 +44493,7 @@ var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPrese
 };
 var setActivities = exports.setActivities = function setActivities(activities) {
   console.log('SetActivities');
+  console.log(activities);
   return {
     type: SET_ACTIVITIES,
     activities: activities
@@ -44511,7 +44523,7 @@ var displayNotifications = exports.displayNotifications = function displayNotifi
 var selectActivity = exports.selectActivity = function selectActivity(state, props) {
   var id = parseInt(props, 10);
   var activitySelected = state.activities.filter(function (activity) {
-    return activity.id === id;
+    return activity.activity_id === id;
   });
   if (activitySelected.length) {
     return activitySelected[0];
@@ -44535,5 +44547,99 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
+'use strict';
 
+/* jshint ignore:start */
+(function () {
+  var WebSocket = window.WebSocket || window.MozWebSocket;
+  var br = window.brunch = window.brunch || {};
+  var ar = br['auto-reload'] = br['auto-reload'] || {};
+  if (!WebSocket || ar.disabled) return;
+  if (window._ar) return;
+  window._ar = true;
+
+  var cacheBuster = function cacheBuster(url) {
+    var date = Math.round(Date.now() / 1000).toString();
+    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
+    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
+  };
+
+  var browser = navigator.userAgent.toLowerCase();
+  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
+
+  var reloaders = {
+    page: function page() {
+      window.location.reload(true);
+    },
+
+    stylesheet: function stylesheet() {
+      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
+        var val = link.getAttribute('data-autoreload');
+        return link.href && val != 'false';
+      }).forEach(function (link) {
+        link.href = cacheBuster(link.href);
+      });
+
+      // Hack to force page repaint after 25ms.
+      if (forceRepaint) setTimeout(function () {
+        document.body.offsetHeight;
+      }, 25);
+    },
+
+    javascript: function javascript() {
+      var scripts = [].slice.call(document.querySelectorAll('script'));
+      var textScripts = scripts.map(function (script) {
+        return script.text;
+      }).filter(function (text) {
+        return text.length > 0;
+      });
+      var srcScripts = scripts.filter(function (script) {
+        return script.src;
+      });
+
+      var loaded = 0;
+      var all = srcScripts.length;
+      var onLoad = function onLoad() {
+        loaded = loaded + 1;
+        if (loaded === all) {
+          textScripts.forEach(function (script) {
+            eval(script);
+          });
+        }
+      };
+
+      srcScripts.forEach(function (script) {
+        var src = script.src;
+        script.remove();
+        var newScript = document.createElement('script');
+        newScript.src = cacheBuster(src);
+        newScript.async = true;
+        newScript.onload = onLoad;
+        document.head.appendChild(newScript);
+      });
+    }
+  };
+  var port = ar.port || 9485;
+  var host = br.server || window.location.hostname || 'localhost';
+
+  var connect = function connect() {
+    var connection = new WebSocket('ws://' + host + ':' + port);
+    connection.onmessage = function (event) {
+      if (ar.disabled) return;
+      var message = event.data;
+      var reloader = reloaders[message] || reloaders.page;
+      reloader();
+    };
+    connection.onerror = function () {
+      if (connection.readyState) connection.close();
+    };
+    connection.onclose = function () {
+      window.setTimeout(connect, 1000);
+    };
+  };
+  connect();
+})();
+/* jshint ignore:end */
+
+;
 //# sourceMappingURL=app.js.map

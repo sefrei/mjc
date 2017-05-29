@@ -15,18 +15,18 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const ActivityLine = ({ startDate, endDate, id, speciality, studentName, teacher, student }) => {
+const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_id: id, speciality, student, presenceTeacher }) => {
   // Récupère l'heure sous le format Heure:Minutes du DateTime
-  const startTime = startDate.split(' ')[1].substr(0, 5);
-  const endTime = endDate.split(' ')[1].substr(0, 5);
-  const stateActivity = (!teacher || !student);
+  //const startTime = startDate.split(' ')[1].substr(0, 5);
+  //const endTime = endDate.split(' ')[1].substr(0, 5);
+  const stateActivity = (!presenceTeacher || !student);
   return (
     <div className="activity">
       <Link
         to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
       >
-        Activité {id} de {startTime} à {endTime} :
-        Cours de {speciality} avec {studentName} |
+        Activité {id} de {startHour} à {finishHour} :
+        Cours de {speciality} avec {student} |
         Statut :
         <span
           className={classNames(
@@ -38,19 +38,20 @@ const ActivityLine = ({ startDate, endDate, id, speciality, studentName, teacher
           {stateActivity ? 'Annulé' : 'Pas annulé'}
         </span>
       </Link>
-      <Presence teacher={teacher} id={id} />
+      <Presence teacher={presenceTeacher} id={id} />
     </div>
   );
 };
 
 ActivityLine.propTypes = {
   startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  startHour: PropTypes.string.isRequired,
+  finishDate: PropTypes.string.isRequired,
+  finishHour: PropTypes.string.isRequired,
+  activity_id: PropTypes.number.isRequired,
   speciality: PropTypes.string.isRequired,
-  studentName: PropTypes.string.isRequired,
-  teacher: PropTypes.bool.isRequired,
-  student: PropTypes.bool.isRequired,
+  student: PropTypes.string.isRequired,
+  presenceTeacher: PropTypes.bool.isRequired,
 };
 
 /*

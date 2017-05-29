@@ -22,7 +22,7 @@ const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
  */
 const initialState = {
   currentDate: moment(),
-  activities: datas.activity,
+  activities: [],
   notifications: datas.notifications,
   inputObservation: '',
   displayNotifications: false,
@@ -54,8 +54,8 @@ export default (state = initialState, action = {}) => {
         id = parseInt(id, 10);
         const activities = [...state.activities];
         activities.forEach((activity) => {
-          if (activity.id === id) {
-            activity.teacher = !activity.teacher;
+          if (activity.activity_id === id) {
+            activity.presenceTeacher = !activity.presenceTeacher;
           }
         });
         return {
@@ -71,7 +71,7 @@ export default (state = initialState, action = {}) => {
         id = parseInt(id, 10);
         const activities = [...state.activities];
         activities.forEach((activity) => {
-          if (activity.id === id) {
+          if (activity.activity_id === id) {
             activity.observation = input;
           }
         });
@@ -82,12 +82,14 @@ export default (state = initialState, action = {}) => {
       }
     case RESET_OBSERVATION:
       {
+        console.log(action.id);
         let { id } = action;
         id = parseInt(id, 10);
         const activities = [...state.activities];
         activities.forEach((activity) => {
-          if (activity.id === id) {
-            activity.observation = 'Valeur dans la BDD';
+          if (activity.activity_id === id) {
+            console.info('action : Axios récupérer lobservation en bdd pour cette activité');
+            activity.observation = activity.observation;
           }
         });
         return {
@@ -130,6 +132,7 @@ export const switchPresenceTeacher = (id) => {
 };
 export const setActivities = (activities) => {
   console.log('SetActivities');
+  console.log(activities);
   return (
   {
     type: SET_ACTIVITIES,
@@ -155,7 +158,7 @@ export const displayNotifications = () => ({
 export const selectActivity = (state, props) => {
   const id = parseInt(props, 10);
   const activitySelected = state.activities.filter(activity => (
-    activity.id === id
+    activity.activity_id === id
   ));
   if (activitySelected.length) {
     return activitySelected[0];
