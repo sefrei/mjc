@@ -1,21 +1,27 @@
 {
-  "activities" : [       {
+  "activities" : [
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     {# dump(inscriptions)#}
       {% for item in inscriptions %}
 
   		  {% if (app.user.id == item.teacher.id) or (app.user.id == item.student.id) %}
-          "date" : "{{ item.startAt | date("d-m-Y") }}",
-          "Hour" : "{{ item.startAt | date("H\\hi") }}",
-  			  "activitie id" : "{{ item.id }}",
-  			  "speciality" : "{{ item.specialties.name }}",
+        {
+          "activitie id" : "{{ item.id }}",
+          "speciality" : "{{ item.specialties.name }}",
+          "startDate" : "{{ item.startAt | date("d-m-Y") }}",
+          "startHour" : "{{ item.startAt | date("H\\hi") }}",
+          "finishDate" : "{{ item.finishAt | date("d-m-Y") }}",
+          "finishHour" : "{{ item.finishAt | date("H\\hi") }}",
   			  "Prof" : "{{ item.teacher.firstname }} {{ item.teacher.lastname }}",
-  			  "Student" : "{{ item.student.firstname }} {{ item.student.lastname }}"
+  			  "Student" : "{{ item.student.firstname }} {{ item.student.lastname }}"  }
+          {% if loop.last %}{% else %}
+          ,
+          {% endif %}
   			{% endif %}
 
         {% else %}
         {% endfor %}
   	{% endif %}
-    }
+
   ]
 }
