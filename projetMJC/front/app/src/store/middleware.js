@@ -21,9 +21,8 @@ const createMiddleware = store => next => (action) => {
     console.log(action.currentDate.format());
       // On fait une requête ajax pour récupérer les infos de l'utilisateur +
       // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-      axios.post('http://localhost/ProjectMJC/projetMJC/web/app_dev.php/ajax', {
+      axios.post('/ProjectMJC/projetMJC/web/app_dev.php/ajax', {
         firstName: 'Fred',
-        lastName: 'Flintstone',
       })
       .then(function (response) {
         console.info(response);
