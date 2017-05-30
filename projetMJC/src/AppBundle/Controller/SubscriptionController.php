@@ -59,16 +59,24 @@ class SubscriptionController extends Controller
             // Je récupère la durée d'un cours
             $duration = $subscription->getDuration();
             // Je fais mon calcul pour ma date de fin (ici duration est enregistrée en int avec le nombre de secondes)
-            $durationforDate = 'PTH'.$duration .'S';
+            $durationforDate = 'PT0H'.$duration .'S';
             // $durationModyfi
             // dump($durationforDate);
             // exit;
+<<<<<<< HEAD
             $startAt->add(new \DateInterval('PT0H1800S'));
 
             exit;
+=======
+            //'PT0H1800S'=30min
+            $finishAt = $startAt;
+            $finishAt->add(new \DateInterval($durationforDate));
+            // dump($startAt);
+            // exit;
+>>>>>>> 046c1db0c57e0adc5d8a22b18bc159e4b447a23f
             // $startAt->modify('')
             // Je mets à jour ma date de fin avec set
-            $subscription->setFinishAt($startAt);
+            $subscription->setFinishAt($finishAt);
 
             // Et j'enregistre l'inscription
             $em->persist($subscription);
