@@ -41,7 +41,7 @@ class Subscription
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="duration", type="datetime")
+     * @ORM\Column(name="duration", type="integer", nullable=true)
      */
     private $duration;
 
@@ -271,5 +271,29 @@ class Subscription
     public function getSpecialties()
     {
         return $this->specialties;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param \DateTime $duration
+     *
+     * @return Subscription
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return \DateTime
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 }
