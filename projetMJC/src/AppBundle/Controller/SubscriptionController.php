@@ -63,8 +63,8 @@ class SubscriptionController extends Controller
             // $durationModyfi
             // dump($durationforDate);
             // exit;
-            $startAt->add(new \DateInterval('PT10H30S'));
-            dump($startAt);
+            $startAt->add(new \DateInterval('PT0H1800S'));
+
             exit;
             // $startAt->modify('')
             // Je mets à jour ma date de fin avec set
