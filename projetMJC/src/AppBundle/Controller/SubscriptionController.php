@@ -64,7 +64,7 @@ class SubscriptionController extends Controller
             // dump($durationforDate);
             // exit;
             //'PT0H1800S'=30min
-            $finishAt = $startAt;
+            $subscription->setFinishAt($startAt);
             $finishAt->add(new \DateInterval($durationforDate));
             // dump($startAt);
             // exit;
