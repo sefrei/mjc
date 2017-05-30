@@ -56,6 +56,7 @@ class SubscriptionController extends Controller
              */
             // Je récupère la date du 1er cours
             $startAt = $subscription->getStartAt();
+            // dump($startAt);
             // Je récupère la durée d'un cours
             $duration = $subscription->getDuration();
             // Je fais mon calcul pour ma date de fin (ici duration est enregistrée en int avec le nombre de secondes)
@@ -65,10 +66,15 @@ class SubscriptionController extends Controller
             // exit;
 
             //'PT0H1800S'=30min
-            $subscription->setFinishAt($startAt);
+            // L'objet Datetime a dû être passé "avec"
+            // Il faut donc recréer un objet nouveau à partir d'une chaine date...
+            // dump($startAt->format('Y-m-d H:i:s'));
+            $startDate = new \Datetime($startAt->format('Y-m-d H:i:s'));
+            $subscription->setFinishAt($startDate);
             $finishAt = $subscription->getFinishAt();
             $finishAt->add(new \DateInterval($durationforDate));
             // dump($startAt);
+            // dump($finishAt);
             // exit;
 
             // $startAt->modify('')
