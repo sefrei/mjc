@@ -51,6 +51,26 @@ class SubscriptionController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            /**
+             * Enregistrement de la date de fin en fonction de la date de début et la durée d'un cours
+             */
+            // Je récupère la date du 1er cours
+            $startAt = $subscription->getStartAt();
+            // Je récupère la durée d'un cours
+            $duration = $subscription->getDuration();
+            // Je fais mon calcul pour ma date de fin (ici duration est enregistrée en int avec le nombre de secondes)
+            $durationforDate = 'PTH'.$duration .'S';
+            // $durationModyfi
+            // dump($durationforDate);
+            // exit;
+            $startAt->add(new \DateInterval('PT10H30S'));
+            dump($startAt);
+            exit;
+            // $startAt->modify('')
+            // Je mets à jour ma date de fin avec set
+            $subscription->setFinishAt($startAt);
+
+            // Et j'enregistre l'inscription
             $em->persist($subscription);
             $em->flush();
 

@@ -17,7 +17,7 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
     );
     return $query->getResult();
   }
- // Fonction pour récuperer les insciptions pour un prof via son id à terminer
+ // Fonction pour récuperer les insciptions pour un prof via son id à terminer ???? Voir la pertinence de la requête
     public function showSubscriptionByTeacherId($id)
     {
       $query = $this->getEntityManager()->createQuery(
@@ -26,4 +26,13 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
       $stmt =bb;
       return $query->getResult();
     }
+
+    // Trouver les inscription par la date
+    // public function showSubscriptionByDate($date)
+    // {
+    //   return $this->getEntityManager()
+    //   ->createQuery;
+      //SELECT * FROM `subscription` WHERE startAt BETWEEN "2017-03-06" and "2017-04-06"
+    // }
+
 }

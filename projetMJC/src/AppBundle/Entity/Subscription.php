@@ -41,7 +41,7 @@ class Subscription
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="duration", type="datetime")
+     * @ORM\Column(name="duration", type="integer", nullable=true)
      */
     private $duration;
 
