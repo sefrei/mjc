@@ -4,11 +4,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Subscription;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Lesson;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Subscription controller.
@@ -85,16 +87,61 @@ class SubscriptionController extends Controller
              * Enregistrer automatiquement les leçons en fonction d'une inscription
              */
              // La première leçon aura la même startAt que l'inscription
-            //  $lesson = new Lesson();
-            //  $lesson->setStartAt($startDate);
-
+             $lesson = new Lesson();
+             $lesson->setStartAt($startDate);
+             $lesson->setTeacherIsPresent(true);
+             $lesson->setStudentIsPresent(true);
+             $lesson->setSubscription($subscription);
              // Je lie la lesson à la subscription
-            //  $subscription->addLesson($lesson);
+             $subscription->addLesson($lesson);
+
+             // Pour enregistrer les autres leçons, il me faut définir une date de début des cours et une date de fin
+
+             $format = 'Y-m-d';
+             $beginingDate = \DateTime::createFromFormat($format, '2016-09-10');
+
+            //  dump($beginingDate);
+
+             $format = 'Y-m-d';
+             $holidayDate = \DateTime::createFromFormat($format, '2017-07-10');
+             // Et j'enregistre l'inscription
+             $em->persist($subscription);
+             $em->flush();
 
 
-            // Et j'enregistre l'inscription
-            $em->persist($subscription);
-            $em->flush();
+             //Je crée une leçon toute les semaines à la même heure si la $date est > $beginingDate  et < $holidayDate
+
+             //Je récupère la startAt
+            $date = $lesson->getStartAt();
+            dump($date);
+            $newDate = '';
+            // Tant que la date est + petite que la date des vacances
+            while ($date <= $holidayDate ) {
+                //J'ajoute 7 jours à ma date
+                $date->modify('+7 day');
+                // dump($date);
+
+                // Je crée donc une nouvelle leçon avec cette date;
+                $lesson = new Lesson();
+                $lesson->setStartAt($date);
+                // dump($date);
+
+                $lesson->setTeacherIsPresent(true);
+                $lesson->setStudentIsPresent(true);
+                $lesson->setSubscription($subscription);
+                // Je lie la lesson à la subscription
+                $subscription->addLesson($lesson);
+                // $newDate .= $date->format('Y-m-d');
+                // Et j'enregistre l'inscription
+                $em->persist($subscription);
+                $em->flush();
+            }
+    // exit;
+
+            //  dump($holidayDate);
+            //  exit;
+
+
 
             return $this->redirectToRoute('subscription_show', array('id' => $subscription->getId()));
         }
