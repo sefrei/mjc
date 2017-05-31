@@ -43140,13 +43140,11 @@ var ActivityLine = function ActivityLine(_ref) {
       finishHour = _ref.finishHour,
       id = _ref.activity_id,
       speciality = _ref.speciality,
-      student = _ref.student,
-      presenceTeacher = _ref.presenceTeacher;
+      presenceStudent = _ref.presenceStudent,
+      presenceTeacher = _ref.presenceTeacher,
+      student = _ref.student;
 
-  // Récupère l'heure sous le format Heure:Minutes du DateTime
-  //const startTime = startDate.split(' ')[1].substr(0, 5);
-  //const endTime = endDate.split(' ')[1].substr(0, 5);
-  var stateActivity = !presenceTeacher || !student;
+  var stateActivity = !presenceTeacher || !presenceStudent;
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
@@ -43192,8 +43190,9 @@ ActivityLine.propTypes = {
   finishHour: _propTypes2.default.string.isRequired,
   activity_id: _propTypes2.default.number.isRequired,
   speciality: _propTypes2.default.string.isRequired,
-  student: _propTypes2.default.string.isRequired,
-  presenceTeacher: _propTypes2.default.bool.isRequired
+  presenceStudent: _propTypes2.default.bool.isRequired,
+  presenceTeacher: _propTypes2.default.bool.isRequired,
+  student: _propTypes2.default.string.isRequired
 };
 
 /*
@@ -43303,10 +43302,11 @@ var Activity = function Activity(_ref) {
       finishHour = _ref.finishHour,
       presenceTeacher = _ref.presenceTeacher,
       presenceStudent = _ref.presenceStudent,
+      student = _ref.student,
+      speciality = _ref.speciality,
       id = _ref.activity_id,
       observation = _ref.observation,
       actions = _ref.actions;
-
 
   var onChange = function onChange(evt) {
     var value = evt.target.value;
@@ -43315,12 +43315,9 @@ var Activity = function Activity(_ref) {
   };
   var onSubmit = function onSubmit(evt) {
     evt.preventDefault();
-    console.info("Actions : Enregistrer dans la BDD");
-    //actions.addTask();
+    console.info('Actions : Enregistrer dans la BDD');
+    // actions.addTask();
   };
-
-  //const startTime = startDate.split(' ')[1].substr(0, 5);
-  //const endTime = endDate.split(' ')[1].substr(0, 5);
   var stateActivity = !presenceTeacher || !presenceStudent;
   return _react2.default.createElement(
     'div',
@@ -43335,10 +43332,14 @@ var Activity = function Activity(_ref) {
       { id: 'activity-title' },
       'Activit\xE9 ',
       id,
+      ' : cours de ',
+      speciality,
       ' de ',
       startHour,
       ' \xE0 ',
-      finishHour
+      finishHour,
+      ' avec l\'\xE9l\xE8ve ',
+      student
     ),
     _react2.default.createElement(
       'label',
@@ -43406,6 +43407,8 @@ Activity.propTypes = {
   activity_id: _propTypes2.default.number.isRequired,
   presenceTeacher: _propTypes2.default.bool.isRequired,
   presenceStudent: _propTypes2.default.bool.isRequired,
+  student: _propTypes2.default.string.isRequired,
+  speciality: _propTypes2.default.string.isRequired,
   observation: _propTypes2.default.string.isRequired,
   actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
 };
@@ -43508,14 +43511,8 @@ var Nav = function Nav(_ref) {
 
   // Change
   var onChange = function onChange(evt) {
-    console.log(evt);
+    console.info(evt);
     actions.changeDate(evt);
-  };
-  // click
-  var onClick = function onClick() {
-    var newDate = currentDate;
-    newDate.add(1, 'days');
-    actions.changeDate(newDate);
   };
 
   return _react2.default.createElement(
@@ -43523,7 +43520,7 @@ var Nav = function Nav(_ref) {
     { id: 'notebook-navigation' },
     _react2.default.createElement(
       'button',
-      { onClick: onClick, id: 'left-arrow', className: 'nav-arrow' },
+      { onClick: actions.downDay, id: 'left-arrow', className: 'nav-arrow' },
       _react2.default.createElement('i', { className: 'fa fa-arrow-circle-left', 'aria-hidden': 'true' })
     ),
     _react2.default.createElement(_reactDatepicker2.default, {
@@ -43535,7 +43532,7 @@ var Nav = function Nav(_ref) {
     }),
     _react2.default.createElement(
       'button',
-      { onClick: onClick, id: 'right-arrow', className: 'nav-arrow' },
+      { onClick: actions.upDay, id: 'right-arrow', className: 'nav-arrow' },
       _react2.default.createElement('i', { className: 'fa fa-arrow-circle-right', 'aria-hidden': 'true' })
     ),
     _react2.default.createElement(
@@ -43558,6 +43555,93 @@ Nav.propTypes = {
  * Export default
  */
 exports.default = Nav;
+
+});
+
+require.register("src/components/NextActivities/index.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+require('moment/locale/fr');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Local import
+ */
+
+// CSS Modules, react-datepicker-cssmodules.css
+
+
+/*
+ * Code
+ */
+/*
+ * Npm import
+ */
+var NextActivities = function NextActivities(_ref) {
+  var days = _ref.days,
+      actions = _ref.actions;
+
+  var onChange = function onChange(evt) {
+    var date = (0, _moment2.default)(evt);
+    actions.changeDate(date);
+  };
+  return _react2.default.createElement(
+    'div',
+    { id: 'nextActivities' },
+    _react2.default.createElement(
+      'h1',
+      null,
+      'Prochaines journ\xE9es active :'
+    ),
+    days.map(function (day) {
+      return _react2.default.createElement(
+        'p',
+        {
+          key: day.id,
+          onClick: function onClick() {
+            return onChange(day.date);
+          }
+        },
+        '-',
+        _react2.default.createElement(
+          'span',
+          { className: 'dayActivities' },
+          (0, _moment2.default)(day.date).format('dddd D MMMM YYYY'),
+          ' : ',
+          day.nbActivity,
+          ' activit\xE9',
+          day.nbActivity > 1 ? 's' : ''
+        )
+      );
+    })
+  );
+};
+NextActivities.propTypes = {
+  days: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired,
+  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
+};
+
+/*
+ * Export default
+ */
+exports.default = NextActivities;
 
 });
 
@@ -43584,18 +43668,25 @@ var _Notifications = require('src/containers/Notifications');
 
 var _Notifications2 = _interopRequireDefault(_Notifications);
 
+var _NextActivities = require('src/containers/NextActivities');
+
+var _NextActivities2 = _interopRequireDefault(_NextActivities);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * Code
  */
+
+
 /*
- * Npm import
+ * Local import
  */
 var Diary = function Diary() {
   return _react2.default.createElement(
     'div',
     { id: 'notebook' },
+    _react2.default.createElement(_NextActivities2.default, null),
     _react2.default.createElement(_Notifications2.default, null),
     _react2.default.createElement(_DateNav2.default, null),
     _react2.default.createElement(_Activities2.default, null)
@@ -43605,10 +43696,8 @@ var Diary = function Diary() {
 /*
  * Export default
  */
-
-
 /*
- * Local import
+ * Npm import
  */
 exports.default = Diary;
 
@@ -43652,10 +43741,9 @@ var Notifications = function Notifications(_ref) {
       displayNotifications = _ref.displayNotifications,
       actions = _ref.actions;
 
-  var onClick = function onClick(evt) {
+  var _onClick = function _onClick(evt) {
     actions.changeNotificationState(evt);
   };
-  console.info(actions);
   return _react2.default.createElement(
     'div',
     { id: 'notifications' },
@@ -43675,7 +43763,7 @@ var Notifications = function Notifications(_ref) {
         className: (0, _classnames2.default)('activity-state', { 'hide-notif': !displayNotifications })
       },
       _react2.default.createElement(
-        'p',
+        'h1',
         { id: 'notifications-title' },
         'Notifications :'
       ),
@@ -43683,7 +43771,9 @@ var Notifications = function Notifications(_ref) {
         if (notif.state) {
           return _react2.default.createElement(
             'p',
-            { key: notif.id, onClick: onClick.bind(undefined, notif.id) },
+            { key: notif.id, onClick: function onClick() {
+                return _onClick(notif.id);
+              } },
             _react2.default.createElement(
               _reactRouterDom.Link,
               {
@@ -43973,7 +44063,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    actions: (0, _redux.bindActionCreators)({ changeDate: _reducer.changeDate }, dispatch)
+    actions: (0, _redux.bindActionCreators)({ changeDate: _reducer.changeDate, upDay: _reducer.upDay, downDay: _reducer.downDay }, dispatch)
   };
 };
 
@@ -43987,6 +44077,60 @@ var NavContainer = createContainer(_DateNav2.default);
  * Export default
  */
 exports.default = NavContainer;
+
+});
+
+require.register("src/containers/NextActivities.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
+var _NextActivities = require('src/components/NextActivities');
+
+var _NextActivities2 = _interopRequireDefault(_NextActivities);
+
+var _reducer = require('src/store/reducer');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Code
+ */
+
+/*
+ * Local import
+ */
+/*
+ * Npm import
+ */
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    days: state.nextDayActivities
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: (0, _redux.bindActionCreators)({ changeDate: _reducer.changeDate }, dispatch)
+  };
+};
+
+/*
+ * Component
+ */
+var createContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps);
+var NextActivitiesContainer = createContainer(_NextActivities2.default);
+
+/*
+ * Export default
+ */
+exports.default = NextActivitiesContainer;
 
 });
 
@@ -44136,6 +44280,15 @@ exports.default = {
     teacher: true,
     student: false,
     observation: ''
+  }],
+  nextDayActivities: [{
+    id: 1,
+    date: '2017-05-23 11:00:00',
+    nbActivity: '3'
+  }, {
+    id: 2,
+    date: '2018-01-01 11:00:00',
+    nbActivity: '1'
   }],
   notifications: [{
     id: 1,
@@ -44304,25 +44457,29 @@ var createMiddleware = function createMiddleware(store) {
     return function (action) {
       switch (action.type) {
         case LOAD_ACTIVITIES:
-          console.log(action.currentDate.format());
-          console.error((0, _moment2.default)().format());
-          var CheminComplet = document.location.href;
-          if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-            CheminComplet += '/';
+          {
+            // console.log(action.currentDate.format());
+            // console.error(moment().format());
+            var CheminComplet = document.location.href;
+            if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+              CheminComplet += '/';
+            }
+            // On fait une requête ajax pour récupérer les infos de l'utilisateur +
+            // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
+            CheminComplet += 'ajax';
+            _axios2.default.post(CheminComplet, {
+              date: action.currentDate.format()
+            }).then(function (response) {
+              // console.info(response);
+              console.log(response.data.activities);
+              store.dispatch((0, _reducer.setActivities)(response.data.activities));
+            }).catch(function (error) {
+              console.error(error);
+            });
+            // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
+            //  state activités + un dispatch pour enregistrer infos utilisateur
+            break;
           }
-          // On fait une requête ajax pour récupérer les infos de l'utilisateur +
-          // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-          _axios2.default.post(CheminComplet + 'ajax', {
-            date: action.currentDate.format()
-          }).then(function (response) {
-            console.info(response);
-            store.dispatch((0, _reducer.setActivities)(response.data.activities));
-          }).catch(function (error) {
-            console.error(error);
-          });
-          // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
-          //  state activités + un dispatch pour enregistrer infos utilisateur
-          break;
         case _reducer.CHANGE_DATE:
           console.info('La date a changer : requete axios pour récupérer les nouvelles données');
           // axios
@@ -44359,9 +44516,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.changeDate = exports.CHANGE_DATE = undefined;
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44390,6 +44545,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
  * Types
  */
 var CHANGE_DATE = exports.CHANGE_DATE = 'CHANGE_DATE';
+var UP_DAY = 'UP_DAY';
+var DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
@@ -44404,6 +44561,7 @@ var initialState = {
   currentDate: (0, _moment2.default)(),
   activities: [],
   notifications: _datas2.default.notifications,
+  nextDayActivities: _datas2.default.nextDayActivities,
   inputObservation: '',
   displayNotifications: false
 };
@@ -44421,6 +44579,24 @@ exports.default = function () {
       {
         return _extends({}, state, {
           currentDate: action.date
+        });
+      }
+    case UP_DAY:
+      {
+        var newObj = _extends({}, state.currentDate);
+        newObj = (0, _moment2.default)(newObj);
+        newObj.add(1, 'days');
+        return _extends({}, state, {
+          currentDate: newObj
+        });
+      }
+    case DOWN_DAY:
+      {
+        var _newObj = _extends({}, state.currentDate);
+        _newObj = (0, _moment2.default)(_newObj);
+        _newObj.add(-1, 'days');
+        return _extends({}, state, {
+          currentDate: _newObj
         });
       }
     case SET_ACTIVITIES:
@@ -44447,8 +44623,6 @@ exports.default = function () {
     case INPUT_OBSERVATION_CHANGE:
       {
         var _id = action.id;
-
-        console.info(typeof _id === 'undefined' ? 'undefined' : _typeof(_id));
         var input = action.input;
 
         _id = parseInt(_id, 10);
@@ -44464,7 +44638,6 @@ exports.default = function () {
       }
     case RESET_OBSERVATION:
       {
-        console.log(action.id);
         var _id2 = action.id;
 
         _id2 = parseInt(_id2, 10);
@@ -44482,7 +44655,6 @@ exports.default = function () {
     case DISPLAY_NOTIFICATIONS:
       {
         var display = !state.displayNotifications;
-        console.log(display);
         return _extends({}, state, {
           displayNotifications: display
         });
@@ -44498,7 +44670,9 @@ exports.default = function () {
             notif.state = false;
           }
         });
-        return _extends({}, state);
+        return _extends({}, state, {
+          notifications: notifications
+        });
       }
     default:
       return state;
@@ -44517,16 +44691,25 @@ var changeDate = exports.changeDate = function changeDate(date) {
     date: date
   };
 };
+var upDay = exports.upDay = function upDay() {
+  console.log('up_day');
+  return {
+    type: UP_DAY
+  };
+};
+var downDay = exports.downDay = function downDay() {
+  console.log('down_day');
+  return {
+    type: DOWN_DAY
+  };
+};
 var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPresenceTeacher(id) {
-  console.log('switchPresenceTeacher');
   return {
     type: SWITCH_PRESENCE_TEACHER,
     id: id
   };
 };
 var setActivities = exports.setActivities = function setActivities(activities) {
-  console.log('SetActivities');
-  console.log(activities);
   return {
     type: SET_ACTIVITIES,
     activities: activities

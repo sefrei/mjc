@@ -3,32 +3,31 @@
  */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 /*
  * Local import
  */
-import Nav from 'src/components/DateNav';
-import { changeDate, upDay, downDay } from 'src/store/reducer';
+import NextActivities from 'src/components/NextActivities';
+import { changeDate } from 'src/store/reducer';
 
 /*
  * Code
  */
 const mapStateToProps = state => ({
-  currentDate: state.currentDate,
+  days: state.nextDayActivities,
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ changeDate, upDay, downDay }, dispatch),
+  actions: bindActionCreators({ changeDate }, dispatch),
 });
 
 /*
  * Component
  */
 const createContainer = connect(mapStateToProps, mapDispatchToProps);
-const NavContainer = createContainer(Nav);
+const NextActivitiesContainer = createContainer(NextActivities);
 
 
 /*
  * Export default
  */
-export default NavContainer;
+export default NextActivitiesContainer;

@@ -272,4 +272,28 @@ class Subscription
     {
         return $this->specialties;
     }
+
+    /**
+     * Set duration
+     *
+     * @param \DateTime $duration
+     *
+     * @return Subscription
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return \DateTime
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
 }

@@ -15,11 +15,8 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_id: id, speciality, student, presenceTeacher }) => {
-  // Récupère l'heure sous le format Heure:Minutes du DateTime
-  //const startTime = startDate.split(' ')[1].substr(0, 5);
-  //const endTime = endDate.split(' ')[1].substr(0, 5);
-  const stateActivity = (!presenceTeacher || !student);
+const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_id: id, speciality, presenceStudent, presenceTeacher, student }) => {
+  const stateActivity = (!presenceTeacher || !presenceStudent);
   return (
     <div className="activity">
       <Link
@@ -50,8 +47,9 @@ ActivityLine.propTypes = {
   finishHour: PropTypes.string.isRequired,
   activity_id: PropTypes.number.isRequired,
   speciality: PropTypes.string.isRequired,
-  student: PropTypes.string.isRequired,
+  presenceStudent: PropTypes.bool.isRequired,
   presenceTeacher: PropTypes.bool.isRequired,
+  student: PropTypes.string.isRequired,
 };
 
 /*

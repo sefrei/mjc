@@ -16,7 +16,6 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
   const onClick = (evt) => {
     actions.changeNotificationState(evt);
   };
-  console.info(actions);
   return (
     <div id="notifications">
       <div onClick={actions.displayNotifications} id="notifications-counter">
@@ -31,17 +30,17 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           { 'hide-notif': !displayNotifications },
         )}
       >
-        <p id="notifications-title">Notifications :</p>
+        <h1 id="notifications-title">Notifications :</h1>
         {notifications.map((notif) => {
           if (notif.state) {
             return (
-              <p key={notif.id} onClick={onClick.bind(this, notif.id)} >
+              <p key={notif.id} onClick={() => onClick(notif.id)} >
                 <Link
                   to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_event}`}
                 >
                   - {notif.message}
                 </Link>
-                <i className="fa fa-times close-notif" aria-hidden="true"></i>
+                <i className="fa fa-times close-notif" aria-hidden="true" />
               </p>
             );
           }

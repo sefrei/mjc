@@ -34,6 +34,18 @@ export default {
       observation: '',
     },
   ],
+  nextDayActivities: [
+    {
+      id: 1,
+      date: '2017-05-23 11:00:00',
+      nbActivity: '3',
+    },
+    {
+      id: 2,
+      date: '2018-01-01 11:00:00',
+      nbActivity: '1',
+    },
+  ],
   notifications: [
     {
       id: 1,

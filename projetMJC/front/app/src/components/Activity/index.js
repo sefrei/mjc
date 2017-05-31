@@ -16,25 +16,24 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const Activity = ({ currentDate, startDate, startHour,  finishDate, finishHour, presenceTeacher, presenceStudent, activity_id: id, observation, actions }) => {
-
+const Activity = ({
+  currentDate, startDate, startHour, finishDate, finishHour,
+  presenceTeacher, presenceStudent, student, speciality,
+  activity_id: id, observation, actions }) => {
   const onChange = (evt) => {
     const { value } = evt.target;
     actions.changeInputObservation(value);
   };
   const onSubmit = (evt) => {
     evt.preventDefault();
-    console.info("Actions : Enregistrer dans la BDD");
-    //actions.addTask();
+    console.info('Actions : Enregistrer dans la BDD');
+    // actions.addTask();
   };
-
-  //const startTime = startDate.split(' ')[1].substr(0, 5);
-  //const endTime = endDate.split(' ')[1].substr(0, 5);
   const stateActivity = (!presenceTeacher || !presenceStudent);
   return (
     <div id="activity-view">
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
-      <h2 id="activity-title">Activité {id} de {startHour} à {finishHour}</h2>
+      <h2 id="activity-title">Activité {id} : cours de {speciality} de {startHour} à {finishHour} avec l'élève {student}</h2>
       <label id="label-observation" htmlFor="observation">Observation :</label>
       <form id="form" onSubmit={onSubmit}>
         <input type="text" onChange={onChange} id="observation" placeholder="Votre observation..." value={observation} />
@@ -82,6 +81,8 @@ Activity.propTypes = {
   activity_id: PropTypes.number.isRequired,
   presenceTeacher: PropTypes.bool.isRequired,
   presenceStudent: PropTypes.bool.isRequired,
+  student: PropTypes.string.isRequired,
+  speciality: PropTypes.string.isRequired,
   observation: PropTypes.string.isRequired,
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
 };

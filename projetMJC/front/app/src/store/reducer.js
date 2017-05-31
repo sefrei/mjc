@@ -11,6 +11,8 @@ import datas from 'src/datas';
  * Types
  */
 export const CHANGE_DATE = 'CHANGE_DATE';
+const UP_DAY = 'UP_DAY';
+const DOWN_DAY = 'DOWN_DAY';
 const SET_ACTIVITIES = 'SET_ACTIVITIES';
 const SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
@@ -25,6 +27,7 @@ const initialState = {
   currentDate: moment(),
   activities: [],
   notifications: datas.notifications,
+  nextDayActivities: datas.nextDayActivities,
   inputObservation: '',
   displayNotifications: false,
 };
@@ -40,6 +43,30 @@ export default (state = initialState, action = {}) => {
         return {
           ...state,
           currentDate: action.date,
+        };
+      }
+    case UP_DAY:
+      {
+        let newObj = {
+          ...state.currentDate,
+        };
+        newObj = moment(newObj);
+        newObj.add(1, 'days');
+        return {
+          ...state,
+          currentDate: newObj,
+        };
+      }
+    case DOWN_DAY:
+      {
+        let newObj = {
+          ...state.currentDate,
+        };
+        newObj = moment(newObj);
+        newObj.add(-1, 'days');
+        return {
+          ...state,
+          currentDate: newObj,
         };
       }
     case SET_ACTIVITIES:
@@ -67,7 +94,6 @@ export default (state = initialState, action = {}) => {
     case INPUT_OBSERVATION_CHANGE:
       {
         let { id } = action;
-        console.info(typeof(id));
         const { input } = action;
         id = parseInt(id, 10);
         const activities = [...state.activities];
@@ -83,7 +109,6 @@ export default (state = initialState, action = {}) => {
       }
     case RESET_OBSERVATION:
       {
-        console.log(action.id);
         let { id } = action;
         id = parseInt(id, 10);
         const activities = [...state.activities];
@@ -101,7 +126,6 @@ export default (state = initialState, action = {}) => {
     case DISPLAY_NOTIFICATIONS:
       {
         const display = !state.displayNotifications;
-        console.log(display);
         return {
           ...state,
           displayNotifications: display,
@@ -109,7 +133,7 @@ export default (state = initialState, action = {}) => {
       }
     case CHANGE_STATE_NOTIFICATION:
       {
-        let { id } = action;
+        const { id } = action;
         const notifications = [...state.notifications];
         notifications.forEach((notif) => {
           if (notif.id === id) {
@@ -119,6 +143,7 @@ export default (state = initialState, action = {}) => {
         });
         return {
           ...state,
+          notifications,
         };
       }
     default:
@@ -138,23 +163,30 @@ export const changeDate = (date) => {
   }
   );
 };
-export const switchPresenceTeacher = (id) => {
-  console.log('switchPresenceTeacher');
-  return ({
-    type: SWITCH_PRESENCE_TEACHER,
-    id,
-  });
-};
-export const setActivities = (activities) => {
-  console.log('SetActivities');
-  console.log(activities);
+export const upDay = () => {
+  console.log('up_day');
   return (
   {
-    type: SET_ACTIVITIES,
-    activities,
+    type: UP_DAY,
   }
   );
 };
+export const downDay = () => {
+  console.log('down_day');
+  return (
+  {
+    type: DOWN_DAY,
+  }
+  );
+};
+export const switchPresenceTeacher = id => ({
+  type: SWITCH_PRESENCE_TEACHER,
+  id,
+});
+export const setActivities = activities => ({
+  type: SET_ACTIVITIES,
+  activities,
+});
 export const changeInputObservation = (input, id) => ({
   type: INPUT_OBSERVATION_CHANGE,
   input,

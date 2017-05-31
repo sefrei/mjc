@@ -16,19 +16,13 @@ import DatePicker from 'react-datepicker';
 const Nav = ({ currentDate, actions }) => {
   // Change
   const onChange = (evt) => {
-    console.log(evt);
+    console.info(evt);
     actions.changeDate(evt);
-  };
-  // click
-  const onClick = () => {
-    const newDate = currentDate;
-    newDate.add(1, 'days');
-    actions.changeDate(newDate);
   };
 
   return (
     <div id="notebook-navigation">
-      <button onClick={onClick} id="left-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
+      <button onClick={actions.downDay} id="left-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-left" aria-hidden="true" /></button>
       <DatePicker
         dateFormat="DD/MM/YYYY"
         selected={currentDate}
@@ -36,7 +30,7 @@ const Nav = ({ currentDate, actions }) => {
         className="date-picker"
         locale="fr"
       />
-      <button onClick={onClick} id="right-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+      <button onClick={actions.upDay} id="right-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-right" aria-hidden="true" /></button>
       <h2 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h2>
     </div>
   );
