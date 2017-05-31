@@ -81,6 +81,17 @@ class SubscriptionController extends Controller
             // Je mets à jour ma date de fin avec set
             $subscription->setFinishAt($finishAt);
 
+            /**
+             * Enregistrer automatiquement les leçons en fonction d'une inscription
+             */
+             // La première leçon aura la même startAt que l'inscription
+            //  $lesson = new Lesson();
+            //  $lesson->setStartAt($startDate);
+
+             // Je lie la lesson à la subscription
+            //  $subscription->addLesson($lesson);
+
+
             // Et j'enregistre l'inscription
             $em->persist($subscription);
             $em->flush();
