@@ -19,43 +19,36 @@ class SubscriptionType extends AbstractType
         $builder
         ->add('startAt', null, [
           'label' => 'début du premier cours',
-          'format' => 'HH:mm',
+          'format' => 'dd-MM-yyyy HH:mm',
           'years' => range(date('Y'), date('Y') + 2),
-          'months' => range(date('m'), date('m') + 12),
-          'days' => range(date('d'), date('d') + 31),
-          'hours' => range(1, 24),
-        //->add('startAt', DateTimeType::class, [
-        //  'widget' => 'choice',
-        //  'label' => '1er cours, date et heure',
-        //  'format' => 'dd-MM-yyyy HH:mm',
-        //  'years' => range(date('Y'), date('Y') - 0),
-        //  'placeholder' => [
-            //  'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
-        //  ]
-        ])
-
-        ->add('duration', ChoiceType::class, [
-          'label' => 'durée',
-          'choices'  => array(
-          '30 min' => true,
-          '45 min' => true,
-          '1h' => true,
-          '1h30' => true,
-          '2h' => true,
-        )
-        ])
-        ->add('finishAt', null, [
-          'label' => 'fin du premier cours',
-          'format' => 'HH:mm',
-          'years' => range(date('Y'), date('Y') + 2),
-          'months' => range(date('m'), date('m') + 12),
-          'days' => range(date('d'), date('d') + 31),
-          'hours' => range(1, 24),
-          // 'placeholder' => [
-          //     'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
-          // ],
+        //   'months' => range(date('m'), date('m') + 12),
+        //   'days' => range(1,31),
+        //   'hours' => range(1, 24),
+          'placeholder' => [
+              'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
+          ],
           // 'html5' => true,
         ])
+
+        ->add('duration',  ChoiceType::class, [
+          'label' => 'durée',
+          'choices'  => array(
+          '30 min' => 1800,
+          '45 min' => 2700,
+          '1h' => 3600,
+          '1h30' => 6400,
+          '2h' => 7200,
+        )
+        ])
+        // ->add('finishAt', null, [
+        //   'label' => 'fin du premier cours',
+        //   'format' => 'dd-MM-yyyy HH:mm',
+        //   'years' => range(date('Y'), date('Y') + 2),
+        //   'placeholder' => [
+        //       'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
+        //   ],
+        //
+        // ])
         ->add('teacher', null, [
           'label' => 'Professeur',
         ])
@@ -75,7 +68,7 @@ class SubscriptionType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Subscription',
-          'attr' => ['novalidate' => 'novalidate'],
+            'attr' => ['novalidate' => 'novalidate'],
 
         ));
     }

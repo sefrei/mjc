@@ -4,11 +4,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Subscription;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Lesson;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Subscription controller.
@@ -51,8 +53,95 @@ class SubscriptionController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($subscription);
-            $em->flush();
+            /**
+             * Enregistrement de la date de fin en fonction de la date de début et la durée d'un cours
+             */
+            // Je récupère la date du 1er cours
+            $startAt = $subscription->getStartAt();
+            // dump($startAt);
+            // Je récupère la durée d'un cours
+            $duration = $subscription->getDuration();
+            // Je fais mon calcul pour ma date de fin (ici duration est enregistrée en int avec le nombre de secondes)
+            $durationforDate = 'PT0H'.$duration .'S';
+            // $durationModyfi
+            // dump($durationforDate);
+            // exit;
+
+            //'PT0H1800S'=30min
+            // L'objet Datetime a dû être passé "avec"
+            // Il faut donc recréer un objet nouveau à partir d'une chaine date...
+            // dump($startAt->format('Y-m-d H:i:s'));
+            $startDate = new \Datetime($startAt->format('Y-m-d H:i:s'));
+            $subscription->setFinishAt($startDate);
+            $finishAt = $subscription->getFinishAt();
+            $finishAt->add(new \DateInterval($durationforDate));
+            // dump($startAt);
+            // dump($finishAt);
+            // exit;
+
+            // $startAt->modify('')
+            // Je mets à jour ma date de fin avec set
+            $subscription->setFinishAt($finishAt);
+
+            /**
+             * Enregistrer automatiquement les leçons en fonction d'une inscription
+             */
+             // La première leçon aura la même startAt que l'inscription
+             $lesson = new Lesson();
+             $lesson->setStartAt($startDate);
+             $lesson->setTeacherIsPresent(true);
+             $lesson->setStudentIsPresent(true);
+             $lesson->setSubscription($subscription);
+             // Je lie la lesson à la subscription
+             $subscription->addLesson($lesson);
+
+             // Pour enregistrer les autres leçons, il me faut définir une date de début des cours et une date de fin
+
+             $format = 'Y-m-d';
+             $beginingDate = \DateTime::createFromFormat($format, '2016-09-10');
+
+            //  dump($beginingDate);
+
+             $format = 'Y-m-d';
+             $holidayDate = \DateTime::createFromFormat($format, '2017-07-10');
+             // Et j'enregistre l'inscription
+             $em->persist($subscription);
+             $em->flush();
+
+
+             //Je crée une leçon toute les semaines à la même heure si la $date est > $beginingDate  et < $holidayDate
+
+             //Je récupère la startAt
+            $date = $lesson->getStartAt();
+            dump($date);
+            $newDate = '';
+            // Tant que la date est + petite que la date des vacances
+            while ($date <= $holidayDate ) {
+                //J'ajoute 7 jours à ma date
+                $date->modify('+7 day');
+                // dump($date);
+
+                // Je crée donc une nouvelle leçon avec cette date;
+                $lesson = new Lesson();
+                $lesson->setStartAt($date);
+                // dump($date);
+
+                $lesson->setTeacherIsPresent(true);
+                $lesson->setStudentIsPresent(true);
+                $lesson->setSubscription($subscription);
+                // Je lie la lesson à la subscription
+                $subscription->addLesson($lesson);
+                // $newDate .= $date->format('Y-m-d');
+                // Et j'enregistre l'inscription
+                $em->persist($subscription);
+                $em->flush();
+            }
+    // exit;
+
+            //  dump($holidayDate);
+            //  exit;
+
+
 
             return $this->redirectToRoute('subscription_show', array('id' => $subscription->getId()));
         }
