@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Subscription;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class DefaultController extends Controller
 {
@@ -18,20 +19,17 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // $rawpostdata = file_get_contents("php://input");
-        // $rawpostdata = json_decode($rawpostdata);
-        // dump($rawpostdata);
+// $data = $request->request->get('date');
+//  var_dump($data);
+// $headers = $request->headers->all();
+// $form->bindRequest($request);
 
-        // echo "<pre>";
-        // echo $_POST['firstName'];
-        // echo "</pre>";
-    // $essai=$request->request->get();
-    // dump($essai);
-    // exit;
+
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            // 'essai' => $rawpostdata,
-        ]);
+            // 'essai' => $data,
+            // 'head'=> $headers,
+         ]);
     }
 
     /**
@@ -50,16 +48,73 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * Finds and displays a subscription entity.
+     *
+     * @Route("/test/lesson", name="test_lesson")
+     * @Method("GET")
+     */
+    public function LessonAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
+
+        return $this->render('default/lesson.json.twig', [
+            'lessons' => $lessons,
+        ]);
+    }
         /**
      * @Route("/ajax", name="ajax")
      *
      */
     public function ajaxAction(Request $request)
     {
+
+//                 $date = $request->get('date');
+//
+// var_dump($date);
+        //     $return = $date;
+        //
+        // return new JsonResponse($return);
+
+
+        /**
+         * Essai Récup date
+         */
+//         $date = $_POST['date'];
+//         var_dump($date);
+//     $date =    $request->get('date');
+//     dump($date);
+// $headers = $request->headers->all();
+// dump($headers);
+//
+// $rawData = file_get_contents('php://input');
+//   $json = json_decode($rawData);
+//   dump($json);
+//
+// $all = $request->request->all();
+// dump($all);
+// exit;
+
+// // $stack = $this->requestStack->getCurrentRequest();
+// // dump($stack);
+//
+// $params = array();
+//     $content = $request->getContent();
+//     if (!empty($content))
+//     {
+//         $params = json_decode($content, true); // 2nd param to get as array
+//     }
+//     dump($params);
+//
+//     $order = $request->request->get('date');
+//     dump($order);
+// exit;
+
                     $em = $this->getDoctrine()->getManager();
                     $subscriptions = $em->getRepository('AppBundle:Subscription')->showAllAction();
 
-                    $date = $request->request->get('data');
+                    $date = $request->request->get('date');
 
                     return $this->render('default/test.json.twig', [
                         'inscriptions' => $subscriptions,
@@ -67,7 +122,7 @@ class DefaultController extends Controller
                     ],
                     new JsonResponse()
                 );
-    }
+     }
 
     /**
  * @Route("/ajax/date/{id}", name="ajax_Date")
@@ -100,4 +155,23 @@ class DefaultController extends Controller
             new JsonResponse()
         );
         }
+        /**
+         * @Route("/show/myStudents", name="show_myStudents")
+         */
+         public function showMyStudentsAction()
+         {
+
+         }
+             /**
+              * @Route("/date", name="date")
+              */
+              public function dateAction(Request $request)
+              {
+                  $date = $request->get('date');
+                //   dump($date);
+                //   exit;
+                  return new Response(
+             $date
+        );
+              }
 }
