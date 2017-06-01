@@ -9,7 +9,14 @@
           <h1>Vos cours aujourd'hui : </h1>
           {% for item in inscriptions %}
 		  {% if (app.user.id == item.teacher.id) or (app.user.id == item.student.id) %}
-             <h2>______</h2>
+             <h2>LESSONS</h2>
+             {% for lesson in item.lessons %}
+             <h2>_____</h2>
+             <p> Date de la leçon : {{lesson.startAt | date("d-m-Y")}}</p>
+             <p>Heure :  {{lesson.startAt | date("H\\hi")}} </p>
+             <p>Prof : {{item.teacher.username}} </p>
+             Elève : {{item.student.username}} (id :  {{item.student.id}})
+             {% endfor %}
 			  <p>Date du 1er cours : {{ item.startAt | date("d-m-Y")}}</p>
 			  <p>Heure du cours : {{ item.startAt | date("H\\hi")}}</p>
 			  <p>Activité N° : {{item.id}} </p>
