@@ -1,3 +1,5 @@
+ @import "../var.styl"
+
 #notifications
   text-align:right
   position: absolute
@@ -10,7 +12,7 @@
     margin-bottom: 0.3em
     padding: 0
     font-weight: 300
-    font-family: 'Indie Flower', cursive;
+    font-family: font-flower
 
   &-messages
     text-align: left
@@ -18,8 +20,8 @@
     padding: 1em
     position: absolute
     right: 20px
-    width: 350px
-    border: 2px solid black
+    width: 378px
+    border: 1px solid black
     z-index: 0
     transition: all 1s
     z-index: 1
@@ -29,17 +31,21 @@
     position: relative
     cursor: pointer
     z-index: 2
-
+    &-icon
+      color: blue
+      font-size: 2.5em
+      position: absolute
+      top: 1px
+      right: 1px
     &-count
       position: absolute
       top: 0
-      right: 0
-      padding: 10px 14px;
+      right: 1px
+      padding: 1px 3px;
       display: inline-block;
-      border-radius: 100px;
-      box-shadow: 0px 0px 2px #888;
+      border-radius: 50%
       background: red;
-      border: 2px solid black
+      border: 1px solid black
       color: #FFF
       font-weight: bold
       z-index: 1

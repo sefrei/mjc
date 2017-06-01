@@ -19,6 +19,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
   return (
     <div id="notifications">
       <div onClick={actions.displayNotifications} id="notifications-counter">
+        <i className="fa fa-globe" id="notifications-counter-icon" aria-hidden="true"></i>
         <div id="notifications-counter-count">
           {notifications.length}
         </div>

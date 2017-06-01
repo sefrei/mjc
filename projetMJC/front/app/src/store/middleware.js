@@ -30,19 +30,32 @@ const createMiddleware = store => next => (action) => {
         // On fait une requête ajax pour récupérer les infos de l'utilisateur +
         // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
         CheminComplet += 'ajax';
-        axios.post(CheminComplet, {
+        /*axios.post(CheminComplet, {
           date: action.currentDate.format(),
         })
         .then((response) => {
-          // console.info(response);
-          console.log(response.data.activities);
+          console.info(response);
+          //console.log(response.data.activities);
           store.dispatch(setActivities(response.data.activities));
         })
         .catch((error) => {
           console.error(error);
         });
+        */
+        const params = new URLSearchParams();
+        params.append('date', action.currentDate.format());
+        axios.post(CheminComplet, params)
+        .then((response) => {
+        console.log(response);
+          store.dispatch(setActivities(response.data.activities));
+        })
+        .catch((error) => {
+        console.log(error);
+        });
         // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
         //  state activités + un dispatch pour enregistrer infos utilisateur
+        //
+
         break;
       }
     case CHANGE_DATE:

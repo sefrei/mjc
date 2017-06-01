@@ -43750,6 +43750,7 @@ var Notifications = function Notifications(_ref) {
     _react2.default.createElement(
       'div',
       { onClick: actions.displayNotifications, id: 'notifications-counter' },
+      _react2.default.createElement('i', { className: 'fa fa-globe', id: 'notifications-counter-icon', 'aria-hidden': 'true' }),
       _react2.default.createElement(
         'div',
         { id: 'notifications-counter-count' },
@@ -43991,6 +43992,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Code
  */
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  console.log(ownProps);
   var activity = (0, _reducer.selectActivity)(state, ownProps.match.params.id);
   return _extends({
     currentDate: state.currentDate
@@ -44467,17 +44469,30 @@ var createMiddleware = function createMiddleware(store) {
             // On fait une requête ajax pour récupérer les infos de l'utilisateur +
             // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
             CheminComplet += 'ajax';
-            _axios2.default.post(CheminComplet, {
-              date: action.currentDate.format()
-            }).then(function (response) {
-              // console.info(response);
-              console.log(response.data.activities);
+            /*axios.post(CheminComplet, {
+              date: action.currentDate.format(),
+            })
+            .then((response) => {
+              console.info(response);
+              //console.log(response.data.activities);
+              store.dispatch(setActivities(response.data.activities));
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+            */
+            var params = new URLSearchParams();
+            params.append('date', action.currentDate.format());
+            _axios2.default.post(CheminComplet, params).then(function (response) {
+              console.log(response);
               store.dispatch((0, _reducer.setActivities)(response.data.activities));
             }).catch(function (error) {
-              console.error(error);
+              console.log(error);
             });
             // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
             //  state activités + un dispatch pour enregistrer infos utilisateur
+            //
+
             break;
           }
         case _reducer.CHANGE_DATE:
@@ -44770,5 +44785,99 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
+'use strict';
 
+/* jshint ignore:start */
+(function () {
+  var WebSocket = window.WebSocket || window.MozWebSocket;
+  var br = window.brunch = window.brunch || {};
+  var ar = br['auto-reload'] = br['auto-reload'] || {};
+  if (!WebSocket || ar.disabled) return;
+  if (window._ar) return;
+  window._ar = true;
+
+  var cacheBuster = function cacheBuster(url) {
+    var date = Math.round(Date.now() / 1000).toString();
+    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
+    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
+  };
+
+  var browser = navigator.userAgent.toLowerCase();
+  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
+
+  var reloaders = {
+    page: function page() {
+      window.location.reload(true);
+    },
+
+    stylesheet: function stylesheet() {
+      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
+        var val = link.getAttribute('data-autoreload');
+        return link.href && val != 'false';
+      }).forEach(function (link) {
+        link.href = cacheBuster(link.href);
+      });
+
+      // Hack to force page repaint after 25ms.
+      if (forceRepaint) setTimeout(function () {
+        document.body.offsetHeight;
+      }, 25);
+    },
+
+    javascript: function javascript() {
+      var scripts = [].slice.call(document.querySelectorAll('script'));
+      var textScripts = scripts.map(function (script) {
+        return script.text;
+      }).filter(function (text) {
+        return text.length > 0;
+      });
+      var srcScripts = scripts.filter(function (script) {
+        return script.src;
+      });
+
+      var loaded = 0;
+      var all = srcScripts.length;
+      var onLoad = function onLoad() {
+        loaded = loaded + 1;
+        if (loaded === all) {
+          textScripts.forEach(function (script) {
+            eval(script);
+          });
+        }
+      };
+
+      srcScripts.forEach(function (script) {
+        var src = script.src;
+        script.remove();
+        var newScript = document.createElement('script');
+        newScript.src = cacheBuster(src);
+        newScript.async = true;
+        newScript.onload = onLoad;
+        document.head.appendChild(newScript);
+      });
+    }
+  };
+  var port = ar.port || 9485;
+  var host = br.server || window.location.hostname || 'localhost';
+
+  var connect = function connect() {
+    var connection = new WebSocket('ws://' + host + ':' + port);
+    connection.onmessage = function (event) {
+      if (ar.disabled) return;
+      var message = event.data;
+      var reloader = reloaders[message] || reloaders.page;
+      reloader();
+    };
+    connection.onerror = function () {
+      if (connection.readyState) connection.close();
+    };
+    connection.onclose = function () {
+      window.setTimeout(connect, 1000);
+    };
+  };
+  connect();
+})();
+/* jshint ignore:end */
+
+;
 //# sourceMappingURL=app.js.map
