@@ -55,7 +55,7 @@ class Lesson
 
     /**
     * Many Lessons for One Subscription
-    * @ORM\ManyToOne(targetEntity="Subscription", inversedBy="lessons", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="Subscription", inversedBy="lessons")
     */
     private $subscription;
 
