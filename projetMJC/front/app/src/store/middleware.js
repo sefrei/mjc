@@ -47,8 +47,8 @@ const createMiddleware = store => next => (action) => {
         params.append('date', action.currentDate.format());
         axios.post(CheminComplet, params)
         .then((response) => {
-        console.log(response);
-          store.dispatch(setActivities(response.data.activities));
+        console.log(response.data);
+          store.dispatch(setActivities(response.data));
         })
         .catch((error) => {
         console.log(error);
