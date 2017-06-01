@@ -42,7 +42,8 @@ const createMiddleware = store => next => (action) => {
           console.error(error);
         });
         */
-        const params = new URLSearchParams();
+        // const params = new URLSearchParams();
+        const params = new FormData();
         params.append('date', action.currentDate.format());
         axios.post(CheminComplet, params)
         .then((response) => {

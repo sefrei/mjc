@@ -19,35 +19,44 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
   return (
     <div id="notifications">
       <div onClick={actions.displayNotifications} id="notifications-counter">
-        <i className="fa fa-globe" id="notifications-counter-icon" aria-hidden="true"></i>
+        <i
+          className={classNames(
+            'fa fa-globe',
+            { 'active-counter': displayNotifications },
+            )}
+          id="notifications-counter-icon"
+          aria-hidden="true"
+        />
         <div id="notifications-counter-count">
           {notifications.length}
         </div>
       </div>
       <div
-        id="notifications-messages"
+        id="notifications-messages-container"
         className={classNames(
-          'activity-state',
-          { 'hide-notif': !displayNotifications },
+        { 'hide-notif': !displayNotifications },
         )}
       >
-        <h1 id="notifications-title">Notifications :</h1>
-        {notifications.map((notif) => {
-          if (notif.state) {
-            return (
-              <p key={notif.id} onClick={() => onClick(notif.id)} >
-                <Link
-                  to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_event}`}
-                >
-                  - {notif.message}
-                </Link>
-                <i className="fa fa-times close-notif" aria-hidden="true" />
-              </p>
-            );
-          }
-          return '';
-        })}
-        <p>Tout marquer comme vu</p>
+        <div className="triangle"></div>
+        <div id="notifications-messages">
+          <h1 id="notifications-title">Notifications :</h1>
+          {notifications.map((notif) => {
+            if (notif.state) {
+              return (
+                <p key={notif.id} onClick={() => onClick(notif.id)} >
+                  <Link
+                    to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_event}`}
+                  >
+                    - {notif.message}
+                  </Link>
+                  <i className="fa fa-times close-notif" aria-hidden="true" />
+                </p>
+              );
+            }
+            return '';
+          })}
+          <p>Tout marquer comme vu</p>
+        </div>
       </div>
     </div>
   );
