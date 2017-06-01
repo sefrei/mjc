@@ -134,7 +134,11 @@ class SubscriptionController extends Controller
                 // $newDate .= $date->format('Y-m-d');
                 // Et j'enregistre l'inscription
                 $em->persist($subscription);
-                $em->flush();
+                // Si la nouvelle date de leçon < date des vacances, on enregistre
+                if ($date<$holidayDate) {
+                    $em->flush();
+                }
+
             }
     // exit;
 
