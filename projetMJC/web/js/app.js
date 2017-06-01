@@ -43521,7 +43521,7 @@ var Nav = function Nav(_ref) {
     _react2.default.createElement(
       'button',
       { onClick: actions.downDay, id: 'left-arrow', className: 'nav-arrow' },
-      _react2.default.createElement('i', { className: 'fa fa-arrow-circle-left', 'aria-hidden': 'true' })
+      _react2.default.createElement('i', { className: 'fa fa-arrow-circle-left ', 'aria-hidden': 'true' })
     ),
     _react2.default.createElement(_reactDatepicker2.default, {
       dateFormat: 'DD/MM/YYYY',
@@ -43750,7 +43750,11 @@ var Notifications = function Notifications(_ref) {
     _react2.default.createElement(
       'div',
       { onClick: actions.displayNotifications, id: 'notifications-counter' },
-      _react2.default.createElement('i', { className: 'fa fa-globe', id: 'notifications-counter-icon', 'aria-hidden': 'true' }),
+      _react2.default.createElement('i', {
+        className: (0, _classnames2.default)('fa fa-globe', { 'active-counter': displayNotifications }),
+        id: 'notifications-counter-icon',
+        'aria-hidden': 'true'
+      }),
       _react2.default.createElement(
         'div',
         { id: 'notifications-counter-count' },
@@ -43760,38 +43764,43 @@ var Notifications = function Notifications(_ref) {
     _react2.default.createElement(
       'div',
       {
-        id: 'notifications-messages',
-        className: (0, _classnames2.default)('activity-state', { 'hide-notif': !displayNotifications })
+        id: 'notifications-messages-container',
+        className: (0, _classnames2.default)({ 'hide-notif': !displayNotifications })
       },
+      _react2.default.createElement('div', { className: 'triangle' }),
       _react2.default.createElement(
-        'h1',
-        { id: 'notifications-title' },
-        'Notifications :'
-      ),
-      notifications.map(function (notif) {
-        if (notif.state) {
-          return _react2.default.createElement(
-            'p',
-            { key: notif.id, onClick: function onClick() {
-                return _onClick(notif.id);
-              } },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              {
-                to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.id_event
-              },
-              '- ',
-              notif.message
-            ),
-            _react2.default.createElement('i', { className: 'fa fa-times close-notif', 'aria-hidden': 'true' })
-          );
-        }
-        return '';
-      }),
-      _react2.default.createElement(
-        'p',
-        null,
-        'Tout marquer comme vu'
+        'div',
+        { id: 'notifications-messages' },
+        _react2.default.createElement(
+          'h1',
+          { id: 'notifications-title' },
+          'Notifications :'
+        ),
+        notifications.map(function (notif) {
+          if (notif.state) {
+            return _react2.default.createElement(
+              'p',
+              { key: notif.id, onClick: function onClick() {
+                  return _onClick(notif.id);
+                } },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                {
+                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.id_event
+                },
+                '- ',
+                notif.message
+              ),
+              _react2.default.createElement('i', { className: 'fa fa-times close-notif', 'aria-hidden': 'true' })
+            );
+          }
+          return '';
+        }),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Tout marquer comme vu'
+        )
       )
     )
   );
@@ -44481,11 +44490,12 @@ var createMiddleware = function createMiddleware(store) {
               console.error(error);
             });
             */
-            var params = new URLSearchParams();
+            // const params = new URLSearchParams();
+            var params = new FormData();
             params.append('date', action.currentDate.format());
             _axios2.default.post(CheminComplet, params).then(function (response) {
-              console.log(response);
-              store.dispatch((0, _reducer.setActivities)(response.data.activities));
+              console.log(response.data);
+              store.dispatch((0, _reducer.setActivities)(response.data));
             }).catch(function (error) {
               console.log(error);
             });
@@ -44785,99 +44795,5 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
-'use strict';
 
-/* jshint ignore:start */
-(function () {
-  var WebSocket = window.WebSocket || window.MozWebSocket;
-  var br = window.brunch = window.brunch || {};
-  var ar = br['auto-reload'] = br['auto-reload'] || {};
-  if (!WebSocket || ar.disabled) return;
-  if (window._ar) return;
-  window._ar = true;
-
-  var cacheBuster = function cacheBuster(url) {
-    var date = Math.round(Date.now() / 1000).toString();
-    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
-    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
-  };
-
-  var browser = navigator.userAgent.toLowerCase();
-  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
-
-  var reloaders = {
-    page: function page() {
-      window.location.reload(true);
-    },
-
-    stylesheet: function stylesheet() {
-      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
-        var val = link.getAttribute('data-autoreload');
-        return link.href && val != 'false';
-      }).forEach(function (link) {
-        link.href = cacheBuster(link.href);
-      });
-
-      // Hack to force page repaint after 25ms.
-      if (forceRepaint) setTimeout(function () {
-        document.body.offsetHeight;
-      }, 25);
-    },
-
-    javascript: function javascript() {
-      var scripts = [].slice.call(document.querySelectorAll('script'));
-      var textScripts = scripts.map(function (script) {
-        return script.text;
-      }).filter(function (text) {
-        return text.length > 0;
-      });
-      var srcScripts = scripts.filter(function (script) {
-        return script.src;
-      });
-
-      var loaded = 0;
-      var all = srcScripts.length;
-      var onLoad = function onLoad() {
-        loaded = loaded + 1;
-        if (loaded === all) {
-          textScripts.forEach(function (script) {
-            eval(script);
-          });
-        }
-      };
-
-      srcScripts.forEach(function (script) {
-        var src = script.src;
-        script.remove();
-        var newScript = document.createElement('script');
-        newScript.src = cacheBuster(src);
-        newScript.async = true;
-        newScript.onload = onLoad;
-        document.head.appendChild(newScript);
-      });
-    }
-  };
-  var port = ar.port || 9485;
-  var host = br.server || window.location.hostname || 'localhost';
-
-  var connect = function connect() {
-    var connection = new WebSocket('ws://' + host + ':' + port);
-    connection.onmessage = function (event) {
-      if (ar.disabled) return;
-      var message = event.data;
-      var reloader = reloaders[message] || reloaders.page;
-      reloader();
-    };
-    connection.onerror = function () {
-      if (connection.readyState) connection.close();
-    };
-    connection.onclose = function () {
-      window.setTimeout(connect, 1000);
-    };
-  };
-  connect();
-})();
-/* jshint ignore:end */
-
-;
 //# sourceMappingURL=app.js.map

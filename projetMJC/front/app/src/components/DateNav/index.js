@@ -22,7 +22,7 @@ const Nav = ({ currentDate, actions }) => {
 
   return (
     <div id="notebook-navigation">
-      <button onClick={actions.downDay} id="left-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-left" aria-hidden="true" /></button>
+      <button onClick={actions.downDay} id="left-arrow" className="nav-arrow"><i className="fa fa-arrow-circle-left " aria-hidden="true" /></button>
       <DatePicker
         dateFormat="DD/MM/YYYY"
         selected={currentDate}

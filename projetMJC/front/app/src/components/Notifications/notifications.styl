@@ -15,37 +15,45 @@
     font-family: font-flower
 
   &-messages
-    text-align: left
-    background-color: rgba(215, 44, 44, 0.7);
-    padding: 1em
-    position: absolute
-    right: 20px
-    width: 378px
-    border: 1px solid black
-    z-index: 0
-    transition: all 1s
-    z-index: 1
+    text-align: left;
+    background-color: #db4168;
+    padding: 1em;
+    position: absolute;
+    right: 20px;
+    width: 378px;
+    z-index: 0;
+    //border: 1px solid #af2121
+    box-shadow: 5px 5px 15px -4px #af2121;
+
+    z-index: 1;
+    &-container
+      position: absolute
+      right: 40px
+      transition: all 1s;
 
   &-counter
     display: inline-block
     position: relative
     cursor: pointer
     z-index: 2
+    color: #df80cb
+
     &-icon
-      color: blue
-      font-size: 2.5em
+      font-size: 3em
       position: absolute
       top: 1px
       right: 1px
+
     &-count
       position: absolute
-      top: 0
-      right: 1px
-      padding: 1px 3px;
+      top: -2px
+      right: -2px
+      padding: 2px 4px;
+      font-size: .8em
       display: inline-block;
-      border-radius: 50%
-      background: red;
-      border: 1px solid black
+      border-radius: 30%
+      background: rgba(128,171,223,1);
+      border: 1px solid #FFF
       color: #FFF
       font-weight: bold
       z-index: 1
@@ -56,6 +64,32 @@
   right: -550px!important
   transform: rotate(270deg);
 
-
 .close-notif
   margin-left: .5em
+
+.active-counter
+  color: #9e2885
+  transition: color 1s ease-in
+
+.triangle
+  width: 1px;
+  height: 1px;
+  border: 1px solid #000;
+  border-color: transparent transparent #db4168 transparent;
+  border-width: 16px;
+  position: absolute;
+  right: -12px;
+  top: 10px;
+  z-index: 2;
+  transform: rotate(90deg);
+.triangle:before
+  //content: '';
+  border: 1px solid #069;
+  border-color: transparent transparent #db4168 transparent;
+  width: 1px;
+  height: 1px;
+  border-width: 16px;
+  position: absolute;
+  top: -14px;
+  left: r;
+  right: -16px;
