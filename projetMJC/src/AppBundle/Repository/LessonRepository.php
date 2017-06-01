@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class LessonRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function showAllAction()
+    {
+      $query = $this->getEntityManager()->createQuery(
+          'SELECT s FROM AppBundle:Lesson s ORDER BY s.startAt DESC'
+      );
+      return $query->getResult();
+    }
 }
