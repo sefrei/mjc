@@ -1123,6 +1123,7 @@ button {
 #notifications-messages-container {
   position: absolute;
   right: 40px;
+  top: 1em;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -1158,18 +1159,18 @@ button {
           user-select: none;
 }
 .hide-notif {
-  opacity: 0;
-  right: -550px !important;
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
+  top: -120px !important;
 }
 .close-notif {
   margin-left: 0.5em;
 }
 .active-counter {
   color: #9e2885;
-  -webkit-transition: color 1s ease-in;
-  transition: color 1s ease-in;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+}
+.notif i {
+  cursor: pointer;
 }
 .triangle {
   width: 1px;

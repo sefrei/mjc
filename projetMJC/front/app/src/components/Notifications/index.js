@@ -16,6 +16,12 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
   const onClick = (evt) => {
     actions.changeNotificationState(evt);
   };
+  const notificationsNotRead = notifications.filter((notif) => {
+    if (notif.state) {
+      return notif;
+    }
+    return null;
+  });
   return (
     <div id="notifications">
       <div onClick={actions.displayNotifications} id="notifications-counter">
@@ -28,7 +34,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           aria-hidden="true"
         />
         <div id="notifications-counter-count">
-          {notifications.length}
+          {notificationsNotRead.length}
         </div>
       </div>
       <div
@@ -43,7 +49,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           {notifications.map((notif) => {
             if (notif.state) {
               return (
-                <p key={notif.id} onClick={() => onClick(notif.id)} >
+                <p className="notif" key={notif.id} onClick={() => onClick(notif.id)} >
                   <Link
                     to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_event}`}
                   >
@@ -53,7 +59,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
                 </p>
               );
             }
-            return '';
+            return null;
           })}
           <p>Tout marquer comme vu</p>
         </div>

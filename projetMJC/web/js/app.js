@@ -43744,6 +43744,12 @@ var Notifications = function Notifications(_ref) {
   var _onClick = function _onClick(evt) {
     actions.changeNotificationState(evt);
   };
+  var notificationsNotRead = notifications.filter(function (notif) {
+    if (notif.state) {
+      return notif;
+    }
+    return null;
+  });
   return _react2.default.createElement(
     'div',
     { id: 'notifications' },
@@ -43758,7 +43764,7 @@ var Notifications = function Notifications(_ref) {
       _react2.default.createElement(
         'div',
         { id: 'notifications-counter-count' },
-        notifications.length
+        notificationsNotRead.length
       )
     ),
     _react2.default.createElement(
@@ -43780,7 +43786,7 @@ var Notifications = function Notifications(_ref) {
           if (notif.state) {
             return _react2.default.createElement(
               'p',
-              { key: notif.id, onClick: function onClick() {
+              { className: 'notif', key: notif.id, onClick: function onClick() {
                   return _onClick(notif.id);
                 } },
               _react2.default.createElement(
@@ -43794,7 +43800,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement('i', { className: 'fa fa-times close-notif', 'aria-hidden': 'true' })
             );
           }
-          return '';
+          return null;
         }),
         _react2.default.createElement(
           'p',
