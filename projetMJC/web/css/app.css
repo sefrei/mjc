@@ -198,10 +198,23 @@ button {
   width: 100%;
 }
 
+/* Mobile First CSS */
 #root {
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
+/* Mobile + */
+/* Phablets */
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  #root {
+    width: 70%;
+    margin: auto;
+  }
+}
+/* Desktop HD */
+/* Desktop Wide */
 
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle,
 .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,
