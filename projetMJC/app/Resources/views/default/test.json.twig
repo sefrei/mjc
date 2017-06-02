@@ -1,33 +1,34 @@
 {
-{#dump( app.user )#}
   "activities" : [
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    {# dump(lessons)#}
       {%for inscription in inscriptions%}
-      {% for lesson in inscription.lessons %}
+        {% for lesson in inscription.lessons %}
+    		  {% if (app.user.id == inscription.teacher.id) or (app.user.id == inscription.student.id) %}
+            {
+              "activity_id" : {{ lesson.id }},
+              "speciality" : "{{ inscription.specialties.name }}",
+              "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
+              "startHour" : "{{ lesson.startAt | date("H\\hi") }}",
+              "finishHour" : "{{ inscription.finishAt | date("H\\hi") }}",
+              "prof" : "{{ inscription.teacher.firstname }} {{ inscription.teacher.lastname }}",
+              "duration": "30 minutes",
+              "appreciation" : "{{lesson.appreciation}}",
+              "presenceTeacher" : "{{lesson.teacherIsPresent}}",
+              "presenceStudent" : "{{lesson.studentIsPresent}}",
+              "student" : "{{ inscription.student.firstname }} {{ inscription.student.lastname }}"
+            }
 
-  		  {% if (app.user.id == inscription.teacher.id) or (app.user.id == inscription.student.id) %}
-        {
-          "activity_id" : {{ inscription.id }},
-          "speciality" : "{{ inscription.specialties.name }}",
-          "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
-          "startHour" : "{{ lesson.startAt | date("H\\hi") }}",
-          "finishHour" : "{{ inscription.finishAt | date("H\\hi") }}",
-  			  "prof" : "{{ inscription.teacher.firstname }} {{ inscription.teacher.lastname }}",
-          "duration": "30 minutes",
-          "appreciation" : "{{lesson.appreciation}}",
-          "presenceTeacher" : "{{lesson.teacherIsPresent}}",
-          "presenceStudent" : "{{lesson.studentIsPresent}}",
-  			  "student" : "{{ inscription.student.firstname }} {{ inscription.student.lastname }}"  }
-          {% if loop.last %}{% else %}
-          ,
+            {% if loop.last %}{% else %}
+            ,
+            {% endif %}
           {% endif %}
-  			{% endif %}
 
-        {% else %}
         {% endfor %}
+
+
         {% endfor %}
+
+
   	{% endif %}
-
   ]
 }
