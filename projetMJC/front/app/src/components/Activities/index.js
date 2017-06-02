@@ -15,7 +15,7 @@ import ActivityLine from 'src/containers/Activities/ActivityLine';
  * Code
  */
 const Activities = ({ activities }) => (
-  <div id="activity">
+  <div id="activities">
     {activities.map(lesson => (
       <ActivityLine key={lesson.activity_id} {...lesson} />
     ))}

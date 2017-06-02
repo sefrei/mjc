@@ -151,13 +151,26 @@ button {
   outline: 0;
 }
 
-#activity {
+#activities {
   padding: 1em 1em 1em 2em;
-  background: rgba(128,171,223,0.4);
+  background: #3fa535;
+  color: #e1e1e1;
+  border-radius: 1em;
 }
 .activity {
   margin: 0.5em auto;
   display: inline-block;
+  background: #78d16f;
+  padding: 0 0.5em;
+  border-radius: 1em;
+  width: 100%;
+}
+.activity-link {
+  vertical-align: middle;
+  width: auto;
+}
+.activity-link:hover {
+  color: #9b35a5;
 }
 
 #activity-view {
@@ -184,13 +197,11 @@ button {
   resize: none;
   width: 100%;
 }
-.present {
-  color: #008000;
-}
-.absent {
-  color: #f00;
-}
 
+#root {
+  width: 70%;
+  margin: auto;
+}
 
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle,
 .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,
@@ -1014,7 +1025,9 @@ button {
 }
 #notebook-navigation {
   text-align: center;
-  margin: 3em;
+}
+#notebook-navigation-nav {
+  margin: 2em 20em;
 }
 .date-picker {
   font-size: 1em;
@@ -1033,10 +1046,10 @@ button {
   font-size: 2em;
   -webkit-transition: 1s;
   transition: 1s;
-  color: #df80cb;
+  color: #78d16f;
 }
 .nav-arrow:hover {
-  color: #9e2885;
+  color: #3fa535;
 }
 #left-arrow {
   float: left;
@@ -1055,14 +1068,17 @@ button {
 #date-title {
   font-size: 2em;
   margin: 1em auto;
-  text-transform: capitalize;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 
 #nextActivities {
   padding: 1em 1em 1em 2em;
-  background: rgba(128,171,223,0.4);
+  background: #000;
   width: 400px;
+  color: #fff;
+  border-radius: 1em;
 }
 #nextActivities h1 {
   font-size: 1.5em;
@@ -1085,13 +1101,15 @@ button {
 }
 
 #notebook {
-  width: 900px;
+  width: 100%;
   margin: 3em auto;
-  background: rgba(169,219,233,0.9);
+  background: #fff;
   padding: 1em;
   position: relative;
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;
+  border-radius: 1em;
+  border: 1px solid #000;
 }
 
 #notifications {
@@ -1110,14 +1128,13 @@ button {
 }
 #notifications-messages {
   text-align: left;
-  background-color: #db4168;
+  background-color: #000;
+  color: #fff;
   padding: 1em;
   position: absolute;
   right: 20px;
   width: 378px;
   z-index: 0;
-  -webkit-box-shadow: 5px 5px 15px -4px #af2121;
-          box-shadow: 5px 5px 15px -4px #af2121;
   z-index: 1;
   border-radius: 20px;
 }
@@ -1133,7 +1150,7 @@ button {
   position: relative;
   cursor: pointer;
   z-index: 2;
-  color: #df80cb;
+  color: #78d16f;
 }
 #notifications-counter-icon {
   font-size: 3em;
@@ -1149,7 +1166,7 @@ button {
   font-size: 0.8em;
   display: inline-block;
   border-radius: 30%;
-  background: #80abdf;
+  background: #78d16f;
   border: 1px solid #fff;
   color: #fff;
   font-weight: bold;
@@ -1166,7 +1183,7 @@ button {
   margin-left: 0.5em;
 }
 .active-counter {
-  color: #9e2885;
+  color: #3fa535;
   -webkit-transition: color 1s;
   transition: color 1s;
 }
@@ -1177,7 +1194,7 @@ button {
   width: 1px;
   height: 1px;
   border: 1px solid #000;
-  border-color: transparent transparent #db4168 transparent;
+  border-color: transparent transparent #000 transparent;
   border-width: 16px;
   position: absolute;
   right: -30px;
@@ -1198,8 +1215,75 @@ button {
   right: -16px;
 }
 
+/* BUTTON 1 */
+
+.one {
+  margin: auto .5em;
+  display: inline-block;
+  vertical-align: middle
+}
+.one .button-wrap {
+  width: 110px;
+  margin: auto;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.one .button-bg {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 40px;
+  padding: 2px;
+  color:#fff;
+  -webkit-transition: all 0.2s ease;
+  transition:all 0.2s ease;
+}
+.one .button-switch {
+  position:relative;
+  left:0px;
+  width: 55px;
+  height: 25px;
+  border:solid 3px;
+  border-radius: 36px;
+  -webkit-transition: all 0.2s ease;
+  transition:all 0.2s ease;
+}
+.one .button-active .button-switch { left:51px; }
+.one .button-in,
+.one .button-out {
+  position:absolute;
+  -webkit-transition: all 0.2s ease;
+  transition:all 0.2s ease;
+  padding-top:9px;
+  font-size:0.6em;
+  text-transform:uppercase;
+  font-weight:bold;
+}
+.one .button-in { margin-left:58px; }
+.one .button-out { margin-left:9px; color:#dd2222; }
+.one .button-active .button-out { color:#fff; }
+.one .button-active .button-in { color:#22dd22; }
+.one .button-active .button-bg { background-color:#000; }
+
 .presence {
   display: inline-block;
+  vertical-align: middle;
+  margin-left: 1em;
+  border-left: 1px solid #35a550;
+  padding: 0.5em;
+  width: 300px;
+}
+.activity-statut {
+  display: inline-block;
+}
+.present {
+  color: #2dbb1f;
+}
+.absent {
+  color: #f00;
 }
 
 

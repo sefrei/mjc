@@ -1,4 +1,9 @@
 export default {
+  user: {
+    id: 1,
+    name: 'Julien',
+    type: 'student',
+  },
   activity: [
     {
       id: 1,

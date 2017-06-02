@@ -1,0 +1,46 @@
+/* BUTTON 1 */
+
+.one {
+  margin: auto .5em;
+  display: inline-block;
+  vertical-align: middle
+}
+.one .button-wrap {
+  width: 110px;
+  margin: auto;
+  cursor: pointer;
+  user-select: none;
+}
+.one .button-bg {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 40px;
+  padding: 2px;
+  color:#fff;
+  transition:all 0.2s ease;
+}
+.one .button-switch {
+  position:relative;
+  left:0px;
+  width: 55px;
+  height: 25px;
+  border:solid 3px;
+  border-radius: 36px;
+  transition:all 0.2s ease;
+}
+.one .button-active .button-switch { left:51px; }
+.one .button-in,
+.one .button-out {
+  position:absolute;
+  transition:all 0.2s ease;
+  padding-top:9px;
+  font-size:0.6em;
+  text-transform:uppercase;
+  font-weight:bold;
+}
+.one .button-in { margin-left:58px; }
+.one .button-out { margin-left:9px; color:#dd2222; }
+.one .button-active .button-out { color:#fff; }
+.one .button-active .button-in { color:#22dd22; }
+.one .button-active .button-bg { background-color:#000; }

@@ -43142,37 +43142,30 @@ var ActivityLine = function ActivityLine(_ref) {
       speciality = _ref.speciality,
       presenceStudent = _ref.presenceStudent,
       presenceTeacher = _ref.presenceTeacher,
-      student = _ref.student;
+      student = _ref.student,
+      prof = _ref.prof,
+      user = _ref.user;
 
-  var stateActivity = !presenceTeacher || !presenceStudent;
+  var stateActivity = presenceTeacher && presenceStudent;
+  var interlocuteur = user.type === 'student' ? prof : student;
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
     _react2.default.createElement(
       _reactRouterDom.Link,
       {
+        className: 'activity-link',
         to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + id
       },
-      'Activit\xE9 ',
-      id,
-      ' de ',
       startHour,
       ' \xE0 ',
       finishHour,
-      ' : Cours de ',
+      ' - Cours de ',
       speciality,
       ' avec ',
-      student,
-      ' | Statut :',
-      _react2.default.createElement(
-        'span',
-        {
-          className: (0, _classnames2.default)('activity-state', { absent: stateActivity }, { present: !stateActivity })
-        },
-        stateActivity ? 'Annulé' : 'Pas annulé'
-      )
+      interlocuteur
     ),
-    _react2.default.createElement(_Presence2.default, { teacher: presenceTeacher, id: id })
+    _react2.default.createElement(_Presence2.default, { presenceTeacher: presenceTeacher, presenceStudent: presenceStudent, stateActivity: stateActivity, id: id })
   );
 };
 /*
@@ -43192,7 +43185,9 @@ ActivityLine.propTypes = {
   speciality: _propTypes2.default.string.isRequired,
   presenceStudent: _propTypes2.default.bool.isRequired,
   presenceTeacher: _propTypes2.default.bool.isRequired,
-  student: _propTypes2.default.string.isRequired
+  student: _propTypes2.default.string.isRequired,
+  prof: _propTypes2.default.string.isRequired,
+  user: _propTypes2.default.object.isRequired
 };
 
 /*
@@ -43243,7 +43238,7 @@ var Activities = function Activities(_ref) {
   var activities = _ref.activities;
   return _react2.default.createElement(
     'div',
-    { id: 'activity' },
+    { id: 'activities' },
     activities.map(function (lesson) {
       return _react2.default.createElement(_ActivityLine2.default, _extends({ key: lesson.activity_id }, lesson));
     })
@@ -43318,7 +43313,7 @@ var Activity = function Activity(_ref) {
     console.info('Actions : Enregistrer dans la BDD');
     // actions.addTask();
   };
-  var stateActivity = !presenceTeacher || !presenceStudent;
+  var stateActivity = presenceTeacher && presenceStudent;
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -43356,7 +43351,7 @@ var Activity = function Activity(_ref) {
       { onClick: actions.resetObservation },
       'Annuler Modification de l\'observation'
     ),
-    _react2.default.createElement(_Presence2.default, { teacher: presenceTeacher, id: id }),
+    _react2.default.createElement(_Presence2.default, { presenceTeacher: presenceTeacher, presenceStudent: presenceStudent, stateActivity: stateActivity, id: id }),
     _react2.default.createElement(
       'p',
       null,
@@ -43519,21 +43514,25 @@ var Nav = function Nav(_ref) {
     'div',
     { id: 'notebook-navigation' },
     _react2.default.createElement(
-      'button',
-      { onClick: actions.downDay, id: 'left-arrow', className: 'nav-arrow' },
-      _react2.default.createElement('i', { className: 'fa fa-arrow-circle-left ', 'aria-hidden': 'true' })
-    ),
-    _react2.default.createElement(_reactDatepicker2.default, {
-      dateFormat: 'DD/MM/YYYY',
-      selected: currentDate,
-      onChange: onChange,
-      className: 'date-picker',
-      locale: 'fr'
-    }),
-    _react2.default.createElement(
-      'button',
-      { onClick: actions.upDay, id: 'right-arrow', className: 'nav-arrow' },
-      _react2.default.createElement('i', { className: 'fa fa-arrow-circle-right', 'aria-hidden': 'true' })
+      'div',
+      { id: 'notebook-navigation-nav' },
+      _react2.default.createElement(
+        'button',
+        { onClick: actions.downDay, id: 'left-arrow', className: 'nav-arrow' },
+        _react2.default.createElement('i', { className: 'fa fa-arrow-circle-left ', 'aria-hidden': 'true' })
+      ),
+      _react2.default.createElement(_reactDatepicker2.default, {
+        dateFormat: 'DD/MM/YYYY',
+        selected: currentDate,
+        onChange: onChange,
+        className: 'date-picker',
+        locale: 'fr'
+      }),
+      _react2.default.createElement(
+        'button',
+        { onClick: actions.upDay, id: 'right-arrow', className: 'nav-arrow' },
+        _react2.default.createElement('i', { className: 'fa fa-arrow-circle-right', 'aria-hidden': 'true' })
+      )
     ),
     _react2.default.createElement(
       'h2',
@@ -43839,6 +43838,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
@@ -43851,30 +43854,93 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Code
  */
-/*
- * Npm import
- */
 var Presence = function Presence(_ref) {
-  var teacher = _ref.teacher,
-      actions = _ref.actions;
+  var presenceTeacher = _ref.presenceTeacher,
+      presenceStudent = _ref.presenceStudent,
+      actions = _ref.actions,
+      stateActivity = _ref.stateActivity,
+      user = _ref.user;
+
+  var presenceType = user.type === 'student' ? presenceStudent : presenceTeacher;
+  var switchPresenceUser = user.type === 'student' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
   return _react2.default.createElement(
     'div',
     { className: 'presence' },
-    teacher ? _react2.default.createElement(
-      'button',
-      { onClick: actions.switchPresenceTeacher },
-      'Je serais absent'
+    presenceType ? _react2.default.createElement(
+      'div',
+      { onClick: switchPresenceUser, className: 'one' },
+      _react2.default.createElement(
+        'div',
+        { className: 'button-wrap button-active' },
+        _react2.default.createElement(
+          'div',
+          { className: 'button-bg' },
+          _react2.default.createElement(
+            'div',
+            { className: 'button-out' },
+            'absent'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'button-in' },
+            'Pr\xE9sent'
+          ),
+          _react2.default.createElement('div', { className: 'button-switch' })
+        )
+      )
     ) : _react2.default.createElement(
-      'button',
-      { onClick: actions.switchPresenceTeacher },
-      'Je serais pr\xE9sent'
+      'div',
+      { onClick: switchPresenceUser, className: 'one' },
+      _react2.default.createElement(
+        'div',
+        { className: 'button-wrap' },
+        _react2.default.createElement(
+          'div',
+          { className: 'button-bg' },
+          _react2.default.createElement(
+            'div',
+            { className: 'button-out' },
+            'absent'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'button-in' },
+            'Pr\xE9sent'
+          ),
+          _react2.default.createElement('div', { className: 'button-switch' })
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'activity-statut' },
+      _react2.default.createElement(
+        'span',
+        {
+          className: (0, _classnames2.default)('activity-state', { absent: !stateActivity }, { present: stateActivity })
+        },
+        stateActivity ? _react2.default.createElement(
+          'span',
+          { className: 'label label-success' },
+          'Cours'
+        ) : _react2.default.createElement(
+          'span',
+          { className: 'label label-danger' },
+          'Annul\xE9'
+        )
+      )
     )
   );
-};
+}; /*
+    * Npm import
+    */
 
 Presence.propTypes = {
-  teacher: _propTypes2.default.bool.isRequired,
-  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
+  presenceTeacher: _propTypes2.default.bool.isRequired,
+  presenceStudent: _propTypes2.default.bool.isRequired,
+  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired,
+  stateActivity: _propTypes2.default.bool.isRequired,
+  user: _propTypes2.default.object.isRequired
 };
 
 /*
@@ -43905,7 +43971,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Npm import
  */
-var mapStateToProps = null;
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+};
 /*
  * Local import
  */
@@ -44231,9 +44301,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Local import
  */
-var mapStateToProps = null; /*
-                             * Npm import
-                             */
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}; /*
+    * Npm import
+    */
 
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref) {
@@ -44242,6 +44316,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref) {
     actions: {
       switchPresenceTeacher: function switchPresenceTeacher() {
         dispatch((0, _reducer.switchPresenceTeacher)(id));
+      },
+      switchPresenceStudent: function switchPresenceStudent() {
+        dispatch((0, _reducer.switchPresenceStudent)(id));
       }
     }
   };
@@ -44267,6 +44344,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
+  user: {
+    id: 1,
+    name: 'Julien',
+    type: 'student'
+  },
   activity: [{
     id: 1,
     startDate: '2017-05-23 09:00:00',
@@ -44548,7 +44630,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44581,6 +44663,7 @@ var UP_DAY = 'UP_DAY';
 var DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
+var SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 var RESET_OBSERVATION = 'RESET_OBSERVATION';
 var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
@@ -44591,6 +44674,7 @@ var CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
  */
 var initialState = {
   currentDate: (0, _moment2.default)(),
+  user: _datas2.default.user,
   activities: [],
   notifications: _datas2.default.notifications,
   nextDayActivities: _datas2.default.nextDayActivities,
@@ -44652,36 +44736,51 @@ exports.default = function () {
           activities: activities
         });
       }
-    case INPUT_OBSERVATION_CHANGE:
+    case SWITCH_PRESENCE_STUDENT:
       {
         var _id = action.id;
-        var input = action.input;
 
         _id = parseInt(_id, 10);
         var _activities = [].concat(_toConsumableArray(state.activities));
         _activities.forEach(function (activity) {
           if (activity.activity_id === _id) {
-            activity.observation = input;
+            activity.presenceStudent = !activity.presenceStudent;
           }
         });
         return _extends({}, state, {
           activities: _activities
         });
       }
-    case RESET_OBSERVATION:
+    case INPUT_OBSERVATION_CHANGE:
       {
         var _id2 = action.id;
+        var input = action.input;
 
         _id2 = parseInt(_id2, 10);
         var _activities2 = [].concat(_toConsumableArray(state.activities));
         _activities2.forEach(function (activity) {
           if (activity.activity_id === _id2) {
+            activity.observation = input;
+          }
+        });
+        return _extends({}, state, {
+          activities: _activities2
+        });
+      }
+    case RESET_OBSERVATION:
+      {
+        var _id3 = action.id;
+
+        _id3 = parseInt(_id3, 10);
+        var _activities3 = [].concat(_toConsumableArray(state.activities));
+        _activities3.forEach(function (activity) {
+          if (activity.activity_id === _id3) {
             console.info('action : Axios récupérer lobservation en bdd pour cette activité');
             activity.observation = activity.observation;
           }
         });
         return _extends({}, state, {
-          activities: _activities2
+          activities: _activities3
         });
       }
     case DISPLAY_NOTIFICATIONS:
@@ -44693,11 +44792,11 @@ exports.default = function () {
       }
     case CHANGE_STATE_NOTIFICATION:
       {
-        var _id3 = action.id;
+        var _id4 = action.id;
 
         var notifications = [].concat(_toConsumableArray(state.notifications));
         notifications.forEach(function (notif) {
-          if (notif.id === _id3) {
+          if (notif.id === _id4) {
             console.info('action : Axios changer letat de la notif');
             notif.state = false;
           }
@@ -44735,9 +44834,16 @@ var downDay = exports.downDay = function downDay() {
     type: DOWN_DAY
   };
 };
+
 var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPresenceTeacher(id) {
   return {
     type: SWITCH_PRESENCE_TEACHER,
+    id: id
+  };
+};
+var switchPresenceStudent = exports.switchPresenceStudent = function switchPresenceStudent(id) {
+  return {
+    type: SWITCH_PRESENCE_STUDENT,
     id: id
   };
 };

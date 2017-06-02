@@ -10,7 +10,9 @@ import Activity from 'src/components/Activities/ActivityLine';
 /*
  * Code
  */
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
 const mapDispatchToProps = null;
 

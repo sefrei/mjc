@@ -29,7 +29,7 @@ const Activity = ({
     console.info('Actions : Enregistrer dans la BDD');
     // actions.addTask();
   };
-  const stateActivity = (!presenceTeacher || !presenceStudent);
+  const stateActivity = (presenceTeacher && presenceStudent);
   return (
     <div id="activity-view">
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
@@ -39,7 +39,7 @@ const Activity = ({
         <input type="text" onChange={onChange} id="observation" placeholder="Votre observation..." value={observation} />
       </form>
       <button onClick={actions.resetObservation}>Annuler Modification de l'observation</button>
-      <Presence teacher={presenceTeacher} id={id} />
+      <Presence presenceTeacher={presenceTeacher} presenceStudent={presenceStudent}  stateActivity={stateActivity} id={id} />
       <p>Vous êtes actuellement
         <span
           className={classNames(

@@ -15,6 +15,7 @@ const UP_DAY = 'UP_DAY';
 const DOWN_DAY = 'DOWN_DAY';
 const SET_ACTIVITIES = 'SET_ACTIVITIES';
 const SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
+const SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 const RESET_OBSERVATION = 'RESET_OBSERVATION';
 const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
@@ -25,6 +26,7 @@ const CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
  */
 const initialState = {
   currentDate: moment(),
+  user: datas.user,
   activities: [],
   notifications: datas.notifications,
   nextDayActivities: datas.nextDayActivities,
@@ -84,6 +86,21 @@ export default (state = initialState, action = {}) => {
         activities.forEach((activity) => {
           if (activity.activity_id === id) {
             activity.presenceTeacher = !activity.presenceTeacher;
+          }
+        });
+        return {
+          ...state,
+          activities,
+        };
+      }
+    case SWITCH_PRESENCE_STUDENT:
+      {
+        let { id } = action;
+        id = parseInt(id, 10);
+        const activities = [...state.activities];
+        activities.forEach((activity) => {
+          if (activity.activity_id === id) {
+            activity.presenceStudent = !activity.presenceStudent;
           }
         });
         return {
@@ -179,8 +196,13 @@ export const downDay = () => {
   }
   );
 };
+
 export const switchPresenceTeacher = id => ({
   type: SWITCH_PRESENCE_TEACHER,
+  id,
+});
+export const switchPresenceStudent = id => ({
+  type: SWITCH_PRESENCE_STUDENT,
   id,
 });
 export const setActivities = activities => ({

@@ -1,8 +1,11 @@
 @import 'datepicker.styl'
+@import "../var.styl"
 
 #notebook-navigation
   text-align: center
-  margin: 3em
+
+#notebook-navigation-nav
+  margin: 2em 20em
 
 .date-picker
   font-size: 1em;
@@ -19,9 +22,9 @@
   border: none
   font-size: 2em
   transition: 1s
-  color: #df80cb
+  color: #78d16f
   &:hover
-    color: #9e2885
+    color: #3fa535
 
 #left-arrow
   float: left
@@ -36,4 +39,5 @@
 #date-title
   font-size: 2em
   margin: 1em auto
-  text-transform: capitalize
+  font-weight: bold
+  text-transform: uppercase

@@ -7,17 +7,22 @@ import { connect } from 'react-redux';
  * Local import
  */
 import Presence from 'src/components/Presence';
-import { switchPresenceTeacher } from 'src/store/reducer';
+import { switchPresenceTeacher, switchPresenceStudent } from 'src/store/reducer';
 
 /*
  * Code
  */
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
 const mapDispatchToProps = (dispatch, { id }) => ({
   actions: {
     switchPresenceTeacher: () => {
       dispatch(switchPresenceTeacher(id));
+    },
+    switchPresenceStudent: () => {
+      dispatch(switchPresenceStudent(id));
     },
   },
 });

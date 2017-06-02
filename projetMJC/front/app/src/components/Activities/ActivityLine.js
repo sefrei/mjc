@@ -15,27 +15,19 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_id: id, speciality, presenceStudent, presenceTeacher, student }) => {
-  const stateActivity = (!presenceTeacher || !presenceStudent);
+const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_id: id, speciality, presenceStudent, presenceTeacher, student, prof, user }) => {
+  const stateActivity = (presenceTeacher && presenceStudent);
+  const interlocuteur = user.type === 'student' ? prof : student;
   return (
     <div className="activity">
       <Link
+        className="activity-link"
         to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
       >
-        Activité {id} de {startHour} à {finishHour} :
-        Cours de {speciality} avec {student} |
-        Statut :
-        <span
-          className={classNames(
-          'activity-state',
-          { absent: stateActivity },
-          { present: !stateActivity },
-        )}
-        >
-          {stateActivity ? 'Annulé' : 'Pas annulé'}
-        </span>
+        {startHour} à {finishHour} -
+        Cours de {speciality} avec {interlocuteur}
       </Link>
-      <Presence teacher={presenceTeacher} id={id} />
+      <Presence presenceTeacher={presenceTeacher} presenceStudent={presenceStudent} stateActivity={stateActivity} id={id} />
     </div>
   );
 };
@@ -50,6 +42,8 @@ ActivityLine.propTypes = {
   presenceStudent: PropTypes.bool.isRequired,
   presenceTeacher: PropTypes.bool.isRequired,
   student: PropTypes.string.isRequired,
+  prof: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 /*
