@@ -68,12 +68,13 @@ class Subscription
 
     /**
      * One Subscription for Many Lessons
-     * @ORM\OneToMany(targetEntity="Lesson", mappedBy="subscription", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Lesson", mappedBy="subscription", orphanRemoval=true, cascade={"all"})
      */
      private $lessons;
 
     /**
      * @ORM\ManyToOne(targetEntity="Specialty", cascade={"persist"})
+     *
      */
     private $specialties;
 
