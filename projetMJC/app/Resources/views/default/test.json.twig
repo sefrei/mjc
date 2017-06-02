@@ -3,7 +3,7 @@
   "activities" : [
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     {# dump(lessons)#}
-      {%for inscription in inscriptions}
+      {%for inscription in inscriptions%}
       {% for lesson in inscription.lessons %}
 
   		  {% if (app.user.id == inscription.teacher.id) or (app.user.id == inscription.student.id) %}
@@ -12,13 +12,12 @@
           "speciality" : "{{ inscription.specialties.name }}",
           "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
           "startHour" : "{{ lesson.startAt | date("H\\hi") }}",
-          "finishDate" : "{{ lesson.finishAt | date("d-m-Y") }}",
           "finishHour" : "{{ inscription.finishAt | date("H\\hi") }}",
   			  "prof" : "{{ inscription.teacher.firstname }} {{ inscription.teacher.lastname }}",
           "duration": "30 minutes",
           "appreciation" : "{{lesson.appreciation}}",
-          "presenceTeacher" : lesson.teacherIsPresent,
-          "presenceStudent" : lesson.studentIsPresent,
+          "presenceTeacher" : "{{lesson.teacherIsPresent}}",
+          "presenceStudent" : "{{lesson.studentIsPresent}}",
   			  "student" : "{{ inscription.student.firstname }} {{ inscription.student.lastname }}"  }
           {% if loop.last %}{% else %}
           ,
