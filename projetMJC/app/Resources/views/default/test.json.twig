@@ -19,23 +19,23 @@
               "presenceTeacher" : false,
 									{% endif %}
               {% if lesson.studentIsPresent %}
-              "presenceTeacher" : true,
+              "presenceStudent" : true,
 									{% else %}
               "presenceStudent" : false,
 									{% endif %}
               "student" : "{{ inscription.student.firstname }} {{ inscription.student.lastname }}"
             }
 
+
             {% if loop.last %}{% else %}
             ,
             {% endif %}
-          {% endif %}
+            {% endif %}
 
         {% endfor %}
 
 
         {% endfor %}
-
 
   	{% endif %}
   ]
