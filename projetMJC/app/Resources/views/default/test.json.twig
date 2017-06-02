@@ -2,29 +2,30 @@
 {#dump( app.user )#}
   "activities" : [
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    {# dump(inscriptions)#}
-      {% for item in inscriptions %}
+    {# dump(lessons)#}
+      {%for inscription in inscriptions%}
+      {% for lesson in inscription.lessons %}
 
-  		  {% if (app.user.id == item.teacher.id) or (app.user.id == item.student.id) %}
+  		  {% if (app.user.id == inscription.teacher.id) or (app.user.id == inscription.student.id) %}
         {
-          "activity_id" : {{ item.id }},
-          "speciality" : "{{ item.specialties.name }}",
-          "startDate" : "{{ item.startAt | date("d-m-Y") }}",
-          "startHour" : "{{ item.startAt | date("H\\hi") }}",
-          "finishDate" : "{{ item.finishAt | date("d-m-Y") }}",
-          "finishHour" : "{{ item.finishAt | date("H\\hi") }}",
-  			  "prof" : "{{ item.teacher.firstname }} {{ item.teacher.lastname }}",
+          "activity_id" : {{ inscription.id }},
+          "speciality" : "{{ inscription.specialties.name }}",
+          "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
+          "startHour" : "{{ lesson.startAt | date("H\\hi") }}",
+          "finishHour" : "{{ inscription.finishAt | date("H\\hi") }}",
+  			  "prof" : "{{ inscription.teacher.firstname }} {{ inscription.teacher.lastname }}",
           "duration": "30 minutes",
-          "observation" : "L'élève s'améliore de jour en jour !",
-          "presenceTeacher" : true,
-          "presenceStudent" : true,
-  			  "student" : "{{ item.student.firstname }} {{ item.student.lastname }}"  }
+          "appreciation" : "{{lesson.appreciation}}",
+          "presenceTeacher" : "{{lesson.teacherIsPresent}}",
+          "presenceStudent" : "{{lesson.studentIsPresent}}",
+  			  "student" : "{{ inscription.student.firstname }} {{ inscription.student.lastname }}"  }
           {% if loop.last %}{% else %}
           ,
           {% endif %}
   			{% endif %}
 
         {% else %}
+        {% endfor %}
         {% endfor %}
   	{% endif %}
 
