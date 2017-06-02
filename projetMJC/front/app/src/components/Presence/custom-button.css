@@ -39,7 +39,7 @@
   text-transform:uppercase;
   font-weight:bold;
 }
-.one .button-in { margin-left:58px; }
+.one .button-in { margin-left:57px; }
 .one .button-out { margin-left:9px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }

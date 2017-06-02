@@ -1,69 +1,59 @@
  @import "../var.styl"
+ /* Mobile First CSS */
+  #notifications
 
-#notifications
-  text-align:right
-  position: absolute
-  right: 10px
-  top: 0px
-
-  &-title
-    color: #FFF
-    font-size: 1.2em
-    margin-bottom: 0.3em
-    padding: 0
-    font-weight: 300
-    font-family: font-flower
-
-  &-messages
-    text-align: left;
-    background-color: #000
-    color: #FFF
-    padding: 1em;
-    position: absolute;
-    right: 20px;
-    width: 378px;
-    z-index: 0;
-    //box-shadow: 5px 5px 15px -4px #a53577;
-    z-index: 1;
-    border-radius: 20px
-
-    &-container
-      position: absolute
-      right: 40px
-      top: 1em
-      transition: all 1s;
-
-  &-counter
-    display: inline-block
-    position: relative
-    cursor: pointer
-    z-index: 2
-    color: #78d16f
-
-    &-icon
-      font-size: 3em
-      position: absolute
-      top: 15px
-      right: 1px
-
-    &-count
-      position: absolute
-      top: 12px
-      right: -2px
-      padding: 2px 4px;
-      font-size: .8em
-      display: inline-block;
-      border-radius: 30%
-      background: #78d16f
-      border: 1px solid #FFF
+    &-title
       color: #FFF
-      font-weight: bold
-      z-index: 1
-      user-select: none
+      font-size: 1.2em
+      margin-bottom: 0.3em
+      padding: 0
+      font-weight: 300
+      font-family: font-flower
+
+    &-counter
+      display: inline-block
+      position: relative
+      cursor: pointer
+      z-index: 2
+      color: #c0eabc
+      position: absolute
+      right: 1em
+      top: 1em
+      &-icon
+        font-size: 3em
+        position: absolute
+        top: 15px
+        right: 15px
+      &-count
+        position: absolute
+        top: 12px
+        right: 12px
+        padding: 2px 4px;
+        font-size: .8em
+        display: inline-block;
+        border-radius: 30%
+        background: #78d16f
+        border: 1px solid #FFF
+        color: #FFF
+        font-weight: bold
+        z-index: 1
+        user-select: none
+
+    &-messages
+      &-container
+        padding: 1em 1em 1em 2em
+        background: #000
+        width: 100%
+        color: #FFF
+        position: absolute
+        left: 0px
+        top: 0px
+        transition: all 1s;
 
 .hide-notif
   //opacity: 0
   top: -120px!important
+  position: absolute
   //transform: rotate(270deg);
 
 .close-notif
@@ -98,3 +88,30 @@
   top: -14px;
   left: r;
   right: -16px;
+ /* Mobile + */
+ //@media (min-width: 400px)
+
+ /* Phablets */
+ //@media (min-width: 550px)
+
+ /* Tablettes */
+ //@media (min-width: 750px)
+
+/* Desktop */
+@media (min-width: 1000px)
+  #notifications
+    &-counter
+      &-icon
+        right: 1
+      &-count
+        right: -2
+    &-messages
+      &-container
+        right: 40px
+        top: 0em
+
+ /* Desktop HD */
+ //@media (min-width: 1200px)
+
+ /* Desktop Wide */
+ //@media (min-width: 1400px)

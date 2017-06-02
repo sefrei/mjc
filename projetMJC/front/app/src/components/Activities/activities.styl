@@ -1,20 +1,48 @@
+/* Mobile First CSS */
 #activities
-  padding: 1em 1em 1em 2em
   background: #3fa535
-  color: #e1e1e1
-  border-radius: 1em
+  color: #333333
 
 .activity
   margin: .5em auto
+  padding: .5em
   display: inline-block
   background: #78d16f
-  padding: 0 .5em
-  border-radius: 1em
   width: 100%
+  text-align: center
+  &:first-child
+    margin-top: 1em
+  &:last-child
+    margin-bottom: 1em
 
+  &-link
+    vertical-align: middle
+    width: auto
+    &:hover
+      color:#9b35a5;
+/* Mobile + */
+//@media (min-width: 400px)
 
-.activity-link
-  vertical-align: middle
-  width: auto
-  &:hover
-    color:#9b35a5;
+/* Phablets */
+//@media (min-width: 550px)
+
+/* Tablettes */
+//@media (min-width: 750px)
+
+/* Desktop */
+@media (min-width: 1000px)
+  #activities
+    padding: 1em 1em 1em 2em
+    border-radius: 1em
+    margin: 2em
+  .activity
+    padding: 0 .5em
+    border-radius: 1em
+    &-hour
+      &:after
+        content: ' : '
+/* Desktop HD */
+//@media (min-width: 1200px)
+
+/* Desktop Wide */
+//@media (min-width: 1400px)

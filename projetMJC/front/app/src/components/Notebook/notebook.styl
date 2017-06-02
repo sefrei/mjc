@@ -1,11 +1,30 @@
 @import '../var.styl'
+/* Mobile First CSS */
 #notebook
   width: 100%
-  margin: 3em auto
+  margin: auto
   background: #FFF
-  padding: 1em
   position: relative
   font-family: font-main
   overflow: hidden
-  border-radius: 1em
-  border: 1px solid black
+
+/* Mobile + */
+//@media (min-width: 400px)
+
+/* Phablets */
+//@media (min-width: 550px)
+
+/* Tablettes */
+//@media (min-width: 750px)
+/* Desktop */
+@media (min-width: 1000px)
+  #notebook
+    width: 70%
+    border-radius: 1em
+    border: 1px solid black
+
+/* Desktop HD */
+//@media (min-width: 1200px)
+
+/* Desktop Wide */
+//@media (min-width: 1400px)

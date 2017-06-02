@@ -15,7 +15,7 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_id: id, speciality, presenceStudent, presenceTeacher, student, prof, user }) => {
+const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id, speciality, presenceStudent, presenceTeacher, student, prof, user }) => {
   const stateActivity = (presenceTeacher && presenceStudent);
   const interlocuteur = user.type === 'student' ? prof : student;
   return (
@@ -24,7 +24,7 @@ const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_i
         className="activity-link"
         to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
       >
-        {startHour} à {finishHour} -
+        <div className="activity-hour">{startHour} à {finishHour}</div>
         Cours de {speciality} avec {interlocuteur}
       </Link>
       <Presence presenceTeacher={presenceTeacher} presenceStudent={presenceStudent} stateActivity={stateActivity} id={id} />
@@ -35,7 +35,6 @@ const ActivityLine = ({ startDate, startHour, finishDate, finishHour, activity_i
 ActivityLine.propTypes = {
   startDate: PropTypes.string.isRequired,
   startHour: PropTypes.string.isRequired,
-  finishDate: PropTypes.string.isRequired,
   finishHour: PropTypes.string.isRequired,
   activity_id: PropTypes.number.isRequired,
   speciality: PropTypes.string.isRequired,

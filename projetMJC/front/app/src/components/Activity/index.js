@@ -17,9 +17,9 @@ import Presence from 'src/containers/Presence';
  * Code
  */
 const Activity = ({
-  currentDate, startDate, startHour, finishDate, finishHour,
+  currentDate, startDate, startHour, finishHour,
   presenceTeacher, presenceStudent, student, speciality,
-  activity_id: id, observation, actions }) => {
+  activity_id: id, appreciation, actions }) => {
   const onChange = (evt) => {
     const { value } = evt.target;
     actions.changeInputObservation(value);
@@ -36,7 +36,7 @@ const Activity = ({
       <h2 id="activity-title">Activité {id} : cours de {speciality} de {startHour} à {finishHour} avec l'élève {student}</h2>
       <label id="label-observation" htmlFor="observation">Observation :</label>
       <form id="form" onSubmit={onSubmit}>
-        <input type="text" onChange={onChange} id="observation" placeholder="Votre observation..." value={observation} />
+        <input type="text" onChange={onChange} id="observation" placeholder="Votre observation..." value={appreciation} />
       </form>
       <button onClick={actions.resetObservation}>Annuler Modification de l'observation</button>
       <Presence presenceTeacher={presenceTeacher} presenceStudent={presenceStudent}  stateActivity={stateActivity} id={id} />
@@ -76,14 +76,13 @@ Activity.propTypes = {
   currentDate: PropTypes.object.isRequired,
   startDate: PropTypes.string.isRequired,
   startHour: PropTypes.string.isRequired,
-  finishDate: PropTypes.string.isRequired,
   finishHour: PropTypes.string.isRequired,
   activity_id: PropTypes.number.isRequired,
   presenceTeacher: PropTypes.bool.isRequired,
   presenceStudent: PropTypes.bool.isRequired,
   student: PropTypes.string.isRequired,
   speciality: PropTypes.string.isRequired,
-  observation: PropTypes.string.isRequired,
+  appreciation: PropTypes.string.isRequired,
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
 };
 

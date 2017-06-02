@@ -43136,7 +43136,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ActivityLine = function ActivityLine(_ref) {
   var startDate = _ref.startDate,
       startHour = _ref.startHour,
-      finishDate = _ref.finishDate,
       finishHour = _ref.finishHour,
       id = _ref.activity_id,
       speciality = _ref.speciality,
@@ -43157,10 +43156,14 @@ var ActivityLine = function ActivityLine(_ref) {
         className: 'activity-link',
         to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + id
       },
-      startHour,
-      ' \xE0 ',
-      finishHour,
-      ' - Cours de ',
+      _react2.default.createElement(
+        'div',
+        { className: 'activity-hour' },
+        startHour,
+        ' \xE0 ',
+        finishHour
+      ),
+      'Cours de ',
       speciality,
       ' avec ',
       interlocuteur
@@ -43179,7 +43182,6 @@ var ActivityLine = function ActivityLine(_ref) {
 ActivityLine.propTypes = {
   startDate: _propTypes2.default.string.isRequired,
   startHour: _propTypes2.default.string.isRequired,
-  finishDate: _propTypes2.default.string.isRequired,
   finishHour: _propTypes2.default.string.isRequired,
   activity_id: _propTypes2.default.number.isRequired,
   speciality: _propTypes2.default.string.isRequired,
@@ -43293,14 +43295,13 @@ var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
       startDate = _ref.startDate,
       startHour = _ref.startHour,
-      finishDate = _ref.finishDate,
       finishHour = _ref.finishHour,
       presenceTeacher = _ref.presenceTeacher,
       presenceStudent = _ref.presenceStudent,
       student = _ref.student,
       speciality = _ref.speciality,
       id = _ref.activity_id,
-      observation = _ref.observation,
+      appreciation = _ref.appreciation,
       actions = _ref.actions;
 
   var onChange = function onChange(evt) {
@@ -43344,7 +43345,7 @@ var Activity = function Activity(_ref) {
     _react2.default.createElement(
       'form',
       { id: 'form', onSubmit: onSubmit },
-      _react2.default.createElement('input', { type: 'text', onChange: onChange, id: 'observation', placeholder: 'Votre observation...', value: observation })
+      _react2.default.createElement('input', { type: 'text', onChange: onChange, id: 'observation', placeholder: 'Votre observation...', value: appreciation })
     ),
     _react2.default.createElement(
       'button',
@@ -43397,14 +43398,13 @@ Activity.propTypes = {
   currentDate: _propTypes2.default.object.isRequired,
   startDate: _propTypes2.default.string.isRequired,
   startHour: _propTypes2.default.string.isRequired,
-  finishDate: _propTypes2.default.string.isRequired,
   finishHour: _propTypes2.default.string.isRequired,
   activity_id: _propTypes2.default.number.isRequired,
   presenceTeacher: _propTypes2.default.bool.isRequired,
   presenceStudent: _propTypes2.default.bool.isRequired,
   student: _propTypes2.default.string.isRequired,
   speciality: _propTypes2.default.string.isRequired,
-  observation: _propTypes2.default.string.isRequired,
+  appreciation: _propTypes2.default.string.isRequired,
   actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
 };
 
@@ -43572,6 +43572,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
@@ -43590,12 +43594,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Code
  */
-/*
- * Npm import
- */
 var NextActivities = function NextActivities(_ref) {
   var days = _ref.days,
-      actions = _ref.actions;
+      actions = _ref.actions,
+      displayNotifications = _ref.displayNotifications;
 
   var onChange = function onChange(evt) {
     var date = (0, _moment2.default)(evt);
@@ -43603,7 +43605,10 @@ var NextActivities = function NextActivities(_ref) {
   };
   return _react2.default.createElement(
     'div',
-    { id: 'nextActivities' },
+    {
+      id: 'nextActivities',
+      className: (0, _classnames2.default)({ 'hide-notif': displayNotifications })
+    },
     _react2.default.createElement(
       'h1',
       null,
@@ -43631,9 +43636,13 @@ var NextActivities = function NextActivities(_ref) {
       );
     })
   );
-};
+}; /*
+    * Npm import
+    */
+
 NextActivities.propTypes = {
   days: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired,
+  displayNotifications: _propTypes2.default.bool.isRequired,
   actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
 };
 
@@ -44198,7 +44207,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    days: state.nextDayActivities
+    days: state.nextDayActivities,
+    displayNotifications: state.displayNotifications
   };
 };
 
@@ -44760,7 +44770,7 @@ exports.default = function () {
         var _activities2 = [].concat(_toConsumableArray(state.activities));
         _activities2.forEach(function (activity) {
           if (activity.activity_id === _id2) {
-            activity.observation = input;
+            activity.appreciation = input;
           }
         });
         return _extends({}, state, {
@@ -44776,7 +44786,7 @@ exports.default = function () {
         _activities3.forEach(function (activity) {
           if (activity.activity_id === _id3) {
             console.info('action : Axios récupérer lobservation en bdd pour cette activité');
-            activity.observation = activity.observation;
+            activity.appreciation = activity.observation;
           }
         });
         return _extends({}, state, {

@@ -116,7 +116,7 @@ export default (state = initialState, action = {}) => {
         const activities = [...state.activities];
         activities.forEach((activity) => {
           if (activity.activity_id === id) {
-            activity.observation = input;
+            activity.appreciation = input;
           }
         });
         return {
@@ -132,7 +132,7 @@ export default (state = initialState, action = {}) => {
         activities.forEach((activity) => {
           if (activity.activity_id === id) {
             console.info('action : Axios récupérer lobservation en bdd pour cette activité');
-            activity.observation = activity.observation;
+            activity.appreciation = activity.observation;
           }
         });
         return {

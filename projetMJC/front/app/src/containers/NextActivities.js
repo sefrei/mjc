@@ -14,6 +14,7 @@ import { changeDate } from 'src/store/reducer';
  */
 const mapStateToProps = state => ({
   days: state.nextDayActivities,
+  displayNotifications: state.displayNotifications,
 });
 
 const mapDispatchToProps = dispatch => ({

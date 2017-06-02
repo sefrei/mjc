@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import moment from 'moment';
 import 'moment/locale/fr';
 /*
@@ -15,13 +16,18 @@ import 'moment/locale/fr';
 /*
  * Code
  */
-const NextActivities = ({ days, actions }) => {
+const NextActivities = ({ days, actions, displayNotifications }) => {
   const onChange = (evt) => {
     const date = moment(evt);
     actions.changeDate(date);
   };
   return (
-    <div id="nextActivities">
+    <div
+      id="nextActivities"
+      className={classNames(
+      { 'hide-notif': displayNotifications },
+      )}
+    >
       <h1>Prochaines journées active :</h1>
       {days.map(day => (
         <p
@@ -36,6 +42,7 @@ const NextActivities = ({ days, actions }) => {
 };
 NextActivities.propTypes = {
   days: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  displayNotifications: PropTypes.bool.isRequired,
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
 };
 

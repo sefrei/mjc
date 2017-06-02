@@ -1,11 +1,9 @@
 @import 'datepicker.styl'
 @import "../var.styl"
-
+/* Mobile First CSS */
 #notebook-navigation
   text-align: center
-
-#notebook-navigation-nav
-  margin: 2em 20em
+  margin-top: 10em
 
 .date-picker
   font-size: 1em;
@@ -41,3 +39,21 @@
   margin: 1em auto
   font-weight: bold
   text-transform: uppercase
+
+/* Mobile + */
+//@media (min-width: 400px)
+
+/* Phablets */
+//@media (min-width: 550px)
+
+/* Tablettes */
+//@media (min-width: 750px)
+/* Desktop */
+@media (min-width: 1000px)
+  #notebook-navigation-nav
+    margin: 2em 10em
+/* Desktop HD */
+//@media (min-width: 1200px)
+
+/* Desktop Wide */
+//@media (min-width: 1400px)

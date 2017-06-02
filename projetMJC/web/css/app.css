@@ -151,19 +151,24 @@ button {
   outline: 0;
 }
 
+/* Mobile First CSS */
 #activities {
-  padding: 1em 1em 1em 2em;
   background: #3fa535;
-  color: #e1e1e1;
-  border-radius: 1em;
+  color: #333;
 }
 .activity {
   margin: 0.5em auto;
+  padding: 0.5em;
   display: inline-block;
   background: #78d16f;
-  padding: 0 0.5em;
-  border-radius: 1em;
   width: 100%;
+  text-align: center;
+}
+.activity:first-child {
+  margin-top: 1em;
+}
+.activity:last-child {
+  margin-bottom: 1em;
 }
 .activity-link {
   vertical-align: middle;
@@ -172,7 +177,28 @@ button {
 .activity-link:hover {
   color: #9b35a5;
 }
+/* Mobile + */
+/* Phablets */
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  #activities {
+    padding: 1em 1em 1em 2em;
+    border-radius: 1em;
+    margin: 2em;
+  }
+  .activity {
+    padding: 0 0.5em;
+    border-radius: 1em;
+  }
+  .activity-hour:after {
+    content: ' : ';
+  }
+}
+/* Desktop HD */
+/* Desktop Wide */
 
+/* Mobile First CSS */
 #activity-view {
   width: 900px;
   text-align: center;
@@ -197,25 +223,30 @@ button {
   resize: none;
   width: 100%;
 }
-
-/* Mobile First CSS */
-#root {
-  width: 100%;
-  margin: auto;
-}
 /* Mobile + */
 /* Phablets */
 /* Tablettes */
 /* Desktop */
 @media (min-width: 1000px) {
-  #root {
-    width: 70%;
-    margin: auto;
+  #activity-view {
+    width: 900px;
   }
 }
 /* Desktop HD */
 /* Desktop Wide */
 
+#root {
+  width: 100%;
+  margin: auto;
+  background: #008000;
+}
+/* Desktop */
+@media (min-width: 1000px) {
+  #root {
+    padding: 2em 0;
+  }
+}
+
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle,
 .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,
 .react-datepicker__year-read-view--down-arrow,
@@ -1036,11 +1067,10 @@ button {
 .react-datepicker__portal .react-datepicker__navigation--next:hover {
   border-left-color: #b8b8b8;
 }
+/* Mobile First CSS */
 #notebook-navigation {
   text-align: center;
-}
-#notebook-navigation-nav {
-  margin: 2em 20em;
+  margin-top: 10em;
 }
 .date-picker {
   font-size: 1em;
@@ -1084,14 +1114,30 @@ button {
   font-weight: bold;
   text-transform: uppercase;
 }
+/* Mobile + */
+/* Phablets */
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  #notebook-navigation-nav {
+    margin: 2em 10em;
+  }
+}
+/* Desktop HD */
+/* Desktop Wide */
 
 
+/* Mobile First CSS */
 #nextActivities {
   padding: 1em 1em 1em 2em;
   background: #000;
-  width: 400px;
+  width: 100%;
   color: #fff;
-  border-radius: 1em;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 #nextActivities h1 {
   font-size: 1.5em;
@@ -1101,36 +1147,51 @@ button {
   font-family: 'Indie Flower', cursive;
   font-weight: normal;
 }
-.dayActivities {
-  cursor: pointer;
-  margin: 0.2em;
-  display: inline-block;
-}
-.dayActivities:first-letter {
-  text-transform: uppercase;
-}
-.dayActivities:hover {
-  text-decoration: underline;
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  #nextActivities {
+    padding: 1em 1em 1em 2em;
+    background: #000;
+    color: #fff;
+  }
+  .dayActivities {
+    cursor: pointer;
+    margin: 0.2em;
+    display: inline-block;
+  }
+  .dayActivities:first-letter {
+    text-transform: uppercase;
+  }
+  .dayActivities:hover {
+    text-decoration: underline;
+  }
 }
 
+/* Mobile First CSS */
 #notebook {
   width: 100%;
-  margin: 3em auto;
+  margin: auto;
   background: #fff;
-  padding: 1em;
   position: relative;
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;
-  border-radius: 1em;
-  border: 1px solid #000;
 }
+/* Mobile + */
+/* Phablets */
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  #notebook {
+    width: 70%;
+    border-radius: 1em;
+    border: 1px solid #000;
+  }
+}
+/* Desktop HD */
+/* Desktop Wide */
 
-#notifications {
-  text-align: right;
-  position: absolute;
-  right: 10px;
-  top: 0px;
-}
+/* Mobile First CSS */
 #notifications-title {
   color: #fff;
   font-size: 1.2em;
@@ -1139,42 +1200,26 @@ button {
   font-weight: 300;
   font-family: 'Indie Flower', cursive;
 }
-#notifications-messages {
-  text-align: left;
-  background-color: #000;
-  color: #fff;
-  padding: 1em;
-  position: absolute;
-  right: 20px;
-  width: 378px;
-  z-index: 0;
-  z-index: 1;
-  border-radius: 20px;
-}
-#notifications-messages-container {
-  position: absolute;
-  right: 40px;
-  top: 1em;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
 #notifications-counter {
   display: inline-block;
   position: relative;
   cursor: pointer;
   z-index: 2;
-  color: #78d16f;
+  color: #c0eabc;
+  position: absolute;
+  right: 1em;
+  top: 1em;
 }
 #notifications-counter-icon {
   font-size: 3em;
   position: absolute;
   top: 15px;
-  right: 1px;
+  right: 15px;
 }
 #notifications-counter-count {
   position: absolute;
   top: 12px;
-  right: -2px;
+  right: 12px;
   padding: 2px 4px;
   font-size: 0.8em;
   display: inline-block;
@@ -1189,8 +1234,20 @@ button {
       -ms-user-select: none;
           user-select: none;
 }
+#notifications-messages-container {
+  padding: 1em 1em 1em 2em;
+  background: #000;
+  width: 100%;
+  color: #fff;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
 .hide-notif {
   top: -120px !important;
+  position: absolute;
 }
 .close-notif {
   margin-left: 0.5em;
@@ -1227,6 +1284,24 @@ button {
   left: r;
   right: -16px;
 }
+/* Mobile + */
+/* Phablets */
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  #notifications-counter-icon {
+    right: 1;
+  }
+  #notifications-counter-count {
+    right: -2;
+  }
+  #notifications-messages-container {
+    right: 40px;
+    top: 0em;
+  }
+}
+/* Desktop HD */
+/* Desktop Wide */
 
 /* BUTTON 1 */
 
@@ -1275,19 +1350,18 @@ button {
   text-transform:uppercase;
   font-weight:bold;
 }
-.one .button-in { margin-left:58px; }
+.one .button-in { margin-left:57px; }
 .one .button-out { margin-left:9px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }
 .one .button-active .button-bg { background-color:#000; }
 
+/* Mobile First CSS */
 .presence {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 1em;
-  border-left: 1px solid #35a550;
   padding: 0.5em;
-  width: 300px;
+  width: 100%;
 }
 .activity-statut {
   display: inline-block;
@@ -1298,6 +1372,31 @@ button {
 .absent {
   color: #f00;
 }
+/* Mobile + */
+/* Phablets */
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  .presence {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1em;
+    border-left: 1px solid #35a550;
+    padding: 0.5em;
+    width: 300px;
+  }
+  .activity-statut {
+    display: inline-block;
+  }
+  .present {
+    color: #2dbb1f;
+  }
+  .absent {
+    color: #f00;
+  }
+}
+/* Desktop HD */
+/* Desktop Wide */
 
 
 /*

@@ -1,11 +1,14 @@
 @import '../var.styl'
-
+/* Mobile First CSS */
 #nextActivities
   padding: 1em 1em 1em 2em
   background: #000
-  width: 400px
+  width: 100%
   color: #FFF
-  border-radius: 1em
+  position: absolute
+  left: 0px
+  top: 0px
+  transition: all 1s
   & h1
     font-size: 1.5em
     color: #FFF
@@ -13,12 +16,21 @@
     margin-bottom: .5em
     font-family: font-flower
     font-weight: normal
+/* Tablettes */
+//@media (min-width: 750px)
+/* Desktop */
+@media (min-width: 1000px)
+  #nextActivities
+    padding: 1em 1em 1em 2em
+    background: #000
+    //width: 400px
+    color: #FFF
 
-.dayActivities
-  cursor: pointer
-  margin: .2em
-  display: inline-block
-  &:first-letter
-    text-transform: uppercase
-  &:hover
-    text-decoration: underline
+  .dayActivities
+    cursor: pointer
+    margin: .2em
+    display: inline-block
+    &:first-letter
+      text-transform: uppercase
+    &:hover
+      text-decoration: underline
