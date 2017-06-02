@@ -1119,6 +1119,7 @@ button {
   -webkit-box-shadow: 5px 5px 15px -4px #af2121;
           box-shadow: 5px 5px 15px -4px #af2121;
   z-index: 1;
+  border-radius: 20px;
 }
 #notifications-messages-container {
   position: absolute;
@@ -1137,12 +1138,12 @@ button {
 #notifications-counter-icon {
   font-size: 3em;
   position: absolute;
-  top: 1px;
+  top: 15px;
   right: 1px;
 }
 #notifications-counter-count {
   position: absolute;
-  top: -2px;
+  top: 12px;
   right: -2px;
   padding: 2px 4px;
   font-size: 0.8em;
@@ -1179,8 +1180,8 @@ button {
   border-color: transparent transparent #db4168 transparent;
   border-width: 16px;
   position: absolute;
-  right: -12px;
-  top: 10px;
+  right: -30px;
+  top: 25px;
   z-index: 2;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);

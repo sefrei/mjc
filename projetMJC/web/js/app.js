@@ -43773,10 +43773,10 @@ var Notifications = function Notifications(_ref) {
         id: 'notifications-messages-container',
         className: (0, _classnames2.default)({ 'hide-notif': !displayNotifications })
       },
-      _react2.default.createElement('div', { className: 'triangle' }),
       _react2.default.createElement(
         'div',
         { id: 'notifications-messages' },
+        _react2.default.createElement('div', { className: 'triangle' }),
         _react2.default.createElement(
           'h1',
           { id: 'notifications-title' },
@@ -43792,7 +43792,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.id_event
+                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.id_activity
                 },
                 '- ',
                 notif.message
@@ -44309,14 +44309,16 @@ exports.default = {
   }],
   notifications: [{
     id: 1,
+    id_activity: 1,
+    id_user: 1,
     message: 'Vous avez un nouveau cours',
-    state: true,
-    id_event: 1
+    state: true
   }, {
     id: 2,
+    id_activity: 2,
+    id_user: 1,
     message: 'Un cours est annulé',
-    state: true,
-    id_event: 2
+    state: true
   }]
 };
 

@@ -43,15 +43,15 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
         { 'hide-notif': !displayNotifications },
         )}
       >
-        <div className="triangle"></div>
         <div id="notifications-messages">
+          <div className="triangle"></div>
           <h1 id="notifications-title">Notifications :</h1>
           {notifications.map((notif) => {
             if (notif.state) {
               return (
                 <p className="notif" key={notif.id} onClick={() => onClick(notif.id)} >
                   <Link
-                    to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_event}`}
+                    to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_activity}`}
                   >
                     - {notif.message}
                   </Link>

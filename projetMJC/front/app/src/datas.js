@@ -49,15 +49,17 @@ export default {
   notifications: [
     {
       id: 1,
+      id_activity: 1,
+      id_user: 1,
       message: 'Vous avez un nouveau cours',
       state: true,
-      id_event: 1,
     },
     {
       id: 2,
+      id_activity: 2,
+      id_user: 1,
       message: 'Un cours est annulé',
       state: true,
-      id_event: 2,
     },
   ],
 };
