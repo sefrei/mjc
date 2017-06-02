@@ -13,8 +13,16 @@
               "prof" : "{{ inscription.teacher.firstname }} {{ inscription.teacher.lastname }}",
               "duration": "30 minutes",
               "appreciation" : "{{lesson.appreciation}}",
-              "presenceTeacher" : "{{lesson.teacherIsPresent}}",
-              "presenceStudent" : "{{lesson.studentIsPresent}}",
+              {% if lesson.teacherIsPresent %}
+              "presenceTeacher" : true,
+									{% else %}
+              "presenceTeacher" : false,
+									{% endif %}
+              {% if lesson.studentIsPresent %}
+              "presenceTeacher" : true,
+									{% else %}
+              "presenceStudent" : false,
+									{% endif %}
               "student" : "{{ inscription.student.firstname }} {{ inscription.student.lastname }}"
             }
 
