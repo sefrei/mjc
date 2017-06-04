@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Subscription;
+use AppBundle\Entity\Lesson;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -56,12 +57,16 @@ class DefaultController extends Controller
      */
     public function LessonAction()
     {
+$date = $request->get('date');
         $em = $this->getDoctrine()->getManager();
         $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
 
         return $this->render('default/lesson.json.twig', [
             'lessons' => $lessons,
-        ]);
+            'date'=> $date,
+        ],
+        new JsonResponse()
+        );
     }
         /**
      * @Route("/ajax", name="ajax")
@@ -70,54 +75,20 @@ class DefaultController extends Controller
     public function ajaxAction(Request $request)
     {
 
-//                 $date = $request->get('date');
-//
-// var_dump($date);
-        //     $return = $date;
-        //
-        // return new JsonResponse($return);
+                $date = $request->get('date');
 
-
-        /**
-         * Essai Récup date
-         */
-//         $date = $_POST['date'];
-//         var_dump($date);
-//     $date =    $request->get('date');
-//     dump($date);
-// $headers = $request->headers->all();
-// dump($headers);
-//
-// $rawData = file_get_contents('php://input');
-//   $json = json_decode($rawData);
-//   dump($json);
-//
-// $all = $request->request->all();
-// dump($all);
-// exit;
-
-// // $stack = $this->requestStack->getCurrentRequest();
-// // dump($stack);
-//
-// $params = array();
-//     $content = $request->getContent();
-//     if (!empty($content))
-//     {
-//         $params = json_decode($content, true); // 2nd param to get as array
-//     }
-//     dump($params);
-//
-//     $order = $request->request->get('date');
-//     dump($order);
-// exit;
 
                     $em = $this->getDoctrine()->getManager();
-                    $subscriptions = $em->getRepository('AppBundle:Subscription')->showAllAction();
+                    // Là il faut une requête avec filtre date
+                    $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
 
-                    $date = $request->request->get('date');
+                    // dump($subscriptions);
+                    // exit;
+
+                    // $date = $request->requesst->get('date');
 
                     return $this->render('default/test.json.twig', [
-                        'inscriptions' => $subscriptions,
+                        'lessons' => $lessons,
                         'date'=> $date,
                     ],
                     new JsonResponse()

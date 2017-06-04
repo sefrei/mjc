@@ -1,42 +1,35 @@
-{
-  "activities" : [
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-      {%for inscription in inscriptions%}
-        {% for lesson in inscription.lessons %}
-    		  {% if (app.user.id == inscription.teacher.id) or (app.user.id == inscription.student.id) %}
-            {
-              "activity_id" : {{ lesson.id }},
-              "speciality" : "{{ inscription.specialties.name }}",
-              "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
-              "startHour" : "{{ lesson.startAt | date("H\\hi") }}",
-              "finishHour" : "{{ inscription.finishAt | date("H\\hi") }}",
-              "prof" : "{{ inscription.teacher.firstname }} {{ inscription.teacher.lastname }}",
-              "duration": "30 minutes",
-              "appreciation" : "{{lesson.appreciation}}",
-              {% if lesson.teacherIsPresent %}
+    {
+    "activities" : [
+      {% for lesson in lessons %}
+        {% if (app.user.id == lesson.subscription.teacher.id) or (app.user.id == lesson.subscription.student.id) %}
+          {
+            "activity_id" : {{ lesson.id }},
+            "speciality" : "{{ lesson.subscription.specialties.name }}",
+            "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
+            "startHour" : "{{ lesson.subscription.startAt | date("H\\hi") }}",
+            "finishHour" : "{{ lesson.subscription.finishAt | date("H\\hi") }}",
+            "prof" : "{{ lesson.subscription.teacher.firstname }} {{ lesson.subscription.teacher.lastname }}",
+            "duration": "30 minutes",
+            "appreciation" : "{{lesson.appreciation}}",
+            {% if lesson.teacherIsPresent %}
               "presenceTeacher" : true,
-									{% else %}
+            {% else %}
               "presenceTeacher" : false,
-									{% endif %}
-              {% if lesson.studentIsPresent %}
+            {% endif %}
+            {% if lesson.studentIsPresent %}
               "presenceStudent" : true,
-									{% else %}
+            {% else %}
               "presenceStudent" : false,
-									{% endif %}
-              "student" : "{{ inscription.student.firstname }} {{ inscription.student.lastname }}"
-            }
+              {% endif %}
+            "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}"
+          }
 
+{% if loop.length == loop.index + 1  %} {% else %},{% endif %}
 
-            {% if loop.last %}{% else %}
-            ,
-            {% endif %}
-            {% endif %}
+    {% endif %}
+      {% endfor %}
+    {% endif %}
 
-        {% endfor %}
-
-
-        {% endfor %}
-
-  	{% endif %}
   ]
 }
