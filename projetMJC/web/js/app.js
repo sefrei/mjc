@@ -43142,27 +43142,27 @@ var ActivityLine = function ActivityLine(_ref) {
       presenceStudent = _ref.presenceStudent,
       presenceTeacher = _ref.presenceTeacher,
       student = _ref.student,
-      prof = _ref.prof,
+      teacher = _ref.teacher,
       user = _ref.user;
 
   var stateActivity = presenceTeacher && presenceStudent;
-  var interlocuteur = user.type === 'student' ? prof : student;
+  var interlocuteur = user.type === 'student' ? teacher : student;
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
+    _react2.default.createElement(
+      'div',
+      { className: 'activity-hour' },
+      startHour,
+      ' \xE0 ',
+      finishHour
+    ),
     _react2.default.createElement(
       _reactRouterDom.Link,
       {
         className: 'activity-link',
         to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + id
       },
-      _react2.default.createElement(
-        'div',
-        { className: 'activity-hour' },
-        startHour,
-        ' \xE0 ',
-        finishHour
-      ),
       'Cours de ',
       speciality,
       ' avec ',
@@ -43188,7 +43188,7 @@ ActivityLine.propTypes = {
   presenceStudent: _propTypes2.default.bool.isRequired,
   presenceTeacher: _propTypes2.default.bool.isRequired,
   student: _propTypes2.default.string.isRequired,
-  prof: _propTypes2.default.string.isRequired,
+  teacher: _propTypes2.default.string.isRequired,
   user: _propTypes2.default.object.isRequired
 };
 
@@ -43299,6 +43299,8 @@ var Activity = function Activity(_ref) {
       presenceTeacher = _ref.presenceTeacher,
       presenceStudent = _ref.presenceStudent,
       student = _ref.student,
+      teacher = _ref.teacher,
+      user = _ref.user,
       speciality = _ref.speciality,
       id = _ref.activity_id,
       appreciation = _ref.appreciation,
@@ -43314,7 +43316,9 @@ var Activity = function Activity(_ref) {
     console.info('Actions : Enregistrer dans la BDD');
     // actions.addTask();
   };
+  var presenceType = user.type === 'student' ? presenceStudent : presenceTeacher;
   var stateActivity = presenceTeacher && presenceStudent;
+  var interlocuteur = user.type === 'student' ? teacher : student;
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -43334,53 +43338,70 @@ var Activity = function Activity(_ref) {
       startHour,
       ' \xE0 ',
       finishHour,
-      ' avec l\'\xE9l\xE8ve ',
-      student
+      ' avec ',
+      interlocuteur
     ),
     _react2.default.createElement(
-      'label',
-      { id: 'label-observation', htmlFor: 'observation' },
-      'Observation :'
-    ),
-    _react2.default.createElement(
-      'form',
-      { id: 'form', onSubmit: onSubmit },
-      _react2.default.createElement('input', { type: 'text', onChange: onChange, id: 'observation', placeholder: 'Votre observation...', value: appreciation })
-    ),
-    _react2.default.createElement(
-      'button',
-      { onClick: actions.resetObservation },
-      'Annuler Modification de l\'observation'
-    ),
-    _react2.default.createElement(_Presence2.default, { presenceTeacher: presenceTeacher, presenceStudent: presenceStudent, stateActivity: stateActivity, id: id }),
-    _react2.default.createElement(
-      'p',
-      null,
-      'Vous \xEAtes actuellement',
+      'div',
+      { id: 'observation' },
       _react2.default.createElement(
-        'span',
-        {
-          className: (0, _classnames2.default)('activity-state', { absent: stateActivity }, { present: !stateActivity })
-        },
-        presenceTeacher ? ' présent ' : ' absent '
+        'label',
+        { id: 'observation-label', htmlFor: 'observation-input' },
+        'Observation :'
       ),
-      'pour ce cours'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      'Le cours est',
       _react2.default.createElement(
-        'span',
-        {
-          className: (0, _classnames2.default)('activity-state', { absent: stateActivity }, { present: !stateActivity })
-        },
-        stateActivity ? ' est annulé' : ' n\'est pas annulé'
+        'form',
+        { id: 'form', onSubmit: onSubmit },
+        _react2.default.createElement('input', { type: 'text', onChange: onChange, id: 'observation-input', placeholder: 'Votre observation...', value: appreciation })
+      ),
+      _react2.default.createElement(
+        'button',
+        { className: 'button-reset-observation', onClick: actions.resetObservation },
+        _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' }),
+        _react2.default.createElement(
+          'span',
+          null,
+          'R\xE9initialiser l\'observation'
+        )
       )
     ),
     _react2.default.createElement(
+      'div',
+      { id: 'infos-presence' },
+      _react2.default.createElement(
+        'p',
+        null,
+        'Vous \xEAtes actuellement',
+        _react2.default.createElement(
+          'span',
+          {
+            className: (0, _classnames2.default)('activity-state', { absent: !stateActivity }, { present: stateActivity })
+          },
+          presenceType ? ' présent ' : ' absent '
+        ),
+        'pour ce cours'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Le cours',
+        _react2.default.createElement(
+          'span',
+          {
+            className: (0, _classnames2.default)('activity-state', { absent: !stateActivity }, { present: stateActivity })
+          },
+          stateActivity ? ' n\'est pas annulé' : ' est annulé'
+        )
+      ),
+      _react2.default.createElement(_Presence2.default, {
+        presenceTeacher: presenceTeacher,
+        presenceStudent: presenceStudent,
+        stateActivity: stateActivity, id: id
+      })
+    ),
+    _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/ProjectMJC/projetMJC/web/app_dev.php' },
+      { className: 'agenda-home-link', to: '/ProjectMJC/projetMJC/web/app_dev.php' },
       'Retour Agenda'
     )
   );
@@ -43405,6 +43426,8 @@ Activity.propTypes = {
   student: _propTypes2.default.string.isRequired,
   speciality: _propTypes2.default.string.isRequired,
   appreciation: _propTypes2.default.string.isRequired,
+  teacher: _propTypes2.default.string.isRequired,
+  user: _propTypes2.default.object.isRequired,
   actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
 };
 
@@ -43802,7 +43825,6 @@ var Notifications = function Notifications(_ref) {
                 {
                   to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.id_activity
                 },
-                '- ',
                 notif.message
               ),
               _react2.default.createElement('i', { className: 'fa fa-times close-notif', 'aria-hidden': 'true' })
@@ -44091,6 +44113,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return _extends({
     currentDate: state.currentDate
   }, activity, {
+    user: state.user,
     inputObservation: state.inputObservation
   });
 };
@@ -44918,99 +44941,5 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
-'use strict';
 
-/* jshint ignore:start */
-(function () {
-  var WebSocket = window.WebSocket || window.MozWebSocket;
-  var br = window.brunch = window.brunch || {};
-  var ar = br['auto-reload'] = br['auto-reload'] || {};
-  if (!WebSocket || ar.disabled) return;
-  if (window._ar) return;
-  window._ar = true;
-
-  var cacheBuster = function cacheBuster(url) {
-    var date = Math.round(Date.now() / 1000).toString();
-    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
-    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
-  };
-
-  var browser = navigator.userAgent.toLowerCase();
-  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
-
-  var reloaders = {
-    page: function page() {
-      window.location.reload(true);
-    },
-
-    stylesheet: function stylesheet() {
-      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
-        var val = link.getAttribute('data-autoreload');
-        return link.href && val != 'false';
-      }).forEach(function (link) {
-        link.href = cacheBuster(link.href);
-      });
-
-      // Hack to force page repaint after 25ms.
-      if (forceRepaint) setTimeout(function () {
-        document.body.offsetHeight;
-      }, 25);
-    },
-
-    javascript: function javascript() {
-      var scripts = [].slice.call(document.querySelectorAll('script'));
-      var textScripts = scripts.map(function (script) {
-        return script.text;
-      }).filter(function (text) {
-        return text.length > 0;
-      });
-      var srcScripts = scripts.filter(function (script) {
-        return script.src;
-      });
-
-      var loaded = 0;
-      var all = srcScripts.length;
-      var onLoad = function onLoad() {
-        loaded = loaded + 1;
-        if (loaded === all) {
-          textScripts.forEach(function (script) {
-            eval(script);
-          });
-        }
-      };
-
-      srcScripts.forEach(function (script) {
-        var src = script.src;
-        script.remove();
-        var newScript = document.createElement('script');
-        newScript.src = cacheBuster(src);
-        newScript.async = true;
-        newScript.onload = onLoad;
-        document.head.appendChild(newScript);
-      });
-    }
-  };
-  var port = ar.port || 9485;
-  var host = br.server || window.location.hostname || 'localhost';
-
-  var connect = function connect() {
-    var connection = new WebSocket('ws://' + host + ':' + port);
-    connection.onmessage = function (event) {
-      if (ar.disabled) return;
-      var message = event.data;
-      var reloader = reloaders[message] || reloaders.page;
-      reloader();
-    };
-    connection.onerror = function () {
-      if (connection.readyState) connection.close();
-    };
-    connection.onclose = function () {
-      window.setTimeout(connect, 1000);
-    };
-  };
-  connect();
-})();
-/* jshint ignore:end */
-
-;
 //# sourceMappingURL=app.js.map

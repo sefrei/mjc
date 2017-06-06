@@ -1,25 +1,63 @@
 /* Mobile First CSS */
 #activity-view
-  width: 900px
   text-align: center
   margin: 3em auto
-  background: rgba(169, 219, 233, 0.9)
+  background: #FFF
   padding: 1em
+  position: relative
+  border-radius: 1em
   & p
     margin: .5em
-
+  & .activity-statut
+    position: absolute
+    top:52px
+    right:80px
+    font-size: 1.1em
+  & .presence
+    float: right
+    width: auto
+    margin-top: -3em
+#observation
+  text-align: left
+  background: #78d16f
+  border-radius: 1em
+  padding: 1em
+  &-label
+    margin-bottom: .5em
+    text-transform: uppercase
+    display: block
+    &::first-letter
+      text-transform: uppercase
+  &-input
+    width: 100%
+    border: 1px solid black
+    border-radius: 0
+    padding: .5em
+  & button
+    background: #008000
+    border: none
+    color: #FFF
+    padding: 0
+    border-radius: 0 0 1em 1em
+    &:active
+      background: #2dbb1f
+      & i
+        background: #2dbb1f
+    & i
+      background: #1a661a
+      padding: .5em
+      border-radius: 0em 0em 0em 1em
+    & span
+      padding: .5em
 #activity-title
   font-size: 1.5em
   margin: 1em auto
 
-#label-observation
-  display: block
-  &::first-letter
-    text-transform: uppercase
+#infos-presence
+  text-align: left
 
-#observation
-  resize: none
-  width: 100%
+.agenda-home-link:hover
+  color:#9b35a5
 
 /* Mobile + */
 //@media (min-width: 400px)
@@ -34,6 +72,8 @@
 @media (min-width: 1000px)
   #activity-view
     width: 900px
+    & .presence
+      border: none
 /* Desktop HD */
 //@media (min-width: 1200px)
 

@@ -53,7 +53,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
                   <Link
                     to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_activity}`}
                   >
-                    - {notif.message}
+                    {notif.message}
                   </Link>
                   <i className="fa fa-times close-notif" aria-hidden="true" />
                 </p>

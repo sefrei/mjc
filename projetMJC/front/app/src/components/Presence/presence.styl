@@ -2,7 +2,6 @@
 .presence
   display: inline-block
   vertical-align: middle;
-  padding: .5em
   width: 100%
 
 .activity-statut
@@ -26,12 +25,6 @@
 /* Desktop */
 @media (min-width: 1000px)
   .presence
-    display: inline-block
-    vertical-align: middle;
-    margin-left: 1em;
-    border-left: 1px solid #35a550
-    padding: .5em
-    width: 300px
 
   .activity-statut
     display: inline-block
@@ -42,7 +35,11 @@
   .absent
     color: red
 /* Desktop HD */
-//@media (min-width: 1200px)
+@media (min-width: 1200px)
+  .presence
+    border-left: 1px solid #35a550
+    width: 200px
+    float: right
 
 /* Desktop Wide */
 //@media (min-width: 1400px)

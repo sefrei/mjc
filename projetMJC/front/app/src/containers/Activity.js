@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     currentDate: state.currentDate,
     ...activity,
+    user: state.user,
     inputObservation: state.inputObservation,
   });
 };

@@ -173,6 +173,8 @@ button {
 .activity-link {
   vertical-align: middle;
   width: auto;
+  display: inline-block;
+  margin: 0.5em auto;
 }
 .activity-link:hover {
   color: #9b35a5;
@@ -188,7 +190,6 @@ button {
     margin: 2em;
   }
   .activity {
-    padding: 0 0.5em;
     border-radius: 1em;
   }
   .activity-hour:after {
@@ -196,32 +197,91 @@ button {
   }
 }
 /* Desktop HD */
+@media (min-width: 1200px) {
+  .activity {
+    padding: 0.5em 0;
+  }
+  .activity-hour {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.2em;
+  }
+}
 /* Desktop Wide */
 
 /* Mobile First CSS */
 #activity-view {
-  width: 900px;
   text-align: center;
   margin: 3em auto;
-  background: rgba(169,219,233,0.9);
+  background: #fff;
   padding: 1em;
+  position: relative;
+  border-radius: 1em;
 }
 #activity-view p {
   margin: 0.5em;
+}
+#activity-view .activity-statut {
+  position: absolute;
+  top: 52px;
+  right: 80px;
+  font-size: 1.1em;
+}
+#activity-view .presence {
+  float: right;
+  width: auto;
+  margin-top: -3em;
+}
+#observation {
+  text-align: left;
+  background: #78d16f;
+  border-radius: 1em;
+  padding: 1em;
+}
+#observation-label {
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  display: block;
+}
+#observation-label::first-letter {
+  text-transform: uppercase;
+}
+#observation-input {
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 0;
+  padding: 0.5em;
+}
+#observation button {
+  background: #008000;
+  border: none;
+  color: #fff;
+  padding: 0;
+  border-radius: 0 0 1em 1em;
+}
+#observation button:active {
+  background: #2dbb1f;
+}
+#observation button:active i {
+  background: #2dbb1f;
+}
+#observation button i {
+  background: #1a661a;
+  padding: 0.5em;
+  border-radius: 0em 0em 0em 1em;
+}
+#observation button span {
+  padding: 0.5em;
 }
 #activity-title {
   font-size: 1.5em;
   margin: 1em auto;
 }
-#label-observation {
-  display: block;
+#infos-presence {
+  text-align: left;
 }
-#label-observation::first-letter {
-  text-transform: uppercase;
-}
-#observation {
-  resize: none;
-  width: 100%;
+.agenda-home-link:hover {
+  color: #9b35a5;
 }
 /* Mobile + */
 /* Phablets */
@@ -230,6 +290,9 @@ button {
 @media (min-width: 1000px) {
   #activity-view {
     width: 900px;
+  }
+  #activity-view .presence {
+    border: none;
   }
 }
 /* Desktop HD */
@@ -1165,6 +1228,7 @@ button {
   }
   .dayActivities:hover {
     text-decoration: underline;
+    color: #9b35a5;
   }
 }
 
@@ -1194,7 +1258,7 @@ button {
 /* Mobile First CSS */
 #notifications-title {
   color: #fff;
-  font-size: 1.2em;
+  font-size: 1.5em;
   margin-bottom: 0.3em;
   padding: 0;
   font-weight: 300;
@@ -1244,6 +1308,7 @@ button {
   top: 0px;
   -webkit-transition: all 1s;
   transition: all 1s;
+  min-height: 100px;
 }
 .hide-notif {
   top: -120px !important;
@@ -1257,32 +1322,17 @@ button {
   -webkit-transition: color 1s;
   transition: color 1s;
 }
+.notif {
+  margin: 0.2em;
+}
+.notif:before {
+  content: "- ";
+}
+.notif a:hover {
+  color: #9b35a5;
+}
 .notif i {
   cursor: pointer;
-}
-.triangle {
-  width: 1px;
-  height: 1px;
-  border: 1px solid #000;
-  border-color: transparent transparent #000 transparent;
-  border-width: 16px;
-  position: absolute;
-  right: -30px;
-  top: 25px;
-  z-index: 2;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-}
-.triangle:before {
-  border: 1px solid #069;
-  border-color: transparent transparent #db4168 transparent;
-  width: 1px;
-  height: 1px;
-  border-width: 16px;
-  position: absolute;
-  top: -14px;
-  left: r;
-  right: -16px;
 }
 /* Mobile + */
 /* Phablets */
@@ -1360,7 +1410,6 @@ button {
 .presence {
   display: inline-block;
   vertical-align: middle;
-  padding: 0.5em;
   width: 100%;
 }
 .activity-statut {
@@ -1377,14 +1426,7 @@ button {
 /* Tablettes */
 /* Desktop */
 @media (min-width: 1000px) {
-  .presence {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 1em;
-    border-left: 1px solid #35a550;
-    padding: 0.5em;
-    width: 300px;
-  }
+  .presence,
   .activity-statut {
     display: inline-block;
   }
@@ -1396,6 +1438,13 @@ button {
   }
 }
 /* Desktop HD */
+@media (min-width: 1200px) {
+  .presence {
+    border-left: 1px solid #35a550;
+    width: 200px;
+    float: right;
+  }
+}
 /* Desktop Wide */
 
 
