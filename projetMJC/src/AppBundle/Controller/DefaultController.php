@@ -76,16 +76,13 @@ $date = $request->get('date');
     {
 
                 $date = $request->get('date');
-
+                // var_dump($date);
 
                     $em = $this->getDoctrine()->getManager();
                     // Là il faut une requête avec filtre date
                     $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
 
-                    // dump($subscriptions);
-                    // exit;
 
-                    // $date = $request->requesst->get('date');
 
                     return $this->render('default/test.json.twig', [
                         'lessons' => $lessons,

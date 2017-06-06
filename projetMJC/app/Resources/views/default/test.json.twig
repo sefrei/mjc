@@ -9,7 +9,10 @@
             "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
             "startHour" : "{{ lesson.subscription.startAt | date("H\\hi") }}",
             "finishHour" : "{{ lesson.subscription.finishAt | date("H\\hi") }}",
-            "prof" : "{{ lesson.subscription.teacher.firstname }} {{ lesson.subscription.teacher.lastname }}",
+            "teacher" : "{{ lesson.subscription.teacher.firstname }} {{ lesson.subscription.teacher.lastname }}",
+            "teacher_id" : {{ lesson.subscription.teacher.id }},
+            "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}",
+            "student_id" : {{ lesson.subscription.student.id }},
             "duration": "30 minutes",
             "appreciation" : "{{lesson.appreciation}}",
             {% if lesson.teacherIsPresent %}
@@ -25,7 +28,7 @@
             "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}"
           }
 
-{% if loop.length == loop.index + 1  %} {% else %},{% endif %}
+{% if (loop.length == loop.index ) or (loop.last == true)  %} {% else %},{% endif %}
 
     {% endif %}
       {% endfor %}
