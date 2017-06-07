@@ -126,22 +126,19 @@ class DefaultController extends Controller
              /**
               * @Route("/date/{date}", name="date")
               */
-              public function dateAction(Request $request, $date)
+              public function dateAction(Request $request)
               {
                   $dateRequest = $request->get('date');
-                  dump($dateRequest);
+
+                //   dump($dateRequest);
                   $date = new \DateTime($dateRequest);
-$em = $this->getDoctrine()->getManager();
+                  $em = $this->getDoctrine()->getManager();
+                  $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDate($date);
 
-
-                $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDate($date);
-//Format renvoyé : 2017-06-07T06:48:04+02:00
-//Format DateTime : 2000-01-01 00:00:00
- dump($date);
-  dump($lessons);
- exit;
-                  return new Response(
-             $lessons
-        );
+                  return $this->render('default/test.json.twig', [
+                      'lessons' => $lessons,
+                  ],
+                  new JsonResponse()
+                    );
               }
 }
