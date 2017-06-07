@@ -1,13 +1,17 @@
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     {
+    "user" : [
+    {
+    "user_id" : {{ app.user.id  }},
+    "user_role" : {{ app.user.role }},
+    "user_firstname" : {{app.user.firstname}},
+    "user_lastname" : {{app.user.lastname}}
+    }
+    ],
     "activities" : [
       {% for lesson in lessons %}
         {% if (app.user.id == lesson.subscription.teacher.id) or (app.user.id == lesson.subscription.student.id) %}
           {
-            "user_id" : {{ app.user.id  }},
-            "user_role" : {{ app.user.role }},
-            "user_firstname" : {{app.user.firstname}},
-            "user_lastname" : {{app.user.lastname}},
             "activity_id" : {{ lesson.id }},
             "speciality" : "{{ lesson.subscription.specialties.name }}",
             "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
