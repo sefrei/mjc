@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<h3>Id de {{ app.user.username }} : {{app.user.id}}</h3>
+<h3>Ici, affichage de l'inscription si l'ID de l'user courant est égal à l'id du prof ou de l'élève </h3>
+{# dump(inscriptions)#}
+  <div class="test">
+          <h1>Vos  : </h1>
+          {% for inscription in inscriptions %}
+		  {% if (app.user.id == inscription.teacher.id) or (app.user.id == inscription.student.id) %}
+             <h2>LESSONS</h2>
+             {% for lesson in inscription.lessons %}
+             <h2>_____</h2>
+			 <p>  Cours de {{inscription.specialties.name}}</p>
+             <p>Prof : {{inscription.teacher.firstname}} {{inscription.teacher.lastname}}</p>
+             Elève : {{inscription.student.firstname}} {{inscription.student.lastname}}
+			 <p>Appréciation : {{lesson.appreciation}}</p>
+			 <p>durée du cours : {{inscription.duration}}</p>
+			 {{dump(lesson)}}
+             {% endfor %}
+			  <p>Activité N° : {{inscription.id}} </p>
+
+			  <p> Prof : {{inscription.teacher.username}} (id :  {{inscription.teacher.id}})</p>
+			  <p>Elève : {{inscription.student.username}} (id :  {{inscription.student.id}})</p>
+
+
+			  {% endif %}
+          {% else %}
+
+
+          {% endfor %}
+
+	{% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+{% block javascripts %}
+<script src="https://use.fontawesome.com/d21c915728.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script>require('src/index');</script>
+{% endblock %}
