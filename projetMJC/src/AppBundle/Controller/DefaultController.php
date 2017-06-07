@@ -124,15 +124,24 @@ class DefaultController extends Controller
 
          }
              /**
-              * @Route("/date", name="date")
+              * @Route("/date/{date}", name="date")
               */
-              public function dateAction(Request $request)
+              public function dateAction(Request $request, $date)
               {
-                  $date = $request->get('date');
-                //   dump($date);
-                //   exit;
+                  $dateRequest = $request->get('date');
+                  dump($dateRequest);
+                  $date = new \DateTime($dateRequest);
+$em = $this->getDoctrine()->getManager();
+
+
+                $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDate($date);
+//Format renvoyé : 2017-06-07T06:48:04+02:00
+//Format DateTime : 2000-01-01 00:00:00
+ dump($date);
+  dump($lessons);
+ exit;
                   return new Response(
-             $date
+             $lessons
         );
               }
 }

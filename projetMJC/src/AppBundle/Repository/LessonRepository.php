@@ -30,7 +30,21 @@ $today1->format(('Y-m-d 23:59:59'));
 return $result;
     }
 
-    public function findByCurrentUser($userId)
+    public function getLessonsFromDate($date)
+    {
+
+      $query = $this->getEntityManager()->createQuery(
+          'SELECT s FROM AppBundle:Lesson s WHERE s.startAt> ?1 AND s.startAt< ?2 ORDER BY s.startAt');
+          $query->setParameter(1, $date->format('Y-m-d 00:00:00'));
+          $query->setParameter(2, $date->format('Y-m-d 23:59:59'));
+
+      $result = $query->getResult();
+
+return $result;
+    }
+
+
+    public function findByCurrentUser()
     {
         $today0 = new \DateTime();
         // $today0->format(('Y-m-d 00:00:00 1'));
@@ -47,8 +61,8 @@ return $result;
           $query->setParameter(1, $today0->format('Y-m-d 00:00:00'));
           $query->setParameter(2, $today1->format('Y-m-d 23:59:59'));
           $query->setParameter(3, $userId);
-        // $result = $query->getResult();
+        $result = $query->getResult();
 
-        return $query;
+        return $result;
         }
 }
