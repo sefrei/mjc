@@ -216,7 +216,6 @@ button {
   background: #fff;
   padding: 1em;
   position: relative;
-  border-radius: 1em;
 }
 #activity-view p {
   margin: 0.5em;
@@ -289,6 +288,7 @@ button {
 /* Desktop */
 @media (min-width: 1000px) {
   #activity-view {
+    border-radius: 1em;
     width: 900px;
   }
   #activity-view .presence {
