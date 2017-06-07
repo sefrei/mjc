@@ -5,7 +5,7 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, browserHistory } from 'react-router-dom';
 import moment from 'moment';
 
 /*
@@ -21,7 +21,7 @@ import { loadActivities } from 'src/store/middleware';
 document.addEventListener('DOMContentLoaded', () => {
   const provider = (
     <Provider store={store}>
-      <Router>
+      <Router history={browserHistory}>
         <App />
       </Router>
     </Provider>
