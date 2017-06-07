@@ -59,7 +59,9 @@ const createMiddleware = store => next => (action) => {
 
         break;
       }
-    case CHANGE_DATE, UP_DAY, DOWN_DAY:
+    case CHANGE_DATE:
+    case UP_DAY:
+    case DOWN_DAY:
       console.error(initialState.currentDate.format());
       const newDate = initialState.currentDate.format().split('T');
       console.log(newDate[0]);

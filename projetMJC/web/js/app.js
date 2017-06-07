@@ -44633,7 +44633,9 @@ var createMiddleware = function createMiddleware(store) {
 
             break;
           }
-        case (_reducer.CHANGE_DATE, _reducer.UP_DAY, _reducer.DOWN_DAY):
+        case _reducer.CHANGE_DATE:
+        case _reducer.UP_DAY:
+        case _reducer.DOWN_DAY:
           console.error(_reducer.initialState.currentDate.format());
           var newDate = _reducer.initialState.currentDate.format().split('T');
           console.log(newDate[0]);
