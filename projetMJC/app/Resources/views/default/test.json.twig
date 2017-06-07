@@ -28,9 +28,10 @@
             "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}"
           }
 
-{% if (loop.length == loop.index ) or (loop.last == true)  %} {% else %},{% endif %}
+{% if (loop.length == loop.index ) or (loop.last == true)  %}{% else %},{% endif %}
 
     {% endif %}
+
       {% endfor %}
     {% endif %}
 

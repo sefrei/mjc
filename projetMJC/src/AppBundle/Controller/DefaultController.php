@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Subscription;
-use AppBundle\Entity\Lesson;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -57,16 +56,12 @@ class DefaultController extends Controller
      */
     public function LessonAction()
     {
-$date = $request->get('date');
         $em = $this->getDoctrine()->getManager();
         $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
 
         return $this->render('default/lesson.json.twig', [
             'lessons' => $lessons,
-            'date'=> $date,
-        ],
-        new JsonResponse()
-        );
+        ]);
     }
         /**
      * @Route("/ajax", name="ajax")
@@ -74,21 +69,19 @@ $date = $request->get('date');
      */
     public function ajaxAction(Request $request)
     {
+        $userId = $this->getUser()->getId();
+        // dump($userId);
+        // exit;
+        $em = $this->getDoctrine()->getManager();
+        $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
 
-                $date = $request->get('date');
-                // var_dump($date);
+        $date = $request->request->get('date');
 
-                    $em = $this->getDoctrine()->getManager();
-                    // Là il faut une requête avec filtre date
-                    $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
-
-
-
-                    return $this->render('default/test.json.twig', [
-                        'lessons' => $lessons,
-                        'date'=> $date,
-                    ],
-                    new JsonResponse()
+        return $this->render('default/test.json.twig', [
+            'lessons' => $lessons,
+            'date'=> $date,
+        ],
+        new JsonResponse()
                 );
      }
 
