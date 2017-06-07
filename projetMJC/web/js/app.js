@@ -44636,8 +44636,8 @@ var createMiddleware = function createMiddleware(store) {
         case _reducer.CHANGE_DATE:
         case _reducer.UP_DAY:
         case _reducer.DOWN_DAY:
-          console.error(_reducer.initialState.currentDate.format());
-          var newDate = _reducer.initialState.currentDate.format().split('T');
+          console.error(action);
+          var newDate = action.date.format().split('T');
           console.log(newDate[0]);
           var CheminComplet = document.location.href;
           if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
@@ -44646,7 +44646,7 @@ var createMiddleware = function createMiddleware(store) {
           CheminComplet += 'date/' + newDate[0];
           console.info('La date a changer : requete axios pour récupérer les nouvelles données');
           var params = new URLSearchParams();
-          params.append('date', _reducer.initialState.currentDate.format());
+          params.append('date', action.date.format());
           _axios2.default.post(CheminComplet, params).then(function (response) {
             console.log(response);
             store.dispatch((0, _reducer.setActivities)(response.data.activities));

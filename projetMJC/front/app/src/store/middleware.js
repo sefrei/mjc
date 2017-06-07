@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, UP_DAY, DOWN_DAY, setActivities, initialState } from './reducer';
+import { CHANGE_DATE, UP_DAY, DOWN_DAY, setActivities, state } from './reducer';
 /*
  * Types
  */
@@ -62,8 +62,8 @@ const createMiddleware = store => next => (action) => {
     case CHANGE_DATE:
     case UP_DAY:
     case DOWN_DAY:
-      console.error(initialState.currentDate.format());
-      const newDate = initialState.currentDate.format().split('T');
+      console.error(action);
+      const newDate = action.date.format().split('T');
       console.log(newDate[0]);
       let CheminComplet = document.location.href;
       if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
@@ -72,7 +72,7 @@ const createMiddleware = store => next => (action) => {
       CheminComplet += 'date/' + newDate[0];
       console.info('La date a changer : requete axios pour récupérer les nouvelles données');
       const params = new URLSearchParams();
-      params.append('date', initialState.currentDate.format());
+      params.append('date', action.date.format());
       axios.post(CheminComplet, params)
       .then((response) => {
       console.log(response);
