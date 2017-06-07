@@ -43505,6 +43505,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
+                                                                                                                                                                                                                                                                   * Npm import
+                                                                                                                                                                                                                                                                   */
+
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -43516,6 +43521,12 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _reactDatepicker = require('react-datepicker');
 
 var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+require('moment/locale/fr');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43537,6 +43548,18 @@ var Nav = function Nav(_ref) {
     console.info(evt);
     actions.changeDate(evt);
   };
+  var up = function up() {
+    var newObj = _extends({}, currentDate);
+    newObj = (0, _moment2.default)(newObj);
+    newObj.add(1, 'days');
+    actions.changeDate(newObj);
+  };
+  var down = function down() {
+    var newObj = _extends({}, currentDate);
+    newObj = (0, _moment2.default)(newObj);
+    newObj.add(-1, 'days');
+    actions.changeDate(newObj);
+  };
 
   return _react2.default.createElement(
     'div',
@@ -43546,7 +43569,7 @@ var Nav = function Nav(_ref) {
       { id: 'notebook-navigation-nav' },
       _react2.default.createElement(
         'button',
-        { onClick: actions.downDay, id: 'left-arrow', className: 'nav-arrow' },
+        { onClick: down, id: 'left-arrow', className: 'nav-arrow' },
         _react2.default.createElement('i', { className: 'fa fa-arrow-circle-left ', 'aria-hidden': 'true' })
       ),
       _react2.default.createElement(_reactDatepicker2.default, {
@@ -43558,7 +43581,7 @@ var Nav = function Nav(_ref) {
       }),
       _react2.default.createElement(
         'button',
-        { onClick: actions.upDay, id: 'right-arrow', className: 'nav-arrow' },
+        { onClick: up, id: 'right-arrow', className: 'nav-arrow' },
         _react2.default.createElement('i', { className: 'fa fa-arrow-circle-right', 'aria-hidden': 'true' })
       )
     ),
@@ -43568,10 +43591,7 @@ var Nav = function Nav(_ref) {
       currentDate.format('dddd D MMMM YYYY')
     )
   );
-}; /*
-    * Npm import
-    */
-
+};
 
 Nav.propTypes = {
   currentDate: _propTypes2.default.object.isRequired,
