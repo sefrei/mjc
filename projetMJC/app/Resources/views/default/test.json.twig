@@ -1,11 +1,11 @@
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     {
     "user" : [
     {
     "user_id" : {{ app.user.id  }},
     "user_role" : "{{ app.user.role }}",
     "user_firstname" : "{{app.user.firstname}}",
-    "user_lastname" : {"{app.user.lastname}}"
+    "user_lastname" : "{{app.user.lastname}}"
     }
     ],
     "activities" : [
@@ -29,16 +29,14 @@
               "presenceTeacher" : false,
             {% endif %}
             {% if lesson.studentIsPresent %}
-              "presenceStudent" : true,
+              "presenceStudent" : true
             {% else %}
-              "presenceStudent" : false,
+              "presenceStudent" : false
               {% endif %}
-            "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}"
           }
 
-{% if (loop.length == loop.index ) or (loop.last == true)  %} {% else %},{% endif %}
-
-    {% endif %}
+          {% if (loop.length == loop.index ) or (loop.last == true)  %} {% else %},{% endif %}
+        {% endif %}
       {% endfor %}
     {% endif %}
 
