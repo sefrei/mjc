@@ -11,8 +11,8 @@ import datas from 'src/datas';
  * Types
  */
 export const CHANGE_DATE = 'CHANGE_DATE';
-const UP_DAY = 'UP_DAY';
-const DOWN_DAY = 'DOWN_DAY';
+export const UP_DAY = 'UP_DAY';
+export const DOWN_DAY = 'DOWN_DAY';
 const SET_ACTIVITIES = 'SET_ACTIVITIES';
 const SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 const SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
@@ -24,7 +24,7 @@ const CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 /*
  * initialState
  */
-const initialState = {
+export const initialState = {
   currentDate: moment(),
   user: datas.user,
   activities: [],

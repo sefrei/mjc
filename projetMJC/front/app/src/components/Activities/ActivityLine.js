@@ -26,6 +26,7 @@ const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id, speci
         to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
       >
         Cours de {speciality} avec {interlocuteur}
+        <button className="show-activity-button">Voir l'activité</button>
       </Link>
       <Presence presenceTeacher={presenceTeacher} presenceStudent={presenceStudent} stateActivity={stateActivity} id={id} />
     </div>

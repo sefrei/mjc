@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, setActivities } from './reducer';
+import { CHANGE_DATE, UP_DAY, DOWN_DAY, setActivities, initialState } from './reducer';
 /*
  * Types
  */
@@ -42,6 +42,7 @@ const createMiddleware = store => next => (action) => {
           console.error(error);
         });
         */
+        console.info(action.currentDate.format());
         const params = new URLSearchParams();
         params.append('date', action.currentDate.format());
         axios.post(CheminComplet, params)
@@ -58,10 +59,27 @@ const createMiddleware = store => next => (action) => {
 
         break;
       }
-    case CHANGE_DATE:
-        console.info('La date a changer : requete axios pour récupérer les nouvelles données');
-        // axios
-        // dispatch
+    case CHANGE_DATE, UP_DAY, DOWN_DAY:
+      console.error(initialState.currentDate.format());
+      const newDate = initialState.currentDate.format().split('T');
+      console.log(newDate[0]);
+      let CheminComplet = document.location.href;
+      if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+        CheminComplet += '/';
+      }
+      CheminComplet += 'date/' + newDate[0];
+      console.info('La date a changer : requete axios pour récupérer les nouvelles données');
+      const params = new URLSearchParams();
+      params.append('date', initialState.currentDate.format());
+      axios.post(CheminComplet, params)
+      .then((response) => {
+      console.log(response);
+        store.dispatch(setActivities(response.data.activities));
+      })
+      .catch((error) => {
+      console.log(error);
+      });
+      // dispatch
       break;
     default:
   }

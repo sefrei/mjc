@@ -43166,7 +43166,12 @@ var ActivityLine = function ActivityLine(_ref) {
       'Cours de ',
       speciality,
       ' avec ',
-      interlocuteur
+      interlocuteur,
+      _react2.default.createElement(
+        'button',
+        { className: 'show-activity-button' },
+        'Voir l\'activit\xE9'
+      )
     ),
     _react2.default.createElement(_Presence2.default, { presenceTeacher: presenceTeacher, presenceStudent: presenceStudent, stateActivity: stateActivity, id: id })
   );
@@ -44594,13 +44599,13 @@ var createMiddleware = function createMiddleware(store) {
           {
             // console.log(action.currentDate.format());
             // console.error(moment().format());
-            var CheminComplet = document.location.href;
-            if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-              CheminComplet += '/';
+            var _CheminComplet = document.location.href;
+            if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
+              _CheminComplet += '/';
             }
             // On fait une requête ajax pour récupérer les infos de l'utilisateur +
             // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-            CheminComplet += 'ajax';
+            _CheminComplet += 'ajax';
             /*axios.post(CheminComplet, {
               date: action.currentDate.format(),
             })
@@ -44613,9 +44618,10 @@ var createMiddleware = function createMiddleware(store) {
               console.error(error);
             });
             */
-            var params = new URLSearchParams();
-            params.append('date', action.currentDate.format());
-            _axios2.default.post(CheminComplet, params).then(function (response) {
+            console.info(action.currentDate.format());
+            var _params = new URLSearchParams();
+            _params.append('date', action.currentDate.format());
+            _axios2.default.post(_CheminComplet, _params).then(function (response) {
               console.log(response);
               store.dispatch((0, _reducer.setActivities)(response.data.activities));
             }).catch(function (error) {
@@ -44627,9 +44633,24 @@ var createMiddleware = function createMiddleware(store) {
 
             break;
           }
-        case _reducer.CHANGE_DATE:
+        case (_reducer.CHANGE_DATE, _reducer.UP_DAY, _reducer.DOWN_DAY):
+          console.error(_reducer.initialState.currentDate.format());
+          var newDate = _reducer.initialState.currentDate.format().split('T');
+          console.log(newDate[0]);
+          var CheminComplet = document.location.href;
+          if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+            CheminComplet += '/';
+          }
+          CheminComplet += 'date/' + newDate[0];
           console.info('La date a changer : requete axios pour récupérer les nouvelles données');
-          // axios
+          var params = new URLSearchParams();
+          params.append('date', _reducer.initialState.currentDate.format());
+          _axios2.default.post(CheminComplet, params).then(function (response) {
+            console.log(response);
+            store.dispatch((0, _reducer.setActivities)(response.data.activities));
+          }).catch(function (error) {
+            console.log(error);
+          });
           // dispatch
           break;
         default:
@@ -44663,7 +44684,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44692,8 +44713,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
  * Types
  */
 var CHANGE_DATE = exports.CHANGE_DATE = 'CHANGE_DATE';
-var UP_DAY = 'UP_DAY';
-var DOWN_DAY = 'DOWN_DAY';
+var UP_DAY = exports.UP_DAY = 'UP_DAY';
+var DOWN_DAY = exports.DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
 var SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
@@ -44705,7 +44726,7 @@ var CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 /*
  * initialState
  */
-var initialState = {
+var initialState = exports.initialState = {
   currentDate: (0, _moment2.default)(),
   user: _datas2.default.user,
   activities: [],
@@ -44941,5 +44962,99 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
+'use strict';
 
+/* jshint ignore:start */
+(function () {
+  var WebSocket = window.WebSocket || window.MozWebSocket;
+  var br = window.brunch = window.brunch || {};
+  var ar = br['auto-reload'] = br['auto-reload'] || {};
+  if (!WebSocket || ar.disabled) return;
+  if (window._ar) return;
+  window._ar = true;
+
+  var cacheBuster = function cacheBuster(url) {
+    var date = Math.round(Date.now() / 1000).toString();
+    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
+    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
+  };
+
+  var browser = navigator.userAgent.toLowerCase();
+  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
+
+  var reloaders = {
+    page: function page() {
+      window.location.reload(true);
+    },
+
+    stylesheet: function stylesheet() {
+      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
+        var val = link.getAttribute('data-autoreload');
+        return link.href && val != 'false';
+      }).forEach(function (link) {
+        link.href = cacheBuster(link.href);
+      });
+
+      // Hack to force page repaint after 25ms.
+      if (forceRepaint) setTimeout(function () {
+        document.body.offsetHeight;
+      }, 25);
+    },
+
+    javascript: function javascript() {
+      var scripts = [].slice.call(document.querySelectorAll('script'));
+      var textScripts = scripts.map(function (script) {
+        return script.text;
+      }).filter(function (text) {
+        return text.length > 0;
+      });
+      var srcScripts = scripts.filter(function (script) {
+        return script.src;
+      });
+
+      var loaded = 0;
+      var all = srcScripts.length;
+      var onLoad = function onLoad() {
+        loaded = loaded + 1;
+        if (loaded === all) {
+          textScripts.forEach(function (script) {
+            eval(script);
+          });
+        }
+      };
+
+      srcScripts.forEach(function (script) {
+        var src = script.src;
+        script.remove();
+        var newScript = document.createElement('script');
+        newScript.src = cacheBuster(src);
+        newScript.async = true;
+        newScript.onload = onLoad;
+        document.head.appendChild(newScript);
+      });
+    }
+  };
+  var port = ar.port || 9485;
+  var host = br.server || window.location.hostname || 'localhost';
+
+  var connect = function connect() {
+    var connection = new WebSocket('ws://' + host + ':' + port);
+    connection.onmessage = function (event) {
+      if (ar.disabled) return;
+      var message = event.data;
+      var reloader = reloaders[message] || reloaders.page;
+      reloader();
+    };
+    connection.onerror = function () {
+      if (connection.readyState) connection.close();
+    };
+    connection.onclose = function () {
+      window.setTimeout(connect, 1000);
+    };
+  };
+  connect();
+})();
+/* jshint ignore:end */
+
+;
 //# sourceMappingURL=app.js.map
