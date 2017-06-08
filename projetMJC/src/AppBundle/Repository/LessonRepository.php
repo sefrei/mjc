@@ -40,9 +40,26 @@ return $result;
 
       $result = $query->getResult();
 
-return $result;
+      return $result;
     }
 
+    public function getLessonsFromDateAndId($date, $id)
+    {
+      $query = $this->getEntityManager()->createQuery(
+          'SELECT l FROM AppBundle:Lesson l
+          JOIN  AppBundle:Subscription s
+          WHERE
+          l.startAt> ?1
+          AND l.startAt< ?2
+          AND (s.teacher = ?3 OR s.student = ?3)
+          ');
+          $query->setParameter(1, $date->format('Y-m-d 00:00:00'));
+          $query->setParameter(2, $date->format('Y-m-d 23:59:59'));
+          $query->setParameter(3, $id);
+
+          $result = $query->getResult();
+          return $result;
+    }
 
     public function findByCurrentUser()
     {
