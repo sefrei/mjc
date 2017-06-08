@@ -31,13 +31,11 @@
             <div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
               <ul class="nav navbar-nav">
                 {# Pout tout le monde #}
-                <li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
-				<li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
+                <li><a href="{{ path('specialty_index')}}">Spécialités</a></li>
+				<li><a href="{{ path('user_index')}}">Utilisateurs</a></li>
 				{# Si l'user est admin #}
 				 {% if is_granted('ROLE_ADMIN') %}
-					<li><a href="{{path ('user_new')}}">Création élève/prof</a></li>
-          <li><a href="{{path ('subscription_new')}}">Création inscription</a></li>
-          <li><a href="{{path ('specialty_new')}}">Création spécialité</a></li>
+          <li><a href="{{path ('subscription_new')}}">Inscription</a></li>
 				{% endif %}
                 {# Si l'user est authentifié #}
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}

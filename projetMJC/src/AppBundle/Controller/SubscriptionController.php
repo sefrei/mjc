@@ -30,7 +30,7 @@ class SubscriptionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $subscriptions = $em->getRepository('AppBundle:Subscription')->findAll();
-
+        //dump($subscriptions);
         return $this->render('subscription/index.html.twig', array(
             'subscriptions' => $subscriptions,
         ));
@@ -47,6 +47,7 @@ class SubscriptionController extends Controller
         $subscription = new Subscription();
         $form = $this->createForm('AppBundle\Form\SubscriptionType', $subscription);
         $form->handleRequest($request);
+        //dump($subscription);
 
         // current date
         $subscription->setSubscriptionAt(new \DateTime());
