@@ -14,8 +14,10 @@ Chaque "Activité Type" fait appel à plusieurs Compétences Professionnelles:
 (Description détaillée dans le REAC)
 
 ### Évaluation
-- "Épreuve de Synthèse": dossier de présentation de votre travail sur le projet => Dossier de projet
-- Dossier Professionnel: contient la description des activités réalisées pendant la formation (par compétences) => Dossier en plus du dossier de projet (ne parle pas du projet, liste des activités du référentiel avec courte description pour expliquer comment on a valider cette actvitité)
+- "Épreuve de Synthèse": dossier de présentation de votre travail sur le projet 
+=> Dossier de projet
+- Dossier Professionnel: contient la description des activités réalisées pendant la formation (par compétences)
+=> Dossier en plus du dossier de projet (ne parle pas du projet, liste des activités du référentiel avec courte description pour expliquer comment on a valider cette actvitité)
 - Résultats des évaluations en cours de formation
 
 - Entretien (1h15) :
@@ -26,7 +28,7 @@ Chaque "Activité Type" fait appel à plusieurs Compétences Professionnelles:
 
 ### Le projet
 
-#### Le dossier de projet
+#### Le dossier de projet 
 Le dossier de projet à préparer en vue de l’épreuve respecte ce plan type :
 - Résumé du projet en anglais (*abstract*)
 - Liste des compétences du référentiel qui sont couvertes par le projet
@@ -37,7 +39,8 @@ Le dossier de projet à préparer en vue de l’épreuve respecte ce plan type :
 
 Sa longueur hors annexes est de 30 à 60 pages.
 
-=> ORAL (Rien a voir avec les dossiers de projets) => PowerPoint ou dossier de présentation.
+### Eval Oral
+=> ORAL (Rien a voir avec les dossiers de projets)=> PowerPoint ou dossier de présentation.
 #### La présentation du projet
 La présentation commence par un résumé en anglais du projet.  
 Le reste de la présentation se fait en français, à l'aide d'un support (slides) et comprend une démo (maxi 10 minutes) de l'application.  
