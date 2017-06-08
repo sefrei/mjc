@@ -9,13 +9,13 @@ Le Titre Professionnel de Développeur Logiciel se décompose en 2 Activités Ty
 
 Chaque "Activité Type" fait appel à plusieurs Compétences Professionnelles:  
 
-![résumé activités et compétences du titre professionnel](img/resume-tp-cp.png)
+![résumé activités et compétences du titre professionnel](https://github.com/O-clock/bigbang-fiches-recap/blob/master/titre-pro/img/resume-tp-cp.png?raw=true)
 
 (Description détaillée dans le REAC)
 
 ### Évaluation
-- "Épreuve de Synthèse": dossier de présentation de votre travail sur le projet
-- Dossier Professionnel: contient la description des activités réalisées pendant la formation (par compétences)
+- "Épreuve de Synthèse": dossier de présentation de votre travail sur le projet => Dossier de projet
+- Dossier Professionnel: contient la description des activités réalisées pendant la formation (par compétences) => Dossier en plus du dossier de projet (ne parle pas du projet, liste des activités du référentiel avec courte description pour expliquer comment on a valider cette actvitité)
 - Résultats des évaluations en cours de formation
 
 - Entretien (1h15) :
@@ -37,7 +37,7 @@ Le dossier de projet à préparer en vue de l’épreuve respecte ce plan type :
 
 Sa longueur hors annexes est de 30 à 60 pages.
 
-
+=> ORAL (Rien a voir avec les dossiers de projets) => PowerPoint ou dossier de présentation.
 #### La présentation du projet
 La présentation commence par un résumé en anglais du projet.  
 Le reste de la présentation se fait en français, à l'aide d'un support (slides) et comprend une démo (maxi 10 minutes) de l'application.  
