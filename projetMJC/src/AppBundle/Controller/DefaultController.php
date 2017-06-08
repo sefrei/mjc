@@ -141,4 +141,36 @@ class DefaultController extends Controller
                   new JsonResponse()
                     );
               }
+
+           /**
+            * @Route("planning/{date}", name="planning_date")
+            */
+            public function userDateAction(Request $request)
+            {
+                $dateRequest = $request->get('date');
+                $id = $this->getUser()->getId();
+
+                $date = new \DateTime($dateRequest);
+                $em = $this->getDoctrine()->getManager();
+                $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDateAndId($date, $id);
+                // dump($lessons);
+                // exit;
+                return $this->render('default/test.json.twig', [
+                    'lessons' => $lessons,
+                ],
+                new JsonResponse()
+                  );
+            }
+
+            /**
+             * @Route("showTeachers", name="show_teachers")
+             */
+             public function showTeachersAction()
+             {
+                 $em = $this->getDoctrine()->getManager();
+                 $teachers = $em->getRepository('AppBundle:User')->showTeachers();
+                 dump($teachers);
+                 exit;
+
+             }
 }

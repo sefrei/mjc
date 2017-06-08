@@ -27,12 +27,6 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
       return $query->getResult();
     }
 
-    // Trouver les inscription par la date
-    // public function showSubscriptionByDate($date)
-    // {
-    //   return $this->getEntityManager()
-    //   ->createQuery;
-      //SELECT * FROM `subscription` WHERE startAt BETWEEN "2017-03-06" and "2017-04-06"
-    // }
+
 
 }
