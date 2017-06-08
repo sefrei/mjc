@@ -43660,7 +43660,7 @@ var NextActivities = function NextActivities(_ref) {
     _react2.default.createElement(
       'h1',
       null,
-      'Prochaines journ\xE9es active :'
+      'Prochaines journ\xE9es actives :'
     ),
     days.map(function (day) {
       return _react2.default.createElement(
@@ -44504,7 +44504,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { store: _store2.default },
     _react2.default.createElement(
       _reactRouterDom.BrowserRouter,
-      null,
+      { history: _reactRouterDom.browserHistory },
       _react2.default.createElement(_App2.default, null)
     )
   );
@@ -44619,13 +44619,13 @@ var createMiddleware = function createMiddleware(store) {
           {
             // console.log(action.currentDate.format());
             // console.error(moment().format());
-            var _CheminComplet = document.location.href;
-            if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
-              _CheminComplet += '/';
+            var CheminComplet = document.location.href;
+            if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+              CheminComplet += '/';
             }
             // On fait une requête ajax pour récupérer les infos de l'utilisateur +
             // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-            _CheminComplet += 'ajax';
+            CheminComplet += 'ajax';
             /*axios.post(CheminComplet, {
               date: action.currentDate.format(),
             })
@@ -44639,9 +44639,9 @@ var createMiddleware = function createMiddleware(store) {
             });
             */
             console.info(action.currentDate.format());
-            var _params = new URLSearchParams();
-            _params.append('date', action.currentDate.format());
-            _axios2.default.post(_CheminComplet, _params).then(function (response) {
+            var params = new URLSearchParams();
+            params.append('date', action.currentDate.format());
+            _axios2.default.post(CheminComplet, params).then(function (response) {
               console.log(response);
               store.dispatch((0, _reducer.setActivities)(response.data.activities));
             }).catch(function (error) {
@@ -44656,25 +44656,27 @@ var createMiddleware = function createMiddleware(store) {
         case _reducer.CHANGE_DATE:
         case _reducer.UP_DAY:
         case _reducer.DOWN_DAY:
-          console.error(action);
-          var newDate = action.date.format().split('T');
-          console.log(newDate[0]);
-          var CheminComplet = document.location.href;
-          if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-            CheminComplet += '/';
+          {
+            console.error(action);
+            var newDate = action.date.format().split('T');
+            console.log(newDate[0]);
+            var _CheminComplet = document.location.href;
+            if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
+              _CheminComplet += '/';
+            }
+            _CheminComplet += 'date/' + newDate[0];
+            console.info('La date a changer : requete axios pour récupérer les nouvelles données');
+            var _params = new URLSearchParams();
+            _params.append('date', action.date.format());
+            _axios2.default.post(_CheminComplet, _params).then(function (response) {
+              console.log(response);
+              store.dispatch((0, _reducer.setActivities)(response.data.activities));
+            }).catch(function (error) {
+              console.log(error);
+            });
+            // dispatch
+            break;
           }
-          CheminComplet += 'date/' + newDate[0];
-          console.info('La date a changer : requete axios pour récupérer les nouvelles données');
-          var params = new URLSearchParams();
-          params.append('date', action.date.format());
-          _axios2.default.post(CheminComplet, params).then(function (response) {
-            console.log(response);
-            store.dispatch((0, _reducer.setActivities)(response.data.activities));
-          }).catch(function (error) {
-            console.log(error);
-          });
-          // dispatch
-          break;
         default:
       }
 

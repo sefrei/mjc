@@ -62,27 +62,29 @@ const createMiddleware = store => next => (action) => {
     case CHANGE_DATE:
     case UP_DAY:
     case DOWN_DAY:
-      console.error(action);
-      const newDate = action.date.format().split('T');
-      console.log(newDate[0]);
-      let CheminComplet = document.location.href;
-      if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-        CheminComplet += '/';
+      {
+        console.error(action);
+        const newDate = action.date.format().split('T');
+        console.log(newDate[0]);
+        let CheminComplet = document.location.href;
+        if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+          CheminComplet += '/';
+        }
+        CheminComplet += 'date/' + newDate[0];
+        console.info('La date a changer : requete axios pour récupérer les nouvelles données');
+        const params = new URLSearchParams();
+        params.append('date', action.date.format());
+        axios.post(CheminComplet, params)
+        .then((response) => {
+        console.log(response);
+          store.dispatch(setActivities(response.data.activities));
+        })
+        .catch((error) => {
+        console.log(error);
+        });
+        // dispatch
+        break;
       }
-      CheminComplet += 'date/' + newDate[0];
-      console.info('La date a changer : requete axios pour récupérer les nouvelles données');
-      const params = new URLSearchParams();
-      params.append('date', action.date.format());
-      axios.post(CheminComplet, params)
-      .then((response) => {
-      console.log(response);
-        store.dispatch(setActivities(response.data.activities));
-      })
-      .catch((error) => {
-      console.log(error);
-      });
-      // dispatch
-      break;
     default:
   }
 

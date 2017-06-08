@@ -28,7 +28,7 @@ const NextActivities = ({ days, actions, displayNotifications }) => {
       { 'hide-notif': displayNotifications },
       )}
     >
-      <h1>Prochaines journées active :</h1>
+      <h1>Prochaines journées actives :</h1>
       {days.map(day => (
         <p
           key={day.id}
