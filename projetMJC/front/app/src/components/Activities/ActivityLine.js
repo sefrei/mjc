@@ -15,8 +15,12 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id, speciality, presenceStudent, presenceTeacher, student, teacher, user }) => {
+const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id,
+  speciality, presenceStudent, presenceTeacher, student, teacher, user }) => {
+  // Get the state of the activity in depend of the presence of the 2 users (teacher / student).
   const stateActivity = (presenceTeacher && presenceStudent);
+  // Get the good name of the second user who doing the activity with the current user,
+  // ex: If it's the student then we pick the teacher name.
   const interlocuteur = user.type === 'student' ? teacher : student;
   return (
     <div className="activity">
@@ -28,7 +32,12 @@ const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id, speci
         Cours de {speciality} avec {interlocuteur}
         <button className="show-activity-button">Voir l'activité</button>
       </Link>
-      <Presence presenceTeacher={presenceTeacher} presenceStudent={presenceStudent} stateActivity={stateActivity} id={id} />
+      <Presence
+        presenceTeacher={presenceTeacher}
+        presenceStudent={presenceStudent}
+        stateActivity={stateActivity}
+        id={id}
+      />
     </div>
   );
 };

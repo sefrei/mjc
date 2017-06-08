@@ -182,7 +182,7 @@ button {
 .show-activity-button {
   background: none;
   border: 1px solid;
-  margin-left: 1em;
+  margin: 0.5em auto auto 1em;
   color: #000;
   padding: 0.2em 0.5em;
 }
@@ -206,6 +206,9 @@ button {
   }
   .activity-hour:after {
     content: ' : ';
+  }
+  .show-activity-button {
+    margin: auto auto auto 0.5em;
   }
 }
 /* Desktop HD */
@@ -1297,10 +1300,10 @@ button {
   top: 12px;
   right: 12px;
   padding: 2px 4px;
-  font-size: 0.8em;
+  font-size: 1em;
   display: inline-block;
   border-radius: 30%;
-  background: #78d16f;
+  background: #3fa535;
   border: 1px solid #fff;
   color: #fff;
   font-weight: bold;
@@ -1353,9 +1356,6 @@ button {
 @media (min-width: 1000px) {
   #notifications-counter-icon {
     right: 1;
-  }
-  #notifications-counter-count {
-    right: -2;
   }
   #notifications-messages-container {
     right: 40px;
@@ -1452,9 +1452,10 @@ button {
 /* Desktop HD */
 @media (min-width: 1200px) {
   .presence {
-    border-left: 1px solid #35a550;
-    width: 200px;
+    width: 180px;
     float: right;
+    margin-top: 6px;
+    margin-right: 0.5em;
   }
 }
 /* Desktop Wide */

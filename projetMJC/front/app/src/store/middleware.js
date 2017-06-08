@@ -22,14 +22,15 @@ const createMiddleware = store => next => (action) => {
     case LOAD_ACTIVITIES:
       {
         // console.log(action.currentDate.format());
-        // console.error(moment().format());
+        // console.error();
         let CheminComplet = document.location.href;
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
         }
         // On fait une requête ajax pour récupérer les infos de l'utilisateur +
         // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-        CheminComplet += 'ajax';
+        const newDate = moment().format().split('T');
+        CheminComplet += 'planning/' + newDate[0];
         /*axios.post(CheminComplet, {
           date: action.currentDate.format(),
         })
@@ -70,7 +71,7 @@ const createMiddleware = store => next => (action) => {
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
         }
-        CheminComplet += 'date/' + newDate[0];
+        CheminComplet += 'planning/' + newDate[0];
         console.info('La date a changer : requete axios pour récupérer les nouvelles données');
         const params = new URLSearchParams();
         params.append('date', action.date.format());

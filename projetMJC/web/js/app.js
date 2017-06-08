@@ -43145,7 +43145,10 @@ var ActivityLine = function ActivityLine(_ref) {
       teacher = _ref.teacher,
       user = _ref.user;
 
+  // Get the state of the activity in depend of the presence of the 2 users (teacher / student).
   var stateActivity = presenceTeacher && presenceStudent;
+  // Get the good name of the second user who doing the activity with the current user,
+  // ex: If it's the student then we pick the teacher name.
   var interlocuteur = user.type === 'student' ? teacher : student;
   return _react2.default.createElement(
     'div',
@@ -43173,7 +43176,12 @@ var ActivityLine = function ActivityLine(_ref) {
         'Voir l\'activit\xE9'
       )
     ),
-    _react2.default.createElement(_Presence2.default, { presenceTeacher: presenceTeacher, presenceStudent: presenceStudent, stateActivity: stateActivity, id: id })
+    _react2.default.createElement(_Presence2.default, {
+      presenceTeacher: presenceTeacher,
+      presenceStudent: presenceStudent,
+      stateActivity: stateActivity,
+      id: id
+    })
   );
 };
 /*
@@ -44618,14 +44626,15 @@ var createMiddleware = function createMiddleware(store) {
         case LOAD_ACTIVITIES:
           {
             // console.log(action.currentDate.format());
-            // console.error(moment().format());
+            // console.error();
             var CheminComplet = document.location.href;
             if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
               CheminComplet += '/';
             }
             // On fait une requête ajax pour récupérer les infos de l'utilisateur +
             // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
-            CheminComplet += 'ajax';
+            var newDate = (0, _moment2.default)().format().split('T');
+            CheminComplet += 'planning/' + newDate[0];
             /*axios.post(CheminComplet, {
               date: action.currentDate.format(),
             })
@@ -44658,13 +44667,13 @@ var createMiddleware = function createMiddleware(store) {
         case _reducer.DOWN_DAY:
           {
             console.error(action);
-            var newDate = action.date.format().split('T');
-            console.log(newDate[0]);
+            var _newDate = action.date.format().split('T');
+            console.log(_newDate[0]);
             var _CheminComplet = document.location.href;
             if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
               _CheminComplet += '/';
             }
-            _CheminComplet += 'date/' + newDate[0];
+            _CheminComplet += 'planning/' + _newDate[0];
             console.info('La date a changer : requete axios pour récupérer les nouvelles données');
             var _params = new URLSearchParams();
             _params.append('date', action.date.format());
