@@ -31,16 +31,18 @@
             <div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
               <ul class="nav navbar-nav">
                 {# Pout tout le monde #}
-                <li><a href="{{ path('specialty_index')}}">Spécialités</a></li>
+
 				<li><a href="{{ path('user_index')}}">Utilisateurs</a></li>
+        <li><a href="{{ path('specialty_index')}}">Spécialités</a></li>
 				{# Si l'user est admin #}
 				 {% if is_granted('ROLE_ADMIN') %}
           <li><a href="{{path ('subscription_new')}}">Inscription</a></li>
 				{% endif %}
                 {# Si l'user est authentifié #}
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<li><a href="{{path('user_edit',  { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li>        
                 <li><a href="{{ path('logout')}}">Déconnexion</a></li>
-				<li><a href="{{path('user_edit',  { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li>
+
 
 
 				{% else %}
