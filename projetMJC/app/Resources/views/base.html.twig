@@ -33,6 +33,8 @@
                 {# Pout tout le monde #}
                 <li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
 				<li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
+				<li><a href="{{ path('subscription_index')}}">Inscriptions aux activités</a></li>
+				<li><a href="{{ path('lesson_index')}}">Observations sur mes élèves</a></li>
 				{# Si l'user est admin #}
 				 {% if is_granted('ROLE_ADMIN') %}
 					<li><a href="{{path ('user_new')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
