@@ -4,11 +4,6 @@
         <meta charset="UTF-8" />
         <title>{% block title %}La fabrique{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-		<script
-  		src="https://code.jquery.com/jquery-3.2.1.min.js"
-  		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  		crossorigin="anonymous">
-		</script>
         <link href="https://fonts.googleapis.com/css?family=Hind+Madurai:400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -36,29 +31,17 @@
             <div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
               <ul class="nav navbar-nav">
                 {# Pout tout le monde #}
-
-				<li><a href="{{ path('user_index')}}">Utilisateurs</a></li>
-        <li><a href="{{ path('specialty_index')}}">Spécialités</a></li>
+                <li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
+				<li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
 				{# Si l'user est admin #}
 				 {% if is_granted('ROLE_ADMIN') %}
-          <li><a href="{{path ('subscription_new')}}">Inscription</a></li>
-		          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inscription <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+					<li><a href="{{path ('user_new')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+					<li><a href="{{path ('user_new')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></a></li>
 				{% endif %}
                 {# Si l'user est authentifié #}
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<li><a href="{{path('user_edit',  { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li>
                 <li><a href="{{ path('logout')}}">Déconnexion</a></li>
-
-
 
 				{% else %}
 
