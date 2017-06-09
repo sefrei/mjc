@@ -15,8 +15,8 @@ import classNames from 'classnames';
  * Code
  */
 const Presence = ({ presenceTeacher, presenceStudent, actions, stateActivity, user }) => {
-  const presenceType = user.type === 'student' ? presenceStudent : presenceTeacher;
-  const switchPresenceUser = user.type === 'student' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
+  const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  const switchPresenceUser = user.user_role === 'ROLE_STUDENT' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
   return (
     <div className="presence">
       {

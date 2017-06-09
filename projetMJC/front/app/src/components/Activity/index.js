@@ -29,9 +29,9 @@ const Activity = ({
     console.info('Actions : Enregistrer dans la BDD');
     // actions.addTask();
   };
-  const presenceType = user.type === 'student' ? presenceStudent : presenceTeacher;
+  const presenceType = user.type === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   const stateActivity = (presenceTeacher && presenceStudent);
-  const interlocuteur = user.type === 'student' ? teacher : student;
+  const interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return (
     <div id="activity-view">
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>

@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, UP_DAY, DOWN_DAY, setActivities, state } from './reducer';
+import { CHANGE_DATE, SWITCH_PRESENCE, SWITCH_PRESENCE_STUDENT, setActivities, setUser } from './reducer';
 /*
  * Types
  */
@@ -50,6 +50,7 @@ const createMiddleware = store => next => (action) => {
         .then((response) => {
         console.log(response);
           store.dispatch(setActivities(response.data.activities));
+          store.dispatch(setUser(response.data.user));
         })
         .catch((error) => {
         console.log(error);
@@ -61,8 +62,6 @@ const createMiddleware = store => next => (action) => {
         break;
       }
     case CHANGE_DATE:
-    case UP_DAY:
-    case DOWN_DAY:
       {
         console.error(action);
         const newDate = action.date.format().split('T');
@@ -84,6 +83,43 @@ const createMiddleware = store => next => (action) => {
         console.log(error);
         });
         // dispatch
+        break;
+      }
+    case SWITCH_PRESENCE:
+      {
+        let CheminComplet = document.location.href;
+        if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+          CheminComplet += '/';
+        }
+        CheminComplet += 'lesson/' + action.id + '/presence/edit/';
+        console.info(action);
+        const params = new URLSearchParams();
+        params.append('id_activity', action.id);
+        params.append('type_user', action.userType);
+        params.append('presence', !action.presence);
+        axios.post(CheminComplet, params)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        break;
+      }
+    case SWITCH_PRESENCE_STUDENT:
+      {
+        console.info('update presence student');
+        const params = new URLSearchParams();
+        params.append('id_activity', action.id);
+        params.append('type_user', 'ROLE_STUDENT');
+        axios.post('CheminComplet', params)
+        .then((response) => {
+          console.log(response);
+          store.dispatch(setActivities(response.data.activities));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
         break;
       }
     default:

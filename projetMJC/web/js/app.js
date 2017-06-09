@@ -43149,7 +43149,7 @@ var ActivityLine = function ActivityLine(_ref) {
   var stateActivity = presenceTeacher && presenceStudent;
   // Get the good name of the second user who doing the activity with the current user,
   // ex: If it's the student then we pick the teacher name.
-  var interlocuteur = user.type === 'student' ? teacher : student;
+  var interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
@@ -43329,9 +43329,9 @@ var Activity = function Activity(_ref) {
     console.info('Actions : Enregistrer dans la BDD');
     // actions.addTask();
   };
-  var presenceType = user.type === 'student' ? presenceStudent : presenceTeacher;
+  var presenceType = user.type === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   var stateActivity = presenceTeacher && presenceStudent;
-  var interlocuteur = user.type === 'student' ? teacher : student;
+  var interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -43925,8 +43925,8 @@ var Presence = function Presence(_ref) {
       stateActivity = _ref.stateActivity,
       user = _ref.user;
 
-  var presenceType = user.type === 'student' ? presenceStudent : presenceTeacher;
-  var switchPresenceUser = user.type === 'student' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
+  var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  var switchPresenceUser = user.user_role === 'ROLE_STUDENT' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
   return _react2.default.createElement(
     'div',
     { className: 'presence' },
@@ -44376,15 +44376,15 @@ var mapStateToProps = function mapStateToProps(state) {
     */
 
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref) {
-  var id = _ref.id;
+var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
+
   return {
     actions: {
       switchPresenceTeacher: function switchPresenceTeacher() {
-        dispatch((0, _reducer.switchPresenceTeacher)(id));
+        dispatch((0, _reducer.switchPresenceTeacher)(props.id, props.presenceTeacher));
       },
       switchPresenceStudent: function switchPresenceStudent() {
-        dispatch((0, _reducer.switchPresenceStudent)(id));
+        dispatch((0, _reducer.switchPresenceStudent)(props.id, props.presenceStudent));
       }
     }
   };
@@ -44653,6 +44653,7 @@ var createMiddleware = function createMiddleware(store) {
             _axios2.default.post(CheminComplet, params).then(function (response) {
               console.log(response);
               store.dispatch((0, _reducer.setActivities)(response.data.activities));
+              store.dispatch((0, _reducer.setUser)(response.data.user));
             }).catch(function (error) {
               console.log(error);
             });
@@ -44663,8 +44664,6 @@ var createMiddleware = function createMiddleware(store) {
             break;
           }
         case _reducer.CHANGE_DATE:
-        case _reducer.UP_DAY:
-        case _reducer.DOWN_DAY:
           {
             console.error(action);
             var _newDate = action.date.format().split('T');
@@ -44684,6 +44683,39 @@ var createMiddleware = function createMiddleware(store) {
               console.log(error);
             });
             // dispatch
+            break;
+          }
+        case _reducer.SWITCH_PRESENCE:
+          {
+            var _CheminComplet2 = document.location.href;
+            if (_CheminComplet2.substr(_CheminComplet2.length - 1, 1) !== '/') {
+              _CheminComplet2 += '/';
+            }
+            _CheminComplet2 += 'lesson/' + action.id + '/presence/edit/';
+            console.info(action);
+            var _params2 = new URLSearchParams();
+            _params2.append('id_activity', action.id);
+            _params2.append('type_user', action.userType);
+            _params2.append('presence', !action.presence);
+            _axios2.default.post(_CheminComplet2, _params2).then(function (response) {
+              console.log(response);
+            }).catch(function (error) {
+              console.log(error);
+            });
+            break;
+          }
+        case _reducer.SWITCH_PRESENCE_STUDENT:
+          {
+            console.info('update presence student');
+            var _params3 = new URLSearchParams();
+            _params3.append('id_activity', action.id);
+            _params3.append('type_user', 'ROLE_STUDENT');
+            _axios2.default.post('CheminComplet', _params3).then(function (response) {
+              console.log(response);
+              store.dispatch((0, _reducer.setActivities)(response.data.activities));
+            }).catch(function (error) {
+              console.log(error);
+            });
             break;
           }
         default:
@@ -44717,7 +44749,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44749,8 +44781,9 @@ var CHANGE_DATE = exports.CHANGE_DATE = 'CHANGE_DATE';
 var UP_DAY = exports.UP_DAY = 'UP_DAY';
 var DOWN_DAY = exports.DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
-var SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
-var SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
+var SET_USER = 'SET_USER';
+var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE_TEACHER';
+var SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 var RESET_OBSERVATION = 'RESET_OBSERVATION';
 var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
@@ -44761,7 +44794,7 @@ var CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
  */
 var initialState = exports.initialState = {
   currentDate: (0, _moment2.default)(),
-  user: _datas2.default.user,
+  user: {},
   activities: [],
   notifications: _datas2.default.notifications,
   nextDayActivities: _datas2.default.nextDayActivities,
@@ -44780,6 +44813,7 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
+        console.info(state);
         return _extends({}, state, {
           currentDate: action.date
         });
@@ -44808,7 +44842,13 @@ exports.default = function () {
           activities: action.activities
         });
       }
-    case SWITCH_PRESENCE_TEACHER:
+    case SET_USER:
+      {
+        return _extends({}, state, {
+          user: action.user
+        });
+      }
+    case SWITCH_PRESENCE:
       {
         var id = action.id;
 
@@ -44816,7 +44856,11 @@ exports.default = function () {
         var activities = [].concat(_toConsumableArray(state.activities));
         activities.forEach(function (activity) {
           if (activity.activity_id === id) {
-            activity.presenceTeacher = !activity.presenceTeacher;
+            if (action.userType === 'ROLE_TEACHER') {
+              activity.presenceTeacher = !activity.presenceTeacher;
+            } else {
+              activity.presenceStudent = !activity.presenceStudent;
+            }
           }
         });
         return _extends({}, state, {
@@ -44903,34 +44947,35 @@ exports.default = function () {
 
 
 var changeDate = exports.changeDate = function changeDate(date) {
-  console.log('changeDate');
   return {
     type: CHANGE_DATE,
     date: date
   };
 };
 var upDay = exports.upDay = function upDay() {
-  console.log('up_day');
   return {
     type: UP_DAY
   };
 };
+
 var downDay = exports.downDay = function downDay() {
-  console.log('down_day');
   return {
     type: DOWN_DAY
   };
 };
-
-var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPresenceTeacher(id) {
+var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPresenceTeacher(id, props) {
+  console.error('props');
   return {
-    type: SWITCH_PRESENCE_TEACHER,
+    type: SWITCH_PRESENCE,
+    userType: 'ROLE_TEACHER',
     id: id
   };
 };
-var switchPresenceStudent = exports.switchPresenceStudent = function switchPresenceStudent(id) {
+var switchPresenceStudent = exports.switchPresenceStudent = function switchPresenceStudent(id, presenceStudent) {
   return {
-    type: SWITCH_PRESENCE_STUDENT,
+    type: SWITCH_PRESENCE,
+    userType: 'ROLE_STUDENT',
+    presence: presenceStudent,
     id: id
   };
 };
@@ -44938,6 +44983,12 @@ var setActivities = exports.setActivities = function setActivities(activities) {
   return {
     type: SET_ACTIVITIES,
     activities: activities
+  };
+};
+var setUser = exports.setUser = function setUser(user) {
+  return {
+    type: SET_USER,
+    user: user
   };
 };
 var changeInputObservation = exports.changeInputObservation = function changeInputObservation(input, id) {

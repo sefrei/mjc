@@ -14,8 +14,9 @@ export const CHANGE_DATE = 'CHANGE_DATE';
 export const UP_DAY = 'UP_DAY';
 export const DOWN_DAY = 'DOWN_DAY';
 const SET_ACTIVITIES = 'SET_ACTIVITIES';
-const SWITCH_PRESENCE_TEACHER = 'SWITCH_PRESENCE';
-const SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
+const SET_USER = 'SET_USER';
+export const SWITCH_PRESENCE = 'SWITCH_PRESENCE_TEACHER';
+export const SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 const RESET_OBSERVATION = 'RESET_OBSERVATION';
 const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
@@ -26,7 +27,7 @@ const CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
  */
 export const initialState = {
   currentDate: moment(),
-  user: datas.user,
+  user: {},
   activities: [],
   notifications: datas.notifications,
   nextDayActivities: datas.nextDayActivities,
@@ -42,6 +43,7 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_DATE:
       {
+        console.info(state);
         return {
           ...state,
           currentDate: action.date,
@@ -78,14 +80,26 @@ export default (state = initialState, action = {}) => {
           activities: action.activities,
         };
       }
-    case SWITCH_PRESENCE_TEACHER:
+    case SET_USER:
+      {
+        return {
+          ...state,
+          user: action.user,
+        };
+      }
+    case SWITCH_PRESENCE:
       {
         let { id } = action;
         id = parseInt(id, 10);
         const activities = [...state.activities];
         activities.forEach((activity) => {
           if (activity.activity_id === id) {
-            activity.presenceTeacher = !activity.presenceTeacher;
+            if (action.userType === 'ROLE_TEACHER') {
+              activity.presenceTeacher = !activity.presenceTeacher;
+            }
+            else {
+              activity.presenceStudent = !activity.presenceStudent;
+            }
           }
         });
         return {
@@ -171,43 +185,46 @@ export default (state = initialState, action = {}) => {
 /*
  * Action creators
  */
-export const changeDate = (date) => {
-  console.log('changeDate');
-  return (
+export const changeDate = date => (
   {
     type: CHANGE_DATE,
     date,
   }
-  );
-};
-export const upDay = () => {
-  console.log('up_day');
-  return (
+);
+export const upDay = () => (
   {
     type: UP_DAY,
   }
-  );
-};
-export const downDay = () => {
-  console.log('down_day');
-  return (
+);
+
+export const downDay = () => (
   {
     type: DOWN_DAY,
   }
-  );
-};
-
-export const switchPresenceTeacher = id => ({
-  type: SWITCH_PRESENCE_TEACHER,
+);
+export const switchPresenceTeacher = (id, props) => {
+  console.error('props');
+  return ({
+  type: SWITCH_PRESENCE,
+  userType: 'ROLE_TEACHER',
   id,
 });
-export const switchPresenceStudent = id => ({
-  type: SWITCH_PRESENCE_STUDENT,
+}
+export const switchPresenceStudent = (id, presenceStudent) => {
+  return ({
+  type: SWITCH_PRESENCE,
+  userType: 'ROLE_STUDENT',
+  presence: presenceStudent,
   id,
 });
+}
 export const setActivities = activities => ({
   type: SET_ACTIVITIES,
   activities,
+});
+export const setUser = user => ({
+  type: SET_USER,
+  user,
 });
 export const changeInputObservation = (input, id) => ({
   type: INPUT_OBSERVATION_CHANGE,

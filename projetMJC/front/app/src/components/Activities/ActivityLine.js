@@ -21,7 +21,7 @@ const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id,
   const stateActivity = (presenceTeacher && presenceStudent);
   // Get the good name of the second user who doing the activity with the current user,
   // ex: If it's the student then we pick the teacher name.
-  const interlocuteur = user.type === 'student' ? teacher : student;
+  const interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return (
     <div className="activity">
       <div className="activity-hour">{startHour} à {finishHour}</div>
