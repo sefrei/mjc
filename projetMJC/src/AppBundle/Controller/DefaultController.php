@@ -121,6 +121,10 @@ class DefaultController extends Controller
          */
          public function showMyStudentsAction()
          {
+                $em = $this->getDoctrine()->getManager();
+                $students = $em->getRepository('AppBundle:Subscription')->showMyStudentsAction();
+                dump($students);
+                exit;
 
          }
              /**
@@ -162,27 +166,6 @@ class DefaultController extends Controller
                   );
             }
 
-             /**
-              * @Route("now/after", name="now_after")
-              */
-                public function nowAfterAction(Request $request)
-                {
-                    $id = $this->getUser()->getId();
-                    // dump($id);
-                    // exit;
-                    $em = $this->getDoctrine()->getManager();
-                    $lessons = $em->getRepository('AppBundle:Lesson')->lessonsNowAfter($id);
-                    dump($lessons);
-                    exit;
-                    return $this->render('default/now-afer.json.twig', [
-                        'lessons' => $lessons,
-                    ],
-                    new JsonResponse()
-                      );
-                }
-
-            //
-
             /**
              * @Route("showTeachers", name="show_teachers")
              */
@@ -192,6 +175,6 @@ class DefaultController extends Controller
                  $teachers = $em->getRepository('AppBundle:User')->showTeachers();
                  dump($teachers);
                  exit;
-             }
 
+             }
 }
