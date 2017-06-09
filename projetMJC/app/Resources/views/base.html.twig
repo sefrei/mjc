@@ -31,20 +31,25 @@
             <div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
               <ul class="nav navbar-nav">
                 {# Pout tout le monde #}
-                <li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
-				<li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
-				<li><a href="{{ path('subscription_index')}}">Inscriptions aux activités</a></li>
+
 
 				{# Si l'user est admin #}
 				 {% if is_granted('ROLE_ADMIN') %}
+          <li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
+				  <li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
+				  <li><a href="{{ path('subscription_index')}}">Inscriptions aux activités</a></li>            
 					<li><a href="{{path ('user_new')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
 					<li><a href="{{path ('user_new')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></a></li>
+
 				{% endif %}
 				{# Si l'user est teacher #}
 				 {% if is_granted('ROLE_TEACHER') %}
 				<li><a href="{{ path('lesson_index')}}">Mes élèves</a></li>
-				 
+
 				<li><a href="{{ path('lesson_index')}}">Observations sur mes élèves</a></li>
+				{% endif %}
+				{# Si l'user est student #}
+				 {% if is_granted('ROLE_STUDENT') %}
 
 				{% endif %}
                 {# Si l'user est authentifié #}
