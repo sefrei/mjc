@@ -122,8 +122,16 @@ class LessonController extends Controller
                     $lesson->setTeacherIsPresent($presenceBoolean);
                     $em->persist($lesson);
                     $em->flush();
-
                 }
+                elseif ($typeUser = "ROLE_STUDENT") {
+                    $em = $this->getDoctrine()->getManager();
+
+                //Je modifie $teacherIsPresent
+                $lesson->setStudentIsPresent($presenceBoolean);
+                $em->persist($lesson);
+                $em->flush();
+                }
+
                 return $this->redirectToRoute('homepage');
 
 
