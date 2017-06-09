@@ -10,7 +10,7 @@
     ,
     "activities" : [
       {% for lesson in lessons %}
-        {% if (app.user.id == lesson.subscription.teacher.id) or (app.user.id == lesson.subscription.student.id) %}
+
           {
             "activity_id" : {{ lesson.id }},
             "speciality" : "{{ lesson.subscription.specialties.name }}",
@@ -34,9 +34,8 @@
               "presenceStudent" : false
               {% endif %}
           }
-
           {% if (loop.length == loop.index ) or (loop.last == true)  %} {% else %},{% endif %}
-        {% endif %}
+
       {% endfor %}
     {% endif %}
 
