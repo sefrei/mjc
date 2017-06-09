@@ -90,12 +90,48 @@ class LessonController extends Controller
 
             return $this->redirectToRoute('lesson_edit', array('id' => $lesson->getId()));
         }
+    }
 
-        return $this->render('lesson/edit.html.twig', array(
-            'lesson' => $lesson,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            /**
+             * Update the presence of one teacher one student for one lesson.
+             *
+             * @Route("/{id}/presence/edit", name="lesson_presence_edit")
+             * @Method({"GET", "POST"})
+             */
+
+            public function presenceEditAction(Request $request, Lesson $lesson)
+            {
+
+                //Je récupère la requete et ses attributs
+                $typeUser = $request->get('type_user');
+                $presence = $request->get('presence');
+                $presenceBoolean = $presence === 'true' ? true : false;
+                //Si la requête concerne le teacher
+                if ($typeUser = "ROLE_TEACHER") {
+                    //Je récupère l'état de $teacherIsPresent actuel (facultatif);
+                    // $lesson->getTeacherIsPresent();
+                    //     dump($typeUser);
+                    //     // J'enregistre dans la base
+                    //     dump($presence);
+                    // dump($presenceBoolean);
+                    //     dump($lesson);
+                    //     exit;
+                        $em = $this->getDoctrine()->getManager();
+
+                    //Je modifie $teacherIsPresent
+                    $lesson->setTeacherIsPresent($presenceBoolean);
+                    $em->persist($lesson);
+                    $em->flush();
+
+                }
+                return $this->redirectToRoute('homepage');
+
+
+
+
+                //Si l'état est 1 , je mets à 0
+
+                //$studentIsPresent;
     }
 
     /**
@@ -134,5 +170,5 @@ class LessonController extends Controller
         ;
     }
 
-    
+
 }
