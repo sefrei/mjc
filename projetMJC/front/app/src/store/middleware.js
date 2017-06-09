@@ -43,7 +43,6 @@ const createMiddleware = store => next => (action) => {
           console.error(error);
         });
         */
-        console.info(action.currentDate.format());
         const params = new URLSearchParams();
         params.append('date', action.currentDate.format());
         axios.post(CheminComplet, params)
@@ -63,9 +62,7 @@ const createMiddleware = store => next => (action) => {
       }
     case CHANGE_DATE:
       {
-        console.error(action);
         const newDate = action.date.format().split('T');
-        console.log(newDate[0]);
         let CheminComplet = document.location.href;
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';

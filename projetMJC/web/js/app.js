@@ -44647,7 +44647,6 @@ var createMiddleware = function createMiddleware(store) {
               console.error(error);
             });
             */
-            console.info(action.currentDate.format());
             var params = new URLSearchParams();
             params.append('date', action.currentDate.format());
             _axios2.default.post(CheminComplet, params).then(function (response) {
@@ -44665,9 +44664,7 @@ var createMiddleware = function createMiddleware(store) {
           }
         case _reducer.CHANGE_DATE:
           {
-            console.error(action);
             var _newDate = action.date.format().split('T');
-            console.log(_newDate[0]);
             var _CheminComplet = document.location.href;
             if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
               _CheminComplet += '/';
@@ -44813,7 +44810,6 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.info(state);
         return _extends({}, state, {
           currentDate: action.date
         });
@@ -44963,11 +44959,11 @@ var downDay = exports.downDay = function downDay() {
     type: DOWN_DAY
   };
 };
-var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPresenceTeacher(id, props) {
-  console.error('props');
+var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPresenceTeacher(id, presenceTeacher) {
   return {
     type: SWITCH_PRESENCE,
     userType: 'ROLE_TEACHER',
+    presence: presenceTeacher,
     id: id
   };
 };

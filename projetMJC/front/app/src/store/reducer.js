@@ -43,7 +43,6 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.info(state);
         return {
           ...state,
           currentDate: action.date,
@@ -202,22 +201,22 @@ export const downDay = () => (
     type: DOWN_DAY,
   }
 );
-export const switchPresenceTeacher = (id, props) => {
-  console.error('props');
+export const switchPresenceTeacher = (id, presenceTeacher) => {
   return ({
-  type: SWITCH_PRESENCE,
-  userType: 'ROLE_TEACHER',
-  id,
-});
-}
+    type: SWITCH_PRESENCE,
+    userType: 'ROLE_TEACHER',
+    presence: presenceTeacher,
+    id,
+  });
+};
 export const switchPresenceStudent = (id, presenceStudent) => {
   return ({
-  type: SWITCH_PRESENCE,
-  userType: 'ROLE_STUDENT',
-  presence: presenceStudent,
-  id,
-});
-}
+    type: SWITCH_PRESENCE,
+    userType: 'ROLE_STUDENT',
+    presence: presenceStudent,
+    id,
+  });
+};
 export const setActivities = activities => ({
   type: SET_ACTIVITIES,
   activities,
