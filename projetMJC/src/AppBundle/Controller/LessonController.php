@@ -143,15 +143,35 @@ class LessonController extends Controller
             'lesson' => $lesson
 
         ]);
-                // return $this->redirectToRoute('homepage');
 
-
-
-
-                //Si l'état est 1 , je mets à 0
-
-                //$studentIsPresent;
     }
+
+
+    /**
+     * Update an observation for one lesson.
+     *
+     * @Route("/{id}/observation/edit", name="lesson_presence_edit")
+     * @Method({"GET", "POST"})
+     */
+
+    public function observationEditAction(Request $request, Lesson $lesson)
+    {
+        //Je récupère la requete et ses attributs
+        $observation = $request->get('appreciation');
+        $em = $this->getDoctrine()->getManager();
+        
+        //Je modifie l'observation
+        $lesson->setAppreciation($observation);
+        // J'enregistre dans la base
+        $em->persist($lesson);
+        $em->flush();
+
+
+        return $this->render('default/presence.html.twig', [
+        'message' => 'modification de l\'observation effectuée',
+        'lesson' => $lesson
+        ]);
+}
 
     /**
      * Deletes a lesson entity.
