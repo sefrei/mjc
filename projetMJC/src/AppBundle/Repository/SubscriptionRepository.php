@@ -22,7 +22,7 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
   public function showMyStudentsAction($id)
       {
         $query = $this->getEntityManager()->createQuery(
-            'SELECT u FROM AppBundle:User u JOIN  AppBundle:Subscription s WHERE s.teacher = ?1'
+            'SELECT u FROM AppBundle:User u JOIN  AppBundle:Subscription s WHERE s.teacher = ?1 GROUP BY u.username'
         );
         $query->setParameter(1, $id);
 

@@ -123,13 +123,14 @@ class DefaultController extends Controller
          {
              // Je récupère l'ID de l'utilisateur connecté
              $userId = $this->getUser()->getId();
-             dump($userId);
                 $em = $this->getDoctrine()->getManager();
                 $students = $em->getRepository('AppBundle:Subscription')->showMyStudentsAction($userId);
-                dump($students);
-                exit;
 
+                return $this->render('default/student.html.twig', [
+                    'students' => $students,
+                ]);
          }
+
              /**
               * @Route("/date/{date}", name="date")
               */
