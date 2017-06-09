@@ -43329,7 +43329,8 @@ var Activity = function Activity(_ref) {
     console.info('Actions : Enregistrer dans la BDD');
     // actions.addTask();
   };
-  var presenceType = user.type === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  console.log(presenceType);
   var stateActivity = presenceTeacher && presenceStudent;
   var interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return _react2.default.createElement(
@@ -43388,7 +43389,7 @@ var Activity = function Activity(_ref) {
         _react2.default.createElement(
           'span',
           {
-            className: (0, _classnames2.default)('activity-state', { absent: !stateActivity }, { present: stateActivity })
+            className: (0, _classnames2.default)('activity-state', { absent: !presenceType }, { present: presenceType })
           },
           presenceType ? ' présent ' : ' absent '
         ),

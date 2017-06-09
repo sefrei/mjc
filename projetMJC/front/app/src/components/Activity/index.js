@@ -29,7 +29,8 @@ const Activity = ({
     console.info('Actions : Enregistrer dans la BDD');
     // actions.addTask();
   };
-  const presenceType = user.type === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  console.log(presenceType);
   const stateActivity = (presenceTeacher && presenceStudent);
   const interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return (
@@ -50,8 +51,8 @@ const Activity = ({
           <span
             className={classNames(
               'activity-state',
-              { absent: !stateActivity },
-              { present: stateActivity },
+              { absent: !presenceType },
+              { present: presenceType },
             )}
           >
             {presenceType ? ' présent ' : ' absent '}
