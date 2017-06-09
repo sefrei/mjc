@@ -107,32 +107,43 @@ class LessonController extends Controller
                 $presence = $request->get('presence');
                 $presenceBoolean = $presence === 'true' ? true : false;
                 //Si la requête concerne le teacher
-                if ($typeUser = "ROLE_TEACHER") {
+                if ($typeUser == "ROLE_TEACHER") {
                     //Je récupère l'état de $teacherIsPresent actuel (facultatif);
                     // $lesson->getTeacherIsPresent();
                     //     dump($typeUser);
-                    //     // J'enregistre dans la base
+                    //
                     //     dump($presence);
                     // dump($presenceBoolean);
                     //     dump($lesson);
-                    //     exit;
+
                         $em = $this->getDoctrine()->getManager();
 
                     //Je modifie $teacherIsPresent
                     $lesson->setTeacherIsPresent($presenceBoolean);
+                    // J'enregistre dans la base
                     $em->persist($lesson);
                     $em->flush();
                 }
-                elseif ($typeUser = "ROLE_STUDENT") {
+                elseif ($typeUser == "ROLE_STUDENT") {
                     $em = $this->getDoctrine()->getManager();
 
                 //Je modifie $teacherIsPresent
                 $lesson->setStudentIsPresent($presenceBoolean);
                 $em->persist($lesson);
                 $em->flush();
+                    // dump($typeUser);
+                    //
+                    // dump($presence);
+                    // dump($presenceBoolean);
+                    // dump($lesson);
+                    // exit;
                 }
+                return $this->render('default/presence.html.twig', [
+            'message' => 'modification effectuée',
+            'lesson' => $lesson
 
-                return $this->redirectToRoute('homepage');
+        ]);
+                // return $this->redirectToRoute('homepage');
 
 
 
