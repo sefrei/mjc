@@ -44691,7 +44691,7 @@ var createMiddleware = function createMiddleware(store) {
             if (_CheminComplet2.substr(_CheminComplet2.length - 1, 1) !== '/') {
               _CheminComplet2 += '/';
             }
-            _CheminComplet2 += 'lesson/' + action.id + '/presence/edit/';
+            _CheminComplet2 += 'lesson/' + action.id + '/presence/edit';
             console.info(action);
             var _params2 = new URLSearchParams();
             _params2.append('id_activity', action.id);

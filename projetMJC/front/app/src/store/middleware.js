@@ -91,7 +91,7 @@ const createMiddleware = store => next => (action) => {
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
         }
-        CheminComplet += 'lesson/' + action.id + '/presence/edit/';
+        CheminComplet += 'lesson/' + action.id + '/presence/edit';
         console.info(action);
         const params = new URLSearchParams();
         params.append('id_activity', action.id);
