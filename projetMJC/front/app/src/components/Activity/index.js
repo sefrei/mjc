@@ -27,15 +27,10 @@ const Activity = ({
   };
   const onSubmit = (evt) => {
     evt.preventDefault();
-    let CheminComplet = document.location.href;
-    if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-      CheminComplet += '/';
-    }
-    CheminComplet += 'lesson/' + id + '/observation/edit';
     const params = new URLSearchParams();
     params.append('id_activity', id);
     params.append('appreciation', appreciation);
-    axios.post(CheminComplet, params)
+    axios.post('../lesson/' + id + '/observation/edit', params)
     .then((response) => {
       console.log(response);
     })

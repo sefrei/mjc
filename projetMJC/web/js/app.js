@@ -43333,15 +43333,10 @@ var Activity = function Activity(_ref) {
   };
   var onSubmit = function onSubmit(evt) {
     evt.preventDefault();
-    var CheminComplet = document.location.href;
-    if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-      CheminComplet += '/';
-    }
-    CheminComplet += 'lesson/' + id + '/observation/edit';
     var params = new URLSearchParams();
     params.append('id_activity', id);
     params.append('appreciation', appreciation);
-    _axios2.default.post(CheminComplet, params).then(function (response) {
+    _axios2.default.post('../lesson/' + id + '/observation/edit', params).then(function (response) {
       console.log(response);
     }).catch(function (error) {
       console.log(error);
