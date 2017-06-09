@@ -43292,6 +43292,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _Presence = require('src/containers/Presence');
 
 var _Presence2 = _interopRequireDefault(_Presence);
@@ -43303,6 +43307,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /*
  * Code
+ */
+/*
+ * Npm import
  */
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
@@ -43326,7 +43333,19 @@ var Activity = function Activity(_ref) {
   };
   var onSubmit = function onSubmit(evt) {
     evt.preventDefault();
-    console.info('Actions : Enregistrer dans la BDD');
+    var CheminComplet = document.location.href;
+    if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+      CheminComplet += '/';
+    }
+    CheminComplet += 'lesson/' + id + '/observation/edit';
+    var params = new URLSearchParams();
+    params.append('id_activity', id);
+    params.append('appreciation', appreciation);
+    _axios2.default.post(CheminComplet, params).then(function (response) {
+      console.log(response);
+    }).catch(function (error) {
+      console.log(error);
+    });
     // actions.addTask();
   };
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
@@ -43361,7 +43380,7 @@ var Activity = function Activity(_ref) {
       _react2.default.createElement(
         'label',
         { id: 'observation-label', htmlFor: 'observation-input' },
-        'Observation :'
+        'Observation (Touche "Entr\xE9e" pour sauvegarder) :'
       ),
       _react2.default.createElement(
         'form',
@@ -43423,9 +43442,6 @@ var Activity = function Activity(_ref) {
 
 /*
  * Local import
- */
-/*
- * Npm import
  */
 
 
