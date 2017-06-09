@@ -19,11 +19,13 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
   }
  // Fonction pour récuperer les insciptions pour un prof via son id à terminer ???? Voir la pertinence de la requête
 //    public function showSubscriptionByTeacherId($id)
-  public function showMyStudentsAction()
+  public function showMyStudentsAction($id)
       {
         $query = $this->getEntityManager()->createQuery(
-            'SELECT s FROM AppBundle:Subscription s WHERE subscription.teacher_id = 7 and subscription.student_id=user.id'
+            'SELECT u FROM AppBundle:User u JOIN  AppBundle:Subscription s WHERE s.teacher = ?1'
         );
+        $query->setParameter(1, $id);
+
         return $query->getResult();
     }
 //    {
