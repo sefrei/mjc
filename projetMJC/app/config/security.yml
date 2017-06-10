@@ -29,7 +29,6 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-                always_use_default_target_path: true
               # activate different ways to authenticate
 
             logout:
@@ -41,15 +40,12 @@ security:
         # - { path: ^/.*/new, roles: ROLE_ADMIN }
         # - { path: ^/.*/[0-9]+/edit, roles: ROLE_ADMIN }
         # # Routes accessibles par le professeur
-        # - { path: ^/(specialty|user)/[0-9]+, roles: ROLE_TEACHER }
+        # - { path: ^/(specialty|user)/[0-9]+, roles: ROLE_TEACHER, ROLE_STUDENT }
         # - { path: ^/(specialty|user), roles: ROLE_TEACHER }
-        # # Routes accessibles par l'élève
-        # - { path: ^/(specialty|user)/[0-9]+, roles: ROLE_STUDENT }
-        # - { path: ^/(specialty|user), roles: ROLE_STUDENT }
         # # Routes accessibles par l'anonyme
         # - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
-    # role_hierarchy:
-    #     ROLE_TEACHER : ROLE_STUDENT
-    #     ROLE_ADMIN: ROLE_TEACHER
+    #role_hierarchy:
+    #    ROLE_TEACHER : ROLE_STUDENT
+    #    ROLE_ADMIN: ROLE_TEACHER
