@@ -50,6 +50,6 @@ security:
         # - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
-  #  role_hierarchy:
-      #  ROLE_TEACHER : ROLE_STUDENT
-      #  ROLE_ADMIN: ROLE_TEACHER
+    # role_hierarchy:
+    #     ROLE_TEACHER : ROLE_STUDENT
+    #     ROLE_ADMIN: ROLE_TEACHER

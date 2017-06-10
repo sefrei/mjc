@@ -92,74 +92,76 @@ class LessonController extends Controller
         }
     }
 
-            /**
-             * Update the presence of one teacher one student for one lesson.
-             *
-             * @Route("/{id}/presence/edit", name="lesson_presence_edit")
-             * @Method({"GET", "POST"})
-             */
+    /**
+     * Update the presence of one teacher one student for one lesson.
+     *
+     * @Route("/{id}/presence/edit", name="lesson_presence_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function presenceEditAction(Request $request, Lesson $lesson)
+    {
+        //Je récupère la requete et ses attributs
+        $message = "";
+        $typeUser = $request->get('type_user');
+        $presence = $request->get('presence');
+        $presenceBoolean = $presence === 'true' ? true : false;
+        //Si la requête concerne le teacher
+        if ($typeUser == "ROLE_TEACHER") {
+            //Je récupère l'état de $teacherIsPresent actuel (facultatif);
+            // $lesson->getTeacherIsPresent();
+            //     dump($typeUser);
+            //
+            //     dump($presence);
+            // dump($presenceBoolean);
+            //     dump($lesson);
 
-            public function presenceEditAction(Request $request, Lesson $lesson)
-            {
+                $em = $this->getDoctrine()->getManager();
 
-                //Je récupère la requete et ses attributs
-                $typeUser = $request->get('type_user');
-                $presence = $request->get('presence');
-                $presenceBoolean = $presence === 'true' ? true : false;
-                //Si la requête concerne le teacher
-                if ($typeUser == "ROLE_TEACHER") {
-                    //Je récupère l'état de $teacherIsPresent actuel (facultatif);
-                    // $lesson->getTeacherIsPresent();
-                    //     dump($typeUser);
-                    //
-                    //     dump($presence);
-                    // dump($presenceBoolean);
-                    //     dump($lesson);
+            //Je modifie $teacherIsPresent
+            $lesson->setTeacherIsPresent($presenceBoolean);
+            // J'enregistre dans la base
+            $em->persist($lesson);
+            $em->flush();
+            $message ="modification effectuée";
+        }
+        elseif ($typeUser == "ROLE_STUDENT") {
+            $em = $this->getDoctrine()->getManager();
 
-                        $em = $this->getDoctrine()->getManager();
+        //Je modifie $teacherIsPresent
+        $lesson->setStudentIsPresent($presenceBoolean);
+        $em->persist($lesson);
+        $em->flush();
+        $message ="modification effectuée";
+            // dump($typeUser);
+            //
+            // dump($presence);
+            // dump($presenceBoolean);
+            // dump($lesson);
+            // exit;
+        }
+        else {
+            $message ="Erreur lors de la modification";
+ }
+        return $this->render('default/presence.html.twig', [
+    'message' => 'modification effectuée',
+    'lesson' => $lesson
+]);
 
-                    //Je modifie $teacherIsPresent
-                    $lesson->setTeacherIsPresent($presenceBoolean);
-                    // J'enregistre dans la base
-                    $em->persist($lesson);
-                    $em->flush();
-                }
-                elseif ($typeUser == "ROLE_STUDENT") {
-                    $em = $this->getDoctrine()->getManager();
-
-                //Je modifie $teacherIsPresent
-                $lesson->setStudentIsPresent($presenceBoolean);
-                $em->persist($lesson);
-                $em->flush();
-                    // dump($typeUser);
-                    //
-                    // dump($presence);
-                    // dump($presenceBoolean);
-                    // dump($lesson);
-                    // exit;
-                }
-                return $this->render('default/presence.html.twig', [
-            'message' => 'modification effectuée',
-            'lesson' => $lesson
-
-        ]);
-
-    }
+}
 
 
     /**
      * Update an observation for one lesson.
      *
-     * @Route("/{id}/observation/edit", name="lesson_presence_edit")
+     * @Route("/{id}/observation/edit", name="lesson_observation_edit")
      * @Method({"GET", "POST"})
      */
-
     public function observationEditAction(Request $request, Lesson $lesson)
     {
         //Je récupère la requete et ses attributs
         $observation = $request->get('appreciation');
         $em = $this->getDoctrine()->getManager();
-        
+
         //Je modifie l'observation
         $lesson->setAppreciation($observation);
         // J'enregistre dans la base

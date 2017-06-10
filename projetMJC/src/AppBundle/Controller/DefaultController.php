@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Subscription;
+use AppBundle\Entity\Lesson;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -181,4 +182,13 @@ class DefaultController extends Controller
                  exit;
 
              }
+
+             /**
+              * @Route("/activity/{id}", name="activity")
+              */
+            public function showActivityAction(Request $request, Lesson $lesson)
+            {
+
+                return $this->redirectToRoute('homepage');
+            }
 }
