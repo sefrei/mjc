@@ -44,32 +44,22 @@ class SubscriptionType extends AbstractType
           '2h' => 7200,
         )
         ])
-        // ->add('finishAt', null, [
-        //   'label' => 'fin du premier cours',
-        //   'format' => 'dd-MM-yyyy HH:mm',
-        //   'years' => range(date('Y'), date('Y') + 2),
-        //   'placeholder' => [
-        //       'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
-        //   ],
-        //
-        // ])
+        // Resta à mettre la date en français
         ->add('teacher', null, [
           'label' => 'Professeur',
         ])
 
         ->add('teacher', EntityType::class, [
             'class'=>'AppBundle:User',
-            'choice_label'=>'firstname',
+            // 'choice_label'=>'firstname',
             'label'=> 'Professeur',
 
             'query_builder'=>function (EntityRepository $er) {
                 return $er->createQueryBuilder('u')
-                // Problème pour la concatenation firstname + lastname
+                // Problème pour la concatenation firstname + lastname => Réussi en faisant la concaténation dans la méthode __toString() de mon entité User
                 // ->addSelect ("CONCAT(u.firstname, u.lastname) as fullName")
                 ->orderBy('u.firstname' , 'ASC')
                 ->where("u.role = 'ROLE_TEACHER'");
-                // ->getQuery();
-                // ->getResult();
             }
         ])
 
@@ -80,7 +70,7 @@ class SubscriptionType extends AbstractType
         ])
         ->add('student', EntityType::class, [
             'class'=>'AppBundle:User',
-            'choice_label'=>'firstname',
+            // 'choice_label'=>'firstname',
             'label'=> 'Elève',
 
             'query_builder'=>function (EntityRepository $er) {
