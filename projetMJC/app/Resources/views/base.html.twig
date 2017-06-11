@@ -15,7 +15,7 @@
 		  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 		<div class="user btn btn-lg">
 			  <span class="glyphicon glyphicon-user disable  "></span>
-			{{ app.user.username}}
+			{{ app.user.firstname }} {{ app.user.lastname }}
 		</div>
 		{% endif %}
         <nav class="navbar navbar-inverse">
