@@ -334,11 +334,12 @@ button {
   background-position: center;
   background-size: 140%;
   height: 100vh;
+  display: inline-block;
 }
 /* Desktop */
 @media (min-width: 1000px) {
   #root {
-    padding: 2em 0;
+    margin: 0;
   }
 }
 
@@ -1282,6 +1283,7 @@ button {
     width: 80%;
     border-radius: 1em;
     border: 10px solid #1a661a;
+    margin-top: 1em;
   }
 }
 /* Desktop HD */
