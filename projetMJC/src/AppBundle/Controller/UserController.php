@@ -96,10 +96,22 @@ class UserController extends Controller
     public function editAction(Request $request, User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
+        $editForm = $this->createForm('AppBundle\Form\UserTypeEdit', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+          if(!empty($editForm->getData()->getPassword())) {
+              // Si le mot de passe est modifié on le change
+              $encoder = $this->container->get('security.password_encoder');
+              $encoded = $encoder->encodePassword($user, $editForm->getData()->getPassword());
+              $user->setPassword($encoded);
+            }
+            else {
+              // Si le mot de passe n'est pas modifié, on l'indique spécifiquement
+              // sinon il sera vide
+              $user->setPassword($oldPassword);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
