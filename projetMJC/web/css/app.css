@@ -333,6 +333,7 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 140%;
+  height: 100vh;
 }
 /* Desktop */
 @media (min-width: 1000px) {

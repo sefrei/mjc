@@ -42,12 +42,12 @@ export default {
   nextDayActivities: [
     {
       id: 1,
-      date: '2017-05-23 11:00:00',
+      date: '19-06-2017 11:00:00',
       nbActivity: '3',
     },
     {
       id: 2,
-      date: '2018-01-01 11:00:00',
+      date: '26-06-2017 11:00:00',
       nbActivity: '1',
     },
   ],

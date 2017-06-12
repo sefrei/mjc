@@ -17,6 +17,7 @@ import 'moment/locale/fr';
  * Code
  */
 const NextActivities = ({ days, actions, displayNotifications }) => {
+  console.error(days);
   const onChange = (evt) => {
     const date = moment(evt);
     actions.changeDate(date);

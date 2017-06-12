@@ -43573,7 +43573,7 @@ var Nav = function Nav(_ref) {
 
   // Change
   var onChange = function onChange(evt) {
-    console.info(evt);
+    console.error(evt);
     actions.changeDate(evt);
   };
   var up = function up() {
@@ -43675,6 +43675,7 @@ var NextActivities = function NextActivities(_ref) {
       actions = _ref.actions,
       displayNotifications = _ref.displayNotifications;
 
+  console.error(days);
   var onChange = function onChange(evt) {
     var date = (0, _moment2.default)(evt);
     actions.changeDate(date);
@@ -44468,11 +44469,11 @@ exports.default = {
   }],
   nextDayActivities: [{
     id: 1,
-    date: '2017-05-23 11:00:00',
+    date: '19-06-2017 11:00:00',
     nbActivity: '3'
   }, {
     id: 2,
-    date: '2018-01-01 11:00:00',
+    date: '26-06-2017 11:00:00',
     nbActivity: '1'
   }],
   notifications: [{
@@ -44654,7 +44655,7 @@ var createMiddleware = function createMiddleware(store) {
             // On fait une requête ajax pour récupérer les infos de l'utilisateur +
             // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
             var newDate = (0, _moment2.default)().format().split('T');
-            CheminComplet += 'planning/' + newDate[0];
+            var path = CheminComplet + 'planning/' + newDate[0];
             /*axios.post(CheminComplet, {
               date: action.currentDate.format(),
             })
@@ -44669,10 +44670,18 @@ var createMiddleware = function createMiddleware(store) {
             */
             var params = new URLSearchParams();
             params.append('date', action.currentDate.format());
-            _axios2.default.post(CheminComplet, params).then(function (response) {
-              console.log(response);
+            _axios2.default.post(path, params).then(function (response) {
+              console.info(response);
               store.dispatch((0, _reducer.setActivities)(response.data.activities));
               store.dispatch((0, _reducer.setUser)(response.data.user));
+            }).catch(function (error) {
+              console.log(error);
+            });
+
+            path = CheminComplet + 'next';
+            _axios2.default.post(path, params).then(function (response) {
+              console.info(response);
+              store.dispatch((0, _reducer.setNextDays)(response.data.nextDayActivities));
             }).catch(function (error) {
               console.log(error);
             });
@@ -44756,7 +44765,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44789,6 +44798,7 @@ var UP_DAY = exports.UP_DAY = 'UP_DAY';
 var DOWN_DAY = exports.DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SET_USER = 'SET_USER';
+var SET_NEXTDAYS = 'SET_NEXTDAYS';
 var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE_TEACHER';
 var SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
@@ -44804,7 +44814,7 @@ var initialState = exports.initialState = {
   user: {},
   activities: [],
   notifications: _datas2.default.notifications,
-  nextDayActivities: _datas2.default.nextDayActivities,
+  nextDayActivities: [],
   inputObservation: '',
   displayNotifications: false
 };
@@ -44820,6 +44830,7 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
+        console.error(state);
         return _extends({}, state, {
           currentDate: action.date
         });
@@ -44852,6 +44863,12 @@ exports.default = function () {
       {
         return _extends({}, state, {
           user: action.user
+        });
+      }
+    case SET_NEXTDAYS:
+      {
+        return _extends({}, state, {
+          nextDayActivities: action.nextDayActivities
         });
       }
     case SWITCH_PRESENCE:
@@ -44995,6 +45012,12 @@ var setUser = exports.setUser = function setUser(user) {
   return {
     type: SET_USER,
     user: user
+  };
+};
+var setNextDays = exports.setNextDays = function setNextDays(nextDayActivities) {
+  return {
+    type: SET_NEXTDAYS,
+    nextDayActivities: nextDayActivities
   };
 };
 var changeInputObservation = exports.changeInputObservation = function changeInputObservation(input, id) {

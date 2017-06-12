@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, SWITCH_PRESENCE, SWITCH_PRESENCE_STUDENT, RESET_OBSERVATION, setActivities, setUser } from './reducer';
+import { CHANGE_DATE, SWITCH_PRESENCE, SWITCH_PRESENCE_STUDENT, setActivities, setUser, setNextDays } from './reducer';
 /*
  * Types
  */
@@ -30,7 +30,7 @@ const createMiddleware = store => next => (action) => {
         // On fait une requête ajax pour récupérer les infos de l'utilisateur +
         // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
         const newDate = moment().format().split('T');
-        CheminComplet += `planning/${newDate[0]}`;
+        let path = `${CheminComplet}planning/${newDate[0]}`;
         /*axios.post(CheminComplet, {
           date: action.currentDate.format(),
         })
@@ -45,14 +45,24 @@ const createMiddleware = store => next => (action) => {
         */
         const params = new URLSearchParams();
         params.append('date', action.currentDate.format());
-        axios.post(CheminComplet, params)
+        axios.post(path, params)
         .then((response) => {
-        console.log(response);
+          console.info(response);
           store.dispatch(setActivities(response.data.activities));
           store.dispatch(setUser(response.data.user));
         })
         .catch((error) => {
-        console.log(error);
+          console.log(error);
+        });
+
+        path = `${CheminComplet}next`;
+        axios.post(path, params)
+        .then((response) => {
+        console.info(response);
+          store.dispatch(setNextDays(response.data.nextDayActivities));
+        })
+        .catch((error) => {
+          console.log(error);
         });
         // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
         //  state activités + un dispatch pour enregistrer infos utilisateur

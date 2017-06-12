@@ -18,7 +18,7 @@ import 'moment/locale/fr';
 const Nav = ({ currentDate, actions }) => {
   // Change
   const onChange = (evt) => {
-    console.info(evt);
+    console.error(evt);
     actions.changeDate(evt);
   };
   const up = () => {
