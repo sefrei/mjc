@@ -83,13 +83,14 @@ class SubscriptionController extends Controller
             // $startAt->modify('')
             // Je mets à jour ma date de fin avec set
             $subscription->setFinishAt($finishAt);
-
+            $appreciation = '';
             /**
              * Enregistrer automatiquement les leçons en fonction d'une inscription
              */
              // La première leçon aura la même startAt que l'inscription
              $lesson = new Lesson();
              $lesson->setStartAt($startDate);
+             $lesson->setAppreciation($appreciation);
              $lesson->setTeacherIsPresent(true);
              $lesson->setStudentIsPresent(true);
              $lesson->setSubscription($subscription);
@@ -129,6 +130,7 @@ class SubscriptionController extends Controller
 
                 $lesson->setTeacherIsPresent(true);
                 $lesson->setStudentIsPresent(true);
+                $lesson->setAppreciation($appreciation);
                 $lesson->setSubscription($subscription);
                 // Je lie la lesson à la subscription
                 $subscription->addLesson($lesson);
