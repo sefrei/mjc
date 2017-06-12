@@ -1,24 +1,40 @@
 {% extends 'base.html.twig'%}
 
 {% block body %}
-	<h1>Appreciation</h1>
+	<h1>Appreciation list</h1>
 
 	<table>
-		<tbody>
+		<thead>
 			<tr>
+                <th>Id</th>
 				<th>Cours de guitare</th>
-
-			</tr>
-			<tr>
-				<th>Prénom de l'élève</th>
-			</tr>
-			<tr>
 				<th>Nom de l'élève</th>
+				<th>appreciation</th>
 			</tr>
+		</thead>
+		<tbody>
+		{% for appreciation in appreciations %}
 			<tr>
-				<th>Observation</th>
+				<td><a href="{{ path('lesson_show', { 'id': lesson.id }) }}">{{ lesson.id }}</a></td>
+				<td></td>
+				<td>{{ student.firstname }} {{ student.lastname }}</td>
+				<td>{{ lesson.appreciation }}</td>
 			</tr>
+		{% endfor %}
 		</tbody>
 	</table>
 
+	<ul>
+        <li>
+            <a href="{{ path('lesson_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('lesson_edit', { 'id': lesson.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
 {% endblock %}
