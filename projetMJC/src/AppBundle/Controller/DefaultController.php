@@ -191,4 +191,22 @@ class DefaultController extends Controller
 
                 return $this->redirectToRoute('homepage');
             }
+            /**
+             * @Route("/next", name="next")
+             */
+             public function nextAction()
+             {
+                $em = $this->getDoctrine()->getManager();
+                $id = $this->getUser()->getId();
+                $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfter($id);
+// dump($result);
+//
+// exit;
+                return $this->render('default/next.json.twig', [
+                    'result' => $result,
+                ],
+                new JsonResponse()
+                  );
+
+             }
 }

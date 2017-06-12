@@ -84,32 +84,32 @@ class LessonRepository extends \Doctrine\ORM\EntityRepository
         public function lessonsNowAfter($id)
         {
             $today = new \DateTime();
-            $finishDate = new \DateTime();
+
 
           $query = $this->createQueryBuilder('l')
-            // ->select('l')
-            ->select('count(l) as nb, SUBSTRING(l.startAt, 9, 2) as day')
+            ->select('l.startAt')
+            ->addSelect('l.id')
+            ->addSelect('count(l.id) as nblesson, SUBSTRING(l.startAt, 9, 2) as date')
+            // ->select($query->expr()->count('l'))
+            // ->select('count(l.id) as nblesson')
             ->join('AppBundle:Subscription' ,'s')
             ->where('s.teacher = ?1 OR s.student = ?1')
+            ->andwhere('l.subscription = s.id')
             ->andwhere('l.startAt > ?2')
-            ->andwhere('l.startAt < ?3')
-
-            ->groupBy('day')
+            ->groupBy('l')
+            ->orderBy('l.startAt')
+            ->setMaxResults(3)
             ->setParameter(1, $id)
             ->setParameter(2, $today)
-            ->setParameter(3, $finishDate->format('2017-06-14 23:59:59'))
             ->getQuery()->getResult();
-//
-//
+
 
             return $query;
-          //   count(DISTINCT(lesson.id))
-          //   FROM AppBundle:Lesson l
-          //   JOIN AppBundle:Subscription s
-          //   WHERE (s.teacher = ?1 OR s.student = ?1)
-          //   AND DATE('l.startAt') > ?2 group by convert(varchar, l.startAt, 101)');
-          // $query->setParameter(1, $id);
-          // $query->setParameter(2, $today);
+          //  SELECT DATE(lesson.startAt), count(DISTINCT(lesson.id)) FROM lesson inner join subscription on subscription.id = lesson.subscription_id where lesson.startAt > DATE(Now()) and (subscription.teacher_id = 5 or subscription.student_id = 5) group by DATE(lesson.startAt) ORDER BY DATE(lesson.startAt) ASC LIMIT 3
+
+          //->select l.startAt
+        //   ->count(DISTINCT(l.id))
+
 
 
 
