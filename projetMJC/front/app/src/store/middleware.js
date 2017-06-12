@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, SWITCH_PRESENCE, SWITCH_PRESENCE_STUDENT, setActivities, setUser } from './reducer';
+import { CHANGE_DATE, SWITCH_PRESENCE, SWITCH_PRESENCE_STUDENT, RESET_OBSERVATION, setActivities, setUser } from './reducer';
 /*
  * Types
  */
@@ -102,22 +102,6 @@ const createMiddleware = store => next => (action) => {
         axios.post(CheminComplet, params)
         .then((response) => {
           console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-        break;
-      }
-    case SWITCH_PRESENCE_STUDENT:
-      {
-        console.info('update presence student');
-        const params = new URLSearchParams();
-        params.append('id_activity', action.id);
-        params.append('type_user', 'ROLE_STUDENT');
-        axios.post('CheminComplet', params)
-        .then((response) => {
-          console.log(response);
-          store.dispatch(setActivities(response.data.activities));
         })
         .catch((error) => {
           console.log(error);

@@ -18,7 +18,7 @@ const SET_USER = 'SET_USER';
 export const SWITCH_PRESENCE = 'SWITCH_PRESENCE_TEACHER';
 export const SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
-const RESET_OBSERVATION = 'RESET_OBSERVATION';
+export const RESET_OBSERVATION = 'RESET_OBSERVATION';
 const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
 const CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 
@@ -145,7 +145,7 @@ export default (state = initialState, action = {}) => {
         activities.forEach((activity) => {
           if (activity.activity_id === id) {
             console.info('action : Axios récupérer lobservation en bdd pour cette activité');
-            activity.appreciation = activity.observation;
+            // activity.appreciation = activity.observation;
           }
         });
         return {

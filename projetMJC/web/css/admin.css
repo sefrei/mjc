@@ -1,6 +1,9 @@
 body {
-  width : 90%;
   margin: 0 auto;
+}
+body header {
+	width: 90%;
+	margin: auto;
 }
 .admin {
 width : 100%;

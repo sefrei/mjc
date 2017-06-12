@@ -43369,28 +43369,35 @@ var Activity = function Activity(_ref) {
       ' avec ',
       interlocuteur
     ),
-    user.user_role === 'ROLE_TEACHER' && _react2.default.createElement(
+    _react2.default.createElement(
       'div',
       { id: 'observation' },
       _react2.default.createElement(
         'label',
         { id: 'observation-label', htmlFor: 'observation-input' },
-        'Observation (Touche "Entr\xE9e" pour sauvegarder) :'
+        'Observation :'
       ),
-      _react2.default.createElement(
+      user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
         'form',
         { id: 'form', onSubmit: onSubmit },
-        _react2.default.createElement('input', { type: 'text', onChange: onChange, id: 'observation-input', placeholder: 'Votre observation...', value: appreciation })
-      ),
-      _react2.default.createElement(
-        'button',
-        { className: 'button-reset-observation', onClick: actions.resetObservation },
-        _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' }),
         _react2.default.createElement(
-          'span',
-          null,
-          'R\xE9initialiser l\'observation'
+          'textarea',
+          { rows: '3', onChange: onChange, placeholder: 'Votre observation...' },
+          appreciation
+        ),
+        _react2.default.createElement(
+          'button',
+          { type: 'submit', id: 'observation-submit' },
+          _react2.default.createElement(
+            'span',
+            null,
+            'Valider'
+          )
         )
+      ) : _react2.default.createElement(
+        'div',
+        { id: 'appreciation' },
+        appreciation
       )
     ),
     _react2.default.createElement(
@@ -44718,20 +44725,6 @@ var createMiddleware = function createMiddleware(store) {
             });
             break;
           }
-        case _reducer.SWITCH_PRESENCE_STUDENT:
-          {
-            console.info('update presence student');
-            var _params3 = new URLSearchParams();
-            _params3.append('id_activity', action.id);
-            _params3.append('type_user', 'ROLE_STUDENT');
-            _axios2.default.post('CheminComplet', _params3).then(function (response) {
-              console.log(response);
-              store.dispatch((0, _reducer.setActivities)(response.data.activities));
-            }).catch(function (error) {
-              console.log(error);
-            });
-            break;
-          }
         default:
       }
 
@@ -44763,7 +44756,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44799,7 +44792,7 @@ var SET_USER = 'SET_USER';
 var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE_TEACHER';
 var SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
-var RESET_OBSERVATION = 'RESET_OBSERVATION';
+var RESET_OBSERVATION = exports.RESET_OBSERVATION = 'RESET_OBSERVATION';
 var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
 var CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 
@@ -44920,7 +44913,7 @@ exports.default = function () {
         _activities3.forEach(function (activity) {
           if (activity.activity_id === _id3) {
             console.info('action : Axios récupérer lobservation en bdd pour cette activité');
-            activity.appreciation = activity.observation;
+            // activity.appreciation = activity.observation;
           }
         });
         return _extends({}, state, {

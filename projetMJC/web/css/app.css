@@ -250,21 +250,28 @@ button {
   text-align: left;
   background: #78d16f;
   border-radius: 1em;
-  padding: 1em;
+  padding: 1.5em;
+  position: relative;
+}
+#observation-submit {
+  margin-top: -2px;
 }
 #observation-label {
   margin-bottom: 0.5em;
   text-transform: uppercase;
   display: block;
+  width: auto;
 }
 #observation-label::first-letter {
   text-transform: uppercase;
 }
-#observation-input {
+#observation textarea {
   width: 100%;
   border: 1px solid #000;
   border-radius: 0;
   padding: 0.5em;
+  margin: 0;
+  resize: none;
 }
 #observation button {
   background: #008000;
@@ -272,6 +279,7 @@ button {
   color: #fff;
   padding: 0;
   border-radius: 0 0 1em 1em;
+  height: 32px;
 }
 #observation button:active {
   background: #2dbb1f;
@@ -297,6 +305,11 @@ button {
 .agenda-home-link:hover {
   color: #9b35a5;
 }
+#appreciation {
+  display: inline-block;
+  width: auto;
+  padding: 0.5em;
+}
 /* Mobile + */
 /* Phablets */
 /* Tablettes */
@@ -316,7 +329,10 @@ button {
 #root {
   width: 100%;
   margin: auto;
-  background: #008000;
+  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/ac/a8/e8/aca8e8319665a1f8a2f3807dbcc835ad.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 140%;
 }
 /* Desktop */
 @media (min-width: 1000px) {
@@ -1262,9 +1278,9 @@ button {
 /* Desktop */
 @media (min-width: 1000px) {
   #notebook {
-    width: 70%;
+    width: 80%;
     border-radius: 1em;
-    border: 1px solid #000;
+    border: 10px solid #1a661a;
   }
 }
 /* Desktop HD */

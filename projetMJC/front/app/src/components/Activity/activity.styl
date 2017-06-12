@@ -20,24 +20,31 @@
   text-align: left
   background: #78d16f
   border-radius: 1em
-  padding: 1em
+  padding: 1.5em
+  position: relative
+  &-submit
+    margin-top: -2px
   &-label
     margin-bottom: .5em
     text-transform: uppercase
     display: block
+    width: auto
     &::first-letter
       text-transform: uppercase
-  &-input
+  & textarea
     width: 100%
     border: 1px solid black
     border-radius: 0
     padding: .5em
+    margin: 0
+    resize: none
   & button
     background: #008000
     border: none
     color: #FFF
     padding: 0
     border-radius: 0 0 1em 1em
+    height: 32px
     &:active
       background: #2dbb1f
       & i
@@ -57,6 +64,11 @@
 
 .agenda-home-link:hover
   color:#9b35a5
+
+#appreciation
+  display: inline-block
+  width: auto
+  padding: .5em
 
 /* Mobile + */
 //@media (min-width: 400px)
