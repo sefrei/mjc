@@ -5,9 +5,21 @@ body {
 .admin {
 
 	font-family: 'Hind Madurai', sans-serif;
-  	margin: 0;
-	width: 100%;
-	padding: 0;
+  margin: 0 auto;
+	padding: 2em 0;
+}
+
+.admin .btn-primary {
+	background-color: green;
+}
+.admin input, label {
+	font-size: 1.2em;
+	width : 150px;
+	margin-bottom: 1em;
+}
+.admin input {
+
+	margin-right: 2em;
 }
 .admin .row {
 		margin-top: 4em;
