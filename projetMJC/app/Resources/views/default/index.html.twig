@@ -4,6 +4,8 @@
 {#dump(essai)#}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 		<div id="root"></div>
+		<script src="{{asset('js/app.js')}}"></script>
+		<script>require('src/index');</script>
 	{% endif %}
 {% endblock %}
 
@@ -14,6 +16,4 @@
 
 <script src="https://use.fontawesome.com/d21c915728.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans" rel="stylesheet">
-<script src="{{asset('js/app.js')}}"></script>
-<script>require('src/index');</script>
 {% endblock %}

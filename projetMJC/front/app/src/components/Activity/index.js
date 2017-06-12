@@ -47,15 +47,17 @@ const Activity = ({
     <div id="activity-view">
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Activité {id} : cours de {speciality} de {startHour} à {finishHour} avec {interlocuteur}</h2>
-      <div id="observation">
-        <label id="observation-label" htmlFor="observation-input">Observation (Touche "Entrée" pour sauvegarder) :</label>
-        <form id="form" onSubmit={onSubmit}>
-          <input type="text" onChange={onChange} id="observation-input" placeholder="Votre observation..." value={appreciation} />
-        </form>
-        <button className="button-reset-observation" onClick={actions.resetObservation}>
-          <i className="fa fa-times" aria-hidden="true"></i><span>Réinitialiser l'observation</span>
-        </button>
-      </div>
+      {user.user_role === 'ROLE_TEACHER' &&
+        <div id="observation">
+          <label id="observation-label" htmlFor="observation-input">Observation (Touche "Entrée" pour sauvegarder) :</label>
+          <form id="form" onSubmit={onSubmit}>
+            <input type="text" onChange={onChange} id="observation-input" placeholder="Votre observation..." value={appreciation} />
+          </form>
+          <button className="button-reset-observation" onClick={actions.resetObservation}>
+            <i className="fa fa-times" aria-hidden="true"></i><span>Réinitialiser l'observation</span>
+          </button>
+        </div>
+      }
       <div id="infos-presence">
         <p>Vous êtes actuellement
           <span
@@ -83,7 +85,8 @@ const Activity = ({
         <Presence
           presenceTeacher={presenceTeacher}
           presenceStudent={presenceStudent}
-          stateActivity={stateActivity} id={id}
+          stateActivity={stateActivity}
+          id={id}
         />
       </div>
 

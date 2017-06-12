@@ -30,7 +30,7 @@ const createMiddleware = store => next => (action) => {
         // On fait une requête ajax pour récupérer les infos de l'utilisateur +
         // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
         const newDate = moment().format().split('T');
-        CheminComplet += 'planning/' + newDate[0];
+        CheminComplet += `planning/${newDate[0]}`;
         /*axios.post(CheminComplet, {
           date: action.currentDate.format(),
         })
@@ -67,17 +67,17 @@ const createMiddleware = store => next => (action) => {
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
         }
-        CheminComplet += 'planning/' + newDate[0];
+        CheminComplet += `planning/${newDate[0]}`;
         console.info('La date a changer : requete axios pour récupérer les nouvelles données');
         const params = new URLSearchParams();
         params.append('date', action.date.format());
         axios.post(CheminComplet, params)
         .then((response) => {
-        console.log(response);
+          console.log(response);
           store.dispatch(setActivities(response.data.activities));
         })
         .catch((error) => {
-        console.log(error);
+          console.log(error);
         });
         // dispatch
         break;
@@ -88,8 +88,13 @@ const createMiddleware = store => next => (action) => {
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
         }
-        CheminComplet += 'lesson/' + action.id + '/presence/edit';
-        console.info(action);
+        if (CheminComplet.substr(CheminComplet.length - 5, 5) === '.php/') {
+          CheminComplet += `lesson/${action.id}/presence/edit`;
+        }
+        else {
+          CheminComplet += `../../lesson/${action.id}/presence/edit`;
+        }
+        // CheminComplet += 'lesson/' + action.id + '/presence/edit';
         const params = new URLSearchParams();
         params.append('id_activity', action.id);
         params.append('type_user', action.userType);

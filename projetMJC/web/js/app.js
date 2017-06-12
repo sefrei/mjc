@@ -43369,7 +43369,7 @@ var Activity = function Activity(_ref) {
       ' avec ',
       interlocuteur
     ),
-    _react2.default.createElement(
+    user.user_role === 'ROLE_TEACHER' && _react2.default.createElement(
       'div',
       { id: 'observation' },
       _react2.default.createElement(
@@ -43424,7 +43424,8 @@ var Activity = function Activity(_ref) {
       _react2.default.createElement(_Presence2.default, {
         presenceTeacher: presenceTeacher,
         presenceStudent: presenceStudent,
-        stateActivity: stateActivity, id: id
+        stateActivity: stateActivity,
+        id: id
       })
     ),
     _react2.default.createElement(
@@ -44700,8 +44701,12 @@ var createMiddleware = function createMiddleware(store) {
             if (_CheminComplet2.substr(_CheminComplet2.length - 1, 1) !== '/') {
               _CheminComplet2 += '/';
             }
-            _CheminComplet2 += 'lesson/' + action.id + '/presence/edit';
-            console.info(action);
+            if (_CheminComplet2.substr(_CheminComplet2.length - 5, 5) === '.php/') {
+              _CheminComplet2 += 'lesson/' + action.id + '/presence/edit';
+            } else {
+              _CheminComplet2 += '../../lesson/' + action.id + '/presence/edit';
+            }
+            // CheminComplet += 'lesson/' + action.id + '/presence/edit';
             var _params2 = new URLSearchParams();
             _params2.append('id_activity', action.id);
             _params2.append('type_user', action.userType);
