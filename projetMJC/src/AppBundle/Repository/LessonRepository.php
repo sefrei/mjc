@@ -101,7 +101,7 @@ class LessonRepository extends \Doctrine\ORM\EntityRepository
             // ->orderBy('l.startAt')
             ->setMaxResults(3)
             ->setParameter(1, $id)
-            ->setParameter(2, $today)
+            ->setParameter(2, $today->format('Y-m-d 23:59:59'))
             ->getQuery()->getResult();
 
 
