@@ -1,9 +1,6 @@
 /* Mobile First CSS */
 .presence
-  display: inline-block
-  vertical-align: middle;
-  width: 100%
-
+  margin-top: .5em
 .activity-statut
   display: inline-block
 
@@ -17,17 +14,45 @@
 //@media (min-width: 400px)
 
 /* Phablets */
-//@media (min-width: 550px)
+@media (min-width: 550px)
+  .activity-statut
+    position: absolute
+    top: 6px
+    right: 10px
+  .activity-state .label
+    padding-top: 14px
+    border-radius: 3px
+    width: 60px
+    height: 40px
+    display: inline-block
+    border 1px solid #000
+    color: #000
 
 /* Tablettes */
-//@media (min-width: 750px)
+@media (min-width: 750px)
+  .presence
+    width: auto
+    display: inline-block
+    margin-top: 0em
+    &-button
+      position: absolute
+      top: 6px
+      right: 145px
+      & .button-bg
+        height: 25px
+        border-radius: 3px
+      & .button-switch
+        border-radius: 3px
+        height: 100%
+      & .button-in, .button-out
+        padding-top: 7px
 
+  .activity-state .label
+    height: 25px
+    padding-top: 6px
 /* Desktop */
 @media (min-width: 1000px)
   .presence
-
-  .activity-statut
-    display: inline-block
 
   .present
     color: #2dbb1f
@@ -38,10 +63,10 @@
 @media (min-width: 1200px)
   .presence
     //border-left: 1px solid #35a550
-    width: 180px
-    float: right
-    margin-top: 6px
-    margin-right: .5em
+    //width: 180px
+    //float: right
+    //margin-top: 6px
+    //margin-right: .5em
 
 /* Desktop Wide */
 //@media (min-width: 1400px)

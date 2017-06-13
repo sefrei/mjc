@@ -43155,25 +43155,25 @@ var ActivityLine = function ActivityLine(_ref) {
     { className: 'activity' },
     _react2.default.createElement(
       'div',
-      { className: 'activity-hour' },
+      { className: 'activity-infos' },
       startHour,
-      ' \xE0 ',
-      finishHour
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      {
-        className: 'activity-link',
-        to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + id
-      },
-      'Cours de ',
+      ' - ',
+      finishHour,
+      ' ',
       speciality,
       ' avec ',
       interlocuteur,
       _react2.default.createElement(
-        'button',
-        { className: 'show-activity-button' },
-        'Voir l\'activit\xE9'
+        _reactRouterDom.Link,
+        {
+          className: 'activity-link',
+          to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + id
+        },
+        _react2.default.createElement(
+          'button',
+          { className: 'show-activity-button' },
+          'Voir'
+        )
       )
     ),
     _react2.default.createElement(_Presence2.default, {
@@ -43955,34 +43955,14 @@ var Presence = function Presence(_ref) {
   return _react2.default.createElement(
     'div',
     { className: 'presence' },
-    presenceType ? _react2.default.createElement(
+    _react2.default.createElement(
       'div',
-      { onClick: switchPresenceUser, className: 'one' },
+      { onClick: switchPresenceUser, className: 'one presence-button' },
       _react2.default.createElement(
         'div',
-        { className: 'button-wrap button-active' },
-        _react2.default.createElement(
-          'div',
-          { className: 'button-bg' },
-          _react2.default.createElement(
-            'div',
-            { className: 'button-out' },
-            'absent'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'button-in' },
-            'Pr\xE9sent'
-          ),
-          _react2.default.createElement('div', { className: 'button-switch' })
-        )
-      )
-    ) : _react2.default.createElement(
-      'div',
-      { onClick: switchPresenceUser, className: 'one' },
-      _react2.default.createElement(
-        'div',
-        { className: 'button-wrap' },
+        {
+          className: (0, _classnames2.default)('button-wrap', { 'button-active': presenceType }, { present: stateActivity })
+        },
         _react2.default.createElement(
           'div',
           { className: 'button-bg' },

@@ -6,7 +6,7 @@
   vertical-align: middle
 }
 .one .button-wrap {
-  width: 110px;
+  width: 106px;
   margin: auto;
   cursor: pointer;
   user-select: none;
@@ -23,8 +23,8 @@
 .one .button-switch {
   position:relative;
   left:0px;
-  width: 55px;
-  height: 25px;
+  width: 50%;
+  height: 20px;
   border:solid 3px;
   border-radius: 36px;
   transition:all 0.2s ease;
@@ -34,13 +34,13 @@
 .one .button-out {
   position:absolute;
   transition:all 0.2s ease;
-  padding-top:9px;
+  padding-top:7px;
   font-size:0.6em;
   text-transform:uppercase;
   font-weight:bold;
 }
-.one .button-in { margin-left:57px; }
-.one .button-out { margin-left:9px; color:#dd2222; }
+.one .button-in { margin-left:62px; }
+.one .button-out { margin-left:12px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }
 .one .button-active .button-bg { background-color:#000; }

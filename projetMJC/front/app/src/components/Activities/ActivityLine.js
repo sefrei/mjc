@@ -24,14 +24,15 @@ const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id,
   const interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return (
     <div className="activity">
-      <div className="activity-hour">{startHour} à {finishHour}</div>
-      <Link
-        className="activity-link"
-        to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
-      >
-        Cours de {speciality} avec {interlocuteur}
-        <button className="show-activity-button">Voir l'activité</button>
-      </Link>
+      <div className="activity-infos">
+        {startHour} - {finishHour} {speciality} avec {interlocuteur}
+        <Link
+          className="activity-link"
+          to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
+        >
+          <button className="show-activity-button">Voir</button>
+        </Link>
+      </div>
       <Presence
         presenceTeacher={presenceTeacher}
         presenceStudent={presenceStudent}

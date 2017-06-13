@@ -19,28 +19,21 @@ const Presence = ({ presenceTeacher, presenceStudent, actions, stateActivity, us
   const switchPresenceUser = user.user_role === 'ROLE_STUDENT' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
   return (
     <div className="presence">
-      {
-      (presenceType) ?
-          <div onClick={switchPresenceUser} className="one">
-            <div className="button-wrap button-active">
-              <div className="button-bg">
-                <div className="button-out">absent</div>
-                <div className="button-in">Présent</div>
-                <div className="button-switch"></div>
-              </div>
-            </div>
+      <div onClick={switchPresenceUser} className="one presence-button">
+        <div
+          className={classNames(
+          'button-wrap',
+          { 'button-active': presenceType },
+          { present: stateActivity },
+          )}
+        >
+          <div className="button-bg">
+            <div className="button-out">absent</div>
+            <div className="button-in">Présent</div>
+            <div className="button-switch" />
           </div>
-        :
-          <div onClick={switchPresenceUser} className="one">
-            <div className="button-wrap">
-              <div className="button-bg">
-                <div className="button-out">absent</div>
-                <div className="button-in">Présent</div>
-                <div className="button-switch"></div>
-              </div>
-            </div>
-          </div>
-      }
+        </div>
+      </div>
       <div className="activity-statut">
         <span
           className={classNames(

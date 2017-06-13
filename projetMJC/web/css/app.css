@@ -162,7 +162,7 @@ button {
   display: inline-block;
   background: #78d16f;
   width: 100%;
-  text-align: center;
+  position: relative;
 }
 .activity:first-child {
   margin-top: 1em;
@@ -170,21 +170,32 @@ button {
 .activity:last-child {
   margin-bottom: 1em;
 }
-.activity-link {
-  vertical-align: middle;
-  width: auto;
+.activity-infos {
   display: inline-block;
-  margin: 0.5em auto;
+  font-size: 0.9em;
+}
+.activity-infos div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.activity-link {
+  position: absolute;
+  right: 10px;
+  top: 6px;
 }
 .activity-link:hover {
   color: #9b35a5;
 }
 .show-activity-button {
   background: none;
-  border: 1px solid;
-  margin: 0.5em auto auto 1em;
+  border: none;
+  border: 1px solid #000;
+  font-size: 0.9em;
+  margin-left: 1em;
   color: #000;
   padding: 0.2em 0.5em;
+  height: 40px;
+  width: 60px;
 }
 .show-activity-button:hover {
   background: #9b35a5;
@@ -197,16 +208,40 @@ button {
 }
 /* Mobile + */
 /* Phablets */
+@media (min-width: 550px) {
+  .activity-infos {
+    font-size: 1em;
+  }
+  .activity-link {
+    right: 80px;
+  }
+  .show-activity-button {
+    height: 40px;
+  }
+}
 /* Tablettes */
+@media (min-width: 750px) {
+  .activity {
+    height: 36px;
+  }
+  .activity-infos {
+    line-height: 1.8em;
+  }
+  .show-activity-button {
+    height: 25px;
+  }
+}
 /* Desktop */
 @media (min-width: 1000px) {
   #activities {
     padding: 1em 1em 1em 2em;
     border-radius: 1em;
-    margin: 2em;
+    margin: 2em auto;
+    width: 90%;
   }
   .activity {
     border-radius: 1em;
+    overflow: hidden;
   }
   .activity-hour:after {
     content: ' : ';
@@ -217,13 +252,8 @@ button {
 }
 /* Desktop HD */
 @media (min-width: 1200px) {
-  .activity {
-    padding: 0.5em 0;
-  }
-  .activity-hour {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 0.2em;
+  #activities {
+    width: 80%;
   }
 }
 /* Desktop Wide */
@@ -232,17 +262,18 @@ button {
 #activity-view {
   text-align: center;
   margin: 3em auto;
-  background: #fff;
+  background: rgba(255,255,255,0.9);
   padding: 1em;
   position: relative;
+  border: 10px solid #1a661a;
 }
 #activity-view p {
   margin: 0.5em;
 }
 #activity-view .activity-statut {
   position: absolute;
-  top: 52px;
-  right: 80px;
+  top: 41px;
+  right: 15px;
   font-size: 1.1em;
 }
 #activity-view .presence {
@@ -316,6 +347,15 @@ button {
 }
 /* Mobile + */
 /* Phablets */
+@media (min-width: 550px) {
+  #activity-view .activity-statut {
+    top: 4px;
+    right: 5px;
+  }
+  #activity-view .presence-button {
+    position: inherit;
+  }
+}
 /* Tablettes */
 /* Desktop */
 @media (min-width: 1000px) {
@@ -339,6 +379,7 @@ button {
   background-size: 100%;
   height: 100vh;
   display: inline-block;
+  font-size: 12px;
 }
 /* Desktop */
 @media (min-width: 1000px) {
@@ -1273,7 +1314,7 @@ button {
 #notebook {
   width: 100%;
   margin: auto;
-  background: #fff;
+  background: rgba(255,255,255,0.9);
   position: relative;
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;
@@ -1291,6 +1332,11 @@ button {
   }
 }
 /* Desktop HD */
+@media (min-width: 1200px) {
+  #notebook {
+    width: 70%;
+  }
+}
 /* Desktop Wide */
 
 /* Mobile First CSS */
@@ -1396,7 +1442,7 @@ button {
   vertical-align: middle
 }
 .one .button-wrap {
-  width: 110px;
+  width: 106px;
   margin: auto;
   cursor: pointer;
   -webkit-user-select: none;
@@ -1417,8 +1463,8 @@ button {
 .one .button-switch {
   position:relative;
   left:0px;
-  width: 55px;
-  height: 25px;
+  width: 50%;
+  height: 20px;
   border:solid 3px;
   border-radius: 36px;
   -webkit-transition: all 0.2s ease;
@@ -1430,22 +1476,20 @@ button {
   position:absolute;
   -webkit-transition: all 0.2s ease;
   transition:all 0.2s ease;
-  padding-top:9px;
+  padding-top:7px;
   font-size:0.6em;
   text-transform:uppercase;
   font-weight:bold;
 }
-.one .button-in { margin-left:57px; }
-.one .button-out { margin-left:9px; color:#dd2222; }
+.one .button-in { margin-left:62px; }
+.one .button-out { margin-left:12px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }
 .one .button-active .button-bg { background-color:#000; }
 
 /* Mobile First CSS */
 .presence {
-  display: inline-block;
-  vertical-align: middle;
-  width: 100%;
+  margin-top: 0.5em;
 }
 .activity-statut {
   display: inline-block;
@@ -1458,13 +1502,54 @@ button {
 }
 /* Mobile + */
 /* Phablets */
+@media (min-width: 550px) {
+  .activity-statut {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+  }
+  .activity-state .label {
+    padding-top: 14px;
+    border-radius: 3px;
+    width: 60px;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid #000;
+    color: #000;
+  }
+}
 /* Tablettes */
+@media (min-width: 750px) {
+  .presence {
+    width: auto;
+    display: inline-block;
+    margin-top: 0em;
+  }
+  .presence-button {
+    position: absolute;
+    top: 6px;
+    right: 145px;
+  }
+  .presence-button .button-bg {
+    height: 25px;
+    border-radius: 3px;
+  }
+  .presence-button .button-switch {
+    border-radius: 3px;
+    height: 100%;
+  }
+  .presence-button .button-in,
+  .presence-button .button-out {
+    padding-top: 7px;
+  }
+  .activity-state .label {
+    height: 25px;
+    padding-top: 6px;
+  }
+}
 /* Desktop */
 @media (min-width: 1000px) {
   .presence,
-  .activity-statut {
-    display: inline-block;
-  }
   .present {
     color: #2dbb1f;
   }
@@ -1473,14 +1558,6 @@ button {
   }
 }
 /* Desktop HD */
-@media (min-width: 1200px) {
-  .presence {
-    width: 180px;
-    float: right;
-    margin-top: 6px;
-    margin-right: 0.5em;
-  }
-}
 /* Desktop Wide */
 
 
