@@ -16,9 +16,13 @@ import ActivityLine from 'src/containers/Activities/ActivityLine';
  */
 const Activities = ({ activities }) => (
   <div id="activities">
-    {activities.map(lesson => (
-      <ActivityLine key={lesson.activity_id} {...lesson} />
-    ))}
+    {activities.length > 0 ?
+      activities.map(lesson => (
+        <ActivityLine key={lesson.activity_id} {...lesson} />
+    ))
+    :
+      <h1 id="no-activity-title">Aucune Activité</h1>
+    }
   </div>
 );
 

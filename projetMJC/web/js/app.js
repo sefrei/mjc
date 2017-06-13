@@ -43254,9 +43254,13 @@ var Activities = function Activities(_ref) {
   return _react2.default.createElement(
     'div',
     { id: 'activities' },
-    activities.map(function (lesson) {
+    activities.length > 0 ? activities.map(function (lesson) {
       return _react2.default.createElement(_ActivityLine2.default, _extends({ key: lesson.activity_id }, lesson));
-    })
+    }) : _react2.default.createElement(
+      'h1',
+      { id: 'no-activity-title' },
+      'Aucune Activit\xE9'
+    )
   );
 };
 
