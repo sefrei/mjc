@@ -3,10 +3,12 @@
 .one {
   margin: auto .5em;
   display: inline-block;
-  vertical-align: middle
+  vertical-align: middle;
+  font-size: 2em;
 }
 .one .button-wrap {
-  width: 106px;
+  /*width: 106px;*/
+  width: 200px;
   margin: auto;
   cursor: pointer;
   user-select: none;
@@ -16,9 +18,9 @@
   height: 100%;
   background-color: #000;
   border-radius: 40px;
-  padding: 2px;
+  /*padding: 2px;*/
   color:#fff;
-  transition:all 0.2s ease;
+  /*transition:all 0.2s ease;*/
 }
 .one .button-switch {
   position:relative;
@@ -27,9 +29,9 @@
   height: 20px;
   border:solid 3px;
   border-radius: 36px;
-  transition:all 0.2s ease;
+  transition:all 0.5s ease;
 }
-.one .button-active .button-switch { left:51px; }
+.one .button-active .button-switch { /*left:51px;*/ left:100px; }
 .one .button-in,
 .one .button-out {
   position:absolute;
@@ -39,8 +41,8 @@
   text-transform:uppercase;
   font-weight:bold;
 }
-.one .button-in { margin-left:58px; }
-.one .button-out { margin-left:9px; color:#dd2222; }
+.one .button-in { /*margin-left:58px;*/ margin-left:115px;}
+.one .button-out { margin-left:18px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }
 .one .button-active .button-bg { background-color:#000; }
