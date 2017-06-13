@@ -4,9 +4,9 @@
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 	<h1>Mes élèves</h1>
 		{% for subscription in students %}
-		<h2>Id de l'inscription{{subscription.id}} </h2>
-		Nom de l'élève : {{subscription.student.firstname}}
-
+		<h2>N°{{subscription.id}}
+		{{subscription.student.firstname}} {{subscription.student.lastname}}, {{ subscription.specialties.name }} le {{subscription.startAt | localizeddate('full', 'none') |trans}}
+		<a href="{{path('all_observations', {'id':subscription.id})}}" class="btn btn-primary">Voir les observations</a></h2>
 		{% endfor %}
 
 

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+<h1>Non du Student + Cour de Specialty + avec Nom du Teacher</h1>
+<table>
+	<th>Date</th>
+	<th>Observations</th>
+
+
+{% for item in result %}
+	<tr>
+		<td>{{  item.startAt | date('d-m-Y')}}</td>
+
+	     {% if item.appreciation is defined %}
+		 <td>{{item.appreciation}}</td>
+
+	</tr>
+
+	{% endif %}
+
+{% endfor %}
+</table>
+{% endblock %}

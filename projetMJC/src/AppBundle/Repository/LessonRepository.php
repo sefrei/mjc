@@ -89,7 +89,7 @@ class LessonRepository extends \Doctrine\ORM\EntityRepository
           $query = $this->createQueryBuilder('l')
             ->select('l.startAt')
             ->addSelect('l.id')
-            ->addSelect('count(l.id) as nblesson, SUBSTRING(l.startAt, 9, 2) as date')
+            ->addSelect('count(DISTINCT(l.id)) as nblesson, SUBSTRING(l.startAt, 9, 2) as date')
             // ->select($query->expr()->count('l'))
             // ->select('count(l.id) as nblesson')
             ->join('AppBundle:Subscription' ,'s')
@@ -107,12 +107,24 @@ class LessonRepository extends \Doctrine\ORM\EntityRepository
             return $query;
           //  SELECT DATE(lesson.startAt), count(DISTINCT(lesson.id)) FROM lesson inner join subscription on subscription.id = lesson.subscription_id where lesson.startAt > DATE(Now()) and (subscription.teacher_id = 5 or subscription.student_id = 5) group by DATE(lesson.startAt) ORDER BY DATE(lesson.startAt) ASC LIMIT 3
 
-          //->select l.startAt
-        //   ->count(DISTINCT(l.id))
+          //-SELECT DATE(lesson.startAt), count(DISTINCT(lesson.id)) FROM `lesson` inner join subscription where lesson.startAt BETWEEN DATE(Now())and DATE( DATE_ADD( NOW() , INTERVAL 50 DAY ) ) and (subscription.teacher_id = 5 or subscription.student_id = 5) group by DATE(lesson.startAt) LIMIT 10
 
 
+//SELECT DATE(lesson.startAt), count(DISTINCT(lesson.id)) FROM `lesson` inner join subscription where lesson.subscription_id = subscription.id AND lesson.startAt BETWEEN DATE(Now())and DATE( DATE_ADD( NOW() , INTERVAL 50 DAY ) ) and (subscription.teacher_id = 5 or subscription.student_id = 5) group by DATE(lesson.startAt) LIMIT 3
 
 
         }
-         // SELECT DATE(lesson.startAt), count(DISTINCT(lesson.id)) FROM `lesson` inner join subscription where lesson.startAt > DATE(Now()) and (subscription.teacher_id = 5 or subscription.student_id = 5) group by DATE(lesson.startAt) ORDER BY DATE(lesson.startAt) ASC
+        public function showAllObservations($id){
+            $query = $this->createQueryBuilder('l')
+            ->select('l.startAt')
+            ->addSelect('l.appreciation')
+            // ->addSelect('l.startAt')
+            ->where('l.subscription = ?1')
+            ->setParameter(1, $id)
+            ->getQuery()->getResult();
+            return $query;
+
+        }
+        //SELECT appreciation, startAt FROM `lesson` WHERE `subscription_id` = 50
+        //SELECT lesson.appreciation where lesson.subscription_id = 50
 }

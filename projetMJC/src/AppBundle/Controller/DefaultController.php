@@ -212,4 +212,21 @@ class DefaultController extends Controller
                   );
 
              }
+
+             /**
+              * @Route("/all/observations/{id}", name="all_observations")
+              */
+              public function allObservationAction(Request $request, $id)
+
+              {
+                  $id = $request->get('id');
+                  $em = $this->getDoctrine()->getManager();
+                  $result = $em->getRepository('AppBundle:Lesson')->showAllObservations($id);
+                //  dump($id);
+                //  dump($result);
+                //  exit;
+                return $this->render('default/observation.html.twig', [
+                    'result' => $result,
+                ]);
+              }
 }
