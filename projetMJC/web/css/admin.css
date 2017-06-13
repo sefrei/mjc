@@ -1,11 +1,13 @@
 body {
   margin: 0 auto;
   background: #000;
-  color: #FFF;
 }
 body header {
 	width: 90%;
 	margin: auto;
+}
+header .user {
+  color: #FFF;
 }
 .admin {
 width : 90%;
