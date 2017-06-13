@@ -1,5 +1,7 @@
 body {
   margin: 0 auto;
+  /*background: #000;*/
+  /*color: #FFF;*/
 }
 body header {
 	width: 90%;
@@ -11,7 +13,10 @@ width : 90%;
   margin: 0 auto;
 	padding: 2em 0;
 }
-
+.admin h2 {
+	font-size: 1.5em;
+	margin-bottom: 1em;
+}
 .admin .btn-primary {
 	background-color: green;
 }
