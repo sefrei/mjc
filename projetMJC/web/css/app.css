@@ -173,6 +173,7 @@ button {
 .activity-infos {
   display: inline-block;
   font-size: 0.9em;
+  margin-left: 1em;
 }
 .activity-infos div {
   display: inline-block;
@@ -225,7 +226,7 @@ button {
     height: 36px;
   }
   .activity-infos {
-    line-height: 1.8em;
+    line-height: 2em;
   }
   .show-activity-button {
     height: 25px;
