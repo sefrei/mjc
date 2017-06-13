@@ -37,7 +37,7 @@
 				 {% if is_granted('ROLE_ADMIN') %}
           		<li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
 				<li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
-				<li><a href="{{ path('subscription_index')}}">Inscriptions aux activités</a></li>
+				<li><a href="{{ path('subscription_index')}}">Inscrits</a></li>
 				<li><a href="{{path ('user_new')}}" alt="nouvel utilisateur" data-toggle="tooltip" title="créer un nouvel utilisateur"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
 				<li><a href="{{path ('subscription_new')}}" alt="nouvelle inscription" data-toggle="tooltip" title="créer une nouvelle inscription"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></a></li>
 
@@ -46,7 +46,7 @@
 				 {% if is_granted('ROLE_TEACHER') %}
 				<li><a href="{{ path('show_myStudents')}}">Mes élèves</a></li>
 
-				
+
 				{% endif %}
 				{# Si l'user est student #}
 				 {% if is_granted('ROLE_STUDENT') %}
