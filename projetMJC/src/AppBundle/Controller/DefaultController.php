@@ -214,19 +214,26 @@ class DefaultController extends Controller
              }
 
              /**
-              * @Route("/all/observations/{id}", name="all_observations")
+              * @Route("/all/observations/{id}/{student}/{teacher}/{speciality}", name="all_observations")
               */
               public function allObservationAction(Request $request, $id)
 
               {
-                  $id = $request->get('id');
+                   $student = $request->get('student');
+                   $teacher = $request->get('teacher');
+                   $speciality = $request->get('speciality');
+                   $id = $request->get('id');
                   $em = $this->getDoctrine()->getManager();
                   $result = $em->getRepository('AppBundle:Lesson')->showAllObservations($id);
                 //  dump($id);
                 //  dump($result);
+                //  dump($student);
                 //  exit;
                 return $this->render('default/observation.html.twig', [
                     'result' => $result,
+                    'student'=>$student,
+                    'teacher'=>$teacher,
+                    'speciality'=>$speciality
                 ]);
               }
 }
