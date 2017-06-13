@@ -21,12 +21,12 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
 //    public function showSubscriptionByTeacherId($id)
   public function showMyStudentsAction($id)
       {
-        $query = $this->getEntityManager()->createQuery(
-            'SELECT u FROM AppBundle:User u JOIN  AppBundle:Subscription s WHERE s.teacher = ?1 GROUP BY u.username'
-        );
-        $query->setParameter(1, $id);
-
-        return $query->getResult();
+        $query = $this->createQueryBuilder('s')
+        ->select('s')
+        ->where('s.teacher = ?1')
+        ->setParameter(1, $id)
+        ->getQuery()->getResult();
+        return $query;
     }
 //    {
 //      $query = $this->getEntityManager()->createQuery(

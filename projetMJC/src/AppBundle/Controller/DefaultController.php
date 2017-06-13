@@ -124,9 +124,12 @@ class DefaultController extends Controller
          {
              // Je récupère l'ID de l'utilisateur connecté
              $userId = $this->getUser()->getId();
+            //  dump($userId);
+            //  exit;
                 $em = $this->getDoctrine()->getManager();
                 $students = $em->getRepository('AppBundle:Subscription')->showMyStudentsAction($userId);
-
+                //  dump($students);
+                //  exit;
                 return $this->render('default/student.html.twig', [
                     'students' => $students,
                 ]);
