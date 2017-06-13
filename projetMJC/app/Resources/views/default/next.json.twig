@@ -2,8 +2,7 @@
   "nextDayActivities" : [
   {% for item in result %}
     {
-    "id" : {{item.id}},
-    "date" : "{{item.startAt | date('Y-m-d h:i:s')}}",
+    "date" : "{{item.date | date('Y-m-d')}}",
     "nbActivity" :{{item.nblesson}}
     }
     {% if (loop.length == loop.index ) or (loop.last == true)  %} {% else %},{% endif %}

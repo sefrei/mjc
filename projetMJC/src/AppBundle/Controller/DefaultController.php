@@ -202,9 +202,9 @@ class DefaultController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $id = $this->getUser()->getId();
                 $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfter($id);
-// dump($result);
-//
-// exit;
+                // dump($result);
+                //
+                // exit;
                 return $this->render('default/next.json.twig', [
                     'result' => $result,
                 ],

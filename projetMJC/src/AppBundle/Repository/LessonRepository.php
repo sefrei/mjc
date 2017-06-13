@@ -87,17 +87,18 @@ class LessonRepository extends \Doctrine\ORM\EntityRepository
 
 
           $query = $this->createQueryBuilder('l')
-            ->select('l.startAt')
-            ->addSelect('l.id')
-            ->addSelect('count(DISTINCT(l.id)) as nblesson, SUBSTRING(l.startAt, 9, 2) as date')
+            // ->select('l.startAt')
+            // ->addSelect('l.id')
+
+            ->select('count(DISTINCT(l.id)) as nblesson, SUBSTRING(l.startAt, 1, 10) as date')
             // ->select($query->expr()->count('l'))
             // ->select('count(l.id) as nblesson')
             ->join('AppBundle:Subscription' ,'s')
             ->where('s.teacher = ?1 OR s.student = ?1')
             ->andwhere('l.subscription = s.id')
             ->andwhere('l.startAt > ?2')
-            ->groupBy('l')
-            ->orderBy('l.startAt')
+            ->groupBy('date')
+            // ->orderBy('l.startAt')
             ->setMaxResults(3)
             ->setParameter(1, $id)
             ->setParameter(2, $today)
