@@ -39,8 +39,8 @@
   text-transform:uppercase;
   font-weight:bold;
 }
-.one .button-in { margin-left:62px; }
-.one .button-out { margin-left:12px; color:#dd2222; }
+.one .button-in { margin-left:58px; }
+.one .button-out { margin-left:9px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }
 .one .button-active .button-bg { background-color:#000; }
