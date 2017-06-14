@@ -1285,7 +1285,7 @@ button {
   color: #fff;
   padding: 0;
   margin-bottom: 0.5em;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Oswald', sans-serif;
   font-weight: normal;
 }
 .dayActivities {
@@ -1345,8 +1345,8 @@ button {
   font-size: 1.5em;
   margin-bottom: 0.3em;
   padding: 0;
-  font-weight: 300;
-  font-family: 'Indie Flower', cursive;
+  font-weight: normal;
+  font-family: 'Oswald', sans-serif;
 }
 #notifications-counter {
   display: inline-block;
