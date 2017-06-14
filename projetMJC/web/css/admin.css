@@ -51,7 +51,8 @@ body header {
 	font-weight: bold;
 }
 .presentation h2 {
-		font-weight: bold;
+	font-weight: bold;
+	margin: 0;
 }
 .presentation p {
 	font-size: 1.2em;
@@ -75,12 +76,22 @@ body header {
 .admin {
 	width : 90%;
 	font-family: 'Hind Madurai', sans-serif;
-	margin: 0 auto;
+	margin: 3em auto;
 	padding: 2em 0;
+}
+
+
+.admin a {
+	display: inline-block;
+	margin: 0.5em 0;
+}
+.admin td > a {
+	/*display: inline-block;*/
+	margin-top: 0;
 }
 .admin h2 {
 	font-size: 1.5em;
-	margin-bottom: 1em;
+	margin: 0.5em 0 ;
 }
 .admin span.label.label-default.btn-lg {
 	background-color: #130505;
