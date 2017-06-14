@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Meetings list</h1>
+    <h1>Liste des meetings</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('meeting_show', { 'id': meeting.id }) }}">show</a>
+                            <a href="{{ path('meeting_show', { 'id': meeting.id }) }}">voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('meeting_edit', { 'id': meeting.id }) }}">edit</a>
+                            <a href="{{ path('meeting_edit', { 'id': meeting.id }) }}">modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('meeting_new') }}">Create a new meeting</a>
+            <a href="{{ path('meeting_new') }}">Créer un nouveau meeting</a>
         </li>
     </ul>
 {% endblock %}
