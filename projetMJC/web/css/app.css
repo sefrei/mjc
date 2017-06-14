@@ -265,7 +265,7 @@ button {
   padding: 1em;
   position: relative;
   border: 10px solid #1a661a;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 #activity-view p {
   margin: 0.5em;
@@ -797,7 +797,64 @@ button {
 .react-datepicker__portal .react-datepicker__navigation--next:hover {
   border-left-color: #b8b8b8;
 }
-
+/* Mobile First CSS */
+#notebook-navigation {
+  text-align: center;
+  margin-top: 10em;
+}
+.date-picker {
+  font-size: 1em;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 2px 2px #e9e9e9;
+          box-shadow: inset 0 2px 2px #e9e9e9;
+  border: 1px solid #aeaeae;
+  line-height: 16px;
+  padding: 6px 10px 5px;
+  width: 150px;
+}
+.nav-arrow {
+  background: none;
+  border: none;
+  font-size: 2em;
+  -webkit-transition: 1s;
+  transition: 1s;
+  color: #78d16f;
+}
+.nav-arrow:hover {
+  color: #3fa535;
+}
+#left-arrow {
+  float: left;
+}
+#left-arrow:hover {
+  -webkit-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+}
+#right-arrow {
+  float: right;
+}
+#right-arrow:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+#date-title {
+  font-size: 2em;
+  margin: 1em auto;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+}
+/* Mobile + */
+/* Phablets */
+/* Tablettes */
+/* Desktop */
+@media (min-width: 1000px) {
+  #notebook-navigation-nav {
+    margin: 2em 10em;
+  }
+}
+/* Desktop HD */
+/* Desktop Wide */
 
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle,
 .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,
@@ -1208,64 +1265,7 @@ button {
 .react-datepicker__portal .react-datepicker__navigation--next:hover {
   border-left-color: #b8b8b8;
 }
-/* Mobile First CSS */
-#notebook-navigation {
-  text-align: center;
-  margin-top: 10em;
-}
-.date-picker {
-  font-size: 1em;
-  text-align: center;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 2px 2px #e9e9e9;
-          box-shadow: inset 0 2px 2px #e9e9e9;
-  border: 1px solid #aeaeae;
-  line-height: 16px;
-  padding: 6px 10px 5px;
-  width: 150px;
-}
-.nav-arrow {
-  background: none;
-  border: none;
-  font-size: 2em;
-  -webkit-transition: 1s;
-  transition: 1s;
-  color: #78d16f;
-}
-.nav-arrow:hover {
-  color: #3fa535;
-}
-#left-arrow {
-  float: left;
-}
-#left-arrow:hover {
-  -webkit-transform: rotate(-360deg);
-          transform: rotate(-360deg);
-}
-#right-arrow {
-  float: right;
-}
-#right-arrow:hover {
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-}
-#date-title {
-  font-size: 2em;
-  margin: 1em auto;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-/* Mobile + */
-/* Phablets */
-/* Tablettes */
-/* Desktop */
-@media (min-width: 1000px) {
-  #notebook-navigation-nav {
-    margin: 2em 10em;
-  }
-}
-/* Desktop HD */
-/* Desktop Wide */
+
 
 
 /* Mobile First CSS */
@@ -1316,7 +1316,7 @@ button {
   margin: auto;
   background: rgba(255,255,255,0.9);
   position: relative;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   overflow: hidden;
 }
 /* Mobile + */
