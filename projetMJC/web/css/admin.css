@@ -7,18 +7,78 @@ body header {
 	width: 90%;
 	margin: auto;
 }
+.info {
+	padding-bottom: 4em;
+	padding-left: 0;
+}
+
+/*@media (max-width:300px) {
+	.image {
+		width : 100%;
+		}
+	.info {
+		width : 100%;
+		}
+}*/
+.image img {
+
+
+	max-width: 100%;
+	transform : rotate(-5deg);
+	margin-top: : -10em;
+	box-shadow: 10px 4px 10px 1px rgba(0, 0, 0, 0.7);
+	/*opacity: 0.7;*/
+
+
+}
+.image {
+	margin-top: -4em;
+}
+.admin .container .presentation{
+	padding-top: 10em;
+}
+.presentation {
+
+/*font-family: 'Open Sans', sans-serif;*/
+	/*padding: 10em;*/
+	/*background-image:url();
+	background-repeat: no-repeat;
+	background-size:45em;
+	background-position: 50%;*/
+}
+.presentation h1{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.presentation h2 {
+		font-weight: bold;
+}
+.presentation p {
+	font-size: 1.2em;
+	margin-bottom: 0.8em;
+}
+.presentation strong {
+	font-weight: bold;
+}
 .admin {
-width : 90%;
+	width : 90%;
 	font-family: 'Hind Madurai', sans-serif;
-  margin: 0 auto;
+	margin: 0 auto;
 	padding: 2em 0;
 }
 .admin h2 {
 	font-size: 1.5em;
 	margin-bottom: 1em;
 }
+.admin span.label.label-default.btn-lg {
+	background-color: #130505;
+}
 .admin .btn-primary {
-	background-color: green;
+	background-color: #508dca;
+}
+.admin .btn-primary:hover {
+	background-color: #2d5e90;
+
 }
 .admin input, label {
 	font-size: 1.2em;
@@ -34,7 +94,7 @@ width : 90%;
 }
 .admin td {
 	width : 10%;
-	padding: 0.5em 0;
+	padding: 1em 0 0.1em;
 }
 .admin tr {
 	border-bottom: 1px solid #000;

@@ -1,23 +1,17 @@
 {% extends 'base.html.twig'%}
 {% block body %}
-<h1 class="student">{{student}}  </h1>
- <h2><span class="label label-default">   Cour de {{speciality}}  avec {{teacher}}</span></h2>
-<table>
-	<th>Date</th>
-	<th>Observations</th>
-
-
-{% for item in result %}
-	<tr>
-		<td>{{  item.startAt | date('d-m-Y')}}</td>
-
-	     {% if item.appreciation is defined %}
-		 <td>{{item.appreciation}}</td>
-
-	</tr>
-
-	{% endif %}
-
-{% endfor %}
-</table>
+<h1 class="student"> {{student}} </h1>
+	<h2><span class="label label-default">   Cour de {{speciality}}  avec {{teacher}}</span></h2>
+	<table>
+		<th>Date</th>
+		<th>Observations</th>
+			{% for item in result %}
+				<tr>
+					<td>{{  item.startAt | date('d-m-Y')}}</td>
+					{% if item.appreciation is defined %}
+		 			<td>{{item.appreciation}}</td>
+				</tr>
+					{% endif %}
+			{% endfor %}
+		</table>
 {% endblock %}
