@@ -35,9 +35,9 @@
 
 				{# Si l'user est admin #}
 				 {% if is_granted('ROLE_ADMIN') %}
-          		<li><a href="{{ path('specialty_index')}}">Liste des spécialités</a></li>
-				<li><a href="{{ path('user_index')}}">Liste des utilisateurs</a></li>
-				<li><a href="{{ path('subscription_index')}}">Inscrits</a></li>
+          		<li><a href="{{ path('specialty_index')}}">Spécialités</a></li>
+				<li><a href="{{ path('user_index')}}">Utilisateurs</a></li>
+				<li><a href="{{ path('subscription_index')}}">Inscriptions</a></li>
 				<li><a href="{{path ('user_new')}}" alt="nouvel utilisateur" data-toggle="tooltip" title="créer un nouvel utilisateur"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
 				<li><a href="{{path ('subscription_new')}}" alt="nouvelle inscription" data-toggle="tooltip" title="créer une nouvelle inscription"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></a></li>
 
