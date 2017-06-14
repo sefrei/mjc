@@ -70,8 +70,15 @@ body header {
 	font-size: 1.5em;
 	margin-bottom: 1em;
 }
+.admin span.label.label-default.btn-lg {
+	background-color: #130505;
+}
 .admin .btn-primary {
-	background-color: green;
+	background-color: #508dca;
+}
+.admin .btn-primary:hover {
+	background-color: #2d5e90;
+
 }
 .admin input, label {
 	font-size: 1.2em;
@@ -87,7 +94,7 @@ body header {
 }
 .admin td {
 	width : 10%;
-	padding: 0.5em 0;
+	padding: 1em 0 0.1em;
 }
 .admin tr {
 	border-bottom: 1px solid #000;
