@@ -10,9 +10,9 @@
                 <th>Professeur</th>
                 <th>Elève</th>
                 <th>Spécialité</th>
-                <th>Startat</th>
-                <th>Finishat</th>
-                <th>Subscriptionat</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Date d'inscription</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -30,10 +30,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('subscription_show', { 'id': subscription.id }) }}">show</a>
+                            <a href="{{ path('subscription_show', { 'id': subscription.id }) }}">voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('subscription_edit', { 'id': subscription.id }) }}">edit</a>
+                            <a href="{{ path('subscription_edit', { 'id': subscription.id }) }}">modifier</a>
                         </li>
                     </ul>
                 </td>

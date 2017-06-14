@@ -60,6 +60,18 @@ body header {
 .presentation strong {
 	font-weight: bold;
 }
+.prix {
+	margin-top: 2em;
+}
+.prix p {
+
+	text-align: center;
+	margin: 0 auto;
+}
+.prix a {
+	color : #3fa535;
+	font-weight: bold;
+}
 .admin {
 	width : 90%;
 	font-family: 'Hind Madurai', sans-serif;

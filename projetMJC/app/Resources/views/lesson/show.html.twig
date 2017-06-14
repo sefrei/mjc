@@ -10,19 +10,19 @@
                 <td>{{ lesson.id }}</td>
             </tr>
             <tr>
-                <th>Startat</th>
+                <th>Début de la leçon</th>
                 <td>{% if lesson.startAt %}{{ lesson.startAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Teacherispresent</th>
-                <td>{% if lesson.teacherIsPresent %}Yes{% else %}No{% endif %}</td>
+                <th>Le professeur est présent</th>
+                <td>{% if lesson.teacherIsPresent %}Oui{% else %}Non{% endif %}</td>
             </tr>
             <tr>
-                <th>Studentispresent</th>
-                <td>{% if lesson.studentIsPresent %}Yes{% else %}No{% endif %}</td>
+                <th>L'étudiant est présent</th>
+                <td>{% if lesson.studentIsPresent %}Oui{% else %}Non{% endif %}</td>
             </tr>
             <tr>
-                <th>Appreciation</th>
+                <th>Observation</th>
                 <td>{{ lesson.appreciation }}</td>
             </tr>
         </tbody>
