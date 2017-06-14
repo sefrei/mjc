@@ -1439,12 +1439,10 @@ button {
 .one {
   margin: auto .5em;
   display: inline-block;
-  vertical-align: middle;
-  font-size: 2em;
+  vertical-align: middle
 }
 .one .button-wrap {
-  /*width: 106px;*/
-  width: 200px;
+  width: 106px;
   margin: auto;
   cursor: pointer;
   -webkit-user-select: none;
@@ -1457,9 +1455,10 @@ button {
   height: 100%;
   background-color: #000;
   border-radius: 40px;
-  /*padding: 2px;*/
+  padding: 2px;
   color:#fff;
-  /*transition:all 0.2s ease;*/
+  -webkit-transition: all 0.2s ease;
+  transition:all 0.2s ease;
 }
 .one .button-switch {
   position:relative;
@@ -1468,10 +1467,10 @@ button {
   height: 20px;
   border:solid 3px;
   border-radius: 36px;
-  -webkit-transition: all 0.5s ease;
-  transition:all 0.5s ease;
+  -webkit-transition: all 0.2s ease;
+  transition:all 0.2s ease;
 }
-.one .button-active .button-switch { /*left:51px;*/ left:100px; }
+.one .button-active .button-switch { left:51px; }
 .one .button-in,
 .one .button-out {
   position:absolute;
@@ -1482,8 +1481,8 @@ button {
   text-transform:uppercase;
   font-weight:bold;
 }
-.one .button-in { /*margin-left:58px;*/ margin-left:115px;}
-.one .button-out { margin-left:18px; color:#dd2222; }
+.one .button-in { margin-left:58px; }
+.one .button-out { margin-left:9px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }
 .one .button-active .button-bg { background-color:#000; }
@@ -1536,12 +1535,12 @@ button {
     border-radius: 3px;
   }
   .presence-button .button-switch {
-    border-radius: 0px;
+    border-radius: 3px;
     height: 100%;
   }
   .presence-button .button-in,
   .presence-button .button-out {
-    padding-top: 6px;
+    padding-top: 7px;
   }
   .activity-state .label {
     height: 25px;
