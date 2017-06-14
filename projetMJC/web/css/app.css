@@ -181,8 +181,8 @@ button {
 }
 .activity-link {
   position: absolute;
-  right: 10px;
-  top: 6px;
+  right: 5px;
+  top: 12px;
 }
 .activity-link:hover {
   color: #9b35a5;
@@ -194,17 +194,19 @@ button {
   font-size: 0.9em;
   margin-left: 1em;
   color: #000;
-  height: 40px;
-  width: 60px;
+  height: 30px;
+  width: 40px;
 }
 .show-activity-button:hover {
-  background: #9b35a5;
-  border-color: #9b35a5;
+  background: #2dbb1f;
+  border-color: #2dbb1f;
   color: #fff;
 }
 #no-activity-title {
   text-align: center;
   text-transform: uppercase;
+  padding: 2em;
+  font-family: font-title;
 }
 /* Mobile + */
 /* Phablets */
@@ -214,6 +216,7 @@ button {
   }
   .activity-link {
     right: 80px;
+    top: 9px;
   }
   .show-activity-button {
     height: 40px;
@@ -227,6 +230,9 @@ button {
   .activity-infos {
     line-height: 1.5em;
   }
+  .activity-link {
+    top: 5px;
+  }
   .show-activity-button {
     height: 25px;
   }
@@ -234,13 +240,7 @@ button {
 /* Desktop */
 @media (min-width: 1000px) {
   #activities {
-    padding: 1em 1em 1em 2em;
-    border-radius: 1em;
     margin: 2em auto;
-    width: 90%;
-  }
-  .activity {
-    border-radius: 1em;
   }
   .activity-hour:after {
     content: ' : ';
@@ -250,11 +250,6 @@ button {
   }
 }
 /* Desktop HD */
-@media (min-width: 1200px) {
-  #activities {
-    width: 80%;
-  }
-}
 /* Desktop Wide */
 
 /* Mobile First CSS */
@@ -1453,12 +1448,14 @@ button {
 .one .button-bg {
   width: 100%;
   height: 100%;
-  background-color: #000;
+  border: 1px solid #87db7f;
   border-radius: 40px;
-  padding: 2px;
   color:#fff;
+  background: #87db7f;
   -webkit-transition: all 0.2s ease;
   transition:all 0.2s ease;
+  -webkit-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.5);
+          box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.5);
 }
 .one .button-switch {
   position:relative;
@@ -1469,8 +1466,9 @@ button {
   border-radius: 36px;
   -webkit-transition: all 0.2s ease;
   transition:all 0.2s ease;
+  background: #F1F1F1
 }
-.one .button-active .button-switch { left:51px; }
+.one .button-active .button-switch { left:53px; }
 .one .button-in,
 .one .button-out {
   position:absolute;
@@ -1480,12 +1478,13 @@ button {
   font-size:0.6em;
   text-transform:uppercase;
   font-weight:bold;
+  z-index: 1
 }
-.one .button-in { margin-left:58px; }
+.one .button-in { margin-left:60px; }
 .one .button-out { margin-left:9px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
 .one .button-active .button-in { color:#22dd22; }
-.one .button-active .button-bg { background-color:#000; }
+.one .button-active .button-bg { background-color:#87db7f; }
 
 /* Mobile First CSS */
 .presence {
@@ -1505,7 +1504,7 @@ button {
 @media (min-width: 550px) {
   .activity-statut {
     position: absolute;
-    top: 6px;
+    top: 9px;
     right: 10px;
   }
   .activity-state .label {
@@ -1527,11 +1526,11 @@ button {
   }
   .presence-button {
     position: absolute;
-    top: 6px;
-    right: 145px;
+    top: 5.5px;
+    right: 123px;
   }
   .presence-button .button-bg {
-    height: 25px;
+    height: 24.5px;
     border-radius: 3px;
   }
   .presence-button .button-switch {
@@ -1540,7 +1539,10 @@ button {
   }
   .presence-button .button-in,
   .presence-button .button-out {
-    padding-top: 7px;
+    padding-top: 8px;
+  }
+  .activity-statut {
+    top: 5px;
   }
   .activity-state .label {
     height: 25px;
