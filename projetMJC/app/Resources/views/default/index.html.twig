@@ -6,14 +6,30 @@
 		<div id="root"></div>
 		<script src="{{asset('js/app.js')}}"></script>
 		<script>require('src/index');</script>
+	{% else %}
+		<div class="presentation container admin col-12">
+			<h1>big bang Agenda</h1>
+			<div class="info col-lg-6 col-xs-12  ">
+				<h2>Vous êtes profs ? Vous êtes élèves ? Vous êtes une associations ? Avec des cours particuliers ou en groupe ? Alors Big bang Agenda est fait pour Vous</h2>
+
+				<p><strong>C'est quoi :</strong> Un agenda interactif</p>
+				<p><strong>Pour qui :</strong> Toute organisation ou association qui donne des cours ou simplement crée des événements</p>
+				<p><strong>Qui sert à :</strong> Avoir un suivi de ses activités au sein de l'association et pouvoir avertir facilement sa présence ou absence aux différentes activités, permettre au prof un suivi de leurs cours et élèves.</p>
+			</div>
+			<div class="image col-lg-6 col-xs-12">
+				<img src="../images/agenda.png" alt="exemple agenda">
+			</div>
+
+
+		</div>
 	{% endif %}
 {% endblock %}
 
 {% block stylesheets %}
-
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans" rel="stylesheet">
 {% endblock %}
 {% block javascripts %}
 
 <script src="https://use.fontawesome.com/d21c915728.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans" rel="stylesheet">
+
 {% endblock %}
