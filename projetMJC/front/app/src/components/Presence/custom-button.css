@@ -45,5 +45,5 @@
 .one .button-in { margin-left:60px; }
 .one .button-out { margin-left:9px; color:#dd2222; }
 .one .button-active .button-out { color:#fff; }
-.one .button-active .button-in { color:#22dd22; }
+.one .button-active .button-in { color:#5cb85c; }
 .one .button-active .button-bg { background-color:#87db7f; }
