@@ -14,7 +14,7 @@
 .one .button-bg {
   width: 100%;
   height: 100%;
-  border: 1px solid #87db7f;
+  border: 0px solid #87db7f;
   border-radius: 40px;
   color:#fff;
   background: #87db7f;
@@ -26,7 +26,7 @@
   left:0px;
   width: 50%;
   height: 20px;
-  border:solid 3px;
+  border:solid 3px #5cb85c;
   border-radius: 36px;
   transition:all 0.2s ease;
   background: #F1F1F1
