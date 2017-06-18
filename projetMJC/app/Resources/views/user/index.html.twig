@@ -13,7 +13,7 @@
                 <th>Email</th>
                 <th>Date de naissance</th>
                 <th>Role</th>
-                <th>Isactive</th>
+                <th>Actif</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                 <td>{{ user.email }}</td>
                 <td>{% if user.birthAt %}{{ user.birthAt|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ user.role }}</td>
-                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>{% if user.isActive %}Oui{% else %}Non{% endif %}</td>
                 <td>
                     <ul>
                         <li>

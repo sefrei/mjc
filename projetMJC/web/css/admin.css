@@ -2,10 +2,12 @@ body {
   margin: 0 auto;
   /*background: #000;*/
   /*color: #FFF;*/
+  font-family: 'Roboto', sans-serif;
 }
 body header {
 	width: 90%;
 	margin: auto;
+	font-family: 'Oswald', sans-serif;
 }
 .info {
 	padding-bottom: 4em;
@@ -49,6 +51,7 @@ body header {
 .presentation h1{
 	text-transform: uppercase;
 	font-weight: bold;
+	font-family: 'Oswald', sans-serif;
 }
 .presentation h2 {
 	font-weight: bold;
@@ -75,8 +78,11 @@ body header {
 }
 .admin {
 	width : 90%;
+
 	font-family: 'Hind Madurai', sans-serif;
-	margin: 3em auto;
+
+	margin: 0 auto;
+
 	padding: 2em 0;
 }
 
