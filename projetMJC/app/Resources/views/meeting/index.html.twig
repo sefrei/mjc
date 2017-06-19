@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('meeting_show', { 'id': meeting.id }) }}">voir</a>
+                            <a class="btn btn-primary" href="{{ path('meeting_show', { 'id': meeting.id }) }}">voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('meeting_edit', { 'id': meeting.id }) }}">modifier</a>
+                            <a class="btn btn-warning" href="{{ path('meeting_edit', { 'id': meeting.id }) }}">modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('meeting_new') }}">Créer un nouveau meeting</a>
+            <a class="btn btn-new" href="{{ path('meeting_new') }}">Créer un nouveau meeting</a>
         </li>
     </ul>
 {% endblock %}

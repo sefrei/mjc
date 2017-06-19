@@ -31,10 +31,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">voir</a>
+                            <a class="btn btn-primary" href="{{ path('user_show', { 'id': user.id }) }}">voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">modifier</a>
+                            <a class="btn btn-warning" href="{{ path('user_edit', { 'id': user.id }) }}">modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -45,7 +45,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
+            <a class="btn btn-new" href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
         </li>
     </ul>
 {% endblock %}

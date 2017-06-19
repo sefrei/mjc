@@ -25,10 +25,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('lesson_show', { 'id': lesson.id }) }}">Voir</a>
+                            <a class="btn btn-primary" href="{{ path('lesson_show', { 'id': lesson.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('lesson_edit', { 'id': lesson.id }) }}">Modifier</a>
+                            <a class="btn btn-warning" href="{{ path('lesson_edit', { 'id': lesson.id }) }}">Modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +39,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('lesson_new') }}">Créer une nouvelle leçon</a>
+            <a href class="btn btn-new" ="{{ path('lesson_new') }}">Créer une nouvelle leçon</a>
         </li>
     </ul>
 {% endblock %}

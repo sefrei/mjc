@@ -38,10 +38,10 @@
 				<td>
                     <ul>
                         <li>
-                            <a href="{{ path('subscription_show', { 'id': subscription.id }) }}">modifier</a>
+                            <a class="btn btn-warning"  href="{{ path('subscription_show', { 'id': subscription.id }) }}">modifier</a>
                         </li>
                         <li>
-                            <a href="{{ path('subscription_edit', { 'id': subscription.id }) }}">effacer</a>
+                            <a class="btn btn-delete"  href="{{ path('subscription_edit', { 'id': subscription.id }) }}">effacer</a>
                         </li>
                     </ul>
                 </td>
@@ -52,7 +52,7 @@
     <ul>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-delete"  type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

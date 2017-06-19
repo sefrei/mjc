@@ -30,10 +30,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('subscription_show', { 'id': subscription.id }) }}">voir</a>
+                            <a class="btn btn-primary" href="{{ path('subscription_show', { 'id': subscription.id }) }}">voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('subscription_edit', { 'id': subscription.id }) }}">modifier</a>
+                            <a class="btn btn-warning" href="{{ path('subscription_edit', { 'id': subscription.id }) }}">modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -44,7 +44,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('subscription_new') }}">Nouvelle inscription</a>
+            <a  class="btn btn-new"href="{{ path('subscription_new') }}">Nouvelle inscription</a>
         </li>
     </ul>
 {% endblock %}

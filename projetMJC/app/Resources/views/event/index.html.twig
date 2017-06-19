@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('event_show', { 'id': event.id }) }}">Voir</a>
+                            <a class="btn btn-primary" href="{{ path('event_show', { 'id': event.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('event_edit', { 'id': event.id }) }}">Modifier</a>
+                            <a class="btn btn-warning" href="{{ path('event_edit', { 'id': event.id }) }}">Modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('event_new') }}">Créer un nouvel évènement</a>
+            <a class="btn btn-new" href="{{ path('event_new') }}">Créer un nouvel évènement</a>
         </li>
     </ul>
 {% endblock %}
