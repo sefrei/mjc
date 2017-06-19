@@ -1,4 +1,8 @@
 /*
+ * View of 1 activity with more details.
+ */
+
+/*
  * Npm import
  */
 import React from 'react';
@@ -11,42 +15,42 @@ import axios from 'axios';
  * Local import
  */
 import Presence from 'src/containers/Presence';
- // CSS Modules, react-datepicker-cssmodules.css
-
 
 /*
  * Code
  */
-const Activity = ({
-  currentDate, startDate, startHour, finishHour,
-  presenceTeacher, presenceStudent, student, teacher, user, speciality,
-  activity_id: id, appreciation, actions }) => {
+const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenceStudent,
+  student, teacher, user, speciality, activity_id: id, appreciation, actions }) => {
+  // Change observation input
   const onChange = (evt) => {
     const { value } = evt.target;
     actions.changeInputObservation(value);
   };
+  // Save observation in db
   const onSubmit = (evt) => {
     evt.preventDefault();
+    const path = `../lesson/${id}/observation/edit`;
     const params = new URLSearchParams();
     params.append('id_activity', id);
     params.append('appreciation', appreciation);
-    axios.post('../lesson/' + id + '/observation/edit', params)
+    axios.post(path, params)
     .then((response) => {
       console.log(response);
     })
     .catch((error) => {
       console.log(error);
     });
-    // actions.addTask();
   };
+  // Check type user and get his presence state
   const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
-  console.log(presenceType);
+  // Check the state of the activity with the presenceState of both users
   const stateActivity = (presenceTeacher && presenceStudent);
-  const interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+  // Check type user and get his interlocutor
+  const interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return (
     <div id="activity-view">
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
-      <h2 id="activity-title">Activité {id} : cours de {speciality} de {startHour} à {finishHour} avec {interlocuteur}</h2>
+      <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
         <label id="observation-label" htmlFor="observation-input">Observation :</label>
         {(user.user_role === 'ROLE_TEACHER') ?
@@ -99,7 +103,6 @@ const Activity = ({
 
 Activity.propTypes = {
   currentDate: PropTypes.object.isRequired,
-  startDate: PropTypes.string.isRequired,
   startHour: PropTypes.string.isRequired,
   finishHour: PropTypes.string.isRequired,
   activity_id: PropTypes.number.isRequired,

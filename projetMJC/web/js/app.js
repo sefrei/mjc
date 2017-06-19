@@ -43117,25 +43117,24 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = require('react-router-dom');
 
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 var _Presence = require('src/containers/Presence');
 
 var _Presence2 = _interopRequireDefault(_Presence);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// CSS Modules, react-datepicker-cssmodules.css
-
-
 /*
  * Code
  */
+/*
+ * Line of one activity of the notebook.
+ */
+
+/*
+ * Npm import
+ */
 var ActivityLine = function ActivityLine(_ref) {
-  var startDate = _ref.startDate,
-      startHour = _ref.startHour,
+  var startHour = _ref.startHour,
       finishHour = _ref.finishHour,
       id = _ref.activity_id,
       speciality = _ref.speciality,
@@ -43184,16 +43183,13 @@ var ActivityLine = function ActivityLine(_ref) {
     })
   );
 };
+
 /*
  * Local import
- */
-/*
- * Npm import
  */
 
 
 ActivityLine.propTypes = {
-  startDate: _propTypes2.default.string.isRequired,
   startHour: _propTypes2.default.string.isRequired,
   finishHour: _propTypes2.default.string.isRequired,
   activity_id: _propTypes2.default.number.isRequired,
@@ -43220,8 +43216,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
-                                                                                                                                                                                                                                                                   * Npm import
+                                                                                                                                                                                                                                                                   * List of all activity.
                                                                                                                                                                                                                                                                    */
+/*
+ * Npm import
+ */
 
 
 /*
@@ -43242,9 +43241,6 @@ var _ActivityLine = require('src/containers/Activities/ActivityLine');
 var _ActivityLine2 = _interopRequireDefault(_ActivityLine);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// CSS Modules, react-datepicker-cssmodules.css
-
 
 /*
  * Code
@@ -43306,18 +43302,18 @@ var _Presence2 = _interopRequireDefault(_Presence);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// CSS Modules, react-datepicker-cssmodules.css
-
-
 /*
  * Code
  */
+/*
+ * View of 1 activity with more details.
+ */
+
 /*
  * Npm import
  */
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
-      startDate = _ref.startDate,
       startHour = _ref.startHour,
       finishHour = _ref.finishHour,
       presenceTeacher = _ref.presenceTeacher,
@@ -43330,27 +43326,31 @@ var Activity = function Activity(_ref) {
       appreciation = _ref.appreciation,
       actions = _ref.actions;
 
+  // Change observation input
   var onChange = function onChange(evt) {
     var value = evt.target.value;
 
     actions.changeInputObservation(value);
   };
+  // Save observation in db
   var onSubmit = function onSubmit(evt) {
     evt.preventDefault();
+    var path = '../lesson/' + id + '/observation/edit';
     var params = new URLSearchParams();
     params.append('id_activity', id);
     params.append('appreciation', appreciation);
-    _axios2.default.post('../lesson/' + id + '/observation/edit', params).then(function (response) {
+    _axios2.default.post(path, params).then(function (response) {
       console.log(response);
     }).catch(function (error) {
       console.log(error);
     });
-    // actions.addTask();
   };
+  // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
-  console.log(presenceType);
+  // Check the state of the activity with the presenceState of both users
   var stateActivity = presenceTeacher && presenceStudent;
-  var interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+  // Check type user and get his interlocutor
+  var interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -43362,16 +43362,14 @@ var Activity = function Activity(_ref) {
     _react2.default.createElement(
       'h2',
       { id: 'activity-title' },
-      'Activit\xE9 ',
-      id,
-      ' : cours de ',
+      'Cours de ',
       speciality,
       ' de ',
       startHour,
       ' \xE0 ',
       finishHour,
       ' avec ',
-      interlocuteur
+      interlocutor
     ),
     _react2.default.createElement(
       'div',
@@ -43454,7 +43452,6 @@ var Activity = function Activity(_ref) {
 
 Activity.propTypes = {
   currentDate: _propTypes2.default.object.isRequired,
-  startDate: _propTypes2.default.string.isRequired,
   startHour: _propTypes2.default.string.isRequired,
   finishHour: _propTypes2.default.string.isRequired,
   activity_id: _propTypes2.default.number.isRequired,
@@ -43538,8 +43535,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
-                                                                                                                                                                                                                                                                   * Npm import
+                                                                                                                                                                                                                                                                   * Date Navigation : Date Picker + arrowDAy + displayDate
                                                                                                                                                                                                                                                                    */
+
+/*
+ * Npm import
+ */
 
 
 var _react = require('react');
@@ -43565,8 +43566,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Local import
  */
-// CSS Modules, react-datepicker-cssmodules.css
-
 
 /*
  * Code
@@ -43575,24 +43574,24 @@ var Nav = function Nav(_ref) {
   var currentDate = _ref.currentDate,
       actions = _ref.actions;
 
-  // Change
+  // Change Date
   var onChange = function onChange(evt) {
-    console.error(evt);
     actions.changeDate(evt);
   };
+  // Up the date of one Day
   var up = function up() {
     var newObj = _extends({}, currentDate);
     newObj = (0, _moment2.default)(newObj);
     newObj.add(1, 'days');
     actions.changeDate(newObj);
   };
+  // Down the date of one Day
   var down = function down() {
     var newObj = _extends({}, currentDate);
     newObj = (0, _moment2.default)(newObj);
     newObj.add(-1, 'days');
     actions.changeDate(newObj);
   };
-
   return _react2.default.createElement(
     'div',
     { id: 'notebook-navigation' },
@@ -43668,9 +43667,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Local import
  */
 
-// CSS Modules, react-datepicker-cssmodules.css
-
-
 /*
  * Code
  */
@@ -43679,7 +43675,7 @@ var NextActivities = function NextActivities(_ref) {
       actions = _ref.actions,
       displayNotifications = _ref.displayNotifications;
 
-  console.error(days);
+  // Change date to the day of the next Activities
   var onChange = function onChange(evt) {
     var date = (0, _moment2.default)(evt);
     actions.changeDate(date);
@@ -43718,8 +43714,12 @@ var NextActivities = function NextActivities(_ref) {
     })
   );
 }; /*
-    * Npm import
+    * SHow the next days with acitivities
     */
+
+/*
+ * Npm import
+ */
 
 NextActivities.propTypes = {
   days: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired,
@@ -43823,6 +43823,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Code
  */
 /*
+ * Show notifications
+ */
+
+/*
  * Npm import
  */
 var Notifications = function Notifications(_ref) {
@@ -43830,9 +43834,11 @@ var Notifications = function Notifications(_ref) {
       displayNotifications = _ref.displayNotifications,
       actions = _ref.actions;
 
+  // Go on the activity of the notification
   var _onClick = function _onClick(evt) {
     actions.changeNotificationState(evt);
   };
+  // Get only notif which are active (notif.state === true)
   var notificationsNotRead = notifications.filter(function (notif) {
     if (notif.state) {
       return notif;
@@ -43899,6 +43905,10 @@ var Notifications = function Notifications(_ref) {
     )
   );
 };
+
+/*
+ * PropTypes
+ */
 Notifications.propTypes = {
   notifications: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired,
   displayNotifications: _propTypes2.default.bool.isRequired,
@@ -43937,9 +43947,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Local import
  */
 
-// CSS Modules, react-datepicker-cssmodules.css
-
-
 /*
  * Code
  */
@@ -43950,7 +43957,9 @@ var Presence = function Presence(_ref) {
       stateActivity = _ref.stateActivity,
       user = _ref.user;
 
+  // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  // Check type user and get the good action function
   var switchPresenceUser = user.user_role === 'ROLE_STUDENT' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
   return _react2.default.createElement(
     'div',
@@ -43969,7 +43978,7 @@ var Presence = function Presence(_ref) {
           _react2.default.createElement(
             'div',
             { className: 'button-out' },
-            'absent'
+            'Absent'
           ),
           _react2.default.createElement(
             'div',
@@ -44000,10 +44009,18 @@ var Presence = function Presence(_ref) {
       )
     )
   );
-}; /*
-    * Npm import
-    */
+};
 
+/*
+ * propTypes
+ */
+/*
+ * Show presence current user + button for switch
+ */
+
+/*
+ * Npm import
+ */
 Presence.propTypes = {
   presenceTeacher: _propTypes2.default.bool.isRequired,
   presenceStudent: _propTypes2.default.bool.isRequired,
@@ -44074,8 +44091,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = require('react-redux');
 
-var _redux = require('redux');
-
 var _Activities = require('src/components/Activities');
 
 var _Activities2 = _interopRequireDefault(_Activities);
@@ -44088,18 +44103,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Code
  */
 
+// import { bindActionCreators } from 'redux';
 
 /*
  * Local import
- */
-/*
- * Npm import
  */
 var mapStateToProps = function mapStateToProps(state) {
   return {
     activities: state.activities
   };
-};
+}; /*
+    * Npm import
+    */
+
 
 var mapDispatchToProps = null;
 
@@ -44146,7 +44162,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Code
  */
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(ownProps);
   var activity = (0, _reducer.selectActivity)(state, ownProps.match.params.id);
   return _extends({
     currentDate: state.currentDate
@@ -44382,7 +44397,6 @@ var mapStateToProps = function mapStateToProps(state) {
 
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
-
   return {
     actions: {
       switchPresenceTeacher: function switchPresenceTeacher() {
@@ -44749,7 +44763,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44783,8 +44797,7 @@ var DOWN_DAY = exports.DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SET_USER = 'SET_USER';
 var SET_NEXTDAYS = 'SET_NEXTDAYS';
-var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE_TEACHER';
-var SWITCH_PRESENCE_STUDENT = exports.SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
+var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 var RESET_OBSERVATION = exports.RESET_OBSERVATION = 'RESET_OBSERVATION';
 var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
@@ -44814,27 +44827,8 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.error(state);
         return _extends({}, state, {
           currentDate: action.date
-        });
-      }
-    case UP_DAY:
-      {
-        var newObj = _extends({}, state.currentDate);
-        newObj = (0, _moment2.default)(newObj);
-        newObj.add(1, 'days');
-        return _extends({}, state, {
-          currentDate: newObj
-        });
-      }
-    case DOWN_DAY:
-      {
-        var _newObj = _extends({}, state.currentDate);
-        _newObj = (0, _moment2.default)(_newObj);
-        _newObj.add(-1, 'days');
-        return _extends({}, state, {
-          currentDate: _newObj
         });
       }
     case SET_ACTIVITIES:
@@ -44874,51 +44868,36 @@ exports.default = function () {
           activities: activities
         });
       }
-    case SWITCH_PRESENCE_STUDENT:
+    case INPUT_OBSERVATION_CHANGE:
       {
         var _id = action.id;
+        var input = action.input;
 
         _id = parseInt(_id, 10);
         var _activities = [].concat(_toConsumableArray(state.activities));
         _activities.forEach(function (activity) {
           if (activity.activity_id === _id) {
-            activity.presenceStudent = !activity.presenceStudent;
+            activity.appreciation = input;
           }
         });
         return _extends({}, state, {
           activities: _activities
         });
       }
-    case INPUT_OBSERVATION_CHANGE:
+    case RESET_OBSERVATION:
       {
         var _id2 = action.id;
-        var input = action.input;
 
         _id2 = parseInt(_id2, 10);
         var _activities2 = [].concat(_toConsumableArray(state.activities));
         _activities2.forEach(function (activity) {
           if (activity.activity_id === _id2) {
-            activity.appreciation = input;
-          }
-        });
-        return _extends({}, state, {
-          activities: _activities2
-        });
-      }
-    case RESET_OBSERVATION:
-      {
-        var _id3 = action.id;
-
-        _id3 = parseInt(_id3, 10);
-        var _activities3 = [].concat(_toConsumableArray(state.activities));
-        _activities3.forEach(function (activity) {
-          if (activity.activity_id === _id3) {
             console.info('action : Axios récupérer lobservation en bdd pour cette activité');
             // activity.appreciation = activity.observation;
           }
         });
         return _extends({}, state, {
-          activities: _activities3
+          activities: _activities2
         });
       }
     case DISPLAY_NOTIFICATIONS:
@@ -44930,11 +44909,11 @@ exports.default = function () {
       }
     case CHANGE_STATE_NOTIFICATION:
       {
-        var _id4 = action.id;
+        var _id3 = action.id;
 
         var notifications = [].concat(_toConsumableArray(state.notifications));
         notifications.forEach(function (notif) {
-          if (notif.id === _id4) {
+          if (notif.id === _id3) {
             console.info('action : Axios changer letat de la notif');
             notif.state = false;
           }
@@ -44964,7 +44943,6 @@ var upDay = exports.upDay = function upDay() {
     type: UP_DAY
   };
 };
-
 var downDay = exports.downDay = function downDay() {
   return {
     type: DOWN_DAY
@@ -45059,99 +45037,5 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
-'use strict';
 
-/* jshint ignore:start */
-(function () {
-  var WebSocket = window.WebSocket || window.MozWebSocket;
-  var br = window.brunch = window.brunch || {};
-  var ar = br['auto-reload'] = br['auto-reload'] || {};
-  if (!WebSocket || ar.disabled) return;
-  if (window._ar) return;
-  window._ar = true;
-
-  var cacheBuster = function cacheBuster(url) {
-    var date = Math.round(Date.now() / 1000).toString();
-    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
-    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
-  };
-
-  var browser = navigator.userAgent.toLowerCase();
-  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
-
-  var reloaders = {
-    page: function page() {
-      window.location.reload(true);
-    },
-
-    stylesheet: function stylesheet() {
-      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
-        var val = link.getAttribute('data-autoreload');
-        return link.href && val != 'false';
-      }).forEach(function (link) {
-        link.href = cacheBuster(link.href);
-      });
-
-      // Hack to force page repaint after 25ms.
-      if (forceRepaint) setTimeout(function () {
-        document.body.offsetHeight;
-      }, 25);
-    },
-
-    javascript: function javascript() {
-      var scripts = [].slice.call(document.querySelectorAll('script'));
-      var textScripts = scripts.map(function (script) {
-        return script.text;
-      }).filter(function (text) {
-        return text.length > 0;
-      });
-      var srcScripts = scripts.filter(function (script) {
-        return script.src;
-      });
-
-      var loaded = 0;
-      var all = srcScripts.length;
-      var onLoad = function onLoad() {
-        loaded = loaded + 1;
-        if (loaded === all) {
-          textScripts.forEach(function (script) {
-            eval(script);
-          });
-        }
-      };
-
-      srcScripts.forEach(function (script) {
-        var src = script.src;
-        script.remove();
-        var newScript = document.createElement('script');
-        newScript.src = cacheBuster(src);
-        newScript.async = true;
-        newScript.onload = onLoad;
-        document.head.appendChild(newScript);
-      });
-    }
-  };
-  var port = ar.port || 9485;
-  var host = br.server || window.location.hostname || 'localhost';
-
-  var connect = function connect() {
-    var connection = new WebSocket('ws://' + host + ':' + port);
-    connection.onmessage = function (event) {
-      if (ar.disabled) return;
-      var message = event.data;
-      var reloader = reloaders[message] || reloaders.page;
-      reloader();
-    };
-    connection.onerror = function () {
-      if (connection.readyState) connection.close();
-    };
-    connection.onclose = function () {
-      window.setTimeout(connect, 1000);
-    };
-  };
-  connect();
-})();
-/* jshint ignore:end */
-
-;
 //# sourceMappingURL=app.js.map

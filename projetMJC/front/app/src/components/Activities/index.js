@@ -1,4 +1,7 @@
 /*
+ * List of all activity.
+ */
+/*
  * Npm import
  */
 import React from 'react';
@@ -8,8 +11,6 @@ import PropTypes from 'prop-types';
  * Local import
  */
 import ActivityLine from 'src/containers/Activities/ActivityLine';
- // CSS Modules, react-datepicker-cssmodules.css
-
 
 /*
  * Code

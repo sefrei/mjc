@@ -16,8 +16,7 @@ export const DOWN_DAY = 'DOWN_DAY';
 const SET_ACTIVITIES = 'SET_ACTIVITIES';
 const SET_USER = 'SET_USER';
 const SET_NEXTDAYS = 'SET_NEXTDAYS';
-export const SWITCH_PRESENCE = 'SWITCH_PRESENCE_TEACHER';
-export const SWITCH_PRESENCE_STUDENT = 'SWITCH_PRESENCE_STUDENT';
+export const SWITCH_PRESENCE = 'SWITCH_PRESENCE';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 export const RESET_OBSERVATION = 'RESET_OBSERVATION';
 const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
@@ -44,34 +43,9 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.error(state);
         return {
           ...state,
           currentDate: action.date,
-        };
-      }
-    case UP_DAY:
-      {
-        let newObj = {
-          ...state.currentDate,
-        };
-        newObj = moment(newObj);
-        newObj.add(1, 'days');
-        return {
-          ...state,
-          currentDate: newObj,
-        };
-      }
-    case DOWN_DAY:
-      {
-        let newObj = {
-          ...state.currentDate,
-        };
-        newObj = moment(newObj);
-        newObj.add(-1, 'days');
-        return {
-          ...state,
-          currentDate: newObj,
         };
       }
     case SET_ACTIVITIES:
@@ -108,21 +82,6 @@ export default (state = initialState, action = {}) => {
             else {
               activity.presenceStudent = !activity.presenceStudent;
             }
-          }
-        });
-        return {
-          ...state,
-          activities,
-        };
-      }
-    case SWITCH_PRESENCE_STUDENT:
-      {
-        let { id } = action;
-        id = parseInt(id, 10);
-        const activities = [...state.activities];
-        activities.forEach((activity) => {
-          if (activity.activity_id === id) {
-            activity.presenceStudent = !activity.presenceStudent;
           }
         });
         return {
@@ -193,39 +152,28 @@ export default (state = initialState, action = {}) => {
 /*
  * Action creators
  */
-export const changeDate = date => (
-  {
-    type: CHANGE_DATE,
-    date,
-  }
-);
-export const upDay = () => (
-  {
-    type: UP_DAY,
-  }
-);
-
-export const downDay = () => (
-  {
-    type: DOWN_DAY,
-  }
-);
-export const switchPresenceTeacher = (id, presenceTeacher) => {
-  return ({
-    type: SWITCH_PRESENCE,
-    userType: 'ROLE_TEACHER',
-    presence: presenceTeacher,
-    id,
-  });
-};
-export const switchPresenceStudent = (id, presenceStudent) => {
-  return ({
-    type: SWITCH_PRESENCE,
-    userType: 'ROLE_STUDENT',
-    presence: presenceStudent,
-    id,
-  });
-};
+export const changeDate = date => ({
+  type: CHANGE_DATE,
+  date,
+});
+export const upDay = () => ({
+  type: UP_DAY,
+});
+export const downDay = () => ({
+  type: DOWN_DAY,
+});
+export const switchPresenceTeacher = (id, presenceTeacher) => ({
+  type: SWITCH_PRESENCE,
+  userType: 'ROLE_TEACHER',
+  presence: presenceTeacher,
+  id,
+});
+export const switchPresenceStudent = (id, presenceStudent) => ({
+  type: SWITCH_PRESENCE,
+  userType: 'ROLE_STUDENT',
+  presence: presenceStudent,
+  id,
+});
 export const setActivities = activities => ({
   type: SET_ACTIVITIES,
   activities,

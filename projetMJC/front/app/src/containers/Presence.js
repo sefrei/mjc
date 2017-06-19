@@ -16,9 +16,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-const mapDispatchToProps = (dispatch, props) => {
-
-return ({
+const mapDispatchToProps = (dispatch, props) => ({
   actions: {
     switchPresenceTeacher: () => {
       dispatch(switchPresenceTeacher(props.id, props.presenceTeacher));
@@ -28,7 +26,6 @@ return ({
     },
   },
 });
-};
 
 /*
  * Component

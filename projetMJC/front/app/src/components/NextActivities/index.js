@@ -1,4 +1,8 @@
 /*
+ * SHow the next days with acitivities
+ */
+
+/*
  * Npm import
  */
 import React from 'react';
@@ -10,14 +14,12 @@ import 'moment/locale/fr';
  * Local import
  */
 
- // CSS Modules, react-datepicker-cssmodules.css
-
 
 /*
  * Code
  */
 const NextActivities = ({ days, actions, displayNotifications }) => {
-  console.error(days);
+  // Change date to the day of the next Activities
   const onChange = (evt) => {
     const date = moment(evt);
     actions.changeDate(date);

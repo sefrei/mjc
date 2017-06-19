@@ -1,10 +1,15 @@
 /*
+ * Show notifications
+ */
+
+/*
  * Npm import
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+
 /*
  * Local import
  */
@@ -13,9 +18,11 @@ import { Link } from 'react-router-dom';
  * Code
  */
 const Notifications = ({ notifications, displayNotifications, actions }) => {
+  // Go on the activity of the notification
   const onClick = (evt) => {
     actions.changeNotificationState(evt);
   };
+  // Get only notif which are active (notif.state === true)
   const notificationsNotRead = notifications.filter((notif) => {
     if (notif.state) {
       return notif;
@@ -44,7 +51,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
         )}
       >
         <div id="notifications-messages">
-          <div className="triangle"></div>
+          <div className="triangle" />
           <h1 id="notifications-title">Notifications :</h1>
           {notifications.map((notif) => {
             if (notif.state) {
@@ -67,6 +74,10 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
     </div>
   );
 };
+
+/*
+ * PropTypes
+ */
 Notifications.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   displayNotifications: PropTypes.bool.isRequired,

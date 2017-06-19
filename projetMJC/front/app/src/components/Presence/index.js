@@ -1,4 +1,8 @@
 /*
+ * Show presence current user + button for switch
+ */
+
+/*
  * Npm import
  */
 import React from 'react';
@@ -8,14 +12,13 @@ import classNames from 'classnames';
  * Local import
  */
 
- // CSS Modules, react-datepicker-cssmodules.css
-
-
 /*
  * Code
  */
 const Presence = ({ presenceTeacher, presenceStudent, actions, stateActivity, user }) => {
+  // Check type user and get his presence state
   const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  // Check type user and get the good action function
   const switchPresenceUser = user.user_role === 'ROLE_STUDENT' ? actions.switchPresenceStudent : actions.switchPresenceTeacher;
   return (
     <div className="presence">
@@ -28,7 +31,7 @@ const Presence = ({ presenceTeacher, presenceStudent, actions, stateActivity, us
           )}
         >
           <div className="button-bg">
-            <div className="button-out">absent</div>
+            <div className="button-out">Absent</div>
             <div className="button-in">Présent</div>
             <div className="button-switch" />
           </div>
@@ -48,6 +51,10 @@ const Presence = ({ presenceTeacher, presenceStudent, actions, stateActivity, us
     </div>
   );
 };
+
+/*
+ * propTypes
+ */
 Presence.propTypes = {
   presenceTeacher: PropTypes.bool.isRequired,
   presenceStudent: PropTypes.bool.isRequired,

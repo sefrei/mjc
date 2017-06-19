@@ -1,4 +1,8 @@
 /*
+ * Date Navigation : Date Picker + arrowDAy + displayDate
+ */
+
+/*
  * Npm import
  */
 import React from 'react';
@@ -9,18 +13,16 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
- // CSS Modules, react-datepicker-cssmodules.css
-
 
 /*
  * Code
  */
 const Nav = ({ currentDate, actions }) => {
-  // Change
+  // Change Date
   const onChange = (evt) => {
-    console.error(evt);
     actions.changeDate(evt);
   };
+  // Up the date of one Day
   const up = () => {
     let newObj = {
       ...currentDate,
@@ -29,6 +31,7 @@ const Nav = ({ currentDate, actions }) => {
     newObj.add(1, 'days');
     actions.changeDate(newObj);
   };
+  // Down the date of one Day
   const down = () => {
     let newObj = {
       ...currentDate,
@@ -37,7 +40,6 @@ const Nav = ({ currentDate, actions }) => {
     newObj.add(-1, 'days');
     actions.changeDate(newObj);
   };
-
   return (
     <div id="notebook-navigation">
       <div id="notebook-navigation-nav">

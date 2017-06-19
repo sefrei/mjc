@@ -1,21 +1,24 @@
 /*
+ * Line of one activity of the notebook.
+ */
+
+/*
  * Npm import
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
+
 /*
  * Local import
  */
 import Presence from 'src/containers/Presence';
- // CSS Modules, react-datepicker-cssmodules.css
 
 
 /*
  * Code
  */
-const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id,
+const ActivityLine = ({ startHour, finishHour, activity_id: id,
   speciality, presenceStudent, presenceTeacher, student, teacher, user }) => {
   // Get the state of the activity in depend of the presence of the 2 users (teacher / student).
   const stateActivity = (presenceTeacher && presenceStudent);
@@ -44,7 +47,6 @@ const ActivityLine = ({ startDate, startHour, finishHour, activity_id: id,
 };
 
 ActivityLine.propTypes = {
-  startDate: PropTypes.string.isRequired,
   startHour: PropTypes.string.isRequired,
   finishHour: PropTypes.string.isRequired,
   activity_id: PropTypes.number.isRequired,
