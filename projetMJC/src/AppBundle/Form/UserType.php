@@ -53,7 +53,9 @@ class UserType extends AbstractType
             'Professeur' => 'ROLE_TEACHER',
           ]
         ])
-        ->add('isActive');
+        ->add('isActive', null, [
+          'label'  => 'Activé'
+        ]);
     }
 
     /**

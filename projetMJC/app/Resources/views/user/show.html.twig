@@ -26,10 +26,6 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Mot de passe</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
                 <th>Date de naissance</th>
                 <td>{% if user.birthAt %}{{ user.birthAt|date('Y-m-d') }}{% endif %}</td>
             </tr>
@@ -46,15 +42,17 @@
 
     <ul>
         <li>
-            <a href="{{ path('user_index') }}">Retour à la liste</a>
+            <a class="btn btn-primary" href="{{ path('user_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
+            <a class="btn btn-warning" href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
         </li>
         <li>
+			{% if is_granted('ROLE_ADMIN') %}
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-delete" type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
+			{% endif %}
         </li>
     </ul>
 {% endblock %}
