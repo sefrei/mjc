@@ -28,14 +28,18 @@ class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
         ->getQuery()->getResult();
         return $query;
     }
-//    {
-//      $query = $this->getEntityManager()->createQuery(
-//          'SELECT s FROM AppBundle:Subscription s WHERE teacher.id = ? ORDER BY s.subscriptionAt DESC'
-//      );
-//      $stmt =bb;
-//      return $query->getResult();
-//    }
 
+    //Un étudiant doit avoir accès à toutes ses inscriptions pour pouvoir ensuite voir les observations liées
+    public function showMySubscriptions($id)
+    {
+        $query = $this->createQueryBuilder('s')
+        ->select('s')
+        ->where('s.student = ?1')
+        ->setParameter(1, $id)
+        ->getQuery()->getResult();
+        return $query;
+
+    }
 
 
 }

@@ -50,7 +50,7 @@
 				{% endif %}
 				{# Si l'user est student #}
 				 {% if is_granted('ROLE_STUDENT') %}
-
+          <li><a href="{{ path('show_mySubscriptions')}}">Mes inscriptions</a></li>
 				{% endif %}
                 {# Si l'user est authentifié #}
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}

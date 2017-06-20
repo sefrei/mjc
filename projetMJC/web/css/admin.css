@@ -170,3 +170,7 @@ border-style: solid;
     font-size: 2em;
     margin-bottom: 1em;
 }
+
+#observations td{
+	padding: 0.7em 0;
+}

@@ -135,6 +135,26 @@ class DefaultController extends Controller
                 ]);
          }
 
+         /**
+          * @Route("/show/mySubscriptions", name="show_mySubscriptions")
+          */
+          public function showMymySubscriptionsAction()
+          {
+              // Je récupère l'ID de l'utilisateur connecté
+              $userId = $this->getUser()->getId();
+             //  dump($userId);
+             //  exit;
+                 $em = $this->getDoctrine()->getManager();
+                 $subscriptions = $em->getRepository('AppBundle:Subscription')->showMySubscriptions($userId);
+                //   dump($subscriptions);
+                //   exit;
+                 return $this->render('default/subscriptions.html.twig', [
+                     'subscriptions' => $subscriptions,
+                 ]);
+          }
+
+
+
              /**
               * @Route("/date/{date}", name="date")
               */
