@@ -47,4 +47,9 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+    public function getCharset()
+   {
+       return 'UTF-8';
+   }
 }
