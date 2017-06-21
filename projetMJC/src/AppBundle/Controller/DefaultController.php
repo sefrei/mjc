@@ -237,7 +237,6 @@ class DefaultController extends Controller
               * @Route("/all/observations/{id}/{student}/{teacher}/{speciality}", name="all_observations")
               */
               public function allObservationAction(Request $request, $id)
-
               {
                    $student = $request->get('student');
                    $teacher = $request->get('teacher');
@@ -256,4 +255,21 @@ class DefaultController extends Controller
                     'speciality'=>$speciality
                 ]);
               }
+
+              /** @Route("notifications/{id}", name="notifications")
+              *
+              **/
+              public function notificationsAction($id){
+                  $em = $this->getDoctrine()->getManager();
+                  $id = $this->getUser()->getId();
+                  $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser($id);
+                //   dump($result);
+                //   exit;
+                  return $this->render('default/notifications.json.twig', [
+                      'result' => $result,
+                  ],
+                  new JsonResponse()
+                    );
+              }
+
 }

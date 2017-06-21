@@ -84,6 +84,20 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+
+    /**
+     * One User for Many Notifications
+     * @ORM\OneToMany(targetEntity="Notification", mappedBy="user", orphanRemoval=true, cascade={"all"})
+     */
+     private $notifications;
+
+
+     /**
+      * One User for Many Reading_Notification
+      * @ORM\OneToMany(targetEntity="Reading_notification", mappedBy="user", orphanRemoval=true, cascade={"all"})
+      */
+      private $readings;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -333,5 +347,73 @@ class User implements UserInterface, \Serializable
     public function __toString()
     {
         return $this->firstname.' '.$this->lastname;
+    }
+
+    /**
+     * Add notification
+     *
+     * @param \AppBundle\Entity\Notification $notification
+     *
+     * @return User
+     */
+    public function addNotification(\AppBundle\Entity\Notification $notification)
+    {
+        $this->notifications[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Remove notification
+     *
+     * @param \AppBundle\Entity\Notification $notification
+     */
+    public function removeNotification(\AppBundle\Entity\Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * Add reading
+     *
+     * @param \AppBundle\Entity\Reading_notification $reading
+     *
+     * @return User
+     */
+    public function addReading(\AppBundle\Entity\Reading_notification $reading)
+    {
+        $this->readings[] = $reading;
+
+        return $this;
+    }
+
+    /**
+     * Remove reading
+     *
+     * @param \AppBundle\Entity\Reading_notification $reading
+     */
+    public function removeReading(\AppBundle\Entity\Reading_notification $reading)
+    {
+        $this->readings->removeElement($reading);
+    }
+
+    /**
+     * Get readings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReadings()
+    {
+        return $this->readings;
     }
 }
