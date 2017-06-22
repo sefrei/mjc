@@ -24,6 +24,8 @@ const NextActivities = ({ days, actions, displayNotifications }) => {
     const date = moment(evt);
     actions.changeDate(date);
   };
+  console.info(days);
+  let idDay = 0;
   return (
     <div
       id="nextActivities"
@@ -32,14 +34,17 @@ const NextActivities = ({ days, actions, displayNotifications }) => {
       )}
     >
       <h1>Prochaines journées actives :</h1>
-      {days.map(day => (
-        <p
-          key={day.id}
-          onClick={() => onChange(day.date)}
-        >
-          -<span className="dayActivities">{moment(day.date).format('dddd D MMMM YYYY')} : {day.nbActivity} activité{day.nbActivity > 1 ? 's' : ''}</span>
-        </p>
-      ))}
+      {days.map((day) => {
+        idDay += 1;
+        return (
+          <p
+            key={idDay}
+            onClick={() => onChange(day.date)}
+          >
+            -<span className="dayActivities">{moment(day.date).format('dddd D MMMM YYYY')} : {day.nbActivity} activité{day.nbActivity > 1 ? 's' : ''}</span>
+          </p>
+        );
+      })}
     </div>
   );
 };

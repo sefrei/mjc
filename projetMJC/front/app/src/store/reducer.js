@@ -16,6 +16,7 @@ export const DOWN_DAY = 'DOWN_DAY';
 const SET_ACTIVITIES = 'SET_ACTIVITIES';
 const SET_USER = 'SET_USER';
 const SET_NEXTDAYS = 'SET_NEXTDAYS';
+const SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
 export const SWITCH_PRESENCE = 'SWITCH_PRESENCE';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 export const RESET_OBSERVATION = 'RESET_OBSERVATION';
@@ -29,7 +30,7 @@ export const initialState = {
   currentDate: moment(),
   user: {},
   activities: [],
-  notifications: datas.notifications,
+  notifications: [],
   nextDayActivities: [],
   inputObservation: '',
   displayNotifications: false,
@@ -67,6 +68,13 @@ export default (state = initialState, action = {}) => {
         return {
           ...state,
           nextDayActivities: action.nextDayActivities,
+        };
+      }
+    case SET_NOTIFICATIONS:
+      {
+        return {
+          ...state,
+          notifications: action.notifications,
         };
       }
     case SWITCH_PRESENCE:
@@ -185,6 +193,10 @@ export const setUser = user => ({
 export const setNextDays = nextDayActivities => ({
   type: SET_NEXTDAYS,
   nextDayActivities,
+});
+export const setNotifications = notifications => ({
+  type: SET_NOTIFICATIONS,
+  notifications,
 });
 export const changeInputObservation = (input, id) => ({
   type: INPUT_OBSERVATION_CHANGE,

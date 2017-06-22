@@ -1,4 +1,4 @@
-/*
+    /*
  * Npm import
  */
 import axios from 'axios';
@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, SWITCH_PRESENCE, SWITCH_PRESENCE_STUDENT, setActivities, setUser, setNextDays } from './reducer';
+import { CHANGE_DATE, SWITCH_PRESENCE, setActivities, setUser, setNextDays, setNotifications } from './reducer';
 /*
  * Types
  */
@@ -21,53 +21,47 @@ const createMiddleware = store => next => (action) => {
   switch (action.type) {
     case LOAD_ACTIVITIES:
       {
-        // console.log(action.currentDate.format());
-        // console.error();
-        let CheminComplet = document.location.href;
-        if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-          CheminComplet += '/';
+        let cheminComplet = document.location.href;
+        if (cheminComplet.substr(cheminComplet.length - 1, 1) !== '/') {
+          cheminComplet += '/';
         }
         // On fait une requête ajax pour récupérer les infos de l'utilisateur +
         // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
         const newDate = moment().format().split('T');
-        let path = `${CheminComplet}planning/${newDate[0]}`;
-        /*axios.post(CheminComplet, {
-          date: action.currentDate.format(),
-        })
-        .then((response) => {
-          console.info(response);
-          //console.log(response.data.activities);
-          store.dispatch(setActivities(response.data.activities));
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-        */
+        let path = `${cheminComplet}planning/${newDate[0]}`;
         const params = new URLSearchParams();
         params.append('date', action.currentDate.format());
         axios.post(path, params)
         .then((response) => {
           console.info(response);
+          // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
+          //  state activités + un dispatch pour enregistrer infos utilisateur
           store.dispatch(setActivities(response.data.activities));
           store.dispatch(setUser(response.data.user));
         })
         .catch((error) => {
           console.log(error);
         });
-
-        path = `${CheminComplet}next`;
+        // Requête ajax pour récupérer les prochaines journées actives pour l'utilisateur
+        path = `${cheminComplet}next`;
         axios.post(path, params)
         .then((response) => {
-        console.info(response);
+          console.info(response);
           store.dispatch(setNextDays(response.data.nextDayActivities));
         })
         .catch((error) => {
           console.log(error);
         });
-        // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
-        //  state activités + un dispatch pour enregistrer infos utilisateur
-        //
-
+        // Requête ajax pour récupérer les notifications pour l'utilisateur
+        path = `${cheminComplet}notifications`;
+        axios.post(path, params)
+        .then((response) => {
+          console.info(response);
+          store.dispatch(setNotifications(response.data.notifications));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
         break;
       }
     case CHANGE_DATE:
@@ -78,38 +72,38 @@ const createMiddleware = store => next => (action) => {
           CheminComplet += '/';
         }
         CheminComplet += `planning/${newDate[0]}`;
-        console.info('La date a changer : requete axios pour récupérer les nouvelles données');
         const params = new URLSearchParams();
         params.append('date', action.date.format());
         axios.post(CheminComplet, params)
         .then((response) => {
           console.log(response);
+          // Dispatch pour enregistré les nouvelles données des activités
+          // de la date selectionnée dans le state
           store.dispatch(setActivities(response.data.activities));
         })
         .catch((error) => {
           console.log(error);
         });
-        // dispatch
         break;
       }
     case SWITCH_PRESENCE:
       {
         let CheminComplet = document.location.href;
+        let path = '';
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
         }
         if (CheminComplet.substr(CheminComplet.length - 5, 5) === '.php/') {
-          CheminComplet += `lesson/${action.id}/presence/edit`;
+          path += `lesson/${action.id}/presence/edit`;
         }
         else {
-          CheminComplet += `../../lesson/${action.id}/presence/edit`;
+          path += `../../lesson/${action.id}/presence/edit`;
         }
-        // CheminComplet += 'lesson/' + action.id + '/presence/edit';
         const params = new URLSearchParams();
         params.append('id_activity', action.id);
         params.append('type_user', action.userType);
         params.append('presence', !action.presence);
-        axios.post(CheminComplet, params)
+        axios.post(path, params)
         .then((response) => {
           console.log(response);
         })

@@ -43680,6 +43680,8 @@ var NextActivities = function NextActivities(_ref) {
     var date = (0, _moment2.default)(evt);
     actions.changeDate(date);
   };
+  console.info(days);
+  var idDay = 0;
   return _react2.default.createElement(
     'div',
     {
@@ -43692,10 +43694,11 @@ var NextActivities = function NextActivities(_ref) {
       'Prochaines journ\xE9es actives :'
     ),
     days.map(function (day) {
+      idDay += 1;
       return _react2.default.createElement(
         'p',
         {
-          key: day.id,
+          key: idDay,
           onClick: function onClick() {
             return onChange(day.date);
           }
@@ -43834,17 +43837,19 @@ var Notifications = function Notifications(_ref) {
       displayNotifications = _ref.displayNotifications,
       actions = _ref.actions;
 
+  console.error(notifications);
   // Go on the activity of the notification
   var _onClick = function _onClick(evt) {
     actions.changeNotificationState(evt);
   };
   // Get only notif which are active (notif.state === true)
   var notificationsNotRead = notifications.filter(function (notif) {
-    if (notif.state) {
+    if (!notif.is_read) {
       return notif;
     }
     return null;
   });
+  console.log(notificationsNotRead);
   return _react2.default.createElement(
     'div',
     { id: 'notifications' },
@@ -43878,11 +43883,12 @@ var Notifications = function Notifications(_ref) {
           'Notifications :'
         ),
         notifications.map(function (notif) {
-          if (notif.state) {
+          console.error(notif);
+          if (!notif.is_read) {
             return _react2.default.createElement(
               'p',
-              { className: 'notif', key: notif.id, onClick: function onClick() {
-                  return _onClick(notif.id);
+              { className: 'notif', key: notif.activity_id, onClick: function onClick() {
+                  return _onClick(notif.activity_id);
                 } },
               _react2.default.createElement(
                 _reactRouterDom.Link,
@@ -44626,8 +44632,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Types
  */
 /*
- * Npm import
- */
+* Npm import
+*/
 var LOAD_ACTIVITIES = 'LOAD_ACTIVITIES';
 
 /*
@@ -44644,88 +44650,80 @@ var createMiddleware = function createMiddleware(store) {
       switch (action.type) {
         case LOAD_ACTIVITIES:
           {
-            // console.log(action.currentDate.format());
-            // console.error();
-            var CheminComplet = document.location.href;
-            if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-              CheminComplet += '/';
+            var cheminComplet = document.location.href;
+            if (cheminComplet.substr(cheminComplet.length - 1, 1) !== '/') {
+              cheminComplet += '/';
             }
             // On fait une requête ajax pour récupérer les infos de l'utilisateur +
             // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
             var newDate = (0, _moment2.default)().format().split('T');
-            var path = CheminComplet + 'planning/' + newDate[0];
-            /*axios.post(CheminComplet, {
-              date: action.currentDate.format(),
-            })
-            .then((response) => {
-              console.info(response);
-              //console.log(response.data.activities);
-              store.dispatch(setActivities(response.data.activities));
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-            */
+            var path = cheminComplet + 'planning/' + newDate[0];
             var params = new URLSearchParams();
             params.append('date', action.currentDate.format());
             _axios2.default.post(path, params).then(function (response) {
               console.info(response);
+              // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
+              //  state activités + un dispatch pour enregistrer infos utilisateur
               store.dispatch((0, _reducer.setActivities)(response.data.activities));
               store.dispatch((0, _reducer.setUser)(response.data.user));
             }).catch(function (error) {
               console.log(error);
             });
-
-            path = CheminComplet + 'next';
+            // Requête ajax pour récupérer les prochaines journées actives pour l'utilisateur
+            path = cheminComplet + 'next';
             _axios2.default.post(path, params).then(function (response) {
               console.info(response);
               store.dispatch((0, _reducer.setNextDays)(response.data.nextDayActivities));
             }).catch(function (error) {
               console.log(error);
             });
-            // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
-            //  state activités + un dispatch pour enregistrer infos utilisateur
-            //
-
+            // Requête ajax pour récupérer les notifications pour l'utilisateur
+            path = cheminComplet + 'notifications';
+            _axios2.default.post(path, params).then(function (response) {
+              console.info(response);
+              store.dispatch((0, _reducer.setNotifications)(response.data.notifications));
+            }).catch(function (error) {
+              console.log(error);
+            });
             break;
           }
         case _reducer.CHANGE_DATE:
           {
             var _newDate = action.date.format().split('T');
-            var _CheminComplet = document.location.href;
-            if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
-              _CheminComplet += '/';
+            var CheminComplet = document.location.href;
+            if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+              CheminComplet += '/';
             }
-            _CheminComplet += 'planning/' + _newDate[0];
-            console.info('La date a changer : requete axios pour récupérer les nouvelles données');
+            CheminComplet += 'planning/' + _newDate[0];
             var _params = new URLSearchParams();
             _params.append('date', action.date.format());
-            _axios2.default.post(_CheminComplet, _params).then(function (response) {
+            _axios2.default.post(CheminComplet, _params).then(function (response) {
               console.log(response);
+              // Dispatch pour enregistré les nouvelles données des activités
+              // de la date selectionnée dans le state
               store.dispatch((0, _reducer.setActivities)(response.data.activities));
             }).catch(function (error) {
               console.log(error);
             });
-            // dispatch
             break;
           }
         case _reducer.SWITCH_PRESENCE:
           {
-            var _CheminComplet2 = document.location.href;
-            if (_CheminComplet2.substr(_CheminComplet2.length - 1, 1) !== '/') {
-              _CheminComplet2 += '/';
+            var _CheminComplet = document.location.href;
+            var _path = '';
+            if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
+              _CheminComplet += '/';
             }
-            if (_CheminComplet2.substr(_CheminComplet2.length - 5, 5) === '.php/') {
-              _CheminComplet2 += 'lesson/' + action.id + '/presence/edit';
+            if (_CheminComplet.substr(_CheminComplet.length - 5, 5) === '.php/') {
+              _path += 'lesson/' + action.id + '/presence/edit';
             } else {
-              _CheminComplet2 += '../../lesson/' + action.id + '/presence/edit';
+              _path += '../../lesson/' + action.id + '/presence/edit';
             }
-            // CheminComplet += 'lesson/' + action.id + '/presence/edit';
             var _params2 = new URLSearchParams();
             _params2.append('id_activity', action.id);
             _params2.append('type_user', action.userType);
             _params2.append('presence', !action.presence);
-            _axios2.default.post(_CheminComplet2, _params2).then(function (response) {
+            _axios2.default.post(_path, _params2).then(function (response) {
               console.log(response);
             }).catch(function (error) {
               console.log(error);
@@ -44763,7 +44761,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNotifications = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44797,6 +44795,7 @@ var DOWN_DAY = exports.DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
 var SET_USER = 'SET_USER';
 var SET_NEXTDAYS = 'SET_NEXTDAYS';
+var SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
 var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 var RESET_OBSERVATION = exports.RESET_OBSERVATION = 'RESET_OBSERVATION';
@@ -44810,7 +44809,7 @@ var initialState = exports.initialState = {
   currentDate: (0, _moment2.default)(),
   user: {},
   activities: [],
-  notifications: _datas2.default.notifications,
+  notifications: [],
   nextDayActivities: [],
   inputObservation: '',
   displayNotifications: false
@@ -44847,6 +44846,12 @@ exports.default = function () {
       {
         return _extends({}, state, {
           nextDayActivities: action.nextDayActivities
+        });
+      }
+    case SET_NOTIFICATIONS:
+      {
+        return _extends({}, state, {
+          notifications: action.notifications
         });
       }
     case SWITCH_PRESENCE:
@@ -44982,6 +44987,12 @@ var setNextDays = exports.setNextDays = function setNextDays(nextDayActivities) 
     nextDayActivities: nextDayActivities
   };
 };
+var setNotifications = exports.setNotifications = function setNotifications(notifications) {
+  return {
+    type: SET_NOTIFICATIONS,
+    notifications: notifications
+  };
+};
 var changeInputObservation = exports.changeInputObservation = function changeInputObservation(input, id) {
   return {
     type: INPUT_OBSERVATION_CHANGE,
@@ -45037,5 +45048,99 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
+'use strict';
 
+/* jshint ignore:start */
+(function () {
+  var WebSocket = window.WebSocket || window.MozWebSocket;
+  var br = window.brunch = window.brunch || {};
+  var ar = br['auto-reload'] = br['auto-reload'] || {};
+  if (!WebSocket || ar.disabled) return;
+  if (window._ar) return;
+  window._ar = true;
+
+  var cacheBuster = function cacheBuster(url) {
+    var date = Math.round(Date.now() / 1000).toString();
+    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
+    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
+  };
+
+  var browser = navigator.userAgent.toLowerCase();
+  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
+
+  var reloaders = {
+    page: function page() {
+      window.location.reload(true);
+    },
+
+    stylesheet: function stylesheet() {
+      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
+        var val = link.getAttribute('data-autoreload');
+        return link.href && val != 'false';
+      }).forEach(function (link) {
+        link.href = cacheBuster(link.href);
+      });
+
+      // Hack to force page repaint after 25ms.
+      if (forceRepaint) setTimeout(function () {
+        document.body.offsetHeight;
+      }, 25);
+    },
+
+    javascript: function javascript() {
+      var scripts = [].slice.call(document.querySelectorAll('script'));
+      var textScripts = scripts.map(function (script) {
+        return script.text;
+      }).filter(function (text) {
+        return text.length > 0;
+      });
+      var srcScripts = scripts.filter(function (script) {
+        return script.src;
+      });
+
+      var loaded = 0;
+      var all = srcScripts.length;
+      var onLoad = function onLoad() {
+        loaded = loaded + 1;
+        if (loaded === all) {
+          textScripts.forEach(function (script) {
+            eval(script);
+          });
+        }
+      };
+
+      srcScripts.forEach(function (script) {
+        var src = script.src;
+        script.remove();
+        var newScript = document.createElement('script');
+        newScript.src = cacheBuster(src);
+        newScript.async = true;
+        newScript.onload = onLoad;
+        document.head.appendChild(newScript);
+      });
+    }
+  };
+  var port = ar.port || 9485;
+  var host = br.server || window.location.hostname || 'localhost';
+
+  var connect = function connect() {
+    var connection = new WebSocket('ws://' + host + ':' + port);
+    connection.onmessage = function (event) {
+      if (ar.disabled) return;
+      var message = event.data;
+      var reloader = reloaders[message] || reloaders.page;
+      reloader();
+    };
+    connection.onerror = function () {
+      if (connection.readyState) connection.close();
+    };
+    connection.onclose = function () {
+      window.setTimeout(connect, 1000);
+    };
+  };
+  connect();
+})();
+/* jshint ignore:end */
+
+;
 //# sourceMappingURL=app.js.map

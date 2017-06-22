@@ -205,7 +205,8 @@ button {
 #no-activity-title {
   text-align: center;
   text-transform: uppercase;
-  padding: 2em
+  padding: 2em;
+  font-family: font-title;
 }
 /* Mobile + */
 /* Phablets */
