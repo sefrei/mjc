@@ -59,7 +59,6 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $lessons = $em->getRepository('AppBundle:Lesson')->showAllAction();
-
         return $this->render('default/lesson.json.twig', [
             'lessons' => $lessons,
         ]);
@@ -256,10 +255,10 @@ class DefaultController extends Controller
                 ]);
               }
 
-              /** @Route("notifications/{id}", name="notifications")
+              /** @Route("notifications", name="notifications")
               *
               **/
-              public function notificationsAction($id){
+              public function notificationsAction(){
                   $em = $this->getDoctrine()->getManager();
                   $id = $this->getUser()->getId();
                   $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser($id);
@@ -271,5 +270,13 @@ class DefaultController extends Controller
                   new JsonResponse()
                     );
               }
+
+            /**
+             * @Route("notification/is_read/{id}", name="notification_is_read")
+             */
+             public function notificationIsReadAction($id)
+             {
+
+             }
 
 }

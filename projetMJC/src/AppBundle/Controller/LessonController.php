@@ -95,148 +95,144 @@ class LessonController extends Controller
     }
 
     /**
-     * Update the presence of one teacher one student for one lesson.
-     *
-     * @Route("/{id}/presence/edit", name="lesson_presence_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function presenceEditAction(Request $request, Lesson $lesson)
-    {
-        /**
-         * Instanciation de mes variables
+         * Update the presence of one teacher one student for one lesson.
+         *
+         * @Route("/{id}/presence/edit", name="lesson_presence_edit")
+         * @Method({"GET", "POST"})
          */
-         $userId = $this->getUser()->getId();
-        // Je crée une notification d'absence
-        $specification = 'absence';
-        $entityType = "lesson";
-        $lessonId = $lesson->getId();
-        $entityTypeId = $lessonId;
-        //Je récupère la requete et ses attributs
-        $message = "";
-        $typeUser = $request->get('type_user');
-        $presence = $request->get('presence');
-        $presenceBoolean = $presence === 'true' ? true : false;
+        public function presenceEditAction(Request $request, Lesson $lesson)
+        {
+            /**
+            * Instanciation de mes variables
+            */
+            $userId = $this->getUser()->getId();
+            // Je crée une notification d'absence
+            $specification = 'absence';
+            $entityType = "lesson";
+            $lessonId = $lesson->getId();
+            $entityTypeId = $lessonId;
+            //Je récupère la requete et ses attributs
+            $message = "";
+            $typeUser = $request->get('type_user');
+            $presence = $request->get('presence');
+            $presenceBoolean = $presence === 'true' ? true : false;
+            // Je récupère la subscription pour les Users
+            $teacher = $lesson->getSubscription()->getTeacher();
+            $student = $lesson->getSubscription()->getStudent();
+            dump($entityType);
+            dump($entityTypeId);
+            dump($specification);
+            dump($userId);
 
-        // Je récupère la subscription pour les Users
-        $teacher = $lesson->getSubscription()->getTeacher();
-        $student = $lesson->getSubscription()->getStudent();
-
-        // dump($entityType);
-        // dump($entityTypeId);
-        // dump($specification);
-        // dump($userId);
-        // exit;
-        // Si il y a déjà une notification pour la lesson avec spécification absence,
-        // je ne change que le message
-        $em = $this->getDoctrine()->getManager();
-
-        //Si la requête concerne le teacher
-        if ($typeUser == "ROLE_TEACHER") {
-            //Je récupère l'id du prof et le nomme en instigateur de la notif
-            $user = $teacher;
-            // Je crée le message de notification en fonction de la présence du prof
-            if ($presenceBoolean == false) {
-                $messageNotif = "Prof absent";
-            }else{
-                $messageNotif = "Prof présent";
-            }
-
-
-                $em = $this->getDoctrine()->getManager();
-
-            //Je modifie $teacherIsPresent
-            $lesson->setTeacherIsPresent($presenceBoolean);
-
-
-
-            // J'enregistre dans la base
-            $em->persist($lesson);
-            $em->flush();
-            $message ="modification effectuée";
-        }
-        elseif ($typeUser == "ROLE_STUDENT") {
-            //Je récupère l'id de l'élève et le nomme en instigateur de la notif
-            $user = $student;
-
-        // Je crée le message de notification en fonction de la présence de l'élève
-        if ($presenceBoolean == false) {
-            $messageNotif = "Elève absent";
-        }else{
-            $messageNotif = "Elève présent";
-        }
-
-        //Test pour voir si une notif existe déjà
-        $oldNotification =  $em->getRepository('AppBundle:Notification')->findNotificationByEntityTypeIdAndSpecification($entityType, $entityTypeId, $specification, $userId);
-        // Si une notif existe déjà
-        if ($oldNotification == true) {
-            //Je récupère cette notif et change la date et le message
-            // $old = $oldNotification[0]->getCreatedAt();
-            // dump($old);
-            // exit;
-            $oldNotification[0]->setCreatedAt(new \DateTime);
-            $oldNotification[0]->setMessage($messageNotif);
-            $messageExist="ça existe";
-
-        }else {
-            //Autrement, je crée une nouvelle notification
-            $messageExist="ça n'existe pas";
-            $notification = new Notification();
-            // Je récupère l'id de celui qui crée la notif
-
-            $notification->setUserId($user);
-
-            $notification->setEntityType($entityType);
-            // Je prends l'id de la Lesson
-            $notification->setIdEntityType($lessonId);
-            // Message
-            $notification->setMessage($messageNotif);
-            // Date de création de la notif : current date
-            $notification->setCreatedAt(new \DateTime());
-            // Je note le type de la notif, ici lesson
-            $notification->setSpecification($specification);
-
-
-
-            $readingNotification = new Reading_notification();
-            $readingNotification->setIsRead(false);
-            $readingNotification->setNotification($notification);
-            $readingNotification->setIdNotifiedUser($teacher);
-            $readingNotification->setIdNotifiedUser($student);
-            // Je rajoute le reading_notification
-            $notification->addReadingNotification($readingNotification);
-            $em->persist($notification);
-        }
-        // dump($messageExist);
-        // exit;
-
-
-        // dump($notification);$specification
-        // exit;
+            // Si il y a déjà une notification pour la lesson avec spécification absence,
+            // je ne change que le message
 
             $em = $this->getDoctrine()->getManager();
 
-        //Je modifie $teacherIsPresent
-        $lesson->setStudentIsPresent($presenceBoolean);
-        $em->persist($lesson);
+            // Test pour voir si une notif existe déjà
+            $oldNotification =  $em->getRepository('AppBundle:Notification')->findNotificationByEntityTypeIdAndSpecification($entityType, $entityTypeId, $specification, $userId);
+            // Si une notif existe déjà
+            if ($oldNotification == true) {
+                //Je récupère cette notif et change la date et le message
+                // $old = $oldNotification[0]->getCreatedAt();
+                // dump($old);
+                // exit;
+                $oldNotification[0]->setCreatedAt(new \DateTime);
 
-        $em->flush();
-        $message ="modification effectuée";
-            // dump($typeUser);
-            //
-            // dump($presence);
-            // dump($presenceBoolean);
-            // dump($lesson);
-            // exit;
-        }
-        else {
-            $message ="Erreur lors de la modification";
- }
-        return $this->render('default/presence.html.twig', [
-    'message' => 'modification effectuée',
-    'lesson' => $lesson
-]);
+                $em->persist($oldNotification[0]);
+                $messageExist="ça existe";
+            }else {
+                //Autrement, je crée une nouvelle notification
+                $messageExist="ça n'existe pas";
+                $notification = new Notification();
 
-}
+                $notification->setEntityType($entityType);
+                // Je prends l'id de la Lesson
+                $notification->setIdEntityType($lessonId);
+                // Message
+                // $notification->setMessage($messageNotif);
+                // Date de création de la notif : current date
+                $notification->setCreatedAt(new \DateTime());
+                // Je note le type de la notif, ici lesson
+                $notification->setSpecification($specification);
+                $readingNotification = new Reading_notification();
+                $readingNotification->setIsRead(false);
+                $readingNotification->setNotification($notification);
+                $readingNotification->setIdNotifiedUser($teacher);
+                $readingNotification->setIdNotifiedUser($student);
+                // Je rajoute le reading_notification
+                $notification->addReadingNotification($readingNotification);
+
+            }
+
+
+            //Si la requête concerne le teacher
+            if ($typeUser == "ROLE_TEACHER") {
+                //Je récupère l'id du prof et le nomme en instigateur de la notif
+                $user = $teacher;
+                // Je crée le message de notification en fonction de la présence du prof
+                if ($presenceBoolean == false) {
+                    $messageNotif = "Prof absent";
+                }else{
+                    $messageNotif = "Prof présent";
+                }
+                if ($oldNotification == false) {
+                    $notification->setMessage($messageNotif);
+                    $notification->setUserId($user);
+                    $em->persist($notification);
+                } elseif ($oldNotification == true) {
+                    $oldNotification[0]->setMessage($messageNotif);
+                    $em->persist($oldNotification[0]);
+                }
+
+                    // $em = $this->getDoctrine()->getManager();
+                //Je modifie $teacherIsPresent
+                $lesson->setTeacherIsPresent($presenceBoolean);
+                // Je récupère l'id de celui qui crée la notif
+
+                // J'enregistre dans la base
+
+                $em->persist($lesson);
+                $em->flush();
+                $message ="modification effectuée";
+            }
+            elseif ($typeUser == "ROLE_STUDENT") {
+                //Je récupère l'id de l'élève et le nomme en instigateur de la notif
+                $user = $student;
+            // Je crée le message de notification en fonction de la présence de l'élève
+            if ($presenceBoolean == false) {
+                $messageNotif = "Elève absent";
+            }else{
+                $messageNotif = "Elève présent";
+            }
+            if ($oldNotification == false) {
+                $notification->setMessage($messageNotif);
+                $notification->setUserId($user);
+                $em->persist($notification);
+            } elseif ($oldNotification == true) {
+                $oldNotification[0]->setMessage($messageNotif);
+                $em->persist($oldNotification[0]);
+            }
+
+            // $em = $this->getDoctrine()->getManager();
+            //Je modifie $teacherIsPresent
+            $lesson->setStudentIsPresent($presenceBoolean);
+            // Je récupère l'id de celui qui crée la notif
+            $notification->setUserId($user);
+            // $em->persist($notification);
+            $em->persist($lesson);
+            $em->flush();
+            $message ="modification effectuée";
+
+            }
+            else {
+                $message ="Erreur lors de la modification";
+     }
+            return $this->render('default/presence.html.twig', [
+        'message' => 'modification effectuée',
+        'lesson' => $lesson
+    ]);
+    }
 
 
     /**

@@ -27,14 +27,15 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
       return $query;
   }
 
-  public function findAllNotificationsForOneUser($userId)
+  public function findAllNotificationsForOneUser($idUser)
   {
       $query = $this->createQueryBuilder('n')
       ->select('n.id, n.idEntityType, n.message, n.createdAt, n.entityType')
       ->join('AppBundle:Reading_notification' ,'r')
       ->addSelect('r.isRead')
       ->where('r.idNotifiedUser = ?1')
-      ->setParameter(1, $userId)
+      ->andWhere('n.id = r.idNotification')
+      ->setParameter(1, $idUser)
       ->getQuery()->getResult();
       return $query;
   }
