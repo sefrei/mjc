@@ -1,0 +1,7 @@
+
+Le {{is_read.idNotification.createdAt|date('d/m/Y')}}
+{{is_read.idNotification.userId.firstname}} {{is_read.idNotification.userId.lastname}}
+
+avait notifié qu'il serait
+
+{{ is_read.idNotification.message|replace('[Prof]', '     ' )  }}

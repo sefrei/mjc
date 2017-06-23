@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class Reading_notificationRepository extends \Doctrine\ORM\EntityRepository
 {
+    
 }

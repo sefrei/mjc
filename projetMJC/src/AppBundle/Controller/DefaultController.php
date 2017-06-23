@@ -202,7 +202,6 @@ class DefaultController extends Controller
                  $teachers = $em->getRepository('AppBundle:User')->showTeachers();
                  dump($teachers);
                  exit;
-
              }
 
              /**
@@ -271,12 +270,9 @@ class DefaultController extends Controller
                     );
               }
 
-            /**
-             * @Route("notification/is_read/{id}", name="notification_is_read")
-             */
-             public function notificationIsReadAction($id)
-             {
 
-             }
+            /**
+            * @Route("all_notif_read")
+            */
 
 }
