@@ -71,6 +71,12 @@ class Notification
      */
      private $reading_notifications;
 
+     /**
+     * Many notifications for One user
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="notifications")
+    */
+    private $notifInstigator;
+
 
 
     /**
@@ -268,5 +274,29 @@ class Notification
     public function getReadingNotifications()
     {
         return $this->reading_notifications;
+    }
+
+    /**
+     * Set notifInstigator
+     *
+     * @param \AppBundle\Entity\User $notifInstigator
+     *
+     * @return Notification
+     */
+    public function setNotifInstigator(\AppBundle\Entity\User $notifInstigator = null)
+    {
+        $this->notifInstigator = $notifInstigator;
+
+        return $this;
+    }
+
+    /**
+     * Get notifInstigator
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getNotifInstigator()
+    {
+        return $this->notifInstigator;
     }
 }

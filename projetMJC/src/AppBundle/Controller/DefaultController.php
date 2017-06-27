@@ -77,7 +77,7 @@ class DefaultController extends Controller
 
         $date = $request->request->get('date');
 
-        return $this->render('default/test.json.twig', [
+        return $this->render('admin/today.json.twig', [
             'lessons' => $lessons,
             'date'=> $date,
         ],

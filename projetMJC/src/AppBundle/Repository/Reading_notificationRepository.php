@@ -10,5 +10,15 @@ namespace AppBundle\Repository;
  */
 class Reading_notificationRepository extends \Doctrine\ORM\EntityRepository
 {
-    
+    public function findReadLinkNotif($notificationId, $notifiedUserId)
+    {
+        $query = $this->createQueryBuilder('r')
+        ->select('r')
+        ->where('r.idNotification = ?1')
+        ->andWhere('r.idNotifiedUser = ?2')
+        ->setParameter(1, $notificationId)
+        ->setParameter(2, $notifiedUserId)
+        ->getQuery()->getResult();
+        return $query;
+    }
 }
