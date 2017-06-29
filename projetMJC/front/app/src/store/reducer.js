@@ -21,7 +21,7 @@ export const SWITCH_PRESENCE = 'SWITCH_PRESENCE';
 const INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 export const RESET_OBSERVATION = 'RESET_OBSERVATION';
 const DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
-const CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
+export const CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 
 /*
  * initialState
@@ -139,12 +139,12 @@ export default (state = initialState, action = {}) => {
       }
     case CHANGE_STATE_NOTIFICATION:
       {
-        const { id } = action;
+        const { idActivity, idNotification } = action;
         const notifications = [...state.notifications];
         notifications.forEach((notif) => {
-          if (notif.id === id) {
-            console.info('action : Axios changer letat de la notif');
-            notif.state = false;
+          console.error(notif);
+          if (notif.notification_id === idNotification) {
+            notif.is_read = true;
           }
         });
         return {
@@ -210,9 +210,10 @@ export const resetObservation = id => ({
 export const displayNotifications = () => ({
   type: DISPLAY_NOTIFICATIONS,
 });
-export const changeNotificationState = id => ({
+export const changeNotificationState = (idActivity, idNotification) => ({
   type: CHANGE_STATE_NOTIFICATION,
-  id,
+  idActivity,
+  idNotification,
 });
 
 

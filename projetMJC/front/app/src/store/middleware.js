@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, SWITCH_PRESENCE, setActivities, setUser, setNextDays, setNotifications } from './reducer';
+import { CHANGE_DATE, SWITCH_PRESENCE, CHANGE_STATE_NOTIFICATION, setActivities, setUser, setNextDays, setNotifications } from './reducer';
 /*
  * Types
  */
@@ -18,13 +18,15 @@ const LOAD_ACTIVITIES = 'LOAD_ACTIVITIES';
  * Code
  */
 const createMiddleware = store => next => (action) => {
+  let cheminComplet = document.location.href;
+  if (cheminComplet.substr(cheminComplet.length - 1, 1) !== '/') {
+    cheminComplet += '/';
+  }
   switch (action.type) {
     case LOAD_ACTIVITIES:
       {
-        let cheminComplet = document.location.href;
-        if (cheminComplet.substr(cheminComplet.length - 1, 1) !== '/') {
-          cheminComplet += '/';
-        }
+        // On test le cheminComplet
+        console.info(document.location.href);
         // On fait une requête ajax pour récupérer les infos de l'utilisateur +
         // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
         const newDate = moment().format().split('T');
@@ -104,6 +106,21 @@ const createMiddleware = store => next => (action) => {
         params.append('type_user', action.userType);
         params.append('presence', !action.presence);
         axios.post(path, params)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        break;
+      }
+    case CHANGE_STATE_NOTIFICATION:
+      {
+        console.error(action);
+        let path = window.location.origin + '/ProjectMJC/projetMJC/web/app_dev.php'
+        console.info(window.location.origin);
+        path += `/reading_notification/is_read/${action.idNotification}`;
+        axios.post(path)
         .then((response) => {
           console.log(response);
         })

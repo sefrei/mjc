@@ -18,10 +18,9 @@ import { Link } from 'react-router-dom';
  * Code
  */
 const Notifications = ({ notifications, displayNotifications, actions }) => {
-  console.error(notifications);
   // Go on the activity of the notification
-  const onClick = (evt) => {
-    actions.changeNotificationState(evt);
+  const onClick = (idActivity, idNotification) => {
+    actions.changeNotificationState(idActivity, idNotification);
   };
   // Get only notif which are active (notif.state === true)
   const notificationsNotRead = notifications.filter((notif) => {
@@ -30,7 +29,6 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
     }
     return null;
   });
-  console.log(notificationsNotRead);
   return (
     <div id="notifications">
       <div onClick={actions.displayNotifications} id="notifications-counter">
@@ -56,12 +54,11 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           <div className="triangle" />
           <h1 id="notifications-title">Notifications :</h1>
           {notifications.map((notif) => {
-            console.error(notif);
             if (!notif.is_read) {
               return (
-                <p className="notif" key={notif.activity_id} onClick={() => onClick(notif.activity_id)} >
+                <p className="notif" key={notif.activity_id} onClick={() => onClick(notif.activity_id, notif.notification_id)} >
                   <Link
-                    to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.id_activity}`}
+                    to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.activity}`}
                   >
                     {notif.message}
                   </Link>

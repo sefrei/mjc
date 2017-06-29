@@ -43680,7 +43680,6 @@ var NextActivities = function NextActivities(_ref) {
     var date = (0, _moment2.default)(evt);
     actions.changeDate(date);
   };
-  console.info(days);
   var idDay = 0;
   return _react2.default.createElement(
     'div',
@@ -43837,10 +43836,9 @@ var Notifications = function Notifications(_ref) {
       displayNotifications = _ref.displayNotifications,
       actions = _ref.actions;
 
-  console.error(notifications);
   // Go on the activity of the notification
-  var _onClick = function _onClick(evt) {
-    actions.changeNotificationState(evt);
+  var _onClick = function _onClick(idActivity, idNotification) {
+    actions.changeNotificationState(idActivity, idNotification);
   };
   // Get only notif which are active (notif.state === true)
   var notificationsNotRead = notifications.filter(function (notif) {
@@ -43849,7 +43847,6 @@ var Notifications = function Notifications(_ref) {
     }
     return null;
   });
-  console.log(notificationsNotRead);
   return _react2.default.createElement(
     'div',
     { id: 'notifications' },
@@ -43883,17 +43880,16 @@ var Notifications = function Notifications(_ref) {
           'Notifications :'
         ),
         notifications.map(function (notif) {
-          console.error(notif);
           if (!notif.is_read) {
             return _react2.default.createElement(
               'p',
               { className: 'notif', key: notif.activity_id, onClick: function onClick() {
-                  return _onClick(notif.activity_id);
+                  return _onClick(notif.activity_id, notif.notification_id);
                 } },
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.id_activity
+                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.activity_id
                 },
                 notif.message
               ),
@@ -44647,13 +44643,15 @@ var LOAD_ACTIVITIES = 'LOAD_ACTIVITIES';
 var createMiddleware = function createMiddleware(store) {
   return function (next) {
     return function (action) {
+      var cheminComplet = document.location.href;
+      if (cheminComplet.substr(cheminComplet.length - 1, 1) !== '/') {
+        cheminComplet += '/';
+      }
       switch (action.type) {
         case LOAD_ACTIVITIES:
           {
-            var cheminComplet = document.location.href;
-            if (cheminComplet.substr(cheminComplet.length - 1, 1) !== '/') {
-              cheminComplet += '/';
-            }
+            // On test le cheminComplet
+            console.info(document.location.href);
             // On fait une requête ajax pour récupérer les infos de l'utilisateur +
             // On fait une requête ajax pour récupérer les activités lié à la date et à (l'utilisateur)
             var newDate = (0, _moment2.default)().format().split('T');
@@ -44730,6 +44728,19 @@ var createMiddleware = function createMiddleware(store) {
             });
             break;
           }
+        case _reducer.CHANGE_STATE_NOTIFICATION:
+          {
+            console.error(action);
+            var _path2 = window.location.origin + '/ProjectMJC/projetMJC/web/app_dev.php';
+            console.info(window.location.origin);
+            _path2 += '/reading_notification/is_read/' + action.idNotification;
+            _axios2.default.post(_path2).then(function (response) {
+              console.log(response);
+            }).catch(function (error) {
+              console.log(error);
+            });
+            break;
+          }
         default:
       }
 
@@ -44761,7 +44772,7 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNotifications = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNotifications = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.CHANGE_STATE_NOTIFICATION = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
@@ -44800,7 +44811,7 @@ var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE';
 var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
 var RESET_OBSERVATION = exports.RESET_OBSERVATION = 'RESET_OBSERVATION';
 var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
-var CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
+var CHANGE_STATE_NOTIFICATION = exports.CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
 
 /*
  * initialState
@@ -44914,13 +44925,14 @@ exports.default = function () {
       }
     case CHANGE_STATE_NOTIFICATION:
       {
-        var _id3 = action.id;
+        var idActivity = action.idActivity,
+            idNotification = action.idNotification;
 
         var notifications = [].concat(_toConsumableArray(state.notifications));
         notifications.forEach(function (notif) {
-          if (notif.id === _id3) {
-            console.info('action : Axios changer letat de la notif');
-            notif.state = false;
+          console.error(notif);
+          if (notif.notification_id === idNotification) {
+            notif.is_read = true;
           }
         });
         return _extends({}, state, {
@@ -45011,10 +45023,11 @@ var displayNotifications = exports.displayNotifications = function displayNotifi
     type: DISPLAY_NOTIFICATIONS
   };
 };
-var changeNotificationState = exports.changeNotificationState = function changeNotificationState(id) {
+var changeNotificationState = exports.changeNotificationState = function changeNotificationState(idActivity, idNotification) {
   return {
     type: CHANGE_STATE_NOTIFICATION,
-    id: id
+    idActivity: idActivity,
+    idNotification: idNotification
   };
 };
 

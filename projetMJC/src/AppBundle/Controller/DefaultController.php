@@ -209,8 +209,12 @@ class DefaultController extends Controller
               */
             public function showActivityAction(Request $request, Lesson $lesson)
             {
+                $id = $lesson->getId();
+                // dump($id);
+                // exit;
 
-                return $this->redirectToRoute('homepage');
+
+                return $this->redirectToRoute('activity', array('id'=> $id) );
             }
             /**
              * @Route("/next", name="next")

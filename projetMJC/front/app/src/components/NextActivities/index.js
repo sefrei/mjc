@@ -24,7 +24,6 @@ const NextActivities = ({ days, actions, displayNotifications }) => {
     const date = moment(evt);
     actions.changeDate(date);
   };
-  console.info(days);
   let idDay = 0;
   return (
     <div
