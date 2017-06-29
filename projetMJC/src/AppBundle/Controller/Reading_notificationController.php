@@ -143,6 +143,8 @@ class Reading_notificationController extends Controller
                $em = $this->getDoctrine()->getManager();
                $reading_notification->setIsRead(true);
                $em->flush();
+            //    dump($reading_notification);
+            //    exit;
                return $this->render('default/read.json.twig', [
                    'is_read' => $reading_notification,
                ]
