@@ -27,6 +27,25 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
       return $query;
   }
 
+  public function findNotificationAndLinkedEntity($entityType, $entityTypeId, $specification, $userId){
+
+      $query = $this->createQueryBuilder('n')
+      ->select('n')
+      ->join('AppBundle:' .$entityType ,'e')
+      ->addwhere('n.idEntityType = e.id')
+      ->where('n.idEntityType = ?1')
+      ->andWhere('n.specification = ?2')
+      ->andWhere('n.entityType = ?3')
+      ->andWhere('n.userId = ?4')
+      ->setParameter(1, $entityTypeId)
+      ->setParameter(2, $specification)
+      ->setParameter(3, $entityType)
+      ->setParameter(4, $userId)
+      ->getQuery()->getResult();
+      return $query;
+  }
+
+
   public function findAllNotificationsForOneUser($userId)
   {
       $query = $this->createQueryBuilder('n')

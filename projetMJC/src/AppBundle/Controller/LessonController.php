@@ -108,7 +108,7 @@ class LessonController extends Controller
 
         // Pour notification, il me faut : userId , entityType, entityTypeId, message, createdAt et specification
         $userId = $this->getUser()->getId();
-        $entityType = "lesson";
+        $entityType = "Lesson";
         // Je crée une notification d'absence
         $lessonId = $lesson->getId();
         $entityTypeId = $lessonId;
@@ -127,22 +127,15 @@ class LessonController extends Controller
         $teacherId = $lesson->getSubscription()->getTeacher()->getId();
         $studentId = $lesson->getSubscription()->getStudent()->getId();
 
-        // Je trouve la personne notifiée
-        if ($userId === $teacherId ) {
-            $notifiedUserId = $studentId;
 
-        } elseif ($userId === $studentId) {
-            $notifiedUserId = $teacherId;
-        }
-            // dump($notifiedUserId);
-            // dump($userId);
-            // exit;
 
-        // Je défini l'user en fonction de son rôle
+        // Je défini l'user et la personne notifiée en fonction du rôle
         if ( $typeUser == "ROLE_TEACHER") {
             $user = $teacher;
+            $notifiedUserId = $studentId;
         } elseif ( $typeUser == "ROLE_STUDENT") {
             $user = $student;
+            $notifiedUserId = $teacherId;
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -157,9 +150,7 @@ class LessonController extends Controller
             $notificationId = $oldNotification[0]->getId();
             // Je récupère la lecture liée à la notif
             $oldReadingNotif = $em->getRepository('AppBundle:Reading_notification')->findReadLinkNotif($notificationId, $notifiedUserId);
-            // dump($oldNotification);
-            // dump($oldReadingNotif);
-            // exit;
+
             // Je change la date et le statut de lecture
             $oldReadingNotif[0]->setIsRead(false);
             $oldNotification[0]->setCreatedAt(new \DateTime);
@@ -167,8 +158,8 @@ class LessonController extends Controller
            $messageExist="ça existe";
         } else {
            // Autrement, je crée une nouvelle notification
-           $messageExist= "ça n'existe pas";
-           dump($messageExist);
+        //    $messageExist= "ça n'existe pas";
+        //    dump($messageExist);
 
            $notification = new Notification();
            $notification->setUserId($user);
@@ -188,8 +179,6 @@ class LessonController extends Controller
 
            // Je rajoute le reading_notification
            $notification->addReadingNotification($readingNotification);
-
-
        }
 
         //Si la requête concerne le teacher
@@ -228,10 +217,7 @@ class LessonController extends Controller
              $em->persist($readingNotification);
 
          }
-        //  dump($notification);
-        //  dump($messageExist);
-        // dump($messageNotif);
-        // exit;
+
         // J'enregistre en base de donnée
         $em->flush();
         return $this->render('default/presence.html.twig', [

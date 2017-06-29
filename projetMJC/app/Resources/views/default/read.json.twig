@@ -1,7 +1,39 @@
-
-Le {{is_read.idNotification.createdAt|date('d/m/Y')}}
-{{is_read.idNotification.userId.firstname}} {{is_read.idNotification.userId.lastname}}
-
-avait notifié qu'il serait
-
-{{ is_read.idNotification.message|replace('[Prof]', '     ' )  }}
+Id de la lecture : {{is_read.id}}
+<br>
+Instigateur : {{ is_read.notification.userId.firstname }} {{ is_read.notification.userId.lastname }}
+<br>
+Personne notifiée : {{is_read.idNotifiedUser.firstname}} {{is_read.idNotifiedUser.lastname}}
+<br> Message : {{ is_read.notification.message }}
+{#
+Reading_notificationController.php on line 146:
+Reading_notification {#1052 ▼
+  -id: 10
+  -idNotification: Notification {#1081 ▶}
+  -idNotifiedUser: User {#932 ▼
+    -id: 3
+    -username: "prof"
+    -firstname: "Alain"
+    -lastname: "Dicrou"
+    -email: "prof@prof.fr"
+    -password: "$2y$13$MrBHIbAcXzEQBbd9FaFj3OBHNC7wv6XYo/4.AabfjY7BUZBio8hBe"
+    -birthAt: DateTime {#929 ▶}
+    -role: "ROLE_TEACHER"
+    -isActive: true
+    -notifications: PersistentCollection {#962 ▶}
+    -readings: PersistentCollection {#984 ▶}
+  }
+  -notification: Notification {#1081 ▼
+    +__isInitialized__: false
+    -id: 12
+    -userId: null
+    -entityType: null
+    -idEntityType: null
+    -message: null
+    -createdAt: null
+    -specification: null
+    -reading_notifications: null
+    -notifInstigator: null
+     …2
+   …2}
+  -isRead: true
+#}
