@@ -71,11 +71,7 @@ class Notification
      */
      private $reading_notifications;
 
-     /**
-     * Many notifications for One user
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="notifications")
-    */
-    private $notifInstigator;
+    
 
 
 

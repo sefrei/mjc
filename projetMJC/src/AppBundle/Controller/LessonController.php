@@ -132,10 +132,10 @@ class LessonController extends Controller
         // Je défini l'user et la personne notifiée en fonction du rôle
         if ( $typeUser == "ROLE_TEACHER") {
             $user = $teacher;
-            $notifiedUserId = $studentId;
+            $notifiedUserId = $student;
         } elseif ( $typeUser == "ROLE_STUDENT") {
             $user = $student;
-            $notifiedUserId = $teacherId;
+            $notifiedUserId = $teacher;
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -175,7 +175,7 @@ class LessonController extends Controller
            $readingNotification = new Reading_notification();
            $readingNotification->setIsRead(false);
            $readingNotification->setNotification($notification);
-           $readingNotification->setIdNotifiedUser($teacher);
+           $readingNotification->setIdNotifiedUser($notifiedUserId);
 
            // Je rajoute le reading_notification
            $notification->addReadingNotification($readingNotification);
