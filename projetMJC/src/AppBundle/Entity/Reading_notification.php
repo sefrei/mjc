@@ -22,18 +22,11 @@ class Reading_notification
     private $id;
 
     /**
-     * Many Reading for One Notification
-     * @ORM\ManyToOne(targetEntity="Notification")
-     * @ORM\JoinColumn(name="notification_id", referencedColumnName="id", unique=false)
-     */
-    private $idNotification;
-
-    /**
      * Many Reads for One User
-     * @ORM\ManyToOne(targetEntity="User",inversedBy="readings" )
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="notified_user_id", referencedColumnName="id", unique=false)
      */
-    private $idNotifiedUser;
+    private $notifiedUser;
 
 
     /**
@@ -86,52 +79,29 @@ class Reading_notification
         return $this->isRead;
     }
 
+
     /**
-     * Set idNotification
+     * Set notifiedUser
      *
-     * @param \AppBundle\Entity\Notifiction $idNotification
+     * @param \AppBundle\Entity\User $notifiedUser
      *
      * @return Reading_notification
      */
-    public function setIdNotification(\AppBundle\Entity\Notifiction $idNotification = null)
+    public function setnotifiedUser(\AppBundle\Entity\User $notifiedUser = null)
     {
-        $this->idNotification = $idNotification;
+        $this->notifiedUser = $notifiedUser;
 
         return $this;
     }
 
     /**
-     * Get idNotification
-     *
-     * @return \AppBundle\Entity\Notifiction
-     */
-    public function getIdNotification()
-    {
-        return $this->idNotification;
-    }
-
-    /**
-     * Set idNotifiedUser
-     *
-     * @param \AppBundle\Entity\User $idNotifiedUser
-     *
-     * @return Reading_notification
-     */
-    public function setIdNotifiedUser(\AppBundle\Entity\User $idNotifiedUser = null)
-    {
-        $this->idNotifiedUser = $idNotifiedUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idNotifiedUser
+     * Get notifiedUser
      *
      * @return \AppBundle\Entity\User
      */
-    public function getIdNotifiedUser()
+    public function getnotifiedUser()
     {
-        return $this->idNotifiedUser;
+        return $this->notifiedUser;
     }
 
     /**

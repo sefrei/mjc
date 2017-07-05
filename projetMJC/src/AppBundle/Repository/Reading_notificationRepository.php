@@ -14,8 +14,8 @@ class Reading_notificationRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('r')
         ->select('r')
-        ->where('r.idNotification = ?1')
-        ->andWhere('r.idNotifiedUser = ?2')
+        ->where('r.notification = ?1')
+        ->andWhere('r.notifiedUser = ?2')
         ->setParameter(1, $notificationId)
         ->setParameter(2, $notifiedUserId)
         ->getQuery()->getResult();

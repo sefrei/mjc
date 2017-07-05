@@ -18,7 +18,7 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
       ->where('n.idEntityType = ?1')
       ->andWhere('n.specification = ?2')
       ->andWhere('n.entityType = ?3')
-      ->andWhere('n.userId = ?4')
+      ->andWhere('n.notifier = ?4')
       ->setParameter(1, $entityTypeId)
       ->setParameter(2, $specification)
       ->setParameter(3, $entityType)
@@ -36,7 +36,7 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
       ->where('n.idEntityType = ?1')
       ->andWhere('n.specification = ?2')
       ->andWhere('n.entityType = ?3')
-      ->andWhere('n.userId = ?4')
+      ->andWhere('n.user = ?4')
       ->setParameter(1, $entityTypeId)
       ->setParameter(2, $specification)
       ->setParameter(3, $entityType)
@@ -52,8 +52,8 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
       ->select('n.id, n.idEntityType, n.message, n.createdAt, n.entityType')
       ->join('AppBundle:Reading_notification' ,'r')
       ->addSelect('r.isRead, r.id')
-      ->where('r.idNotifiedUser = ?1')
-      ->andWhere('n.id = r.idNotification')
+      ->where('r.notifiedUser = ?1')
+      ->andWhere('n.id = r.notification')
       ->setParameter(1, $userId)
       ->getQuery()->getResult();
       return $query;

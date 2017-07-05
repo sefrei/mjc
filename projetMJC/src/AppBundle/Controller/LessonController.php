@@ -107,6 +107,7 @@ class LessonController extends Controller
         */
 
         // Pour notification, il me faut : userId , entityType, entityTypeId, message, createdAt et specification
+        $instigator=$this->getUser();
         $userId = $this->getUser()->getId();
         $entityType = "Lesson";
         // Je crée une notification d'absence
@@ -127,16 +128,20 @@ class LessonController extends Controller
         $teacherId = $lesson->getSubscription()->getTeacher()->getId();
         $studentId = $lesson->getSubscription()->getStudent()->getId();
 
+      $requests =  $request->request->all();
+        // dump($requests);
+        // exit;
 
 
         // Je défini l'user et la personne notifiée en fonction du rôle
         if ( $typeUser == "ROLE_TEACHER") {
             $user = $teacher;
-            $notifiedUserId = $student;
+            $notifiedUser = $student;
         } elseif ( $typeUser == "ROLE_STUDENT") {
             $user = $student;
-            $notifiedUserId = $teacher;
+            $notifiedUser = $teacher;
         }
+
 
         $em = $this->getDoctrine()->getManager();
 
@@ -149,7 +154,7 @@ class LessonController extends Controller
             // Je récupère l'id de la notif
             $notificationId = $oldNotification[0]->getId();
             // Je récupère la lecture liée à la notif
-            $oldReadingNotif = $em->getRepository('AppBundle:Reading_notification')->findReadLinkNotif($notificationId, $notifiedUserId);
+            $oldReadingNotif = $em->getRepository('AppBundle:Reading_notification')->findReadLinkNotif($notificationId, $notifiedUser);
 
             // Je change la date et le statut de lecture
             $oldReadingNotif[0]->setIsRead(false);
@@ -162,7 +167,7 @@ class LessonController extends Controller
         //    dump($messageExist);
 
            $notification = new Notification();
-           $notification->setUserId($user);
+           $notification->setNotifier($instigator);
            $notification->setEntityType($entityType);
            // Je prends l'id de la Lesson
            $notification->setIdEntityType($lessonId);
@@ -175,7 +180,7 @@ class LessonController extends Controller
            $readingNotification = new Reading_notification();
            $readingNotification->setIsRead(false);
            $readingNotification->setNotification($notification);
-           $readingNotification->setIdNotifiedUser($notifiedUserId);
+           $readingNotification->setnotifiedUser($notifiedUser);
 
            // Je rajoute le reading_notification
            $notification->addReadingNotification($readingNotification);
