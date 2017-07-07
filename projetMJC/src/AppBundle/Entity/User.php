@@ -85,18 +85,7 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
 
-    /**
-     * One User for Many Notifications
-     * @ORM\OneToMany(targetEntity="Notification", mappedBy="user", orphanRemoval=true, cascade={"all"})
-     */
-     private $notifications;
 
-
-     /**
-      * One User for Many Reading_Notification
-      * @ORM\OneToMany(targetEntity="Reading_notification", mappedBy="user", orphanRemoval=true, cascade={"all"})
-      */
-      private $readings;
 
     public function __construct()
     {

@@ -22,13 +22,12 @@ class Notification
     private $id;
 
 
-
     /**
      * Many Notifications for One User
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="notifications")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=false)
      */
-    private $userId;
+    private $notifier;
 
     /**
      * @var string
@@ -70,13 +69,6 @@ class Notification
      * @ORM\OneToMany(targetEntity="Reading_notification", mappedBy="notification", orphanRemoval=true, cascade={"all"})
      */
      private $reading_notifications;
-
-     /**
-     * Many notifications for One user
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="notifications")
-    */
-    private $notifInstigator;
-
 
 
     /**
@@ -212,29 +204,6 @@ class Notification
     }
 
     /**
-     * Set userId
-     *
-     * @param \AppBundle\Entity\User $userId
-     *
-     * @return Notification
-     */
-    public function setUserId($userId = null)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-    /**
      * Constructor
      */
     public function __construct()
@@ -276,27 +245,29 @@ class Notification
         return $this->reading_notifications;
     }
 
+
+
     /**
-     * Set notifInstigator
+     * Set notifier
      *
-     * @param \AppBundle\Entity\User $notifInstigator
+     * @param \AppBundle\Entity\User $notifier
      *
      * @return Notification
      */
-    public function setNotifInstigator(\AppBundle\Entity\User $notifInstigator = null)
+    public function setNotifier(\AppBundle\Entity\User $notifier = null)
     {
-        $this->notifInstigator = $notifInstigator;
+        $this->notifier = $notifier;
 
         return $this;
     }
 
     /**
-     * Get notifInstigator
+     * Get notifier
      *
      * @return \AppBundle\Entity\User
      */
-    public function getNotifInstigator()
+    public function getNotifier()
     {
-        return $this->notifInstigator;
+        return $this->notifier;
     }
 }

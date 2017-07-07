@@ -53,7 +53,7 @@ class Subscription
     private $subscriptionAt;
 
     /**
-     * One Subscription has One Teacher(in User with ROLE_TEACHER)
+     * Many Subscription has One Teacher(in User with ROLE_TEACHER)
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id", unique=false)
      */

@@ -13,7 +13,7 @@ class Reading_notificationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('isRead')->add('idNotification')->add('idNotifiedUser');
+        $builder->add('isRead')->add('idNotification')->add('notifiedUser');
     }
     
     /**

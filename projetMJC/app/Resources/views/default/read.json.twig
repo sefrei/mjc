@@ -1,15 +1,15 @@
 Id de la lecture : {{is_read.id}}
 <br>
-Instigateur : {{ is_read.notification.userId.firstname }} {{ is_read.notification.userId.lastname }}
+Instigateur : {{ is_read.notification.notifier.firstname }} {{ is_read.notification.notifier.lastname }}
 <br>
-Personne notifiée : {{is_read.idNotifiedUser.firstname}} {{is_read.idNotifiedUser.lastname}}
+Personne notifiée : {{is_read.notifiedUser.firstname}} {{is_read.notifiedUser.lastname}}
 <br> Message : {{ is_read.notification.message }}
 {#
 Reading_notificationController.php on line 146:
 Reading_notification {#1052 ▼
   -id: 10
   -idNotification: Notification {#1081 ▶}
-  -idNotifiedUser: User {#932 ▼
+  -notifiedUser: User {#932 ▼
     -id: 3
     -username: "prof"
     -firstname: "Alain"
