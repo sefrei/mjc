@@ -245,6 +245,5 @@ class DefaultController extends Controller
           new JsonResponse()
             );
       }
->>>>>>> 27a93b4fbf1cd97630e70b1ec26082722df6a9da
 
 }

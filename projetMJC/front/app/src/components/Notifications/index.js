@@ -68,7 +68,6 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
             }
             return null;
           })}
-          <p>Tout marquer comme vu</p>
         </div>
       </div>
     </div>

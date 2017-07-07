@@ -368,7 +368,7 @@ button {
 #root {
   width: 100%;
   margin: auto;
-  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/a5/87/8f/a5878f55ad53328b881fe8e62a8ee637.jpg");
+  background-image: url("../images/mjc-music-background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -821,6 +821,7 @@ button {
 }
 #left-arrow {
   float: left;
+  margin-left: 1em;
 }
 #left-arrow:hover {
   -webkit-transform: rotate(-360deg);
@@ -828,6 +829,7 @@ button {
 }
 #right-arrow {
   float: right;
+  margin-right: 1em;
 }
 #right-arrow:hover {
   -webkit-transform: rotate(360deg);
@@ -1265,8 +1267,9 @@ button {
 
 /* Mobile First CSS */
 #nextActivities {
-  padding: 1em 1em 1em 2em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
   background: #000;
+  min-height: 100px;
   width: 100%;
   color: #fff;
   position: absolute;
@@ -1276,7 +1279,7 @@ button {
   transition: all 1s;
 }
 #nextActivities h1 {
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #fff;
   padding: 0;
   margin-bottom: 0.5em;
@@ -1300,8 +1303,10 @@ button {
 @media (min-width: 1000px) {
   #nextActivities {
     padding: 1em 1em 1em 2em;
-    background: #000;
     color: #fff;
+  }
+  #nextActivities h1 {
+    font-size: 1.5em;
   }
 }
 
@@ -1337,7 +1342,7 @@ button {
 /* Mobile First CSS */
 #notifications-title {
   color: #fff;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-bottom: 0.3em;
   padding: 0;
   font-weight: normal;
@@ -1378,7 +1383,7 @@ button {
           user-select: none;
 }
 #notifications-messages-container {
-  padding: 1em 1em 1em 2em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
   background: #000;
   width: 100%;
   color: #fff;
@@ -1418,12 +1423,16 @@ button {
 /* Tablettes */
 /* Desktop */
 @media (min-width: 1000px) {
+  #notifications-title {
+    font-size: 1.5em;
+  }
   #notifications-counter-icon {
     right: 1;
   }
   #notifications-messages-container {
     right: 40px;
     top: 0em;
+    padding: 1em 1em 1em 2em;
   }
 }
 /* Desktop HD */
