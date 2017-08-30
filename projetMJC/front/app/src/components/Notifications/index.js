@@ -58,7 +58,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
               return (
                 <p className="notif" key={notif.activity_id} onClick={() => onClick(notif.activity_id, notif.notification_id)} >
                   <Link
-                    to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.activity}`}
+                    to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${notif.activity_id}`}
                   >
                     {notif.message}
                   </Link>

@@ -94,12 +94,15 @@ const createMiddleware = store => next => (action) => {
         let path = '';
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
+          console.info('yo');
         }
         if (CheminComplet.substr(CheminComplet.length - 5, 5) === '.php/') {
-          path += `lesson/${action.id}/presence/edit`;
+          path = CheminComplet + `lesson/${action.id}/presence/edit`;
+          console.info('yo2');
+          console.log(path);
         }
         else {
-          path += `../../lesson/${action.id}/presence/edit`;
+          path = CheminComplet + `../../lesson/${action.id}/presence/edit`;
         }
         const params = new URLSearchParams();
         params.append('id_activity', action.id);
