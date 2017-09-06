@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Subscription;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Lesson;
+// use AppBundle\Controller\FerieController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -100,12 +101,12 @@ class SubscriptionController extends Controller
              // Pour enregistrer les autres leçons, il me faut définir une date de début des cours et une date de fin
 
              $format = 'Y-m-d';
-             $beginingDate = \DateTime::createFromFormat($format, '2016-09-10');
+             $beginingDate = \DateTime::createFromFormat($format, '2017-09-10');
 
             //  dump($beginingDate);
 
              $format = 'Y-m-d';
-             $holidayDate = \DateTime::createFromFormat($format, '2017-10-10');
+             $holidayDate = \DateTime::createFromFormat($format, '2018-07-10');
              // Et j'enregistre l'inscription
              $em->persist($subscription);
              $em->flush();
@@ -115,18 +116,44 @@ class SubscriptionController extends Controller
 
              //Je récupère la startAt
             $date = $lesson->getStartAt();
-            dump($date);
+            // dump($date);
             $newDate = '';
             // Tant que la date est + petite que la date des vacances
-            while ($date <= $holidayDate ) {
+
+
+
+            while ($date <= $holidayDate) {
                 //J'ajoute 7 jours à ma date
                 $date->modify('+7 day');
-                // dump($date);
+            //    dump($date);
+
+                //Je mets la nouvelle date en timestamp pour vérifier qu'elle n'est pas un jour férié et pas pendant les vacances.
+                $timestampDate = $date->getTimestamp();
+                if ($date < $holidayDate) {
+                //dump($timestampDate);
+                if (FerieController::estFerie($timestampDate))
+                    {
+                        $date->modify('+7 day');
+                        if (FerieController::estFerie($timestampDate))
+                            {
+                                $date->modify('+7 day');
+                            }
+                    }
+}
+
+$timestampDate = $date->getTimestamp();
+
+if ($date < $holidayDate) {
+
+
+                // Si la date n'est pas égale à un jour férié
+
+                // Et non comprise pendant les vacances scolaires (à enregistrer dès le début)
 
                 // Je crée donc une nouvelle leçon avec cette date;
                 $lesson = new Lesson();
                 $lesson->setStartAt($date);
-                // dump($date);
+                dump($date);
 
                 $lesson->setTeacherIsPresent(true);
                 $lesson->setStudentIsPresent(true);
@@ -141,7 +168,7 @@ class SubscriptionController extends Controller
                 if ($date<$holidayDate) {
                     $em->flush();
                 }
-
+}
             }
     // exit;
 
