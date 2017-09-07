@@ -1687,183 +1687,129 @@ define(String.prototype, "padRight", "".padEnd);
   })();
 });
 
-require.register("classnames/index.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "classnames");
-  (function() {
-    /*!
-  Copyright (c) 2016 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(null, arg));
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-		// register as 'classnames', consistent with npm package name
-		define('classnames', [], function () {
-			return classNames;
-		});
-	} else {
-		window.classNames = classNames;
-	}
-}());
-  })();
-});
-
-require.register("core-js/fn/regexp/escape.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/fn/regexp/escape.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     require('../../modules/core.regexp.escape');
 module.exports = require('../../modules/_core').RegExp.escape;
   })();
 });
 
-require.register("core-js/modules/_a-function.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_a-function.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = function(it){
-  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+    module.exports = function (it) {
+  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
   return it;
 };
   })();
 });
 
-require.register("core-js/modules/_a-number-value.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_a-number-value.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var cof = require('./_cof');
-module.exports = function(it, msg){
-  if(typeof it != 'number' && cof(it) != 'Number')throw TypeError(msg);
+module.exports = function (it, msg) {
+  if (typeof it != 'number' && cof(it) != 'Number') throw TypeError(msg);
   return +it;
 };
   })();
 });
 
-require.register("core-js/modules/_add-to-unscopables.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_add-to-unscopables.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 22.1.3.31 Array.prototype[@@unscopables]
-var UNSCOPABLES = require('./_wks')('unscopables')
-  , ArrayProto  = Array.prototype;
-if(ArrayProto[UNSCOPABLES] == undefined)require('./_hide')(ArrayProto, UNSCOPABLES, {});
-module.exports = function(key){
+var UNSCOPABLES = require('./_wks')('unscopables');
+var ArrayProto = Array.prototype;
+if (ArrayProto[UNSCOPABLES] == undefined) require('./_hide')(ArrayProto, UNSCOPABLES, {});
+module.exports = function (key) {
   ArrayProto[UNSCOPABLES][key] = true;
 };
   })();
 });
 
-require.register("core-js/modules/_an-instance.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_an-instance.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = function(it, Constructor, name, forbiddenField){
-  if(!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)){
+    module.exports = function (it, Constructor, name, forbiddenField) {
+  if (!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)) {
     throw TypeError(name + ': incorrect invocation!');
   } return it;
 };
   })();
 });
 
-require.register("core-js/modules/_an-object.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_an-object.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var isObject = require('./_is-object');
-module.exports = function(it){
-  if(!isObject(it))throw TypeError(it + ' is not an object!');
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
 };
   })();
 });
 
-require.register("core-js/modules/_array-copy-within.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-copy-within.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 'use strict';
-var toObject = require('./_to-object')
-  , toIndex  = require('./_to-index')
-  , toLength = require('./_to-length');
+var toObject = require('./_to-object');
+var toAbsoluteIndex = require('./_to-absolute-index');
+var toLength = require('./_to-length');
 
-module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0, end = @length*/){
-  var O     = toObject(this)
-    , len   = toLength(O.length)
-    , to    = toIndex(target, len)
-    , from  = toIndex(start, len)
-    , end   = arguments.length > 2 ? arguments[2] : undefined
-    , count = Math.min((end === undefined ? len : toIndex(end, len)) - from, len - to)
-    , inc   = 1;
-  if(from < to && to < from + count){
-    inc  = -1;
+module.exports = [].copyWithin || function copyWithin(target /* = 0 */, start /* = 0, end = @length */) {
+  var O = toObject(this);
+  var len = toLength(O.length);
+  var to = toAbsoluteIndex(target, len);
+  var from = toAbsoluteIndex(start, len);
+  var end = arguments.length > 2 ? arguments[2] : undefined;
+  var count = Math.min((end === undefined ? len : toAbsoluteIndex(end, len)) - from, len - to);
+  var inc = 1;
+  if (from < to && to < from + count) {
+    inc = -1;
     from += count - 1;
-    to   += count - 1;
+    to += count - 1;
   }
-  while(count-- > 0){
-    if(from in O)O[to] = O[from];
+  while (count-- > 0) {
+    if (from in O) O[to] = O[from];
     else delete O[to];
-    to   += inc;
+    to += inc;
     from += inc;
   } return O;
 };
   })();
 });
 
-require.register("core-js/modules/_array-fill.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-fill.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 'use strict';
-var toObject = require('./_to-object')
-  , toIndex  = require('./_to-index')
-  , toLength = require('./_to-length');
-module.exports = function fill(value /*, start = 0, end = @length */){
-  var O      = toObject(this)
-    , length = toLength(O.length)
-    , aLen   = arguments.length
-    , index  = toIndex(aLen > 1 ? arguments[1] : undefined, length)
-    , end    = aLen > 2 ? arguments[2] : undefined
-    , endPos = end === undefined ? length : toIndex(end, length);
-  while(endPos > index)O[index++] = value;
+var toObject = require('./_to-object');
+var toAbsoluteIndex = require('./_to-absolute-index');
+var toLength = require('./_to-length');
+module.exports = function fill(value /* , start = 0, end = @length */) {
+  var O = toObject(this);
+  var length = toLength(O.length);
+  var aLen = arguments.length;
+  var index = toAbsoluteIndex(aLen > 1 ? arguments[1] : undefined, length);
+  var end = aLen > 2 ? arguments[2] : undefined;
+  var endPos = end === undefined ? length : toAbsoluteIndex(end, length);
+  while (endPos > index) O[index++] = value;
   return O;
 };
   })();
 });
 
-require.register("core-js/modules/_array-from-iterable.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-from-iterable.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var forOf = require('./_for-of');
 
-module.exports = function(iter, ITERATOR){
+module.exports = function (iter, ITERATOR) {
   var result = [];
   forOf(iter, false, result.push, result, ITERATOR);
   return result;
@@ -1871,35 +1817,37 @@ module.exports = function(iter, ITERATOR){
   })();
 });
 
-require.register("core-js/modules/_array-includes.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-includes.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = require('./_to-iobject')
-  , toLength  = require('./_to-length')
-  , toIndex   = require('./_to-index');
-module.exports = function(IS_INCLUDES){
-  return function($this, el, fromIndex){
-    var O      = toIObject($this)
-      , length = toLength(O.length)
-      , index  = toIndex(fromIndex, length)
-      , value;
+var toIObject = require('./_to-iobject');
+var toLength = require('./_to-length');
+var toAbsoluteIndex = require('./_to-absolute-index');
+module.exports = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIObject($this);
+    var length = toLength(O.length);
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
     // Array#includes uses SameValueZero equality algorithm
-    if(IS_INCLUDES && el != el)while(length > index){
+    // eslint-disable-next-line no-self-compare
+    if (IS_INCLUDES && el != el) while (length > index) {
       value = O[index++];
-      if(value != value)return true;
-    // Array#toIndex ignores holes, Array#includes - not
-    } else for(;length > index; index++)if(IS_INCLUDES || index in O){
-      if(O[index] === el)return IS_INCLUDES || index || 0;
+      // eslint-disable-next-line no-self-compare
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+      if (O[index] === el) return IS_INCLUDES || index || 0;
     } return !IS_INCLUDES && -1;
   };
 };
   })();
 });
 
-require.register("core-js/modules/_array-methods.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-methods.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 0 -> Array#forEach
 // 1 -> Array#map
@@ -1908,38 +1856,38 @@ require.register("core-js/modules/_array-methods.js", function(exports, require,
 // 4 -> Array#every
 // 5 -> Array#find
 // 6 -> Array#findIndex
-var ctx      = require('./_ctx')
-  , IObject  = require('./_iobject')
-  , toObject = require('./_to-object')
-  , toLength = require('./_to-length')
-  , asc      = require('./_array-species-create');
-module.exports = function(TYPE, $create){
-  var IS_MAP        = TYPE == 1
-    , IS_FILTER     = TYPE == 2
-    , IS_SOME       = TYPE == 3
-    , IS_EVERY      = TYPE == 4
-    , IS_FIND_INDEX = TYPE == 6
-    , NO_HOLES      = TYPE == 5 || IS_FIND_INDEX
-    , create        = $create || asc;
-  return function($this, callbackfn, that){
-    var O      = toObject($this)
-      , self   = IObject(O)
-      , f      = ctx(callbackfn, that, 3)
-      , length = toLength(self.length)
-      , index  = 0
-      , result = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined
-      , val, res;
-    for(;length > index; index++)if(NO_HOLES || index in self){
+var ctx = require('./_ctx');
+var IObject = require('./_iobject');
+var toObject = require('./_to-object');
+var toLength = require('./_to-length');
+var asc = require('./_array-species-create');
+module.exports = function (TYPE, $create) {
+  var IS_MAP = TYPE == 1;
+  var IS_FILTER = TYPE == 2;
+  var IS_SOME = TYPE == 3;
+  var IS_EVERY = TYPE == 4;
+  var IS_FIND_INDEX = TYPE == 6;
+  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
+  var create = $create || asc;
+  return function ($this, callbackfn, that) {
+    var O = toObject($this);
+    var self = IObject(O);
+    var f = ctx(callbackfn, that, 3);
+    var length = toLength(self.length);
+    var index = 0;
+    var result = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
+    var val, res;
+    for (;length > index; index++) if (NO_HOLES || index in self) {
       val = self[index];
       res = f(val, index, O);
-      if(TYPE){
-        if(IS_MAP)result[index] = res;            // map
-        else if(res)switch(TYPE){
-          case 3: return true;                    // some
-          case 5: return val;                     // find
-          case 6: return index;                   // findIndex
-          case 2: result.push(val);               // filter
-        } else if(IS_EVERY)return false;          // every
+      if (TYPE) {
+        if (IS_MAP) result[index] = res;   // map
+        else if (res) switch (TYPE) {
+          case 3: return true;             // some
+          case 5: return val;              // find
+          case 6: return index;            // findIndex
+          case 2: result.push(val);        // filter
+        } else if (IS_EVERY) return false; // every
       }
     }
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
@@ -1948,33 +1896,33 @@ module.exports = function(TYPE, $create){
   })();
 });
 
-require.register("core-js/modules/_array-reduce.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-reduce.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var aFunction = require('./_a-function')
-  , toObject  = require('./_to-object')
-  , IObject   = require('./_iobject')
-  , toLength  = require('./_to-length');
+    var aFunction = require('./_a-function');
+var toObject = require('./_to-object');
+var IObject = require('./_iobject');
+var toLength = require('./_to-length');
 
-module.exports = function(that, callbackfn, aLen, memo, isRight){
+module.exports = function (that, callbackfn, aLen, memo, isRight) {
   aFunction(callbackfn);
-  var O      = toObject(that)
-    , self   = IObject(O)
-    , length = toLength(O.length)
-    , index  = isRight ? length - 1 : 0
-    , i      = isRight ? -1 : 1;
-  if(aLen < 2)for(;;){
-    if(index in self){
+  var O = toObject(that);
+  var self = IObject(O);
+  var length = toLength(O.length);
+  var index = isRight ? length - 1 : 0;
+  var i = isRight ? -1 : 1;
+  if (aLen < 2) for (;;) {
+    if (index in self) {
       memo = self[index];
       index += i;
       break;
     }
     index += i;
-    if(isRight ? index < 0 : length <= index){
+    if (isRight ? index < 0 : length <= index) {
       throw TypeError('Reduce of empty array with no initial value');
     }
   }
-  for(;isRight ? index >= 0 : length > index; index += i)if(index in self){
+  for (;isRight ? index >= 0 : length > index; index += i) if (index in self) {
     memo = callbackfn(memo, self[index], index, O);
   }
   return memo;
@@ -1982,87 +1930,88 @@ module.exports = function(that, callbackfn, aLen, memo, isRight){
   })();
 });
 
-require.register("core-js/modules/_array-species-constructor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-species-constructor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var isObject = require('./_is-object')
-  , isArray  = require('./_is-array')
-  , SPECIES  = require('./_wks')('species');
+    var isObject = require('./_is-object');
+var isArray = require('./_is-array');
+var SPECIES = require('./_wks')('species');
 
-module.exports = function(original){
+module.exports = function (original) {
   var C;
-  if(isArray(original)){
+  if (isArray(original)) {
     C = original.constructor;
     // cross-realm fallback
-    if(typeof C == 'function' && (C === Array || isArray(C.prototype)))C = undefined;
-    if(isObject(C)){
+    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
+    if (isObject(C)) {
       C = C[SPECIES];
-      if(C === null)C = undefined;
+      if (C === null) C = undefined;
     }
   } return C === undefined ? Array : C;
 };
   })();
 });
 
-require.register("core-js/modules/_array-species-create.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_array-species-create.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
 var speciesConstructor = require('./_array-species-constructor');
 
-module.exports = function(original, length){
+module.exports = function (original, length) {
   return new (speciesConstructor(original))(length);
 };
   })();
 });
 
-require.register("core-js/modules/_bind.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_bind.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var aFunction  = require('./_a-function')
-  , isObject   = require('./_is-object')
-  , invoke     = require('./_invoke')
-  , arraySlice = [].slice
-  , factories  = {};
+var aFunction = require('./_a-function');
+var isObject = require('./_is-object');
+var invoke = require('./_invoke');
+var arraySlice = [].slice;
+var factories = {};
 
-var construct = function(F, len, args){
-  if(!(len in factories)){
-    for(var n = [], i = 0; i < len; i++)n[i] = 'a[' + i + ']';
+var construct = function (F, len, args) {
+  if (!(len in factories)) {
+    for (var n = [], i = 0; i < len; i++) n[i] = 'a[' + i + ']';
+    // eslint-disable-next-line no-new-func
     factories[len] = Function('F,a', 'return new F(' + n.join(',') + ')');
   } return factories[len](F, args);
 };
 
-module.exports = Function.bind || function bind(that /*, args... */){
-  var fn       = aFunction(this)
-    , partArgs = arraySlice.call(arguments, 1);
-  var bound = function(/* args... */){
+module.exports = Function.bind || function bind(that /* , ...args */) {
+  var fn = aFunction(this);
+  var partArgs = arraySlice.call(arguments, 1);
+  var bound = function (/* args... */) {
     var args = partArgs.concat(arraySlice.call(arguments));
     return this instanceof bound ? construct(fn, args.length, args) : invoke(fn, args, that);
   };
-  if(isObject(fn.prototype))bound.prototype = fn.prototype;
+  if (isObject(fn.prototype)) bound.prototype = fn.prototype;
   return bound;
 };
   })();
 });
 
-require.register("core-js/modules/_classof.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_classof.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = require('./_cof')
-  , TAG = require('./_wks')('toStringTag')
-  // ES3 wrong here
-  , ARG = cof(function(){ return arguments; }()) == 'Arguments';
+var cof = require('./_cof');
+var TAG = require('./_wks')('toStringTag');
+// ES3 wrong here
+var ARG = cof(function () { return arguments; }()) == 'Arguments';
 
 // fallback for IE11 Script Access Denied error
-var tryGet = function(it, key){
+var tryGet = function (it, key) {
   try {
     return it[key];
-  } catch(e){ /* empty */ }
+  } catch (e) { /* empty */ }
 };
 
-module.exports = function(it){
+module.exports = function (it) {
   var O, T, B;
   return it === undefined ? 'Undefined' : it === null ? 'Null'
     // @@toStringTag case
@@ -2075,62 +2024,64 @@ module.exports = function(it){
   })();
 });
 
-require.register("core-js/modules/_cof.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_cof.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var toString = {}.toString;
 
-module.exports = function(it){
+module.exports = function (it) {
   return toString.call(it).slice(8, -1);
 };
   })();
 });
 
-require.register("core-js/modules/_collection-strong.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_collection-strong.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var dP          = require('./_object-dp').f
-  , create      = require('./_object-create')
-  , redefineAll = require('./_redefine-all')
-  , ctx         = require('./_ctx')
-  , anInstance  = require('./_an-instance')
-  , defined     = require('./_defined')
-  , forOf       = require('./_for-of')
-  , $iterDefine = require('./_iter-define')
-  , step        = require('./_iter-step')
-  , setSpecies  = require('./_set-species')
-  , DESCRIPTORS = require('./_descriptors')
-  , fastKey     = require('./_meta').fastKey
-  , SIZE        = DESCRIPTORS ? '_s' : 'size';
+var dP = require('./_object-dp').f;
+var create = require('./_object-create');
+var redefineAll = require('./_redefine-all');
+var ctx = require('./_ctx');
+var anInstance = require('./_an-instance');
+var forOf = require('./_for-of');
+var $iterDefine = require('./_iter-define');
+var step = require('./_iter-step');
+var setSpecies = require('./_set-species');
+var DESCRIPTORS = require('./_descriptors');
+var fastKey = require('./_meta').fastKey;
+var validate = require('./_validate-collection');
+var SIZE = DESCRIPTORS ? '_s' : 'size';
 
-var getEntry = function(that, key){
+var getEntry = function (that, key) {
   // fast case
-  var index = fastKey(key), entry;
-  if(index !== 'F')return that._i[index];
+  var index = fastKey(key);
+  var entry;
+  if (index !== 'F') return that._i[index];
   // frozen object case
-  for(entry = that._f; entry; entry = entry.n){
-    if(entry.k == key)return entry;
+  for (entry = that._f; entry; entry = entry.n) {
+    if (entry.k == key) return entry;
   }
 };
 
 module.exports = {
-  getConstructor: function(wrapper, NAME, IS_MAP, ADDER){
-    var C = wrapper(function(that, iterable){
+  getConstructor: function (wrapper, NAME, IS_MAP, ADDER) {
+    var C = wrapper(function (that, iterable) {
       anInstance(that, C, NAME, '_i');
+      that._t = NAME;         // collection type
       that._i = create(null); // index
       that._f = undefined;    // first entry
       that._l = undefined;    // last entry
       that[SIZE] = 0;         // size
-      if(iterable != undefined)forOf(iterable, IS_MAP, that[ADDER], that);
+      if (iterable != undefined) forOf(iterable, IS_MAP, that[ADDER], that);
     });
     redefineAll(C.prototype, {
       // 23.1.3.1 Map.prototype.clear()
       // 23.2.3.2 Set.prototype.clear()
-      clear: function clear(){
-        for(var that = this, data = that._i, entry = that._f; entry; entry = entry.n){
+      clear: function clear() {
+        for (var that = validate(this, NAME), data = that._i, entry = that._f; entry; entry = entry.n) {
           entry.r = true;
-          if(entry.p)entry.p = entry.p.n = undefined;
+          if (entry.p) entry.p = entry.p.n = undefined;
           delete data[entry.i];
         }
         that._f = that._l = undefined;
@@ -2138,51 +2089,51 @@ module.exports = {
       },
       // 23.1.3.3 Map.prototype.delete(key)
       // 23.2.3.4 Set.prototype.delete(value)
-      'delete': function(key){
-        var that  = this
-          , entry = getEntry(that, key);
-        if(entry){
-          var next = entry.n
-            , prev = entry.p;
+      'delete': function (key) {
+        var that = validate(this, NAME);
+        var entry = getEntry(that, key);
+        if (entry) {
+          var next = entry.n;
+          var prev = entry.p;
           delete that._i[entry.i];
           entry.r = true;
-          if(prev)prev.n = next;
-          if(next)next.p = prev;
-          if(that._f == entry)that._f = next;
-          if(that._l == entry)that._l = prev;
+          if (prev) prev.n = next;
+          if (next) next.p = prev;
+          if (that._f == entry) that._f = next;
+          if (that._l == entry) that._l = prev;
           that[SIZE]--;
         } return !!entry;
       },
       // 23.2.3.6 Set.prototype.forEach(callbackfn, thisArg = undefined)
       // 23.1.3.5 Map.prototype.forEach(callbackfn, thisArg = undefined)
-      forEach: function forEach(callbackfn /*, that = undefined */){
-        anInstance(this, C, 'forEach');
-        var f = ctx(callbackfn, arguments.length > 1 ? arguments[1] : undefined, 3)
-          , entry;
-        while(entry = entry ? entry.n : this._f){
+      forEach: function forEach(callbackfn /* , that = undefined */) {
+        validate(this, NAME);
+        var f = ctx(callbackfn, arguments.length > 1 ? arguments[1] : undefined, 3);
+        var entry;
+        while (entry = entry ? entry.n : this._f) {
           f(entry.v, entry.k, this);
           // revert to the last existing entry
-          while(entry && entry.r)entry = entry.p;
+          while (entry && entry.r) entry = entry.p;
         }
       },
       // 23.1.3.7 Map.prototype.has(key)
       // 23.2.3.7 Set.prototype.has(value)
-      has: function has(key){
-        return !!getEntry(this, key);
+      has: function has(key) {
+        return !!getEntry(validate(this, NAME), key);
       }
     });
-    if(DESCRIPTORS)dP(C.prototype, 'size', {
-      get: function(){
-        return defined(this[SIZE]);
+    if (DESCRIPTORS) dP(C.prototype, 'size', {
+      get: function () {
+        return validate(this, NAME)[SIZE];
       }
     });
     return C;
   },
-  def: function(that, key, value){
-    var entry = getEntry(that, key)
-      , prev, index;
+  def: function (that, key, value) {
+    var entry = getEntry(that, key);
+    var prev, index;
     // change existing entry
-    if(entry){
+    if (entry) {
       entry.v = value;
     // create new entry
     } else {
@@ -2194,38 +2145,38 @@ module.exports = {
         n: undefined,                  // <- next entry
         r: false                       // <- removed
       };
-      if(!that._f)that._f = entry;
-      if(prev)prev.n = entry;
+      if (!that._f) that._f = entry;
+      if (prev) prev.n = entry;
       that[SIZE]++;
       // add to index
-      if(index !== 'F')that._i[index] = entry;
+      if (index !== 'F') that._i[index] = entry;
     } return that;
   },
   getEntry: getEntry,
-  setStrong: function(C, NAME, IS_MAP){
+  setStrong: function (C, NAME, IS_MAP) {
     // add .keys, .values, .entries, [@@iterator]
     // 23.1.3.4, 23.1.3.8, 23.1.3.11, 23.1.3.12, 23.2.3.5, 23.2.3.8, 23.2.3.10, 23.2.3.11
-    $iterDefine(C, NAME, function(iterated, kind){
-      this._t = iterated;  // target
-      this._k = kind;      // kind
-      this._l = undefined; // previous
-    }, function(){
-      var that  = this
-        , kind  = that._k
-        , entry = that._l;
+    $iterDefine(C, NAME, function (iterated, kind) {
+      this._t = validate(iterated, NAME); // target
+      this._k = kind;                     // kind
+      this._l = undefined;                // previous
+    }, function () {
+      var that = this;
+      var kind = that._k;
+      var entry = that._l;
       // revert to the last existing entry
-      while(entry && entry.r)entry = entry.p;
+      while (entry && entry.r) entry = entry.p;
       // get next entry
-      if(!that._t || !(that._l = entry = entry ? entry.n : that._t._f)){
+      if (!that._t || !(that._l = entry = entry ? entry.n : that._t._f)) {
         // or finish the iteration
         that._t = undefined;
         return step(1);
       }
       // return step by kind
-      if(kind == 'keys'  )return step(0, entry.k);
-      if(kind == 'values')return step(0, entry.v);
+      if (kind == 'keys') return step(0, entry.k);
+      if (kind == 'values') return step(0, entry.v);
       return step(0, [entry.k, entry.v]);
-    }, IS_MAP ? 'entries' : 'values' , !IS_MAP, true);
+    }, IS_MAP ? 'entries' : 'values', !IS_MAP, true);
 
     // add [@@species], 23.1.2.2, 23.2.2.2
     setSpecies(NAME);
@@ -2234,102 +2185,104 @@ module.exports = {
   })();
 });
 
-require.register("core-js/modules/_collection-to-json.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_collection-to-json.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var classof = require('./_classof')
-  , from    = require('./_array-from-iterable');
-module.exports = function(NAME){
-  return function toJSON(){
-    if(classof(this) != NAME)throw TypeError(NAME + "#toJSON isn't generic");
+var classof = require('./_classof');
+var from = require('./_array-from-iterable');
+module.exports = function (NAME) {
+  return function toJSON() {
+    if (classof(this) != NAME) throw TypeError(NAME + "#toJSON isn't generic");
     return from(this);
   };
 };
   })();
 });
 
-require.register("core-js/modules/_collection-weak.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_collection-weak.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var redefineAll       = require('./_redefine-all')
-  , getWeak           = require('./_meta').getWeak
-  , anObject          = require('./_an-object')
-  , isObject          = require('./_is-object')
-  , anInstance        = require('./_an-instance')
-  , forOf             = require('./_for-of')
-  , createArrayMethod = require('./_array-methods')
-  , $has              = require('./_has')
-  , arrayFind         = createArrayMethod(5)
-  , arrayFindIndex    = createArrayMethod(6)
-  , id                = 0;
+var redefineAll = require('./_redefine-all');
+var getWeak = require('./_meta').getWeak;
+var anObject = require('./_an-object');
+var isObject = require('./_is-object');
+var anInstance = require('./_an-instance');
+var forOf = require('./_for-of');
+var createArrayMethod = require('./_array-methods');
+var $has = require('./_has');
+var validate = require('./_validate-collection');
+var arrayFind = createArrayMethod(5);
+var arrayFindIndex = createArrayMethod(6);
+var id = 0;
 
 // fallback for uncaught frozen keys
-var uncaughtFrozenStore = function(that){
-  return that._l || (that._l = new UncaughtFrozenStore);
+var uncaughtFrozenStore = function (that) {
+  return that._l || (that._l = new UncaughtFrozenStore());
 };
-var UncaughtFrozenStore = function(){
+var UncaughtFrozenStore = function () {
   this.a = [];
 };
-var findUncaughtFrozen = function(store, key){
-  return arrayFind(store.a, function(it){
+var findUncaughtFrozen = function (store, key) {
+  return arrayFind(store.a, function (it) {
     return it[0] === key;
   });
 };
 UncaughtFrozenStore.prototype = {
-  get: function(key){
+  get: function (key) {
     var entry = findUncaughtFrozen(this, key);
-    if(entry)return entry[1];
+    if (entry) return entry[1];
   },
-  has: function(key){
+  has: function (key) {
     return !!findUncaughtFrozen(this, key);
   },
-  set: function(key, value){
+  set: function (key, value) {
     var entry = findUncaughtFrozen(this, key);
-    if(entry)entry[1] = value;
+    if (entry) entry[1] = value;
     else this.a.push([key, value]);
   },
-  'delete': function(key){
-    var index = arrayFindIndex(this.a, function(it){
+  'delete': function (key) {
+    var index = arrayFindIndex(this.a, function (it) {
       return it[0] === key;
     });
-    if(~index)this.a.splice(index, 1);
+    if (~index) this.a.splice(index, 1);
     return !!~index;
   }
 };
 
 module.exports = {
-  getConstructor: function(wrapper, NAME, IS_MAP, ADDER){
-    var C = wrapper(function(that, iterable){
+  getConstructor: function (wrapper, NAME, IS_MAP, ADDER) {
+    var C = wrapper(function (that, iterable) {
       anInstance(that, C, NAME, '_i');
+      that._t = NAME;      // collection type
       that._i = id++;      // collection id
       that._l = undefined; // leak store for uncaught frozen objects
-      if(iterable != undefined)forOf(iterable, IS_MAP, that[ADDER], that);
+      if (iterable != undefined) forOf(iterable, IS_MAP, that[ADDER], that);
     });
     redefineAll(C.prototype, {
       // 23.3.3.2 WeakMap.prototype.delete(key)
       // 23.4.3.3 WeakSet.prototype.delete(value)
-      'delete': function(key){
-        if(!isObject(key))return false;
+      'delete': function (key) {
+        if (!isObject(key)) return false;
         var data = getWeak(key);
-        if(data === true)return uncaughtFrozenStore(this)['delete'](key);
+        if (data === true) return uncaughtFrozenStore(validate(this, NAME))['delete'](key);
         return data && $has(data, this._i) && delete data[this._i];
       },
       // 23.3.3.4 WeakMap.prototype.has(key)
       // 23.4.3.4 WeakSet.prototype.has(value)
-      has: function has(key){
-        if(!isObject(key))return false;
+      has: function has(key) {
+        if (!isObject(key)) return false;
         var data = getWeak(key);
-        if(data === true)return uncaughtFrozenStore(this).has(key);
+        if (data === true) return uncaughtFrozenStore(validate(this, NAME)).has(key);
         return data && $has(data, this._i);
       }
     });
     return C;
   },
-  def: function(that, key, value){
+  def: function (that, key, value) {
     var data = getWeak(anObject(key), true);
-    if(data === true)uncaughtFrozenStore(that).set(key, value);
+    if (data === true) uncaughtFrozenStore(that).set(key, value);
     else data[that._i] = value;
     return that;
   },
@@ -2338,83 +2291,83 @@ module.exports = {
   })();
 });
 
-require.register("core-js/modules/_collection.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_collection.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var global            = require('./_global')
-  , $export           = require('./_export')
-  , redefine          = require('./_redefine')
-  , redefineAll       = require('./_redefine-all')
-  , meta              = require('./_meta')
-  , forOf             = require('./_for-of')
-  , anInstance        = require('./_an-instance')
-  , isObject          = require('./_is-object')
-  , fails             = require('./_fails')
-  , $iterDetect       = require('./_iter-detect')
-  , setToStringTag    = require('./_set-to-string-tag')
-  , inheritIfRequired = require('./_inherit-if-required');
+var global = require('./_global');
+var $export = require('./_export');
+var redefine = require('./_redefine');
+var redefineAll = require('./_redefine-all');
+var meta = require('./_meta');
+var forOf = require('./_for-of');
+var anInstance = require('./_an-instance');
+var isObject = require('./_is-object');
+var fails = require('./_fails');
+var $iterDetect = require('./_iter-detect');
+var setToStringTag = require('./_set-to-string-tag');
+var inheritIfRequired = require('./_inherit-if-required');
 
-module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
-  var Base  = global[NAME]
-    , C     = Base
-    , ADDER = IS_MAP ? 'set' : 'add'
-    , proto = C && C.prototype
-    , O     = {};
-  var fixMethod = function(KEY){
+module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
+  var Base = global[NAME];
+  var C = Base;
+  var ADDER = IS_MAP ? 'set' : 'add';
+  var proto = C && C.prototype;
+  var O = {};
+  var fixMethod = function (KEY) {
     var fn = proto[KEY];
     redefine(proto, KEY,
-      KEY == 'delete' ? function(a){
+      KEY == 'delete' ? function (a) {
         return IS_WEAK && !isObject(a) ? false : fn.call(this, a === 0 ? 0 : a);
-      } : KEY == 'has' ? function has(a){
+      } : KEY == 'has' ? function has(a) {
         return IS_WEAK && !isObject(a) ? false : fn.call(this, a === 0 ? 0 : a);
-      } : KEY == 'get' ? function get(a){
+      } : KEY == 'get' ? function get(a) {
         return IS_WEAK && !isObject(a) ? undefined : fn.call(this, a === 0 ? 0 : a);
-      } : KEY == 'add' ? function add(a){ fn.call(this, a === 0 ? 0 : a); return this; }
-        : function set(a, b){ fn.call(this, a === 0 ? 0 : a, b); return this; }
+      } : KEY == 'add' ? function add(a) { fn.call(this, a === 0 ? 0 : a); return this; }
+        : function set(a, b) { fn.call(this, a === 0 ? 0 : a, b); return this; }
     );
   };
-  if(typeof C != 'function' || !(IS_WEAK || proto.forEach && !fails(function(){
+  if (typeof C != 'function' || !(IS_WEAK || proto.forEach && !fails(function () {
     new C().entries().next();
-  }))){
+  }))) {
     // create collection constructor
     C = common.getConstructor(wrapper, NAME, IS_MAP, ADDER);
     redefineAll(C.prototype, methods);
     meta.NEED = true;
   } else {
-    var instance             = new C
-      // early implementations not supports chaining
-      , HASNT_CHAINING       = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance
-      // V8 ~  Chromium 40- weak-collections throws on primitives, but should return false
-      , THROWS_ON_PRIMITIVES = fails(function(){ instance.has(1); })
-      // most early implementations doesn't supports iterables, most modern - not close it correctly
-      , ACCEPT_ITERABLES     = $iterDetect(function(iter){ new C(iter); }) // eslint-disable-line no-new
-      // for early implementations -0 and +0 not the same
-      , BUGGY_ZERO = !IS_WEAK && fails(function(){
-        // V8 ~ Chromium 42- fails only with 5+ elements
-        var $instance = new C()
-          , index     = 5;
-        while(index--)$instance[ADDER](index, index);
-        return !$instance.has(-0);
-      });
-    if(!ACCEPT_ITERABLES){ 
-      C = wrapper(function(target, iterable){
+    var instance = new C();
+    // early implementations not supports chaining
+    var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
+    // V8 ~  Chromium 40- weak-collections throws on primitives, but should return false
+    var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
+    // most early implementations doesn't supports iterables, most modern - not close it correctly
+    var ACCEPT_ITERABLES = $iterDetect(function (iter) { new C(iter); }); // eslint-disable-line no-new
+    // for early implementations -0 and +0 not the same
+    var BUGGY_ZERO = !IS_WEAK && fails(function () {
+      // V8 ~ Chromium 42- fails only with 5+ elements
+      var $instance = new C();
+      var index = 5;
+      while (index--) $instance[ADDER](index, index);
+      return !$instance.has(-0);
+    });
+    if (!ACCEPT_ITERABLES) {
+      C = wrapper(function (target, iterable) {
         anInstance(target, C, NAME);
-        var that = inheritIfRequired(new Base, target, C);
-        if(iterable != undefined)forOf(iterable, IS_MAP, that[ADDER], that);
+        var that = inheritIfRequired(new Base(), target, C);
+        if (iterable != undefined) forOf(iterable, IS_MAP, that[ADDER], that);
         return that;
       });
       C.prototype = proto;
       proto.constructor = C;
     }
-    if(THROWS_ON_PRIMITIVES || BUGGY_ZERO){
+    if (THROWS_ON_PRIMITIVES || BUGGY_ZERO) {
       fixMethod('delete');
       fixMethod('has');
       IS_MAP && fixMethod('get');
     }
-    if(BUGGY_ZERO || HASNT_CHAINING)fixMethod(ADDER);
+    if (BUGGY_ZERO || HASNT_CHAINING) fixMethod(ADDER);
     // weak collections should not contains .clear method
-    if(IS_WEAK && proto.clear)delete proto.clear;
+    if (IS_WEAK && proto.clear) delete proto.clear;
   }
 
   setToStringTag(C, NAME);
@@ -2422,112 +2375,144 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
   O[NAME] = C;
   $export($export.G + $export.W + $export.F * (C != Base), O);
 
-  if(!IS_WEAK)common.setStrong(C, NAME, IS_MAP);
+  if (!IS_WEAK) common.setStrong(C, NAME, IS_MAP);
 
   return C;
 };
   })();
 });
 
-require.register("core-js/modules/_core.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_core.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var core = module.exports = {version: '2.4.0'};
-if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+    var core = module.exports = { version: '2.5.0' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
   })();
 });
 
-require.register("core-js/modules/_create-property.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_create-property.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $defineProperty = require('./_object-dp')
-  , createDesc      = require('./_property-desc');
+var $defineProperty = require('./_object-dp');
+var createDesc = require('./_property-desc');
 
-module.exports = function(object, index, value){
-  if(index in object)$defineProperty.f(object, index, createDesc(0, value));
+module.exports = function (object, index, value) {
+  if (index in object) $defineProperty.f(object, index, createDesc(0, value));
   else object[index] = value;
 };
   })();
 });
 
-require.register("core-js/modules/_ctx.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_ctx.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // optional / simple context binding
 var aFunction = require('./_a-function');
-module.exports = function(fn, that, length){
+module.exports = function (fn, that, length) {
   aFunction(fn);
-  if(that === undefined)return fn;
-  switch(length){
-    case 1: return function(a){
+  if (that === undefined) return fn;
+  switch (length) {
+    case 1: return function (a) {
       return fn.call(that, a);
     };
-    case 2: return function(a, b){
+    case 2: return function (a, b) {
       return fn.call(that, a, b);
     };
-    case 3: return function(a, b, c){
+    case 3: return function (a, b, c) {
       return fn.call(that, a, b, c);
     };
   }
-  return function(/* ...args */){
+  return function (/* ...args */) {
     return fn.apply(that, arguments);
   };
 };
   })();
 });
 
-require.register("core-js/modules/_date-to-primitive.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_date-to-iso-string.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var anObject    = require('./_an-object')
-  , toPrimitive = require('./_to-primitive')
-  , NUMBER      = 'number';
+// 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
+var fails = require('./_fails');
+var getTime = Date.prototype.getTime;
+var $toISOString = Date.prototype.toISOString;
 
-module.exports = function(hint){
-  if(hint !== 'string' && hint !== NUMBER && hint !== 'default')throw TypeError('Incorrect hint');
+var lz = function (num) {
+  return num > 9 ? num : '0' + num;
+};
+
+// PhantomJS / old WebKit has a broken implementations
+module.exports = (fails(function () {
+  return $toISOString.call(new Date(-5e13 - 1)) != '0385-07-25T07:06:39.999Z';
+}) || !fails(function () {
+  $toISOString.call(new Date(NaN));
+})) ? function toISOString() {
+  if (!isFinite(getTime.call(this))) throw RangeError('Invalid time value');
+  var d = this;
+  var y = d.getUTCFullYear();
+  var m = d.getUTCMilliseconds();
+  var s = y < 0 ? '-' : y > 9999 ? '+' : '';
+  return s + ('00000' + Math.abs(y)).slice(s ? -6 : -4) +
+    '-' + lz(d.getUTCMonth() + 1) + '-' + lz(d.getUTCDate()) +
+    'T' + lz(d.getUTCHours()) + ':' + lz(d.getUTCMinutes()) +
+    ':' + lz(d.getUTCSeconds()) + '.' + (m > 99 ? m : '0' + lz(m)) + 'Z';
+} : $toISOString;
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_date-to-primitive.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    'use strict';
+var anObject = require('./_an-object');
+var toPrimitive = require('./_to-primitive');
+var NUMBER = 'number';
+
+module.exports = function (hint) {
+  if (hint !== 'string' && hint !== NUMBER && hint !== 'default') throw TypeError('Incorrect hint');
   return toPrimitive(anObject(this), hint != NUMBER);
 };
   })();
 });
 
-require.register("core-js/modules/_defined.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_defined.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.2.1 RequireObjectCoercible(argument)
-module.exports = function(it){
-  if(it == undefined)throw TypeError("Can't call method on  " + it);
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
   return it;
 };
   })();
 });
 
-require.register("core-js/modules/_descriptors.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_descriptors.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // Thank's IE8 for his funny defineProperty
-module.exports = !require('./_fails')(function(){
-  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
+module.exports = !require('./_fails')(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
   })();
 });
 
-require.register("core-js/modules/_dom-create.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_dom-create.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var isObject = require('./_is-object')
-  , document = require('./_global').document
-  // in old IE typeof document.createElement is 'object'
-  , is = isObject(document) && isObject(document.createElement);
-module.exports = function(it){
+    var isObject = require('./_is-object');
+var document = require('./_global').document;
+// typeof document.createElement is 'object' in old IE
+var is = isObject(document) && isObject(document.createElement);
+module.exports = function (it) {
   return is ? document.createElement(it) : {};
 };
   })();
 });
 
-require.register("core-js/modules/_enum-bug-keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_enum-bug-keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // IE 8- don't enum bug keys
 module.exports = (
@@ -2536,49 +2521,49 @@ module.exports = (
   })();
 });
 
-require.register("core-js/modules/_enum-keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_enum-keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // all enumerable object keys, includes symbols
-var getKeys = require('./_object-keys')
-  , gOPS    = require('./_object-gops')
-  , pIE     = require('./_object-pie');
-module.exports = function(it){
-  var result     = getKeys(it)
-    , getSymbols = gOPS.f;
-  if(getSymbols){
-    var symbols = getSymbols(it)
-      , isEnum  = pIE.f
-      , i       = 0
-      , key;
-    while(symbols.length > i)if(isEnum.call(it, key = symbols[i++]))result.push(key);
+var getKeys = require('./_object-keys');
+var gOPS = require('./_object-gops');
+var pIE = require('./_object-pie');
+module.exports = function (it) {
+  var result = getKeys(it);
+  var getSymbols = gOPS.f;
+  if (getSymbols) {
+    var symbols = getSymbols(it);
+    var isEnum = pIE.f;
+    var i = 0;
+    var key;
+    while (symbols.length > i) if (isEnum.call(it, key = symbols[i++])) result.push(key);
   } return result;
 };
   })();
 });
 
-require.register("core-js/modules/_export.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_export.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var global    = require('./_global')
-  , core      = require('./_core')
-  , hide      = require('./_hide')
-  , redefine  = require('./_redefine')
-  , ctx       = require('./_ctx')
-  , PROTOTYPE = 'prototype';
+    var global = require('./_global');
+var core = require('./_core');
+var hide = require('./_hide');
+var redefine = require('./_redefine');
+var ctx = require('./_ctx');
+var PROTOTYPE = 'prototype';
 
-var $export = function(type, name, source){
-  var IS_FORCED = type & $export.F
-    , IS_GLOBAL = type & $export.G
-    , IS_STATIC = type & $export.S
-    , IS_PROTO  = type & $export.P
-    , IS_BIND   = type & $export.B
-    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE]
-    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-    , expProto  = exports[PROTOTYPE] || (exports[PROTOTYPE] = {})
-    , key, own, out, exp;
-  if(IS_GLOBAL)source = name;
-  for(key in source){
+var $export = function (type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE];
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
+  var key, own, out, exp;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
     // contains in native
     own = !IS_FORCED && target && target[key] !== undefined;
     // export native or passed
@@ -2586,10 +2571,10 @@ var $export = function(type, name, source){
     // bind timers to global for call from export context
     exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
     // extend global
-    if(target)redefine(target, key, out, type & $export.U);
+    if (target) redefine(target, key, out, type & $export.U);
     // export
-    if(exports[key] != out)hide(exports, key, exp);
-    if(IS_PROTO && expProto[key] != out)expProto[key] = out;
+    if (exports[key] != out) hide(exports, key, exp);
+    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
   }
 };
 global.core = core;
@@ -2601,197 +2586,246 @@ $export.P = 8;   // proto
 $export.B = 16;  // bind
 $export.W = 32;  // wrap
 $export.U = 64;  // safe
-$export.R = 128; // real proto method for `library` 
+$export.R = 128; // real proto method for `library`
 module.exports = $export;
   })();
 });
 
-require.register("core-js/modules/_fails-is-regexp.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_fails-is-regexp.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var MATCH = require('./_wks')('match');
-module.exports = function(KEY){
+module.exports = function (KEY) {
   var re = /./;
   try {
     '/./'[KEY](re);
-  } catch(e){
+  } catch (e) {
     try {
       re[MATCH] = false;
       return !'/./'[KEY](re);
-    } catch(f){ /* empty */ }
+    } catch (f) { /* empty */ }
   } return true;
 };
   })();
 });
 
-require.register("core-js/modules/_fails.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_fails.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = function(exec){
+    module.exports = function (exec) {
   try {
     return !!exec();
-  } catch(e){
+  } catch (e) {
     return true;
   }
 };
   })();
 });
 
-require.register("core-js/modules/_fix-re-wks.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_fix-re-wks.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var hide     = require('./_hide')
-  , redefine = require('./_redefine')
-  , fails    = require('./_fails')
-  , defined  = require('./_defined')
-  , wks      = require('./_wks');
+var hide = require('./_hide');
+var redefine = require('./_redefine');
+var fails = require('./_fails');
+var defined = require('./_defined');
+var wks = require('./_wks');
 
-module.exports = function(KEY, length, exec){
-  var SYMBOL   = wks(KEY)
-    , fns      = exec(defined, SYMBOL, ''[KEY])
-    , strfn    = fns[0]
-    , rxfn     = fns[1];
-  if(fails(function(){
+module.exports = function (KEY, length, exec) {
+  var SYMBOL = wks(KEY);
+  var fns = exec(defined, SYMBOL, ''[KEY]);
+  var strfn = fns[0];
+  var rxfn = fns[1];
+  if (fails(function () {
     var O = {};
-    O[SYMBOL] = function(){ return 7; };
+    O[SYMBOL] = function () { return 7; };
     return ''[KEY](O) != 7;
-  })){
+  })) {
     redefine(String.prototype, KEY, strfn);
     hide(RegExp.prototype, SYMBOL, length == 2
       // 21.2.5.8 RegExp.prototype[@@replace](string, replaceValue)
       // 21.2.5.11 RegExp.prototype[@@split](string, limit)
-      ? function(string, arg){ return rxfn.call(string, this, arg); }
+      ? function (string, arg) { return rxfn.call(string, this, arg); }
       // 21.2.5.6 RegExp.prototype[@@match](string)
       // 21.2.5.9 RegExp.prototype[@@search](string)
-      : function(string){ return rxfn.call(string, this); }
+      : function (string) { return rxfn.call(string, this); }
     );
   }
 };
   })();
 });
 
-require.register("core-js/modules/_flags.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_flags.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 21.2.5.3 get RegExp.prototype.flags
 var anObject = require('./_an-object');
-module.exports = function(){
-  var that   = anObject(this)
-    , result = '';
-  if(that.global)     result += 'g';
-  if(that.ignoreCase) result += 'i';
-  if(that.multiline)  result += 'm';
-  if(that.unicode)    result += 'u';
-  if(that.sticky)     result += 'y';
+module.exports = function () {
+  var that = anObject(this);
+  var result = '';
+  if (that.global) result += 'g';
+  if (that.ignoreCase) result += 'i';
+  if (that.multiline) result += 'm';
+  if (that.unicode) result += 'u';
+  if (that.sticky) result += 'y';
   return result;
 };
   })();
 });
 
-require.register("core-js/modules/_for-of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_flatten-into-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var ctx         = require('./_ctx')
-  , call        = require('./_iter-call')
-  , isArrayIter = require('./_is-array-iter')
-  , anObject    = require('./_an-object')
-  , toLength    = require('./_to-length')
-  , getIterFn   = require('./core.get-iterator-method')
-  , BREAK       = {}
-  , RETURN      = {};
-var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
-  var iterFn = ITERATOR ? function(){ return iterable; } : getIterFn(iterable)
-    , f      = ctx(fn, that, entries ? 2 : 1)
-    , index  = 0
-    , length, step, iterator, result;
-  if(typeof iterFn != 'function')throw TypeError(iterable + ' is not iterable!');
+    'use strict';
+// https://tc39.github.io/proposal-flatMap/#sec-FlattenIntoArray
+var isArray = require('./_is-array');
+var isObject = require('./_is-object');
+var toLength = require('./_to-length');
+var ctx = require('./_ctx');
+var IS_CONCAT_SPREADABLE = require('./_wks')('isConcatSpreadable');
+
+function flattenIntoArray(target, original, source, sourceLen, start, depth, mapper, thisArg) {
+  var targetIndex = start;
+  var sourceIndex = 0;
+  var mapFn = mapper ? ctx(mapper, thisArg, 3) : false;
+  var element, spreadable;
+
+  while (sourceIndex < sourceLen) {
+    if (sourceIndex in source) {
+      element = mapFn ? mapFn(source[sourceIndex], sourceIndex, original) : source[sourceIndex];
+
+      spreadable = false;
+      if (isObject(element)) {
+        spreadable = element[IS_CONCAT_SPREADABLE];
+        spreadable = spreadable !== undefined ? !!spreadable : isArray(element);
+      }
+
+      if (spreadable && depth > 0) {
+        targetIndex = flattenIntoArray(target, original, element, toLength(element.length), targetIndex, depth - 1) - 1;
+      } else {
+        if (targetIndex >= 0x1fffffffffffff) throw TypeError();
+        target[targetIndex] = element;
+      }
+
+      targetIndex++;
+    }
+    sourceIndex++;
+  }
+  return targetIndex;
+}
+
+module.exports = flattenIntoArray;
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_for-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    var ctx = require('./_ctx');
+var call = require('./_iter-call');
+var isArrayIter = require('./_is-array-iter');
+var anObject = require('./_an-object');
+var toLength = require('./_to-length');
+var getIterFn = require('./core.get-iterator-method');
+var BREAK = {};
+var RETURN = {};
+var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
+  var iterFn = ITERATOR ? function () { return iterable; } : getIterFn(iterable);
+  var f = ctx(fn, that, entries ? 2 : 1);
+  var index = 0;
+  var length, step, iterator, result;
+  if (typeof iterFn != 'function') throw TypeError(iterable + ' is not iterable!');
   // fast case for arrays with default iterator
-  if(isArrayIter(iterFn))for(length = toLength(iterable.length); length > index; index++){
+  if (isArrayIter(iterFn)) for (length = toLength(iterable.length); length > index; index++) {
     result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
-    if(result === BREAK || result === RETURN)return result;
-  } else for(iterator = iterFn.call(iterable); !(step = iterator.next()).done; ){
+    if (result === BREAK || result === RETURN) return result;
+  } else for (iterator = iterFn.call(iterable); !(step = iterator.next()).done;) {
     result = call(iterator, f, step.value, entries);
-    if(result === BREAK || result === RETURN)return result;
+    if (result === BREAK || result === RETURN) return result;
   }
 };
-exports.BREAK  = BREAK;
+exports.BREAK = BREAK;
 exports.RETURN = RETURN;
   })();
 });
 
-require.register("core-js/modules/_global.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_global.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+  ? window : typeof self != 'undefined' && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
   })();
 });
 
-require.register("core-js/modules/_has.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_has.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function(it, key){
+module.exports = function (it, key) {
   return hasOwnProperty.call(it, key);
 };
   })();
 });
 
-require.register("core-js/modules/_hide.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_hide.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var dP         = require('./_object-dp')
-  , createDesc = require('./_property-desc');
-module.exports = require('./_descriptors') ? function(object, key, value){
+    var dP = require('./_object-dp');
+var createDesc = require('./_property-desc');
+module.exports = require('./_descriptors') ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
-} : function(object, key, value){
+} : function (object, key, value) {
   object[key] = value;
   return object;
 };
   })();
 });
 
-require.register("core-js/modules/_html.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_html.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = require('./_global').document && document.documentElement;
+    var document = require('./_global').document;
+module.exports = document && document.documentElement;
   })();
 });
 
-require.register("core-js/modules/_ie8-dom-define.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_ie8-dom-define.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = !require('./_descriptors') && !require('./_fails')(function(){
-  return Object.defineProperty(require('./_dom-create')('div'), 'a', {get: function(){ return 7; }}).a != 7;
+    module.exports = !require('./_descriptors') && !require('./_fails')(function () {
+  return Object.defineProperty(require('./_dom-create')('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
   })();
 });
 
-require.register("core-js/modules/_inherit-if-required.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_inherit-if-required.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var isObject       = require('./_is-object')
-  , setPrototypeOf = require('./_set-proto').set;
-module.exports = function(that, target, C){
-  var P, S = target.constructor;
-  if(S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject(P) && setPrototypeOf){
+    var isObject = require('./_is-object');
+var setPrototypeOf = require('./_set-proto').set;
+module.exports = function (that, target, C) {
+  var S = target.constructor;
+  var P;
+  if (S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject(P) && setPrototypeOf) {
     setPrototypeOf(that, P);
   } return that;
 };
   })();
 });
 
-require.register("core-js/modules/_invoke.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_invoke.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // fast apply, http://jsperf.lnkit.com/fast-apply/5
-module.exports = function(fn, args, that){
+module.exports = function (fn, args, that) {
   var un = that === undefined;
-  switch(args.length){
+  switch (args.length) {
     case 0: return un ? fn()
                       : fn.call(that);
     case 1: return un ? fn(args[0])
@@ -2802,188 +2836,189 @@ module.exports = function(fn, args, that){
                       : fn.call(that, args[0], args[1], args[2]);
     case 4: return un ? fn(args[0], args[1], args[2], args[3])
                       : fn.call(that, args[0], args[1], args[2], args[3]);
-  } return              fn.apply(that, args);
+  } return fn.apply(that, args);
 };
   })();
 });
 
-require.register("core-js/modules/_iobject.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_iobject.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./_cof');
-module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
+// eslint-disable-next-line no-prototype-builtins
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
   })();
 });
 
-require.register("core-js/modules/_is-array-iter.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_is-array-iter.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // check on default Array iterator
-var Iterators  = require('./_iterators')
-  , ITERATOR   = require('./_wks')('iterator')
-  , ArrayProto = Array.prototype;
+var Iterators = require('./_iterators');
+var ITERATOR = require('./_wks')('iterator');
+var ArrayProto = Array.prototype;
 
-module.exports = function(it){
+module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
   })();
 });
 
-require.register("core-js/modules/_is-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_is-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.2.2 IsArray(argument)
 var cof = require('./_cof');
-module.exports = Array.isArray || function isArray(arg){
+module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
   })();
 });
 
-require.register("core-js/modules/_is-integer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_is-integer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.3 Number.isInteger(number)
-var isObject = require('./_is-object')
-  , floor    = Math.floor;
-module.exports = function isInteger(it){
+var isObject = require('./_is-object');
+var floor = Math.floor;
+module.exports = function isInteger(it) {
   return !isObject(it) && isFinite(it) && floor(it) === it;
 };
   })();
 });
 
-require.register("core-js/modules/_is-object.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_is-object.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = function(it){
+    module.exports = function (it) {
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
   })();
 });
 
-require.register("core-js/modules/_is-regexp.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_is-regexp.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.2.8 IsRegExp(argument)
-var isObject = require('./_is-object')
-  , cof      = require('./_cof')
-  , MATCH    = require('./_wks')('match');
-module.exports = function(it){
+var isObject = require('./_is-object');
+var cof = require('./_cof');
+var MATCH = require('./_wks')('match');
+module.exports = function (it) {
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
 };
   })();
 });
 
-require.register("core-js/modules/_iter-call.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_iter-call.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // call something on iterator step with safe closing on error
 var anObject = require('./_an-object');
-module.exports = function(iterator, fn, value, entries){
+module.exports = function (iterator, fn, value, entries) {
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
   // 7.4.6 IteratorClose(iterator, completion)
-  } catch(e){
+  } catch (e) {
     var ret = iterator['return'];
-    if(ret !== undefined)anObject(ret.call(iterator));
+    if (ret !== undefined) anObject(ret.call(iterator));
     throw e;
   }
 };
   })();
 });
 
-require.register("core-js/modules/_iter-create.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_iter-create.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var create         = require('./_object-create')
-  , descriptor     = require('./_property-desc')
-  , setToStringTag = require('./_set-to-string-tag')
-  , IteratorPrototype = {};
+var create = require('./_object-create');
+var descriptor = require('./_property-desc');
+var setToStringTag = require('./_set-to-string-tag');
+var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-require('./_hide')(IteratorPrototype, require('./_wks')('iterator'), function(){ return this; });
+require('./_hide')(IteratorPrototype, require('./_wks')('iterator'), function () { return this; });
 
-module.exports = function(Constructor, NAME, next){
-  Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
+module.exports = function (Constructor, NAME, next) {
+  Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
   setToStringTag(Constructor, NAME + ' Iterator');
 };
   })();
 });
 
-require.register("core-js/modules/_iter-define.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_iter-define.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var LIBRARY        = require('./_library')
-  , $export        = require('./_export')
-  , redefine       = require('./_redefine')
-  , hide           = require('./_hide')
-  , has            = require('./_has')
-  , Iterators      = require('./_iterators')
-  , $iterCreate    = require('./_iter-create')
-  , setToStringTag = require('./_set-to-string-tag')
-  , getPrototypeOf = require('./_object-gpo')
-  , ITERATOR       = require('./_wks')('iterator')
-  , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
-  , FF_ITERATOR    = '@@iterator'
-  , KEYS           = 'keys'
-  , VALUES         = 'values';
+var LIBRARY = require('./_library');
+var $export = require('./_export');
+var redefine = require('./_redefine');
+var hide = require('./_hide');
+var has = require('./_has');
+var Iterators = require('./_iterators');
+var $iterCreate = require('./_iter-create');
+var setToStringTag = require('./_set-to-string-tag');
+var getPrototypeOf = require('./_object-gpo');
+var ITERATOR = require('./_wks')('iterator');
+var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
+var FF_ITERATOR = '@@iterator';
+var KEYS = 'keys';
+var VALUES = 'values';
 
-var returnThis = function(){ return this; };
+var returnThis = function () { return this; };
 
-module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED){
+module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED) {
   $iterCreate(Constructor, NAME, next);
-  var getMethod = function(kind){
-    if(!BUGGY && kind in proto)return proto[kind];
-    switch(kind){
-      case KEYS: return function keys(){ return new Constructor(this, kind); };
-      case VALUES: return function values(){ return new Constructor(this, kind); };
-    } return function entries(){ return new Constructor(this, kind); };
+  var getMethod = function (kind) {
+    if (!BUGGY && kind in proto) return proto[kind];
+    switch (kind) {
+      case KEYS: return function keys() { return new Constructor(this, kind); };
+      case VALUES: return function values() { return new Constructor(this, kind); };
+    } return function entries() { return new Constructor(this, kind); };
   };
-  var TAG        = NAME + ' Iterator'
-    , DEF_VALUES = DEFAULT == VALUES
-    , VALUES_BUG = false
-    , proto      = Base.prototype
-    , $native    = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT]
-    , $default   = $native || getMethod(DEFAULT)
-    , $entries   = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined
-    , $anyNative = NAME == 'Array' ? proto.entries || $native : $native
-    , methods, key, IteratorPrototype;
+  var TAG = NAME + ' Iterator';
+  var DEF_VALUES = DEFAULT == VALUES;
+  var VALUES_BUG = false;
+  var proto = Base.prototype;
+  var $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT];
+  var $default = $native || getMethod(DEFAULT);
+  var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
+  var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
+  var methods, key, IteratorPrototype;
   // Fix native
-  if($anyNative){
-    IteratorPrototype = getPrototypeOf($anyNative.call(new Base));
-    if(IteratorPrototype !== Object.prototype){
+  if ($anyNative) {
+    IteratorPrototype = getPrototypeOf($anyNative.call(new Base()));
+    if (IteratorPrototype !== Object.prototype && IteratorPrototype.next) {
       // Set @@toStringTag to native iterators
       setToStringTag(IteratorPrototype, TAG, true);
       // fix for some old engines
-      if(!LIBRARY && !has(IteratorPrototype, ITERATOR))hide(IteratorPrototype, ITERATOR, returnThis);
+      if (!LIBRARY && !has(IteratorPrototype, ITERATOR)) hide(IteratorPrototype, ITERATOR, returnThis);
     }
   }
   // fix Array#{values, @@iterator}.name in V8 / FF
-  if(DEF_VALUES && $native && $native.name !== VALUES){
+  if (DEF_VALUES && $native && $native.name !== VALUES) {
     VALUES_BUG = true;
-    $default = function values(){ return $native.call(this); };
+    $default = function values() { return $native.call(this); };
   }
   // Define iterator
-  if((!LIBRARY || FORCED) && (BUGGY || VALUES_BUG || !proto[ITERATOR])){
+  if ((!LIBRARY || FORCED) && (BUGGY || VALUES_BUG || !proto[ITERATOR])) {
     hide(proto, ITERATOR, $default);
   }
   // Plug for library
   Iterators[NAME] = $default;
-  Iterators[TAG]  = returnThis;
-  if(DEFAULT){
+  Iterators[TAG] = returnThis;
+  if (DEFAULT) {
     methods = {
-      values:  DEF_VALUES ? $default : getMethod(VALUES),
-      keys:    IS_SET     ? $default : getMethod(KEYS),
+      values: DEF_VALUES ? $default : getMethod(VALUES),
+      keys: IS_SET ? $default : getMethod(KEYS),
       entries: $entries
     };
-    if(FORCED)for(key in methods){
-      if(!(key in proto))redefine(proto, key, methods[key]);
+    if (FORCED) for (key in methods) {
+      if (!(key in proto)) redefine(proto, key, methods[key]);
     } else $export($export.P + $export.F * (BUGGY || VALUES_BUG), NAME, methods);
   }
   return methods;
@@ -2991,74 +3026,75 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
   })();
 });
 
-require.register("core-js/modules/_iter-detect.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_iter-detect.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var ITERATOR     = require('./_wks')('iterator')
-  , SAFE_CLOSING = false;
+    var ITERATOR = require('./_wks')('iterator');
+var SAFE_CLOSING = false;
 
 try {
   var riter = [7][ITERATOR]();
-  riter['return'] = function(){ SAFE_CLOSING = true; };
-  Array.from(riter, function(){ throw 2; });
-} catch(e){ /* empty */ }
+  riter['return'] = function () { SAFE_CLOSING = true; };
+  // eslint-disable-next-line no-throw-literal
+  Array.from(riter, function () { throw 2; });
+} catch (e) { /* empty */ }
 
-module.exports = function(exec, skipClosing){
-  if(!skipClosing && !SAFE_CLOSING)return false;
+module.exports = function (exec, skipClosing) {
+  if (!skipClosing && !SAFE_CLOSING) return false;
   var safe = false;
   try {
-    var arr  = [7]
-      , iter = arr[ITERATOR]();
-    iter.next = function(){ return {done: safe = true}; };
-    arr[ITERATOR] = function(){ return iter; };
+    var arr = [7];
+    var iter = arr[ITERATOR]();
+    iter.next = function () { return { done: safe = true }; };
+    arr[ITERATOR] = function () { return iter; };
     exec(arr);
-  } catch(e){ /* empty */ }
+  } catch (e) { /* empty */ }
   return safe;
 };
   })();
 });
 
-require.register("core-js/modules/_iter-step.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_iter-step.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = function(done, value){
-  return {value: value, done: !!done};
+    module.exports = function (done, value) {
+  return { value: value, done: !!done };
 };
   })();
 });
 
-require.register("core-js/modules/_iterators.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_iterators.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     module.exports = {};
   })();
 });
 
-require.register("core-js/modules/_keyof.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_keyof.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var getKeys   = require('./_object-keys')
-  , toIObject = require('./_to-iobject');
-module.exports = function(object, el){
-  var O      = toIObject(object)
-    , keys   = getKeys(O)
-    , length = keys.length
-    , index  = 0
-    , key;
-  while(length > index)if(O[key = keys[index++]] === el)return key;
+    var getKeys = require('./_object-keys');
+var toIObject = require('./_to-iobject');
+module.exports = function (object, el) {
+  var O = toIObject(object);
+  var keys = getKeys(O);
+  var length = keys.length;
+  var index = 0;
+  var key;
+  while (length > index) if (O[key = keys[index++]] === el) return key;
 };
   })();
 });
 
-require.register("core-js/modules/_library.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_library.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     module.exports = false;
   })();
 });
 
-require.register("core-js/modules/_math-expm1.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_math-expm1.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.14 Math.expm1(x)
 var $expm1 = Math.expm1;
@@ -3067,132 +3103,186 @@ module.exports = (!$expm1
   || $expm1(10) > 22025.465794806719 || $expm1(10) < 22025.4657948067165168
   // Tor Browser bug
   || $expm1(-2e-17) != -2e-17
-) ? function expm1(x){
+) ? function expm1(x) {
   return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : Math.exp(x) - 1;
 } : $expm1;
   })();
 });
 
-require.register("core-js/modules/_math-log1p.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_math-fround.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // 20.2.2.16 Math.fround(x)
+var sign = require('./_math-sign');
+var pow = Math.pow;
+var EPSILON = pow(2, -52);
+var EPSILON32 = pow(2, -23);
+var MAX32 = pow(2, 127) * (2 - EPSILON32);
+var MIN32 = pow(2, -126);
+
+var roundTiesToEven = function (n) {
+  return n + 1 / EPSILON - 1 / EPSILON;
+};
+
+module.exports = Math.fround || function fround(x) {
+  var $abs = Math.abs(x);
+  var $sign = sign(x);
+  var a, result;
+  if ($abs < MIN32) return $sign * roundTiesToEven($abs / MIN32 / EPSILON32) * MIN32 * EPSILON32;
+  a = (1 + EPSILON32 / EPSILON) * $abs;
+  result = a - (a - $abs);
+  // eslint-disable-next-line no-self-compare
+  if (result > MAX32 || result != result) return $sign * Infinity;
+  return $sign * result;
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_math-log1p.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.20 Math.log1p(x)
-module.exports = Math.log1p || function log1p(x){
+module.exports = Math.log1p || function log1p(x) {
   return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : Math.log(1 + x);
 };
   })();
 });
 
-require.register("core-js/modules/_math-sign.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_math-scale.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh) {
+  if (
+    arguments.length === 0
+      // eslint-disable-next-line no-self-compare
+      || x != x
+      // eslint-disable-next-line no-self-compare
+      || inLow != inLow
+      // eslint-disable-next-line no-self-compare
+      || inHigh != inHigh
+      // eslint-disable-next-line no-self-compare
+      || outLow != outLow
+      // eslint-disable-next-line no-self-compare
+      || outHigh != outHigh
+  ) return NaN;
+  if (x === Infinity || x === -Infinity) return x;
+  return (x - inLow) * (outHigh - outLow) / (inHigh - inLow) + outLow;
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_math-sign.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.28 Math.sign(x)
-module.exports = Math.sign || function sign(x){
+module.exports = Math.sign || function sign(x) {
+  // eslint-disable-next-line no-self-compare
   return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
 };
   })();
 });
 
-require.register("core-js/modules/_meta.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_meta.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var META     = require('./_uid')('meta')
-  , isObject = require('./_is-object')
-  , has      = require('./_has')
-  , setDesc  = require('./_object-dp').f
-  , id       = 0;
-var isExtensible = Object.isExtensible || function(){
+    var META = require('./_uid')('meta');
+var isObject = require('./_is-object');
+var has = require('./_has');
+var setDesc = require('./_object-dp').f;
+var id = 0;
+var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !require('./_fails')(function(){
+var FREEZE = !require('./_fails')(function () {
   return isExtensible(Object.preventExtensions({}));
 });
-var setMeta = function(it){
-  setDesc(it, META, {value: {
+var setMeta = function (it) {
+  setDesc(it, META, { value: {
     i: 'O' + ++id, // object ID
     w: {}          // weak collections IDs
-  }});
+  } });
 };
-var fastKey = function(it, create){
+var fastKey = function (it, create) {
   // return primitive with prefix
-  if(!isObject(it))return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
-  if(!has(it, META)){
+  if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
+  if (!has(it, META)) {
     // can't set metadata to uncaught frozen object
-    if(!isExtensible(it))return 'F';
+    if (!isExtensible(it)) return 'F';
     // not necessary to add metadata
-    if(!create)return 'E';
+    if (!create) return 'E';
     // add missing metadata
     setMeta(it);
   // return object ID
   } return it[META].i;
 };
-var getWeak = function(it, create){
-  if(!has(it, META)){
+var getWeak = function (it, create) {
+  if (!has(it, META)) {
     // can't set metadata to uncaught frozen object
-    if(!isExtensible(it))return true;
+    if (!isExtensible(it)) return true;
     // not necessary to add metadata
-    if(!create)return false;
+    if (!create) return false;
     // add missing metadata
     setMeta(it);
   // return hash weak collections IDs
   } return it[META].w;
 };
 // add metadata on freeze-family methods calling
-var onFreeze = function(it){
-  if(FREEZE && meta.NEED && isExtensible(it) && !has(it, META))setMeta(it);
+var onFreeze = function (it) {
+  if (FREEZE && meta.NEED && isExtensible(it) && !has(it, META)) setMeta(it);
   return it;
 };
 var meta = module.exports = {
-  KEY:      META,
-  NEED:     false,
-  fastKey:  fastKey,
-  getWeak:  getWeak,
+  KEY: META,
+  NEED: false,
+  fastKey: fastKey,
+  getWeak: getWeak,
   onFreeze: onFreeze
 };
   })();
 });
 
-require.register("core-js/modules/_metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var Map     = require('./es6.map')
-  , $export = require('./_export')
-  , shared  = require('./_shared')('metadata')
-  , store   = shared.store || (shared.store = new (require('./es6.weak-map')));
+    var Map = require('./es6.map');
+var $export = require('./_export');
+var shared = require('./_shared')('metadata');
+var store = shared.store || (shared.store = new (require('./es6.weak-map'))());
 
-var getOrCreateMetadataMap = function(target, targetKey, create){
+var getOrCreateMetadataMap = function (target, targetKey, create) {
   var targetMetadata = store.get(target);
-  if(!targetMetadata){
-    if(!create)return undefined;
-    store.set(target, targetMetadata = new Map);
+  if (!targetMetadata) {
+    if (!create) return undefined;
+    store.set(target, targetMetadata = new Map());
   }
   var keyMetadata = targetMetadata.get(targetKey);
-  if(!keyMetadata){
-    if(!create)return undefined;
-    targetMetadata.set(targetKey, keyMetadata = new Map);
+  if (!keyMetadata) {
+    if (!create) return undefined;
+    targetMetadata.set(targetKey, keyMetadata = new Map());
   } return keyMetadata;
 };
-var ordinaryHasOwnMetadata = function(MetadataKey, O, P){
+var ordinaryHasOwnMetadata = function (MetadataKey, O, P) {
   var metadataMap = getOrCreateMetadataMap(O, P, false);
   return metadataMap === undefined ? false : metadataMap.has(MetadataKey);
 };
-var ordinaryGetOwnMetadata = function(MetadataKey, O, P){
+var ordinaryGetOwnMetadata = function (MetadataKey, O, P) {
   var metadataMap = getOrCreateMetadataMap(O, P, false);
   return metadataMap === undefined ? undefined : metadataMap.get(MetadataKey);
 };
-var ordinaryDefineOwnMetadata = function(MetadataKey, MetadataValue, O, P){
+var ordinaryDefineOwnMetadata = function (MetadataKey, MetadataValue, O, P) {
   getOrCreateMetadataMap(O, P, true).set(MetadataKey, MetadataValue);
 };
-var ordinaryOwnMetadataKeys = function(target, targetKey){
-  var metadataMap = getOrCreateMetadataMap(target, targetKey, false)
-    , keys        = [];
-  if(metadataMap)metadataMap.forEach(function(_, key){ keys.push(key); });
+var ordinaryOwnMetadataKeys = function (target, targetKey) {
+  var metadataMap = getOrCreateMetadataMap(target, targetKey, false);
+  var keys = [];
+  if (metadataMap) metadataMap.forEach(function (_, key) { keys.push(key); });
   return keys;
 };
-var toMetaKey = function(it){
+var toMetaKey = function (it) {
   return it === undefined || typeof it == 'symbol' ? it : String(it);
 };
-var exp = function(O){
+var exp = function (O) {
   $export($export.S, 'Reflect', O);
 };
 
@@ -3209,53 +3299,53 @@ module.exports = {
   })();
 });
 
-require.register("core-js/modules/_microtask.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_microtask.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var global    = require('./_global')
-  , macrotask = require('./_task').set
-  , Observer  = global.MutationObserver || global.WebKitMutationObserver
-  , process   = global.process
-  , Promise   = global.Promise
-  , isNode    = require('./_cof')(process) == 'process';
+    var global = require('./_global');
+var macrotask = require('./_task').set;
+var Observer = global.MutationObserver || global.WebKitMutationObserver;
+var process = global.process;
+var Promise = global.Promise;
+var isNode = require('./_cof')(process) == 'process';
 
-module.exports = function(){
+module.exports = function () {
   var head, last, notify;
 
-  var flush = function(){
+  var flush = function () {
     var parent, fn;
-    if(isNode && (parent = process.domain))parent.exit();
-    while(head){
-      fn   = head.fn;
+    if (isNode && (parent = process.domain)) parent.exit();
+    while (head) {
+      fn = head.fn;
       head = head.next;
       try {
         fn();
-      } catch(e){
-        if(head)notify();
+      } catch (e) {
+        if (head) notify();
         else last = undefined;
         throw e;
       }
     } last = undefined;
-    if(parent)parent.enter();
+    if (parent) parent.enter();
   };
 
   // Node.js
-  if(isNode){
-    notify = function(){
+  if (isNode) {
+    notify = function () {
       process.nextTick(flush);
     };
   // browsers with MutationObserver
-  } else if(Observer){
-    var toggle = true
-      , node   = document.createTextNode('');
-    new Observer(flush).observe(node, {characterData: true}); // eslint-disable-line no-new
-    notify = function(){
+  } else if (Observer) {
+    var toggle = true;
+    var node = document.createTextNode('');
+    new Observer(flush).observe(node, { characterData: true }); // eslint-disable-line no-new
+    notify = function () {
       node.data = toggle = !toggle;
     };
   // environments with maybe non-completely correct, but existent Promise
-  } else if(Promise && Promise.resolve){
+  } else if (Promise && Promise.resolve) {
     var promise = Promise.resolve();
-    notify = function(){
+    notify = function () {
       promise.then(flush);
     };
   // for other environments - macrotask based on:
@@ -3265,16 +3355,16 @@ module.exports = function(){
   // - onreadystatechange
   // - setTimeout
   } else {
-    notify = function(){
+    notify = function () {
       // strange IE + webpack dev server bug - use .call(global)
       macrotask.call(global, flush);
     };
   }
 
-  return function(fn){
-    var task = {fn: fn, next: undefined};
-    if(last)last.next = task;
-    if(!head){
+  return function (fn) {
+    var task = { fn: fn, next: undefined };
+    if (last) last.next = task;
+    if (!head) {
       head = task;
       notify();
     } last = task;
@@ -3283,64 +3373,89 @@ module.exports = function(){
   })();
 });
 
-require.register("core-js/modules/_object-assign.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_new-promise-capability.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    'use strict';
+// 25.4.1.5 NewPromiseCapability(C)
+var aFunction = require('./_a-function');
+
+function PromiseCapability(C) {
+  var resolve, reject;
+  this.promise = new C(function ($$resolve, $$reject) {
+    if (resolve !== undefined || reject !== undefined) throw TypeError('Bad Promise constructor');
+    resolve = $$resolve;
+    reject = $$reject;
+  });
+  this.resolve = aFunction(resolve);
+  this.reject = aFunction(reject);
+}
+
+module.exports.f = function (C) {
+  return new PromiseCapability(C);
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_object-assign.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys  = require('./_object-keys')
-  , gOPS     = require('./_object-gops')
-  , pIE      = require('./_object-pie')
-  , toObject = require('./_to-object')
-  , IObject  = require('./_iobject')
-  , $assign  = Object.assign;
+var getKeys = require('./_object-keys');
+var gOPS = require('./_object-gops');
+var pIE = require('./_object-pie');
+var toObject = require('./_to-object');
+var IObject = require('./_iobject');
+var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || require('./_fails')(function(){
-  var A = {}
-    , B = {}
-    , S = Symbol()
-    , K = 'abcdefghijklmnopqrst';
+module.exports = !$assign || require('./_fails')(function () {
+  var A = {};
+  var B = {};
+  // eslint-disable-next-line no-undef
+  var S = Symbol();
+  var K = 'abcdefghijklmnopqrst';
   A[S] = 7;
-  K.split('').forEach(function(k){ B[k] = k; });
+  K.split('').forEach(function (k) { B[k] = k; });
   return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-}) ? function assign(target, source){ // eslint-disable-line no-unused-vars
-  var T     = toObject(target)
-    , aLen  = arguments.length
-    , index = 1
-    , getSymbols = gOPS.f
-    , isEnum     = pIE.f;
-  while(aLen > index){
-    var S      = IObject(arguments[index++])
-      , keys   = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S)
-      , length = keys.length
-      , j      = 0
-      , key;
-    while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
+}) ? function assign(target, source) { // eslint-disable-line no-unused-vars
+  var T = toObject(target);
+  var aLen = arguments.length;
+  var index = 1;
+  var getSymbols = gOPS.f;
+  var isEnum = pIE.f;
+  while (aLen > index) {
+    var S = IObject(arguments[index++]);
+    var keys = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S);
+    var length = keys.length;
+    var j = 0;
+    var key;
+    while (length > j) if (isEnum.call(S, key = keys[j++])) T[key] = S[key];
   } return T;
 } : $assign;
   })();
 });
 
-require.register("core-js/modules/_object-create.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-create.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject    = require('./_an-object')
-  , dPs         = require('./_object-dps')
-  , enumBugKeys = require('./_enum-bug-keys')
-  , IE_PROTO    = require('./_shared-key')('IE_PROTO')
-  , Empty       = function(){ /* empty */ }
-  , PROTOTYPE   = 'prototype';
+var anObject = require('./_an-object');
+var dPs = require('./_object-dps');
+var enumBugKeys = require('./_enum-bug-keys');
+var IE_PROTO = require('./_shared-key')('IE_PROTO');
+var Empty = function () { /* empty */ };
+var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
-var createDict = function(){
+var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = require('./_dom-create')('iframe')
-    , i      = enumBugKeys.length
-    , lt     = '<'
-    , gt     = '>'
-    , iframeDocument;
+  var iframe = require('./_dom-create')('iframe');
+  var i = enumBugKeys.length;
+  var lt = '<';
+  var gt = '>';
+  var iframeDocument;
   iframe.style.display = 'none';
   require('./_html').appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
@@ -3351,15 +3466,15 @@ var createDict = function(){
   iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
   iframeDocument.close();
   createDict = iframeDocument.F;
-  while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
+  while (i--) delete createDict[PROTOTYPE][enumBugKeys[i]];
   return createDict();
 };
 
-module.exports = Object.create || function create(O, Properties){
+module.exports = Object.create || function create(O, Properties) {
   var result;
-  if(O !== null){
+  if (O !== null) {
     Empty[PROTOTYPE] = anObject(O);
-    result = new Empty;
+    result = new Empty();
     Empty[PROTOTYPE] = null;
     // add "__proto__" for Object.getPrototypeOf polyfill
     result[IE_PROTO] = O;
@@ -3369,162 +3484,164 @@ module.exports = Object.create || function create(O, Properties){
   })();
 });
 
-require.register("core-js/modules/_object-dp.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-dp.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var anObject       = require('./_an-object')
-  , IE8_DOM_DEFINE = require('./_ie8-dom-define')
-  , toPrimitive    = require('./_to-primitive')
-  , dP             = Object.defineProperty;
+    var anObject = require('./_an-object');
+var IE8_DOM_DEFINE = require('./_ie8-dom-define');
+var toPrimitive = require('./_to-primitive');
+var dP = Object.defineProperty;
 
-exports.f = require('./_descriptors') ? Object.defineProperty : function defineProperty(O, P, Attributes){
+exports.f = require('./_descriptors') ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
-  if(IE8_DOM_DEFINE)try {
+  if (IE8_DOM_DEFINE) try {
     return dP(O, P, Attributes);
-  } catch(e){ /* empty */ }
-  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
-  if('value' in Attributes)O[P] = Attributes.value;
+  } catch (e) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
   return O;
 };
   })();
 });
 
-require.register("core-js/modules/_object-dps.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-dps.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var dP       = require('./_object-dp')
-  , anObject = require('./_an-object')
-  , getKeys  = require('./_object-keys');
+    var dP = require('./_object-dp');
+var anObject = require('./_an-object');
+var getKeys = require('./_object-keys');
 
-module.exports = require('./_descriptors') ? Object.defineProperties : function defineProperties(O, Properties){
+module.exports = require('./_descriptors') ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
-  var keys   = getKeys(Properties)
-    , length = keys.length
-    , i = 0
-    , P;
-  while(length > i)dP.f(O, P = keys[i++], Properties[P]);
+  var keys = getKeys(Properties);
+  var length = keys.length;
+  var i = 0;
+  var P;
+  while (length > i) dP.f(O, P = keys[i++], Properties[P]);
   return O;
 };
   })();
 });
 
-require.register("core-js/modules/_object-forced-pam.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-forced-pam.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    // Forced replacement prototype accessors methods
-module.exports = require('./_library')|| !require('./_fails')(function(){
+    'use strict';
+// Forced replacement prototype accessors methods
+module.exports = require('./_library') || !require('./_fails')(function () {
   var K = Math.random();
   // In FF throws only define methods
-  __defineSetter__.call(null, K, function(){ /* empty */});
+  // eslint-disable-next-line no-undef, no-useless-call
+  __defineSetter__.call(null, K, function () { /* empty */ });
   delete require('./_global')[K];
 });
   })();
 });
 
-require.register("core-js/modules/_object-gopd.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-gopd.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var pIE            = require('./_object-pie')
-  , createDesc     = require('./_property-desc')
-  , toIObject      = require('./_to-iobject')
-  , toPrimitive    = require('./_to-primitive')
-  , has            = require('./_has')
-  , IE8_DOM_DEFINE = require('./_ie8-dom-define')
-  , gOPD           = Object.getOwnPropertyDescriptor;
+    var pIE = require('./_object-pie');
+var createDesc = require('./_property-desc');
+var toIObject = require('./_to-iobject');
+var toPrimitive = require('./_to-primitive');
+var has = require('./_has');
+var IE8_DOM_DEFINE = require('./_ie8-dom-define');
+var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = require('./_descriptors') ? gOPD : function getOwnPropertyDescriptor(O, P){
+exports.f = require('./_descriptors') ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
-  if(IE8_DOM_DEFINE)try {
+  if (IE8_DOM_DEFINE) try {
     return gOPD(O, P);
-  } catch(e){ /* empty */ }
-  if(has(O, P))return createDesc(!pIE.f.call(O, P), O[P]);
+  } catch (e) { /* empty */ }
+  if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
 };
   })();
 });
 
-require.register("core-js/modules/_object-gopn-ext.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-gopn-ext.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = require('./_to-iobject')
-  , gOPN      = require('./_object-gopn').f
-  , toString  = {}.toString;
+var toIObject = require('./_to-iobject');
+var gOPN = require('./_object-gopn').f;
+var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
   ? Object.getOwnPropertyNames(window) : [];
 
-var getWindowNames = function(it){
+var getWindowNames = function (it) {
   try {
     return gOPN(it);
-  } catch(e){
+  } catch (e) {
     return windowNames.slice();
   }
 };
 
-module.exports.f = function getOwnPropertyNames(it){
+module.exports.f = function getOwnPropertyNames(it) {
   return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 };
   })();
 });
 
-require.register("core-js/modules/_object-gopn.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-gopn.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys      = require('./_object-keys-internal')
-  , hiddenKeys = require('./_enum-bug-keys').concat('length', 'prototype');
+var $keys = require('./_object-keys-internal');
+var hiddenKeys = require('./_enum-bug-keys').concat('length', 'prototype');
 
-exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
 };
   })();
 });
 
-require.register("core-js/modules/_object-gops.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-gops.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     exports.f = Object.getOwnPropertySymbols;
   })();
 });
 
-require.register("core-js/modules/_object-gpo.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-gpo.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has         = require('./_has')
-  , toObject    = require('./_to-object')
-  , IE_PROTO    = require('./_shared-key')('IE_PROTO')
-  , ObjectProto = Object.prototype;
+var has = require('./_has');
+var toObject = require('./_to-object');
+var IE_PROTO = require('./_shared-key')('IE_PROTO');
+var ObjectProto = Object.prototype;
 
-module.exports = Object.getPrototypeOf || function(O){
+module.exports = Object.getPrototypeOf || function (O) {
   O = toObject(O);
-  if(has(O, IE_PROTO))return O[IE_PROTO];
-  if(typeof O.constructor == 'function' && O instanceof O.constructor){
+  if (has(O, IE_PROTO)) return O[IE_PROTO];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
     return O.constructor.prototype;
   } return O instanceof Object ? ObjectProto : null;
 };
   })();
 });
 
-require.register("core-js/modules/_object-keys-internal.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-keys-internal.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var has          = require('./_has')
-  , toIObject    = require('./_to-iobject')
-  , arrayIndexOf = require('./_array-includes')(false)
-  , IE_PROTO     = require('./_shared-key')('IE_PROTO');
+    var has = require('./_has');
+var toIObject = require('./_to-iobject');
+var arrayIndexOf = require('./_array-includes')(false);
+var IE_PROTO = require('./_shared-key')('IE_PROTO');
 
-module.exports = function(object, names){
-  var O      = toIObject(object)
-    , i      = 0
-    , result = []
-    , key;
-  for(key in O)if(key != IE_PROTO)has(O, key) && result.push(key);
+module.exports = function (object, names) {
+  var O = toIObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
   // Don't enum bug & hidden keys
-  while(names.length > i)if(has(O, key = names[i++])){
+  while (names.length > i) if (has(O, key = names[i++])) {
     ~arrayIndexOf(result, key) || result.push(key);
   }
   return result;
@@ -3532,57 +3649,57 @@ module.exports = function(object, names){
   })();
 });
 
-require.register("core-js/modules/_object-keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys       = require('./_object-keys-internal')
-  , enumBugKeys = require('./_enum-bug-keys');
+var $keys = require('./_object-keys-internal');
+var enumBugKeys = require('./_enum-bug-keys');
 
-module.exports = Object.keys || function keys(O){
+module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
 };
   })();
 });
 
-require.register("core-js/modules/_object-pie.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-pie.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     exports.f = {}.propertyIsEnumerable;
   })();
 });
 
-require.register("core-js/modules/_object-sap.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-sap.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // most Object methods by ES6 should accept primitives
-var $export = require('./_export')
-  , core    = require('./_core')
-  , fails   = require('./_fails');
-module.exports = function(KEY, exec){
-  var fn  = (core.Object || {})[KEY] || Object[KEY]
-    , exp = {};
+var $export = require('./_export');
+var core = require('./_core');
+var fails = require('./_fails');
+module.exports = function (KEY, exec) {
+  var fn = (core.Object || {})[KEY] || Object[KEY];
+  var exp = {};
   exp[KEY] = exec(fn);
-  $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
+  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
 };
   })();
 });
 
-require.register("core-js/modules/_object-to-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_object-to-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var getKeys   = require('./_object-keys')
-  , toIObject = require('./_to-iobject')
-  , isEnum    = require('./_object-pie').f;
-module.exports = function(isEntries){
-  return function(it){
-    var O      = toIObject(it)
-      , keys   = getKeys(O)
-      , length = keys.length
-      , i      = 0
-      , result = []
-      , key;
-    while(length > i)if(isEnum.call(O, key = keys[i++])){
+    var getKeys = require('./_object-keys');
+var toIObject = require('./_to-iobject');
+var isEnum = require('./_object-pie').f;
+module.exports = function (isEntries) {
+  return function (it) {
+    var O = toIObject(it);
+    var keys = getKeys(O);
+    var length = keys.length;
+    var i = 0;
+    var result = [];
+    var key;
+    while (length > i) if (isEnum.call(O, key = keys[i++])) {
       result.push(isEntries ? [key, O[key]] : O[key]);
     } return result;
   };
@@ -3590,196 +3707,277 @@ module.exports = function(isEntries){
   })();
 });
 
-require.register("core-js/modules/_own-keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_own-keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // all object keys, includes non-enumerable and symbols
-var gOPN     = require('./_object-gopn')
-  , gOPS     = require('./_object-gops')
-  , anObject = require('./_an-object')
-  , Reflect  = require('./_global').Reflect;
-module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
-  var keys       = gOPN.f(anObject(it))
-    , getSymbols = gOPS.f;
+var gOPN = require('./_object-gopn');
+var gOPS = require('./_object-gops');
+var anObject = require('./_an-object');
+var Reflect = require('./_global').Reflect;
+module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
+  var keys = gOPN.f(anObject(it));
+  var getSymbols = gOPS.f;
   return getSymbols ? keys.concat(getSymbols(it)) : keys;
 };
   })();
 });
 
-require.register("core-js/modules/_parse-float.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_parse-float.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $parseFloat = require('./_global').parseFloat
-  , $trim       = require('./_string-trim').trim;
+    var $parseFloat = require('./_global').parseFloat;
+var $trim = require('./_string-trim').trim;
 
-module.exports = 1 / $parseFloat(require('./_string-ws') + '-0') !== -Infinity ? function parseFloat(str){
-  var string = $trim(String(str), 3)
-    , result = $parseFloat(string);
+module.exports = 1 / $parseFloat(require('./_string-ws') + '-0') !== -Infinity ? function parseFloat(str) {
+  var string = $trim(String(str), 3);
+  var result = $parseFloat(string);
   return result === 0 && string.charAt(0) == '-' ? -0 : result;
 } : $parseFloat;
   })();
 });
 
-require.register("core-js/modules/_parse-int.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_parse-int.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $parseInt = require('./_global').parseInt
-  , $trim     = require('./_string-trim').trim
-  , ws        = require('./_string-ws')
-  , hex       = /^[\-+]?0[xX]/;
+    var $parseInt = require('./_global').parseInt;
+var $trim = require('./_string-trim').trim;
+var ws = require('./_string-ws');
+var hex = /^[-+]?0[xX]/;
 
-module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix){
+module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix) {
   var string = $trim(String(str), 3);
   return $parseInt(string, (radix >>> 0) || (hex.test(string) ? 16 : 10));
 } : $parseInt;
   })();
 });
 
-require.register("core-js/modules/_partial.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_partial.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var path      = require('./_path')
-  , invoke    = require('./_invoke')
-  , aFunction = require('./_a-function');
-module.exports = function(/* ...pargs */){
-  var fn     = aFunction(this)
-    , length = arguments.length
-    , pargs  = Array(length)
-    , i      = 0
-    , _      = path._
-    , holder = false;
-  while(length > i)if((pargs[i] = arguments[i++]) === _)holder = true;
-  return function(/* ...args */){
-    var that = this
-      , aLen = arguments.length
-      , j = 0, k = 0, args;
-    if(!holder && !aLen)return invoke(fn, pargs, that);
+var path = require('./_path');
+var invoke = require('./_invoke');
+var aFunction = require('./_a-function');
+module.exports = function (/* ...pargs */) {
+  var fn = aFunction(this);
+  var length = arguments.length;
+  var pargs = Array(length);
+  var i = 0;
+  var _ = path._;
+  var holder = false;
+  while (length > i) if ((pargs[i] = arguments[i++]) === _) holder = true;
+  return function (/* ...args */) {
+    var that = this;
+    var aLen = arguments.length;
+    var j = 0;
+    var k = 0;
+    var args;
+    if (!holder && !aLen) return invoke(fn, pargs, that);
     args = pargs.slice();
-    if(holder)for(;length > j; j++)if(args[j] === _)args[j] = arguments[k++];
-    while(aLen > k)args.push(arguments[k++]);
+    if (holder) for (;length > j; j++) if (args[j] === _) args[j] = arguments[k++];
+    while (aLen > k) args.push(arguments[k++]);
     return invoke(fn, args, that);
   };
 };
   })();
 });
 
-require.register("core-js/modules/_path.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_path.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     module.exports = require('./_global');
   })();
 });
 
-require.register("core-js/modules/_property-desc.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_perform.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = function(bitmap, value){
+    module.exports = function (exec) {
+  try {
+    return { e: false, v: exec() };
+  } catch (e) {
+    return { e: true, v: e };
+  }
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_promise-resolve.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    var newPromiseCapability = require('./_new-promise-capability');
+
+module.exports = function (C, x) {
+  var promiseCapability = newPromiseCapability.f(C);
+  var resolve = promiseCapability.resolve;
+  resolve(x);
+  return promiseCapability.promise;
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_property-desc.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    module.exports = function (bitmap, value) {
   return {
-    enumerable  : !(bitmap & 1),
+    enumerable: !(bitmap & 1),
     configurable: !(bitmap & 2),
-    writable    : !(bitmap & 4),
-    value       : value
+    writable: !(bitmap & 4),
+    value: value
   };
 };
   })();
 });
 
-require.register("core-js/modules/_redefine-all.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_redefine-all.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var redefine = require('./_redefine');
-module.exports = function(target, src, safe){
-  for(var key in src)redefine(target, key, src[key], safe);
+module.exports = function (target, src, safe) {
+  for (var key in src) redefine(target, key, src[key], safe);
   return target;
 };
   })();
 });
 
-require.register("core-js/modules/_redefine.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_redefine.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var global    = require('./_global')
-  , hide      = require('./_hide')
-  , has       = require('./_has')
-  , SRC       = require('./_uid')('src')
-  , TO_STRING = 'toString'
-  , $toString = Function[TO_STRING]
-  , TPL       = ('' + $toString).split(TO_STRING);
+    var global = require('./_global');
+var hide = require('./_hide');
+var has = require('./_has');
+var SRC = require('./_uid')('src');
+var TO_STRING = 'toString';
+var $toString = Function[TO_STRING];
+var TPL = ('' + $toString).split(TO_STRING);
 
-require('./_core').inspectSource = function(it){
+require('./_core').inspectSource = function (it) {
   return $toString.call(it);
 };
 
-(module.exports = function(O, key, val, safe){
+(module.exports = function (O, key, val, safe) {
   var isFunction = typeof val == 'function';
-  if(isFunction)has(val, 'name') || hide(val, 'name', key);
-  if(O[key] === val)return;
-  if(isFunction)has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
-  if(O === global){
+  if (isFunction) has(val, 'name') || hide(val, 'name', key);
+  if (O[key] === val) return;
+  if (isFunction) has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
+  if (O === global) {
+    O[key] = val;
+  } else if (!safe) {
+    delete O[key];
+    hide(O, key, val);
+  } else if (O[key]) {
     O[key] = val;
   } else {
-    if(!safe){
-      delete O[key];
-      hide(O, key, val);
-    } else {
-      if(O[key])O[key] = val;
-      else hide(O, key, val);
-    }
+    hide(O, key, val);
   }
 // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-})(Function.prototype, TO_STRING, function toString(){
+})(Function.prototype, TO_STRING, function toString() {
   return typeof this == 'function' && this[SRC] || $toString.call(this);
 });
   })();
 });
 
-require.register("core-js/modules/_replacer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_replacer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    module.exports = function(regExp, replace){
-  var replacer = replace === Object(replace) ? function(part){
+    module.exports = function (regExp, replace) {
+  var replacer = replace === Object(replace) ? function (part) {
     return replace[part];
   } : replace;
-  return function(it){
+  return function (it) {
     return String(it).replace(regExp, replacer);
   };
 };
   })();
 });
 
-require.register("core-js/modules/_same-value.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_same-value.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.2.9 SameValue(x, y)
-module.exports = Object.is || function is(x, y){
+module.exports = Object.is || function is(x, y) {
+  // eslint-disable-next-line no-self-compare
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
   })();
 });
 
-require.register("core-js/modules/_set-proto.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_set-collection-from.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    'use strict';
+// https://tc39.github.io/proposal-setmap-offrom/
+var $export = require('./_export');
+var aFunction = require('./_a-function');
+var ctx = require('./_ctx');
+var forOf = require('./_for-of');
+
+module.exports = function (COLLECTION) {
+  $export($export.S, COLLECTION, { from: function from(source /* , mapFn, thisArg */) {
+    var mapFn = arguments[1];
+    var mapping, A, n, cb;
+    aFunction(this);
+    mapping = mapFn !== undefined;
+    if (mapping) aFunction(mapFn);
+    if (source == undefined) return new this();
+    A = [];
+    if (mapping) {
+      n = 0;
+      cb = ctx(mapFn, arguments[2], 2);
+      forOf(source, false, function (nextItem) {
+        A.push(cb(nextItem, n++));
+      });
+    } else {
+      forOf(source, false, A.push, A);
+    }
+    return new this(A);
+  } });
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_set-collection-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    'use strict';
+// https://tc39.github.io/proposal-setmap-offrom/
+var $export = require('./_export');
+
+module.exports = function (COLLECTION) {
+  $export($export.S, COLLECTION, { of: function of() {
+    var length = arguments.length;
+    var A = Array(length);
+    while (length--) A[length] = arguments[length];
+    return new this(A);
+  } });
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_set-proto.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = require('./_is-object')
-  , anObject = require('./_an-object');
-var check = function(O, proto){
+var isObject = require('./_is-object');
+var anObject = require('./_an-object');
+var check = function (O, proto) {
   anObject(O);
-  if(!isObject(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
+  if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
 };
 module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
-    function(test, buggy, set){
+    function (test, buggy, set) {
       try {
         set = require('./_ctx')(Function.call, require('./_object-gopd').f(Object.prototype, '__proto__').set, 2);
         set(test, []);
         buggy = !(test instanceof Array);
-      } catch(e){ buggy = true; }
-      return function setPrototypeOf(O, proto){
+      } catch (e) { buggy = true; }
+      return function setPrototypeOf(O, proto) {
         check(O, proto);
-        if(buggy)O.__proto__ = proto;
+        if (buggy) O.__proto__ = proto;
         else set(O, proto);
         return O;
       };
@@ -3789,102 +3987,105 @@ module.exports = {
   })();
 });
 
-require.register("core-js/modules/_set-species.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_set-species.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var global      = require('./_global')
-  , dP          = require('./_object-dp')
-  , DESCRIPTORS = require('./_descriptors')
-  , SPECIES     = require('./_wks')('species');
+var global = require('./_global');
+var dP = require('./_object-dp');
+var DESCRIPTORS = require('./_descriptors');
+var SPECIES = require('./_wks')('species');
 
-module.exports = function(KEY){
+module.exports = function (KEY) {
   var C = global[KEY];
-  if(DESCRIPTORS && C && !C[SPECIES])dP.f(C, SPECIES, {
+  if (DESCRIPTORS && C && !C[SPECIES]) dP.f(C, SPECIES, {
     configurable: true,
-    get: function(){ return this; }
+    get: function () { return this; }
   });
 };
   })();
 });
 
-require.register("core-js/modules/_set-to-string-tag.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_set-to-string-tag.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var def = require('./_object-dp').f
-  , has = require('./_has')
-  , TAG = require('./_wks')('toStringTag');
+    var def = require('./_object-dp').f;
+var has = require('./_has');
+var TAG = require('./_wks')('toStringTag');
 
-module.exports = function(it, tag, stat){
-  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
+module.exports = function (it, tag, stat) {
+  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
 };
   })();
 });
 
-require.register("core-js/modules/_shared-key.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_shared-key.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var shared = require('./_shared')('keys')
-  , uid    = require('./_uid');
-module.exports = function(key){
+    var shared = require('./_shared')('keys');
+var uid = require('./_uid');
+module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
   })();
 });
 
-require.register("core-js/modules/_shared.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_shared.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var global = require('./_global')
-  , SHARED = '__core-js_shared__'
-  , store  = global[SHARED] || (global[SHARED] = {});
-module.exports = function(key){
+    var global = require('./_global');
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || (global[SHARED] = {});
+module.exports = function (key) {
   return store[key] || (store[key] = {});
 };
   })();
 });
 
-require.register("core-js/modules/_species-constructor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_species-constructor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject  = require('./_an-object')
-  , aFunction = require('./_a-function')
-  , SPECIES   = require('./_wks')('species');
-module.exports = function(O, D){
-  var C = anObject(O).constructor, S;
+var anObject = require('./_an-object');
+var aFunction = require('./_a-function');
+var SPECIES = require('./_wks')('species');
+module.exports = function (O, D) {
+  var C = anObject(O).constructor;
+  var S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
   })();
 });
 
-require.register("core-js/modules/_strict-method.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_strict-method.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var fails = require('./_fails');
+    'use strict';
+var fails = require('./_fails');
 
-module.exports = function(method, arg){
-  return !!method && fails(function(){
-    arg ? method.call(null, function(){}, 1) : method.call(null);
+module.exports = function (method, arg) {
+  return !!method && fails(function () {
+    // eslint-disable-next-line no-useless-call
+    arg ? method.call(null, function () { /* empty */ }, 1) : method.call(null);
   });
 };
   })();
 });
 
-require.register("core-js/modules/_string-at.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_string-at.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var toInteger = require('./_to-integer')
-  , defined   = require('./_defined');
+    var toInteger = require('./_to-integer');
+var defined = require('./_defined');
 // true  -> String#at
 // false -> String#codePointAt
-module.exports = function(TO_STRING){
-  return function(that, pos){
-    var s = String(defined(that))
-      , i = toInteger(pos)
-      , l = s.length
-      , a, b;
-    if(i < 0 || i >= l)return TO_STRING ? '' : undefined;
+module.exports = function (TO_STRING) {
+  return function (that, pos) {
+    var s = String(defined(that));
+    var i = toInteger(pos);
+    var l = s.length;
+    var a, b;
+    if (i < 0 || i >= l) return TO_STRING ? '' : undefined;
     a = s.charCodeAt(i);
     return a < 0xd800 || a > 0xdbff || i + 1 === l || (b = s.charCodeAt(i + 1)) < 0xdc00 || b > 0xdfff
       ? TO_STRING ? s.charAt(i) : a
@@ -3894,38 +4095,38 @@ module.exports = function(TO_STRING){
   })();
 });
 
-require.register("core-js/modules/_string-context.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_string-context.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // helper for String#{startsWith, endsWith, includes}
-var isRegExp = require('./_is-regexp')
-  , defined  = require('./_defined');
+var isRegExp = require('./_is-regexp');
+var defined = require('./_defined');
 
-module.exports = function(that, searchString, NAME){
-  if(isRegExp(searchString))throw TypeError('String#' + NAME + " doesn't accept regex!");
+module.exports = function (that, searchString, NAME) {
+  if (isRegExp(searchString)) throw TypeError('String#' + NAME + " doesn't accept regex!");
   return String(defined(that));
 };
   })();
 });
 
-require.register("core-js/modules/_string-html.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_string-html.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export = require('./_export')
-  , fails   = require('./_fails')
-  , defined = require('./_defined')
-  , quot    = /"/g;
+    var $export = require('./_export');
+var fails = require('./_fails');
+var defined = require('./_defined');
+var quot = /"/g;
 // B.2.3.2.1 CreateHTML(string, tag, attribute, value)
-var createHTML = function(string, tag, attribute, value) {
-  var S  = String(defined(string))
-    , p1 = '<' + tag;
-  if(attribute !== '')p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
+var createHTML = function (string, tag, attribute, value) {
+  var S = String(defined(string));
+  var p1 = '<' + tag;
+  if (attribute !== '') p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
   return p1 + '>' + S + '</' + tag + '>';
 };
-module.exports = function(NAME, exec){
+module.exports = function (NAME, exec) {
   var O = {};
   O[NAME] = exec(createHTML);
-  $export($export.P + $export.F * fails(function(){
+  $export($export.P + $export.F * fails(function () {
     var test = ''[NAME]('"');
     return test !== test.toLowerCase() || test.split('"').length > 3;
   }), 'String', O);
@@ -3933,75 +4134,75 @@ module.exports = function(NAME, exec){
   })();
 });
 
-require.register("core-js/modules/_string-pad.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_string-pad.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/tc39/proposal-string-pad-start-end
-var toLength = require('./_to-length')
-  , repeat   = require('./_string-repeat')
-  , defined  = require('./_defined');
+var toLength = require('./_to-length');
+var repeat = require('./_string-repeat');
+var defined = require('./_defined');
 
-module.exports = function(that, maxLength, fillString, left){
-  var S            = String(defined(that))
-    , stringLength = S.length
-    , fillStr      = fillString === undefined ? ' ' : String(fillString)
-    , intMaxLength = toLength(maxLength);
-  if(intMaxLength <= stringLength || fillStr == '')return S;
-  var fillLen = intMaxLength - stringLength
-    , stringFiller = repeat.call(fillStr, Math.ceil(fillLen / fillStr.length));
-  if(stringFiller.length > fillLen)stringFiller = stringFiller.slice(0, fillLen);
+module.exports = function (that, maxLength, fillString, left) {
+  var S = String(defined(that));
+  var stringLength = S.length;
+  var fillStr = fillString === undefined ? ' ' : String(fillString);
+  var intMaxLength = toLength(maxLength);
+  if (intMaxLength <= stringLength || fillStr == '') return S;
+  var fillLen = intMaxLength - stringLength;
+  var stringFiller = repeat.call(fillStr, Math.ceil(fillLen / fillStr.length));
+  if (stringFiller.length > fillLen) stringFiller = stringFiller.slice(0, fillLen);
   return left ? stringFiller + S : S + stringFiller;
 };
   })();
 });
 
-require.register("core-js/modules/_string-repeat.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_string-repeat.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var toInteger = require('./_to-integer')
-  , defined   = require('./_defined');
+var toInteger = require('./_to-integer');
+var defined = require('./_defined');
 
-module.exports = function repeat(count){
-  var str = String(defined(this))
-    , res = ''
-    , n   = toInteger(count);
-  if(n < 0 || n == Infinity)throw RangeError("Count can't be negative");
-  for(;n > 0; (n >>>= 1) && (str += str))if(n & 1)res += str;
+module.exports = function repeat(count) {
+  var str = String(defined(this));
+  var res = '';
+  var n = toInteger(count);
+  if (n < 0 || n == Infinity) throw RangeError("Count can't be negative");
+  for (;n > 0; (n >>>= 1) && (str += str)) if (n & 1) res += str;
   return res;
 };
   })();
 });
 
-require.register("core-js/modules/_string-trim.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_string-trim.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export = require('./_export')
-  , defined = require('./_defined')
-  , fails   = require('./_fails')
-  , spaces  = require('./_string-ws')
-  , space   = '[' + spaces + ']'
-  , non     = '\u200b\u0085'
-  , ltrim   = RegExp('^' + space + space + '*')
-  , rtrim   = RegExp(space + space + '*$');
+    var $export = require('./_export');
+var defined = require('./_defined');
+var fails = require('./_fails');
+var spaces = require('./_string-ws');
+var space = '[' + spaces + ']';
+var non = '\u200b\u0085';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
 
-var exporter = function(KEY, exec, ALIAS){
-  var exp   = {};
-  var FORCE = fails(function(){
+var exporter = function (KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
     return !!spaces[KEY]() || non[KEY]() != non;
   });
   var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
-  if(ALIAS)exp[ALIAS] = fn;
+  if (ALIAS) exp[ALIAS] = fn;
   $export($export.P + $export.F * FORCE, 'String', exp);
 };
 
 // 1 -> String#trimLeft
 // 2 -> String#trimRight
 // 3 -> String#trim
-var trim = exporter.trim = function(string, TYPE){
+var trim = exporter.trim = function (string, TYPE) {
   string = String(defined(string));
-  if(TYPE & 1)string = string.replace(ltrim, '');
-  if(TYPE & 2)string = string.replace(rtrim, '');
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
   return string;
 };
 
@@ -4009,458 +4210,476 @@ module.exports = exporter;
   })();
 });
 
-require.register("core-js/modules/_string-ws.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_string-ws.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
   })();
 });
 
-require.register("core-js/modules/_task.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_task.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var ctx                = require('./_ctx')
-  , invoke             = require('./_invoke')
-  , html               = require('./_html')
-  , cel                = require('./_dom-create')
-  , global             = require('./_global')
-  , process            = global.process
-  , setTask            = global.setImmediate
-  , clearTask          = global.clearImmediate
-  , MessageChannel     = global.MessageChannel
-  , counter            = 0
-  , queue              = {}
-  , ONREADYSTATECHANGE = 'onreadystatechange'
-  , defer, channel, port;
-var run = function(){
+    var ctx = require('./_ctx');
+var invoke = require('./_invoke');
+var html = require('./_html');
+var cel = require('./_dom-create');
+var global = require('./_global');
+var process = global.process;
+var setTask = global.setImmediate;
+var clearTask = global.clearImmediate;
+var MessageChannel = global.MessageChannel;
+var Dispatch = global.Dispatch;
+var counter = 0;
+var queue = {};
+var ONREADYSTATECHANGE = 'onreadystatechange';
+var defer, channel, port;
+var run = function () {
   var id = +this;
-  if(queue.hasOwnProperty(id)){
+  // eslint-disable-next-line no-prototype-builtins
+  if (queue.hasOwnProperty(id)) {
     var fn = queue[id];
     delete queue[id];
     fn();
   }
 };
-var listener = function(event){
+var listener = function (event) {
   run.call(event.data);
 };
 // Node.js 0.9+ & IE10+ has setImmediate, otherwise:
-if(!setTask || !clearTask){
-  setTask = function setImmediate(fn){
-    var args = [], i = 1;
-    while(arguments.length > i)args.push(arguments[i++]);
-    queue[++counter] = function(){
+if (!setTask || !clearTask) {
+  setTask = function setImmediate(fn) {
+    var args = [];
+    var i = 1;
+    while (arguments.length > i) args.push(arguments[i++]);
+    queue[++counter] = function () {
+      // eslint-disable-next-line no-new-func
       invoke(typeof fn == 'function' ? fn : Function(fn), args);
     };
     defer(counter);
     return counter;
   };
-  clearTask = function clearImmediate(id){
+  clearTask = function clearImmediate(id) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if(require('./_cof')(process) == 'process'){
-    defer = function(id){
+  if (require('./_cof')(process) == 'process') {
+    defer = function (id) {
       process.nextTick(ctx(run, id, 1));
     };
+  // Sphere (JS game engine) Dispatch API
+  } else if (Dispatch && Dispatch.now) {
+    defer = function (id) {
+      Dispatch.now(ctx(run, id, 1));
+    };
   // Browsers with MessageChannel, includes WebWorkers
-  } else if(MessageChannel){
-    channel = new MessageChannel;
-    port    = channel.port2;
+  } else if (MessageChannel) {
+    channel = new MessageChannel();
+    port = channel.port2;
     channel.port1.onmessage = listener;
     defer = ctx(port.postMessage, port, 1);
   // Browsers with postMessage, skip WebWorkers
   // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
-  } else if(global.addEventListener && typeof postMessage == 'function' && !global.importScripts){
-    defer = function(id){
+  } else if (global.addEventListener && typeof postMessage == 'function' && !global.importScripts) {
+    defer = function (id) {
       global.postMessage(id + '', '*');
     };
     global.addEventListener('message', listener, false);
   // IE8-
-  } else if(ONREADYSTATECHANGE in cel('script')){
-    defer = function(id){
-      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function(){
+  } else if (ONREADYSTATECHANGE in cel('script')) {
+    defer = function (id) {
+      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function () {
         html.removeChild(this);
         run.call(id);
       };
     };
   // Rest old browsers
   } else {
-    defer = function(id){
+    defer = function (id) {
       setTimeout(ctx(run, id, 1), 0);
     };
   }
 }
 module.exports = {
-  set:   setTask,
+  set: setTask,
   clear: clearTask
 };
   })();
 });
 
-require.register("core-js/modules/_to-index.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_to-absolute-index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var toInteger = require('./_to-integer')
-  , max       = Math.max
-  , min       = Math.min;
-module.exports = function(index, length){
+    var toInteger = require('./_to-integer');
+var max = Math.max;
+var min = Math.min;
+module.exports = function (index, length) {
   index = toInteger(index);
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
   })();
 });
 
-require.register("core-js/modules/_to-integer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_to-index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/ecma262/#sec-toindex
+var toInteger = require('./_to-integer');
+var toLength = require('./_to-length');
+module.exports = function (it) {
+  if (it === undefined) return 0;
+  var number = toInteger(it);
+  var length = toLength(number);
+  if (number !== length) throw RangeError('Wrong length!');
+  return length;
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_to-integer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.1.4 ToInteger
-var ceil  = Math.ceil
-  , floor = Math.floor;
-module.exports = function(it){
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
   })();
 });
 
-require.register("core-js/modules/_to-iobject.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_to-iobject.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = require('./_iobject')
-  , defined = require('./_defined');
-module.exports = function(it){
+var IObject = require('./_iobject');
+var defined = require('./_defined');
+module.exports = function (it) {
   return IObject(defined(it));
 };
   })();
 });
 
-require.register("core-js/modules/_to-length.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_to-length.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.1.15 ToLength
-var toInteger = require('./_to-integer')
-  , min       = Math.min;
-module.exports = function(it){
+var toInteger = require('./_to-integer');
+var min = Math.min;
+module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
   })();
 });
 
-require.register("core-js/modules/_to-object.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_to-object.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.1.13 ToObject(argument)
 var defined = require('./_defined');
-module.exports = function(it){
+module.exports = function (it) {
   return Object(defined(it));
 };
   })();
 });
 
-require.register("core-js/modules/_to-primitive.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_to-primitive.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
-module.exports = function(it, S){
-  if(!isObject(it))return it;
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
   var fn, val;
-  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
   throw TypeError("Can't convert object to primitive value");
 };
   })();
 });
 
-require.register("core-js/modules/_typed-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_typed-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-if(require('./_descriptors')){
-  var LIBRARY             = require('./_library')
-    , global              = require('./_global')
-    , fails               = require('./_fails')
-    , $export             = require('./_export')
-    , $typed              = require('./_typed')
-    , $buffer             = require('./_typed-buffer')
-    , ctx                 = require('./_ctx')
-    , anInstance          = require('./_an-instance')
-    , propertyDesc        = require('./_property-desc')
-    , hide                = require('./_hide')
-    , redefineAll         = require('./_redefine-all')
-    , toInteger           = require('./_to-integer')
-    , toLength            = require('./_to-length')
-    , toIndex             = require('./_to-index')
-    , toPrimitive         = require('./_to-primitive')
-    , has                 = require('./_has')
-    , same                = require('./_same-value')
-    , classof             = require('./_classof')
-    , isObject            = require('./_is-object')
-    , toObject            = require('./_to-object')
-    , isArrayIter         = require('./_is-array-iter')
-    , create              = require('./_object-create')
-    , getPrototypeOf      = require('./_object-gpo')
-    , gOPN                = require('./_object-gopn').f
-    , getIterFn           = require('./core.get-iterator-method')
-    , uid                 = require('./_uid')
-    , wks                 = require('./_wks')
-    , createArrayMethod   = require('./_array-methods')
-    , createArrayIncludes = require('./_array-includes')
-    , speciesConstructor  = require('./_species-constructor')
-    , ArrayIterators      = require('./es6.array.iterator')
-    , Iterators           = require('./_iterators')
-    , $iterDetect         = require('./_iter-detect')
-    , setSpecies          = require('./_set-species')
-    , arrayFill           = require('./_array-fill')
-    , arrayCopyWithin     = require('./_array-copy-within')
-    , $DP                 = require('./_object-dp')
-    , $GOPD               = require('./_object-gopd')
-    , dP                  = $DP.f
-    , gOPD                = $GOPD.f
-    , RangeError          = global.RangeError
-    , TypeError           = global.TypeError
-    , Uint8Array          = global.Uint8Array
-    , ARRAY_BUFFER        = 'ArrayBuffer'
-    , SHARED_BUFFER       = 'Shared' + ARRAY_BUFFER
-    , BYTES_PER_ELEMENT   = 'BYTES_PER_ELEMENT'
-    , PROTOTYPE           = 'prototype'
-    , ArrayProto          = Array[PROTOTYPE]
-    , $ArrayBuffer        = $buffer.ArrayBuffer
-    , $DataView           = $buffer.DataView
-    , arrayForEach        = createArrayMethod(0)
-    , arrayFilter         = createArrayMethod(2)
-    , arraySome           = createArrayMethod(3)
-    , arrayEvery          = createArrayMethod(4)
-    , arrayFind           = createArrayMethod(5)
-    , arrayFindIndex      = createArrayMethod(6)
-    , arrayIncludes       = createArrayIncludes(true)
-    , arrayIndexOf        = createArrayIncludes(false)
-    , arrayValues         = ArrayIterators.values
-    , arrayKeys           = ArrayIterators.keys
-    , arrayEntries        = ArrayIterators.entries
-    , arrayLastIndexOf    = ArrayProto.lastIndexOf
-    , arrayReduce         = ArrayProto.reduce
-    , arrayReduceRight    = ArrayProto.reduceRight
-    , arrayJoin           = ArrayProto.join
-    , arraySort           = ArrayProto.sort
-    , arraySlice          = ArrayProto.slice
-    , arrayToString       = ArrayProto.toString
-    , arrayToLocaleString = ArrayProto.toLocaleString
-    , ITERATOR            = wks('iterator')
-    , TAG                 = wks('toStringTag')
-    , TYPED_CONSTRUCTOR   = uid('typed_constructor')
-    , DEF_CONSTRUCTOR     = uid('def_constructor')
-    , ALL_CONSTRUCTORS    = $typed.CONSTR
-    , TYPED_ARRAY         = $typed.TYPED
-    , VIEW                = $typed.VIEW
-    , WRONG_LENGTH        = 'Wrong length!';
+if (require('./_descriptors')) {
+  var LIBRARY = require('./_library');
+  var global = require('./_global');
+  var fails = require('./_fails');
+  var $export = require('./_export');
+  var $typed = require('./_typed');
+  var $buffer = require('./_typed-buffer');
+  var ctx = require('./_ctx');
+  var anInstance = require('./_an-instance');
+  var propertyDesc = require('./_property-desc');
+  var hide = require('./_hide');
+  var redefineAll = require('./_redefine-all');
+  var toInteger = require('./_to-integer');
+  var toLength = require('./_to-length');
+  var toIndex = require('./_to-index');
+  var toAbsoluteIndex = require('./_to-absolute-index');
+  var toPrimitive = require('./_to-primitive');
+  var has = require('./_has');
+  var classof = require('./_classof');
+  var isObject = require('./_is-object');
+  var toObject = require('./_to-object');
+  var isArrayIter = require('./_is-array-iter');
+  var create = require('./_object-create');
+  var getPrototypeOf = require('./_object-gpo');
+  var gOPN = require('./_object-gopn').f;
+  var getIterFn = require('./core.get-iterator-method');
+  var uid = require('./_uid');
+  var wks = require('./_wks');
+  var createArrayMethod = require('./_array-methods');
+  var createArrayIncludes = require('./_array-includes');
+  var speciesConstructor = require('./_species-constructor');
+  var ArrayIterators = require('./es6.array.iterator');
+  var Iterators = require('./_iterators');
+  var $iterDetect = require('./_iter-detect');
+  var setSpecies = require('./_set-species');
+  var arrayFill = require('./_array-fill');
+  var arrayCopyWithin = require('./_array-copy-within');
+  var $DP = require('./_object-dp');
+  var $GOPD = require('./_object-gopd');
+  var dP = $DP.f;
+  var gOPD = $GOPD.f;
+  var RangeError = global.RangeError;
+  var TypeError = global.TypeError;
+  var Uint8Array = global.Uint8Array;
+  var ARRAY_BUFFER = 'ArrayBuffer';
+  var SHARED_BUFFER = 'Shared' + ARRAY_BUFFER;
+  var BYTES_PER_ELEMENT = 'BYTES_PER_ELEMENT';
+  var PROTOTYPE = 'prototype';
+  var ArrayProto = Array[PROTOTYPE];
+  var $ArrayBuffer = $buffer.ArrayBuffer;
+  var $DataView = $buffer.DataView;
+  var arrayForEach = createArrayMethod(0);
+  var arrayFilter = createArrayMethod(2);
+  var arraySome = createArrayMethod(3);
+  var arrayEvery = createArrayMethod(4);
+  var arrayFind = createArrayMethod(5);
+  var arrayFindIndex = createArrayMethod(6);
+  var arrayIncludes = createArrayIncludes(true);
+  var arrayIndexOf = createArrayIncludes(false);
+  var arrayValues = ArrayIterators.values;
+  var arrayKeys = ArrayIterators.keys;
+  var arrayEntries = ArrayIterators.entries;
+  var arrayLastIndexOf = ArrayProto.lastIndexOf;
+  var arrayReduce = ArrayProto.reduce;
+  var arrayReduceRight = ArrayProto.reduceRight;
+  var arrayJoin = ArrayProto.join;
+  var arraySort = ArrayProto.sort;
+  var arraySlice = ArrayProto.slice;
+  var arrayToString = ArrayProto.toString;
+  var arrayToLocaleString = ArrayProto.toLocaleString;
+  var ITERATOR = wks('iterator');
+  var TAG = wks('toStringTag');
+  var TYPED_CONSTRUCTOR = uid('typed_constructor');
+  var DEF_CONSTRUCTOR = uid('def_constructor');
+  var ALL_CONSTRUCTORS = $typed.CONSTR;
+  var TYPED_ARRAY = $typed.TYPED;
+  var VIEW = $typed.VIEW;
+  var WRONG_LENGTH = 'Wrong length!';
 
-  var $map = createArrayMethod(1, function(O, length){
+  var $map = createArrayMethod(1, function (O, length) {
     return allocate(speciesConstructor(O, O[DEF_CONSTRUCTOR]), length);
   });
 
-  var LITTLE_ENDIAN = fails(function(){
+  var LITTLE_ENDIAN = fails(function () {
+    // eslint-disable-next-line no-undef
     return new Uint8Array(new Uint16Array([1]).buffer)[0] === 1;
   });
 
-  var FORCED_SET = !!Uint8Array && !!Uint8Array[PROTOTYPE].set && fails(function(){
+  var FORCED_SET = !!Uint8Array && !!Uint8Array[PROTOTYPE].set && fails(function () {
     new Uint8Array(1).set({});
   });
 
-  var strictToLength = function(it, SAME){
-    if(it === undefined)throw TypeError(WRONG_LENGTH);
-    var number = +it
-      , length = toLength(it);
-    if(SAME && !same(number, length))throw RangeError(WRONG_LENGTH);
-    return length;
-  };
-
-  var toOffset = function(it, BYTES){
+  var toOffset = function (it, BYTES) {
     var offset = toInteger(it);
-    if(offset < 0 || offset % BYTES)throw RangeError('Wrong offset!');
+    if (offset < 0 || offset % BYTES) throw RangeError('Wrong offset!');
     return offset;
   };
 
-  var validate = function(it){
-    if(isObject(it) && TYPED_ARRAY in it)return it;
+  var validate = function (it) {
+    if (isObject(it) && TYPED_ARRAY in it) return it;
     throw TypeError(it + ' is not a typed array!');
   };
 
-  var allocate = function(C, length){
-    if(!(isObject(C) && TYPED_CONSTRUCTOR in C)){
+  var allocate = function (C, length) {
+    if (!(isObject(C) && TYPED_CONSTRUCTOR in C)) {
       throw TypeError('It is not a typed array constructor!');
     } return new C(length);
   };
 
-  var speciesFromList = function(O, list){
+  var speciesFromList = function (O, list) {
     return fromList(speciesConstructor(O, O[DEF_CONSTRUCTOR]), list);
   };
 
-  var fromList = function(C, list){
-    var index  = 0
-      , length = list.length
-      , result = allocate(C, length);
-    while(length > index)result[index] = list[index++];
+  var fromList = function (C, list) {
+    var index = 0;
+    var length = list.length;
+    var result = allocate(C, length);
+    while (length > index) result[index] = list[index++];
     return result;
   };
 
-  var addGetter = function(it, key, internal){
-    dP(it, key, {get: function(){ return this._d[internal]; }});
+  var addGetter = function (it, key, internal) {
+    dP(it, key, { get: function () { return this._d[internal]; } });
   };
 
-  var $from = function from(source /*, mapfn, thisArg */){
-    var O       = toObject(source)
-      , aLen    = arguments.length
-      , mapfn   = aLen > 1 ? arguments[1] : undefined
-      , mapping = mapfn !== undefined
-      , iterFn  = getIterFn(O)
-      , i, length, values, result, step, iterator;
-    if(iterFn != undefined && !isArrayIter(iterFn)){
-      for(iterator = iterFn.call(O), values = [], i = 0; !(step = iterator.next()).done; i++){
+  var $from = function from(source /* , mapfn, thisArg */) {
+    var O = toObject(source);
+    var aLen = arguments.length;
+    var mapfn = aLen > 1 ? arguments[1] : undefined;
+    var mapping = mapfn !== undefined;
+    var iterFn = getIterFn(O);
+    var i, length, values, result, step, iterator;
+    if (iterFn != undefined && !isArrayIter(iterFn)) {
+      for (iterator = iterFn.call(O), values = [], i = 0; !(step = iterator.next()).done; i++) {
         values.push(step.value);
       } O = values;
     }
-    if(mapping && aLen > 2)mapfn = ctx(mapfn, arguments[2], 2);
-    for(i = 0, length = toLength(O.length), result = allocate(this, length); length > i; i++){
+    if (mapping && aLen > 2) mapfn = ctx(mapfn, arguments[2], 2);
+    for (i = 0, length = toLength(O.length), result = allocate(this, length); length > i; i++) {
       result[i] = mapping ? mapfn(O[i], i) : O[i];
     }
     return result;
   };
 
-  var $of = function of(/*...items*/){
-    var index  = 0
-      , length = arguments.length
-      , result = allocate(this, length);
-    while(length > index)result[index] = arguments[index++];
+  var $of = function of(/* ...items */) {
+    var index = 0;
+    var length = arguments.length;
+    var result = allocate(this, length);
+    while (length > index) result[index] = arguments[index++];
     return result;
   };
 
   // iOS Safari 6.x fails here
-  var TO_LOCALE_BUG = !!Uint8Array && fails(function(){ arrayToLocaleString.call(new Uint8Array(1)); });
+  var TO_LOCALE_BUG = !!Uint8Array && fails(function () { arrayToLocaleString.call(new Uint8Array(1)); });
 
-  var $toLocaleString = function toLocaleString(){
+  var $toLocaleString = function toLocaleString() {
     return arrayToLocaleString.apply(TO_LOCALE_BUG ? arraySlice.call(validate(this)) : validate(this), arguments);
   };
 
   var proto = {
-    copyWithin: function copyWithin(target, start /*, end */){
+    copyWithin: function copyWithin(target, start /* , end */) {
       return arrayCopyWithin.call(validate(this), target, start, arguments.length > 2 ? arguments[2] : undefined);
     },
-    every: function every(callbackfn /*, thisArg */){
+    every: function every(callbackfn /* , thisArg */) {
       return arrayEvery(validate(this), callbackfn, arguments.length > 1 ? arguments[1] : undefined);
     },
-    fill: function fill(value /*, start, end */){ // eslint-disable-line no-unused-vars
+    fill: function fill(value /* , start, end */) { // eslint-disable-line no-unused-vars
       return arrayFill.apply(validate(this), arguments);
     },
-    filter: function filter(callbackfn /*, thisArg */){
+    filter: function filter(callbackfn /* , thisArg */) {
       return speciesFromList(this, arrayFilter(validate(this), callbackfn,
         arguments.length > 1 ? arguments[1] : undefined));
     },
-    find: function find(predicate /*, thisArg */){
+    find: function find(predicate /* , thisArg */) {
       return arrayFind(validate(this), predicate, arguments.length > 1 ? arguments[1] : undefined);
     },
-    findIndex: function findIndex(predicate /*, thisArg */){
+    findIndex: function findIndex(predicate /* , thisArg */) {
       return arrayFindIndex(validate(this), predicate, arguments.length > 1 ? arguments[1] : undefined);
     },
-    forEach: function forEach(callbackfn /*, thisArg */){
+    forEach: function forEach(callbackfn /* , thisArg */) {
       arrayForEach(validate(this), callbackfn, arguments.length > 1 ? arguments[1] : undefined);
     },
-    indexOf: function indexOf(searchElement /*, fromIndex */){
+    indexOf: function indexOf(searchElement /* , fromIndex */) {
       return arrayIndexOf(validate(this), searchElement, arguments.length > 1 ? arguments[1] : undefined);
     },
-    includes: function includes(searchElement /*, fromIndex */){
+    includes: function includes(searchElement /* , fromIndex */) {
       return arrayIncludes(validate(this), searchElement, arguments.length > 1 ? arguments[1] : undefined);
     },
-    join: function join(separator){ // eslint-disable-line no-unused-vars
+    join: function join(separator) { // eslint-disable-line no-unused-vars
       return arrayJoin.apply(validate(this), arguments);
     },
-    lastIndexOf: function lastIndexOf(searchElement /*, fromIndex */){ // eslint-disable-line no-unused-vars
+    lastIndexOf: function lastIndexOf(searchElement /* , fromIndex */) { // eslint-disable-line no-unused-vars
       return arrayLastIndexOf.apply(validate(this), arguments);
     },
-    map: function map(mapfn /*, thisArg */){
+    map: function map(mapfn /* , thisArg */) {
       return $map(validate(this), mapfn, arguments.length > 1 ? arguments[1] : undefined);
     },
-    reduce: function reduce(callbackfn /*, initialValue */){ // eslint-disable-line no-unused-vars
+    reduce: function reduce(callbackfn /* , initialValue */) { // eslint-disable-line no-unused-vars
       return arrayReduce.apply(validate(this), arguments);
     },
-    reduceRight: function reduceRight(callbackfn /*, initialValue */){ // eslint-disable-line no-unused-vars
+    reduceRight: function reduceRight(callbackfn /* , initialValue */) { // eslint-disable-line no-unused-vars
       return arrayReduceRight.apply(validate(this), arguments);
     },
-    reverse: function reverse(){
-      var that   = this
-        , length = validate(that).length
-        , middle = Math.floor(length / 2)
-        , index  = 0
-        , value;
-      while(index < middle){
-        value         = that[index];
+    reverse: function reverse() {
+      var that = this;
+      var length = validate(that).length;
+      var middle = Math.floor(length / 2);
+      var index = 0;
+      var value;
+      while (index < middle) {
+        value = that[index];
         that[index++] = that[--length];
-        that[length]  = value;
+        that[length] = value;
       } return that;
     },
-    some: function some(callbackfn /*, thisArg */){
+    some: function some(callbackfn /* , thisArg */) {
       return arraySome(validate(this), callbackfn, arguments.length > 1 ? arguments[1] : undefined);
     },
-    sort: function sort(comparefn){
+    sort: function sort(comparefn) {
       return arraySort.call(validate(this), comparefn);
     },
-    subarray: function subarray(begin, end){
-      var O      = validate(this)
-        , length = O.length
-        , $begin = toIndex(begin, length);
+    subarray: function subarray(begin, end) {
+      var O = validate(this);
+      var length = O.length;
+      var $begin = toAbsoluteIndex(begin, length);
       return new (speciesConstructor(O, O[DEF_CONSTRUCTOR]))(
         O.buffer,
         O.byteOffset + $begin * O.BYTES_PER_ELEMENT,
-        toLength((end === undefined ? length : toIndex(end, length)) - $begin)
+        toLength((end === undefined ? length : toAbsoluteIndex(end, length)) - $begin)
       );
     }
   };
 
-  var $slice = function slice(start, end){
+  var $slice = function slice(start, end) {
     return speciesFromList(this, arraySlice.call(validate(this), start, end));
   };
 
-  var $set = function set(arrayLike /*, offset */){
+  var $set = function set(arrayLike /* , offset */) {
     validate(this);
-    var offset = toOffset(arguments[1], 1)
-      , length = this.length
-      , src    = toObject(arrayLike)
-      , len    = toLength(src.length)
-      , index  = 0;
-    if(len + offset > length)throw RangeError(WRONG_LENGTH);
-    while(index < len)this[offset + index] = src[index++];
+    var offset = toOffset(arguments[1], 1);
+    var length = this.length;
+    var src = toObject(arrayLike);
+    var len = toLength(src.length);
+    var index = 0;
+    if (len + offset > length) throw RangeError(WRONG_LENGTH);
+    while (index < len) this[offset + index] = src[index++];
   };
 
   var $iterators = {
-    entries: function entries(){
+    entries: function entries() {
       return arrayEntries.call(validate(this));
     },
-    keys: function keys(){
+    keys: function keys() {
       return arrayKeys.call(validate(this));
     },
-    values: function values(){
+    values: function values() {
       return arrayValues.call(validate(this));
     }
   };
 
-  var isTAIndex = function(target, key){
+  var isTAIndex = function (target, key) {
     return isObject(target)
       && target[TYPED_ARRAY]
       && typeof key != 'symbol'
       && key in target
       && String(+key) == String(key);
   };
-  var $getDesc = function getOwnPropertyDescriptor(target, key){
+  var $getDesc = function getOwnPropertyDescriptor(target, key) {
     return isTAIndex(target, key = toPrimitive(key, true))
       ? propertyDesc(2, target[key])
       : gOPD(target, key);
   };
-  var $setDesc = function defineProperty(target, key, desc){
-    if(isTAIndex(target, key = toPrimitive(key, true))
+  var $setDesc = function defineProperty(target, key, desc) {
+    if (isTAIndex(target, key = toPrimitive(key, true))
       && isObject(desc)
       && has(desc, 'value')
       && !has(desc, 'get')
@@ -4469,36 +4688,36 @@ if(require('./_descriptors')){
       && !desc.configurable
       && (!has(desc, 'writable') || desc.writable)
       && (!has(desc, 'enumerable') || desc.enumerable)
-    ){
+    ) {
       target[key] = desc.value;
       return target;
-    } else return dP(target, key, desc);
+    } return dP(target, key, desc);
   };
 
-  if(!ALL_CONSTRUCTORS){
+  if (!ALL_CONSTRUCTORS) {
     $GOPD.f = $getDesc;
-    $DP.f   = $setDesc;
+    $DP.f = $setDesc;
   }
 
   $export($export.S + $export.F * !ALL_CONSTRUCTORS, 'Object', {
     getOwnPropertyDescriptor: $getDesc,
-    defineProperty:           $setDesc
+    defineProperty: $setDesc
   });
 
-  if(fails(function(){ arrayToString.call({}); })){
-    arrayToString = arrayToLocaleString = function toString(){
+  if (fails(function () { arrayToString.call({}); })) {
+    arrayToString = arrayToLocaleString = function toString() {
       return arrayJoin.call(this);
-    }
+    };
   }
 
   var $TypedArrayPrototype$ = redefineAll({}, proto);
   redefineAll($TypedArrayPrototype$, $iterators);
   hide($TypedArrayPrototype$, ITERATOR, $iterators.values);
   redefineAll($TypedArrayPrototype$, {
-    slice:          $slice,
-    set:            $set,
-    constructor:    function(){ /* noop */ },
-    toString:       arrayToString,
+    slice: $slice,
+    set: $set,
+    constructor: function () { /* noop */ },
+    toString: arrayToString,
     toLocaleString: $toLocaleString
   });
   addGetter($TypedArrayPrototype$, 'buffer', 'b');
@@ -4506,65 +4725,65 @@ if(require('./_descriptors')){
   addGetter($TypedArrayPrototype$, 'byteLength', 'l');
   addGetter($TypedArrayPrototype$, 'length', 'e');
   dP($TypedArrayPrototype$, TAG, {
-    get: function(){ return this[TYPED_ARRAY]; }
+    get: function () { return this[TYPED_ARRAY]; }
   });
 
-  module.exports = function(KEY, BYTES, wrapper, CLAMPED){
+  // eslint-disable-next-line max-statements
+  module.exports = function (KEY, BYTES, wrapper, CLAMPED) {
     CLAMPED = !!CLAMPED;
-    var NAME       = KEY + (CLAMPED ? 'Clamped' : '') + 'Array'
-      , ISNT_UINT8 = NAME != 'Uint8Array'
-      , GETTER     = 'get' + KEY
-      , SETTER     = 'set' + KEY
-      , TypedArray = global[NAME]
-      , Base       = TypedArray || {}
-      , TAC        = TypedArray && getPrototypeOf(TypedArray)
-      , FORCED     = !TypedArray || !$typed.ABV
-      , O          = {}
-      , TypedArrayPrototype = TypedArray && TypedArray[PROTOTYPE];
-    var getter = function(that, index){
+    var NAME = KEY + (CLAMPED ? 'Clamped' : '') + 'Array';
+    var GETTER = 'get' + KEY;
+    var SETTER = 'set' + KEY;
+    var TypedArray = global[NAME];
+    var Base = TypedArray || {};
+    var TAC = TypedArray && getPrototypeOf(TypedArray);
+    var FORCED = !TypedArray || !$typed.ABV;
+    var O = {};
+    var TypedArrayPrototype = TypedArray && TypedArray[PROTOTYPE];
+    var getter = function (that, index) {
       var data = that._d;
       return data.v[GETTER](index * BYTES + data.o, LITTLE_ENDIAN);
     };
-    var setter = function(that, index, value){
+    var setter = function (that, index, value) {
       var data = that._d;
-      if(CLAMPED)value = (value = Math.round(value)) < 0 ? 0 : value > 0xff ? 0xff : value & 0xff;
+      if (CLAMPED) value = (value = Math.round(value)) < 0 ? 0 : value > 0xff ? 0xff : value & 0xff;
       data.v[SETTER](index * BYTES + data.o, value, LITTLE_ENDIAN);
     };
-    var addElement = function(that, index){
+    var addElement = function (that, index) {
       dP(that, index, {
-        get: function(){
+        get: function () {
           return getter(this, index);
         },
-        set: function(value){
+        set: function (value) {
           return setter(this, index, value);
         },
         enumerable: true
       });
     };
-    if(FORCED){
-      TypedArray = wrapper(function(that, data, $offset, $length){
+    if (FORCED) {
+      TypedArray = wrapper(function (that, data, $offset, $length) {
         anInstance(that, TypedArray, NAME, '_d');
-        var index  = 0
-          , offset = 0
-          , buffer, byteLength, length, klass;
-        if(!isObject(data)){
-          length     = strictToLength(data, true)
+        var index = 0;
+        var offset = 0;
+        var buffer, byteLength, length, klass;
+        if (!isObject(data)) {
+          length = toIndex(data);
           byteLength = length * BYTES;
-          buffer     = new $ArrayBuffer(byteLength);
-        } else if(data instanceof $ArrayBuffer || (klass = classof(data)) == ARRAY_BUFFER || klass == SHARED_BUFFER){
+          buffer = new $ArrayBuffer(byteLength);
+        } else if (data instanceof $ArrayBuffer || (klass = classof(data)) == ARRAY_BUFFER || klass == SHARED_BUFFER) {
           buffer = data;
           offset = toOffset($offset, BYTES);
           var $len = data.byteLength;
-          if($length === undefined){
-            if($len % BYTES)throw RangeError(WRONG_LENGTH);
+          if ($length === undefined) {
+            if ($len % BYTES) throw RangeError(WRONG_LENGTH);
             byteLength = $len - offset;
-            if(byteLength < 0)throw RangeError(WRONG_LENGTH);
+            if (byteLength < 0) throw RangeError(WRONG_LENGTH);
           } else {
             byteLength = toLength($length) * BYTES;
-            if(byteLength + offset > $len)throw RangeError(WRONG_LENGTH);
+            if (byteLength + offset > $len) throw RangeError(WRONG_LENGTH);
           }
           length = byteLength / BYTES;
-        } else if(TYPED_ARRAY in data){
+        } else if (TYPED_ARRAY in data) {
           return fromList(TypedArray, data);
         } else {
           return $from.call(TypedArray, data);
@@ -4576,49 +4795,54 @@ if(require('./_descriptors')){
           e: length,
           v: new $DataView(buffer)
         });
-        while(index < length)addElement(that, index++);
+        while (index < length) addElement(that, index++);
       });
       TypedArrayPrototype = TypedArray[PROTOTYPE] = create($TypedArrayPrototype$);
       hide(TypedArrayPrototype, 'constructor', TypedArray);
-    } else if(!$iterDetect(function(iter){
-      // V8 works with iterators, but fails in many other cases
-      // https://code.google.com/p/v8/issues/detail?id=4552
+    } else if (!fails(function () {
+      TypedArray(1);
+    }) || !fails(function () {
+      new TypedArray(-1); // eslint-disable-line no-new
+    }) || !$iterDetect(function (iter) {
+      new TypedArray(); // eslint-disable-line no-new
       new TypedArray(null); // eslint-disable-line no-new
+      new TypedArray(1.5); // eslint-disable-line no-new
       new TypedArray(iter); // eslint-disable-line no-new
-    }, true)){
-      TypedArray = wrapper(function(that, data, $offset, $length){
+    }, true)) {
+      TypedArray = wrapper(function (that, data, $offset, $length) {
         anInstance(that, TypedArray, NAME);
         var klass;
         // `ws` module bug, temporarily remove validation length for Uint8Array
         // https://github.com/websockets/ws/pull/645
-        if(!isObject(data))return new Base(strictToLength(data, ISNT_UINT8));
-        if(data instanceof $ArrayBuffer || (klass = classof(data)) == ARRAY_BUFFER || klass == SHARED_BUFFER){
+        if (!isObject(data)) return new Base(toIndex(data));
+        if (data instanceof $ArrayBuffer || (klass = classof(data)) == ARRAY_BUFFER || klass == SHARED_BUFFER) {
           return $length !== undefined
             ? new Base(data, toOffset($offset, BYTES), $length)
             : $offset !== undefined
               ? new Base(data, toOffset($offset, BYTES))
               : new Base(data);
         }
-        if(TYPED_ARRAY in data)return fromList(TypedArray, data);
+        if (TYPED_ARRAY in data) return fromList(TypedArray, data);
         return $from.call(TypedArray, data);
       });
-      arrayForEach(TAC !== Function.prototype ? gOPN(Base).concat(gOPN(TAC)) : gOPN(Base), function(key){
-        if(!(key in TypedArray))hide(TypedArray, key, Base[key]);
+      arrayForEach(TAC !== Function.prototype ? gOPN(Base).concat(gOPN(TAC)) : gOPN(Base), function (key) {
+        if (!(key in TypedArray)) hide(TypedArray, key, Base[key]);
       });
       TypedArray[PROTOTYPE] = TypedArrayPrototype;
-      if(!LIBRARY)TypedArrayPrototype.constructor = TypedArray;
+      if (!LIBRARY) TypedArrayPrototype.constructor = TypedArray;
     }
-    var $nativeIterator   = TypedArrayPrototype[ITERATOR]
-      , CORRECT_ITER_NAME = !!$nativeIterator && ($nativeIterator.name == 'values' || $nativeIterator.name == undefined)
-      , $iterator         = $iterators.values;
+    var $nativeIterator = TypedArrayPrototype[ITERATOR];
+    var CORRECT_ITER_NAME = !!$nativeIterator
+      && ($nativeIterator.name == 'values' || $nativeIterator.name == undefined);
+    var $iterator = $iterators.values;
     hide(TypedArray, TYPED_CONSTRUCTOR, true);
     hide(TypedArrayPrototype, TYPED_ARRAY, NAME);
     hide(TypedArrayPrototype, VIEW, true);
     hide(TypedArrayPrototype, DEF_CONSTRUCTOR, TypedArray);
 
-    if(CLAMPED ? new TypedArray(1)[TAG] != NAME : !(TAG in TypedArrayPrototype)){
+    if (CLAMPED ? new TypedArray(1)[TAG] != NAME : !(TAG in TypedArrayPrototype)) {
       dP(TypedArrayPrototype, TAG, {
-        get: function(){ return NAME; }
+        get: function () { return NAME; }
       });
     }
 
@@ -4627,114 +4851,121 @@ if(require('./_descriptors')){
     $export($export.G + $export.W + $export.F * (TypedArray != Base), O);
 
     $export($export.S, NAME, {
-      BYTES_PER_ELEMENT: BYTES,
+      BYTES_PER_ELEMENT: BYTES
+    });
+
+    $export($export.S + $export.F * fails(function () { Base.of.call(TypedArray, 1); }), NAME, {
       from: $from,
       of: $of
     });
 
-    if(!(BYTES_PER_ELEMENT in TypedArrayPrototype))hide(TypedArrayPrototype, BYTES_PER_ELEMENT, BYTES);
+    if (!(BYTES_PER_ELEMENT in TypedArrayPrototype)) hide(TypedArrayPrototype, BYTES_PER_ELEMENT, BYTES);
 
     $export($export.P, NAME, proto);
 
     setSpecies(NAME);
 
-    $export($export.P + $export.F * FORCED_SET, NAME, {set: $set});
+    $export($export.P + $export.F * FORCED_SET, NAME, { set: $set });
 
     $export($export.P + $export.F * !CORRECT_ITER_NAME, NAME, $iterators);
 
-    $export($export.P + $export.F * (TypedArrayPrototype.toString != arrayToString), NAME, {toString: arrayToString});
+    if (!LIBRARY && TypedArrayPrototype.toString != arrayToString) TypedArrayPrototype.toString = arrayToString;
 
-    $export($export.P + $export.F * fails(function(){
+    $export($export.P + $export.F * fails(function () {
       new TypedArray(1).slice();
-    }), NAME, {slice: $slice});
+    }), NAME, { slice: $slice });
 
-    $export($export.P + $export.F * (fails(function(){
-      return [1, 2].toLocaleString() != new TypedArray([1, 2]).toLocaleString()
-    }) || !fails(function(){
+    $export($export.P + $export.F * (fails(function () {
+      return [1, 2].toLocaleString() != new TypedArray([1, 2]).toLocaleString();
+    }) || !fails(function () {
       TypedArrayPrototype.toLocaleString.call([1, 2]);
-    })), NAME, {toLocaleString: $toLocaleString});
+    })), NAME, { toLocaleString: $toLocaleString });
 
     Iterators[NAME] = CORRECT_ITER_NAME ? $nativeIterator : $iterator;
-    if(!LIBRARY && !CORRECT_ITER_NAME)hide(TypedArrayPrototype, ITERATOR, $iterator);
+    if (!LIBRARY && !CORRECT_ITER_NAME) hide(TypedArrayPrototype, ITERATOR, $iterator);
   };
-} else module.exports = function(){ /* empty */ };
+} else module.exports = function () { /* empty */ };
   })();
 });
 
-require.register("core-js/modules/_typed-buffer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_typed-buffer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var global         = require('./_global')
-  , DESCRIPTORS    = require('./_descriptors')
-  , LIBRARY        = require('./_library')
-  , $typed         = require('./_typed')
-  , hide           = require('./_hide')
-  , redefineAll    = require('./_redefine-all')
-  , fails          = require('./_fails')
-  , anInstance     = require('./_an-instance')
-  , toInteger      = require('./_to-integer')
-  , toLength       = require('./_to-length')
-  , gOPN           = require('./_object-gopn').f
-  , dP             = require('./_object-dp').f
-  , arrayFill      = require('./_array-fill')
-  , setToStringTag = require('./_set-to-string-tag')
-  , ARRAY_BUFFER   = 'ArrayBuffer'
-  , DATA_VIEW      = 'DataView'
-  , PROTOTYPE      = 'prototype'
-  , WRONG_LENGTH   = 'Wrong length!'
-  , WRONG_INDEX    = 'Wrong index!'
-  , $ArrayBuffer   = global[ARRAY_BUFFER]
-  , $DataView      = global[DATA_VIEW]
-  , Math           = global.Math
-  , RangeError     = global.RangeError
-  , Infinity       = global.Infinity
-  , BaseBuffer     = $ArrayBuffer
-  , abs            = Math.abs
-  , pow            = Math.pow
-  , floor          = Math.floor
-  , log            = Math.log
-  , LN2            = Math.LN2
-  , BUFFER         = 'buffer'
-  , BYTE_LENGTH    = 'byteLength'
-  , BYTE_OFFSET    = 'byteOffset'
-  , $BUFFER        = DESCRIPTORS ? '_b' : BUFFER
-  , $LENGTH        = DESCRIPTORS ? '_l' : BYTE_LENGTH
-  , $OFFSET        = DESCRIPTORS ? '_o' : BYTE_OFFSET;
+var global = require('./_global');
+var DESCRIPTORS = require('./_descriptors');
+var LIBRARY = require('./_library');
+var $typed = require('./_typed');
+var hide = require('./_hide');
+var redefineAll = require('./_redefine-all');
+var fails = require('./_fails');
+var anInstance = require('./_an-instance');
+var toInteger = require('./_to-integer');
+var toLength = require('./_to-length');
+var toIndex = require('./_to-index');
+var gOPN = require('./_object-gopn').f;
+var dP = require('./_object-dp').f;
+var arrayFill = require('./_array-fill');
+var setToStringTag = require('./_set-to-string-tag');
+var ARRAY_BUFFER = 'ArrayBuffer';
+var DATA_VIEW = 'DataView';
+var PROTOTYPE = 'prototype';
+var WRONG_LENGTH = 'Wrong length!';
+var WRONG_INDEX = 'Wrong index!';
+var $ArrayBuffer = global[ARRAY_BUFFER];
+var $DataView = global[DATA_VIEW];
+var Math = global.Math;
+var RangeError = global.RangeError;
+// eslint-disable-next-line no-shadow-restricted-names
+var Infinity = global.Infinity;
+var BaseBuffer = $ArrayBuffer;
+var abs = Math.abs;
+var pow = Math.pow;
+var floor = Math.floor;
+var log = Math.log;
+var LN2 = Math.LN2;
+var BUFFER = 'buffer';
+var BYTE_LENGTH = 'byteLength';
+var BYTE_OFFSET = 'byteOffset';
+var $BUFFER = DESCRIPTORS ? '_b' : BUFFER;
+var $LENGTH = DESCRIPTORS ? '_l' : BYTE_LENGTH;
+var $OFFSET = DESCRIPTORS ? '_o' : BYTE_OFFSET;
 
 // IEEE754 conversions based on https://github.com/feross/ieee754
-var packIEEE754 = function(value, mLen, nBytes){
-  var buffer = Array(nBytes)
-    , eLen   = nBytes * 8 - mLen - 1
-    , eMax   = (1 << eLen) - 1
-    , eBias  = eMax >> 1
-    , rt     = mLen === 23 ? pow(2, -24) - pow(2, -77) : 0
-    , i      = 0
-    , s      = value < 0 || value === 0 && 1 / value < 0 ? 1 : 0
-    , e, m, c;
-  value = abs(value)
-  if(value != value || value === Infinity){
+function packIEEE754(value, mLen, nBytes) {
+  var buffer = Array(nBytes);
+  var eLen = nBytes * 8 - mLen - 1;
+  var eMax = (1 << eLen) - 1;
+  var eBias = eMax >> 1;
+  var rt = mLen === 23 ? pow(2, -24) - pow(2, -77) : 0;
+  var i = 0;
+  var s = value < 0 || value === 0 && 1 / value < 0 ? 1 : 0;
+  var e, m, c;
+  value = abs(value);
+  // eslint-disable-next-line no-self-compare
+  if (value != value || value === Infinity) {
+    // eslint-disable-next-line no-self-compare
     m = value != value ? 1 : 0;
     e = eMax;
   } else {
     e = floor(log(value) / LN2);
-    if(value * (c = pow(2, -e)) < 1){
+    if (value * (c = pow(2, -e)) < 1) {
       e--;
       c *= 2;
     }
-    if(e + eBias >= 1){
+    if (e + eBias >= 1) {
       value += rt / c;
     } else {
       value += rt * pow(2, 1 - eBias);
     }
-    if(value * c >= 2){
+    if (value * c >= 2) {
       e++;
       c /= 2;
     }
-    if(e + eBias >= eMax){
+    if (e + eBias >= eMax) {
       m = 0;
       e = eMax;
-    } else if(e + eBias >= 1){
+    } else if (e + eBias >= 1) {
       m = (value * c - 1) * pow(2, mLen);
       e = e + eBias;
     } else {
@@ -4742,109 +4973,102 @@ var packIEEE754 = function(value, mLen, nBytes){
       e = 0;
     }
   }
-  for(; mLen >= 8; buffer[i++] = m & 255, m /= 256, mLen -= 8);
+  for (; mLen >= 8; buffer[i++] = m & 255, m /= 256, mLen -= 8);
   e = e << mLen | m;
   eLen += mLen;
-  for(; eLen > 0; buffer[i++] = e & 255, e /= 256, eLen -= 8);
+  for (; eLen > 0; buffer[i++] = e & 255, e /= 256, eLen -= 8);
   buffer[--i] |= s * 128;
   return buffer;
-};
-var unpackIEEE754 = function(buffer, mLen, nBytes){
-  var eLen  = nBytes * 8 - mLen - 1
-    , eMax  = (1 << eLen) - 1
-    , eBias = eMax >> 1
-    , nBits = eLen - 7
-    , i     = nBytes - 1
-    , s     = buffer[i--]
-    , e     = s & 127
-    , m;
+}
+function unpackIEEE754(buffer, mLen, nBytes) {
+  var eLen = nBytes * 8 - mLen - 1;
+  var eMax = (1 << eLen) - 1;
+  var eBias = eMax >> 1;
+  var nBits = eLen - 7;
+  var i = nBytes - 1;
+  var s = buffer[i--];
+  var e = s & 127;
+  var m;
   s >>= 7;
-  for(; nBits > 0; e = e * 256 + buffer[i], i--, nBits -= 8);
+  for (; nBits > 0; e = e * 256 + buffer[i], i--, nBits -= 8);
   m = e & (1 << -nBits) - 1;
   e >>= -nBits;
   nBits += mLen;
-  for(; nBits > 0; m = m * 256 + buffer[i], i--, nBits -= 8);
-  if(e === 0){
+  for (; nBits > 0; m = m * 256 + buffer[i], i--, nBits -= 8);
+  if (e === 0) {
     e = 1 - eBias;
-  } else if(e === eMax){
+  } else if (e === eMax) {
     return m ? NaN : s ? -Infinity : Infinity;
   } else {
     m = m + pow(2, mLen);
     e = e - eBias;
   } return (s ? -1 : 1) * m * pow(2, e - mLen);
-};
+}
 
-var unpackI32 = function(bytes){
+function unpackI32(bytes) {
   return bytes[3] << 24 | bytes[2] << 16 | bytes[1] << 8 | bytes[0];
-};
-var packI8 = function(it){
+}
+function packI8(it) {
   return [it & 0xff];
-};
-var packI16 = function(it){
+}
+function packI16(it) {
   return [it & 0xff, it >> 8 & 0xff];
-};
-var packI32 = function(it){
+}
+function packI32(it) {
   return [it & 0xff, it >> 8 & 0xff, it >> 16 & 0xff, it >> 24 & 0xff];
-};
-var packF64 = function(it){
+}
+function packF64(it) {
   return packIEEE754(it, 52, 8);
-};
-var packF32 = function(it){
+}
+function packF32(it) {
   return packIEEE754(it, 23, 4);
-};
+}
 
-var addGetter = function(C, key, internal){
-  dP(C[PROTOTYPE], key, {get: function(){ return this[internal]; }});
-};
+function addGetter(C, key, internal) {
+  dP(C[PROTOTYPE], key, { get: function () { return this[internal]; } });
+}
 
-var get = function(view, bytes, index, isLittleEndian){
-  var numIndex = +index
-    , intIndex = toInteger(numIndex);
-  if(numIndex != intIndex || intIndex < 0 || intIndex + bytes > view[$LENGTH])throw RangeError(WRONG_INDEX);
-  var store = view[$BUFFER]._b
-    , start = intIndex + view[$OFFSET]
-    , pack  = store.slice(start, start + bytes);
+function get(view, bytes, index, isLittleEndian) {
+  var numIndex = +index;
+  var intIndex = toIndex(numIndex);
+  if (intIndex + bytes > view[$LENGTH]) throw RangeError(WRONG_INDEX);
+  var store = view[$BUFFER]._b;
+  var start = intIndex + view[$OFFSET];
+  var pack = store.slice(start, start + bytes);
   return isLittleEndian ? pack : pack.reverse();
-};
-var set = function(view, bytes, index, conversion, value, isLittleEndian){
-  var numIndex = +index
-    , intIndex = toInteger(numIndex);
-  if(numIndex != intIndex || intIndex < 0 || intIndex + bytes > view[$LENGTH])throw RangeError(WRONG_INDEX);
-  var store = view[$BUFFER]._b
-    , start = intIndex + view[$OFFSET]
-    , pack  = conversion(+value);
-  for(var i = 0; i < bytes; i++)store[start + i] = pack[isLittleEndian ? i : bytes - i - 1];
-};
+}
+function set(view, bytes, index, conversion, value, isLittleEndian) {
+  var numIndex = +index;
+  var intIndex = toIndex(numIndex);
+  if (intIndex + bytes > view[$LENGTH]) throw RangeError(WRONG_INDEX);
+  var store = view[$BUFFER]._b;
+  var start = intIndex + view[$OFFSET];
+  var pack = conversion(+value);
+  for (var i = 0; i < bytes; i++) store[start + i] = pack[isLittleEndian ? i : bytes - i - 1];
+}
 
-var validateArrayBufferArguments = function(that, length){
-  anInstance(that, $ArrayBuffer, ARRAY_BUFFER);
-  var numberLength = +length
-    , byteLength   = toLength(numberLength);
-  if(numberLength != byteLength)throw RangeError(WRONG_LENGTH);
-  return byteLength;
-};
-
-if(!$typed.ABV){
-  $ArrayBuffer = function ArrayBuffer(length){
-    var byteLength = validateArrayBufferArguments(this, length);
-    this._b       = arrayFill.call(Array(byteLength), 0);
+if (!$typed.ABV) {
+  $ArrayBuffer = function ArrayBuffer(length) {
+    anInstance(this, $ArrayBuffer, ARRAY_BUFFER);
+    var byteLength = toIndex(length);
+    this._b = arrayFill.call(Array(byteLength), 0);
     this[$LENGTH] = byteLength;
   };
 
-  $DataView = function DataView(buffer, byteOffset, byteLength){
+  $DataView = function DataView(buffer, byteOffset, byteLength) {
     anInstance(this, $DataView, DATA_VIEW);
     anInstance(buffer, $ArrayBuffer, DATA_VIEW);
-    var bufferLength = buffer[$LENGTH]
-      , offset       = toInteger(byteOffset);
-    if(offset < 0 || offset > bufferLength)throw RangeError('Wrong offset!');
+    var bufferLength = buffer[$LENGTH];
+    var offset = toInteger(byteOffset);
+    if (offset < 0 || offset > bufferLength) throw RangeError('Wrong offset!');
     byteLength = byteLength === undefined ? bufferLength - offset : toLength(byteLength);
-    if(offset + byteLength > bufferLength)throw RangeError(WRONG_LENGTH);
+    if (offset + byteLength > bufferLength) throw RangeError(WRONG_LENGTH);
     this[$BUFFER] = buffer;
     this[$OFFSET] = offset;
     this[$LENGTH] = byteLength;
   };
 
-  if(DESCRIPTORS){
+  if (DESCRIPTORS) {
     addGetter($ArrayBuffer, BYTE_LENGTH, '_l');
     addGetter($DataView, BUFFER, '_b');
     addGetter($DataView, BYTE_LENGTH, '_l');
@@ -4852,82 +5076,88 @@ if(!$typed.ABV){
   }
 
   redefineAll($DataView[PROTOTYPE], {
-    getInt8: function getInt8(byteOffset){
+    getInt8: function getInt8(byteOffset) {
       return get(this, 1, byteOffset)[0] << 24 >> 24;
     },
-    getUint8: function getUint8(byteOffset){
+    getUint8: function getUint8(byteOffset) {
       return get(this, 1, byteOffset)[0];
     },
-    getInt16: function getInt16(byteOffset /*, littleEndian */){
+    getInt16: function getInt16(byteOffset /* , littleEndian */) {
       var bytes = get(this, 2, byteOffset, arguments[1]);
       return (bytes[1] << 8 | bytes[0]) << 16 >> 16;
     },
-    getUint16: function getUint16(byteOffset /*, littleEndian */){
+    getUint16: function getUint16(byteOffset /* , littleEndian */) {
       var bytes = get(this, 2, byteOffset, arguments[1]);
       return bytes[1] << 8 | bytes[0];
     },
-    getInt32: function getInt32(byteOffset /*, littleEndian */){
+    getInt32: function getInt32(byteOffset /* , littleEndian */) {
       return unpackI32(get(this, 4, byteOffset, arguments[1]));
     },
-    getUint32: function getUint32(byteOffset /*, littleEndian */){
+    getUint32: function getUint32(byteOffset /* , littleEndian */) {
       return unpackI32(get(this, 4, byteOffset, arguments[1])) >>> 0;
     },
-    getFloat32: function getFloat32(byteOffset /*, littleEndian */){
+    getFloat32: function getFloat32(byteOffset /* , littleEndian */) {
       return unpackIEEE754(get(this, 4, byteOffset, arguments[1]), 23, 4);
     },
-    getFloat64: function getFloat64(byteOffset /*, littleEndian */){
+    getFloat64: function getFloat64(byteOffset /* , littleEndian */) {
       return unpackIEEE754(get(this, 8, byteOffset, arguments[1]), 52, 8);
     },
-    setInt8: function setInt8(byteOffset, value){
+    setInt8: function setInt8(byteOffset, value) {
       set(this, 1, byteOffset, packI8, value);
     },
-    setUint8: function setUint8(byteOffset, value){
+    setUint8: function setUint8(byteOffset, value) {
       set(this, 1, byteOffset, packI8, value);
     },
-    setInt16: function setInt16(byteOffset, value /*, littleEndian */){
+    setInt16: function setInt16(byteOffset, value /* , littleEndian */) {
       set(this, 2, byteOffset, packI16, value, arguments[2]);
     },
-    setUint16: function setUint16(byteOffset, value /*, littleEndian */){
+    setUint16: function setUint16(byteOffset, value /* , littleEndian */) {
       set(this, 2, byteOffset, packI16, value, arguments[2]);
     },
-    setInt32: function setInt32(byteOffset, value /*, littleEndian */){
+    setInt32: function setInt32(byteOffset, value /* , littleEndian */) {
       set(this, 4, byteOffset, packI32, value, arguments[2]);
     },
-    setUint32: function setUint32(byteOffset, value /*, littleEndian */){
+    setUint32: function setUint32(byteOffset, value /* , littleEndian */) {
       set(this, 4, byteOffset, packI32, value, arguments[2]);
     },
-    setFloat32: function setFloat32(byteOffset, value /*, littleEndian */){
+    setFloat32: function setFloat32(byteOffset, value /* , littleEndian */) {
       set(this, 4, byteOffset, packF32, value, arguments[2]);
     },
-    setFloat64: function setFloat64(byteOffset, value /*, littleEndian */){
+    setFloat64: function setFloat64(byteOffset, value /* , littleEndian */) {
       set(this, 8, byteOffset, packF64, value, arguments[2]);
     }
   });
 } else {
-  if(!fails(function(){
-    new $ArrayBuffer;     // eslint-disable-line no-new
-  }) || !fails(function(){
-    new $ArrayBuffer(.5); // eslint-disable-line no-new
-  })){
-    $ArrayBuffer = function ArrayBuffer(length){
-      return new BaseBuffer(validateArrayBufferArguments(this, length));
+  if (!fails(function () {
+    $ArrayBuffer(1);
+  }) || !fails(function () {
+    new $ArrayBuffer(-1); // eslint-disable-line no-new
+  }) || fails(function () {
+    new $ArrayBuffer(); // eslint-disable-line no-new
+    new $ArrayBuffer(1.5); // eslint-disable-line no-new
+    new $ArrayBuffer(NaN); // eslint-disable-line no-new
+    return $ArrayBuffer.name != ARRAY_BUFFER;
+  })) {
+    $ArrayBuffer = function ArrayBuffer(length) {
+      anInstance(this, $ArrayBuffer);
+      return new BaseBuffer(toIndex(length));
     };
     var ArrayBufferProto = $ArrayBuffer[PROTOTYPE] = BaseBuffer[PROTOTYPE];
-    for(var keys = gOPN(BaseBuffer), j = 0, key; keys.length > j; ){
-      if(!((key = keys[j++]) in $ArrayBuffer))hide($ArrayBuffer, key, BaseBuffer[key]);
-    };
-    if(!LIBRARY)ArrayBufferProto.constructor = $ArrayBuffer;
+    for (var keys = gOPN(BaseBuffer), j = 0, key; keys.length > j;) {
+      if (!((key = keys[j++]) in $ArrayBuffer)) hide($ArrayBuffer, key, BaseBuffer[key]);
+    }
+    if (!LIBRARY) ArrayBufferProto.constructor = $ArrayBuffer;
   }
   // iOS Safari 7.x bug
-  var view = new $DataView(new $ArrayBuffer(2))
-    , $setInt8 = $DataView[PROTOTYPE].setInt8;
+  var view = new $DataView(new $ArrayBuffer(2));
+  var $setInt8 = $DataView[PROTOTYPE].setInt8;
   view.setInt8(0, 2147483648);
   view.setInt8(1, 2147483649);
-  if(view.getInt8(0) || !view.getInt8(1))redefineAll($DataView[PROTOTYPE], {
-    setInt8: function setInt8(byteOffset, value){
+  if (view.getInt8(0) || !view.getInt8(1)) redefineAll($DataView[PROTOTYPE], {
+    setInt8: function setInt8(byteOffset, value) {
       $setInt8.call(this, byteOffset, value << 24 >> 24);
     },
-    setUint8: function setUint8(byteOffset, value){
+    setUint8: function setUint8(byteOffset, value) {
       $setInt8.call(this, byteOffset, value << 24 >> 24);
     }
   }, true);
@@ -4940,80 +5170,93 @@ exports[DATA_VIEW] = $DataView;
   })();
 });
 
-require.register("core-js/modules/_typed.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_typed.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var global = require('./_global')
-  , hide   = require('./_hide')
-  , uid    = require('./_uid')
-  , TYPED  = uid('typed_array')
-  , VIEW   = uid('view')
-  , ABV    = !!(global.ArrayBuffer && global.DataView)
-  , CONSTR = ABV
-  , i = 0, l = 9, Typed;
+    var global = require('./_global');
+var hide = require('./_hide');
+var uid = require('./_uid');
+var TYPED = uid('typed_array');
+var VIEW = uid('view');
+var ABV = !!(global.ArrayBuffer && global.DataView);
+var CONSTR = ABV;
+var i = 0;
+var l = 9;
+var Typed;
 
 var TypedArrayConstructors = (
   'Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array'
 ).split(',');
 
-while(i < l){
-  if(Typed = global[TypedArrayConstructors[i++]]){
+while (i < l) {
+  if (Typed = global[TypedArrayConstructors[i++]]) {
     hide(Typed.prototype, TYPED, true);
     hide(Typed.prototype, VIEW, true);
   } else CONSTR = false;
 }
 
 module.exports = {
-  ABV:    ABV,
+  ABV: ABV,
   CONSTR: CONSTR,
-  TYPED:  TYPED,
-  VIEW:   VIEW
+  TYPED: TYPED,
+  VIEW: VIEW
 };
   })();
 });
 
-require.register("core-js/modules/_uid.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_uid.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var id = 0
-  , px = Math.random();
-module.exports = function(key){
+    var id = 0;
+var px = Math.random();
+module.exports = function (key) {
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
   })();
 });
 
-require.register("core-js/modules/_wks-define.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_validate-collection.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var global         = require('./_global')
-  , core           = require('./_core')
-  , LIBRARY        = require('./_library')
-  , wksExt         = require('./_wks-ext')
-  , defineProperty = require('./_object-dp').f;
-module.exports = function(name){
-  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
-  if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
+    var isObject = require('./_is-object');
+module.exports = function (it, TYPE) {
+  if (!isObject(it) || it._t !== TYPE) throw TypeError('Incompatible receiver, ' + TYPE + ' required!');
+  return it;
 };
   })();
 });
 
-require.register("core-js/modules/_wks-ext.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_wks-define.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    var global = require('./_global');
+var core = require('./_core');
+var LIBRARY = require('./_library');
+var wksExt = require('./_wks-ext');
+var defineProperty = require('./_object-dp').f;
+module.exports = function (name) {
+  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
+  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
+};
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/_wks-ext.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     exports.f = require('./_wks');
   })();
 });
 
-require.register("core-js/modules/_wks.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/_wks.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var store      = require('./_shared')('wks')
-  , uid        = require('./_uid')
-  , Symbol     = require('./_global').Symbol
-  , USE_SYMBOL = typeof Symbol == 'function';
+    var store = require('./_shared')('wks');
+var uid = require('./_uid');
+var Symbol = require('./_global').Symbol;
+var USE_SYMBOL = typeof Symbol == 'function';
 
-var $exports = module.exports = function(name){
+var $exports = module.exports = function (name) {
   return store[name] || (store[name] =
     USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
 };
@@ -5022,100 +5265,100 @@ $exports.store = store;
   })();
 });
 
-require.register("core-js/modules/core.get-iterator-method.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/core.get-iterator-method.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var classof   = require('./_classof')
-  , ITERATOR  = require('./_wks')('iterator')
-  , Iterators = require('./_iterators');
-module.exports = require('./_core').getIteratorMethod = function(it){
-  if(it != undefined)return it[ITERATOR]
+    var classof = require('./_classof');
+var ITERATOR = require('./_wks')('iterator');
+var Iterators = require('./_iterators');
+module.exports = require('./_core').getIteratorMethod = function (it) {
+  if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
     || Iterators[classof(it)];
 };
   })();
 });
 
-require.register("core-js/modules/core.regexp.escape.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/core.regexp.escape.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/benjamingr/RexExp.escape
-var $export = require('./_export')
-  , $re     = require('./_replacer')(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+var $export = require('./_export');
+var $re = require('./_replacer')(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
-$export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
+$export($export.S, 'RegExp', { escape: function escape(it) { return $re(it); } });
   })();
 });
 
-require.register("core-js/modules/es6.array.copy-within.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.copy-within.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = require('./_export');
 
-$export($export.P, 'Array', {copyWithin: require('./_array-copy-within')});
+$export($export.P, 'Array', { copyWithin: require('./_array-copy-within') });
 
 require('./_add-to-unscopables')('copyWithin');
   })();
 });
 
-require.register("core-js/modules/es6.array.every.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.every.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export = require('./_export')
-  , $every  = require('./_array-methods')(4);
+var $export = require('./_export');
+var $every = require('./_array-methods')(4);
 
 $export($export.P + $export.F * !require('./_strict-method')([].every, true), 'Array', {
   // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
-  every: function every(callbackfn /* , thisArg */){
+  every: function every(callbackfn /* , thisArg */) {
     return $every(this, callbackfn, arguments[1]);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.fill.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.fill.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = require('./_export');
 
-$export($export.P, 'Array', {fill: require('./_array-fill')});
+$export($export.P, 'Array', { fill: require('./_array-fill') });
 
 require('./_add-to-unscopables')('fill');
   })();
 });
 
-require.register("core-js/modules/es6.array.filter.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.filter.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export = require('./_export')
-  , $filter = require('./_array-methods')(2);
+var $export = require('./_export');
+var $filter = require('./_array-methods')(2);
 
 $export($export.P + $export.F * !require('./_strict-method')([].filter, true), 'Array', {
   // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
-  filter: function filter(callbackfn /* , thisArg */){
+  filter: function filter(callbackfn /* , thisArg */) {
     return $filter(this, callbackfn, arguments[1]);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.find-index.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.find-index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
-var $export = require('./_export')
-  , $find   = require('./_array-methods')(6)
-  , KEY     = 'findIndex'
-  , forced  = true;
+var $export = require('./_export');
+var $find = require('./_array-methods')(6);
+var KEY = 'findIndex';
+var forced = true;
 // Shouldn't skip holes
-if(KEY in [])Array(1)[KEY](function(){ forced = false; });
+if (KEY in []) Array(1)[KEY](function () { forced = false; });
 $export($export.P + $export.F * forced, 'Array', {
-  findIndex: function findIndex(callbackfn/*, that = undefined */){
+  findIndex: function findIndex(callbackfn /* , that = undefined */) {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
@@ -5123,19 +5366,19 @@ require('./_add-to-unscopables')(KEY);
   })();
 });
 
-require.register("core-js/modules/es6.array.find.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.find.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
-var $export = require('./_export')
-  , $find   = require('./_array-methods')(5)
-  , KEY     = 'find'
-  , forced  = true;
+var $export = require('./_export');
+var $find = require('./_array-methods')(5);
+var KEY = 'find';
+var forced = true;
 // Shouldn't skip holes
-if(KEY in [])Array(1)[KEY](function(){ forced = false; });
+if (KEY in []) Array(1)[KEY](function () { forced = false; });
 $export($export.P + $export.F * forced, 'Array', {
-  find: function find(callbackfn/*, that = undefined */){
+  find: function find(callbackfn /* , that = undefined */) {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
@@ -5143,56 +5386,56 @@ require('./_add-to-unscopables')(KEY);
   })();
 });
 
-require.register("core-js/modules/es6.array.for-each.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.for-each.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export  = require('./_export')
-  , $forEach = require('./_array-methods')(0)
-  , STRICT   = require('./_strict-method')([].forEach, true);
+var $export = require('./_export');
+var $forEach = require('./_array-methods')(0);
+var STRICT = require('./_strict-method')([].forEach, true);
 
 $export($export.P + $export.F * !STRICT, 'Array', {
   // 22.1.3.10 / 15.4.4.18 Array.prototype.forEach(callbackfn [, thisArg])
-  forEach: function forEach(callbackfn /* , thisArg */){
+  forEach: function forEach(callbackfn /* , thisArg */) {
     return $forEach(this, callbackfn, arguments[1]);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.from.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.from.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var ctx            = require('./_ctx')
-  , $export        = require('./_export')
-  , toObject       = require('./_to-object')
-  , call           = require('./_iter-call')
-  , isArrayIter    = require('./_is-array-iter')
-  , toLength       = require('./_to-length')
-  , createProperty = require('./_create-property')
-  , getIterFn      = require('./core.get-iterator-method');
+var ctx = require('./_ctx');
+var $export = require('./_export');
+var toObject = require('./_to-object');
+var call = require('./_iter-call');
+var isArrayIter = require('./_is-array-iter');
+var toLength = require('./_to-length');
+var createProperty = require('./_create-property');
+var getIterFn = require('./core.get-iterator-method');
 
-$export($export.S + $export.F * !require('./_iter-detect')(function(iter){ Array.from(iter); }), 'Array', {
+$export($export.S + $export.F * !require('./_iter-detect')(function (iter) { Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
-  from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
-    var O       = toObject(arrayLike)
-      , C       = typeof this == 'function' ? this : Array
-      , aLen    = arguments.length
-      , mapfn   = aLen > 1 ? arguments[1] : undefined
-      , mapping = mapfn !== undefined
-      , index   = 0
-      , iterFn  = getIterFn(O)
-      , length, result, step, iterator;
-    if(mapping)mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
+  from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+    var O = toObject(arrayLike);
+    var C = typeof this == 'function' ? this : Array;
+    var aLen = arguments.length;
+    var mapfn = aLen > 1 ? arguments[1] : undefined;
+    var mapping = mapfn !== undefined;
+    var index = 0;
+    var iterFn = getIterFn(O);
+    var length, result, step, iterator;
+    if (mapping) mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
     // if object isn't iterable or it's array with default iterator - use simple case
-    if(iterFn != undefined && !(C == Array && isArrayIter(iterFn))){
-      for(iterator = iterFn.call(O), result = new C; !(step = iterator.next()).done; index++){
+    if (iterFn != undefined && !(C == Array && isArrayIter(iterFn))) {
+      for (iterator = iterFn.call(O), result = new C(); !(step = iterator.next()).done; index++) {
         createProperty(result, index, mapping ? call(iterator, mapfn, [step.value, index], true) : step.value);
       }
     } else {
       length = toLength(O.length);
-      for(result = new C(length); length > index; index++){
+      for (result = new C(length); length > index; index++) {
         createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
       }
     }
@@ -5203,18 +5446,18 @@ $export($export.S + $export.F * !require('./_iter-detect')(function(iter){ Array
   })();
 });
 
-require.register("core-js/modules/es6.array.index-of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.index-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export       = require('./_export')
-  , $indexOf      = require('./_array-includes')(false)
-  , $native       = [].indexOf
-  , NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
+var $export = require('./_export');
+var $indexOf = require('./_array-includes')(false);
+var $native = [].indexOf;
+var NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
 
 $export($export.P + $export.F * (NEGATIVE_ZERO || !require('./_strict-method')($native)), 'Array', {
   // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
-  indexOf: function indexOf(searchElement /*, fromIndex = 0 */){
+  indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
     return NEGATIVE_ZERO
       // convert -0 to +0
       ? $native.apply(this, arguments) || 0
@@ -5224,44 +5467,44 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !require('./_strict-method')($
   })();
 });
 
-require.register("core-js/modules/es6.array.is-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.is-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
 var $export = require('./_export');
 
-$export($export.S, 'Array', {isArray: require('./_is-array')});
+$export($export.S, 'Array', { isArray: require('./_is-array') });
   })();
 });
 
-require.register("core-js/modules/es6.array.iterator.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.iterator.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var addToUnscopables = require('./_add-to-unscopables')
-  , step             = require('./_iter-step')
-  , Iterators        = require('./_iterators')
-  , toIObject        = require('./_to-iobject');
+var addToUnscopables = require('./_add-to-unscopables');
+var step = require('./_iter-step');
+var Iterators = require('./_iterators');
+var toIObject = require('./_to-iobject');
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = require('./_iter-define')(Array, 'Array', function(iterated, kind){
+module.exports = require('./_iter-define')(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
 // 22.1.5.2.1 %ArrayIteratorPrototype%.next()
-}, function(){
-  var O     = this._t
-    , kind  = this._k
-    , index = this._i++;
-  if(!O || index >= O.length){
+}, function () {
+  var O = this._t;
+  var kind = this._k;
+  var index = this._i++;
+  if (!O || index >= O.length) {
     this._t = undefined;
     return step(1);
   }
-  if(kind == 'keys'  )return step(0, index);
-  if(kind == 'values')return step(0, O[index]);
+  if (kind == 'keys') return step(0, index);
+  if (kind == 'values') return step(0, O[index]);
   return step(0, [index, O[index]]);
 }, 'values');
 
@@ -5274,86 +5517,86 @@ addToUnscopables('entries');
   })();
 });
 
-require.register("core-js/modules/es6.array.join.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.join.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 22.1.3.13 Array.prototype.join(separator)
-var $export   = require('./_export')
-  , toIObject = require('./_to-iobject')
-  , arrayJoin = [].join;
+var $export = require('./_export');
+var toIObject = require('./_to-iobject');
+var arrayJoin = [].join;
 
 // fallback for not array-like strings
 $export($export.P + $export.F * (require('./_iobject') != Object || !require('./_strict-method')(arrayJoin)), 'Array', {
-  join: function join(separator){
+  join: function join(separator) {
     return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.last-index-of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.last-index-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export       = require('./_export')
-  , toIObject     = require('./_to-iobject')
-  , toInteger     = require('./_to-integer')
-  , toLength      = require('./_to-length')
-  , $native       = [].lastIndexOf
-  , NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
+var $export = require('./_export');
+var toIObject = require('./_to-iobject');
+var toInteger = require('./_to-integer');
+var toLength = require('./_to-length');
+var $native = [].lastIndexOf;
+var NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
 
 $export($export.P + $export.F * (NEGATIVE_ZERO || !require('./_strict-method')($native)), 'Array', {
   // 22.1.3.14 / 15.4.4.15 Array.prototype.lastIndexOf(searchElement [, fromIndex])
-  lastIndexOf: function lastIndexOf(searchElement /*, fromIndex = @[*-1] */){
+  lastIndexOf: function lastIndexOf(searchElement /* , fromIndex = @[*-1] */) {
     // convert -0 to +0
-    if(NEGATIVE_ZERO)return $native.apply(this, arguments) || 0;
-    var O      = toIObject(this)
-      , length = toLength(O.length)
-      , index  = length - 1;
-    if(arguments.length > 1)index = Math.min(index, toInteger(arguments[1]));
-    if(index < 0)index = length + index;
-    for(;index >= 0; index--)if(index in O)if(O[index] === searchElement)return index || 0;
+    if (NEGATIVE_ZERO) return $native.apply(this, arguments) || 0;
+    var O = toIObject(this);
+    var length = toLength(O.length);
+    var index = length - 1;
+    if (arguments.length > 1) index = Math.min(index, toInteger(arguments[1]));
+    if (index < 0) index = length + index;
+    for (;index >= 0; index--) if (index in O) if (O[index] === searchElement) return index || 0;
     return -1;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.map.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.map.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export = require('./_export')
-  , $map    = require('./_array-methods')(1);
+var $export = require('./_export');
+var $map = require('./_array-methods')(1);
 
 $export($export.P + $export.F * !require('./_strict-method')([].map, true), 'Array', {
   // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
-  map: function map(callbackfn /* , thisArg */){
+  map: function map(callbackfn /* , thisArg */) {
     return $map(this, callbackfn, arguments[1]);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export        = require('./_export')
-  , createProperty = require('./_create-property');
+var $export = require('./_export');
+var createProperty = require('./_create-property');
 
 // WebKit Array.of isn't generic
-$export($export.S + $export.F * require('./_fails')(function(){
-  function F(){}
+$export($export.S + $export.F * require('./_fails')(function () {
+  function F() { /* empty */ }
   return !(Array.of.call(F) instanceof F);
 }), 'Array', {
   // 22.1.2.3 Array.of( ...items)
-  of: function of(/* ...args */){
-    var index  = 0
-      , aLen   = arguments.length
-      , result = new (typeof this == 'function' ? this : Array)(aLen);
-    while(aLen > index)createProperty(result, index, arguments[index++]);
+  of: function of(/* ...args */) {
+    var index = 0;
+    var aLen = arguments.length;
+    var result = new (typeof this == 'function' ? this : Array)(aLen);
+    while (aLen > index) createProperty(result, index, arguments[index++]);
     result.length = aLen;
     return result;
   }
@@ -5361,64 +5604,64 @@ $export($export.S + $export.F * require('./_fails')(function(){
   })();
 });
 
-require.register("core-js/modules/es6.array.reduce-right.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.reduce-right.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export = require('./_export')
-  , $reduce = require('./_array-reduce');
+var $export = require('./_export');
+var $reduce = require('./_array-reduce');
 
 $export($export.P + $export.F * !require('./_strict-method')([].reduceRight, true), 'Array', {
   // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
-  reduceRight: function reduceRight(callbackfn /* , initialValue */){
+  reduceRight: function reduceRight(callbackfn /* , initialValue */) {
     return $reduce(this, callbackfn, arguments.length, arguments[1], true);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.reduce.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.reduce.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export = require('./_export')
-  , $reduce = require('./_array-reduce');
+var $export = require('./_export');
+var $reduce = require('./_array-reduce');
 
 $export($export.P + $export.F * !require('./_strict-method')([].reduce, true), 'Array', {
   // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
-  reduce: function reduce(callbackfn /* , initialValue */){
+  reduce: function reduce(callbackfn /* , initialValue */) {
     return $reduce(this, callbackfn, arguments.length, arguments[1], false);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.slice.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.slice.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export    = require('./_export')
-  , html       = require('./_html')
-  , cof        = require('./_cof')
-  , toIndex    = require('./_to-index')
-  , toLength   = require('./_to-length')
-  , arraySlice = [].slice;
+var $export = require('./_export');
+var html = require('./_html');
+var cof = require('./_cof');
+var toAbsoluteIndex = require('./_to-absolute-index');
+var toLength = require('./_to-length');
+var arraySlice = [].slice;
 
 // fallback for not array-like ES3 strings and DOM objects
-$export($export.P + $export.F * require('./_fails')(function(){
-  if(html)arraySlice.call(html);
+$export($export.P + $export.F * require('./_fails')(function () {
+  if (html) arraySlice.call(html);
 }), 'Array', {
-  slice: function slice(begin, end){
-    var len   = toLength(this.length)
-      , klass = cof(this);
+  slice: function slice(begin, end) {
+    var len = toLength(this.length);
+    var klass = cof(this);
     end = end === undefined ? len : end;
-    if(klass == 'Array')return arraySlice.call(this, begin, end);
-    var start  = toIndex(begin, len)
-      , upTo   = toIndex(end, len)
-      , size   = toLength(upTo - start)
-      , cloned = Array(size)
-      , i      = 0;
-    for(; i < size; i++)cloned[i] = klass == 'String'
+    if (klass == 'Array') return arraySlice.call(this, begin, end);
+    var start = toAbsoluteIndex(begin, len);
+    var upTo = toAbsoluteIndex(end, len);
+    var size = toLength(upTo - start);
+    var cloned = Array(size);
+    var i = 0;
+    for (; i < size; i++) cloned[i] = klass == 'String'
       ? this.charAt(start + i)
       : this[start + i];
     return cloned;
@@ -5427,43 +5670,43 @@ $export($export.P + $export.F * require('./_fails')(function(){
   })();
 });
 
-require.register("core-js/modules/es6.array.some.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.some.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export = require('./_export')
-  , $some   = require('./_array-methods')(3);
+var $export = require('./_export');
+var $some = require('./_array-methods')(3);
 
 $export($export.P + $export.F * !require('./_strict-method')([].some, true), 'Array', {
   // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
-  some: function some(callbackfn /* , thisArg */){
+  some: function some(callbackfn /* , thisArg */) {
     return $some(this, callbackfn, arguments[1]);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.array.sort.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.sort.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export   = require('./_export')
-  , aFunction = require('./_a-function')
-  , toObject  = require('./_to-object')
-  , fails     = require('./_fails')
-  , $sort     = [].sort
-  , test      = [1, 2, 3];
+var $export = require('./_export');
+var aFunction = require('./_a-function');
+var toObject = require('./_to-object');
+var fails = require('./_fails');
+var $sort = [].sort;
+var test = [1, 2, 3];
 
-$export($export.P + $export.F * (fails(function(){
+$export($export.P + $export.F * (fails(function () {
   // IE8-
   test.sort(undefined);
-}) || !fails(function(){
+}) || !fails(function () {
   // V8 bug
   test.sort(null);
   // Old WebKit
 }) || !require('./_strict-method')($sort)), 'Array', {
   // 22.1.3.25 Array.prototype.sort(comparefn)
-  sort: function sort(comparefn){
+  sort: function sort(comparefn) {
     return comparefn === undefined
       ? $sort.call(toObject(this))
       : $sort.call(toObject(this), aFunction(comparefn));
@@ -5472,157 +5715,131 @@ $export($export.P + $export.F * (fails(function(){
   })();
 });
 
-require.register("core-js/modules/es6.array.species.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.array.species.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     require('./_set-species')('Array');
   })();
 });
 
-require.register("core-js/modules/es6.date.now.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.date.now.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.3.3.1 / 15.9.4.4 Date.now()
 var $export = require('./_export');
 
-$export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
+$export($export.S, 'Date', { now: function () { return new Date().getTime(); } });
   })();
 });
 
-require.register("core-js/modules/es6.date.to-iso-string.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.date.to-iso-string.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    'use strict';
-// 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
-var $export = require('./_export')
-  , fails   = require('./_fails')
-  , getTime = Date.prototype.getTime;
-
-var lz = function(num){
-  return num > 9 ? num : '0' + num;
-};
+    // 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
+var $export = require('./_export');
+var toISOString = require('./_date-to-iso-string');
 
 // PhantomJS / old WebKit has a broken implementations
-$export($export.P + $export.F * (fails(function(){
-  return new Date(-5e13 - 1).toISOString() != '0385-07-25T07:06:39.999Z';
-}) || !fails(function(){
-  new Date(NaN).toISOString();
-})), 'Date', {
-  toISOString: function toISOString(){
-    if(!isFinite(getTime.call(this)))throw RangeError('Invalid time value');
-    var d = this
-      , y = d.getUTCFullYear()
-      , m = d.getUTCMilliseconds()
-      , s = y < 0 ? '-' : y > 9999 ? '+' : '';
-    return s + ('00000' + Math.abs(y)).slice(s ? -6 : -4) +
-      '-' + lz(d.getUTCMonth() + 1) + '-' + lz(d.getUTCDate()) +
-      'T' + lz(d.getUTCHours()) + ':' + lz(d.getUTCMinutes()) +
-      ':' + lz(d.getUTCSeconds()) + '.' + (m > 99 ? m : '0' + lz(m)) + 'Z';
-  }
+$export($export.P + $export.F * (Date.prototype.toISOString !== toISOString), 'Date', {
+  toISOString: toISOString
 });
   })();
 });
 
-require.register("core-js/modules/es6.date.to-json.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.date.to-json.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export     = require('./_export')
-  , toObject    = require('./_to-object')
-  , toPrimitive = require('./_to-primitive');
+var $export = require('./_export');
+var toObject = require('./_to-object');
+var toPrimitive = require('./_to-primitive');
 
-$export($export.P + $export.F * require('./_fails')(function(){
-  return new Date(NaN).toJSON() !== null || Date.prototype.toJSON.call({toISOString: function(){ return 1; }}) !== 1;
+$export($export.P + $export.F * require('./_fails')(function () {
+  return new Date(NaN).toJSON() !== null
+    || Date.prototype.toJSON.call({ toISOString: function () { return 1; } }) !== 1;
 }), 'Date', {
-  toJSON: function toJSON(key){
-    var O  = toObject(this)
-      , pv = toPrimitive(O);
+  // eslint-disable-next-line no-unused-vars
+  toJSON: function toJSON(key) {
+    var O = toObject(this);
+    var pv = toPrimitive(O);
     return typeof pv == 'number' && !isFinite(pv) ? null : O.toISOString();
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.date.to-primitive.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.date.to-primitive.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var TO_PRIMITIVE = require('./_wks')('toPrimitive')
-  , proto        = Date.prototype;
+    var TO_PRIMITIVE = require('./_wks')('toPrimitive');
+var proto = Date.prototype;
 
-if(!(TO_PRIMITIVE in proto))require('./_hide')(proto, TO_PRIMITIVE, require('./_date-to-primitive'));
+if (!(TO_PRIMITIVE in proto)) require('./_hide')(proto, TO_PRIMITIVE, require('./_date-to-primitive'));
   })();
 });
 
-require.register("core-js/modules/es6.date.to-string.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.date.to-string.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var DateProto    = Date.prototype
-  , INVALID_DATE = 'Invalid Date'
-  , TO_STRING    = 'toString'
-  , $toString    = DateProto[TO_STRING]
-  , getTime      = DateProto.getTime;
-if(new Date(NaN) + '' != INVALID_DATE){
-  require('./_redefine')(DateProto, TO_STRING, function toString(){
+    var DateProto = Date.prototype;
+var INVALID_DATE = 'Invalid Date';
+var TO_STRING = 'toString';
+var $toString = DateProto[TO_STRING];
+var getTime = DateProto.getTime;
+if (new Date(NaN) + '' != INVALID_DATE) {
+  require('./_redefine')(DateProto, TO_STRING, function toString() {
     var value = getTime.call(this);
+    // eslint-disable-next-line no-self-compare
     return value === value ? $toString.call(this) : INVALID_DATE;
   });
 }
   })();
 });
 
-require.register("core-js/modules/es6.function.bind.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.function.bind.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = require('./_export');
 
-$export($export.P, 'Function', {bind: require('./_bind')});
+$export($export.P, 'Function', { bind: require('./_bind') });
   })();
 });
 
-require.register("core-js/modules/es6.function.has-instance.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.function.has-instance.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var isObject       = require('./_is-object')
-  , getPrototypeOf = require('./_object-gpo')
-  , HAS_INSTANCE   = require('./_wks')('hasInstance')
-  , FunctionProto  = Function.prototype;
+var isObject = require('./_is-object');
+var getPrototypeOf = require('./_object-gpo');
+var HAS_INSTANCE = require('./_wks')('hasInstance');
+var FunctionProto = Function.prototype;
 // 19.2.3.6 Function.prototype[@@hasInstance](V)
-if(!(HAS_INSTANCE in FunctionProto))require('./_object-dp').f(FunctionProto, HAS_INSTANCE, {value: function(O){
-  if(typeof this != 'function' || !isObject(O))return false;
-  if(!isObject(this.prototype))return O instanceof this;
+if (!(HAS_INSTANCE in FunctionProto)) require('./_object-dp').f(FunctionProto, HAS_INSTANCE, { value: function (O) {
+  if (typeof this != 'function' || !isObject(O)) return false;
+  if (!isObject(this.prototype)) return O instanceof this;
   // for environment w/o native `@@hasInstance` logic enough `instanceof`, but add this:
-  while(O = getPrototypeOf(O))if(this.prototype === O)return true;
+  while (O = getPrototypeOf(O)) if (this.prototype === O) return true;
   return false;
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es6.function.name.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.function.name.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var dP         = require('./_object-dp').f
-  , createDesc = require('./_property-desc')
-  , has        = require('./_has')
-  , FProto     = Function.prototype
-  , nameRE     = /^\s*function ([^ (]*)/
-  , NAME       = 'name';
-
-var isExtensible = Object.isExtensible || function(){
-  return true;
-};
+    var dP = require('./_object-dp').f;
+var FProto = Function.prototype;
+var nameRE = /^\s*function ([^ (]*)/;
+var NAME = 'name';
 
 // 19.2.4.2 name
 NAME in FProto || require('./_descriptors') && dP(FProto, NAME, {
   configurable: true,
-  get: function(){
+  get: function () {
     try {
-      var that = this
-        , name = ('' + that).match(nameRE)[1];
-      has(that, NAME) || !isExtensible(that) || dP(that, NAME, createDesc(5, name));
-      return name;
-    } catch(e){
+      return ('' + this).match(nameRE)[1];
+    } catch (e) {
       return '';
     }
   }
@@ -5630,45 +5847,47 @@ NAME in FProto || require('./_descriptors') && dP(FProto, NAME, {
   })();
 });
 
-require.register("core-js/modules/es6.map.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.map.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 var strong = require('./_collection-strong');
+var validate = require('./_validate-collection');
+var MAP = 'Map';
 
 // 23.1 Map Objects
-module.exports = require('./_collection')('Map', function(get){
-  return function Map(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
+module.exports = require('./_collection')(MAP, function (get) {
+  return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
-  get: function get(key){
-    var entry = strong.getEntry(this, key);
+  get: function get(key) {
+    var entry = strong.getEntry(validate(this, MAP), key);
     return entry && entry.v;
   },
   // 23.1.3.9 Map.prototype.set(key, value)
-  set: function set(key, value){
-    return strong.def(this, key === 0 ? 0 : key, value);
+  set: function set(key, value) {
+    return strong.def(validate(this, MAP), key === 0 ? 0 : key, value);
   }
 }, strong, true);
   })();
 });
 
-require.register("core-js/modules/es6.math.acosh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.acosh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.3 Math.acosh(x)
-var $export = require('./_export')
-  , log1p   = require('./_math-log1p')
-  , sqrt    = Math.sqrt
-  , $acosh  = Math.acosh;
+var $export = require('./_export');
+var log1p = require('./_math-log1p');
+var sqrt = Math.sqrt;
+var $acosh = Math.acosh;
 
 $export($export.S + $export.F * !($acosh
   // V8 bug: https://code.google.com/p/v8/issues/detail?id=3509
   && Math.floor($acosh(Number.MAX_VALUE)) == 710
-  // Tor Browser bug: Math.acosh(Infinity) -> NaN 
+  // Tor Browser bug: Math.acosh(Infinity) -> NaN
   && $acosh(Infinity) == Infinity
 ), 'Math', {
-  acosh: function acosh(x){
+  acosh: function acosh(x) {
     return (x = +x) < 1 ? NaN : x > 94906265.62425156
       ? Math.log(x) + Math.LN2
       : log1p(x - 1 + sqrt(x - 1) * sqrt(x + 1));
@@ -5677,147 +5896,125 @@ $export($export.S + $export.F * !($acosh
   })();
 });
 
-require.register("core-js/modules/es6.math.asinh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.asinh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.5 Math.asinh(x)
-var $export = require('./_export')
-  , $asinh  = Math.asinh;
+var $export = require('./_export');
+var $asinh = Math.asinh;
 
-function asinh(x){
+function asinh(x) {
   return !isFinite(x = +x) || x == 0 ? x : x < 0 ? -asinh(-x) : Math.log(x + Math.sqrt(x * x + 1));
 }
 
-// Tor Browser bug: Math.asinh(0) -> -0 
-$export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
+// Tor Browser bug: Math.asinh(0) -> -0
+$export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', { asinh: asinh });
   })();
 });
 
-require.register("core-js/modules/es6.math.atanh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.atanh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.7 Math.atanh(x)
-var $export = require('./_export')
-  , $atanh  = Math.atanh;
+var $export = require('./_export');
+var $atanh = Math.atanh;
 
-// Tor Browser bug: Math.atanh(-0) -> 0 
+// Tor Browser bug: Math.atanh(-0) -> 0
 $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
-  atanh: function atanh(x){
+  atanh: function atanh(x) {
     return (x = +x) == 0 ? x : Math.log((1 + x) / (1 - x)) / 2;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.cbrt.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.cbrt.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.9 Math.cbrt(x)
-var $export = require('./_export')
-  , sign    = require('./_math-sign');
+var $export = require('./_export');
+var sign = require('./_math-sign');
 
 $export($export.S, 'Math', {
-  cbrt: function cbrt(x){
+  cbrt: function cbrt(x) {
     return sign(x = +x) * Math.pow(Math.abs(x), 1 / 3);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.clz32.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.clz32.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.11 Math.clz32(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  clz32: function clz32(x){
+  clz32: function clz32(x) {
     return (x >>>= 0) ? 31 - Math.floor(Math.log(x + 0.5) * Math.LOG2E) : 32;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.cosh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.cosh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.12 Math.cosh(x)
-var $export = require('./_export')
-  , exp     = Math.exp;
+var $export = require('./_export');
+var exp = Math.exp;
 
 $export($export.S, 'Math', {
-  cosh: function cosh(x){
+  cosh: function cosh(x) {
     return (exp(x = +x) + exp(-x)) / 2;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.expm1.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.expm1.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.14 Math.expm1(x)
-var $export = require('./_export')
-  , $expm1  = require('./_math-expm1');
+var $export = require('./_export');
+var $expm1 = require('./_math-expm1');
 
-$export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
+$export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 });
   })();
 });
 
-require.register("core-js/modules/es6.math.fround.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.fround.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.16 Math.fround(x)
-var $export   = require('./_export')
-  , sign      = require('./_math-sign')
-  , pow       = Math.pow
-  , EPSILON   = pow(2, -52)
-  , EPSILON32 = pow(2, -23)
-  , MAX32     = pow(2, 127) * (2 - EPSILON32)
-  , MIN32     = pow(2, -126);
+var $export = require('./_export');
 
-var roundTiesToEven = function(n){
-  return n + 1 / EPSILON - 1 / EPSILON;
-};
-
-
-$export($export.S, 'Math', {
-  fround: function fround(x){
-    var $abs  = Math.abs(x)
-      , $sign = sign(x)
-      , a, result;
-    if($abs < MIN32)return $sign * roundTiesToEven($abs / MIN32 / EPSILON32) * MIN32 * EPSILON32;
-    a = (1 + EPSILON32 / EPSILON) * $abs;
-    result = a - (a - $abs);
-    if(result > MAX32 || result != result)return $sign * Infinity;
-    return $sign * result;
-  }
-});
+$export($export.S, 'Math', { fround: require('./_math-fround') });
   })();
 });
 
-require.register("core-js/modules/es6.math.hypot.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.hypot.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
-var $export = require('./_export')
-  , abs     = Math.abs;
+var $export = require('./_export');
+var abs = Math.abs;
 
 $export($export.S, 'Math', {
-  hypot: function hypot(value1, value2){ // eslint-disable-line no-unused-vars
-    var sum  = 0
-      , i    = 0
-      , aLen = arguments.length
-      , larg = 0
-      , arg, div;
-    while(i < aLen){
+  hypot: function hypot(value1, value2) { // eslint-disable-line no-unused-vars
+    var sum = 0;
+    var i = 0;
+    var aLen = arguments.length;
+    var larg = 0;
+    var arg, div;
+    while (i < aLen) {
       arg = abs(arguments[i++]);
-      if(larg < arg){
-        div  = larg / arg;
-        sum  = sum * div * div + 1;
+      if (larg < arg) {
+        div = larg / arg;
+        sum = sum * div * div + 1;
         larg = arg;
-      } else if(arg > 0){
-        div  = arg / larg;
+      } else if (arg > 0) {
+        div = arg / larg;
         sum += div * div;
       } else sum += arg;
     }
@@ -5827,90 +6024,90 @@ $export($export.S, 'Math', {
   })();
 });
 
-require.register("core-js/modules/es6.math.imul.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.imul.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.18 Math.imul(x, y)
-var $export = require('./_export')
-  , $imul   = Math.imul;
+var $export = require('./_export');
+var $imul = Math.imul;
 
 // some WebKit versions fails with big numbers, some has wrong arity
-$export($export.S + $export.F * require('./_fails')(function(){
+$export($export.S + $export.F * require('./_fails')(function () {
   return $imul(0xffffffff, 5) != -5 || $imul.length != 2;
 }), 'Math', {
-  imul: function imul(x, y){
-    var UINT16 = 0xffff
-      , xn = +x
-      , yn = +y
-      , xl = UINT16 & xn
-      , yl = UINT16 & yn;
+  imul: function imul(x, y) {
+    var UINT16 = 0xffff;
+    var xn = +x;
+    var yn = +y;
+    var xl = UINT16 & xn;
+    var yl = UINT16 & yn;
     return 0 | xl * yl + ((UINT16 & xn >>> 16) * yl + xl * (UINT16 & yn >>> 16) << 16 >>> 0);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.log10.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.log10.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.21 Math.log10(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  log10: function log10(x){
-    return Math.log(x) / Math.LN10;
+  log10: function log10(x) {
+    return Math.log(x) * Math.LOG10E;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.log1p.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.log1p.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.20 Math.log1p(x)
 var $export = require('./_export');
 
-$export($export.S, 'Math', {log1p: require('./_math-log1p')});
+$export($export.S, 'Math', { log1p: require('./_math-log1p') });
   })();
 });
 
-require.register("core-js/modules/es6.math.log2.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.log2.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.22 Math.log2(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  log2: function log2(x){
+  log2: function log2(x) {
     return Math.log(x) / Math.LN2;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.sign.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.sign.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.28 Math.sign(x)
 var $export = require('./_export');
 
-$export($export.S, 'Math', {sign: require('./_math-sign')});
+$export($export.S, 'Math', { sign: require('./_math-sign') });
   })();
 });
 
-require.register("core-js/modules/es6.math.sinh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.sinh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.30 Math.sinh(x)
-var $export = require('./_export')
-  , expm1   = require('./_math-expm1')
-  , exp     = Math.exp;
+var $export = require('./_export');
+var expm1 = require('./_math-expm1');
+var exp = Math.exp;
 
 // V8 near Chromium 38 has a problem with very small numbers
-$export($export.S + $export.F * require('./_fails')(function(){
+$export($export.S + $export.F * require('./_fails')(function () {
   return !Math.sinh(-2e-17) != -2e-17;
 }), 'Math', {
-  sinh: function sinh(x){
+  sinh: function sinh(x) {
     return Math.abs(x = +x) < 1
       ? (expm1(x) - expm1(-x)) / 2
       : (exp(x - 1) - exp(-x - 1)) * (Math.E / 2);
@@ -5919,103 +6116,103 @@ $export($export.S + $export.F * require('./_fails')(function(){
   })();
 });
 
-require.register("core-js/modules/es6.math.tanh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.tanh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.33 Math.tanh(x)
-var $export = require('./_export')
-  , expm1   = require('./_math-expm1')
-  , exp     = Math.exp;
+var $export = require('./_export');
+var expm1 = require('./_math-expm1');
+var exp = Math.exp;
 
 $export($export.S, 'Math', {
-  tanh: function tanh(x){
-    var a = expm1(x = +x)
-      , b = expm1(-x);
+  tanh: function tanh(x) {
+    var a = expm1(x = +x);
+    var b = expm1(-x);
     return a == Infinity ? 1 : b == Infinity ? -1 : (a - b) / (exp(x) + exp(-x));
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.math.trunc.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.math.trunc.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.2.2.34 Math.trunc(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  trunc: function trunc(it){
+  trunc: function trunc(it) {
     return (it > 0 ? Math.floor : Math.ceil)(it);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.number.constructor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.constructor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var global            = require('./_global')
-  , has               = require('./_has')
-  , cof               = require('./_cof')
-  , inheritIfRequired = require('./_inherit-if-required')
-  , toPrimitive       = require('./_to-primitive')
-  , fails             = require('./_fails')
-  , gOPN              = require('./_object-gopn').f
-  , gOPD              = require('./_object-gopd').f
-  , dP                = require('./_object-dp').f
-  , $trim             = require('./_string-trim').trim
-  , NUMBER            = 'Number'
-  , $Number           = global[NUMBER]
-  , Base              = $Number
-  , proto             = $Number.prototype
-  // Opera ~12 has broken Object#toString
-  , BROKEN_COF        = cof(require('./_object-create')(proto)) == NUMBER
-  , TRIM              = 'trim' in String.prototype;
+var global = require('./_global');
+var has = require('./_has');
+var cof = require('./_cof');
+var inheritIfRequired = require('./_inherit-if-required');
+var toPrimitive = require('./_to-primitive');
+var fails = require('./_fails');
+var gOPN = require('./_object-gopn').f;
+var gOPD = require('./_object-gopd').f;
+var dP = require('./_object-dp').f;
+var $trim = require('./_string-trim').trim;
+var NUMBER = 'Number';
+var $Number = global[NUMBER];
+var Base = $Number;
+var proto = $Number.prototype;
+// Opera ~12 has broken Object#toString
+var BROKEN_COF = cof(require('./_object-create')(proto)) == NUMBER;
+var TRIM = 'trim' in String.prototype;
 
 // 7.1.3 ToNumber(argument)
-var toNumber = function(argument){
+var toNumber = function (argument) {
   var it = toPrimitive(argument, false);
-  if(typeof it == 'string' && it.length > 2){
+  if (typeof it == 'string' && it.length > 2) {
     it = TRIM ? it.trim() : $trim(it, 3);
-    var first = it.charCodeAt(0)
-      , third, radix, maxCode;
-    if(first === 43 || first === 45){
+    var first = it.charCodeAt(0);
+    var third, radix, maxCode;
+    if (first === 43 || first === 45) {
       third = it.charCodeAt(2);
-      if(third === 88 || third === 120)return NaN; // Number('+0x1') should be NaN, old V8 fix
-    } else if(first === 48){
-      switch(it.charCodeAt(1)){
-        case 66 : case 98  : radix = 2; maxCode = 49; break; // fast equal /^0b[01]+$/i
-        case 79 : case 111 : radix = 8; maxCode = 55; break; // fast equal /^0o[0-7]+$/i
-        default : return +it;
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal /^0b[01]+$/i
+        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal /^0o[0-7]+$/i
+        default: return +it;
       }
-      for(var digits = it.slice(2), i = 0, l = digits.length, code; i < l; i++){
+      for (var digits = it.slice(2), i = 0, l = digits.length, code; i < l; i++) {
         code = digits.charCodeAt(i);
         // parseInt parses a string to a first unavailable symbol
         // but ToNumber should return NaN if a string contains unavailable symbols
-        if(code < 48 || code > maxCode)return NaN;
+        if (code < 48 || code > maxCode) return NaN;
       } return parseInt(digits, radix);
     }
   } return +it;
 };
 
-if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
-  $Number = function Number(value){
-    var it = arguments.length < 1 ? 0 : value
-      , that = this;
+if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
+  $Number = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var that = this;
     return that instanceof $Number
       // check on 1..constructor(foo) case
-      && (BROKEN_COF ? fails(function(){ proto.valueOf.call(that); }) : cof(that) != NUMBER)
+      && (BROKEN_COF ? fails(function () { proto.valueOf.call(that); }) : cof(that) != NUMBER)
         ? inheritIfRequired(new Base(toNumber(it)), that, $Number) : toNumber(it);
   };
-  for(var keys = require('./_descriptors') ? gOPN(Base) : (
+  for (var keys = require('./_descriptors') ? gOPN(Base) : (
     // ES3:
     'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
     // ES6 (in case, if modules with ES6 Number statics required before):
     'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
     'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
-  ).split(','), j = 0, key; keys.length > j; j++){
-    if(has(Base, key = keys[j]) && !has($Number, key)){
+  ).split(','), j = 0, key; keys.length > j; j++) {
+    if (has(Base, key = keys[j]) && !has($Number, key)) {
       dP($Number, key, gOPD(Base, key));
     }
   }
@@ -6026,165 +6223,166 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
   })();
 });
 
-require.register("core-js/modules/es6.number.epsilon.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.epsilon.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.1 Number.EPSILON
 var $export = require('./_export');
 
-$export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
+$export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
   })();
 });
 
-require.register("core-js/modules/es6.number.is-finite.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.is-finite.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.2 Number.isFinite(number)
-var $export   = require('./_export')
-  , _isFinite = require('./_global').isFinite;
+var $export = require('./_export');
+var _isFinite = require('./_global').isFinite;
 
 $export($export.S, 'Number', {
-  isFinite: function isFinite(it){
+  isFinite: function isFinite(it) {
     return typeof it == 'number' && _isFinite(it);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.number.is-integer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.is-integer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.3 Number.isInteger(number)
 var $export = require('./_export');
 
-$export($export.S, 'Number', {isInteger: require('./_is-integer')});
+$export($export.S, 'Number', { isInteger: require('./_is-integer') });
   })();
 });
 
-require.register("core-js/modules/es6.number.is-nan.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.is-nan.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.4 Number.isNaN(number)
 var $export = require('./_export');
 
 $export($export.S, 'Number', {
-  isNaN: function isNaN(number){
+  isNaN: function isNaN(number) {
+    // eslint-disable-next-line no-self-compare
     return number != number;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.number.is-safe-integer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.is-safe-integer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.5 Number.isSafeInteger(number)
-var $export   = require('./_export')
-  , isInteger = require('./_is-integer')
-  , abs       = Math.abs;
+var $export = require('./_export');
+var isInteger = require('./_is-integer');
+var abs = Math.abs;
 
 $export($export.S, 'Number', {
-  isSafeInteger: function isSafeInteger(number){
+  isSafeInteger: function isSafeInteger(number) {
     return isInteger(number) && abs(number) <= 0x1fffffffffffff;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.number.max-safe-integer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.max-safe-integer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.6 Number.MAX_SAFE_INTEGER
 var $export = require('./_export');
 
-$export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
+$export($export.S, 'Number', { MAX_SAFE_INTEGER: 0x1fffffffffffff });
   })();
 });
 
-require.register("core-js/modules/es6.number.min-safe-integer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.min-safe-integer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 20.1.2.10 Number.MIN_SAFE_INTEGER
 var $export = require('./_export');
 
-$export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
+$export($export.S, 'Number', { MIN_SAFE_INTEGER: -0x1fffffffffffff });
   })();
 });
 
-require.register("core-js/modules/es6.number.parse-float.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.parse-float.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export     = require('./_export')
-  , $parseFloat = require('./_parse-float');
+    var $export = require('./_export');
+var $parseFloat = require('./_parse-float');
 // 20.1.2.12 Number.parseFloat(string)
-$export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
+$export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { parseFloat: $parseFloat });
   })();
 });
 
-require.register("core-js/modules/es6.number.parse-int.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.parse-int.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export   = require('./_export')
-  , $parseInt = require('./_parse-int');
+    var $export = require('./_export');
+var $parseInt = require('./_parse-int');
 // 20.1.2.13 Number.parseInt(string, radix)
-$export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
+$export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { parseInt: $parseInt });
   })();
 });
 
-require.register("core-js/modules/es6.number.to-fixed.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.to-fixed.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export      = require('./_export')
-  , toInteger    = require('./_to-integer')
-  , aNumberValue = require('./_a-number-value')
-  , repeat       = require('./_string-repeat')
-  , $toFixed     = 1..toFixed
-  , floor        = Math.floor
-  , data         = [0, 0, 0, 0, 0, 0]
-  , ERROR        = 'Number.toFixed: incorrect invocation!'
-  , ZERO         = '0';
+var $export = require('./_export');
+var toInteger = require('./_to-integer');
+var aNumberValue = require('./_a-number-value');
+var repeat = require('./_string-repeat');
+var $toFixed = 1.0.toFixed;
+var floor = Math.floor;
+var data = [0, 0, 0, 0, 0, 0];
+var ERROR = 'Number.toFixed: incorrect invocation!';
+var ZERO = '0';
 
-var multiply = function(n, c){
-  var i  = -1
-    , c2 = c;
-  while(++i < 6){
+var multiply = function (n, c) {
+  var i = -1;
+  var c2 = c;
+  while (++i < 6) {
     c2 += n * data[i];
     data[i] = c2 % 1e7;
     c2 = floor(c2 / 1e7);
   }
 };
-var divide = function(n){
-  var i = 6
-    , c = 0;
-  while(--i >= 0){
+var divide = function (n) {
+  var i = 6;
+  var c = 0;
+  while (--i >= 0) {
     c += data[i];
     data[i] = floor(c / n);
     c = (c % n) * 1e7;
   }
 };
-var numToString = function(){
-  var i = 6
-    , s = '';
-  while(--i >= 0){
-    if(s !== '' || i === 0 || data[i] !== 0){
+var numToString = function () {
+  var i = 6;
+  var s = '';
+  while (--i >= 0) {
+    if (s !== '' || i === 0 || data[i] !== 0) {
       var t = String(data[i]);
       s = s === '' ? t : s + repeat.call(ZERO, 7 - t.length) + t;
     }
   } return s;
 };
-var pow = function(x, n, acc){
+var pow = function (x, n, acc) {
   return n === 0 ? acc : n % 2 === 1 ? pow(x, n - 1, acc * x) : pow(x * x, n / 2, acc);
 };
-var log = function(x){
-  var n  = 0
-    , x2 = x;
-  while(x2 >= 4096){
+var log = function (x) {
+  var n = 0;
+  var x2 = x;
+  while (x2 >= 4096) {
     n += 12;
     x2 /= 4096;
   }
-  while(x2 >= 2){
-    n  += 1;
+  while (x2 >= 2) {
+    n += 1;
     x2 /= 2;
   } return n;
 };
@@ -6193,39 +6391,40 @@ $export($export.P + $export.F * (!!$toFixed && (
   0.00008.toFixed(3) !== '0.000' ||
   0.9.toFixed(0) !== '1' ||
   1.255.toFixed(2) !== '1.25' ||
-  1000000000000000128..toFixed(0) !== '1000000000000000128'
-) || !require('./_fails')(function(){
+  1000000000000000128.0.toFixed(0) !== '1000000000000000128'
+) || !require('./_fails')(function () {
   // V8 ~ Android 4.3-
   $toFixed.call({});
 })), 'Number', {
-  toFixed: function toFixed(fractionDigits){
-    var x = aNumberValue(this, ERROR)
-      , f = toInteger(fractionDigits)
-      , s = ''
-      , m = ZERO
-      , e, z, j, k;
-    if(f < 0 || f > 20)throw RangeError(ERROR);
-    if(x != x)return 'NaN';
-    if(x <= -1e21 || x >= 1e21)return String(x);
-    if(x < 0){
+  toFixed: function toFixed(fractionDigits) {
+    var x = aNumberValue(this, ERROR);
+    var f = toInteger(fractionDigits);
+    var s = '';
+    var m = ZERO;
+    var e, z, j, k;
+    if (f < 0 || f > 20) throw RangeError(ERROR);
+    // eslint-disable-next-line no-self-compare
+    if (x != x) return 'NaN';
+    if (x <= -1e21 || x >= 1e21) return String(x);
+    if (x < 0) {
       s = '-';
       x = -x;
     }
-    if(x > 1e-21){
+    if (x > 1e-21) {
       e = log(x * pow(2, 69, 1)) - 69;
       z = e < 0 ? x * pow(2, -e, 1) : x / pow(2, e, 1);
       z *= 0x10000000000000;
       e = 52 - e;
-      if(e > 0){
+      if (e > 0) {
         multiply(0, z);
         j = f;
-        while(j >= 7){
+        while (j >= 7) {
           multiply(1e7, 0);
           j -= 7;
         }
         multiply(pow(10, j, 1), 0);
         j = e - 1;
-        while(j >= 23){
+        while (j >= 23) {
           divide(1 << 23);
           j -= 23;
         }
@@ -6239,7 +6438,7 @@ $export($export.P + $export.F * (!!$toFixed && (
         m = numToString() + repeat.call(ZERO, f);
       }
     }
-    if(f > 0){
+    if (f > 0) {
       k = m.length;
       m = s + (k <= f ? '0.' + repeat.call(ZERO, f - k) + m : m.slice(0, k - f) + '.' + m.slice(k - f));
     } else {
@@ -6250,435 +6449,421 @@ $export($export.P + $export.F * (!!$toFixed && (
   })();
 });
 
-require.register("core-js/modules/es6.number.to-precision.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.number.to-precision.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export      = require('./_export')
-  , $fails       = require('./_fails')
-  , aNumberValue = require('./_a-number-value')
-  , $toPrecision = 1..toPrecision;
+var $export = require('./_export');
+var $fails = require('./_fails');
+var aNumberValue = require('./_a-number-value');
+var $toPrecision = 1.0.toPrecision;
 
-$export($export.P + $export.F * ($fails(function(){
+$export($export.P + $export.F * ($fails(function () {
   // IE7-
   return $toPrecision.call(1, undefined) !== '1';
-}) || !$fails(function(){
+}) || !$fails(function () {
   // V8 ~ Android 4.3-
   $toPrecision.call({});
 })), 'Number', {
-  toPrecision: function toPrecision(precision){
+  toPrecision: function toPrecision(precision) {
     var that = aNumberValue(this, 'Number#toPrecision: incorrect invocation!');
-    return precision === undefined ? $toPrecision.call(that) : $toPrecision.call(that, precision); 
+    return precision === undefined ? $toPrecision.call(that) : $toPrecision.call(that, precision);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.assign.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.assign.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.3.1 Object.assign(target, source)
 var $export = require('./_export');
 
-$export($export.S + $export.F, 'Object', {assign: require('./_object-assign')});
+$export($export.S + $export.F, 'Object', { assign: require('./_object-assign') });
   })();
 });
 
-require.register("core-js/modules/es6.object.create.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.create.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export = require('./_export')
+    var $export = require('./_export');
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', {create: require('./_object-create')});
+$export($export.S, 'Object', { create: require('./_object-create') });
   })();
 });
 
-require.register("core-js/modules/es6.object.define-properties.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.define-properties.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var $export = require('./_export');
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperties: require('./_object-dps')});
+$export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperties: require('./_object-dps') });
   })();
 });
 
-require.register("core-js/modules/es6.object.define-property.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.define-property.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperty: require('./_object-dp').f});
+$export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperty: require('./_object-dp').f });
   })();
 });
 
-require.register("core-js/modules/es6.object.freeze.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.freeze.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.5 Object.freeze(O)
-var isObject = require('./_is-object')
-  , meta     = require('./_meta').onFreeze;
+var isObject = require('./_is-object');
+var meta = require('./_meta').onFreeze;
 
-require('./_object-sap')('freeze', function($freeze){
-  return function freeze(it){
+require('./_object-sap')('freeze', function ($freeze) {
+  return function freeze(it) {
     return $freeze && isObject(it) ? $freeze(meta(it)) : it;
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.get-own-property-descriptor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.get-own-property-descriptor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
-var toIObject                 = require('./_to-iobject')
-  , $getOwnPropertyDescriptor = require('./_object-gopd').f;
+var toIObject = require('./_to-iobject');
+var $getOwnPropertyDescriptor = require('./_object-gopd').f;
 
-require('./_object-sap')('getOwnPropertyDescriptor', function(){
-  return function getOwnPropertyDescriptor(it, key){
+require('./_object-sap')('getOwnPropertyDescriptor', function () {
+  return function getOwnPropertyDescriptor(it, key) {
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.get-own-property-names.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.get-own-property-names.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.7 Object.getOwnPropertyNames(O)
-require('./_object-sap')('getOwnPropertyNames', function(){
+require('./_object-sap')('getOwnPropertyNames', function () {
   return require('./_object-gopn-ext').f;
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.get-prototype-of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.get-prototype-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject        = require('./_to-object')
-  , $getPrototypeOf = require('./_object-gpo');
+var toObject = require('./_to-object');
+var $getPrototypeOf = require('./_object-gpo');
 
-require('./_object-sap')('getPrototypeOf', function(){
-  return function getPrototypeOf(it){
+require('./_object-sap')('getPrototypeOf', function () {
+  return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.is-extensible.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.is-extensible.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.11 Object.isExtensible(O)
 var isObject = require('./_is-object');
 
-require('./_object-sap')('isExtensible', function($isExtensible){
-  return function isExtensible(it){
+require('./_object-sap')('isExtensible', function ($isExtensible) {
+  return function isExtensible(it) {
     return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.is-frozen.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.is-frozen.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.12 Object.isFrozen(O)
 var isObject = require('./_is-object');
 
-require('./_object-sap')('isFrozen', function($isFrozen){
-  return function isFrozen(it){
+require('./_object-sap')('isFrozen', function ($isFrozen) {
+  return function isFrozen(it) {
     return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.is-sealed.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.is-sealed.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.13 Object.isSealed(O)
 var isObject = require('./_is-object');
 
-require('./_object-sap')('isSealed', function($isSealed){
-  return function isSealed(it){
+require('./_object-sap')('isSealed', function ($isSealed) {
+  return function isSealed(it) {
     return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.is.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.is.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.3.10 Object.is(value1, value2)
 var $export = require('./_export');
-$export($export.S, 'Object', {is: require('./_same-value')});
+$export($export.S, 'Object', { is: require('./_same-value') });
   })();
 });
 
-require.register("core-js/modules/es6.object.keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.14 Object.keys(O)
-var toObject = require('./_to-object')
-  , $keys    = require('./_object-keys');
+var toObject = require('./_to-object');
+var $keys = require('./_object-keys');
 
-require('./_object-sap')('keys', function(){
-  return function keys(it){
+require('./_object-sap')('keys', function () {
+  return function keys(it) {
     return $keys(toObject(it));
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.prevent-extensions.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.prevent-extensions.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.15 Object.preventExtensions(O)
-var isObject = require('./_is-object')
-  , meta     = require('./_meta').onFreeze;
+var isObject = require('./_is-object');
+var meta = require('./_meta').onFreeze;
 
-require('./_object-sap')('preventExtensions', function($preventExtensions){
-  return function preventExtensions(it){
+require('./_object-sap')('preventExtensions', function ($preventExtensions) {
+  return function preventExtensions(it) {
     return $preventExtensions && isObject(it) ? $preventExtensions(meta(it)) : it;
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.seal.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.seal.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.2.17 Object.seal(O)
-var isObject = require('./_is-object')
-  , meta     = require('./_meta').onFreeze;
+var isObject = require('./_is-object');
+var meta = require('./_meta').onFreeze;
 
-require('./_object-sap')('seal', function($seal){
-  return function seal(it){
+require('./_object-sap')('seal', function ($seal) {
+  return function seal(it) {
     return $seal && isObject(it) ? $seal(meta(it)) : it;
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.object.set-prototype-of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.set-prototype-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = require('./_export');
-$export($export.S, 'Object', {setPrototypeOf: require('./_set-proto').set});
+$export($export.S, 'Object', { setPrototypeOf: require('./_set-proto').set });
   })();
 });
 
-require.register("core-js/modules/es6.object.to-string.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.object.to-string.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 19.1.3.6 Object.prototype.toString()
-var classof = require('./_classof')
-  , test    = {};
+var classof = require('./_classof');
+var test = {};
 test[require('./_wks')('toStringTag')] = 'z';
-if(test + '' != '[object z]'){
-  require('./_redefine')(Object.prototype, 'toString', function toString(){
+if (test + '' != '[object z]') {
+  require('./_redefine')(Object.prototype, 'toString', function toString() {
     return '[object ' + classof(this) + ']';
   }, true);
 }
   })();
 });
 
-require.register("core-js/modules/es6.parse-float.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.parse-float.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export     = require('./_export')
-  , $parseFloat = require('./_parse-float');
+    var $export = require('./_export');
+var $parseFloat = require('./_parse-float');
 // 18.2.4 parseFloat(string)
-$export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
+$export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $parseFloat });
   })();
 });
 
-require.register("core-js/modules/es6.parse-int.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.parse-int.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export   = require('./_export')
-  , $parseInt = require('./_parse-int');
+    var $export = require('./_export');
+var $parseInt = require('./_parse-int');
 // 18.2.5 parseInt(string, radix)
-$export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
+$export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
   })();
 });
 
-require.register("core-js/modules/es6.promise.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.promise.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var LIBRARY            = require('./_library')
-  , global             = require('./_global')
-  , ctx                = require('./_ctx')
-  , classof            = require('./_classof')
-  , $export            = require('./_export')
-  , isObject           = require('./_is-object')
-  , aFunction          = require('./_a-function')
-  , anInstance         = require('./_an-instance')
-  , forOf              = require('./_for-of')
-  , speciesConstructor = require('./_species-constructor')
-  , task               = require('./_task').set
-  , microtask          = require('./_microtask')()
-  , PROMISE            = 'Promise'
-  , TypeError          = global.TypeError
-  , process            = global.process
-  , $Promise           = global[PROMISE]
-  , process            = global.process
-  , isNode             = classof(process) == 'process'
-  , empty              = function(){ /* empty */ }
-  , Internal, GenericPromiseCapability, Wrapper;
+var LIBRARY = require('./_library');
+var global = require('./_global');
+var ctx = require('./_ctx');
+var classof = require('./_classof');
+var $export = require('./_export');
+var isObject = require('./_is-object');
+var aFunction = require('./_a-function');
+var anInstance = require('./_an-instance');
+var forOf = require('./_for-of');
+var speciesConstructor = require('./_species-constructor');
+var task = require('./_task').set;
+var microtask = require('./_microtask')();
+var newPromiseCapabilityModule = require('./_new-promise-capability');
+var perform = require('./_perform');
+var promiseResolve = require('./_promise-resolve');
+var PROMISE = 'Promise';
+var TypeError = global.TypeError;
+var process = global.process;
+var $Promise = global[PROMISE];
+var isNode = classof(process) == 'process';
+var empty = function () { /* empty */ };
+var Internal, newGenericPromiseCapability, OwnPromiseCapability, Wrapper;
+var newPromiseCapability = newGenericPromiseCapability = newPromiseCapabilityModule.f;
 
-var USE_NATIVE = !!function(){
+var USE_NATIVE = !!function () {
   try {
     // correct subclassing with @@species support
-    var promise     = $Promise.resolve(1)
-      , FakePromise = (promise.constructor = {})[require('./_wks')('species')] = function(exec){ exec(empty, empty); };
+    var promise = $Promise.resolve(1);
+    var FakePromise = (promise.constructor = {})[require('./_wks')('species')] = function (exec) {
+      exec(empty, empty);
+    };
     // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
     return (isNode || typeof PromiseRejectionEvent == 'function') && promise.then(empty) instanceof FakePromise;
-  } catch(e){ /* empty */ }
+  } catch (e) { /* empty */ }
 }();
 
 // helpers
-var sameConstructor = function(a, b){
+var sameConstructor = LIBRARY ? function (a, b) {
   // with library wrapper special case
   return a === b || a === $Promise && b === Wrapper;
+} : function (a, b) {
+  return a === b;
 };
-var isThenable = function(it){
+var isThenable = function (it) {
   var then;
   return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
 };
-var newPromiseCapability = function(C){
-  return sameConstructor($Promise, C)
-    ? new PromiseCapability(C)
-    : new GenericPromiseCapability(C);
-};
-var PromiseCapability = GenericPromiseCapability = function(C){
-  var resolve, reject;
-  this.promise = new C(function($$resolve, $$reject){
-    if(resolve !== undefined || reject !== undefined)throw TypeError('Bad Promise constructor');
-    resolve = $$resolve;
-    reject  = $$reject;
-  });
-  this.resolve = aFunction(resolve);
-  this.reject  = aFunction(reject);
-};
-var perform = function(exec){
-  try {
-    exec();
-  } catch(e){
-    return {error: e};
-  }
-};
-var notify = function(promise, isReject){
-  if(promise._n)return;
+var notify = function (promise, isReject) {
+  if (promise._n) return;
   promise._n = true;
   var chain = promise._c;
-  microtask(function(){
-    var value = promise._v
-      , ok    = promise._s == 1
-      , i     = 0;
-    var run = function(reaction){
-      var handler = ok ? reaction.ok : reaction.fail
-        , resolve = reaction.resolve
-        , reject  = reaction.reject
-        , domain  = reaction.domain
-        , result, then;
+  microtask(function () {
+    var value = promise._v;
+    var ok = promise._s == 1;
+    var i = 0;
+    var run = function (reaction) {
+      var handler = ok ? reaction.ok : reaction.fail;
+      var resolve = reaction.resolve;
+      var reject = reaction.reject;
+      var domain = reaction.domain;
+      var result, then;
       try {
-        if(handler){
-          if(!ok){
-            if(promise._h == 2)onHandleUnhandled(promise);
+        if (handler) {
+          if (!ok) {
+            if (promise._h == 2) onHandleUnhandled(promise);
             promise._h = 1;
           }
-          if(handler === true)result = value;
+          if (handler === true) result = value;
           else {
-            if(domain)domain.enter();
+            if (domain) domain.enter();
             result = handler(value);
-            if(domain)domain.exit();
+            if (domain) domain.exit();
           }
-          if(result === reaction.promise){
+          if (result === reaction.promise) {
             reject(TypeError('Promise-chain cycle'));
-          } else if(then = isThenable(result)){
+          } else if (then = isThenable(result)) {
             then.call(result, resolve, reject);
           } else resolve(result);
         } else reject(value);
-      } catch(e){
+      } catch (e) {
         reject(e);
       }
     };
-    while(chain.length > i)run(chain[i++]); // variable length - can't use forEach
+    while (chain.length > i) run(chain[i++]); // variable length - can't use forEach
     promise._c = [];
     promise._n = false;
-    if(isReject && !promise._h)onUnhandled(promise);
+    if (isReject && !promise._h) onUnhandled(promise);
   });
 };
-var onUnhandled = function(promise){
-  task.call(global, function(){
-    var value = promise._v
-      , abrupt, handler, console;
-    if(isUnhandled(promise)){
-      abrupt = perform(function(){
-        if(isNode){
+var onUnhandled = function (promise) {
+  task.call(global, function () {
+    var value = promise._v;
+    var unhandled = isUnhandled(promise);
+    var result, handler, console;
+    if (unhandled) {
+      result = perform(function () {
+        if (isNode) {
           process.emit('unhandledRejection', value, promise);
-        } else if(handler = global.onunhandledrejection){
-          handler({promise: promise, reason: value});
-        } else if((console = global.console) && console.error){
+        } else if (handler = global.onunhandledrejection) {
+          handler({ promise: promise, reason: value });
+        } else if ((console = global.console) && console.error) {
           console.error('Unhandled promise rejection', value);
         }
       });
       // Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
       promise._h = isNode || isUnhandled(promise) ? 2 : 1;
     } promise._a = undefined;
-    if(abrupt)throw abrupt.error;
+    if (unhandled && result.e) throw result.v;
   });
 };
-var isUnhandled = function(promise){
-  if(promise._h == 1)return false;
-  var chain = promise._a || promise._c
-    , i     = 0
-    , reaction;
-  while(chain.length > i){
+var isUnhandled = function (promise) {
+  if (promise._h == 1) return false;
+  var chain = promise._a || promise._c;
+  var i = 0;
+  var reaction;
+  while (chain.length > i) {
     reaction = chain[i++];
-    if(reaction.fail || !isUnhandled(reaction.promise))return false;
+    if (reaction.fail || !isUnhandled(reaction.promise)) return false;
   } return true;
 };
-var onHandleUnhandled = function(promise){
-  task.call(global, function(){
+var onHandleUnhandled = function (promise) {
+  task.call(global, function () {
     var handler;
-    if(isNode){
+    if (isNode) {
       process.emit('rejectionHandled', promise);
-    } else if(handler = global.onrejectionhandled){
-      handler({promise: promise, reason: promise._v});
+    } else if (handler = global.onrejectionhandled) {
+      handler({ promise: promise, reason: promise._v });
     }
   });
 };
-var $reject = function(value){
+var $reject = function (value) {
   var promise = this;
-  if(promise._d)return;
+  if (promise._d) return;
   promise._d = true;
   promise = promise._w || promise; // unwrap
   promise._v = value;
   promise._s = 2;
-  if(!promise._a)promise._a = promise._c.slice();
+  if (!promise._a) promise._a = promise._c.slice();
   notify(promise, true);
 };
-var $resolve = function(value){
-  var promise = this
-    , then;
-  if(promise._d)return;
+var $resolve = function (value) {
+  var promise = this;
+  var then;
+  if (promise._d) return;
   promise._d = true;
   promise = promise._w || promise; // unwrap
   try {
-    if(promise === value)throw TypeError("Promise can't be resolved itself");
-    if(then = isThenable(value)){
-      microtask(function(){
-        var wrapper = {_w: promise, _d: false}; // wrap
+    if (promise === value) throw TypeError("Promise can't be resolved itself");
+    if (then = isThenable(value)) {
+      microtask(function () {
+        var wrapper = { _w: promise, _d: false }; // wrap
         try {
           then.call(value, ctx($resolve, wrapper, 1), ctx($reject, wrapper, 1));
-        } catch(e){
+        } catch (e) {
           $reject.call(wrapper, e);
         }
       });
@@ -6687,25 +6872,26 @@ var $resolve = function(value){
       promise._s = 1;
       notify(promise, false);
     }
-  } catch(e){
-    $reject.call({_w: promise, _d: false}, e); // wrap
+  } catch (e) {
+    $reject.call({ _w: promise, _d: false }, e); // wrap
   }
 };
 
 // constructor polyfill
-if(!USE_NATIVE){
+if (!USE_NATIVE) {
   // 25.4.3.1 Promise(executor)
-  $Promise = function Promise(executor){
+  $Promise = function Promise(executor) {
     anInstance(this, $Promise, PROMISE, '_h');
     aFunction(executor);
     Internal.call(this);
     try {
       executor(ctx($resolve, this, 1), ctx($reject, this, 1));
-    } catch(err){
+    } catch (err) {
       $reject.call(this, err);
     }
   };
-  Internal = function Promise(executor){
+  // eslint-disable-next-line no-unused-vars
+  Internal = function Promise(executor) {
     this._c = [];             // <- awaiting reactions
     this._a = undefined;      // <- checked in isUnhandled reactions
     this._s = 0;              // <- state
@@ -6716,30 +6902,35 @@ if(!USE_NATIVE){
   };
   Internal.prototype = require('./_redefine-all')($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
-    then: function then(onFulfilled, onRejected){
-      var reaction    = newPromiseCapability(speciesConstructor(this, $Promise));
-      reaction.ok     = typeof onFulfilled == 'function' ? onFulfilled : true;
-      reaction.fail   = typeof onRejected == 'function' && onRejected;
+    then: function then(onFulfilled, onRejected) {
+      var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
+      reaction.ok = typeof onFulfilled == 'function' ? onFulfilled : true;
+      reaction.fail = typeof onRejected == 'function' && onRejected;
       reaction.domain = isNode ? process.domain : undefined;
       this._c.push(reaction);
-      if(this._a)this._a.push(reaction);
-      if(this._s)notify(this, false);
+      if (this._a) this._a.push(reaction);
+      if (this._s) notify(this, false);
       return reaction.promise;
     },
     // 25.4.5.1 Promise.prototype.catch(onRejected)
-    'catch': function(onRejected){
+    'catch': function (onRejected) {
       return this.then(undefined, onRejected);
     }
   });
-  PromiseCapability = function(){
-    var promise  = new Internal;
+  OwnPromiseCapability = function () {
+    var promise = new Internal();
     this.promise = promise;
     this.resolve = ctx($resolve, promise, 1);
-    this.reject  = ctx($reject, promise, 1);
+    this.reject = ctx($reject, promise, 1);
+  };
+  newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
+    return sameConstructor($Promise, C)
+      ? new OwnPromiseCapability(C)
+      : newGenericPromiseCapability(C);
   };
 }
 
-$export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
+$export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 require('./_set-to-string-tag')($Promise, PROMISE);
 require('./_set-species')(PROMISE);
 Wrapper = require('./_core')[PROMISE];
@@ -6747,126 +6938,123 @@ Wrapper = require('./_core')[PROMISE];
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
   // 25.4.4.5 Promise.reject(r)
-  reject: function reject(r){
-    var capability = newPromiseCapability(this)
-      , $$reject   = capability.reject;
+  reject: function reject(r) {
+    var capability = newPromiseCapability(this);
+    var $$reject = capability.reject;
     $$reject(r);
     return capability.promise;
   }
 });
 $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
   // 25.4.4.6 Promise.resolve(x)
-  resolve: function resolve(x){
+  resolve: function resolve(x) {
     // instanceof instead of internal slot check because we should fix it without replacement native Promise core
-    if(x instanceof $Promise && sameConstructor(x.constructor, this))return x;
-    var capability = newPromiseCapability(this)
-      , $$resolve  = capability.resolve;
-    $$resolve(x);
-    return capability.promise;
+    if (x instanceof $Promise && sameConstructor(x.constructor, this)) return x;
+    return promiseResolve(this, x);
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect')(function(iter){
+$export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect')(function (iter) {
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
-  all: function all(iterable){
-    var C          = this
-      , capability = newPromiseCapability(C)
-      , resolve    = capability.resolve
-      , reject     = capability.reject;
-    var abrupt = perform(function(){
-      var values    = []
-        , index     = 0
-        , remaining = 1;
-      forOf(iterable, false, function(promise){
-        var $index        = index++
-          , alreadyCalled = false;
+  all: function all(iterable) {
+    var C = this;
+    var capability = newPromiseCapability(C);
+    var resolve = capability.resolve;
+    var reject = capability.reject;
+    var result = perform(function () {
+      var values = [];
+      var index = 0;
+      var remaining = 1;
+      forOf(iterable, false, function (promise) {
+        var $index = index++;
+        var alreadyCalled = false;
         values.push(undefined);
         remaining++;
-        C.resolve(promise).then(function(value){
-          if(alreadyCalled)return;
-          alreadyCalled  = true;
+        C.resolve(promise).then(function (value) {
+          if (alreadyCalled) return;
+          alreadyCalled = true;
           values[$index] = value;
           --remaining || resolve(values);
         }, reject);
       });
       --remaining || resolve(values);
     });
-    if(abrupt)reject(abrupt.error);
+    if (result.e) reject(result.v);
     return capability.promise;
   },
   // 25.4.4.4 Promise.race(iterable)
-  race: function race(iterable){
-    var C          = this
-      , capability = newPromiseCapability(C)
-      , reject     = capability.reject;
-    var abrupt = perform(function(){
-      forOf(iterable, false, function(promise){
+  race: function race(iterable) {
+    var C = this;
+    var capability = newPromiseCapability(C);
+    var reject = capability.reject;
+    var result = perform(function () {
+      forOf(iterable, false, function (promise) {
         C.resolve(promise).then(capability.resolve, reject);
       });
     });
-    if(abrupt)reject(abrupt.error);
+    if (result.e) reject(result.v);
     return capability.promise;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.apply.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.apply.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
-var $export   = require('./_export')
-  , aFunction = require('./_a-function')
-  , anObject  = require('./_an-object')
-  , rApply    = (require('./_global').Reflect || {}).apply
-  , fApply    = Function.apply;
+var $export = require('./_export');
+var aFunction = require('./_a-function');
+var anObject = require('./_an-object');
+var rApply = (require('./_global').Reflect || {}).apply;
+var fApply = Function.apply;
 // MS Edge argumentsList argument is optional
-$export($export.S + $export.F * !require('./_fails')(function(){
-  rApply(function(){});
+$export($export.S + $export.F * !require('./_fails')(function () {
+  rApply(function () { /* empty */ });
 }), 'Reflect', {
-  apply: function apply(target, thisArgument, argumentsList){
-    var T = aFunction(target)
-      , L = anObject(argumentsList);
+  apply: function apply(target, thisArgument, argumentsList) {
+    var T = aFunction(target);
+    var L = anObject(argumentsList);
     return rApply ? rApply(T, thisArgument, L) : fApply.call(T, thisArgument, L);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.construct.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.construct.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
-var $export    = require('./_export')
-  , create     = require('./_object-create')
-  , aFunction  = require('./_a-function')
-  , anObject   = require('./_an-object')
-  , isObject   = require('./_is-object')
-  , fails      = require('./_fails')
-  , bind       = require('./_bind')
-  , rConstruct = (require('./_global').Reflect || {}).construct;
+var $export = require('./_export');
+var create = require('./_object-create');
+var aFunction = require('./_a-function');
+var anObject = require('./_an-object');
+var isObject = require('./_is-object');
+var fails = require('./_fails');
+var bind = require('./_bind');
+var rConstruct = (require('./_global').Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
-var NEW_TARGET_BUG = fails(function(){
-  function F(){}
-  return !(rConstruct(function(){}, [], F) instanceof F);
+var NEW_TARGET_BUG = fails(function () {
+  function F() { /* empty */ }
+  return !(rConstruct(function () { /* empty */ }, [], F) instanceof F);
 });
-var ARGS_BUG = !fails(function(){
-  rConstruct(function(){});
+var ARGS_BUG = !fails(function () {
+  rConstruct(function () { /* empty */ });
 });
 
 $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
-  construct: function construct(Target, args /*, newTarget*/){
+  construct: function construct(Target, args /* , newTarget */) {
     aFunction(Target);
     anObject(args);
     var newTarget = arguments.length < 3 ? Target : aFunction(arguments[2]);
-    if(ARGS_BUG && !NEW_TARGET_BUG)return rConstruct(Target, args, newTarget);
-    if(Target == newTarget){
+    if (ARGS_BUG && !NEW_TARGET_BUG) return rConstruct(Target, args, newTarget);
+    if (Target == newTarget) {
       // w/o altered newTarget, optimization for 0-4 arguments
-      switch(args.length){
-        case 0: return new Target;
+      switch (args.length) {
+        case 0: return new Target();
         case 1: return new Target(args[0]);
         case 2: return new Target(args[0], args[1]);
         case 3: return new Target(args[0], args[1], args[2]);
@@ -6875,39 +7063,40 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
       // w/o altered newTarget, lot of arguments case
       var $args = [null];
       $args.push.apply($args, args);
-      return new (bind.apply(Target, $args));
+      return new (bind.apply(Target, $args))();
     }
     // with altered newTarget, not support built-in constructors
-    var proto    = newTarget.prototype
-      , instance = create(isObject(proto) ? proto : Object.prototype)
-      , result   = Function.apply.call(Target, instance, args);
+    var proto = newTarget.prototype;
+    var instance = create(isObject(proto) ? proto : Object.prototype);
+    var result = Function.apply.call(Target, instance, args);
     return isObject(result) ? result : instance;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.define-property.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.define-property.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
-var dP          = require('./_object-dp')
-  , $export     = require('./_export')
-  , anObject    = require('./_an-object')
-  , toPrimitive = require('./_to-primitive');
+var dP = require('./_object-dp');
+var $export = require('./_export');
+var anObject = require('./_an-object');
+var toPrimitive = require('./_to-primitive');
 
 // MS Edge has broken Reflect.defineProperty - throwing instead of returning false
-$export($export.S + $export.F * require('./_fails')(function(){
-  Reflect.defineProperty(dP.f({}, 1, {value: 1}), 1, {value: 2});
+$export($export.S + $export.F * require('./_fails')(function () {
+  // eslint-disable-next-line no-undef
+  Reflect.defineProperty(dP.f({}, 1, { value: 1 }), 1, { value: 2 });
 }), 'Reflect', {
-  defineProperty: function defineProperty(target, propertyKey, attributes){
+  defineProperty: function defineProperty(target, propertyKey, attributes) {
     anObject(target);
     propertyKey = toPrimitive(propertyKey, true);
     anObject(attributes);
     try {
       dP.f(target, propertyKey, attributes);
       return true;
-    } catch(e){
+    } catch (e) {
       return false;
     }
   }
@@ -6915,16 +7104,16 @@ $export($export.S + $export.F * require('./_fails')(function(){
   })();
 });
 
-require.register("core-js/modules/es6.reflect.delete-property.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.delete-property.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.4 Reflect.deleteProperty(target, propertyKey)
-var $export  = require('./_export')
-  , gOPD     = require('./_object-gopd').f
-  , anObject = require('./_an-object');
+var $export = require('./_export');
+var gOPD = require('./_object-gopd').f;
+var anObject = require('./_an-object');
 
 $export($export.S, 'Reflect', {
-  deleteProperty: function deleteProperty(target, propertyKey){
+  deleteProperty: function deleteProperty(target, propertyKey) {
     var desc = gOPD(anObject(target), propertyKey);
     return desc && !desc.configurable ? false : delete target[propertyKey];
   }
@@ -6932,121 +7121,121 @@ $export($export.S, 'Reflect', {
   })();
 });
 
-require.register("core-js/modules/es6.reflect.enumerate.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.enumerate.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 26.1.5 Reflect.enumerate(target)
-var $export  = require('./_export')
-  , anObject = require('./_an-object');
-var Enumerate = function(iterated){
+var $export = require('./_export');
+var anObject = require('./_an-object');
+var Enumerate = function (iterated) {
   this._t = anObject(iterated); // target
   this._i = 0;                  // next index
-  var keys = this._k = []       // keys
-    , key;
-  for(key in iterated)keys.push(key);
+  var keys = this._k = [];      // keys
+  var key;
+  for (key in iterated) keys.push(key);
 };
-require('./_iter-create')(Enumerate, 'Object', function(){
-  var that = this
-    , keys = that._k
-    , key;
+require('./_iter-create')(Enumerate, 'Object', function () {
+  var that = this;
+  var keys = that._k;
+  var key;
   do {
-    if(that._i >= keys.length)return {value: undefined, done: true};
-  } while(!((key = keys[that._i++]) in that._t));
-  return {value: key, done: false};
+    if (that._i >= keys.length) return { value: undefined, done: true };
+  } while (!((key = keys[that._i++]) in that._t));
+  return { value: key, done: false };
 });
 
 $export($export.S, 'Reflect', {
-  enumerate: function enumerate(target){
+  enumerate: function enumerate(target) {
     return new Enumerate(target);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.get-own-property-descriptor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
-var gOPD     = require('./_object-gopd')
-  , $export  = require('./_export')
-  , anObject = require('./_an-object');
+var gOPD = require('./_object-gopd');
+var $export = require('./_export');
+var anObject = require('./_an-object');
 
 $export($export.S, 'Reflect', {
-  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(target, propertyKey){
+  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(target, propertyKey) {
     return gOPD.f(anObject(target), propertyKey);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.get-prototype-of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.get-prototype-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.8 Reflect.getPrototypeOf(target)
-var $export  = require('./_export')
-  , getProto = require('./_object-gpo')
-  , anObject = require('./_an-object');
+var $export = require('./_export');
+var getProto = require('./_object-gpo');
+var anObject = require('./_an-object');
 
 $export($export.S, 'Reflect', {
-  getPrototypeOf: function getPrototypeOf(target){
+  getPrototypeOf: function getPrototypeOf(target) {
     return getProto(anObject(target));
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.get.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.get.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.6 Reflect.get(target, propertyKey [, receiver])
-var gOPD           = require('./_object-gopd')
-  , getPrototypeOf = require('./_object-gpo')
-  , has            = require('./_has')
-  , $export        = require('./_export')
-  , isObject       = require('./_is-object')
-  , anObject       = require('./_an-object');
+var gOPD = require('./_object-gopd');
+var getPrototypeOf = require('./_object-gpo');
+var has = require('./_has');
+var $export = require('./_export');
+var isObject = require('./_is-object');
+var anObject = require('./_an-object');
 
-function get(target, propertyKey/*, receiver*/){
-  var receiver = arguments.length < 3 ? target : arguments[2]
-    , desc, proto;
-  if(anObject(target) === receiver)return target[propertyKey];
-  if(desc = gOPD.f(target, propertyKey))return has(desc, 'value')
+function get(target, propertyKey /* , receiver */) {
+  var receiver = arguments.length < 3 ? target : arguments[2];
+  var desc, proto;
+  if (anObject(target) === receiver) return target[propertyKey];
+  if (desc = gOPD.f(target, propertyKey)) return has(desc, 'value')
     ? desc.value
     : desc.get !== undefined
       ? desc.get.call(receiver)
       : undefined;
-  if(isObject(proto = getPrototypeOf(target)))return get(proto, propertyKey, receiver);
+  if (isObject(proto = getPrototypeOf(target))) return get(proto, propertyKey, receiver);
 }
 
-$export($export.S, 'Reflect', {get: get});
+$export($export.S, 'Reflect', { get: get });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.has.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.has.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.9 Reflect.has(target, propertyKey)
 var $export = require('./_export');
 
 $export($export.S, 'Reflect', {
-  has: function has(target, propertyKey){
+  has: function has(target, propertyKey) {
     return propertyKey in target;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.is-extensible.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.is-extensible.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.10 Reflect.isExtensible(target)
-var $export       = require('./_export')
-  , anObject      = require('./_an-object')
-  , $isExtensible = Object.isExtensible;
+var $export = require('./_export');
+var anObject = require('./_an-object');
+var $isExtensible = Object.isExtensible;
 
 $export($export.S, 'Reflect', {
-  isExtensible: function isExtensible(target){
+  isExtensible: function isExtensible(target) {
     anObject(target);
     return $isExtensible ? $isExtensible(target) : true;
   }
@@ -7054,31 +7243,31 @@ $export($export.S, 'Reflect', {
   })();
 });
 
-require.register("core-js/modules/es6.reflect.own-keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.own-keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.11 Reflect.ownKeys(target)
 var $export = require('./_export');
 
-$export($export.S, 'Reflect', {ownKeys: require('./_own-keys')});
+$export($export.S, 'Reflect', { ownKeys: require('./_own-keys') });
   })();
 });
 
-require.register("core-js/modules/es6.reflect.prevent-extensions.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.prevent-extensions.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.12 Reflect.preventExtensions(target)
-var $export            = require('./_export')
-  , anObject           = require('./_an-object')
-  , $preventExtensions = Object.preventExtensions;
+var $export = require('./_export');
+var anObject = require('./_an-object');
+var $preventExtensions = Object.preventExtensions;
 
 $export($export.S, 'Reflect', {
-  preventExtensions: function preventExtensions(target){
+  preventExtensions: function preventExtensions(target) {
     anObject(target);
     try {
-      if($preventExtensions)$preventExtensions(target);
+      if ($preventExtensions) $preventExtensions(target);
       return true;
-    } catch(e){
+    } catch (e) {
       return false;
     }
   }
@@ -7086,20 +7275,20 @@ $export($export.S, 'Reflect', {
   })();
 });
 
-require.register("core-js/modules/es6.reflect.set-prototype-of.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.set-prototype-of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.14 Reflect.setPrototypeOf(target, proto)
-var $export  = require('./_export')
-  , setProto = require('./_set-proto');
+var $export = require('./_export');
+var setProto = require('./_set-proto');
 
-if(setProto)$export($export.S, 'Reflect', {
-  setPrototypeOf: function setPrototypeOf(target, proto){
+if (setProto) $export($export.S, 'Reflect', {
+  setPrototypeOf: function setPrototypeOf(target, proto) {
     setProto.check(target, proto);
     try {
       setProto.set(target, proto);
       return true;
-    } catch(e){
+    } catch (e) {
       return false;
     }
   }
@@ -7107,31 +7296,31 @@ if(setProto)$export($export.S, 'Reflect', {
   })();
 });
 
-require.register("core-js/modules/es6.reflect.set.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.reflect.set.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
-var dP             = require('./_object-dp')
-  , gOPD           = require('./_object-gopd')
-  , getPrototypeOf = require('./_object-gpo')
-  , has            = require('./_has')
-  , $export        = require('./_export')
-  , createDesc     = require('./_property-desc')
-  , anObject       = require('./_an-object')
-  , isObject       = require('./_is-object');
+var dP = require('./_object-dp');
+var gOPD = require('./_object-gopd');
+var getPrototypeOf = require('./_object-gpo');
+var has = require('./_has');
+var $export = require('./_export');
+var createDesc = require('./_property-desc');
+var anObject = require('./_an-object');
+var isObject = require('./_is-object');
 
-function set(target, propertyKey, V/*, receiver*/){
-  var receiver = arguments.length < 4 ? target : arguments[3]
-    , ownDesc  = gOPD.f(anObject(target), propertyKey)
-    , existingDescriptor, proto;
-  if(!ownDesc){
-    if(isObject(proto = getPrototypeOf(target))){
+function set(target, propertyKey, V /* , receiver */) {
+  var receiver = arguments.length < 4 ? target : arguments[3];
+  var ownDesc = gOPD.f(anObject(target), propertyKey);
+  var existingDescriptor, proto;
+  if (!ownDesc) {
+    if (isObject(proto = getPrototypeOf(target))) {
       return set(proto, propertyKey, V, receiver);
     }
     ownDesc = createDesc(0);
   }
-  if(has(ownDesc, 'value')){
-    if(ownDesc.writable === false || !isObject(receiver))return false;
+  if (has(ownDesc, 'value')) {
+    if (ownDesc.writable === false || !isObject(receiver)) return false;
     existingDescriptor = gOPD.f(receiver, propertyKey) || createDesc(0);
     existingDescriptor.value = V;
     dP.f(receiver, propertyKey, existingDescriptor);
@@ -7140,50 +7329,50 @@ function set(target, propertyKey, V/*, receiver*/){
   return ownDesc.set === undefined ? false : (ownDesc.set.call(receiver, V), true);
 }
 
-$export($export.S, 'Reflect', {set: set});
+$export($export.S, 'Reflect', { set: set });
   })();
 });
 
-require.register("core-js/modules/es6.regexp.constructor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.regexp.constructor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var global            = require('./_global')
-  , inheritIfRequired = require('./_inherit-if-required')
-  , dP                = require('./_object-dp').f
-  , gOPN              = require('./_object-gopn').f
-  , isRegExp          = require('./_is-regexp')
-  , $flags            = require('./_flags')
-  , $RegExp           = global.RegExp
-  , Base              = $RegExp
-  , proto             = $RegExp.prototype
-  , re1               = /a/g
-  , re2               = /a/g
-  // "new" creates a new object, old webkit buggy here
-  , CORRECT_NEW       = new $RegExp(re1) !== re1;
+    var global = require('./_global');
+var inheritIfRequired = require('./_inherit-if-required');
+var dP = require('./_object-dp').f;
+var gOPN = require('./_object-gopn').f;
+var isRegExp = require('./_is-regexp');
+var $flags = require('./_flags');
+var $RegExp = global.RegExp;
+var Base = $RegExp;
+var proto = $RegExp.prototype;
+var re1 = /a/g;
+var re2 = /a/g;
+// "new" creates a new object, old webkit buggy here
+var CORRECT_NEW = new $RegExp(re1) !== re1;
 
-if(require('./_descriptors') && (!CORRECT_NEW || require('./_fails')(function(){
+if (require('./_descriptors') && (!CORRECT_NEW || require('./_fails')(function () {
   re2[require('./_wks')('match')] = false;
   // RegExp constructor can alter flags and IsRegExp works correct with @@match
   return $RegExp(re1) != re1 || $RegExp(re2) == re2 || $RegExp(re1, 'i') != '/a/i';
-}))){
-  $RegExp = function RegExp(p, f){
-    var tiRE = this instanceof $RegExp
-      , piRE = isRegExp(p)
-      , fiU  = f === undefined;
+}))) {
+  $RegExp = function RegExp(p, f) {
+    var tiRE = this instanceof $RegExp;
+    var piRE = isRegExp(p);
+    var fiU = f === undefined;
     return !tiRE && piRE && p.constructor === $RegExp && fiU ? p
       : inheritIfRequired(CORRECT_NEW
         ? new Base(piRE && !fiU ? p.source : p, f)
         : Base((piRE = p instanceof $RegExp) ? p.source : p, piRE && fiU ? $flags.call(p) : f)
       , tiRE ? this : proto, $RegExp);
   };
-  var proxy = function(key){
+  var proxy = function (key) {
     key in $RegExp || dP($RegExp, key, {
       configurable: true,
-      get: function(){ return Base[key]; },
-      set: function(it){ Base[key] = it; }
+      get: function () { return Base[key]; },
+      set: function (it) { Base[key] = it; }
     });
   };
-  for(var keys = gOPN(Base), i = 0; keys.length > i; )proxy(keys[i++]);
+  for (var keys = gOPN(Base), i = 0; keys.length > i;) proxy(keys[i++]);
   proto.constructor = $RegExp;
   $RegExp.prototype = proto;
   require('./_redefine')(global, 'RegExp', $RegExp);
@@ -7193,43 +7382,43 @@ require('./_set-species')('RegExp');
   })();
 });
 
-require.register("core-js/modules/es6.regexp.flags.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.regexp.flags.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 21.2.5.3 get RegExp.prototype.flags()
-if(require('./_descriptors') && /./g.flags != 'g')require('./_object-dp').f(RegExp.prototype, 'flags', {
+if (require('./_descriptors') && /./g.flags != 'g') require('./_object-dp').f(RegExp.prototype, 'flags', {
   configurable: true,
   get: require('./_flags')
 });
   })();
 });
 
-require.register("core-js/modules/es6.regexp.match.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.regexp.match.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // @@match logic
-require('./_fix-re-wks')('match', 1, function(defined, MATCH, $match){
+require('./_fix-re-wks')('match', 1, function (defined, MATCH, $match) {
   // 21.1.3.11 String.prototype.match(regexp)
-  return [function match(regexp){
+  return [function match(regexp) {
     'use strict';
-    var O  = defined(this)
-      , fn = regexp == undefined ? undefined : regexp[MATCH];
+    var O = defined(this);
+    var fn = regexp == undefined ? undefined : regexp[MATCH];
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
   }, $match];
 });
   })();
 });
 
-require.register("core-js/modules/es6.regexp.replace.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.regexp.replace.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // @@replace logic
-require('./_fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
+require('./_fix-re-wks')('replace', 2, function (defined, REPLACE, $replace) {
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
-  return [function replace(searchValue, replaceValue){
+  return [function replace(searchValue, replaceValue) {
     'use strict';
-    var O  = defined(this)
-      , fn = searchValue == undefined ? undefined : searchValue[REPLACE];
+    var O = defined(this);
+    var fn = searchValue == undefined ? undefined : searchValue[REPLACE];
     return fn !== undefined
       ? fn.call(searchValue, O, replaceValue)
       : $replace.call(String(O), searchValue, replaceValue);
@@ -7238,49 +7427,49 @@ require('./_fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
   })();
 });
 
-require.register("core-js/modules/es6.regexp.search.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.regexp.search.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // @@search logic
-require('./_fix-re-wks')('search', 1, function(defined, SEARCH, $search){
+require('./_fix-re-wks')('search', 1, function (defined, SEARCH, $search) {
   // 21.1.3.15 String.prototype.search(regexp)
-  return [function search(regexp){
+  return [function search(regexp) {
     'use strict';
-    var O  = defined(this)
-      , fn = regexp == undefined ? undefined : regexp[SEARCH];
+    var O = defined(this);
+    var fn = regexp == undefined ? undefined : regexp[SEARCH];
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[SEARCH](String(O));
   }, $search];
 });
   })();
 });
 
-require.register("core-js/modules/es6.regexp.split.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.regexp.split.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // @@split logic
-require('./_fix-re-wks')('split', 2, function(defined, SPLIT, $split){
+require('./_fix-re-wks')('split', 2, function (defined, SPLIT, $split) {
   'use strict';
-  var isRegExp   = require('./_is-regexp')
-    , _split     = $split
-    , $push      = [].push
-    , $SPLIT     = 'split'
-    , LENGTH     = 'length'
-    , LAST_INDEX = 'lastIndex';
-  if(
+  var isRegExp = require('./_is-regexp');
+  var _split = $split;
+  var $push = [].push;
+  var $SPLIT = 'split';
+  var LENGTH = 'length';
+  var LAST_INDEX = 'lastIndex';
+  if (
     'abbc'[$SPLIT](/(b)*/)[1] == 'c' ||
     'test'[$SPLIT](/(?:)/, -1)[LENGTH] != 4 ||
     'ab'[$SPLIT](/(?:ab)*/)[LENGTH] != 2 ||
     '.'[$SPLIT](/(.?)(.?)/)[LENGTH] != 4 ||
     '.'[$SPLIT](/()()/)[LENGTH] > 1 ||
     ''[$SPLIT](/.?/)[LENGTH]
-  ){
+  ) {
     var NPCG = /()??/.exec('')[1] === undefined; // nonparticipating capturing group
     // based on es5-shim implementation, need to rework it
-    $split = function(separator, limit){
+    $split = function (separator, limit) {
       var string = String(this);
-      if(separator === undefined && limit === 0)return [];
+      if (separator === undefined && limit === 0) return [];
       // If `separator` is not a regex, use native split
-      if(!isRegExp(separator))return _split.call(string, separator, limit);
+      if (!isRegExp(separator)) return _split.call(string, separator, limit);
       var output = [];
       var flags = (separator.ignoreCase ? 'i' : '') +
                   (separator.multiline ? 'm' : '') +
@@ -7292,178 +7481,181 @@ require('./_fix-re-wks')('split', 2, function(defined, SPLIT, $split){
       var separatorCopy = new RegExp(separator.source, flags + 'g');
       var separator2, match, lastIndex, lastLength, i;
       // Doesn't need flags gy, but they don't hurt
-      if(!NPCG)separator2 = new RegExp('^' + separatorCopy.source + '$(?!\\s)', flags);
-      while(match = separatorCopy.exec(string)){
+      if (!NPCG) separator2 = new RegExp('^' + separatorCopy.source + '$(?!\\s)', flags);
+      while (match = separatorCopy.exec(string)) {
         // `separatorCopy.lastIndex` is not reliable cross-browser
         lastIndex = match.index + match[0][LENGTH];
-        if(lastIndex > lastLastIndex){
+        if (lastIndex > lastLastIndex) {
           output.push(string.slice(lastLastIndex, match.index));
           // Fix browsers whose `exec` methods don't consistently return `undefined` for NPCG
-          if(!NPCG && match[LENGTH] > 1)match[0].replace(separator2, function(){
-            for(i = 1; i < arguments[LENGTH] - 2; i++)if(arguments[i] === undefined)match[i] = undefined;
+          // eslint-disable-next-line no-loop-func
+          if (!NPCG && match[LENGTH] > 1) match[0].replace(separator2, function () {
+            for (i = 1; i < arguments[LENGTH] - 2; i++) if (arguments[i] === undefined) match[i] = undefined;
           });
-          if(match[LENGTH] > 1 && match.index < string[LENGTH])$push.apply(output, match.slice(1));
+          if (match[LENGTH] > 1 && match.index < string[LENGTH]) $push.apply(output, match.slice(1));
           lastLength = match[0][LENGTH];
           lastLastIndex = lastIndex;
-          if(output[LENGTH] >= splitLimit)break;
+          if (output[LENGTH] >= splitLimit) break;
         }
-        if(separatorCopy[LAST_INDEX] === match.index)separatorCopy[LAST_INDEX]++; // Avoid an infinite loop
+        if (separatorCopy[LAST_INDEX] === match.index) separatorCopy[LAST_INDEX]++; // Avoid an infinite loop
       }
-      if(lastLastIndex === string[LENGTH]){
-        if(lastLength || !separatorCopy.test(''))output.push('');
+      if (lastLastIndex === string[LENGTH]) {
+        if (lastLength || !separatorCopy.test('')) output.push('');
       } else output.push(string.slice(lastLastIndex));
       return output[LENGTH] > splitLimit ? output.slice(0, splitLimit) : output;
     };
   // Chakra, V8
-  } else if('0'[$SPLIT](undefined, 0)[LENGTH]){
-    $split = function(separator, limit){
+  } else if ('0'[$SPLIT](undefined, 0)[LENGTH]) {
+    $split = function (separator, limit) {
       return separator === undefined && limit === 0 ? [] : _split.call(this, separator, limit);
     };
   }
   // 21.1.3.17 String.prototype.split(separator, limit)
-  return [function split(separator, limit){
-    var O  = defined(this)
-      , fn = separator == undefined ? undefined : separator[SPLIT];
+  return [function split(separator, limit) {
+    var O = defined(this);
+    var fn = separator == undefined ? undefined : separator[SPLIT];
     return fn !== undefined ? fn.call(separator, O, limit) : $split.call(String(O), separator, limit);
   }, $split];
 });
   })();
 });
 
-require.register("core-js/modules/es6.regexp.to-string.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.regexp.to-string.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 require('./es6.regexp.flags');
-var anObject    = require('./_an-object')
-  , $flags      = require('./_flags')
-  , DESCRIPTORS = require('./_descriptors')
-  , TO_STRING   = 'toString'
-  , $toString   = /./[TO_STRING];
+var anObject = require('./_an-object');
+var $flags = require('./_flags');
+var DESCRIPTORS = require('./_descriptors');
+var TO_STRING = 'toString';
+var $toString = /./[TO_STRING];
 
-var define = function(fn){
+var define = function (fn) {
   require('./_redefine')(RegExp.prototype, TO_STRING, fn, true);
 };
 
 // 21.2.5.14 RegExp.prototype.toString()
-if(require('./_fails')(function(){ return $toString.call({source: 'a', flags: 'b'}) != '/a/b'; })){
-  define(function toString(){
+if (require('./_fails')(function () { return $toString.call({ source: 'a', flags: 'b' }) != '/a/b'; })) {
+  define(function toString() {
     var R = anObject(this);
     return '/'.concat(R.source, '/',
       'flags' in R ? R.flags : !DESCRIPTORS && R instanceof RegExp ? $flags.call(R) : undefined);
   });
 // FF44- RegExp#toString has a wrong name
-} else if($toString.name != TO_STRING){
-  define(function toString(){
+} else if ($toString.name != TO_STRING) {
+  define(function toString() {
     return $toString.call(this);
   });
 }
   })();
 });
 
-require.register("core-js/modules/es6.set.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.set.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 var strong = require('./_collection-strong');
+var validate = require('./_validate-collection');
+var SET = 'Set';
 
 // 23.2 Set Objects
-module.exports = require('./_collection')('Set', function(get){
-  return function Set(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
+module.exports = require('./_collection')(SET, function (get) {
+  return function Set() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.2.3.1 Set.prototype.add(value)
-  add: function add(value){
-    return strong.def(this, value = value === 0 ? 0 : value, value);
+  add: function add(value) {
+    return strong.def(validate(this, SET), value = value === 0 ? 0 : value, value);
   }
 }, strong);
   })();
 });
 
-require.register("core-js/modules/es6.string.anchor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.anchor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.2 String.prototype.anchor(name)
-require('./_string-html')('anchor', function(createHTML){
-  return function anchor(name){
+require('./_string-html')('anchor', function (createHTML) {
+  return function anchor(name) {
     return createHTML(this, 'a', 'name', name);
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.big.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.big.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.3 String.prototype.big()
-require('./_string-html')('big', function(createHTML){
-  return function big(){
+require('./_string-html')('big', function (createHTML) {
+  return function big() {
     return createHTML(this, 'big', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.blink.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.blink.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.4 String.prototype.blink()
-require('./_string-html')('blink', function(createHTML){
-  return function blink(){
+require('./_string-html')('blink', function (createHTML) {
+  return function blink() {
     return createHTML(this, 'blink', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.bold.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.bold.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.5 String.prototype.bold()
-require('./_string-html')('bold', function(createHTML){
-  return function bold(){
+require('./_string-html')('bold', function (createHTML) {
+  return function bold() {
     return createHTML(this, 'b', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.code-point-at.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.code-point-at.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export = require('./_export')
-  , $at     = require('./_string-at')(false);
+var $export = require('./_export');
+var $at = require('./_string-at')(false);
 $export($export.P, 'String', {
   // 21.1.3.3 String.prototype.codePointAt(pos)
-  codePointAt: function codePointAt(pos){
+  codePointAt: function codePointAt(pos) {
     return $at(this, pos);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.ends-with.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.ends-with.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
 'use strict';
-var $export   = require('./_export')
-  , toLength  = require('./_to-length')
-  , context   = require('./_string-context')
-  , ENDS_WITH = 'endsWith'
-  , $endsWith = ''[ENDS_WITH];
+var $export = require('./_export');
+var toLength = require('./_to-length');
+var context = require('./_string-context');
+var ENDS_WITH = 'endsWith';
+var $endsWith = ''[ENDS_WITH];
 
 $export($export.P + $export.F * require('./_fails-is-regexp')(ENDS_WITH), 'String', {
-  endsWith: function endsWith(searchString /*, endPosition = @length */){
-    var that = context(this, searchString, ENDS_WITH)
-      , endPosition = arguments.length > 1 ? arguments[1] : undefined
-      , len    = toLength(that.length)
-      , end    = endPosition === undefined ? len : Math.min(toLength(endPosition), len)
-      , search = String(searchString);
+  endsWith: function endsWith(searchString /* , endPosition = @length */) {
+    var that = context(this, searchString, ENDS_WITH);
+    var endPosition = arguments.length > 1 ? arguments[1] : undefined;
+    var len = toLength(that.length);
+    var end = endPosition === undefined ? len : Math.min(toLength(endPosition), len);
+    var search = String(searchString);
     return $endsWith
       ? $endsWith.call(that, search, end)
       : that.slice(end - search.length, end) === search;
@@ -7472,64 +7664,64 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(ENDS_WITH), 'Strin
   })();
 });
 
-require.register("core-js/modules/es6.string.fixed.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.fixed.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.6 String.prototype.fixed()
-require('./_string-html')('fixed', function(createHTML){
-  return function fixed(){
+require('./_string-html')('fixed', function (createHTML) {
+  return function fixed() {
     return createHTML(this, 'tt', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.fontcolor.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.fontcolor.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.7 String.prototype.fontcolor(color)
-require('./_string-html')('fontcolor', function(createHTML){
-  return function fontcolor(color){
+require('./_string-html')('fontcolor', function (createHTML) {
+  return function fontcolor(color) {
     return createHTML(this, 'font', 'color', color);
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.fontsize.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.fontsize.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.8 String.prototype.fontsize(size)
-require('./_string-html')('fontsize', function(createHTML){
-  return function fontsize(size){
+require('./_string-html')('fontsize', function (createHTML) {
+  return function fontsize(size) {
     return createHTML(this, 'font', 'size', size);
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.from-code-point.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.from-code-point.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export        = require('./_export')
-  , toIndex        = require('./_to-index')
-  , fromCharCode   = String.fromCharCode
-  , $fromCodePoint = String.fromCodePoint;
+    var $export = require('./_export');
+var toAbsoluteIndex = require('./_to-absolute-index');
+var fromCharCode = String.fromCharCode;
+var $fromCodePoint = String.fromCodePoint;
 
 // length should be 1, old FF problem
 $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1), 'String', {
   // 21.1.2.2 String.fromCodePoint(...codePoints)
-  fromCodePoint: function fromCodePoint(x){ // eslint-disable-line no-unused-vars
-    var res  = []
-      , aLen = arguments.length
-      , i    = 0
-      , code;
-    while(aLen > i){
+  fromCodePoint: function fromCodePoint(x) { // eslint-disable-line no-unused-vars
+    var res = [];
+    var aLen = arguments.length;
+    var i = 0;
+    var code;
+    while (aLen > i) {
       code = +arguments[i++];
-      if(toIndex(code, 0x10ffff) !== code)throw RangeError(code + ' is not a valid code point');
+      if (toAbsoluteIndex(code, 0x10ffff) !== code) throw RangeError(code + ' is not a valid code point');
       res.push(code < 0x10000
         ? fromCharCode(code)
         : fromCharCode(((code -= 0x10000) >> 10) + 0xd800, code % 0x400 + 0xdc00)
@@ -7540,17 +7732,17 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
   })();
 });
 
-require.register("core-js/modules/es6.string.includes.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.includes.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 21.1.3.7 String.prototype.includes(searchString, position = 0)
 'use strict';
-var $export  = require('./_export')
-  , context  = require('./_string-context')
-  , INCLUDES = 'includes';
+var $export = require('./_export');
+var context = require('./_string-context');
+var INCLUDES = 'includes';
 
 $export($export.P + $export.F * require('./_fails-is-regexp')(INCLUDES), 'String', {
-  includes: function includes(searchString /*, position = 0 */){
+  includes: function includes(searchString /* , position = 0 */) {
     return !!~context(this, searchString, INCLUDES)
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -7558,81 +7750,81 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(INCLUDES), 'String
   })();
 });
 
-require.register("core-js/modules/es6.string.italics.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.italics.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.9 String.prototype.italics()
-require('./_string-html')('italics', function(createHTML){
-  return function italics(){
+require('./_string-html')('italics', function (createHTML) {
+  return function italics() {
     return createHTML(this, 'i', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.iterator.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.iterator.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $at  = require('./_string-at')(true);
+var $at = require('./_string-at')(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-require('./_iter-define')(String, 'String', function(iterated){
+require('./_iter-define')(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
-}, function(){
-  var O     = this._t
-    , index = this._i
-    , point;
-  if(index >= O.length)return {value: undefined, done: true};
+}, function () {
+  var O = this._t;
+  var index = this._i;
+  var point;
+  if (index >= O.length) return { value: undefined, done: true };
   point = $at(O, index);
   this._i += point.length;
-  return {value: point, done: false};
+  return { value: point, done: false };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.link.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.link.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.10 String.prototype.link(url)
-require('./_string-html')('link', function(createHTML){
-  return function link(url){
+require('./_string-html')('link', function (createHTML) {
+  return function link(url) {
     return createHTML(this, 'a', 'href', url);
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.raw.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.raw.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export   = require('./_export')
-  , toIObject = require('./_to-iobject')
-  , toLength  = require('./_to-length');
+    var $export = require('./_export');
+var toIObject = require('./_to-iobject');
+var toLength = require('./_to-length');
 
 $export($export.S, 'String', {
   // 21.1.2.4 String.raw(callSite, ...substitutions)
-  raw: function raw(callSite){
-    var tpl  = toIObject(callSite.raw)
-      , len  = toLength(tpl.length)
-      , aLen = arguments.length
-      , res  = []
-      , i    = 0;
-    while(len > i){
+  raw: function raw(callSite) {
+    var tpl = toIObject(callSite.raw);
+    var len = toLength(tpl.length);
+    var aLen = arguments.length;
+    var res = [];
+    var i = 0;
+    while (len > i) {
       res.push(String(tpl[i++]));
-      if(i < aLen)res.push(String(arguments[i]));
+      if (i < aLen) res.push(String(arguments[i]));
     } return res.join('');
   }
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.repeat.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.repeat.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var $export = require('./_export');
 
@@ -7643,35 +7835,35 @@ $export($export.P, 'String', {
   })();
 });
 
-require.register("core-js/modules/es6.string.small.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.small.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.11 String.prototype.small()
-require('./_string-html')('small', function(createHTML){
-  return function small(){
+require('./_string-html')('small', function (createHTML) {
+  return function small() {
     return createHTML(this, 'small', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.starts-with.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.starts-with.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // 21.1.3.18 String.prototype.startsWith(searchString [, position ])
 'use strict';
-var $export     = require('./_export')
-  , toLength    = require('./_to-length')
-  , context     = require('./_string-context')
-  , STARTS_WITH = 'startsWith'
-  , $startsWith = ''[STARTS_WITH];
+var $export = require('./_export');
+var toLength = require('./_to-length');
+var context = require('./_string-context');
+var STARTS_WITH = 'startsWith';
+var $startsWith = ''[STARTS_WITH];
 
 $export($export.P + $export.F * require('./_fails-is-regexp')(STARTS_WITH), 'String', {
-  startsWith: function startsWith(searchString /*, position = 0 */){
-    var that   = context(this, searchString, STARTS_WITH)
-      , index  = toLength(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length))
-      , search = String(searchString);
+  startsWith: function startsWith(searchString /* , position = 0 */) {
+    var that = context(this, searchString, STARTS_WITH);
+    var index = toLength(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length));
+    var search = String(searchString);
     return $startsWith
       ? $startsWith.call(that, search, index)
       : that.slice(index, index + search.length) === search;
@@ -7680,246 +7872,246 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(STARTS_WITH), 'Str
   })();
 });
 
-require.register("core-js/modules/es6.string.strike.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.strike.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.12 String.prototype.strike()
-require('./_string-html')('strike', function(createHTML){
-  return function strike(){
+require('./_string-html')('strike', function (createHTML) {
+  return function strike() {
     return createHTML(this, 'strike', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.sub.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.sub.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.13 String.prototype.sub()
-require('./_string-html')('sub', function(createHTML){
-  return function sub(){
+require('./_string-html')('sub', function (createHTML) {
+  return function sub() {
     return createHTML(this, 'sub', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.sup.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.sup.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // B.2.3.14 String.prototype.sup()
-require('./_string-html')('sup', function(createHTML){
-  return function sup(){
+require('./_string-html')('sup', function (createHTML) {
+  return function sup() {
     return createHTML(this, 'sup', '', '');
-  }
+  };
 });
   })();
 });
 
-require.register("core-js/modules/es6.string.trim.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.string.trim.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // 21.1.3.25 String.prototype.trim()
-require('./_string-trim')('trim', function($trim){
-  return function trim(){
+require('./_string-trim')('trim', function ($trim) {
+  return function trim() {
     return $trim(this, 3);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.symbol.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.symbol.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // ECMAScript 6 symbols shim
-var global         = require('./_global')
-  , has            = require('./_has')
-  , DESCRIPTORS    = require('./_descriptors')
-  , $export        = require('./_export')
-  , redefine       = require('./_redefine')
-  , META           = require('./_meta').KEY
-  , $fails         = require('./_fails')
-  , shared         = require('./_shared')
-  , setToStringTag = require('./_set-to-string-tag')
-  , uid            = require('./_uid')
-  , wks            = require('./_wks')
-  , wksExt         = require('./_wks-ext')
-  , wksDefine      = require('./_wks-define')
-  , keyOf          = require('./_keyof')
-  , enumKeys       = require('./_enum-keys')
-  , isArray        = require('./_is-array')
-  , anObject       = require('./_an-object')
-  , toIObject      = require('./_to-iobject')
-  , toPrimitive    = require('./_to-primitive')
-  , createDesc     = require('./_property-desc')
-  , _create        = require('./_object-create')
-  , gOPNExt        = require('./_object-gopn-ext')
-  , $GOPD          = require('./_object-gopd')
-  , $DP            = require('./_object-dp')
-  , $keys          = require('./_object-keys')
-  , gOPD           = $GOPD.f
-  , dP             = $DP.f
-  , gOPN           = gOPNExt.f
-  , $Symbol        = global.Symbol
-  , $JSON          = global.JSON
-  , _stringify     = $JSON && $JSON.stringify
-  , PROTOTYPE      = 'prototype'
-  , HIDDEN         = wks('_hidden')
-  , TO_PRIMITIVE   = wks('toPrimitive')
-  , isEnum         = {}.propertyIsEnumerable
-  , SymbolRegistry = shared('symbol-registry')
-  , AllSymbols     = shared('symbols')
-  , OPSymbols      = shared('op-symbols')
-  , ObjectProto    = Object[PROTOTYPE]
-  , USE_NATIVE     = typeof $Symbol == 'function'
-  , QObject        = global.QObject;
+var global = require('./_global');
+var has = require('./_has');
+var DESCRIPTORS = require('./_descriptors');
+var $export = require('./_export');
+var redefine = require('./_redefine');
+var META = require('./_meta').KEY;
+var $fails = require('./_fails');
+var shared = require('./_shared');
+var setToStringTag = require('./_set-to-string-tag');
+var uid = require('./_uid');
+var wks = require('./_wks');
+var wksExt = require('./_wks-ext');
+var wksDefine = require('./_wks-define');
+var keyOf = require('./_keyof');
+var enumKeys = require('./_enum-keys');
+var isArray = require('./_is-array');
+var anObject = require('./_an-object');
+var toIObject = require('./_to-iobject');
+var toPrimitive = require('./_to-primitive');
+var createDesc = require('./_property-desc');
+var _create = require('./_object-create');
+var gOPNExt = require('./_object-gopn-ext');
+var $GOPD = require('./_object-gopd');
+var $DP = require('./_object-dp');
+var $keys = require('./_object-keys');
+var gOPD = $GOPD.f;
+var dP = $DP.f;
+var gOPN = gOPNExt.f;
+var $Symbol = global.Symbol;
+var $JSON = global.JSON;
+var _stringify = $JSON && $JSON.stringify;
+var PROTOTYPE = 'prototype';
+var HIDDEN = wks('_hidden');
+var TO_PRIMITIVE = wks('toPrimitive');
+var isEnum = {}.propertyIsEnumerable;
+var SymbolRegistry = shared('symbol-registry');
+var AllSymbols = shared('symbols');
+var OPSymbols = shared('op-symbols');
+var ObjectProto = Object[PROTOTYPE];
+var USE_NATIVE = typeof $Symbol == 'function';
+var QObject = global.QObject;
 // Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
 var setter = !QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild;
 
 // fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
-var setSymbolDesc = DESCRIPTORS && $fails(function(){
+var setSymbolDesc = DESCRIPTORS && $fails(function () {
   return _create(dP({}, 'a', {
-    get: function(){ return dP(this, 'a', {value: 7}).a; }
+    get: function () { return dP(this, 'a', { value: 7 }).a; }
   })).a != 7;
-}) ? function(it, key, D){
+}) ? function (it, key, D) {
   var protoDesc = gOPD(ObjectProto, key);
-  if(protoDesc)delete ObjectProto[key];
+  if (protoDesc) delete ObjectProto[key];
   dP(it, key, D);
-  if(protoDesc && it !== ObjectProto)dP(ObjectProto, key, protoDesc);
+  if (protoDesc && it !== ObjectProto) dP(ObjectProto, key, protoDesc);
 } : dP;
 
-var wrap = function(tag){
+var wrap = function (tag) {
   var sym = AllSymbols[tag] = _create($Symbol[PROTOTYPE]);
   sym._k = tag;
   return sym;
 };
 
-var isSymbol = USE_NATIVE && typeof $Symbol.iterator == 'symbol' ? function(it){
+var isSymbol = USE_NATIVE && typeof $Symbol.iterator == 'symbol' ? function (it) {
   return typeof it == 'symbol';
-} : function(it){
+} : function (it) {
   return it instanceof $Symbol;
 };
 
-var $defineProperty = function defineProperty(it, key, D){
-  if(it === ObjectProto)$defineProperty(OPSymbols, key, D);
+var $defineProperty = function defineProperty(it, key, D) {
+  if (it === ObjectProto) $defineProperty(OPSymbols, key, D);
   anObject(it);
   key = toPrimitive(key, true);
   anObject(D);
-  if(has(AllSymbols, key)){
-    if(!D.enumerable){
-      if(!has(it, HIDDEN))dP(it, HIDDEN, createDesc(1, {}));
+  if (has(AllSymbols, key)) {
+    if (!D.enumerable) {
+      if (!has(it, HIDDEN)) dP(it, HIDDEN, createDesc(1, {}));
       it[HIDDEN][key] = true;
     } else {
-      if(has(it, HIDDEN) && it[HIDDEN][key])it[HIDDEN][key] = false;
-      D = _create(D, {enumerable: createDesc(0, false)});
+      if (has(it, HIDDEN) && it[HIDDEN][key]) it[HIDDEN][key] = false;
+      D = _create(D, { enumerable: createDesc(0, false) });
     } return setSymbolDesc(it, key, D);
   } return dP(it, key, D);
 };
-var $defineProperties = function defineProperties(it, P){
+var $defineProperties = function defineProperties(it, P) {
   anObject(it);
-  var keys = enumKeys(P = toIObject(P))
-    , i    = 0
-    , l = keys.length
-    , key;
-  while(l > i)$defineProperty(it, key = keys[i++], P[key]);
+  var keys = enumKeys(P = toIObject(P));
+  var i = 0;
+  var l = keys.length;
+  var key;
+  while (l > i) $defineProperty(it, key = keys[i++], P[key]);
   return it;
 };
-var $create = function create(it, P){
+var $create = function create(it, P) {
   return P === undefined ? _create(it) : $defineProperties(_create(it), P);
 };
-var $propertyIsEnumerable = function propertyIsEnumerable(key){
+var $propertyIsEnumerable = function propertyIsEnumerable(key) {
   var E = isEnum.call(this, key = toPrimitive(key, true));
-  if(this === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))return false;
+  if (this === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key)) return false;
   return E || !has(this, key) || !has(AllSymbols, key) || has(this, HIDDEN) && this[HIDDEN][key] ? E : true;
 };
-var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key){
-  it  = toIObject(it);
+var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key) {
+  it = toIObject(it);
   key = toPrimitive(key, true);
-  if(it === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))return;
+  if (it === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key)) return;
   var D = gOPD(it, key);
-  if(D && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key]))D.enumerable = true;
+  if (D && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key])) D.enumerable = true;
   return D;
 };
-var $getOwnPropertyNames = function getOwnPropertyNames(it){
-  var names  = gOPN(toIObject(it))
-    , result = []
-    , i      = 0
-    , key;
-  while(names.length > i){
-    if(!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META)result.push(key);
+var $getOwnPropertyNames = function getOwnPropertyNames(it) {
+  var names = gOPN(toIObject(it));
+  var result = [];
+  var i = 0;
+  var key;
+  while (names.length > i) {
+    if (!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META) result.push(key);
   } return result;
 };
-var $getOwnPropertySymbols = function getOwnPropertySymbols(it){
-  var IS_OP  = it === ObjectProto
-    , names  = gOPN(IS_OP ? OPSymbols : toIObject(it))
-    , result = []
-    , i      = 0
-    , key;
-  while(names.length > i){
-    if(has(AllSymbols, key = names[i++]) && (IS_OP ? has(ObjectProto, key) : true))result.push(AllSymbols[key]);
+var $getOwnPropertySymbols = function getOwnPropertySymbols(it) {
+  var IS_OP = it === ObjectProto;
+  var names = gOPN(IS_OP ? OPSymbols : toIObject(it));
+  var result = [];
+  var i = 0;
+  var key;
+  while (names.length > i) {
+    if (has(AllSymbols, key = names[i++]) && (IS_OP ? has(ObjectProto, key) : true)) result.push(AllSymbols[key]);
   } return result;
 };
 
 // 19.4.1.1 Symbol([description])
-if(!USE_NATIVE){
-  $Symbol = function Symbol(){
-    if(this instanceof $Symbol)throw TypeError('Symbol is not a constructor!');
+if (!USE_NATIVE) {
+  $Symbol = function Symbol() {
+    if (this instanceof $Symbol) throw TypeError('Symbol is not a constructor!');
     var tag = uid(arguments.length > 0 ? arguments[0] : undefined);
-    var $set = function(value){
-      if(this === ObjectProto)$set.call(OPSymbols, value);
-      if(has(this, HIDDEN) && has(this[HIDDEN], tag))this[HIDDEN][tag] = false;
+    var $set = function (value) {
+      if (this === ObjectProto) $set.call(OPSymbols, value);
+      if (has(this, HIDDEN) && has(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
       setSymbolDesc(this, tag, createDesc(1, value));
     };
-    if(DESCRIPTORS && setter)setSymbolDesc(ObjectProto, tag, {configurable: true, set: $set});
+    if (DESCRIPTORS && setter) setSymbolDesc(ObjectProto, tag, { configurable: true, set: $set });
     return wrap(tag);
   };
-  redefine($Symbol[PROTOTYPE], 'toString', function toString(){
+  redefine($Symbol[PROTOTYPE], 'toString', function toString() {
     return this._k;
   });
 
   $GOPD.f = $getOwnPropertyDescriptor;
-  $DP.f   = $defineProperty;
+  $DP.f = $defineProperty;
   require('./_object-gopn').f = gOPNExt.f = $getOwnPropertyNames;
-  require('./_object-pie').f  = $propertyIsEnumerable;
+  require('./_object-pie').f = $propertyIsEnumerable;
   require('./_object-gops').f = $getOwnPropertySymbols;
 
-  if(DESCRIPTORS && !require('./_library')){
+  if (DESCRIPTORS && !require('./_library')) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
-  wksExt.f = function(name){
+  wksExt.f = function (name) {
     return wrap(wks(name));
-  }
+  };
 }
 
-$export($export.G + $export.W + $export.F * !USE_NATIVE, {Symbol: $Symbol});
+$export($export.G + $export.W + $export.F * !USE_NATIVE, { Symbol: $Symbol });
 
-for(var symbols = (
+for (var es6Symbols = (
   // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
   'hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables'
-).split(','), i = 0; symbols.length > i; )wks(symbols[i++]);
+).split(','), j = 0; es6Symbols.length > j;)wks(es6Symbols[j++]);
 
-for(var symbols = $keys(wks.store), i = 0; symbols.length > i; )wksDefine(symbols[i++]);
+for (var wellKnownSymbols = $keys(wks.store), k = 0; wellKnownSymbols.length > k;) wksDefine(wellKnownSymbols[k++]);
 
 $export($export.S + $export.F * !USE_NATIVE, 'Symbol', {
   // 19.4.2.1 Symbol.for(key)
-  'for': function(key){
+  'for': function (key) {
     return has(SymbolRegistry, key += '')
       ? SymbolRegistry[key]
       : SymbolRegistry[key] = $Symbol(key);
   },
   // 19.4.2.5 Symbol.keyFor(sym)
-  keyFor: function keyFor(key){
-    if(isSymbol(key))return keyOf(SymbolRegistry, key);
+  keyFor: function keyFor(key) {
+    if (isSymbol(key)) return keyOf(SymbolRegistry, key);
     throw TypeError(key + ' is not a symbol!');
   },
-  useSetter: function(){ setter = true; },
-  useSimple: function(){ setter = false; }
+  useSetter: function () { setter = true; },
+  useSimple: function () { setter = false; }
 });
 
 $export($export.S + $export.F * !USE_NATIVE, 'Object', {
@@ -7938,24 +8130,24 @@ $export($export.S + $export.F * !USE_NATIVE, 'Object', {
 });
 
 // 24.3.2 JSON.stringify(value [, replacer [, space]])
-$JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
+$JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
   var S = $Symbol();
   // MS Edge converts symbol values to JSON as {}
   // WebKit converts symbol values to JSON as null
   // V8 throws on boxed symbols
-  return _stringify([S]) != '[null]' || _stringify({a: S}) != '{}' || _stringify(Object(S)) != '{}';
+  return _stringify([S]) != '[null]' || _stringify({ a: S }) != '{}' || _stringify(Object(S)) != '{}';
 })), 'JSON', {
-  stringify: function stringify(it){
-    if(it === undefined || isSymbol(it))return; // IE8 returns string on undefined
-    var args = [it]
-      , i    = 1
-      , replacer, $replacer;
-    while(arguments.length > i)args.push(arguments[i++]);
+  stringify: function stringify(it) {
+    if (it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
+    var args = [it];
+    var i = 1;
+    var replacer, $replacer;
+    while (arguments.length > i) args.push(arguments[i++]);
     replacer = args[1];
-    if(typeof replacer == 'function')$replacer = replacer;
-    if($replacer || !isArray(replacer))replacer = function(key, value){
-      if($replacer)value = $replacer.call(this, key, value);
-      if(!isSymbol(value))return value;
+    if (typeof replacer == 'function') $replacer = replacer;
+    if ($replacer || !isArray(replacer)) replacer = function (key, value) {
+      if ($replacer) value = $replacer.call(this, key, value);
+      if (!isSymbol(value)) return value;
     };
     args[1] = replacer;
     return _stringify.apply($JSON, args);
@@ -7973,49 +8165,49 @@ setToStringTag(global.JSON, 'JSON', true);
   })();
 });
 
-require.register("core-js/modules/es6.typed.array-buffer.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.array-buffer.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export      = require('./_export')
-  , $typed       = require('./_typed')
-  , buffer       = require('./_typed-buffer')
-  , anObject     = require('./_an-object')
-  , toIndex      = require('./_to-index')
-  , toLength     = require('./_to-length')
-  , isObject     = require('./_is-object')
-  , ArrayBuffer  = require('./_global').ArrayBuffer
-  , speciesConstructor = require('./_species-constructor')
-  , $ArrayBuffer = buffer.ArrayBuffer
-  , $DataView    = buffer.DataView
-  , $isView      = $typed.ABV && ArrayBuffer.isView
-  , $slice       = $ArrayBuffer.prototype.slice
-  , VIEW         = $typed.VIEW
-  , ARRAY_BUFFER = 'ArrayBuffer';
+var $export = require('./_export');
+var $typed = require('./_typed');
+var buffer = require('./_typed-buffer');
+var anObject = require('./_an-object');
+var toAbsoluteIndex = require('./_to-absolute-index');
+var toLength = require('./_to-length');
+var isObject = require('./_is-object');
+var ArrayBuffer = require('./_global').ArrayBuffer;
+var speciesConstructor = require('./_species-constructor');
+var $ArrayBuffer = buffer.ArrayBuffer;
+var $DataView = buffer.DataView;
+var $isView = $typed.ABV && ArrayBuffer.isView;
+var $slice = $ArrayBuffer.prototype.slice;
+var VIEW = $typed.VIEW;
+var ARRAY_BUFFER = 'ArrayBuffer';
 
-$export($export.G + $export.W + $export.F * (ArrayBuffer !== $ArrayBuffer), {ArrayBuffer: $ArrayBuffer});
+$export($export.G + $export.W + $export.F * (ArrayBuffer !== $ArrayBuffer), { ArrayBuffer: $ArrayBuffer });
 
 $export($export.S + $export.F * !$typed.CONSTR, ARRAY_BUFFER, {
   // 24.1.3.1 ArrayBuffer.isView(arg)
-  isView: function isView(it){
+  isView: function isView(it) {
     return $isView && $isView(it) || isObject(it) && VIEW in it;
   }
 });
 
-$export($export.P + $export.U + $export.F * require('./_fails')(function(){
+$export($export.P + $export.U + $export.F * require('./_fails')(function () {
   return !new $ArrayBuffer(2).slice(1, undefined).byteLength;
 }), ARRAY_BUFFER, {
   // 24.1.4.3 ArrayBuffer.prototype.slice(start, end)
-  slice: function slice(start, end){
-    if($slice !== undefined && end === undefined)return $slice.call(anObject(this), start); // FF fix
-    var len    = anObject(this).byteLength
-      , first  = toIndex(start, len)
-      , final  = toIndex(end === undefined ? len : end, len)
-      , result = new (speciesConstructor(this, $ArrayBuffer))(toLength(final - first))
-      , viewS  = new $DataView(this)
-      , viewT  = new $DataView(result)
-      , index  = 0;
-    while(first < final){
+  slice: function slice(start, end) {
+    if ($slice !== undefined && end === undefined) return $slice.call(anObject(this), start); // FF fix
+    var len = anObject(this).byteLength;
+    var first = toAbsoluteIndex(start, len);
+    var final = toAbsoluteIndex(end === undefined ? len : end, len);
+    var result = new (speciesConstructor(this, $ArrayBuffer))(toLength(final - first));
+    var viewS = new $DataView(this);
+    var viewT = new $DataView(result);
+    var index = 0;
+    while (first < final) {
       viewT.setUint8(index++, viewS.getUint8(first++));
     } return result;
   }
@@ -8025,8 +8217,8 @@ require('./_set-species')(ARRAY_BUFFER);
   })();
 });
 
-require.register("core-js/modules/es6.typed.data-view.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.data-view.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     var $export = require('./_export');
 $export($export.G + $export.W + $export.F * !require('./_typed').ABV, {
@@ -8035,157 +8227,160 @@ $export($export.G + $export.W + $export.F * !require('./_typed').ABV, {
   })();
 });
 
-require.register("core-js/modules/es6.typed.float32-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.float32-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Float32', 4, function(init){
-  return function Float32Array(data, byteOffset, length){
+    require('./_typed-array')('Float32', 4, function (init) {
+  return function Float32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.float64-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.float64-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Float64', 8, function(init){
-  return function Float64Array(data, byteOffset, length){
+    require('./_typed-array')('Float64', 8, function (init) {
+  return function Float64Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.int16-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.int16-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Int16', 2, function(init){
-  return function Int16Array(data, byteOffset, length){
+    require('./_typed-array')('Int16', 2, function (init) {
+  return function Int16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.int32-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.int32-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Int32', 4, function(init){
-  return function Int32Array(data, byteOffset, length){
+    require('./_typed-array')('Int32', 4, function (init) {
+  return function Int32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.int8-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.int8-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Int8', 1, function(init){
-  return function Int8Array(data, byteOffset, length){
+    require('./_typed-array')('Int8', 1, function (init) {
+  return function Int8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.uint16-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.uint16-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Uint16', 2, function(init){
-  return function Uint16Array(data, byteOffset, length){
+    require('./_typed-array')('Uint16', 2, function (init) {
+  return function Uint16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.uint32-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.uint32-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Uint32', 4, function(init){
-  return function Uint32Array(data, byteOffset, length){
+    require('./_typed-array')('Uint32', 4, function (init) {
+  return function Uint32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.uint8-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.uint8-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Uint8', 1, function(init){
-  return function Uint8Array(data, byteOffset, length){
+    require('./_typed-array')('Uint8', 1, function (init) {
+  return function Uint8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 });
   })();
 });
 
-require.register("core-js/modules/es6.typed.uint8-clamped-array.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.typed.uint8-clamped-array.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    require('./_typed-array')('Uint8', 1, function(init){
-  return function Uint8ClampedArray(data, byteOffset, length){
+    require('./_typed-array')('Uint8', 1, function (init) {
+  return function Uint8ClampedArray(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
 }, true);
   })();
 });
 
-require.register("core-js/modules/es6.weak-map.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.weak-map.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var each         = require('./_array-methods')(0)
-  , redefine     = require('./_redefine')
-  , meta         = require('./_meta')
-  , assign       = require('./_object-assign')
-  , weak         = require('./_collection-weak')
-  , isObject     = require('./_is-object')
-  , getWeak      = meta.getWeak
-  , isExtensible = Object.isExtensible
-  , uncaughtFrozenStore = weak.ufstore
-  , tmp          = {}
-  , InternalMap;
+var each = require('./_array-methods')(0);
+var redefine = require('./_redefine');
+var meta = require('./_meta');
+var assign = require('./_object-assign');
+var weak = require('./_collection-weak');
+var isObject = require('./_is-object');
+var fails = require('./_fails');
+var validate = require('./_validate-collection');
+var WEAK_MAP = 'WeakMap';
+var getWeak = meta.getWeak;
+var isExtensible = Object.isExtensible;
+var uncaughtFrozenStore = weak.ufstore;
+var tmp = {};
+var InternalMap;
 
-var wrapper = function(get){
-  return function WeakMap(){
+var wrapper = function (get) {
+  return function WeakMap() {
     return get(this, arguments.length > 0 ? arguments[0] : undefined);
   };
 };
 
 var methods = {
   // 23.3.3.3 WeakMap.prototype.get(key)
-  get: function get(key){
-    if(isObject(key)){
+  get: function get(key) {
+    if (isObject(key)) {
       var data = getWeak(key);
-      if(data === true)return uncaughtFrozenStore(this).get(key);
+      if (data === true) return uncaughtFrozenStore(validate(this, WEAK_MAP)).get(key);
       return data ? data[this._i] : undefined;
     }
   },
   // 23.3.3.5 WeakMap.prototype.set(key, value)
-  set: function set(key, value){
-    return weak.def(this, key, value);
+  set: function set(key, value) {
+    return weak.def(validate(this, WEAK_MAP), key, value);
   }
 };
 
 // 23.3 WeakMap Objects
-var $WeakMap = module.exports = require('./_collection')('WeakMap', wrapper, methods, weak, true, true);
+var $WeakMap = module.exports = require('./_collection')(WEAK_MAP, wrapper, methods, weak, true, true);
 
 // IE11 WeakMap frozen keys fix
-if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
-  InternalMap = weak.getConstructor(wrapper);
+if (fails(function () { return new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7; })) {
+  InternalMap = weak.getConstructor(wrapper, WEAK_MAP);
   assign(InternalMap.prototype, methods);
   meta.NEED = true;
-  each(['delete', 'has', 'get', 'set'], function(key){
-    var proto  = $WeakMap.prototype
-      , method = proto[key];
-    redefine(proto, key, function(a, b){
+  each(['delete', 'has', 'get', 'set'], function (key) {
+    var proto = $WeakMap.prototype;
+    var method = proto[key];
+    redefine(proto, key, function (a, b) {
       // store frozen objects on internal weakmap shim
-      if(isObject(a) && !isExtensible(a)){
-        if(!this._f)this._f = new InternalMap;
+      if (isObject(a) && !isExtensible(a)) {
+        if (!this._f) this._f = new InternalMap();
         var result = this._f[key](a, b);
         return key == 'set' ? this : result;
       // store all the rest on native weakmap
@@ -8196,34 +8391,91 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
   })();
 });
 
-require.register("core-js/modules/es6.weak-set.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es6.weak-set.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 var weak = require('./_collection-weak');
+var validate = require('./_validate-collection');
+var WEAK_SET = 'WeakSet';
 
 // 23.4 WeakSet Objects
-require('./_collection')('WeakSet', function(get){
-  return function WeakSet(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
+require('./_collection')(WEAK_SET, function (get) {
+  return function WeakSet() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.4.3.1 WeakSet.prototype.add(value)
-  add: function add(value){
-    return weak.def(this, value, true);
+  add: function add(value) {
+    return weak.def(validate(this, WEAK_SET), value, true);
   }
 }, weak, false, true);
   })();
 });
 
-require.register("core-js/modules/es7.array.includes.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.array.flat-map.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    'use strict';
+// https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatMap
+var $export = require('./_export');
+var flattenIntoArray = require('./_flatten-into-array');
+var toObject = require('./_to-object');
+var toLength = require('./_to-length');
+var aFunction = require('./_a-function');
+var arraySpeciesCreate = require('./_array-species-create');
+
+$export($export.P, 'Array', {
+  flatMap: function flatMap(callbackfn /* , thisArg */) {
+    var O = toObject(this);
+    var sourceLen, A;
+    aFunction(callbackfn);
+    sourceLen = toLength(O.length);
+    A = arraySpeciesCreate(O, 0);
+    flattenIntoArray(A, O, O, sourceLen, 0, 1, callbackfn, arguments[1]);
+    return A;
+  }
+});
+
+require('./_add-to-unscopables')('flatMap');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.array.flatten.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    'use strict';
+// https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatten
+var $export = require('./_export');
+var flattenIntoArray = require('./_flatten-into-array');
+var toObject = require('./_to-object');
+var toLength = require('./_to-length');
+var toInteger = require('./_to-integer');
+var arraySpeciesCreate = require('./_array-species-create');
+
+$export($export.P, 'Array', {
+  flatten: function flatten(/* depthArg = 1 */) {
+    var depthArg = arguments[0];
+    var O = toObject(this);
+    var sourceLen = toLength(O.length);
+    var A = arraySpeciesCreate(O, 0);
+    flattenIntoArray(A, O, O, sourceLen, 0, depthArg === undefined ? 1 : toInteger(depthArg));
+    return A;
+  }
+});
+
+require('./_add-to-unscopables')('flatten');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.array.includes.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://github.com/tc39/Array.prototype.includes
-var $export   = require('./_export')
-  , $includes = require('./_array-includes')(true);
+var $export = require('./_export');
+var $includes = require('./_array-includes')(true);
 
 $export($export.P, 'Array', {
-  includes: function includes(el /*, fromIndex = 0 */){
+  includes: function includes(el /* , fromIndex = 0 */) {
     return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
@@ -8232,17 +8484,17 @@ require('./_add-to-unscopables')('includes');
   })();
 });
 
-require.register("core-js/modules/es7.asap.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.asap.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
-var $export   = require('./_export')
-  , microtask = require('./_microtask')()
-  , process   = require('./_global').process
-  , isNode    = require('./_cof')(process) == 'process';
+var $export = require('./_export');
+var microtask = require('./_microtask')();
+var process = require('./_global').process;
+var isNode = require('./_cof')(process) == 'process';
 
 $export($export.G, {
-  asap: function asap(fn){
+  asap: function asap(fn) {
     var domain = isNode && process.domain;
     microtask(domain ? domain.bind(fn) : fn);
   }
@@ -8250,325 +8502,457 @@ $export($export.G, {
   })();
 });
 
-require.register("core-js/modules/es7.error.is-error.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.error.is-error.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/ljharb/proposal-is-error
-var $export = require('./_export')
-  , cof     = require('./_cof');
+var $export = require('./_export');
+var cof = require('./_cof');
 
 $export($export.S, 'Error', {
-  isError: function isError(it){
+  isError: function isError(it) {
     return cof(it) === 'Error';
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.map.to-json.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.global.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export  = require('./_export');
+    // https://github.com/tc39/proposal-global
+var $export = require('./_export');
 
-$export($export.P + $export.R, 'Map', {toJSON: require('./_collection-to-json')('Map')});
+$export($export.G, { global: require('./_global') });
   })();
 });
 
-require.register("core-js/modules/es7.math.iaddh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.map.from.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
+require('./_set-collection-from')('Map');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.map.of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
+require('./_set-collection-of')('Map');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.map.to-json.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://github.com/DavidBruant/Map-Set.prototype.toJSON
+var $export = require('./_export');
+
+$export($export.P + $export.R, 'Map', { toJSON: require('./_collection-to-json')('Map') });
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.clamp.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+var $export = require('./_export');
+
+$export($export.S, 'Math', {
+  clamp: function clamp(x, lower, upper) {
+    return Math.min(upper, Math.max(lower, x));
+  }
+});
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.deg-per-rad.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+var $export = require('./_export');
+
+$export($export.S, 'Math', { DEG_PER_RAD: Math.PI / 180 });
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.degrees.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+var $export = require('./_export');
+var RAD_PER_DEG = 180 / Math.PI;
+
+$export($export.S, 'Math', {
+  degrees: function degrees(radians) {
+    return radians * RAD_PER_DEG;
+  }
+});
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.fscale.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+var $export = require('./_export');
+var scale = require('./_math-scale');
+var fround = require('./_math-fround');
+
+$export($export.S, 'Math', {
+  fscale: function fscale(x, inLow, inHigh, outLow, outHigh) {
+    return fround(scale(x, inLow, inHigh, outLow, outHigh));
+  }
+});
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.iaddh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  iaddh: function iaddh(x0, x1, y0, y1){
-    var $x0 = x0 >>> 0
-      , $x1 = x1 >>> 0
-      , $y0 = y0 >>> 0;
+  iaddh: function iaddh(x0, x1, y0, y1) {
+    var $x0 = x0 >>> 0;
+    var $x1 = x1 >>> 0;
+    var $y0 = y0 >>> 0;
     return $x1 + (y1 >>> 0) + (($x0 & $y0 | ($x0 | $y0) & ~($x0 + $y0 >>> 0)) >>> 31) | 0;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.math.imulh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.imulh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  imulh: function imulh(u, v){
-    var UINT16 = 0xffff
-      , $u = +u
-      , $v = +v
-      , u0 = $u & UINT16
-      , v0 = $v & UINT16
-      , u1 = $u >> 16
-      , v1 = $v >> 16
-      , t  = (u1 * v0 >>> 0) + (u0 * v0 >>> 16);
+  imulh: function imulh(u, v) {
+    var UINT16 = 0xffff;
+    var $u = +u;
+    var $v = +v;
+    var u0 = $u & UINT16;
+    var v0 = $v & UINT16;
+    var u1 = $u >> 16;
+    var v1 = $v >> 16;
+    var t = (u1 * v0 >>> 0) + (u0 * v0 >>> 16);
     return u1 * v1 + (t >> 16) + ((u0 * v1 >>> 0) + (t & UINT16) >> 16);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.math.isubh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.isubh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  isubh: function isubh(x0, x1, y0, y1){
-    var $x0 = x0 >>> 0
-      , $x1 = x1 >>> 0
-      , $y0 = y0 >>> 0;
+  isubh: function isubh(x0, x1, y0, y1) {
+    var $x0 = x0 >>> 0;
+    var $x1 = x1 >>> 0;
+    var $y0 = y0 >>> 0;
     return $x1 - (y1 >>> 0) - ((~$x0 & $y0 | ~($x0 ^ $y0) & $x0 - $y0 >>> 0) >>> 31) | 0;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.math.umulh.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.rad-per-deg.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+var $export = require('./_export');
+
+$export($export.S, 'Math', { RAD_PER_DEG: 180 / Math.PI });
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.radians.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+var $export = require('./_export');
+var DEG_PER_RAD = Math.PI / 180;
+
+$export($export.S, 'Math', {
+  radians: function radians(degrees) {
+    return degrees * DEG_PER_RAD;
+  }
+});
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.scale.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://rwaldron.github.io/proposal-math-extensions/
+var $export = require('./_export');
+
+$export($export.S, 'Math', { scale: require('./_math-scale') });
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.signbit.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // http://jfbastien.github.io/papers/Math.signbit.html
+var $export = require('./_export');
+
+$export($export.S, 'Math', { signbit: function signbit(x) {
+  // eslint-disable-next-line no-self-compare
+  return (x = +x) != x ? x : x == 0 ? 1 / x == Infinity : x > 0;
+} });
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.math.umulh.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
 $export($export.S, 'Math', {
-  umulh: function umulh(u, v){
-    var UINT16 = 0xffff
-      , $u = +u
-      , $v = +v
-      , u0 = $u & UINT16
-      , v0 = $v & UINT16
-      , u1 = $u >>> 16
-      , v1 = $v >>> 16
-      , t  = (u1 * v0 >>> 0) + (u0 * v0 >>> 16);
+  umulh: function umulh(u, v) {
+    var UINT16 = 0xffff;
+    var $u = +u;
+    var $v = +v;
+    var u0 = $u & UINT16;
+    var v0 = $v & UINT16;
+    var u1 = $u >>> 16;
+    var v1 = $v >>> 16;
+    var t = (u1 * v0 >>> 0) + (u0 * v0 >>> 16);
     return u1 * v1 + (t >>> 16) + ((u0 * v1 >>> 0) + (t & UINT16) >>> 16);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.object.define-getter.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.object.define-getter.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export         = require('./_export')
-  , toObject        = require('./_to-object')
-  , aFunction       = require('./_a-function')
-  , $defineProperty = require('./_object-dp');
+var $export = require('./_export');
+var toObject = require('./_to-object');
+var aFunction = require('./_a-function');
+var $defineProperty = require('./_object-dp');
 
 // B.2.2.2 Object.prototype.__defineGetter__(P, getter)
 require('./_descriptors') && $export($export.P + require('./_object-forced-pam'), 'Object', {
-  __defineGetter__: function __defineGetter__(P, getter){
-    $defineProperty.f(toObject(this), P, {get: aFunction(getter), enumerable: true, configurable: true});
+  __defineGetter__: function __defineGetter__(P, getter) {
+    $defineProperty.f(toObject(this), P, { get: aFunction(getter), enumerable: true, configurable: true });
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.object.define-setter.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.object.define-setter.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export         = require('./_export')
-  , toObject        = require('./_to-object')
-  , aFunction       = require('./_a-function')
-  , $defineProperty = require('./_object-dp');
+var $export = require('./_export');
+var toObject = require('./_to-object');
+var aFunction = require('./_a-function');
+var $defineProperty = require('./_object-dp');
 
 // B.2.2.3 Object.prototype.__defineSetter__(P, setter)
 require('./_descriptors') && $export($export.P + require('./_object-forced-pam'), 'Object', {
-  __defineSetter__: function __defineSetter__(P, setter){
-    $defineProperty.f(toObject(this), P, {set: aFunction(setter), enumerable: true, configurable: true});
+  __defineSetter__: function __defineSetter__(P, setter) {
+    $defineProperty.f(toObject(this), P, { set: aFunction(setter), enumerable: true, configurable: true });
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.object.entries.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.object.entries.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/tc39/proposal-object-values-entries
-var $export  = require('./_export')
-  , $entries = require('./_object-to-array')(true);
+var $export = require('./_export');
+var $entries = require('./_object-to-array')(true);
 
 $export($export.S, 'Object', {
-  entries: function entries(it){
+  entries: function entries(it) {
     return $entries(it);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.object.get-own-property-descriptors.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.object.get-own-property-descriptors.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/tc39/proposal-object-getownpropertydescriptors
-var $export        = require('./_export')
-  , ownKeys        = require('./_own-keys')
-  , toIObject      = require('./_to-iobject')
-  , gOPD           = require('./_object-gopd')
-  , createProperty = require('./_create-property');
+var $export = require('./_export');
+var ownKeys = require('./_own-keys');
+var toIObject = require('./_to-iobject');
+var gOPD = require('./_object-gopd');
+var createProperty = require('./_create-property');
 
 $export($export.S, 'Object', {
-  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object){
-    var O       = toIObject(object)
-      , getDesc = gOPD.f
-      , keys    = ownKeys(O)
-      , result  = {}
-      , i       = 0
-      , key;
-    while(keys.length > i)createProperty(result, key = keys[i++], getDesc(O, key));
+  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
+    var O = toIObject(object);
+    var getDesc = gOPD.f;
+    var keys = ownKeys(O);
+    var result = {};
+    var i = 0;
+    var key, desc;
+    while (keys.length > i) {
+      desc = getDesc(O, key = keys[i++]);
+      if (desc !== undefined) createProperty(result, key, desc);
+    }
     return result;
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.object.lookup-getter.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.object.lookup-getter.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export                  = require('./_export')
-  , toObject                 = require('./_to-object')
-  , toPrimitive              = require('./_to-primitive')
-  , getPrototypeOf           = require('./_object-gpo')
-  , getOwnPropertyDescriptor = require('./_object-gopd').f;
+var $export = require('./_export');
+var toObject = require('./_to-object');
+var toPrimitive = require('./_to-primitive');
+var getPrototypeOf = require('./_object-gpo');
+var getOwnPropertyDescriptor = require('./_object-gopd').f;
 
 // B.2.2.4 Object.prototype.__lookupGetter__(P)
 require('./_descriptors') && $export($export.P + require('./_object-forced-pam'), 'Object', {
-  __lookupGetter__: function __lookupGetter__(P){
-    var O = toObject(this)
-      , K = toPrimitive(P, true)
-      , D;
+  __lookupGetter__: function __lookupGetter__(P) {
+    var O = toObject(this);
+    var K = toPrimitive(P, true);
+    var D;
     do {
-      if(D = getOwnPropertyDescriptor(O, K))return D.get;
-    } while(O = getPrototypeOf(O));
+      if (D = getOwnPropertyDescriptor(O, K)) return D.get;
+    } while (O = getPrototypeOf(O));
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.object.lookup-setter.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.object.lookup-setter.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
-var $export                  = require('./_export')
-  , toObject                 = require('./_to-object')
-  , toPrimitive              = require('./_to-primitive')
-  , getPrototypeOf           = require('./_object-gpo')
-  , getOwnPropertyDescriptor = require('./_object-gopd').f;
+var $export = require('./_export');
+var toObject = require('./_to-object');
+var toPrimitive = require('./_to-primitive');
+var getPrototypeOf = require('./_object-gpo');
+var getOwnPropertyDescriptor = require('./_object-gopd').f;
 
 // B.2.2.5 Object.prototype.__lookupSetter__(P)
 require('./_descriptors') && $export($export.P + require('./_object-forced-pam'), 'Object', {
-  __lookupSetter__: function __lookupSetter__(P){
-    var O = toObject(this)
-      , K = toPrimitive(P, true)
-      , D;
+  __lookupSetter__: function __lookupSetter__(P) {
+    var O = toObject(this);
+    var K = toPrimitive(P, true);
+    var D;
     do {
-      if(D = getOwnPropertyDescriptor(O, K))return D.set;
-    } while(O = getPrototypeOf(O));
+      if (D = getOwnPropertyDescriptor(O, K)) return D.set;
+    } while (O = getPrototypeOf(O));
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.object.values.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.object.values.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/tc39/proposal-object-values-entries
-var $export = require('./_export')
-  , $values = require('./_object-to-array')(false);
+var $export = require('./_export');
+var $values = require('./_object-to-array')(false);
 
 $export($export.S, 'Object', {
-  values: function values(it){
+  values: function values(it) {
     return $values(it);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.observable.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.observable.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://github.com/zenparsing/es-observable
-var $export     = require('./_export')
-  , global      = require('./_global')
-  , core        = require('./_core')
-  , microtask   = require('./_microtask')()
-  , OBSERVABLE  = require('./_wks')('observable')
-  , aFunction   = require('./_a-function')
-  , anObject    = require('./_an-object')
-  , anInstance  = require('./_an-instance')
-  , redefineAll = require('./_redefine-all')
-  , hide        = require('./_hide')
-  , forOf       = require('./_for-of')
-  , RETURN      = forOf.RETURN;
+var $export = require('./_export');
+var global = require('./_global');
+var core = require('./_core');
+var microtask = require('./_microtask')();
+var OBSERVABLE = require('./_wks')('observable');
+var aFunction = require('./_a-function');
+var anObject = require('./_an-object');
+var anInstance = require('./_an-instance');
+var redefineAll = require('./_redefine-all');
+var hide = require('./_hide');
+var forOf = require('./_for-of');
+var RETURN = forOf.RETURN;
 
-var getMethod = function(fn){
+var getMethod = function (fn) {
   return fn == null ? undefined : aFunction(fn);
 };
 
-var cleanupSubscription = function(subscription){
+var cleanupSubscription = function (subscription) {
   var cleanup = subscription._c;
-  if(cleanup){
+  if (cleanup) {
     subscription._c = undefined;
     cleanup();
   }
 };
 
-var subscriptionClosed = function(subscription){
+var subscriptionClosed = function (subscription) {
   return subscription._o === undefined;
 };
 
-var closeSubscription = function(subscription){
-  if(!subscriptionClosed(subscription)){
+var closeSubscription = function (subscription) {
+  if (!subscriptionClosed(subscription)) {
     subscription._o = undefined;
     cleanupSubscription(subscription);
   }
 };
 
-var Subscription = function(observer, subscriber){
+var Subscription = function (observer, subscriber) {
   anObject(observer);
   this._c = undefined;
   this._o = observer;
   observer = new SubscriptionObserver(this);
   try {
-    var cleanup      = subscriber(observer)
-      , subscription = cleanup;
-    if(cleanup != null){
-      if(typeof cleanup.unsubscribe === 'function')cleanup = function(){ subscription.unsubscribe(); };
+    var cleanup = subscriber(observer);
+    var subscription = cleanup;
+    if (cleanup != null) {
+      if (typeof cleanup.unsubscribe === 'function') cleanup = function () { subscription.unsubscribe(); };
       else aFunction(cleanup);
       this._c = cleanup;
     }
-  } catch(e){
+  } catch (e) {
     observer.error(e);
     return;
-  } if(subscriptionClosed(this))cleanupSubscription(this);
+  } if (subscriptionClosed(this)) cleanupSubscription(this);
 };
 
 Subscription.prototype = redefineAll({}, {
-  unsubscribe: function unsubscribe(){ closeSubscription(this); }
+  unsubscribe: function unsubscribe() { closeSubscription(this); }
 });
 
-var SubscriptionObserver = function(subscription){
+var SubscriptionObserver = function (subscription) {
   this._s = subscription;
 };
 
 SubscriptionObserver.prototype = redefineAll({}, {
-  next: function next(value){
+  next: function next(value) {
     var subscription = this._s;
-    if(!subscriptionClosed(subscription)){
+    if (!subscriptionClosed(subscription)) {
       var observer = subscription._o;
       try {
         var m = getMethod(observer.next);
-        if(m)return m.call(observer, value);
-      } catch(e){
+        if (m) return m.call(observer, value);
+      } catch (e) {
         try {
           closeSubscription(subscription);
         } finally {
@@ -8577,16 +8961,16 @@ SubscriptionObserver.prototype = redefineAll({}, {
       }
     }
   },
-  error: function error(value){
+  error: function error(value) {
     var subscription = this._s;
-    if(subscriptionClosed(subscription))throw value;
+    if (subscriptionClosed(subscription)) throw value;
     var observer = subscription._o;
     subscription._o = undefined;
     try {
       var m = getMethod(observer.error);
-      if(!m)throw value;
+      if (!m) throw value;
       value = m.call(observer, value);
-    } catch(e){
+    } catch (e) {
       try {
         cleanupSubscription(subscription);
       } finally {
@@ -8595,15 +8979,15 @@ SubscriptionObserver.prototype = redefineAll({}, {
     } cleanupSubscription(subscription);
     return value;
   },
-  complete: function complete(value){
+  complete: function complete(value) {
     var subscription = this._s;
-    if(!subscriptionClosed(subscription)){
+    if (!subscriptionClosed(subscription)) {
       var observer = subscription._o;
       subscription._o = undefined;
       try {
         var m = getMethod(observer.complete);
         value = m ? m.call(observer, value) : undefined;
-      } catch(e){
+      } catch (e) {
         try {
           cleanupSubscription(subscription);
         } finally {
@@ -8615,23 +8999,23 @@ SubscriptionObserver.prototype = redefineAll({}, {
   }
 });
 
-var $Observable = function Observable(subscriber){
+var $Observable = function Observable(subscriber) {
   anInstance(this, $Observable, 'Observable', '_f')._f = aFunction(subscriber);
 };
 
 redefineAll($Observable.prototype, {
-  subscribe: function subscribe(observer){
+  subscribe: function subscribe(observer) {
     return new Subscription(observer, this._f);
   },
-  forEach: function forEach(fn){
+  forEach: function forEach(fn) {
     var that = this;
-    return new (core.Promise || global.Promise)(function(resolve, reject){
+    return new (core.Promise || global.Promise)(function (resolve, reject) {
       aFunction(fn);
       var subscription = that.subscribe({
-        next : function(value){
+        next: function (value) {
           try {
             return fn(value);
-          } catch(e){
+          } catch (e) {
             reject(e);
             subscription.unsubscribe();
           }
@@ -8644,284 +9028,344 @@ redefineAll($Observable.prototype, {
 });
 
 redefineAll($Observable, {
-  from: function from(x){
+  from: function from(x) {
     var C = typeof this === 'function' ? this : $Observable;
     var method = getMethod(anObject(x)[OBSERVABLE]);
-    if(method){
+    if (method) {
       var observable = anObject(method.call(x));
-      return observable.constructor === C ? observable : new C(function(observer){
+      return observable.constructor === C ? observable : new C(function (observer) {
         return observable.subscribe(observer);
       });
     }
-    return new C(function(observer){
+    return new C(function (observer) {
       var done = false;
-      microtask(function(){
-        if(!done){
+      microtask(function () {
+        if (!done) {
           try {
-            if(forOf(x, false, function(it){
+            if (forOf(x, false, function (it) {
               observer.next(it);
-              if(done)return RETURN;
-            }) === RETURN)return;
-          } catch(e){
-            if(done)throw e;
+              if (done) return RETURN;
+            }) === RETURN) return;
+          } catch (e) {
+            if (done) throw e;
             observer.error(e);
             return;
           } observer.complete();
         }
       });
-      return function(){ done = true; };
+      return function () { done = true; };
     });
   },
-  of: function of(){
-    for(var i = 0, l = arguments.length, items = Array(l); i < l;)items[i] = arguments[i++];
-    return new (typeof this === 'function' ? this : $Observable)(function(observer){
+  of: function of() {
+    for (var i = 0, l = arguments.length, items = Array(l); i < l;) items[i] = arguments[i++];
+    return new (typeof this === 'function' ? this : $Observable)(function (observer) {
       var done = false;
-      microtask(function(){
-        if(!done){
-          for(var i = 0; i < items.length; ++i){
-            observer.next(items[i]);
-            if(done)return;
+      microtask(function () {
+        if (!done) {
+          for (var j = 0; j < items.length; ++j) {
+            observer.next(items[j]);
+            if (done) return;
           } observer.complete();
         }
       });
-      return function(){ done = true; };
+      return function () { done = true; };
     });
   }
 });
 
-hide($Observable.prototype, OBSERVABLE, function(){ return this; });
+hide($Observable.prototype, OBSERVABLE, function () { return this; });
 
-$export($export.G, {Observable: $Observable});
+$export($export.G, { Observable: $Observable });
 
 require('./_set-species')('Observable');
   })();
 });
 
-require.register("core-js/modules/es7.reflect.define-metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.promise.finally.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata                  = require('./_metadata')
-  , anObject                  = require('./_an-object')
-  , toMetaKey                 = metadata.key
-  , ordinaryDefineOwnMetadata = metadata.set;
+    // https://github.com/tc39/proposal-promise-finally
+'use strict';
+var $export = require('./_export');
+var core = require('./_core');
+var global = require('./_global');
+var speciesConstructor = require('./_species-constructor');
+var promiseResolve = require('./_promise-resolve');
 
-metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue, target, targetKey){
-  ordinaryDefineOwnMetadata(metadataKey, metadataValue, anObject(target), toMetaKey(targetKey));
-}});
+$export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
+  var C = speciesConstructor(this, core.Promise || global.Promise);
+  var isFunction = typeof onFinally == 'function';
+  return this.then(
+    isFunction ? function (x) {
+      return promiseResolve(C, onFinally()).then(function () { return x; });
+    } : onFinally,
+    isFunction ? function (e) {
+      return promiseResolve(C, onFinally()).then(function () { throw e; });
+    } : onFinally
+  );
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.delete-metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.promise.try.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata               = require('./_metadata')
-  , anObject               = require('./_an-object')
-  , toMetaKey              = metadata.key
-  , getOrCreateMetadataMap = metadata.map
-  , store                  = metadata.store;
+    'use strict';
+// https://github.com/tc39/proposal-promise-try
+var $export = require('./_export');
+var newPromiseCapability = require('./_new-promise-capability');
+var perform = require('./_perform');
 
-metadata.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, targetKey */){
-  var targetKey   = arguments.length < 3 ? undefined : toMetaKey(arguments[2])
-    , metadataMap = getOrCreateMetadataMap(anObject(target), targetKey, false);
-  if(metadataMap === undefined || !metadataMap['delete'](metadataKey))return false;
-  if(metadataMap.size)return true;
+$export($export.S, 'Promise', { 'try': function (callbackfn) {
+  var promiseCapability = newPromiseCapability.f(this);
+  var result = perform(callbackfn);
+  (result.e ? promiseCapability.reject : promiseCapability.resolve)(result.v);
+  return promiseCapability.promise;
+} });
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.define-metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var toMetaKey = metadata.key;
+var ordinaryDefineOwnMetadata = metadata.set;
+
+metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValue, target, targetKey) {
+  ordinaryDefineOwnMetadata(metadataKey, metadataValue, anObject(target), toMetaKey(targetKey));
+} });
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.delete-metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var toMetaKey = metadata.key;
+var getOrCreateMetadataMap = metadata.map;
+var store = metadata.store;
+
+metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , targetKey */) {
+  var targetKey = arguments.length < 3 ? undefined : toMetaKey(arguments[2]);
+  var metadataMap = getOrCreateMetadataMap(anObject(target), targetKey, false);
+  if (metadataMap === undefined || !metadataMap['delete'](metadataKey)) return false;
+  if (metadataMap.size) return true;
   var targetMetadata = store.get(target);
   targetMetadata['delete'](targetKey);
   return !!targetMetadata.size || store['delete'](target);
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.get-metadata-keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.get-metadata-keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var Set                     = require('./es6.set')
-  , from                    = require('./_array-from-iterable')
-  , metadata                = require('./_metadata')
-  , anObject                = require('./_an-object')
-  , getPrototypeOf          = require('./_object-gpo')
-  , ordinaryOwnMetadataKeys = metadata.keys
-  , toMetaKey               = metadata.key;
+    var Set = require('./es6.set');
+var from = require('./_array-from-iterable');
+var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var getPrototypeOf = require('./_object-gpo');
+var ordinaryOwnMetadataKeys = metadata.keys;
+var toMetaKey = metadata.key;
 
-var ordinaryMetadataKeys = function(O, P){
-  var oKeys  = ordinaryOwnMetadataKeys(O, P)
-    , parent = getPrototypeOf(O);
-  if(parent === null)return oKeys;
-  var pKeys  = ordinaryMetadataKeys(parent, P);
+var ordinaryMetadataKeys = function (O, P) {
+  var oKeys = ordinaryOwnMetadataKeys(O, P);
+  var parent = getPrototypeOf(O);
+  if (parent === null) return oKeys;
+  var pKeys = ordinaryMetadataKeys(parent, P);
   return pKeys.length ? oKeys.length ? from(new Set(oKeys.concat(pKeys))) : pKeys : oKeys;
 };
 
-metadata.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey */){
+metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey */) {
   return ordinaryMetadataKeys(anObject(target), arguments.length < 2 ? undefined : toMetaKey(arguments[1]));
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.get-metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.get-metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata               = require('./_metadata')
-  , anObject               = require('./_an-object')
-  , getPrototypeOf         = require('./_object-gpo')
-  , ordinaryHasOwnMetadata = metadata.has
-  , ordinaryGetOwnMetadata = metadata.get
-  , toMetaKey              = metadata.key;
+    var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var getPrototypeOf = require('./_object-gpo');
+var ordinaryHasOwnMetadata = metadata.has;
+var ordinaryGetOwnMetadata = metadata.get;
+var toMetaKey = metadata.key;
 
-var ordinaryGetMetadata = function(MetadataKey, O, P){
+var ordinaryGetMetadata = function (MetadataKey, O, P) {
   var hasOwn = ordinaryHasOwnMetadata(MetadataKey, O, P);
-  if(hasOwn)return ordinaryGetOwnMetadata(MetadataKey, O, P);
+  if (hasOwn) return ordinaryGetOwnMetadata(MetadataKey, O, P);
   var parent = getPrototypeOf(O);
   return parent !== null ? ordinaryGetMetadata(MetadataKey, parent, P) : undefined;
 };
 
-metadata.exp({getMetadata: function getMetadata(metadataKey, target /*, targetKey */){
+metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , targetKey */) {
   return ordinaryGetMetadata(metadataKey, anObject(target), arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.get-own-metadata-keys.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.get-own-metadata-keys.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata                = require('./_metadata')
-  , anObject                = require('./_an-object')
-  , ordinaryOwnMetadataKeys = metadata.keys
-  , toMetaKey               = metadata.key;
+    var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var ordinaryOwnMetadataKeys = metadata.keys;
+var toMetaKey = metadata.key;
 
-metadata.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targetKey */){
+metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targetKey */) {
   return ordinaryOwnMetadataKeys(anObject(target), arguments.length < 2 ? undefined : toMetaKey(arguments[1]));
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.get-own-metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.get-own-metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata               = require('./_metadata')
-  , anObject               = require('./_an-object')
-  , ordinaryGetOwnMetadata = metadata.get
-  , toMetaKey              = metadata.key;
+    var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var ordinaryGetOwnMetadata = metadata.get;
+var toMetaKey = metadata.key;
 
-metadata.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, targetKey */){
+metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , targetKey */) {
   return ordinaryGetOwnMetadata(metadataKey, anObject(target)
     , arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.has-metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.has-metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata               = require('./_metadata')
-  , anObject               = require('./_an-object')
-  , getPrototypeOf         = require('./_object-gpo')
-  , ordinaryHasOwnMetadata = metadata.has
-  , toMetaKey              = metadata.key;
+    var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var getPrototypeOf = require('./_object-gpo');
+var ordinaryHasOwnMetadata = metadata.has;
+var toMetaKey = metadata.key;
 
-var ordinaryHasMetadata = function(MetadataKey, O, P){
+var ordinaryHasMetadata = function (MetadataKey, O, P) {
   var hasOwn = ordinaryHasOwnMetadata(MetadataKey, O, P);
-  if(hasOwn)return true;
+  if (hasOwn) return true;
   var parent = getPrototypeOf(O);
   return parent !== null ? ordinaryHasMetadata(MetadataKey, parent, P) : false;
 };
 
-metadata.exp({hasMetadata: function hasMetadata(metadataKey, target /*, targetKey */){
+metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , targetKey */) {
   return ordinaryHasMetadata(metadataKey, anObject(target), arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.has-own-metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.has-own-metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata               = require('./_metadata')
-  , anObject               = require('./_an-object')
-  , ordinaryHasOwnMetadata = metadata.has
-  , toMetaKey              = metadata.key;
+    var metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var ordinaryHasOwnMetadata = metadata.has;
+var toMetaKey = metadata.key;
 
-metadata.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, targetKey */){
+metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , targetKey */) {
   return ordinaryHasOwnMetadata(metadataKey, anObject(target)
     , arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.reflect.metadata.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.reflect.metadata.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var metadata                  = require('./_metadata')
-  , anObject                  = require('./_an-object')
-  , aFunction                 = require('./_a-function')
-  , toMetaKey                 = metadata.key
-  , ordinaryDefineOwnMetadata = metadata.set;
+    var $metadata = require('./_metadata');
+var anObject = require('./_an-object');
+var aFunction = require('./_a-function');
+var toMetaKey = $metadata.key;
+var ordinaryDefineOwnMetadata = $metadata.set;
 
-metadata.exp({metadata: function metadata(metadataKey, metadataValue){
-  return function decorator(target, targetKey){
+$metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
+  return function decorator(target, targetKey) {
     ordinaryDefineOwnMetadata(
       metadataKey, metadataValue,
       (targetKey !== undefined ? anObject : aFunction)(target),
       toMetaKey(targetKey)
     );
   };
-}});
+} });
   })();
 });
 
-require.register("core-js/modules/es7.set.to-json.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.set.from.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-set.from
+require('./_set-collection-from')('Set');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.set.of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-set.of
+require('./_set-collection-of')('Set');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.set.to-json.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export  = require('./_export');
+var $export = require('./_export');
 
-$export($export.P + $export.R, 'Set', {toJSON: require('./_collection-to-json')('Set')});
+$export($export.P + $export.R, 'Set', { toJSON: require('./_collection-to-json')('Set') });
   })();
 });
 
-require.register("core-js/modules/es7.string.at.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.string.at.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://github.com/mathiasbynens/String.prototype.at
-var $export = require('./_export')
-  , $at     = require('./_string-at')(true);
+var $export = require('./_export');
+var $at = require('./_string-at')(true);
 
 $export($export.P, 'String', {
-  at: function at(pos){
+  at: function at(pos) {
     return $at(this, pos);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.string.match-all.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.string.match-all.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://tc39.github.io/String.prototype.matchAll/
-var $export     = require('./_export')
-  , defined     = require('./_defined')
-  , toLength    = require('./_to-length')
-  , isRegExp    = require('./_is-regexp')
-  , getFlags    = require('./_flags')
-  , RegExpProto = RegExp.prototype;
+var $export = require('./_export');
+var defined = require('./_defined');
+var toLength = require('./_to-length');
+var isRegExp = require('./_is-regexp');
+var getFlags = require('./_flags');
+var RegExpProto = RegExp.prototype;
 
-var $RegExpStringIterator = function(regexp, string){
+var $RegExpStringIterator = function (regexp, string) {
   this._r = regexp;
   this._s = string;
 };
 
-require('./_iter-create')($RegExpStringIterator, 'RegExp String', function next(){
+require('./_iter-create')($RegExpStringIterator, 'RegExp String', function next() {
   var match = this._r.exec(this._s);
-  return {value: match, done: match === null};
+  return { value: match, done: match === null };
 });
 
 $export($export.P, 'String', {
-  matchAll: function matchAll(regexp){
+  matchAll: function matchAll(regexp) {
     defined(this);
-    if(!isRegExp(regexp))throw TypeError(regexp + ' is not a regexp!');
-    var S     = String(this)
-      , flags = 'flags' in RegExpProto ? String(regexp.flags) : getFlags.call(regexp)
-      , rx    = new RegExp(regexp.source, ~flags.indexOf('g') ? flags : 'g' + flags);
+    if (!isRegExp(regexp)) throw TypeError(regexp + ' is not a regexp!');
+    var S = String(this);
+    var flags = 'flags' in RegExpProto ? String(regexp.flags) : getFlags.call(regexp);
+    var rx = new RegExp(regexp.source, ~flags.indexOf('g') ? flags : 'g' + flags);
     rx.lastIndex = toLength(regexp.lastIndex);
     return new $RegExpStringIterator(rx, S);
   }
@@ -8929,156 +9373,225 @@ $export($export.P, 'String', {
   })();
 });
 
-require.register("core-js/modules/es7.string.pad-end.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.string.pad-end.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://github.com/tc39/proposal-string-pad-start-end
-var $export = require('./_export')
-  , $pad    = require('./_string-pad');
+var $export = require('./_export');
+var $pad = require('./_string-pad');
 
 $export($export.P, 'String', {
-  padEnd: function padEnd(maxLength /*, fillString = ' ' */){
+  padEnd: function padEnd(maxLength /* , fillString = ' ' */) {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, false);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.string.pad-start.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.string.pad-start.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://github.com/tc39/proposal-string-pad-start-end
-var $export = require('./_export')
-  , $pad    = require('./_string-pad');
+var $export = require('./_export');
+var $pad = require('./_string-pad');
 
 $export($export.P, 'String', {
-  padStart: function padStart(maxLength /*, fillString = ' ' */){
+  padStart: function padStart(maxLength /* , fillString = ' ' */) {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, true);
   }
 });
   })();
 });
 
-require.register("core-js/modules/es7.string.trim-left.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.string.trim-left.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-require('./_string-trim')('trimLeft', function($trim){
-  return function trimLeft(){
+require('./_string-trim')('trimLeft', function ($trim) {
+  return function trimLeft() {
     return $trim(this, 1);
   };
 }, 'trimStart');
   })();
 });
 
-require.register("core-js/modules/es7.string.trim-right.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.string.trim-right.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-require('./_string-trim')('trimRight', function($trim){
-  return function trimRight(){
+require('./_string-trim')('trimRight', function ($trim) {
+  return function trimRight() {
     return $trim(this, 2);
   };
 }, 'trimEnd');
   })();
 });
 
-require.register("core-js/modules/es7.symbol.async-iterator.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.symbol.async-iterator.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     require('./_wks-define')('asyncIterator');
   })();
 });
 
-require.register("core-js/modules/es7.symbol.observable.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.symbol.observable.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     require('./_wks-define')('observable');
   })();
 });
 
-require.register("core-js/modules/es7.system.global.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.system.global.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    // https://github.com/ljharb/proposal-global
+    // https://github.com/tc39/proposal-global
 var $export = require('./_export');
 
-$export($export.S, 'System', {global: require('./_global')});
+$export($export.S, 'System', { global: require('./_global') });
   })();
 });
 
-require.register("core-js/modules/web.dom.iterable.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/es7.weak-map.from.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $iterators    = require('./es6.array.iterator')
-  , redefine      = require('./_redefine')
-  , global        = require('./_global')
-  , hide          = require('./_hide')
-  , Iterators     = require('./_iterators')
-  , wks           = require('./_wks')
-  , ITERATOR      = wks('iterator')
-  , TO_STRING_TAG = wks('toStringTag')
-  , ArrayValues   = Iterators.Array;
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.from
+require('./_set-collection-from')('WeakMap');
+  })();
+});
 
-for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
-  var NAME       = collections[i]
-    , Collection = global[NAME]
-    , proto      = Collection && Collection.prototype
-    , key;
-  if(proto){
-    if(!proto[ITERATOR])hide(proto, ITERATOR, ArrayValues);
-    if(!proto[TO_STRING_TAG])hide(proto, TO_STRING_TAG, NAME);
+require.register("babel-polyfill/node_modules/core-js/modules/es7.weak-map.of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.of
+require('./_set-collection-of')('WeakMap');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.weak-set.from.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.from
+require('./_set-collection-from')('WeakSet');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/es7.weak-set.of.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    // https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.of
+require('./_set-collection-of')('WeakSet');
+  })();
+});
+
+require.register("babel-polyfill/node_modules/core-js/modules/web.dom.iterable.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
+  (function() {
+    var $iterators = require('./es6.array.iterator');
+var getKeys = require('./_object-keys');
+var redefine = require('./_redefine');
+var global = require('./_global');
+var hide = require('./_hide');
+var Iterators = require('./_iterators');
+var wks = require('./_wks');
+var ITERATOR = wks('iterator');
+var TO_STRING_TAG = wks('toStringTag');
+var ArrayValues = Iterators.Array;
+
+var DOMIterables = {
+  CSSRuleList: true, // TODO: Not spec compliant, should be false.
+  CSSStyleDeclaration: false,
+  CSSValueList: false,
+  ClientRectList: false,
+  DOMRectList: false,
+  DOMStringList: false,
+  DOMTokenList: true,
+  DataTransferItemList: false,
+  FileList: false,
+  HTMLAllCollection: false,
+  HTMLCollection: false,
+  HTMLFormElement: false,
+  HTMLSelectElement: false,
+  MediaList: true, // TODO: Not spec compliant, should be false.
+  MimeTypeArray: false,
+  NamedNodeMap: false,
+  NodeList: true,
+  PaintRequestList: false,
+  Plugin: false,
+  PluginArray: false,
+  SVGLengthList: false,
+  SVGNumberList: false,
+  SVGPathSegList: false,
+  SVGPointList: false,
+  SVGStringList: false,
+  SVGTransformList: false,
+  SourceBufferList: false,
+  StyleSheetList: true, // TODO: Not spec compliant, should be false.
+  TextTrackCueList: false,
+  TextTrackList: false,
+  TouchList: false
+};
+
+for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++) {
+  var NAME = collections[i];
+  var explicit = DOMIterables[NAME];
+  var Collection = global[NAME];
+  var proto = Collection && Collection.prototype;
+  var key;
+  if (proto) {
+    if (!proto[ITERATOR]) hide(proto, ITERATOR, ArrayValues);
+    if (!proto[TO_STRING_TAG]) hide(proto, TO_STRING_TAG, NAME);
     Iterators[NAME] = ArrayValues;
-    for(key in $iterators)if(!proto[key])redefine(proto, key, $iterators[key], true);
+    if (explicit) for (key in $iterators) if (!proto[key]) redefine(proto, key, $iterators[key], true);
   }
 }
   })();
 });
 
-require.register("core-js/modules/web.immediate.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/web.immediate.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
-    var $export = require('./_export')
-  , $task   = require('./_task');
+    var $export = require('./_export');
+var $task = require('./_task');
 $export($export.G + $export.B, {
-  setImmediate:   $task.set,
+  setImmediate: $task.set,
   clearImmediate: $task.clear
 });
   })();
 });
 
-require.register("core-js/modules/web.timers.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/modules/web.timers.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     // ie9- setTimeout & setInterval additional parameters fix
-var global     = require('./_global')
-  , $export    = require('./_export')
-  , invoke     = require('./_invoke')
-  , partial    = require('./_partial')
-  , navigator  = global.navigator
-  , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
-var wrap = function(set){
-  return MSIE ? function(fn, time /*, ...args */){
+var global = require('./_global');
+var $export = require('./_export');
+var invoke = require('./_invoke');
+var partial = require('./_partial');
+var navigator = global.navigator;
+var MSIE = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
+var wrap = function (set) {
+  return MSIE ? function (fn, time /* , ...args */) {
     return set(invoke(
       partial,
       [].slice.call(arguments, 2),
+      // eslint-disable-next-line no-new-func
       typeof fn == 'function' ? fn : Function(fn)
     ), time);
   } : set;
 };
 $export($export.G + $export.B + $export.F * MSIE, {
-  setTimeout:  wrap(global.setTimeout),
+  setTimeout: wrap(global.setTimeout),
   setInterval: wrap(global.setInterval)
 });
   })();
 });
 
-require.register("core-js/shim.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "core-js");
+require.register("babel-polyfill/node_modules/core-js/shim.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/core-js");
   (function() {
     require('./modules/es6.symbol');
 require('./modules/es6.object.create');
@@ -9218,6 +9731,8 @@ require('./modules/es6.reflect.prevent-extensions');
 require('./modules/es6.reflect.set');
 require('./modules/es6.reflect.set-prototype-of');
 require('./modules/es7.array.includes');
+require('./modules/es7.array.flat-map');
+require('./modules/es7.array.flatten');
 require('./modules/es7.string.at');
 require('./modules/es7.string.pad-start');
 require('./modules/es7.string.pad-end');
@@ -9235,12 +9750,31 @@ require('./modules/es7.object.lookup-getter');
 require('./modules/es7.object.lookup-setter');
 require('./modules/es7.map.to-json');
 require('./modules/es7.set.to-json');
+require('./modules/es7.map.of');
+require('./modules/es7.set.of');
+require('./modules/es7.weak-map.of');
+require('./modules/es7.weak-set.of');
+require('./modules/es7.map.from');
+require('./modules/es7.set.from');
+require('./modules/es7.weak-map.from');
+require('./modules/es7.weak-set.from');
+require('./modules/es7.global');
 require('./modules/es7.system.global');
 require('./modules/es7.error.is-error');
+require('./modules/es7.math.clamp');
+require('./modules/es7.math.deg-per-rad');
+require('./modules/es7.math.degrees');
+require('./modules/es7.math.fscale');
 require('./modules/es7.math.iaddh');
 require('./modules/es7.math.isubh');
 require('./modules/es7.math.imulh');
+require('./modules/es7.math.rad-per-deg');
+require('./modules/es7.math.radians');
+require('./modules/es7.math.scale');
 require('./modules/es7.math.umulh');
+require('./modules/es7.math.signbit');
+require('./modules/es7.promise.finally');
+require('./modules/es7.promise.try');
 require('./modules/es7.reflect.define-metadata');
 require('./modules/es7.reflect.delete-metadata');
 require('./modules/es7.reflect.get-metadata');
@@ -9259,8 +9793,804 @@ module.exports = require('./modules/_core');
   })();
 });
 
+require.register("babel-polyfill/node_modules/regenerator-runtime/runtime.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "babel-polyfill/node_modules/regenerator-runtime");
+  (function() {
+    /**
+ * Copyright (c) 2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * https://raw.github.com/facebook/regenerator/master/LICENSE file. An
+ * additional grant of patent rights can be found in the PATENTS file in
+ * the same directory.
+ */
+
+!(function(global) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  var inModule = typeof module === "object";
+  var runtime = global.regeneratorRuntime;
+  if (runtime) {
+    if (inModule) {
+      // If regeneratorRuntime is defined globally and we're in a module,
+      // make the exports object identical to regeneratorRuntime.
+      module.exports = runtime;
+    }
+    // Don't bother evaluating the rest of this file if the runtime was
+    // already defined globally.
+    return;
+  }
+
+  // Define the runtime globally (as expected by generated code) as either
+  // module.exports (if we're in a module) or a new, empty object.
+  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  runtime.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  runtime.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  runtime.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  runtime.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration. If the Promise is rejected, however, the
+          // result for this iteration will be rejected with the same
+          // reason. Note that rejections of yielded Promises are not
+          // thrown back into the generator function, as is the case
+          // when an awaited Promise is rejected. This difference in
+          // behavior between yield and await is important, because it
+          // allows the consumer to decide what to do with the yielded
+          // rejection (swallow it and continue, manually .throw it back
+          // into the generator, abandon iteration, whatever). With
+          // await, by contrast, there is no opportunity to examine the
+          // rejection reason outside the generator function, so the
+          // only option is to throw it from the await expression, and
+          // let the generator function handle the exception.
+          result.value = unwrapped;
+          resolve(result);
+        }, reject);
+      }
+    }
+
+    if (typeof global.process === "object" && global.process.domain) {
+      invoke = global.process.domain.bind(invoke);
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  runtime.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return runtime.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        if (delegate.iterator.return) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  runtime.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  runtime.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+})(
+  // Among the various tricks for obtaining a reference to the global
+  // object, this seems to be the most reliable technique that does not
+  // use indirect eval (which violates Content Security Policy).
+  typeof global === "object" ? global :
+  typeof window === "object" ? window :
+  typeof self === "object" ? self : this
+);
+  })();
+});
+
+require.register("classnames/index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "classnames");
+  (function() {
+    /*!
+  Copyright (c) 2016 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(null, arg));
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', [], function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+}());
+  })();
+});
+
 require.register("create-react-class/factory.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "create-react-class");
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "create-react-class");
   (function() {
     /**
  * Copyright 2013-present, Facebook, Inc.
@@ -9296,7 +10626,7 @@ if ('development' !== 'production') {
   ReactPropTypeLocationNames = {
     prop: 'prop',
     context: 'context',
-    childContext: 'child context',
+    childContext: 'child context'
   };
 } else {
   ReactPropTypeLocationNames = {};
@@ -9306,7 +10636,6 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
   /**
    * Policies that describe methods in `ReactClassInterface`.
    */
-
 
   var injectedMixins = [];
 
@@ -9333,7 +10662,6 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
    * @internal
    */
   var ReactClassInterface = {
-
     /**
      * An array of Mixin objects to include when defining your component.
      *
@@ -9424,7 +10752,6 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
      *   }
      *
      * @return {ReactComponent}
-     * @nosideeffects
      * @required
      */
     render: 'DEFINE_ONCE',
@@ -9552,7 +10879,6 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
      * @overridable
      */
     updateComponent: 'OVERRIDE_BASE'
-
   };
 
   /**
@@ -9565,71 +10891,106 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
    * which all other static methods are defined.
    */
   var RESERVED_SPEC_KEYS = {
-    displayName: function (Constructor, displayName) {
+    displayName: function(Constructor, displayName) {
       Constructor.displayName = displayName;
     },
-    mixins: function (Constructor, mixins) {
+    mixins: function(Constructor, mixins) {
       if (mixins) {
         for (var i = 0; i < mixins.length; i++) {
           mixSpecIntoComponent(Constructor, mixins[i]);
         }
       }
     },
-    childContextTypes: function (Constructor, childContextTypes) {
+    childContextTypes: function(Constructor, childContextTypes) {
       if ('development' !== 'production') {
         validateTypeDef(Constructor, childContextTypes, 'childContext');
       }
-      Constructor.childContextTypes = _assign({}, Constructor.childContextTypes, childContextTypes);
+      Constructor.childContextTypes = _assign(
+        {},
+        Constructor.childContextTypes,
+        childContextTypes
+      );
     },
-    contextTypes: function (Constructor, contextTypes) {
+    contextTypes: function(Constructor, contextTypes) {
       if ('development' !== 'production') {
         validateTypeDef(Constructor, contextTypes, 'context');
       }
-      Constructor.contextTypes = _assign({}, Constructor.contextTypes, contextTypes);
+      Constructor.contextTypes = _assign(
+        {},
+        Constructor.contextTypes,
+        contextTypes
+      );
     },
     /**
      * Special case getDefaultProps which should move into statics but requires
      * automatic merging.
      */
-    getDefaultProps: function (Constructor, getDefaultProps) {
+    getDefaultProps: function(Constructor, getDefaultProps) {
       if (Constructor.getDefaultProps) {
-        Constructor.getDefaultProps = createMergedResultFunction(Constructor.getDefaultProps, getDefaultProps);
+        Constructor.getDefaultProps = createMergedResultFunction(
+          Constructor.getDefaultProps,
+          getDefaultProps
+        );
       } else {
         Constructor.getDefaultProps = getDefaultProps;
       }
     },
-    propTypes: function (Constructor, propTypes) {
+    propTypes: function(Constructor, propTypes) {
       if ('development' !== 'production') {
         validateTypeDef(Constructor, propTypes, 'prop');
       }
       Constructor.propTypes = _assign({}, Constructor.propTypes, propTypes);
     },
-    statics: function (Constructor, statics) {
+    statics: function(Constructor, statics) {
       mixStaticSpecIntoComponent(Constructor, statics);
     },
-    autobind: function () {} };
+    autobind: function() {}
+  };
 
   function validateTypeDef(Constructor, typeDef, location) {
     for (var propName in typeDef) {
       if (typeDef.hasOwnProperty(propName)) {
         // use a warning instead of an _invariant so components
         // don't show up in prod but only in __DEV__
-        'development' !== 'production' ? warning(typeof typeDef[propName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', Constructor.displayName || 'ReactClass', ReactPropTypeLocationNames[location], propName) : void 0;
+        if ('development' !== 'production') {
+          warning(
+            typeof typeDef[propName] === 'function',
+            '%s: %s type `%s` is invalid; it must be a function, usually from ' +
+              'React.PropTypes.',
+            Constructor.displayName || 'ReactClass',
+            ReactPropTypeLocationNames[location],
+            propName
+          );
+        }
       }
     }
   }
 
   function validateMethodOverride(isAlreadyDefined, name) {
-    var specPolicy = ReactClassInterface.hasOwnProperty(name) ? ReactClassInterface[name] : null;
+    var specPolicy = ReactClassInterface.hasOwnProperty(name)
+      ? ReactClassInterface[name]
+      : null;
 
     // Disallow overriding of base class methods unless explicitly allowed.
     if (ReactClassMixin.hasOwnProperty(name)) {
-      _invariant(specPolicy === 'OVERRIDE_BASE', 'ReactClassInterface: You are attempting to override ' + '`%s` from your class specification. Ensure that your method names ' + 'do not overlap with React methods.', name);
+      _invariant(
+        specPolicy === 'OVERRIDE_BASE',
+        'ReactClassInterface: You are attempting to override ' +
+          '`%s` from your class specification. Ensure that your method names ' +
+          'do not overlap with React methods.',
+        name
+      );
     }
 
     // Disallow defining methods more than once unless explicitly allowed.
     if (isAlreadyDefined) {
-      _invariant(specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED', 'ReactClassInterface: You are attempting to define ' + '`%s` on your component more than once. This conflict may be due ' + 'to a mixin.', name);
+      _invariant(
+        specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED',
+        'ReactClassInterface: You are attempting to define ' +
+          '`%s` on your component more than once. This conflict may be due ' +
+          'to a mixin.',
+        name
+      );
     }
   }
 
@@ -9643,14 +11004,33 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
         var typeofSpec = typeof spec;
         var isMixinValid = typeofSpec === 'object' && spec !== null;
 
-        'development' !== 'production' ? warning(isMixinValid, '%s: You\'re attempting to include a mixin that is either null ' + 'or not an object. Check the mixins included by the component, ' + 'as well as any mixins they include themselves. ' + 'Expected object but got %s.', Constructor.displayName || 'ReactClass', spec === null ? null : typeofSpec) : void 0;
+        if ('development' !== 'production') {
+          warning(
+            isMixinValid,
+            "%s: You're attempting to include a mixin that is either null " +
+              'or not an object. Check the mixins included by the component, ' +
+              'as well as any mixins they include themselves. ' +
+              'Expected object but got %s.',
+            Constructor.displayName || 'ReactClass',
+            spec === null ? null : typeofSpec
+          );
+        }
       }
 
       return;
     }
 
-    _invariant(typeof spec !== 'function', 'ReactClass: You\'re attempting to ' + 'use a component class or function as a mixin. Instead, just use a ' + 'regular object.');
-    _invariant(!isValidElement(spec), 'ReactClass: You\'re attempting to ' + 'use a component as a mixin. Instead, just use a regular object.');
+    _invariant(
+      typeof spec !== 'function',
+      "ReactClass: You're attempting to " +
+        'use a component class or function as a mixin. Instead, just use a ' +
+        'regular object.'
+    );
+    _invariant(
+      !isValidElement(spec),
+      "ReactClass: You're attempting to " +
+        'use a component as a mixin. Instead, just use a regular object.'
+    );
 
     var proto = Constructor.prototype;
     var autoBindPairs = proto.__reactAutoBindPairs;
@@ -9685,7 +11065,11 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
         // 2. Overridden methods (that were mixed in).
         var isReactClassMethod = ReactClassInterface.hasOwnProperty(name);
         var isFunction = typeof property === 'function';
-        var shouldAutoBind = isFunction && !isReactClassMethod && !isAlreadyDefined && spec.autobind !== false;
+        var shouldAutoBind =
+          isFunction &&
+          !isReactClassMethod &&
+          !isAlreadyDefined &&
+          spec.autobind !== false;
 
         if (shouldAutoBind) {
           autoBindPairs.push(name, property);
@@ -9695,7 +11079,15 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
             var specPolicy = ReactClassInterface[name];
 
             // These cases should already be caught by validateMethodOverride.
-            _invariant(isReactClassMethod && (specPolicy === 'DEFINE_MANY_MERGED' || specPolicy === 'DEFINE_MANY'), 'ReactClass: Unexpected spec policy %s for key %s ' + 'when mixing in component specs.', specPolicy, name);
+            _invariant(
+              isReactClassMethod &&
+                (specPolicy === 'DEFINE_MANY_MERGED' ||
+                  specPolicy === 'DEFINE_MANY'),
+              'ReactClass: Unexpected spec policy %s for key %s ' +
+                'when mixing in component specs.',
+              specPolicy,
+              name
+            );
 
             // For methods which are defined more than once, call the existing
             // methods before calling the new property, merging if appropriate.
@@ -9730,10 +11122,23 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       }
 
       var isReserved = name in RESERVED_SPEC_KEYS;
-      _invariant(!isReserved, 'ReactClass: You are attempting to define a reserved ' + 'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' + 'as an instance property instead; it will still be accessible on the ' + 'constructor.', name);
+      _invariant(
+        !isReserved,
+        'ReactClass: You are attempting to define a reserved ' +
+          'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' +
+          'as an instance property instead; it will still be accessible on the ' +
+          'constructor.',
+        name
+      );
 
       var isInherited = name in Constructor;
-      _invariant(!isInherited, 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name);
+      _invariant(
+        !isInherited,
+        'ReactClass: You are attempting to define ' +
+          '`%s` on your component more than once. This conflict may be ' +
+          'due to a mixin.',
+        name
+      );
       Constructor[name] = property;
     }
   }
@@ -9746,11 +11151,22 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
    * @return {object} one after it has been mutated to contain everything in two.
    */
   function mergeIntoWithNoDuplicateKeys(one, two) {
-    _invariant(one && two && typeof one === 'object' && typeof two === 'object', 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.');
+    _invariant(
+      one && two && typeof one === 'object' && typeof two === 'object',
+      'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.'
+    );
 
     for (var key in two) {
       if (two.hasOwnProperty(key)) {
-        _invariant(one[key] === undefined, 'mergeIntoWithNoDuplicateKeys(): ' + 'Tried to merge two objects with the same key: `%s`. This conflict ' + 'may be due to a mixin; in particular, this may be caused by two ' + 'getInitialState() or getDefaultProps() methods returning objects ' + 'with clashing keys.', key);
+        _invariant(
+          one[key] === undefined,
+          'mergeIntoWithNoDuplicateKeys(): ' +
+            'Tried to merge two objects with the same key: `%s`. This conflict ' +
+            'may be due to a mixin; in particular, this may be caused by two ' +
+            'getInitialState() or getDefaultProps() methods returning objects ' +
+            'with clashing keys.',
+          key
+        );
         one[key] = two[key];
       }
     }
@@ -9811,8 +11227,14 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       boundMethod.__reactBoundArguments = null;
       var componentName = component.constructor.displayName;
       var _bind = boundMethod.bind;
-      boundMethod.bind = function (newThis) {
-        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      boundMethod.bind = function(newThis) {
+        for (
+          var _len = arguments.length,
+            args = Array(_len > 1 ? _len - 1 : 0),
+            _key = 1;
+          _key < _len;
+          _key++
+        ) {
           args[_key - 1] = arguments[_key];
         }
 
@@ -9820,9 +11242,24 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
         // ignore the value of "this" that the user is trying to use, so
         // let's warn.
         if (newThis !== component && newThis !== null) {
-          'development' !== 'production' ? warning(false, 'bind(): React component methods may only be bound to the ' + 'component instance. See %s', componentName) : void 0;
+          if ('development' !== 'production') {
+            warning(
+              false,
+              'bind(): React component methods may only be bound to the ' +
+                'component instance. See %s',
+              componentName
+            );
+          }
         } else if (!args.length) {
-          'development' !== 'production' ? warning(false, 'bind(): You are binding a component method to the component. ' + 'React does this for you automatically in a high-performance ' + 'way, so you can safely remove this call. See %s', componentName) : void 0;
+          if ('development' !== 'production') {
+            warning(
+              false,
+              'bind(): You are binding a component method to the component. ' +
+                'React does this for you automatically in a high-performance ' +
+                'way, so you can safely remove this call. See %s',
+              componentName
+            );
+          }
           return boundMethod;
         }
         var reboundMethod = _bind.apply(boundMethod, arguments);
@@ -9849,11 +11286,14 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
     }
   }
 
-  var IsMountedMixin = {
-    componentDidMount: function () {
+  var IsMountedPreMixin = {
+    componentDidMount: function() {
       this.__isMounted = true;
-    },
-    componentWillUnmount: function () {
+    }
+  };
+
+  var IsMountedPostMixin = {
+    componentWillUnmount: function() {
       this.__isMounted = false;
     }
   };
@@ -9863,12 +11303,11 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
    * therefore not already part of the modern ReactComponent.
    */
   var ReactClassMixin = {
-
     /**
      * TODO: This will be deprecated because state should always keep a consistent
      * type signature and the only use case for this, is to avoid that.
      */
-    replaceState: function (newState, callback) {
+    replaceState: function(newState, callback) {
       this.updater.enqueueReplaceState(this, newState, callback);
     },
 
@@ -9878,17 +11317,29 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
      * @protected
      * @final
      */
-    isMounted: function () {
+    isMounted: function() {
       if ('development' !== 'production') {
-        'development' !== 'production' ? warning(this.__didWarnIsMounted, '%s: isMounted is deprecated. Instead, make sure to clean up ' + 'subscriptions and pending requests in componentWillUnmount to ' + 'prevent memory leaks.', this.constructor && this.constructor.displayName || this.name || 'Component') : void 0;
+        warning(
+          this.__didWarnIsMounted,
+          '%s: isMounted is deprecated. Instead, make sure to clean up ' +
+            'subscriptions and pending requests in componentWillUnmount to ' +
+            'prevent memory leaks.',
+          (this.constructor && this.constructor.displayName) ||
+            this.name ||
+            'Component'
+        );
         this.__didWarnIsMounted = true;
       }
       return !!this.__isMounted;
     }
   };
 
-  var ReactClassComponent = function () {};
-  _assign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
+  var ReactClassComponent = function() {};
+  _assign(
+    ReactClassComponent.prototype,
+    ReactComponent.prototype,
+    ReactClassMixin
+  );
 
   /**
    * Creates a composite component class given a class specification.
@@ -9902,12 +11353,16 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
     // To keep our warnings more understandable, we'll use a little hack here to
     // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
     // unnecessarily identify a class without displayName as 'Constructor'.
-    var Constructor = identity(function (props, context, updater) {
+    var Constructor = identity(function(props, context, updater) {
       // This constructor gets overridden by mocks. The argument is used
       // by mocks to assert on what gets mounted.
 
       if ('development' !== 'production') {
-        'development' !== 'production' ? warning(this instanceof Constructor, 'Something is calling a React component directly. Use a factory or ' + 'JSX instead. See: https://fb.me/react-legacyfactory') : void 0;
+        warning(
+          this instanceof Constructor,
+          'Something is calling a React component directly. Use a factory or ' +
+            'JSX instead. See: https://fb.me/react-legacyfactory'
+        );
       }
 
       // Wire up auto-binding
@@ -9928,13 +11383,20 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       var initialState = this.getInitialState ? this.getInitialState() : null;
       if ('development' !== 'production') {
         // We allow auto-mocks to proceed as if they're returning null.
-        if (initialState === undefined && this.getInitialState._isMockFunction) {
+        if (
+          initialState === undefined &&
+          this.getInitialState._isMockFunction
+        ) {
           // This is probably bad practice. Consider warning here and
           // deprecating this convenience.
           initialState = null;
         }
       }
-      _invariant(typeof initialState === 'object' && !Array.isArray(initialState), '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent');
+      _invariant(
+        typeof initialState === 'object' && !Array.isArray(initialState),
+        '%s.getInitialState(): must return an object or null',
+        Constructor.displayName || 'ReactCompositeComponent'
+      );
 
       this.state = initialState;
     });
@@ -9944,8 +11406,9 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
 
     injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
 
-    mixSpecIntoComponent(Constructor, IsMountedMixin);
+    mixSpecIntoComponent(Constructor, IsMountedPreMixin);
     mixSpecIntoComponent(Constructor, spec);
+    mixSpecIntoComponent(Constructor, IsMountedPostMixin);
 
     // Initialize the defaultProps property after all mixins have been merged.
     if (Constructor.getDefaultProps) {
@@ -9965,11 +11428,26 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       }
     }
 
-    _invariant(Constructor.prototype.render, 'createClass(...): Class specification must implement a `render` method.');
+    _invariant(
+      Constructor.prototype.render,
+      'createClass(...): Class specification must implement a `render` method.'
+    );
 
     if ('development' !== 'production') {
-      'development' !== 'production' ? warning(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component') : void 0;
-      'development' !== 'production' ? warning(!Constructor.prototype.componentWillRecieveProps, '%s has a method called ' + 'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?', spec.displayName || 'A component') : void 0;
+      warning(
+        !Constructor.prototype.componentShouldUpdate,
+        '%s has a method called ' +
+          'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' +
+          'The name is phrased as a question because the function is ' +
+          'expected to return a value.',
+        spec.displayName || 'A component'
+      );
+      warning(
+        !Constructor.prototype.componentWillRecieveProps,
+        '%s has a method called ' +
+          'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?',
+        spec.displayName || 'A component'
+      );
     }
 
     // Reduce time spent doing lookups by setting these on the prototype.
@@ -9986,35 +11464,6 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
 }
 
 module.exports = factory;
-  })();
-});
-
-require.register("create-react-class/index.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "create-react-class");
-  (function() {
-    /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var React = require('react');
-var factory = require('./factory');
-
-// Hack to grab NoopUpdateQueue from isomorphic React
-var ReactNoopUpdateQueue = new React.Component().updater;
-
-module.exports = factory(
-  React.Component,
-  React.isValidElement,
-  ReactNoopUpdateQueue
-);
   })();
 });
 
@@ -11345,7 +12794,17 @@ var createLocation = exports.createLocation = function createLocation(path, stat
     if (state !== undefined && location.state === undefined) location.state = state;
   }
 
-  location.key = key;
+  try {
+    location.pathname = decodeURI(location.pathname);
+  } catch (e) {
+    if (e instanceof URIError) {
+      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
+    } else {
+      throw e;
+    }
+  }
+
+  if (key) location.key = key;
 
   if (currentLocation) {
     // Resolve incomplete/relative pathname relative to current location.
@@ -11353,6 +12812,11 @@ var createLocation = exports.createLocation = function createLocation(path, stat
       location.pathname = currentLocation.pathname;
     } else if (location.pathname.charAt(0) !== '/') {
       location.pathname = (0, _resolvePathname2.default)(location.pathname, currentLocation.pathname);
+    }
+  } else {
+    // When there is no prior location and pathname is empty, set it to /
+    if (!location.pathname) {
+      location.pathname = '/';
     }
   }
 
@@ -11379,8 +12843,12 @@ var stripLeadingSlash = exports.stripLeadingSlash = function stripLeadingSlash(p
   return path.charAt(0) === '/' ? path.substr(1) : path;
 };
 
-var stripPrefix = exports.stripPrefix = function stripPrefix(path, prefix) {
-  return path.indexOf(prefix) === 0 ? path.substr(prefix.length) : path;
+var hasBasename = exports.hasBasename = function hasBasename(path, prefix) {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
+};
+
+var stripBasename = exports.stripBasename = function stripBasename(path, prefix) {
+  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
 };
 
 var stripTrailingSlash = exports.stripTrailingSlash = function stripTrailingSlash(path) {
@@ -11404,8 +12872,6 @@ var parsePath = exports.parsePath = function parsePath(path) {
     pathname = pathname.substr(0, searchIndex);
   }
 
-  pathname = decodeURI(pathname);
-
   return {
     pathname: pathname,
     search: search === '?' ? '' : search,
@@ -11419,7 +12885,7 @@ var createPath = exports.createPath = function createPath(location) {
       hash = location.hash;
 
 
-  var path = encodeURI(pathname || '/');
+  var path = pathname || '/';
 
   if (search && search !== '?') path += search.charAt(0) === '?' ? search : '?' + search;
 
@@ -11509,12 +12975,11 @@ var createBrowserHistory = function createBrowserHistory() {
 
     var path = pathname + search + hash;
 
-    if (basename) path = (0, _PathUtils.stripPrefix)(path, basename);
+    (0, _warning2.default)(!basename || (0, _PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
-    return _extends({}, (0, _PathUtils.parsePath)(path), {
-      state: state,
-      key: key
-    });
+    if (basename) path = (0, _PathUtils.stripBasename)(path, basename);
+
+    return (0, _LocationUtils.createLocation)(path, state, key);
   };
 
   var createKey = function createKey() {
@@ -11835,9 +13300,11 @@ var createHashHistory = function createHashHistory() {
   var getDOMLocation = function getDOMLocation() {
     var path = decodePath(getHashPath());
 
-    if (basename) path = (0, _PathUtils.stripPrefix)(path, basename);
+    (0, _warning2.default)(!basename || (0, _PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
-    return (0, _PathUtils.parsePath)(path);
+    if (basename) path = (0, _PathUtils.stripBasename)(path, basename);
+
+    return (0, _LocationUtils.createLocation)(path);
   };
 
   var transitionManager = (0, _createTransitionManager2.default)();
@@ -12339,6 +13806,64 @@ exports.default = createTransitionManager;
   })();
 });
 
+require.register("history/index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "history");
+  (function() {
+    'use strict';
+
+exports.__esModule = true;
+exports.createPath = exports.parsePath = exports.locationsAreEqual = exports.createLocation = exports.createMemoryHistory = exports.createHashHistory = exports.createBrowserHistory = undefined;
+
+var _LocationUtils = require('./LocationUtils');
+
+Object.defineProperty(exports, 'createLocation', {
+  enumerable: true,
+  get: function get() {
+    return _LocationUtils.createLocation;
+  }
+});
+Object.defineProperty(exports, 'locationsAreEqual', {
+  enumerable: true,
+  get: function get() {
+    return _LocationUtils.locationsAreEqual;
+  }
+});
+
+var _PathUtils = require('./PathUtils');
+
+Object.defineProperty(exports, 'parsePath', {
+  enumerable: true,
+  get: function get() {
+    return _PathUtils.parsePath;
+  }
+});
+Object.defineProperty(exports, 'createPath', {
+  enumerable: true,
+  get: function get() {
+    return _PathUtils.createPath;
+  }
+});
+
+var _createBrowserHistory2 = require('./createBrowserHistory');
+
+var _createBrowserHistory3 = _interopRequireDefault(_createBrowserHistory2);
+
+var _createHashHistory2 = require('./createHashHistory');
+
+var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
+
+var _createMemoryHistory2 = require('./createMemoryHistory');
+
+var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.createBrowserHistory = _createBrowserHistory3.default;
+exports.createHashHistory = _createHashHistory3.default;
+exports.createMemoryHistory = _createMemoryHistory3.default;
+  })();
+});
+
 require.register("hoist-non-react-statics/index.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {}, "hoist-non-react-statics");
   (function() {
@@ -12360,34 +13885,49 @@ var REACT_STATICS = {
 };
 
 var KNOWN_STATICS = {
-    name: true,
-    length: true,
-    prototype: true,
-    caller: true,
-    arguments: true,
-    arity: true
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
 };
 
-var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
 
-module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
+module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
     if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-        var keys = Object.getOwnPropertyNames(sourceComponent);
 
-        /* istanbul ignore else */
-        if (isGetOwnPropertySymbolsAvailable) {
-            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
+        if (objectPrototype) {
+            var inheritedComponent = getPrototypeOf(sourceComponent);
+            if (inheritedComponent && inheritedComponent !== objectPrototype) {
+                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+            }
+        }
+
+        var keys = getOwnPropertyNames(sourceComponent);
+
+        if (getOwnPropertySymbols) {
+            keys = keys.concat(getOwnPropertySymbols(sourceComponent));
         }
 
         for (var i = 0; i < keys.length; ++i) {
-            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
-                try {
-                    targetComponent[keys[i]] = sourceComponent[keys[i]];
-                } catch (error) {
-
-                }
+            var key = keys[i];
+            if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
+                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+                try { // Avoid failures from read-only properties
+                    defineProperty(targetComponent, key, descriptor);
+                } catch (e) {}
             }
         }
+
+        return targetComponent;
     }
 
     return targetComponent;
@@ -18021,7 +19561,7 @@ process.umask = function() { return 0; };
 });
 
 require.register("prop-types/checkPropTypes.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "prop-types");
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "prop-types");
   (function() {
     /**
  * Copyright 2013-present, Facebook, Inc.
@@ -18088,7 +19628,7 @@ module.exports = checkPropTypes;
 });
 
 require.register("prop-types/factory.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "prop-types");
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "prop-types");
   (function() {
     /**
  * Copyright 2013-present, Facebook, Inc.
@@ -18115,7 +19655,7 @@ module.exports = function(isValidElement) {
 });
 
 require.register("prop-types/factoryWithThrowingShims.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "prop-types");
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "prop-types");
   (function() {
     /**
  * Copyright 2013-present, Facebook, Inc.
@@ -18130,11 +19670,14 @@ require.register("prop-types/factoryWithThrowingShims.js", function(exports, req
 
 var emptyFunction = require('fbjs/lib/emptyFunction');
 var invariant = require('fbjs/lib/invariant');
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
 
 module.exports = function() {
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
-  function shim() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
     invariant(
       false,
       'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
@@ -18146,6 +19689,8 @@ module.exports = function() {
   function getShim() {
     return shim;
   };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
     bool: shim,
@@ -18175,7 +19720,7 @@ module.exports = function() {
 });
 
 require.register("prop-types/factoryWithTypeCheckers.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "prop-types");
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "prop-types");
   (function() {
     /**
  * Copyright 2013-present, Facebook, Inc.
@@ -18499,6 +20044,20 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       return emptyFunction.thatReturnsNull;
     }
 
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        warning(
+          false,
+          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
+          'received %s at index %s.',
+          getPostfixForTypeWarning(checker),
+          i
+        );
+        return emptyFunction.thatReturnsNull;
+      }
+    }
+
     function validate(props, propName, componentName, location, propFullName) {
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
@@ -18631,6 +20190,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   // This handles more types than `getPropType`. Only used for error messages.
   // See `createPrimitiveTypeChecker`.
   function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
     var propType = getPropType(propValue);
     if (propType === 'object') {
       if (propValue instanceof Date) {
@@ -18640,6 +20202,23 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       }
     }
     return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
   }
 
   // Returns class name of the object, if any.
@@ -18659,7 +20238,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 });
 
 require.register("prop-types/index.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "prop-types");
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "prop-types");
   (function() {
     /**
  * Copyright 2013-present, Facebook, Inc.
@@ -18695,7 +20274,7 @@ if ('development' !== 'production') {
 });
 
 require.register("prop-types/lib/ReactPropTypesSecret.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "prop-types");
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "prop-types");
   (function() {
     /**
  * Copyright 2013-present, Facebook, Inc.
@@ -19222,7 +20801,6 @@ function extractBeforeInputEvent(topLevelType, targetInst, nativeEvent, nativeEv
  * `composition` event types.
  */
 var BeforeInputEventPlugin = {
-
   eventTypes: eventTypes,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
@@ -19269,7 +20847,13 @@ var isUnitlessNumber = {
   flexNegative: true,
   flexOrder: true,
   gridRow: true,
+  gridRowEnd: true,
+  gridRowSpan: true,
+  gridRowStart: true,
   gridColumn: true,
+  gridColumnEnd: true,
+  gridColumnSpan: true,
+  gridColumnStart: true,
   fontWeight: true,
   lineClamp: true,
   lineHeight: true,
@@ -19467,7 +21051,7 @@ if ('development' !== 'production') {
     }
 
     warnedStyleValues[value] = true;
-    'development' !== 'production' ? warning(false, 'Style property values shouldn\'t contain a semicolon.%s ' + 'Try "%s: %s" instead.', checkRenderMessage(owner), name, value.replace(badStyleValueWithSemicolonPattern, '')) : void 0;
+    'development' !== 'production' ? warning(false, "Style property values shouldn't contain a semicolon.%s " + 'Try "%s: %s" instead.', checkRenderMessage(owner), name, value.replace(badStyleValueWithSemicolonPattern, '')) : void 0;
   };
 
   var warnStyleValueIsNaN = function (name, value, owner) {
@@ -19517,7 +21101,6 @@ if ('development' !== 'production') {
  * Operations for dealing with CSS properties.
  */
 var CSSPropertyOperations = {
-
   /**
    * Serializes a mapping of style properties for use as inline styles:
    *
@@ -19537,13 +21120,16 @@ var CSSPropertyOperations = {
       if (!styles.hasOwnProperty(styleName)) {
         continue;
       }
+      var isCustomProperty = styleName.indexOf('--') === 0;
       var styleValue = styles[styleName];
       if ('development' !== 'production') {
-        warnValidStyle(styleName, styleValue, component);
+        if (!isCustomProperty) {
+          warnValidStyle(styleName, styleValue, component);
+        }
       }
       if (styleValue != null) {
         serialized += processStyleName(styleName) + ':';
-        serialized += dangerousStyleValue(styleName, styleValue, component) + ';';
+        serialized += dangerousStyleValue(styleName, styleValue, component, isCustomProperty) + ';';
       }
     }
     return serialized || null;
@@ -19571,14 +21157,19 @@ var CSSPropertyOperations = {
       if (!styles.hasOwnProperty(styleName)) {
         continue;
       }
+      var isCustomProperty = styleName.indexOf('--') === 0;
       if ('development' !== 'production') {
-        warnValidStyle(styleName, styles[styleName], component);
+        if (!isCustomProperty) {
+          warnValidStyle(styleName, styles[styleName], component);
+        }
       }
-      var styleValue = dangerousStyleValue(styleName, styles[styleName], component);
+      var styleValue = dangerousStyleValue(styleName, styles[styleName], component, isCustomProperty);
       if (styleName === 'float' || styleName === 'cssFloat') {
         styleName = styleFloatAccessor;
       }
-      if (styleValue) {
+      if (isCustomProperty) {
+        style.setProperty(styleName, styleValue);
+      } else if (styleValue) {
         style[styleName] = styleValue;
       } else {
         var expansion = hasShorthandPropertyBug && CSSProperty.shorthandPropertyExpansions[styleName];
@@ -19594,7 +21185,6 @@ var CSSPropertyOperations = {
       }
     }
   }
-
 };
 
 module.exports = CSSPropertyOperations;
@@ -19747,6 +21337,7 @@ var ReactDOMComponentTree = require('./ReactDOMComponentTree');
 var ReactUpdates = require('./ReactUpdates');
 var SyntheticEvent = require('./SyntheticEvent');
 
+var inputValueTracking = require('./inputValueTracking');
 var getEventTarget = require('./getEventTarget');
 var isEventSupported = require('./isEventSupported');
 var isTextInputElement = require('./isTextInputElement');
@@ -19761,13 +21352,17 @@ var eventTypes = {
   }
 };
 
+function createAndAccumulateChangeEvent(inst, nativeEvent, target) {
+  var event = SyntheticEvent.getPooled(eventTypes.change, inst, nativeEvent, target);
+  event.type = 'change';
+  EventPropagators.accumulateTwoPhaseDispatches(event);
+  return event;
+}
 /**
  * For IE shims
  */
 var activeElement = null;
 var activeElementInst = null;
-var activeElementValue = null;
-var activeElementValueProp = null;
 
 /**
  * SECTION: handle `change` event
@@ -19784,8 +21379,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 function manualDispatchChangeEvent(nativeEvent) {
-  var event = SyntheticEvent.getPooled(eventTypes.change, activeElementInst, nativeEvent, getEventTarget(nativeEvent));
-  EventPropagators.accumulateTwoPhaseDispatches(event);
+  var event = createAndAccumulateChangeEvent(activeElementInst, nativeEvent, getEventTarget(nativeEvent));
 
   // If change and propertychange bubbled, we'd just bind to it like all the
   // other events and have it go through ReactBrowserEventEmitter. Since it
@@ -19821,11 +21415,21 @@ function stopWatchingForChangeEventIE8() {
   activeElementInst = null;
 }
 
+function getInstIfValueChanged(targetInst, nativeEvent) {
+  var updated = inputValueTracking.updateValueIfChanged(targetInst);
+  var simulated = nativeEvent.simulated === true && ChangeEventPlugin._allowSimulatedPassThrough;
+
+  if (updated || simulated) {
+    return targetInst;
+  }
+}
+
 function getTargetInstForChangeEvent(topLevelType, targetInst) {
   if (topLevelType === 'topChange') {
     return targetInst;
   }
 }
+
 function handleEventsForChangeEventIE8(topLevelType, target, targetInst) {
   if (topLevelType === 'topFocus') {
     // stopWatching() should be a noop here but we call it just in case we
@@ -19844,105 +21448,54 @@ var isInputEventSupported = false;
 if (ExecutionEnvironment.canUseDOM) {
   // IE9 claims to support the input event but fails to trigger it when
   // deleting text, so we ignore its input events.
-  // IE10+ fire input events to often, such when a placeholder
-  // changes or when an input with a placeholder is focused.
-  isInputEventSupported = isEventSupported('input') && (!document.documentMode || document.documentMode > 11);
+
+  isInputEventSupported = isEventSupported('input') && (!('documentMode' in document) || document.documentMode > 9);
 }
 
 /**
- * (For IE <=11) Replacement getter/setter for the `value` property that gets
- * set on the active element.
- */
-var newValueProp = {
-  get: function () {
-    return activeElementValueProp.get.call(this);
-  },
-  set: function (val) {
-    // Cast to a string so we can do equality checks.
-    activeElementValue = '' + val;
-    activeElementValueProp.set.call(this, val);
-  }
-};
-
-/**
- * (For IE <=11) Starts tracking propertychange events on the passed-in element
+ * (For IE <=9) Starts tracking propertychange events on the passed-in element
  * and override the value property so that we can distinguish user events from
  * value changes in JS.
  */
 function startWatchingForValueChange(target, targetInst) {
   activeElement = target;
   activeElementInst = targetInst;
-  activeElementValue = target.value;
-  activeElementValueProp = Object.getOwnPropertyDescriptor(target.constructor.prototype, 'value');
-
-  // Not guarded in a canDefineProperty check: IE8 supports defineProperty only
-  // on DOM elements
-  Object.defineProperty(activeElement, 'value', newValueProp);
-  if (activeElement.attachEvent) {
-    activeElement.attachEvent('onpropertychange', handlePropertyChange);
-  } else {
-    activeElement.addEventListener('propertychange', handlePropertyChange, false);
-  }
+  activeElement.attachEvent('onpropertychange', handlePropertyChange);
 }
 
 /**
- * (For IE <=11) Removes the event listeners from the currently-tracked element,
+ * (For IE <=9) Removes the event listeners from the currently-tracked element,
  * if any exists.
  */
 function stopWatchingForValueChange() {
   if (!activeElement) {
     return;
   }
-
-  // delete restores the original property definition
-  delete activeElement.value;
-
-  if (activeElement.detachEvent) {
-    activeElement.detachEvent('onpropertychange', handlePropertyChange);
-  } else {
-    activeElement.removeEventListener('propertychange', handlePropertyChange, false);
-  }
+  activeElement.detachEvent('onpropertychange', handlePropertyChange);
 
   activeElement = null;
   activeElementInst = null;
-  activeElementValue = null;
-  activeElementValueProp = null;
 }
 
 /**
- * (For IE <=11) Handles a propertychange event, sending a `change` event if
+ * (For IE <=9) Handles a propertychange event, sending a `change` event if
  * the value of the active element has changed.
  */
 function handlePropertyChange(nativeEvent) {
   if (nativeEvent.propertyName !== 'value') {
     return;
   }
-  var value = nativeEvent.srcElement.value;
-  if (value === activeElementValue) {
-    return;
-  }
-  activeElementValue = value;
-
-  manualDispatchChangeEvent(nativeEvent);
-}
-
-/**
- * If a `change` event should be fired, returns the target's ID.
- */
-function getTargetInstForInputEvent(topLevelType, targetInst) {
-  if (topLevelType === 'topInput') {
-    // In modern browsers (i.e., not IE8 or IE9), the input event is exactly
-    // what we want so fall through here and trigger an abstract event
-    return targetInst;
+  if (getInstIfValueChanged(activeElementInst, nativeEvent)) {
+    manualDispatchChangeEvent(nativeEvent);
   }
 }
 
-function handleEventsForInputEventIE(topLevelType, target, targetInst) {
+function handleEventsForInputEventPolyfill(topLevelType, target, targetInst) {
   if (topLevelType === 'topFocus') {
     // In IE8, we can capture almost all .value changes by adding a
     // propertychange handler and looking for events with propertyName
     // equal to 'value'
-    // In IE9-11, propertychange fires for most input events but is buggy and
+    // In IE9, propertychange fires for most input events but is buggy and
     // doesn't fire when text is deleted, but conveniently, selectionchange
     // appears to fire in all of the remaining cases so we catch those and
     // forward the event if the value has changed
@@ -19960,7 +21513,7 @@ function handleEventsForInputEventIE(topLevelType, target, targetInst) {
 }
 
 // For IE8 and IE9.
-function getTargetInstForInputEventIE(topLevelType, targetInst) {
+function getTargetInstForInputEventPolyfill(topLevelType, targetInst, nativeEvent) {
   if (topLevelType === 'topSelectionChange' || topLevelType === 'topKeyUp' || topLevelType === 'topKeyDown') {
     // On the selectionchange event, the target is just document which isn't
     // helpful for us so just check activeElement instead.
@@ -19972,10 +21525,7 @@ function getTargetInstForInputEventIE(topLevelType, targetInst) {
     // keystroke if user does a key repeat (it'll be a little delayed: right
     // before the second keystroke). Other input methods (e.g., paste) seem to
     // fire selectionchange normally.
-    if (activeElement && activeElement.value !== activeElementValue) {
-      activeElementValue = activeElement.value;
-      return activeElementInst;
-    }
+    return getInstIfValueChanged(activeElementInst, nativeEvent);
   }
 }
 
@@ -19986,12 +21536,19 @@ function shouldUseClickEvent(elem) {
   // Use the `click` event to detect changes to checkbox and radio inputs.
   // This approach works across all browsers, whereas `change` does not fire
   // until `blur` in IE8.
-  return elem.nodeName && elem.nodeName.toLowerCase() === 'input' && (elem.type === 'checkbox' || elem.type === 'radio');
+  var nodeName = elem.nodeName;
+  return nodeName && nodeName.toLowerCase() === 'input' && (elem.type === 'checkbox' || elem.type === 'radio');
 }
 
-function getTargetInstForClickEvent(topLevelType, targetInst) {
+function getTargetInstForClickEvent(topLevelType, targetInst, nativeEvent) {
   if (topLevelType === 'topClick') {
-    return targetInst;
+    return getInstIfValueChanged(targetInst, nativeEvent);
+  }
+}
+
+function getTargetInstForInputOrChangeEvent(topLevelType, targetInst, nativeEvent) {
+  if (topLevelType === 'topInput' || topLevelType === 'topChange') {
+    return getInstIfValueChanged(targetInst, nativeEvent);
   }
 }
 
@@ -20026,8 +21583,10 @@ function handleControlledInputBlur(inst, node) {
  * - select
  */
 var ChangeEventPlugin = {
-
   eventTypes: eventTypes,
+
+  _allowSimulatedPassThrough: true,
+  _isInputEventSupported: isInputEventSupported,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
     var targetNode = targetInst ? ReactDOMComponentTree.getNodeFromInstance(targetInst) : window;
@@ -20041,21 +21600,19 @@ var ChangeEventPlugin = {
       }
     } else if (isTextInputElement(targetNode)) {
       if (isInputEventSupported) {
-        getTargetInstFunc = getTargetInstForInputEvent;
+        getTargetInstFunc = getTargetInstForInputOrChangeEvent;
       } else {
-        getTargetInstFunc = getTargetInstForInputEventIE;
-        handleEventFunc = handleEventsForInputEventIE;
+        getTargetInstFunc = getTargetInstForInputEventPolyfill;
+        handleEventFunc = handleEventsForInputEventPolyfill;
       }
     } else if (shouldUseClickEvent(targetNode)) {
       getTargetInstFunc = getTargetInstForClickEvent;
     }
 
     if (getTargetInstFunc) {
-      var inst = getTargetInstFunc(topLevelType, targetInst);
+      var inst = getTargetInstFunc(topLevelType, targetInst, nativeEvent);
       if (inst) {
-        var event = SyntheticEvent.getPooled(eventTypes.change, inst, nativeEvent, nativeEventTarget);
-        event.type = 'change';
-        EventPropagators.accumulateTwoPhaseDispatches(event);
+        var event = createAndAccumulateChangeEvent(inst, nativeEvent, nativeEventTarget);
         return event;
       }
     }
@@ -20069,7 +21626,6 @@ var ChangeEventPlugin = {
       handleControlledInputBlur(targetInst, targetNode);
     }
   }
-
 };
 
 module.exports = ChangeEventPlugin;
@@ -20226,7 +21782,6 @@ if ('development' !== 'production') {
  * Operations for updating with DOM children.
  */
 var DOMChildrenOperations = {
-
   dangerouslyReplaceNodeWithMarkup: dangerouslyReplaceNodeWithMarkup,
 
   replaceDelimitedText: replaceDelimitedText,
@@ -20252,7 +21807,10 @@ var DOMChildrenOperations = {
             ReactInstrumentation.debugTool.onHostOperation({
               instanceID: parentNodeDebugID,
               type: 'insert child',
-              payload: { toIndex: update.toIndex, content: update.content.toString() }
+              payload: {
+                toIndex: update.toIndex,
+                content: update.content.toString()
+              }
             });
           }
           break;
@@ -20299,7 +21857,6 @@ var DOMChildrenOperations = {
       }
     }
   }
-
 };
 
 module.exports = DOMChildrenOperations;
@@ -20595,7 +22152,6 @@ var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\
  * @see http://jsperf.com/key-missing
  */
 var DOMProperty = {
-
   ID_ATTRIBUTE_NAME: 'data-reactid',
   ROOT_ATTRIBUTE_NAME: 'data-reactroot',
 
@@ -20719,7 +22275,6 @@ function shouldIgnoreValue(propertyInfo, value) {
  * Operations for dealing with DOM properties.
  */
 var DOMPropertyOperations = {
-
   /**
    * Creates markup for the ID property.
    *
@@ -20904,7 +22459,6 @@ var DOMPropertyOperations = {
       });
     }
   }
-
 };
 
 module.exports = DOMPropertyOperations;
@@ -20936,7 +22490,6 @@ var emptyFunction = require('fbjs/lib/emptyFunction');
 var invariant = require('fbjs/lib/invariant');
 
 var Danger = {
-
   /**
    * Replaces a node with a string of markup at its current position within its
    * parent. The markup must render into a single root node.
@@ -20957,7 +22510,6 @@ var Danger = {
       DOMLazyTree.replaceChildWithTree(oldChild, markup);
     }
   }
-
 };
 
 module.exports = Danger;
@@ -21026,7 +22578,6 @@ var eventTypes = {
 };
 
 var EnterLeaveEventPlugin = {
-
   eventTypes: eventTypes,
 
   /**
@@ -21093,7 +22644,6 @@ var EnterLeaveEventPlugin = {
 
     return [leave, enter];
   }
-
 };
 
 module.exports = EnterLeaveEventPlugin;
@@ -21210,12 +22760,10 @@ function shouldPreventMouseEvent(name, type, props) {
  * @public
  */
 var EventPluginHub = {
-
   /**
    * Methods for injecting dependencies.
    */
   injection: {
-
     /**
      * @param {array} InjectedEventPluginOrder
      * @public
@@ -21226,7 +22774,6 @@ var EventPluginHub = {
      * @param {object} injectedNamesToPlugins Map from names to plugin modules.
      */
     injectEventPluginsByName: EventPluginRegistry.injectEventPluginsByName
-
   },
 
   /**
@@ -21376,7 +22923,6 @@ var EventPluginHub = {
   __getListenerBank: function () {
     return listenerBank;
   }
-
 };
 
 module.exports = EventPluginHub;
@@ -21496,7 +23042,6 @@ function publishRegistrationName(registrationName, pluginModule, eventName) {
  * @see {EventPluginHub}
  */
 var EventPluginRegistry = {
-
   /**
    * Ordered list of injected plugins.
    */
@@ -21636,7 +23181,6 @@ var EventPluginRegistry = {
       }
     }
   }
-
 };
 
 module.exports = EventPluginRegistry;
@@ -22445,13 +23989,13 @@ var invariant = require('fbjs/lib/invariant');
 var warning = require('fbjs/lib/warning');
 
 var hasReadOnlyValue = {
-  'button': true,
-  'checkbox': true,
-  'image': true,
-  'hidden': true,
-  'radio': true,
-  'reset': true,
-  'submit': true
+  button: true,
+  checkbox: true,
+  image: true,
+  hidden: true,
+  radio: true,
+  reset: true,
+  submit: true
 };
 
 function _assertSingleLink(inputProps) {
@@ -22858,7 +24402,6 @@ function getListeningForDocument(mountAt) {
  * @internal
  */
 var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
-
   /**
    * Injectable event backend
    */
@@ -22932,14 +24475,12 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
             ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent('topWheel', 'DOMMouseScroll', mountAt);
           }
         } else if (dependency === 'topScroll') {
-
           if (isEventSupported('scroll', true)) {
             ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent('topScroll', 'scroll', mountAt);
           } else {
             ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent('topScroll', 'scroll', ReactBrowserEventEmitter.ReactEventListener.WINDOW_HANDLE);
           }
         } else if (dependency === 'topFocus' || dependency === 'topBlur') {
-
           if (isEventSupported('focus', true)) {
             ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent('topFocus', 'focus', mountAt);
             ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent('topBlur', 'blur', mountAt);
@@ -23004,7 +24545,6 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
       isMonitoringScrollValue = true;
     }
   }
-
 });
 
 module.exports = ReactBrowserEventEmitter;
@@ -23075,8 +24615,8 @@ var ReactChildReconciler = {
    * @return {?object} A set of child instances.
    * @internal
    */
-  instantiateChildren: function (nestedChildNodes, transaction, context, selfDebugID // 0 in production and for roots
-  ) {
+  instantiateChildren: function (nestedChildNodes, transaction, context, selfDebugID) // 0 in production and for roots
+  {
     if (nestedChildNodes == null) {
       return null;
     }
@@ -23102,8 +24642,8 @@ var ReactChildReconciler = {
    * @return {?object} A new set of child instances.
    * @internal
    */
-  updateChildren: function (prevChildren, nextChildren, mountImages, removedNodes, transaction, hostParent, hostContainerInfo, context, selfDebugID // 0 in production and for roots
-  ) {
+  updateChildren: function (prevChildren, nextChildren, mountImages, removedNodes, transaction, hostParent, hostContainerInfo, context, selfDebugID) // 0 in production and for roots
+  {
     // We currently don't have a way to track moves here but if we use iterators
     // instead of for..in we can zip the iterators and check if an item has
     // moved.
@@ -23163,7 +24703,6 @@ var ReactChildReconciler = {
       }
     }
   }
-
 };
 
 module.exports = ReactChildReconciler;
@@ -23194,11 +24733,9 @@ var ReactDOMIDOperations = require('./ReactDOMIDOperations');
  * need for this injection.
  */
 var ReactComponentBrowserEnvironment = {
-
   processChildrenUpdates: ReactDOMIDOperations.dangerouslyProcessChildrenUpdates,
 
   replaceNodeWithMarkup: DOMChildrenOperations.dangerouslyReplaceNodeWithMarkup
-
 };
 
 module.exports = ReactComponentBrowserEnvironment;
@@ -23228,7 +24765,6 @@ var invariant = require('fbjs/lib/invariant');
 var injected = false;
 
 var ReactComponentEnvironment = {
-
   /**
    * Optionally injectable hook for swapping out mount images in the middle of
    * the tree.
@@ -23249,7 +24785,6 @@ var ReactComponentEnvironment = {
       injected = true;
     }
   }
-
 };
 
 module.exports = ReactComponentEnvironment;
@@ -23378,7 +24913,6 @@ var nextMountID = 1;
  * @lends {ReactCompositeComponent.prototype}
  */
 var ReactCompositeComponent = {
-
   /**
    * Base constructor for all composite component.
    *
@@ -23474,7 +25008,7 @@ var ReactCompositeComponent = {
       var propsMutated = inst.props !== publicProps;
       var componentName = Component.displayName || Component.name || 'Component';
 
-      'development' !== 'production' ? warning(inst.props === undefined || !propsMutated, '%s(...): When calling super() in `%s`, make sure to pass ' + 'up the same props that your component\'s constructor was passed.', componentName, componentName) : void 0;
+      'development' !== 'production' ? warning(inst.props === undefined || !propsMutated, '%s(...): When calling super() in `%s`, make sure to pass ' + "up the same props that your component's constructor was passed.", componentName, componentName) : void 0;
     }
 
     // These should be set up in the constructor, but as a convenience for
@@ -24156,7 +25690,6 @@ var ReactCompositeComponent = {
 
   // Stub
   _instantiateReactComponent: null
-
 };
 
 module.exports = ReactCompositeComponent;
@@ -24203,6 +25736,7 @@ var ReactDOM = {
   /* eslint-disable camelcase */
   unstable_batchedUpdates: ReactUpdates.batchedUpdates,
   unstable_renderSubtreeIntoContainer: renderSubtreeIntoContainer
+  /* eslint-enable camelcase */
 };
 
 // Inject the runtime into a devtools global hook regardless of browser.
@@ -24231,7 +25765,6 @@ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVT
 if ('development' !== 'production') {
   var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
   if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
-
     // First check if devtools is not installed
     if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
       // If we're in Chrome or Firefox, provide a download link if not installed.
@@ -24243,7 +25776,7 @@ if ('development' !== 'production') {
     }
 
     var testFunc = function testFn() {};
-    'development' !== 'production' ? warning((testFunc.name || testFunc.toString()).indexOf('testFn') !== -1, 'It looks like you\'re using a minified copy of the development build ' + 'of React. When deploying React apps to production, make sure to use ' + 'the production build which skips development warnings and is faster. ' + 'See https://fb.me/react-minification for more details.') : void 0;
+    'development' !== 'production' ? warning((testFunc.name || testFunc.toString()).indexOf('testFn') !== -1, "It looks like you're using a minified copy of the development build " + 'of React. When deploying React apps to production, make sure to use ' + 'the production build which skips development warnings and is faster. ' + 'See https://fb.me/react-minification for more details.') : void 0;
 
     // If we're in IE8, check to see if we are in compatibility mode and provide
     // information on preventing compatibility mode
@@ -24323,6 +25856,7 @@ var escapeTextContentForBrowser = require('./escapeTextContentForBrowser');
 var invariant = require('fbjs/lib/invariant');
 var isEventSupported = require('./isEventSupported');
 var shallowEqual = require('fbjs/lib/shallowEqual');
+var inputValueTracking = require('./inputValueTracking');
 var validateDOMNesting = require('./validateDOMNesting');
 var warning = require('fbjs/lib/warning');
 
@@ -24333,7 +25867,7 @@ var listenTo = ReactBrowserEventEmitter.listenTo;
 var registrationNameModules = EventPluginRegistry.registrationNameModules;
 
 // For quickly matching children type, to test if can be treated as content.
-var CONTENT_TYPES = { 'string': true, 'number': true };
+var CONTENT_TYPES = { string: true, number: true };
 
 var STYLE = 'style';
 var HTML = '__html';
@@ -24442,7 +25976,7 @@ function enqueuePutListener(inst, registrationName, listener, transaction) {
   if ('development' !== 'production') {
     // IE8 has no API for event capturing and the `onScroll` event doesn't
     // bubble.
-    'development' !== 'production' ? warning(registrationName !== 'onScroll' || isEventSupported('scroll', true), 'This browser doesn\'t support the `onScroll` event') : void 0;
+    'development' !== 'production' ? warning(registrationName !== 'onScroll' || isEventSupported('scroll', true), "This browser doesn't support the `onScroll` event") : void 0;
   }
   var containerInfo = inst._hostContainerInfo;
   var isDocumentFragment = containerInfo._node && containerInfo._node.nodeType === DOC_FRAGMENT_TYPE;
@@ -24532,6 +26066,10 @@ var mediaEvents = {
   topWaiting: 'waiting'
 };
 
+function trackInputValue() {
+  inputValueTracking.track(this);
+}
+
 function trapBubbledEventsLocal() {
   var inst = this;
   // If a component renders to null or if another component fatals and causes
@@ -24547,7 +26085,6 @@ function trapBubbledEventsLocal() {
       break;
     case 'video':
     case 'audio':
-
       inst._wrapperState.listeners = [];
       // Create listener for each media event
       for (var event in mediaEvents) {
@@ -24581,34 +26118,35 @@ function postUpdateSelectWrapper() {
 // those special-case tags.
 
 var omittedCloseTags = {
-  'area': true,
-  'base': true,
-  'br': true,
-  'col': true,
-  'embed': true,
-  'hr': true,
-  'img': true,
-  'input': true,
-  'keygen': true,
-  'link': true,
-  'meta': true,
-  'param': true,
-  'source': true,
-  'track': true,
-  'wbr': true
+  area: true,
+  base: true,
+  br: true,
+  col: true,
+  embed: true,
+  hr: true,
+  img: true,
+  input: true,
+  keygen: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+  // NOTE: menuitem's close tag should be omitted, but that causes problems.
 };
 
 var newlineEatingTags = {
-  'listing': true,
-  'pre': true,
-  'textarea': true
+  listing: true,
+  pre: true,
+  textarea: true
 };
 
 // For HTML, certain tags cannot have children. This has the same purpose as
 // `omittedCloseTags` except that `menuitem` should still have its closing tag.
 
 var voidElementTags = _assign({
-  'menuitem': true
+  menuitem: true
 }, omittedCloseTags);
 
 // We accept any tag to be rendered but since this gets injected into arbitrary
@@ -24672,7 +26210,6 @@ function ReactDOMComponent(element) {
 ReactDOMComponent.displayName = 'ReactDOMComponent';
 
 ReactDOMComponent.Mixin = {
-
   /**
    * Generates root tag markup then recurses. This method has side effects and
    * is not idempotent.
@@ -24709,6 +26246,7 @@ ReactDOMComponent.Mixin = {
       case 'input':
         ReactDOMInput.mountWrapper(this, props, hostParent);
         props = ReactDOMInput.getHostProps(this, props);
+        transaction.getReactMountReady().enqueue(trackInputValue, this);
         transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
         break;
       case 'option':
@@ -24723,6 +26261,7 @@ ReactDOMComponent.Mixin = {
       case 'textarea':
         ReactDOMTextarea.mountWrapper(this, props, hostParent);
         props = ReactDOMTextarea.getHostProps(this, props);
+        transaction.getReactMountReady().enqueue(trackInputValue, this);
         transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
         break;
     }
@@ -25248,6 +26787,10 @@ ReactDOMComponent.Mixin = {
           }
         }
         break;
+      case 'input':
+      case 'textarea':
+        inputValueTracking.stopTracking(this);
+        break;
       case 'html':
       case 'head':
       case 'body':
@@ -25276,7 +26819,6 @@ ReactDOMComponent.Mixin = {
   getPublicInstance: function () {
     return getNode(this);
   }
-
 };
 
 _assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mixin);
@@ -25657,7 +27199,6 @@ var ReactDOMComponentTree = require('./ReactDOMComponentTree');
  * Operations used to process updates to DOM nodes.
  */
 var ReactDOMIDOperations = {
-
   /**
    * Updates a component's children by processing a series of updates.
    *
@@ -25829,14 +27370,16 @@ var ReactDOMInput = {
         // Simulate `input.valueAsNumber`. IE9 does not support it
         var valueAsNumber = parseFloat(node.value, 10) || 0;
 
+        if (
         // eslint-disable-next-line
-        if (value != valueAsNumber) {
+        value != valueAsNumber ||
+        // eslint-disable-next-line
+        value == valueAsNumber && node.value != value) {
           // Cast `value` to a string to ensure the value is set correctly. While
           // browsers typically do this as necessary, jsdom doesn't.
           node.value = '' + value;
         }
-        // eslint-disable-next-line
-      } else if (value != node.value) {
+      } else if (node.value !== '' + value) {
         // Cast `value` to a string to ensure the value is set correctly. While
         // browsers typically do this as necessary, jsdom doesn't.
         node.value = '' + value;
@@ -26231,7 +27774,6 @@ var ReactDOMOption = {
 
     return hostProps;
   }
-
 };
 
 module.exports = ReactDOMOption;
@@ -26717,7 +28259,6 @@ var ReactDOMTextComponent = function (text) {
 };
 
 _assign(ReactDOMTextComponent.prototype, {
-
   /**
    * Creates the markup for this text node. This node is not intended to have
    * any features besides containing text content.
@@ -26822,7 +28363,6 @@ _assign(ReactDOMTextComponent.prototype, {
     this._commentNodes = null;
     ReactDOMComponentTree.uncacheNode(this);
   }
-
 });
 
 module.exports = ReactDOMTextComponent;
@@ -27483,7 +29023,9 @@ function markEnd(debugID, markType) {
   }
 
   performance.clearMarks(markName);
-  performance.clearMeasures(measurementName);
+  if (measurementName) {
+    performance.clearMeasures(measurementName);
+  }
 }
 
 var ReactDebugTool = {
@@ -27944,7 +29486,6 @@ function runEventQueueInBatch(events) {
 }
 
 var ReactEventEmitterMixin = {
-
   /**
    * Streams a fired top-level event to `EventPluginHub` where plugins have the
    * opportunity to create `ReactEvent`s to be dispatched.
@@ -28329,7 +29870,6 @@ function isInDocument(node) {
  * Input selection module for React.
  */
 var ReactInputSelection = {
-
   hasSelectionCapabilities: function (elem) {
     var nodeName = elem && elem.nodeName && elem.nodeName.toLowerCase();
     return nodeName && (nodeName === 'input' && elem.type === 'text' || nodeName === 'textarea' || elem.contentEditable === 'true');
@@ -28451,7 +29991,6 @@ require.register("react-dom/lib/ReactInstanceMap.js", function(exports, require,
 // TODO: Replace this with ES6: var ReactInstanceMap = new Map();
 
 var ReactInstanceMap = {
-
   /**
    * This API should be called `delete` but we'd have to make sure to always
    * transform these to strings for IE support. When this transform is fully
@@ -28472,7 +30011,6 @@ var ReactInstanceMap = {
   set: function (key, value) {
     key._reactInternalInstance = value;
   }
-
 };
 
 module.exports = ReactInstanceMap;
@@ -28866,7 +30404,6 @@ TopLevelWrapper.isReactTopLevelWrapper = true;
  * Inside of `container`, the first element rendered is the "reactRoot".
  */
 var ReactMount = {
-
   TopLevelWrapper: TopLevelWrapper,
 
   /**
@@ -28955,13 +30492,14 @@ var ReactMount = {
 
   _renderSubtreeIntoContainer: function (parentComponent, nextElement, container, callback) {
     ReactUpdateQueue.validateCallback(callback, 'ReactDOM.render');
-    !React.isValidElement(nextElement) ? 'development' !== 'production' ? invariant(false, 'ReactDOM.render(): Invalid component element.%s', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' :
-    // Check if it quacks like an element
-    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : _prodInvariant('39', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : void 0;
+    !React.isValidElement(nextElement) ? 'development' !== 'production' ? invariant(false, 'ReactDOM.render(): Invalid component element.%s', typeof nextElement === 'string' ? " Instead of passing a string like 'div', pass " + "React.createElement('div') or <div />." : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : // Check if it quacks like an element
+    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : _prodInvariant('39', typeof nextElement === 'string' ? " Instead of passing a string like 'div', pass " + "React.createElement('div') or <div />." : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : void 0;
 
     'development' !== 'production' ? warning(!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY', 'render(): Rendering components directly into document.body is ' + 'discouraged, since its children are often manipulated by third-party ' + 'scripts and browser extensions. This may lead to subtle ' + 'reconciliation issues. Try rendering into a container element created ' + 'for your app.') : void 0;
 
-    var nextWrappedElement = React.createElement(TopLevelWrapper, { child: nextElement });
+    var nextWrappedElement = React.createElement(TopLevelWrapper, {
+      child: nextElement
+    });
 
     var nextContext;
     if (parentComponent) {
@@ -29050,7 +30588,7 @@ var ReactMount = {
     !isValidContainer(container) ? 'development' !== 'production' ? invariant(false, 'unmountComponentAtNode(...): Target container is not a DOM element.') : _prodInvariant('40') : void 0;
 
     if ('development' !== 'production') {
-      'development' !== 'production' ? warning(!nodeIsRenderedByOtherInstance(container), 'unmountComponentAtNode(): The node you\'re attempting to unmount ' + 'was rendered by another copy of React.') : void 0;
+      'development' !== 'production' ? warning(!nodeIsRenderedByOtherInstance(container), "unmountComponentAtNode(): The node you're attempting to unmount " + 'was rendered by another copy of React.') : void 0;
     }
 
     var prevComponent = getTopLevelWrapperInContainer(container);
@@ -29063,7 +30601,7 @@ var ReactMount = {
       var isContainerReactRoot = container.nodeType === 1 && container.hasAttribute(ROOT_ATTR_NAME);
 
       if ('development' !== 'production') {
-        'development' !== 'production' ? warning(!containerHasNonRootReactChild, 'unmountComponentAtNode(): The node you\'re attempting to unmount ' + 'was rendered by React and is not a top-level container. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its container.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.') : void 0;
+        'development' !== 'production' ? warning(!containerHasNonRootReactChild, "unmountComponentAtNode(): The node you're attempting to unmount " + 'was rendered by React and is not a top-level container. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its container.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.') : void 0;
       }
 
       return false;
@@ -29321,7 +30859,6 @@ if ('development' !== 'production') {
  * @internal
  */
 var ReactMultiChild = {
-
   /**
    * Provides common functionality for components that must reconcile multiple
    * children. This is used by `ReactDOMComponent` to mount, update, and
@@ -29330,7 +30867,6 @@ var ReactMultiChild = {
    * @lends {ReactMultiChild.prototype}
    */
   Mixin: {
-
     _reconcilerInstantiateChildren: function (nestedChildren, transaction, context) {
       if ('development' !== 'production') {
         var selfDebugID = getDebugID(this);
@@ -29594,9 +31130,7 @@ var ReactMultiChild = {
       child._mountIndex = null;
       return update;
     }
-
   }
-
 };
 
 module.exports = ReactMultiChild;
@@ -29740,7 +31274,6 @@ var ReactOwner = {
       owner.detachRef(ref);
     }
   }
-
 };
 
 module.exports = ReactOwner;
@@ -30011,7 +31544,6 @@ function attachRefs() {
 }
 
 var ReactReconciler = {
-
   /**
    * Initializes the component, renders markup, and registers event listeners.
    *
@@ -30023,8 +31555,8 @@ var ReactReconciler = {
    * @final
    * @internal
    */
-  mountComponent: function (internalInstance, transaction, hostParent, hostContainerInfo, context, parentDebugID // 0 in production and for roots
-  ) {
+  mountComponent: function (internalInstance, transaction, hostParent, hostContainerInfo, context, parentDebugID) // 0 in production and for roots
+  {
     if ('development' !== 'production') {
       if (internalInstance._debugID !== 0) {
         ReactInstrumentation.debugTool.onBeforeMountComponent(internalInstance._debugID, internalInstance._currentElement, parentDebugID);
@@ -30148,7 +31680,6 @@ var ReactReconciler = {
       }
     }
   }
-
 };
 
 module.exports = ReactReconciler;
@@ -30544,7 +32075,7 @@ function getInternalInstanceReadyForUpdate(publicInstance, callerName) {
   }
 
   if ('development' !== 'production') {
-    'development' !== 'production' ? warning(ReactCurrentOwner.current == null, '%s(...): Cannot update during an existing state transition (such as ' + 'within `render` or another component\'s constructor). Render methods ' + 'should be a pure function of props and state; constructor ' + 'side-effects are an anti-pattern, but can be moved to ' + '`componentWillMount`.', callerName) : void 0;
+    'development' !== 'production' ? warning(ReactCurrentOwner.current == null, '%s(...): Cannot update during an existing state transition (such as ' + "within `render` or another component's constructor). Render methods " + 'should be a pure function of props and state; constructor ' + 'side-effects are an anti-pattern, but can be moved to ' + '`componentWillMount`.', callerName) : void 0;
   }
 
   return internalInstance;
@@ -30555,7 +32086,6 @@ function getInternalInstanceReadyForUpdate(publicInstance, callerName) {
  * reconciliation step.
  */
 var ReactUpdateQueue = {
-
   /**
    * Checks whether or not this composite component is mounted.
    * @param {ReactClass} publicInstance The instance we want to test.
@@ -30722,7 +32252,6 @@ var ReactUpdateQueue = {
   validateCallback: function (callback, callerName) {
     !(!callback || typeof callback === 'function') ? 'development' !== 'production' ? invariant(false, '%s(...): Expected the last optional `callback` argument to be a function. Instead received: %s.', callerName, formatUnexpectedArgument(callback)) : _prodInvariant('122', callerName, formatUnexpectedArgument(callback)) : void 0;
   }
-
 };
 
 module.exports = ReactUpdateQueue;
@@ -31000,7 +32529,7 @@ require.register("react-dom/lib/ReactVersion.js", function(exports, require, mod
 
 'use strict';
 
-module.exports = '15.5.4';
+module.exports = '15.6.1';
   })();
 });
 
@@ -31439,7 +32968,6 @@ function constructSelectEvent(nativeEvent, nativeEventTarget) {
  * - Fires after user input.
  */
 var SelectEventPlugin = {
-
   eventTypes: eventTypes,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
@@ -31463,7 +32991,6 @@ var SelectEventPlugin = {
         activeElementInst = null;
         lastSelection = null;
         break;
-
       // Don't fire the event while the user is dragging. This matches the
       // semantics of the native select event.
       case 'topMouseDown':
@@ -31473,7 +33000,6 @@ var SelectEventPlugin = {
       case 'topMouseUp':
         mouseDown = false;
         return constructSelectEvent(nativeEvent, nativeEventTarget);
-
       // Chrome and IE fire non-standard event when selection is changed (and
       // sometimes when it hasn't). IE's event fires out of order with respect
       // to key and input events on deletion, so we discard it.
@@ -31593,7 +33119,6 @@ function isInteractive(tag) {
 }
 
 var SimpleEventPlugin = {
-
   eventTypes: eventTypes,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
@@ -31733,7 +33258,6 @@ var SimpleEventPlugin = {
       delete onClickListeners[key];
     }
   }
-
 };
 
 module.exports = SimpleEventPlugin;
@@ -32016,7 +33540,6 @@ function SyntheticEvent(dispatchConfig, targetInst, nativeEvent, nativeEventTarg
 }
 
 _assign(SyntheticEvent.prototype, {
-
   preventDefault: function () {
     this.defaultPrevented = true;
     var event = this.nativeEvent;
@@ -32026,8 +33549,8 @@ _assign(SyntheticEvent.prototype, {
 
     if (event.preventDefault) {
       event.preventDefault();
+      // eslint-disable-next-line valid-typeof
     } else if (typeof event.returnValue !== 'unknown') {
-      // eslint-disable-line valid-typeof
       event.returnValue = false;
     }
     this.isDefaultPrevented = emptyFunction.thatReturnsTrue;
@@ -32041,8 +33564,8 @@ _assign(SyntheticEvent.prototype, {
 
     if (event.stopPropagation) {
       event.stopPropagation();
+      // eslint-disable-next-line valid-typeof
     } else if (typeof event.cancelBubble !== 'unknown') {
-      // eslint-disable-line valid-typeof
       // The ChangeEventPlugin registers a "propertychange" event for
       // IE. This event does not support bubbling or cancelling, and
       // any references to cancelBubble throw "Member not found".  A
@@ -32091,7 +33614,6 @@ _assign(SyntheticEvent.prototype, {
       Object.defineProperty(this, 'stopPropagation', getPooledWarningPropertyDefinition('stopPropagation', emptyFunction));
     }
   }
-
 });
 
 SyntheticEvent.Interface = EventInterface;
@@ -32107,7 +33629,7 @@ if ('development' !== 'production') {
         return new Proxy(constructor.apply(that, args), {
           set: function (target, prop, value) {
             if (prop !== 'isPersistent' && !target.constructor.Interface.hasOwnProperty(prop) && shouldBeReleasedProperties.indexOf(prop) === -1) {
-              'development' !== 'production' ? warning(didWarnForAddedNewProperty || target.isPersistent(), 'This synthetic event is reused for performance reasons. If you\'re ' + 'seeing this, you\'re adding a new property in the synthetic event object. ' + 'The property is never released. See ' + 'https://fb.me/react-event-pooling for more information.') : void 0;
+              'development' !== 'production' ? warning(didWarnForAddedNewProperty || target.isPersistent(), "This synthetic event is reused for performance reasons. If you're " + "seeing this, you're adding a new property in the synthetic event object. " + 'The property is never released. See ' + 'https://fb.me/react-event-pooling for more information.') : void 0;
               didWarnForAddedNewProperty = true;
             }
             target[prop] = value;
@@ -32176,7 +33698,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 
   function warn(action, result) {
     var warningCondition = false;
-    'development' !== 'production' ? warning(warningCondition, 'This synthetic event is reused for performance reasons. If you\'re seeing this, ' + 'you\'re %s `%s` on a released/nullified synthetic event. %s. ' + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
+    'development' !== 'production' ? warning(warningCondition, "This synthetic event is reused for performance reasons. If you're seeing this, " + "you're %s `%s` on a released/nullified synthetic event. %s. " + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
   }
 }
   })();
@@ -32612,15 +34134,12 @@ var SyntheticMouseEvent = require('./SyntheticMouseEvent');
  */
 var WheelEventInterface = {
   deltaX: function (event) {
-    return 'deltaX' in event ? event.deltaX :
-    // Fallback to `wheelDeltaX` for Webkit and normalize (right is positive).
+    return 'deltaX' in event ? event.deltaX : // Fallback to `wheelDeltaX` for Webkit and normalize (right is positive).
     'wheelDeltaX' in event ? -event.wheelDeltaX : 0;
   },
   deltaY: function (event) {
-    return 'deltaY' in event ? event.deltaY :
-    // Fallback to `wheelDeltaY` for Webkit and normalize (down is positive).
-    'wheelDeltaY' in event ? -event.wheelDeltaY :
-    // Fallback to `wheelDelta` for IE<9 and normalize (down is positive).
+    return 'deltaY' in event ? event.deltaY : // Fallback to `wheelDeltaY` for Webkit and normalize (down is positive).
+    'wheelDeltaY' in event ? -event.wheelDeltaY : // Fallback to `wheelDelta` for IE<9 and normalize (down is positive).
     'wheelDelta' in event ? -event.wheelDelta : 0;
   },
   deltaZ: null,
@@ -32761,6 +34280,8 @@ var TransactionImpl = {
     return !!this._isInTransaction;
   },
 
+  /* eslint-disable space-before-function-paren */
+
   /**
    * Executes the function within a safety window. Use this for the top level
    * methods that result in large amounts of computation/mutations that would
@@ -32779,6 +34300,7 @@ var TransactionImpl = {
    * @return {*} Return value from `method`.
    */
   perform: function (method, scope, a, b, c, d, e, f) {
+    /* eslint-enable space-before-function-paren */
     !!this.isInTransaction() ? 'development' !== 'production' ? invariant(false, 'Transaction.perform(...): Cannot initialize a transaction when there is already an outstanding transaction.') : _prodInvariant('27') : void 0;
     var errorThrown;
     var ret;
@@ -32894,7 +34416,6 @@ require.register("react-dom/lib/ViewportMetrics.js", function(exports, require, 
 'use strict';
 
 var ViewportMetrics = {
-
   currentScrollLeft: 0,
 
   currentScrollTop: 0,
@@ -32903,7 +34424,6 @@ var ViewportMetrics = {
     ViewportMetrics.currentScrollLeft = scrollPosition.x;
     ViewportMetrics.currentScrollTop = scrollPosition.y;
   }
-
 };
 
 module.exports = ViewportMetrics;
@@ -33182,7 +34702,7 @@ var styleWarnings = {};
  * @param {ReactDOMComponent} component
  * @return {string} Normalized style value with dimensions applied.
  */
-function dangerousStyleValue(name, value, component) {
+function dangerousStyleValue(name, value, component, isCustomProperty) {
   // Note that we've removed escapeTextForBrowser() calls here since the
   // whole string will be escaped when the attribute is injected into
   // the markup. If you provide unsafe user data here they can inject
@@ -33199,7 +34719,7 @@ function dangerousStyleValue(name, value, component) {
   }
 
   var isNonNumeric = isNaN(value);
-  if (isNonNumeric || value === 0 || isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]) {
+  if (isCustomProperty || isNonNumeric || value === 0 || isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]) {
     return '' + value; // cast to string
   }
 
@@ -33341,7 +34861,6 @@ function escapeHtml(string) {
   return lastIndex !== index ? html + str.substring(lastIndex, index) : html;
 }
 // end code copied and modified from escape-html
-
 
 /**
  * Escapes text to prevent scripting attacks.
@@ -33622,18 +35141,18 @@ var getEventCharCode = require('./getEventCharCode');
  * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names
  */
 var normalizeKey = {
-  'Esc': 'Escape',
-  'Spacebar': ' ',
-  'Left': 'ArrowLeft',
-  'Up': 'ArrowUp',
-  'Right': 'ArrowRight',
-  'Down': 'ArrowDown',
-  'Del': 'Delete',
-  'Win': 'OS',
-  'Menu': 'ContextMenu',
-  'Apps': 'ContextMenu',
-  'Scroll': 'ScrollLock',
-  'MozPrintableKey': 'Unidentified'
+  Esc: 'Escape',
+  Spacebar: ' ',
+  Left: 'ArrowLeft',
+  Up: 'ArrowUp',
+  Right: 'ArrowRight',
+  Down: 'ArrowDown',
+  Del: 'Delete',
+  Win: 'OS',
+  Menu: 'ContextMenu',
+  Apps: 'ContextMenu',
+  Scroll: 'ScrollLock',
+  MozPrintableKey: 'Unidentified'
 };
 
 /**
@@ -33663,8 +35182,18 @@ var translateToKey = {
   40: 'ArrowDown',
   45: 'Insert',
   46: 'Delete',
-  112: 'F1', 113: 'F2', 114: 'F3', 115: 'F4', 116: 'F5', 117: 'F6',
-  118: 'F7', 119: 'F8', 120: 'F9', 121: 'F10', 122: 'F11', 123: 'F12',
+  112: 'F1',
+  113: 'F2',
+  114: 'F3',
+  115: 'F4',
+  116: 'F5',
+  117: 'F6',
+  118: 'F7',
+  119: 'F8',
+  120: 'F9',
+  121: 'F10',
+  122: 'F11',
+  123: 'F12',
   144: 'NumLock',
   145: 'ScrollLock',
   224: 'Meta'
@@ -33728,10 +35257,10 @@ require.register("react-dom/lib/getEventModifierState.js", function(exports, req
  */
 
 var modifierKeyToProp = {
-  'Alt': 'altKey',
-  'Control': 'ctrlKey',
-  'Meta': 'metaKey',
-  'Shift': 'shiftKey'
+  Alt: 'altKey',
+  Control: 'ctrlKey',
+  Meta: 'metaKey',
+  Shift: 'shiftKey'
 };
 
 // IE8 does not implement getModifierState so we simply map it to the only
@@ -34099,6 +35628,134 @@ module.exports = getVendorPrefixedEventName;
   })();
 });
 
+require.register("react-dom/lib/inputValueTracking.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react-dom");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var ReactDOMComponentTree = require('./ReactDOMComponentTree');
+
+function isCheckable(elem) {
+  var type = elem.type;
+  var nodeName = elem.nodeName;
+  return nodeName && nodeName.toLowerCase() === 'input' && (type === 'checkbox' || type === 'radio');
+}
+
+function getTracker(inst) {
+  return inst._wrapperState.valueTracker;
+}
+
+function attachTracker(inst, tracker) {
+  inst._wrapperState.valueTracker = tracker;
+}
+
+function detachTracker(inst) {
+  delete inst._wrapperState.valueTracker;
+}
+
+function getValueFromNode(node) {
+  var value;
+  if (node) {
+    value = isCheckable(node) ? '' + node.checked : node.value;
+  }
+  return value;
+}
+
+var inputValueTracking = {
+  // exposed for testing
+  _getTrackerFromNode: function (node) {
+    return getTracker(ReactDOMComponentTree.getInstanceFromNode(node));
+  },
+
+
+  track: function (inst) {
+    if (getTracker(inst)) {
+      return;
+    }
+
+    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
+    var valueField = isCheckable(node) ? 'checked' : 'value';
+    var descriptor = Object.getOwnPropertyDescriptor(node.constructor.prototype, valueField);
+
+    var currentValue = '' + node[valueField];
+
+    // if someone has already defined a value or Safari, then bail
+    // and don't track value will cause over reporting of changes,
+    // but it's better then a hard failure
+    // (needed for certain tests that spyOn input values and Safari)
+    if (node.hasOwnProperty(valueField) || typeof descriptor.get !== 'function' || typeof descriptor.set !== 'function') {
+      return;
+    }
+
+    Object.defineProperty(node, valueField, {
+      enumerable: descriptor.enumerable,
+      configurable: true,
+      get: function () {
+        return descriptor.get.call(this);
+      },
+      set: function (value) {
+        currentValue = '' + value;
+        descriptor.set.call(this, value);
+      }
+    });
+
+    attachTracker(inst, {
+      getValue: function () {
+        return currentValue;
+      },
+      setValue: function (value) {
+        currentValue = '' + value;
+      },
+      stopTracking: function () {
+        detachTracker(inst);
+        delete node[valueField];
+      }
+    });
+  },
+
+  updateValueIfChanged: function (inst) {
+    if (!inst) {
+      return false;
+    }
+    var tracker = getTracker(inst);
+
+    if (!tracker) {
+      inputValueTracking.track(inst);
+      return true;
+    }
+
+    var lastValue = tracker.getValue();
+    var nextValue = getValueFromNode(ReactDOMComponentTree.getNodeFromInstance(inst));
+
+    if (nextValue !== lastValue) {
+      tracker.setValue(nextValue);
+      return true;
+    }
+
+    return false;
+  },
+  stopTracking: function (inst) {
+    var tracker = getTracker(inst);
+    if (tracker) {
+      tracker.stopTracking();
+    }
+  }
+};
+
+module.exports = inputValueTracking;
+  })();
+});
+
 require.register("react-dom/lib/instantiateReactComponent.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react-dom");
   (function() {
@@ -34171,7 +35828,7 @@ function instantiateReactComponent(node, shouldHaveDebugID) {
       var info = '';
       if ('development' !== 'production') {
         if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
-          info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
+          info += ' You likely forgot to export your component from the file ' + "it's defined in.";
         }
       }
       info += getDeclarationErrorAddendum(element._owner);
@@ -34319,21 +35976,21 @@ require.register("react-dom/lib/isTextInputElement.js", function(exports, requir
  */
 
 var supportedInputTypes = {
-  'color': true,
-  'date': true,
-  'datetime': true,
+  color: true,
+  date: true,
+  datetime: true,
   'datetime-local': true,
-  'email': true,
-  'month': true,
-  'number': true,
-  'password': true,
-  'range': true,
-  'search': true,
-  'tel': true,
-  'text': true,
-  'time': true,
-  'url': true,
-  'week': true
+  email: true,
+  month: true,
+  number: true,
+  password: true,
+  range: true,
+  search: true,
+  tel: true,
+  text: true,
+  time: true,
+  url: true,
+  week: true
 };
 
 function isTextInputElement(elem) {
@@ -34531,7 +36188,7 @@ if (ExecutionEnvironment.canUseDOM) {
         // in hopes that this is preserved even if "\uFEFF" is transformed to
         // the actual Unicode character (by Babel, for example).
         // https://github.com/mishoo/UglifyJS2/blob/v2.4.20/lib/parse.js#L216
-        node.innerHTML = String.fromCharCode(0xFEFF) + html;
+        node.innerHTML = String.fromCharCode(0xfeff) + html;
 
         // deleteData leaves an empty `TextNode` which offsets the index of all
         // children. Definitely want to avoid this.
@@ -34793,7 +36450,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
       if ('development' !== 'production') {
         addendum = ' If you meant to render a collection of children, use an array ' + 'instead or wrap the object using createFragment(object) from the ' + 'React add-ons.';
         if (children._isReactElement) {
-          addendum = ' It looks like you\'re using an element created by a different ' + 'version of React. Make sure to use only one copy of React.';
+          addendum = " It looks like you're using an element created by a different " + 'version of React. Make sure to use only one copy of React.';
         }
         if (ReactCurrentOwner.current) {
           var name = ReactCurrentOwner.current.getName();
@@ -34964,7 +36621,6 @@ if ('development' !== 'production') {
       // but
       case 'option':
         return tag === '#text';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intd
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-incaption
       // No special behavior since these rules fall back to "in body" mode for
@@ -34973,25 +36629,20 @@ if ('development' !== 'production') {
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intr
       case 'tr':
         return tag === 'th' || tag === 'td' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intbody
       case 'tbody':
       case 'thead':
       case 'tfoot':
         return tag === 'tr' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-incolgroup
       case 'colgroup':
         return tag === 'col' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intable
       case 'table':
         return tag === 'caption' || tag === 'colgroup' || tag === 'tbody' || tag === 'tfoot' || tag === 'thead' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-inhead
       case 'head':
         return tag === 'base' || tag === 'basefont' || tag === 'bgsound' || tag === 'link' || tag === 'meta' || tag === 'title' || tag === 'noscript' || tag === 'noframes' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/semantics.html#the-html-element
       case 'html':
         return tag === 'head' || tag === 'body';
@@ -35187,7 +36838,7 @@ if ('development' !== 'production') {
           tagDisplayName = 'Text nodes';
         } else {
           tagDisplayName = 'Whitespace text nodes';
-          whitespaceInfo = ' Make sure you don\'t have any extra whitespace between tags on ' + 'each line of your source code.';
+          whitespaceInfo = " Make sure you don't have any extra whitespace between tags on " + 'each line of your source code.';
         }
       } else {
         tagDisplayName = '<' + childTag + '>';
@@ -35535,13 +37186,772 @@ require.register("react-onclickoutside/index.js", function(exports, require, mod
   })();
 });
 
+require.register("react-onclickoutside/node_modules/create-react-class/factory.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-onclickoutside/node_modules/create-react-class");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var _assign = require('object-assign');
+
+var emptyObject = require('fbjs/lib/emptyObject');
+var _invariant = require('fbjs/lib/invariant');
+
+if ('development' !== 'production') {
+  var warning = require('fbjs/lib/warning');
+}
+
+var MIXINS_KEY = 'mixins';
+
+// Helper function to allow the creation of anonymous functions which do not
+// have .name set to the name of the variable being assigned to.
+function identity(fn) {
+  return fn;
+}
+
+var ReactPropTypeLocationNames;
+if ('development' !== 'production') {
+  ReactPropTypeLocationNames = {
+    prop: 'prop',
+    context: 'context',
+    childContext: 'child context',
+  };
+} else {
+  ReactPropTypeLocationNames = {};
+}
+
+function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
+  /**
+   * Policies that describe methods in `ReactClassInterface`.
+   */
+
+
+  var injectedMixins = [];
+
+  /**
+   * Composite components are higher-level components that compose other composite
+   * or host components.
+   *
+   * To create a new type of `ReactClass`, pass a specification of
+   * your new class to `React.createClass`. The only requirement of your class
+   * specification is that you implement a `render` method.
+   *
+   *   var MyComponent = React.createClass({
+   *     render: function() {
+   *       return <div>Hello World</div>;
+   *     }
+   *   });
+   *
+   * The class specification supports a specific protocol of methods that have
+   * special meaning (e.g. `render`). See `ReactClassInterface` for
+   * more the comprehensive protocol. Any other properties and methods in the
+   * class specification will be available on the prototype.
+   *
+   * @interface ReactClassInterface
+   * @internal
+   */
+  var ReactClassInterface = {
+
+    /**
+     * An array of Mixin objects to include when defining your component.
+     *
+     * @type {array}
+     * @optional
+     */
+    mixins: 'DEFINE_MANY',
+
+    /**
+     * An object containing properties and methods that should be defined on
+     * the component's constructor instead of its prototype (static methods).
+     *
+     * @type {object}
+     * @optional
+     */
+    statics: 'DEFINE_MANY',
+
+    /**
+     * Definition of prop types for this component.
+     *
+     * @type {object}
+     * @optional
+     */
+    propTypes: 'DEFINE_MANY',
+
+    /**
+     * Definition of context types for this component.
+     *
+     * @type {object}
+     * @optional
+     */
+    contextTypes: 'DEFINE_MANY',
+
+    /**
+     * Definition of context types this component sets for its children.
+     *
+     * @type {object}
+     * @optional
+     */
+    childContextTypes: 'DEFINE_MANY',
+
+    // ==== Definition methods ====
+
+    /**
+     * Invoked when the component is mounted. Values in the mapping will be set on
+     * `this.props` if that prop is not specified (i.e. using an `in` check).
+     *
+     * This method is invoked before `getInitialState` and therefore cannot rely
+     * on `this.state` or use `this.setState`.
+     *
+     * @return {object}
+     * @optional
+     */
+    getDefaultProps: 'DEFINE_MANY_MERGED',
+
+    /**
+     * Invoked once before the component is mounted. The return value will be used
+     * as the initial value of `this.state`.
+     *
+     *   getInitialState: function() {
+     *     return {
+     *       isOn: false,
+     *       fooBaz: new BazFoo()
+     *     }
+     *   }
+     *
+     * @return {object}
+     * @optional
+     */
+    getInitialState: 'DEFINE_MANY_MERGED',
+
+    /**
+     * @return {object}
+     * @optional
+     */
+    getChildContext: 'DEFINE_MANY_MERGED',
+
+    /**
+     * Uses props from `this.props` and state from `this.state` to render the
+     * structure of the component.
+     *
+     * No guarantees are made about when or how often this method is invoked, so
+     * it must not have side effects.
+     *
+     *   render: function() {
+     *     var name = this.props.name;
+     *     return <div>Hello, {name}!</div>;
+     *   }
+     *
+     * @return {ReactComponent}
+     * @nosideeffects
+     * @required
+     */
+    render: 'DEFINE_ONCE',
+
+    // ==== Delegate methods ====
+
+    /**
+     * Invoked when the component is initially created and about to be mounted.
+     * This may have side effects, but any external subscriptions or data created
+     * by this method must be cleaned up in `componentWillUnmount`.
+     *
+     * @optional
+     */
+    componentWillMount: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component has been mounted and has a DOM representation.
+     * However, there is no guarantee that the DOM node is in the document.
+     *
+     * Use this as an opportunity to operate on the DOM when the component has
+     * been mounted (initialized and rendered) for the first time.
+     *
+     * @param {DOMElement} rootNode DOM element representing the component.
+     * @optional
+     */
+    componentDidMount: 'DEFINE_MANY',
+
+    /**
+     * Invoked before the component receives new props.
+     *
+     * Use this as an opportunity to react to a prop transition by updating the
+     * state using `this.setState`. Current props are accessed via `this.props`.
+     *
+     *   componentWillReceiveProps: function(nextProps, nextContext) {
+     *     this.setState({
+     *       likesIncreasing: nextProps.likeCount > this.props.likeCount
+     *     });
+     *   }
+     *
+     * NOTE: There is no equivalent `componentWillReceiveState`. An incoming prop
+     * transition may cause a state change, but the opposite is not true. If you
+     * need it, you are probably looking for `componentWillUpdate`.
+     *
+     * @param {object} nextProps
+     * @optional
+     */
+    componentWillReceiveProps: 'DEFINE_MANY',
+
+    /**
+     * Invoked while deciding if the component should be updated as a result of
+     * receiving new props, state and/or context.
+     *
+     * Use this as an opportunity to `return false` when you're certain that the
+     * transition to the new props/state/context will not require a component
+     * update.
+     *
+     *   shouldComponentUpdate: function(nextProps, nextState, nextContext) {
+     *     return !equal(nextProps, this.props) ||
+     *       !equal(nextState, this.state) ||
+     *       !equal(nextContext, this.context);
+     *   }
+     *
+     * @param {object} nextProps
+     * @param {?object} nextState
+     * @param {?object} nextContext
+     * @return {boolean} True if the component should update.
+     * @optional
+     */
+    shouldComponentUpdate: 'DEFINE_ONCE',
+
+    /**
+     * Invoked when the component is about to update due to a transition from
+     * `this.props`, `this.state` and `this.context` to `nextProps`, `nextState`
+     * and `nextContext`.
+     *
+     * Use this as an opportunity to perform preparation before an update occurs.
+     *
+     * NOTE: You **cannot** use `this.setState()` in this method.
+     *
+     * @param {object} nextProps
+     * @param {?object} nextState
+     * @param {?object} nextContext
+     * @param {ReactReconcileTransaction} transaction
+     * @optional
+     */
+    componentWillUpdate: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component's DOM representation has been updated.
+     *
+     * Use this as an opportunity to operate on the DOM when the component has
+     * been updated.
+     *
+     * @param {object} prevProps
+     * @param {?object} prevState
+     * @param {?object} prevContext
+     * @param {DOMElement} rootNode DOM element representing the component.
+     * @optional
+     */
+    componentDidUpdate: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component is about to be removed from its parent and have
+     * its DOM representation destroyed.
+     *
+     * Use this as an opportunity to deallocate any external resources.
+     *
+     * NOTE: There is no `componentDidUnmount` since your component will have been
+     * destroyed by that point.
+     *
+     * @optional
+     */
+    componentWillUnmount: 'DEFINE_MANY',
+
+    // ==== Advanced methods ====
+
+    /**
+     * Updates the component's currently mounted DOM representation.
+     *
+     * By default, this implements React's rendering and reconciliation algorithm.
+     * Sophisticated clients may wish to override this.
+     *
+     * @param {ReactReconcileTransaction} transaction
+     * @internal
+     * @overridable
+     */
+    updateComponent: 'OVERRIDE_BASE'
+
+  };
+
+  /**
+   * Mapping from class specification keys to special processing functions.
+   *
+   * Although these are declared like instance properties in the specification
+   * when defining classes using `React.createClass`, they are actually static
+   * and are accessible on the constructor instead of the prototype. Despite
+   * being static, they must be defined outside of the "statics" key under
+   * which all other static methods are defined.
+   */
+  var RESERVED_SPEC_KEYS = {
+    displayName: function (Constructor, displayName) {
+      Constructor.displayName = displayName;
+    },
+    mixins: function (Constructor, mixins) {
+      if (mixins) {
+        for (var i = 0; i < mixins.length; i++) {
+          mixSpecIntoComponent(Constructor, mixins[i]);
+        }
+      }
+    },
+    childContextTypes: function (Constructor, childContextTypes) {
+      if ('development' !== 'production') {
+        validateTypeDef(Constructor, childContextTypes, 'childContext');
+      }
+      Constructor.childContextTypes = _assign({}, Constructor.childContextTypes, childContextTypes);
+    },
+    contextTypes: function (Constructor, contextTypes) {
+      if ('development' !== 'production') {
+        validateTypeDef(Constructor, contextTypes, 'context');
+      }
+      Constructor.contextTypes = _assign({}, Constructor.contextTypes, contextTypes);
+    },
+    /**
+     * Special case getDefaultProps which should move into statics but requires
+     * automatic merging.
+     */
+    getDefaultProps: function (Constructor, getDefaultProps) {
+      if (Constructor.getDefaultProps) {
+        Constructor.getDefaultProps = createMergedResultFunction(Constructor.getDefaultProps, getDefaultProps);
+      } else {
+        Constructor.getDefaultProps = getDefaultProps;
+      }
+    },
+    propTypes: function (Constructor, propTypes) {
+      if ('development' !== 'production') {
+        validateTypeDef(Constructor, propTypes, 'prop');
+      }
+      Constructor.propTypes = _assign({}, Constructor.propTypes, propTypes);
+    },
+    statics: function (Constructor, statics) {
+      mixStaticSpecIntoComponent(Constructor, statics);
+    },
+    autobind: function () {} };
+
+  function validateTypeDef(Constructor, typeDef, location) {
+    for (var propName in typeDef) {
+      if (typeDef.hasOwnProperty(propName)) {
+        // use a warning instead of an _invariant so components
+        // don't show up in prod but only in __DEV__
+        'development' !== 'production' ? warning(typeof typeDef[propName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', Constructor.displayName || 'ReactClass', ReactPropTypeLocationNames[location], propName) : void 0;
+      }
+    }
+  }
+
+  function validateMethodOverride(isAlreadyDefined, name) {
+    var specPolicy = ReactClassInterface.hasOwnProperty(name) ? ReactClassInterface[name] : null;
+
+    // Disallow overriding of base class methods unless explicitly allowed.
+    if (ReactClassMixin.hasOwnProperty(name)) {
+      _invariant(specPolicy === 'OVERRIDE_BASE', 'ReactClassInterface: You are attempting to override ' + '`%s` from your class specification. Ensure that your method names ' + 'do not overlap with React methods.', name);
+    }
+
+    // Disallow defining methods more than once unless explicitly allowed.
+    if (isAlreadyDefined) {
+      _invariant(specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED', 'ReactClassInterface: You are attempting to define ' + '`%s` on your component more than once. This conflict may be due ' + 'to a mixin.', name);
+    }
+  }
+
+  /**
+   * Mixin helper which handles policy validation and reserved
+   * specification keys when building React classes.
+   */
+  function mixSpecIntoComponent(Constructor, spec) {
+    if (!spec) {
+      if ('development' !== 'production') {
+        var typeofSpec = typeof spec;
+        var isMixinValid = typeofSpec === 'object' && spec !== null;
+
+        'development' !== 'production' ? warning(isMixinValid, '%s: You\'re attempting to include a mixin that is either null ' + 'or not an object. Check the mixins included by the component, ' + 'as well as any mixins they include themselves. ' + 'Expected object but got %s.', Constructor.displayName || 'ReactClass', spec === null ? null : typeofSpec) : void 0;
+      }
+
+      return;
+    }
+
+    _invariant(typeof spec !== 'function', 'ReactClass: You\'re attempting to ' + 'use a component class or function as a mixin. Instead, just use a ' + 'regular object.');
+    _invariant(!isValidElement(spec), 'ReactClass: You\'re attempting to ' + 'use a component as a mixin. Instead, just use a regular object.');
+
+    var proto = Constructor.prototype;
+    var autoBindPairs = proto.__reactAutoBindPairs;
+
+    // By handling mixins before any other properties, we ensure the same
+    // chaining order is applied to methods with DEFINE_MANY policy, whether
+    // mixins are listed before or after these methods in the spec.
+    if (spec.hasOwnProperty(MIXINS_KEY)) {
+      RESERVED_SPEC_KEYS.mixins(Constructor, spec.mixins);
+    }
+
+    for (var name in spec) {
+      if (!spec.hasOwnProperty(name)) {
+        continue;
+      }
+
+      if (name === MIXINS_KEY) {
+        // We have already handled mixins in a special case above.
+        continue;
+      }
+
+      var property = spec[name];
+      var isAlreadyDefined = proto.hasOwnProperty(name);
+      validateMethodOverride(isAlreadyDefined, name);
+
+      if (RESERVED_SPEC_KEYS.hasOwnProperty(name)) {
+        RESERVED_SPEC_KEYS[name](Constructor, property);
+      } else {
+        // Setup methods on prototype:
+        // The following member methods should not be automatically bound:
+        // 1. Expected ReactClass methods (in the "interface").
+        // 2. Overridden methods (that were mixed in).
+        var isReactClassMethod = ReactClassInterface.hasOwnProperty(name);
+        var isFunction = typeof property === 'function';
+        var shouldAutoBind = isFunction && !isReactClassMethod && !isAlreadyDefined && spec.autobind !== false;
+
+        if (shouldAutoBind) {
+          autoBindPairs.push(name, property);
+          proto[name] = property;
+        } else {
+          if (isAlreadyDefined) {
+            var specPolicy = ReactClassInterface[name];
+
+            // These cases should already be caught by validateMethodOverride.
+            _invariant(isReactClassMethod && (specPolicy === 'DEFINE_MANY_MERGED' || specPolicy === 'DEFINE_MANY'), 'ReactClass: Unexpected spec policy %s for key %s ' + 'when mixing in component specs.', specPolicy, name);
+
+            // For methods which are defined more than once, call the existing
+            // methods before calling the new property, merging if appropriate.
+            if (specPolicy === 'DEFINE_MANY_MERGED') {
+              proto[name] = createMergedResultFunction(proto[name], property);
+            } else if (specPolicy === 'DEFINE_MANY') {
+              proto[name] = createChainedFunction(proto[name], property);
+            }
+          } else {
+            proto[name] = property;
+            if ('development' !== 'production') {
+              // Add verbose displayName to the function, which helps when looking
+              // at profiling tools.
+              if (typeof property === 'function' && spec.displayName) {
+                proto[name].displayName = spec.displayName + '_' + name;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function mixStaticSpecIntoComponent(Constructor, statics) {
+    if (!statics) {
+      return;
+    }
+    for (var name in statics) {
+      var property = statics[name];
+      if (!statics.hasOwnProperty(name)) {
+        continue;
+      }
+
+      var isReserved = name in RESERVED_SPEC_KEYS;
+      _invariant(!isReserved, 'ReactClass: You are attempting to define a reserved ' + 'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' + 'as an instance property instead; it will still be accessible on the ' + 'constructor.', name);
+
+      var isInherited = name in Constructor;
+      _invariant(!isInherited, 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name);
+      Constructor[name] = property;
+    }
+  }
+
+  /**
+   * Merge two objects, but throw if both contain the same key.
+   *
+   * @param {object} one The first object, which is mutated.
+   * @param {object} two The second object
+   * @return {object} one after it has been mutated to contain everything in two.
+   */
+  function mergeIntoWithNoDuplicateKeys(one, two) {
+    _invariant(one && two && typeof one === 'object' && typeof two === 'object', 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.');
+
+    for (var key in two) {
+      if (two.hasOwnProperty(key)) {
+        _invariant(one[key] === undefined, 'mergeIntoWithNoDuplicateKeys(): ' + 'Tried to merge two objects with the same key: `%s`. This conflict ' + 'may be due to a mixin; in particular, this may be caused by two ' + 'getInitialState() or getDefaultProps() methods returning objects ' + 'with clashing keys.', key);
+        one[key] = two[key];
+      }
+    }
+    return one;
+  }
+
+  /**
+   * Creates a function that invokes two functions and merges their return values.
+   *
+   * @param {function} one Function to invoke first.
+   * @param {function} two Function to invoke second.
+   * @return {function} Function that invokes the two argument functions.
+   * @private
+   */
+  function createMergedResultFunction(one, two) {
+    return function mergedResult() {
+      var a = one.apply(this, arguments);
+      var b = two.apply(this, arguments);
+      if (a == null) {
+        return b;
+      } else if (b == null) {
+        return a;
+      }
+      var c = {};
+      mergeIntoWithNoDuplicateKeys(c, a);
+      mergeIntoWithNoDuplicateKeys(c, b);
+      return c;
+    };
+  }
+
+  /**
+   * Creates a function that invokes two functions and ignores their return vales.
+   *
+   * @param {function} one Function to invoke first.
+   * @param {function} two Function to invoke second.
+   * @return {function} Function that invokes the two argument functions.
+   * @private
+   */
+  function createChainedFunction(one, two) {
+    return function chainedFunction() {
+      one.apply(this, arguments);
+      two.apply(this, arguments);
+    };
+  }
+
+  /**
+   * Binds a method to the component.
+   *
+   * @param {object} component Component whose method is going to be bound.
+   * @param {function} method Method to be bound.
+   * @return {function} The bound method.
+   */
+  function bindAutoBindMethod(component, method) {
+    var boundMethod = method.bind(component);
+    if ('development' !== 'production') {
+      boundMethod.__reactBoundContext = component;
+      boundMethod.__reactBoundMethod = method;
+      boundMethod.__reactBoundArguments = null;
+      var componentName = component.constructor.displayName;
+      var _bind = boundMethod.bind;
+      boundMethod.bind = function (newThis) {
+        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
+        }
+
+        // User is trying to bind() an autobound method; we effectively will
+        // ignore the value of "this" that the user is trying to use, so
+        // let's warn.
+        if (newThis !== component && newThis !== null) {
+          'development' !== 'production' ? warning(false, 'bind(): React component methods may only be bound to the ' + 'component instance. See %s', componentName) : void 0;
+        } else if (!args.length) {
+          'development' !== 'production' ? warning(false, 'bind(): You are binding a component method to the component. ' + 'React does this for you automatically in a high-performance ' + 'way, so you can safely remove this call. See %s', componentName) : void 0;
+          return boundMethod;
+        }
+        var reboundMethod = _bind.apply(boundMethod, arguments);
+        reboundMethod.__reactBoundContext = component;
+        reboundMethod.__reactBoundMethod = method;
+        reboundMethod.__reactBoundArguments = args;
+        return reboundMethod;
+      };
+    }
+    return boundMethod;
+  }
+
+  /**
+   * Binds all auto-bound methods in a component.
+   *
+   * @param {object} component Component whose method is going to be bound.
+   */
+  function bindAutoBindMethods(component) {
+    var pairs = component.__reactAutoBindPairs;
+    for (var i = 0; i < pairs.length; i += 2) {
+      var autoBindKey = pairs[i];
+      var method = pairs[i + 1];
+      component[autoBindKey] = bindAutoBindMethod(component, method);
+    }
+  }
+
+  var IsMountedMixin = {
+    componentDidMount: function () {
+      this.__isMounted = true;
+    },
+    componentWillUnmount: function () {
+      this.__isMounted = false;
+    }
+  };
+
+  /**
+   * Add more to the ReactClass base class. These are all legacy features and
+   * therefore not already part of the modern ReactComponent.
+   */
+  var ReactClassMixin = {
+
+    /**
+     * TODO: This will be deprecated because state should always keep a consistent
+     * type signature and the only use case for this, is to avoid that.
+     */
+    replaceState: function (newState, callback) {
+      this.updater.enqueueReplaceState(this, newState, callback);
+    },
+
+    /**
+     * Checks whether or not this composite component is mounted.
+     * @return {boolean} True if mounted, false otherwise.
+     * @protected
+     * @final
+     */
+    isMounted: function () {
+      if ('development' !== 'production') {
+        'development' !== 'production' ? warning(this.__didWarnIsMounted, '%s: isMounted is deprecated. Instead, make sure to clean up ' + 'subscriptions and pending requests in componentWillUnmount to ' + 'prevent memory leaks.', this.constructor && this.constructor.displayName || this.name || 'Component') : void 0;
+        this.__didWarnIsMounted = true;
+      }
+      return !!this.__isMounted;
+    }
+  };
+
+  var ReactClassComponent = function () {};
+  _assign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
+
+  /**
+   * Creates a composite component class given a class specification.
+   * See https://facebook.github.io/react/docs/top-level-api.html#react.createclass
+   *
+   * @param {object} spec Class specification (which must define `render`).
+   * @return {function} Component constructor function.
+   * @public
+   */
+  function createClass(spec) {
+    // To keep our warnings more understandable, we'll use a little hack here to
+    // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
+    // unnecessarily identify a class without displayName as 'Constructor'.
+    var Constructor = identity(function (props, context, updater) {
+      // This constructor gets overridden by mocks. The argument is used
+      // by mocks to assert on what gets mounted.
+
+      if ('development' !== 'production') {
+        'development' !== 'production' ? warning(this instanceof Constructor, 'Something is calling a React component directly. Use a factory or ' + 'JSX instead. See: https://fb.me/react-legacyfactory') : void 0;
+      }
+
+      // Wire up auto-binding
+      if (this.__reactAutoBindPairs.length) {
+        bindAutoBindMethods(this);
+      }
+
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject;
+      this.updater = updater || ReactNoopUpdateQueue;
+
+      this.state = null;
+
+      // ReactClasses doesn't have constructors. Instead, they use the
+      // getInitialState and componentWillMount methods for initialization.
+
+      var initialState = this.getInitialState ? this.getInitialState() : null;
+      if ('development' !== 'production') {
+        // We allow auto-mocks to proceed as if they're returning null.
+        if (initialState === undefined && this.getInitialState._isMockFunction) {
+          // This is probably bad practice. Consider warning here and
+          // deprecating this convenience.
+          initialState = null;
+        }
+      }
+      _invariant(typeof initialState === 'object' && !Array.isArray(initialState), '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent');
+
+      this.state = initialState;
+    });
+    Constructor.prototype = new ReactClassComponent();
+    Constructor.prototype.constructor = Constructor;
+    Constructor.prototype.__reactAutoBindPairs = [];
+
+    injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
+
+    mixSpecIntoComponent(Constructor, IsMountedMixin);
+    mixSpecIntoComponent(Constructor, spec);
+
+    // Initialize the defaultProps property after all mixins have been merged.
+    if (Constructor.getDefaultProps) {
+      Constructor.defaultProps = Constructor.getDefaultProps();
+    }
+
+    if ('development' !== 'production') {
+      // This is a tag to indicate that the use of these method names is ok,
+      // since it's used with createClass. If it's not, then it's likely a
+      // mistake so we'll warn you to use the static property, property
+      // initializer or constructor respectively.
+      if (Constructor.getDefaultProps) {
+        Constructor.getDefaultProps.isReactClassApproved = {};
+      }
+      if (Constructor.prototype.getInitialState) {
+        Constructor.prototype.getInitialState.isReactClassApproved = {};
+      }
+    }
+
+    _invariant(Constructor.prototype.render, 'createClass(...): Class specification must implement a `render` method.');
+
+    if ('development' !== 'production') {
+      'development' !== 'production' ? warning(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component') : void 0;
+      'development' !== 'production' ? warning(!Constructor.prototype.componentWillRecieveProps, '%s has a method called ' + 'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?', spec.displayName || 'A component') : void 0;
+    }
+
+    // Reduce time spent doing lookups by setting these on the prototype.
+    for (var methodName in ReactClassInterface) {
+      if (!Constructor.prototype[methodName]) {
+        Constructor.prototype[methodName] = null;
+      }
+    }
+
+    return Constructor;
+  }
+
+  return createClass;
+}
+
+module.exports = factory;
+  })();
+});
+
+require.register("react-onclickoutside/node_modules/create-react-class/index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-onclickoutside/node_modules/create-react-class");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var React = require('react');
+var factory = require('./factory');
+
+// Hack to grab NoopUpdateQueue from isomorphic React
+var ReactNoopUpdateQueue = new React.Component().updater;
+
+module.exports = factory(
+  React.Component,
+  React.isValidElement,
+  ReactNoopUpdateQueue
+);
+  })();
+});
+
 require.register("react-redux/lib/components/Provider.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react-redux");
   (function() {
     'use strict';
 
 exports.__esModule = true;
-exports.default = undefined;
+exports.createProvider = createProvider;
 
 var _react = require('react');
 
@@ -35573,53 +37983,57 @@ function warnAboutReceivingStore() {
   (0, _warning2.default)('<Provider> does not support changing `store` on the fly. ' + 'It is most likely that you see this error because you updated to ' + 'Redux 2.x and React Redux 2.x which no longer hot reload reducers ' + 'automatically. See https://github.com/reactjs/react-redux/releases/' + 'tag/v2.0.0 for the migration instructions.');
 }
 
-var Provider = function (_Component) {
-  _inherits(Provider, _Component);
+function createProvider() {
+  var _Provider$childContex;
 
-  Provider.prototype.getChildContext = function getChildContext() {
-    return { store: this.store, storeSubscription: null };
-  };
+  var storeKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'store';
+  var subKey = arguments[1];
 
-  function Provider(props, context) {
-    _classCallCheck(this, Provider);
+  var subscriptionKey = subKey || storeKey + 'Subscription';
 
-    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
+  var Provider = function (_Component) {
+    _inherits(Provider, _Component);
 
-    _this.store = props.store;
-    return _this;
+    Provider.prototype.getChildContext = function getChildContext() {
+      var _ref;
+
+      return _ref = {}, _ref[storeKey] = this[storeKey], _ref[subscriptionKey] = null, _ref;
+    };
+
+    function Provider(props, context) {
+      _classCallCheck(this, Provider);
+
+      var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
+
+      _this[storeKey] = props.store;
+      return _this;
+    }
+
+    Provider.prototype.render = function render() {
+      return _react.Children.only(this.props.children);
+    };
+
+    return Provider;
+  }(_react.Component);
+
+  if ('development' !== 'production') {
+    Provider.prototype.componentWillReceiveProps = function (nextProps) {
+      if (this[storeKey] !== nextProps.store) {
+        warnAboutReceivingStore();
+      }
+    };
   }
 
-  Provider.prototype.render = function render() {
-    return _react.Children.only(this.props.children);
+  Provider.propTypes = {
+    store: _PropTypes.storeShape.isRequired,
+    children: _propTypes2.default.element.isRequired
   };
+  Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[storeKey] = _PropTypes.storeShape.isRequired, _Provider$childContex[subscriptionKey] = _PropTypes.subscriptionShape, _Provider$childContex);
 
   return Provider;
-}(_react.Component);
-
-exports.default = Provider;
-
-
-if ('development' !== 'production') {
-  Provider.prototype.componentWillReceiveProps = function (nextProps) {
-    var store = this.store;
-    var nextStore = nextProps.store;
-
-
-    if (store !== nextStore) {
-      warnAboutReceivingStore();
-    }
-  };
 }
 
-Provider.propTypes = {
-  store: _PropTypes.storeShape.isRequired,
-  children: _propTypes2.default.element.isRequired
-};
-Provider.childContextTypes = {
-  store: _PropTypes.storeShape.isRequired,
-  storeSubscription: _PropTypes.subscriptionShape
-};
-Provider.displayName = 'Provider';
+exports.default = createProvider();
   })();
 });
 
@@ -35854,7 +38268,7 @@ selectorFactory) {
       Connect.prototype.notifyNestedSubsOnComponentDidUpdate = function notifyNestedSubsOnComponentDidUpdate() {
         // `componentDidUpdate` is conditionally implemented when `onStateChange` determines it
         // needs to notify nested subs. Once called, it unimplements itself until further state
-        // changes occur. Doing it this way vs having a permanent `componentDidMount` that does
+        // changes occur. Doing it this way vs having a permanent `componentDidUpdate` that does
         // a boolean check every time avoids an extra method call most of the time, resulting
         // in some perf boost.
         this.componentDidUpdate = undefined;
@@ -35900,14 +38314,31 @@ selectorFactory) {
 
     if ('development' !== 'production') {
       Connect.prototype.componentWillUpdate = function componentWillUpdate() {
+        var _this2 = this;
+
         // We are hot reloading!
         if (this.version !== version) {
           this.version = version;
           this.initSelector();
 
-          if (this.subscription) this.subscription.tryUnsubscribe();
+          // If any connected descendants don't hot reload (and resubscribe in the process), their
+          // listeners will be lost when we unsubscribe. Unfortunately, by copying over all
+          // listeners, this does mean that the old versions of connected descendants will still be
+          // notified of state changes; however, their onStateChange function is a no-op so this
+          // isn't a huge deal.
+          var oldListeners = [];
+
+          if (this.subscription) {
+            oldListeners = this.subscription.listeners.get();
+            this.subscription.tryUnsubscribe();
+          }
           this.initSubscription();
-          if (shouldHandleStateChanges) this.subscription.trySubscribe();
+          if (shouldHandleStateChanges) {
+            this.subscription.trySubscribe();
+            oldListeners.forEach(function (listener) {
+              return _this2.subscription.listeners.subscribe(listener);
+            });
+          }
         }
       };
     }
@@ -36416,7 +38847,7 @@ require.register("react-redux/lib/index.js", function(exports, require, module) 
     'use strict';
 
 exports.__esModule = true;
-exports.connect = exports.connectAdvanced = exports.Provider = undefined;
+exports.connect = exports.connectAdvanced = exports.createProvider = exports.Provider = undefined;
 
 var _Provider = require('./components/Provider');
 
@@ -36433,6 +38864,7 @@ var _connect2 = _interopRequireDefault(_connect);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Provider = _Provider2.default;
+exports.createProvider = _Provider.createProvider;
 exports.connectAdvanced = _connectAdvanced2.default;
 exports.connect = _connect2.default;
   })();
@@ -36501,6 +38933,9 @@ function createListenerCollection() {
       for (var i = 0; i < listeners.length; i++) {
         listeners[i]();
       }
+    },
+    get: function get() {
+      return next;
     },
     subscribe: function subscribe(listener) {
       var isSubscribed = true;
@@ -36670,6 +39105,10 @@ require.register("react-router-dom/BrowserRouter.js", function(exports, require,
 
 exports.__esModule = true;
 
+var _warning = require('warning');
+
+var _warning2 = _interopRequireDefault(_warning);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -36682,7 +39121,9 @@ var _createBrowserHistory = require('history/createBrowserHistory');
 
 var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 
-var _reactRouter = require('react-router');
+var _Router = require('./Router');
+
+var _Router2 = _interopRequireDefault(_Router);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36710,8 +39151,12 @@ var BrowserRouter = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = (0, _createBrowserHistory2.default)(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
   }
 
+  BrowserRouter.prototype.componentWillMount = function componentWillMount() {
+    (0, _warning2.default)(!this.props.history, '<BrowserRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { BrowserRouter as Router }`.');
+  };
+
   BrowserRouter.prototype.render = function render() {
-    return _react2.default.createElement(_reactRouter.Router, { history: this.history, children: this.props.children });
+    return _react2.default.createElement(_Router2.default, { history: this.history, children: this.props.children });
   };
 
   return BrowserRouter;
@@ -36735,6 +39180,10 @@ require.register("react-router-dom/HashRouter.js", function(exports, require, mo
 
 exports.__esModule = true;
 
+var _warning = require('warning');
+
+var _warning2 = _interopRequireDefault(_warning);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -36747,7 +39196,9 @@ var _createHashHistory = require('history/createHashHistory');
 
 var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
 
-var _reactRouter = require('react-router');
+var _Router = require('./Router');
+
+var _Router2 = _interopRequireDefault(_Router);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36775,8 +39226,12 @@ var HashRouter = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = (0, _createHashHistory2.default)(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
   }
 
+  HashRouter.prototype.componentWillMount = function componentWillMount() {
+    (0, _warning2.default)(!this.props.history, '<HashRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { HashRouter as Router }`.');
+  };
+
   HashRouter.prototype.render = function render() {
-    return _react2.default.createElement(_reactRouter.Router, { history: this.history, children: this.props.children });
+    return _react2.default.createElement(_Router2.default, { history: this.history, children: this.props.children });
   };
 
   return HashRouter;
@@ -36808,6 +39263,10 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _invariant = require('invariant');
+
+var _invariant2 = _interopRequireDefault(_invariant);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36868,11 +39327,14 @@ var Link = function (_React$Component) {
     var _props = this.props,
         replace = _props.replace,
         to = _props.to,
-        props = _objectWithoutProperties(_props, ['replace', 'to']); // eslint-disable-line no-unused-vars
+        innerRef = _props.innerRef,
+        props = _objectWithoutProperties(_props, ['replace', 'to', 'innerRef']); // eslint-disable-line no-unused-vars
+
+    (0, _invariant2.default)(this.context.router, 'You should not use <Link> outside a <Router>');
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
-    return _react2.default.createElement('a', _extends({}, props, { onClick: this.handleClick, href: href }));
+    return _react2.default.createElement('a', _extends({}, props, { onClick: this.handleClick, href: href, ref: innerRef }));
   };
 
   return Link;
@@ -36882,7 +39344,8 @@ Link.propTypes = {
   onClick: _propTypes2.default.func,
   target: _propTypes2.default.string,
   replace: _propTypes2.default.bool,
-  to: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]).isRequired
+  to: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]).isRequired,
+  innerRef: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
 };
 Link.defaultProps = {
   replace: false
@@ -36907,14 +39370,13 @@ require.register("react-router-dom/MemoryRouter.js", function(exports, require, 
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _MemoryRouter = require('react-router/MemoryRouter');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.MemoryRouter;
-  }
-});
+var _MemoryRouter2 = _interopRequireDefault(_MemoryRouter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _MemoryRouter2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -36937,7 +39399,9 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouter = require('react-router');
+var _Route = require('./Route');
+
+var _Route2 = _interopRequireDefault(_Route);
 
 var _Link = require('./Link');
 
@@ -36960,9 +39424,10 @@ var NavLink = function NavLink(_ref) {
       activeStyle = _ref.activeStyle,
       style = _ref.style,
       getIsActive = _ref.isActive,
-      rest = _objectWithoutProperties(_ref, ['to', 'exact', 'strict', 'location', 'activeClassName', 'className', 'activeStyle', 'style', 'isActive']);
+      ariaCurrent = _ref.ariaCurrent,
+      rest = _objectWithoutProperties(_ref, ['to', 'exact', 'strict', 'location', 'activeClassName', 'className', 'activeStyle', 'style', 'isActive', 'ariaCurrent']);
 
-  return _react2.default.createElement(_reactRouter.Route, {
+  return _react2.default.createElement(_Route2.default, {
     path: (typeof to === 'undefined' ? 'undefined' : _typeof(to)) === 'object' ? to.pathname : to,
     exact: exact,
     strict: strict,
@@ -36975,10 +39440,11 @@ var NavLink = function NavLink(_ref) {
 
       return _react2.default.createElement(_Link2.default, _extends({
         to: to,
-        className: isActive ? [activeClassName, className].filter(function (i) {
+        className: isActive ? [className, activeClassName].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends({}, style, activeStyle) : style
+        style: isActive ? _extends({}, style, activeStyle) : style,
+        'aria-current': isActive && ariaCurrent
       }, rest));
     }
   });
@@ -36993,11 +39459,13 @@ NavLink.propTypes = {
   className: _propTypes2.default.string,
   activeStyle: _propTypes2.default.object,
   style: _propTypes2.default.object,
-  isActive: _propTypes2.default.func
+  isActive: _propTypes2.default.func,
+  ariaCurrent: _propTypes2.default.oneOf(['page', 'step', 'location', 'true'])
 };
 
 NavLink.defaultProps = {
-  activeClassName: 'active'
+  activeClassName: 'active',
+  ariaCurrent: 'true'
 };
 
 exports.default = NavLink;
@@ -37011,14 +39479,13 @@ require.register("react-router-dom/Prompt.js", function(exports, require, module
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _Prompt = require('react-router/Prompt');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.Prompt;
-  }
-});
+var _Prompt2 = _interopRequireDefault(_Prompt);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Prompt2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -37029,14 +39496,13 @@ require.register("react-router-dom/Redirect.js", function(exports, require, modu
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _Redirect = require('react-router/Redirect');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.Redirect;
-  }
-});
+var _Redirect2 = _interopRequireDefault(_Redirect);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Redirect2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -37047,14 +39513,13 @@ require.register("react-router-dom/Route.js", function(exports, require, module)
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _Route = require('react-router/Route');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.Route;
-  }
-});
+var _Route2 = _interopRequireDefault(_Route);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Route2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -37065,14 +39530,13 @@ require.register("react-router-dom/Router.js", function(exports, require, module
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _Router = require('react-router/Router');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.Router;
-  }
-});
+var _Router2 = _interopRequireDefault(_Router);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Router2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -37083,14 +39547,13 @@ require.register("react-router-dom/StaticRouter.js", function(exports, require, 
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _StaticRouter = require('react-router/StaticRouter');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.StaticRouter;
-  }
-});
+var _StaticRouter2 = _interopRequireDefault(_StaticRouter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _StaticRouter2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -37101,14 +39564,13 @@ require.register("react-router-dom/Switch.js", function(exports, require, module
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _Switch = require('react-router/Switch');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.Switch;
-  }
-});
+var _Switch2 = _interopRequireDefault(_Switch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Switch2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -37197,14 +39659,680 @@ require.register("react-router-dom/matchPath.js", function(exports, require, mod
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _matchPath = require('react-router/matchPath');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.matchPath;
-  }
+var _matchPath2 = _interopRequireDefault(_matchPath);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _matchPath2.default; // Written in this round about way for babel-transform-imports
+  })();
 });
+
+require.register("react-router-dom/node_modules/prop-types/checkPropTypes.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router-dom/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+if ('development' !== 'production') {
+  var invariant = require('fbjs/lib/invariant');
+  var warning = require('fbjs/lib/warning');
+  var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+  var loggedTypeFailures = {};
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if ('development' !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (typeSpecs.hasOwnProperty(typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+        }
+      }
+    }
+  }
+}
+
+module.exports = checkPropTypes;
+  })();
+});
+
+require.register("react-router-dom/node_modules/prop-types/factoryWithThrowingShims.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router-dom/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var emptyFunction = require('fbjs/lib/emptyFunction');
+var invariant = require('fbjs/lib/invariant');
+
+module.exports = function() {
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  function shim() {
+    invariant(
+      false,
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim
+  };
+
+  ReactPropTypes.checkPropTypes = emptyFunction;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+  })();
+});
+
+require.register("react-router-dom/node_modules/prop-types/factoryWithTypeCheckers.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router-dom/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var emptyFunction = require('fbjs/lib/emptyFunction');
+var invariant = require('fbjs/lib/invariant');
+var warning = require('fbjs/lib/warning');
+
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+var checkPropTypes = require('./checkPropTypes');
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if ('development' !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          invariant(
+            false,
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+        } else if ('development' !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            warning(
+              false,
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `%s` prop on `%s`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
+              propFullName,
+              componentName
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      'development' !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues);
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (propValue.hasOwnProperty(key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      'development' !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+  })();
+});
+
+require.register("react-router-dom/node_modules/prop-types/index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router-dom/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+if ('development' !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = require('./factoryWithTypeCheckers')(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = require('./factoryWithThrowingShims')();
+}
+  })();
+});
+
+require.register("react-router-dom/node_modules/prop-types/lib/ReactPropTypesSecret.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router-dom/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
   })();
 });
 
@@ -37215,14 +40343,13 @@ require.register("react-router-dom/withRouter.js", function(exports, require, mo
 
 exports.__esModule = true;
 
-var _reactRouter = require('react-router');
+var _withRouter = require('react-router/withRouter');
 
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouter.withRouter;
-  }
-});
+var _withRouter2 = _interopRequireDefault(_withRouter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _withRouter2.default; // Written in this round about way for babel-transform-imports
   })();
 });
 
@@ -37232,6 +40359,10 @@ require.register("react-router/MemoryRouter.js", function(exports, require, modu
     'use strict';
 
 exports.__esModule = true;
+
+var _warning = require('warning');
+
+var _warning2 = _interopRequireDefault(_warning);
 
 var _react = require('react');
 
@@ -37275,6 +40406,10 @@ var MemoryRouter = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = (0, _createMemoryHistory2.default)(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
   }
 
+  MemoryRouter.prototype.componentWillMount = function componentWillMount() {
+    (0, _warning2.default)(!this.props.history, '<MemoryRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { MemoryRouter as Router }`.');
+  };
+
   MemoryRouter.prototype.render = function render() {
     return _react2.default.createElement(_Router2.default, { history: this.history, children: this.props.children });
   };
@@ -37307,6 +40442,10 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _invariant = require('invariant');
+
+var _invariant2 = _interopRequireDefault(_invariant);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37343,6 +40482,8 @@ var Prompt = function (_React$Component) {
   };
 
   Prompt.prototype.componentWillMount = function componentWillMount() {
+    (0, _invariant2.default)(this.context.router, 'You should not use <Prompt> outside a <Router>');
+
     if (this.props.when) this.enable(this.props.message);
   };
 
@@ -37398,6 +40539,16 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _warning = require('warning');
+
+var _warning2 = _interopRequireDefault(_warning);
+
+var _invariant = require('invariant');
+
+var _invariant2 = _interopRequireDefault(_invariant);
+
+var _history = require('history');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37407,7 +40558,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * The public API for updating the location programatically
+ * The public API for updating the location programmatically
  * with a component.
  */
 var Redirect = function (_React$Component) {
@@ -37424,11 +40575,25 @@ var Redirect = function (_React$Component) {
   };
 
   Redirect.prototype.componentWillMount = function componentWillMount() {
+    (0, _invariant2.default)(this.context.router, 'You should not use <Redirect> outside a <Router>');
+
     if (this.isStatic()) this.perform();
   };
 
   Redirect.prototype.componentDidMount = function componentDidMount() {
     if (!this.isStatic()) this.perform();
+  };
+
+  Redirect.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var prevTo = (0, _history.createLocation)(prevProps.to);
+    var nextTo = (0, _history.createLocation)(this.props.to);
+
+    if ((0, _history.locationsAreEqual)(prevTo, nextTo)) {
+      (0, _warning2.default)(false, 'You tried to redirect to the same route you\'re currently on: ' + ('"' + nextTo.pathname + nextTo.search + '"'));
+      return;
+    }
+
+    this.perform();
   };
 
   Redirect.prototype.perform = function perform() {
@@ -37455,7 +40620,7 @@ var Redirect = function (_React$Component) {
 Redirect.propTypes = {
   push: _propTypes2.default.bool,
   from: _propTypes2.default.string,
-  to: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object])
+  to: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]).isRequired
 };
 Redirect.defaultProps = {
   push: false
@@ -37486,6 +40651,10 @@ var _warning = require('warning');
 
 var _warning2 = _interopRequireDefault(_warning);
 
+var _invariant = require('invariant');
+
+var _invariant2 = _interopRequireDefault(_invariant);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -37506,9 +40675,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var isEmptyChildren = function isEmptyChildren(children) {
+  return _react2.default.Children.count(children) === 0;
+};
+
 /**
  * The public API for matching a single path and rendering.
  */
+
 var Route = function (_React$Component) {
   _inherits(Route, _React$Component);
 
@@ -37537,33 +40711,31 @@ var Route = function (_React$Component) {
     };
   };
 
-  Route.prototype.computeMatch = function computeMatch(_ref, _ref2) {
+  Route.prototype.computeMatch = function computeMatch(_ref, router) {
     var computedMatch = _ref.computedMatch,
         location = _ref.location,
         path = _ref.path,
         strict = _ref.strict,
-        exact = _ref.exact;
-    var route = _ref2.route;
+        exact = _ref.exact,
+        sensitive = _ref.sensitive;
 
     if (computedMatch) return computedMatch; // <Switch> already computed the match for us
 
+    (0, _invariant2.default)(router, 'You should not use <Route> or withRouter() outside a <Router>');
+
+    var route = router.route;
+
     var pathname = (location || route.location).pathname;
 
-    return path ? (0, _matchPath2.default)(pathname, { path: path, strict: strict, exact: exact }) : route.match;
+    return path ? (0, _matchPath2.default)(pathname, { path: path, strict: strict, exact: exact, sensitive: sensitive }) : route.match;
   };
 
   Route.prototype.componentWillMount = function componentWillMount() {
-    var _props = this.props,
-        component = _props.component,
-        render = _props.render,
-        children = _props.children;
+    (0, _warning2.default)(!(this.props.component && this.props.render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
 
+    (0, _warning2.default)(!(this.props.component && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
 
-    (0, _warning2.default)(!(component && render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
-
-    (0, _warning2.default)(!(component && children), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
-
-    (0, _warning2.default)(!(render && children), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
+    (0, _warning2.default)(!(this.props.render && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
   };
 
   Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
@@ -37578,10 +40750,10 @@ var Route = function (_React$Component) {
 
   Route.prototype.render = function render() {
     var match = this.state.match;
-    var _props2 = this.props,
-        children = _props2.children,
-        component = _props2.component,
-        render = _props2.render;
+    var _props = this.props,
+        children = _props.children,
+        component = _props.component,
+        render = _props.render;
     var _context$router = this.context.router,
         history = _context$router.history,
         route = _context$router.route,
@@ -37593,8 +40765,7 @@ var Route = function (_React$Component) {
     return component ? // component prop gets first priority, only called if there's a match
     match ? _react2.default.createElement(component, props) : null : render ? // render prop is next, only called if there's a match
     match ? render(props) : null : children ? // children come last, always called
-    typeof children === 'function' ? children(props) : !Array.isArray(children) || children.length ? // Preact defaults to empty children array
-    _react2.default.Children.only(children) : null : null;
+    typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? _react2.default.Children.only(children) : null : null;
   };
 
   return Route;
@@ -37605,6 +40776,7 @@ Route.propTypes = {
   path: _propTypes2.default.string,
   exact: _propTypes2.default.bool,
   strict: _propTypes2.default.bool,
+  sensitive: _propTypes2.default.bool,
   component: _propTypes2.default.func,
   render: _propTypes2.default.func,
   children: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.node]),
@@ -37758,6 +40930,10 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _warning = require('warning');
+
+var _warning2 = _interopRequireDefault(_warning);
+
 var _invariant = require('invariant');
 
 var _invariant2 = _interopRequireDefault(_invariant);
@@ -37890,6 +41066,10 @@ var StaticRouter = function (_React$Component) {
     };
   };
 
+  StaticRouter.prototype.componentWillMount = function componentWillMount() {
+    (0, _warning2.default)(!this.props.history, '<StaticRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { StaticRouter as Router }`.');
+  };
+
   StaticRouter.prototype.render = function render() {
     var _props = this.props,
         basename = _props.basename,
@@ -37951,6 +41131,10 @@ var _warning = require('warning');
 
 var _warning2 = _interopRequireDefault(_warning);
 
+var _invariant = require('invariant');
+
+var _invariant2 = _interopRequireDefault(_invariant);
+
 var _matchPath = require('./matchPath');
 
 var _matchPath2 = _interopRequireDefault(_matchPath);
@@ -37975,6 +41159,10 @@ var Switch = function (_React$Component) {
     return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
   }
 
+  Switch.prototype.componentWillMount = function componentWillMount() {
+    (0, _invariant2.default)(this.context.router, 'You should not use <Switch> outside a <Router>');
+  };
+
   Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     (0, _warning2.default)(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
@@ -37996,13 +41184,14 @@ var Switch = function (_React$Component) {
           pathProp = _element$props.path,
           exact = _element$props.exact,
           strict = _element$props.strict,
+          sensitive = _element$props.sensitive,
           from = _element$props.from;
 
       var path = pathProp || from;
 
       if (match == null) {
         child = element;
-        match = path ? (0, _matchPath2.default)(location.pathname, { path: path, exact: exact, strict: strict }) : route.match;
+        match = path ? (0, _matchPath2.default)(location.pathname, { path: path, exact: exact, strict: strict, sensitive: sensitive }) : route.match;
       }
     });
 
@@ -38025,64 +41214,6 @@ exports.default = Switch;
   })();
 });
 
-require.register("react-router/index.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react-router");
-  (function() {
-    'use strict';
-
-exports.__esModule = true;
-exports.withRouter = exports.matchPath = exports.Switch = exports.StaticRouter = exports.Router = exports.Route = exports.Redirect = exports.Prompt = exports.MemoryRouter = undefined;
-
-var _MemoryRouter2 = require('./MemoryRouter');
-
-var _MemoryRouter3 = _interopRequireDefault(_MemoryRouter2);
-
-var _Prompt2 = require('./Prompt');
-
-var _Prompt3 = _interopRequireDefault(_Prompt2);
-
-var _Redirect2 = require('./Redirect');
-
-var _Redirect3 = _interopRequireDefault(_Redirect2);
-
-var _Route2 = require('./Route');
-
-var _Route3 = _interopRequireDefault(_Route2);
-
-var _Router2 = require('./Router');
-
-var _Router3 = _interopRequireDefault(_Router2);
-
-var _StaticRouter2 = require('./StaticRouter');
-
-var _StaticRouter3 = _interopRequireDefault(_StaticRouter2);
-
-var _Switch2 = require('./Switch');
-
-var _Switch3 = _interopRequireDefault(_Switch2);
-
-var _matchPath2 = require('./matchPath');
-
-var _matchPath3 = _interopRequireDefault(_matchPath2);
-
-var _withRouter2 = require('./withRouter');
-
-var _withRouter3 = _interopRequireDefault(_withRouter2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.MemoryRouter = _MemoryRouter3.default;
-exports.Prompt = _Prompt3.default;
-exports.Redirect = _Redirect3.default;
-exports.Route = _Route3.default;
-exports.Router = _Router3.default;
-exports.StaticRouter = _StaticRouter3.default;
-exports.Switch = _Switch3.default;
-exports.matchPath = _matchPath3.default;
-exports.withRouter = _withRouter3.default;
-  })();
-});
-
 require.register("react-router/matchPath.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react-router");
   (function() {
@@ -38101,7 +41232,7 @@ var cacheLimit = 10000;
 var cacheCount = 0;
 
 var compilePath = function compilePath(pattern, options) {
-  var cacheKey = '' + options.end + options.strict;
+  var cacheKey = '' + options.end + options.strict + options.sensitive;
   var cache = patternCache[cacheKey] || (patternCache[cacheKey] = {});
 
   if (cache[pattern]) return cache[pattern];
@@ -38132,9 +41263,11 @@ var matchPath = function matchPath(pathname) {
       _options$exact = _options.exact,
       exact = _options$exact === undefined ? false : _options$exact,
       _options$strict = _options.strict,
-      strict = _options$strict === undefined ? false : _options$strict;
+      strict = _options$strict === undefined ? false : _options$strict,
+      _options$sensitive = _options.sensitive,
+      sensitive = _options$sensitive === undefined ? false : _options$sensitive;
 
-  var _compilePath = compilePath(path, { end: exact, strict: strict }),
+  var _compilePath = compilePath(path, { end: exact, strict: strict, sensitive: sensitive }),
       re = _compilePath.re,
       keys = _compilePath.keys;
 
@@ -38161,6 +41294,673 @@ var matchPath = function matchPath(pathname) {
 };
 
 exports.default = matchPath;
+  })();
+});
+
+require.register("react-router/node_modules/prop-types/checkPropTypes.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+if ('development' !== 'production') {
+  var invariant = require('fbjs/lib/invariant');
+  var warning = require('fbjs/lib/warning');
+  var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+  var loggedTypeFailures = {};
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if ('development' !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (typeSpecs.hasOwnProperty(typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+        }
+      }
+    }
+  }
+}
+
+module.exports = checkPropTypes;
+  })();
+});
+
+require.register("react-router/node_modules/prop-types/factoryWithThrowingShims.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var emptyFunction = require('fbjs/lib/emptyFunction');
+var invariant = require('fbjs/lib/invariant');
+
+module.exports = function() {
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  function shim() {
+    invariant(
+      false,
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim
+  };
+
+  ReactPropTypes.checkPropTypes = emptyFunction;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+  })();
+});
+
+require.register("react-router/node_modules/prop-types/factoryWithTypeCheckers.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var emptyFunction = require('fbjs/lib/emptyFunction');
+var invariant = require('fbjs/lib/invariant');
+var warning = require('fbjs/lib/warning');
+
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+var checkPropTypes = require('./checkPropTypes');
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if ('development' !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          invariant(
+            false,
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+        } else if ('development' !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            warning(
+              false,
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `%s` prop on `%s`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
+              propFullName,
+              componentName
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      'development' !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues);
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (propValue.hasOwnProperty(key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      'development' !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+  })();
+});
+
+require.register("react-router/node_modules/prop-types/index.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+if ('development' !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = require('./factoryWithTypeCheckers')(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = require('./factoryWithThrowingShims')();
+}
+  })();
+});
+
+require.register("react-router/node_modules/prop-types/lib/ReactPropTypesSecret.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {}, "react-router/node_modules/prop-types");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
   })();
 });
 
@@ -38417,23 +42217,22 @@ require.register("react/lib/React.js", function(exports, require, module) {
 
 var _assign = require('object-assign');
 
+var ReactBaseClasses = require('./ReactBaseClasses');
 var ReactChildren = require('./ReactChildren');
-var ReactComponent = require('./ReactComponent');
-var ReactPureComponent = require('./ReactPureComponent');
-var ReactClass = require('./ReactClass');
 var ReactDOMFactories = require('./ReactDOMFactories');
 var ReactElement = require('./ReactElement');
 var ReactPropTypes = require('./ReactPropTypes');
 var ReactVersion = require('./ReactVersion');
 
+var createReactClass = require('./createClass');
 var onlyChild = require('./onlyChild');
-var warning = require('fbjs/lib/warning');
 
 var createElement = ReactElement.createElement;
 var createFactory = ReactElement.createFactory;
 var cloneElement = ReactElement.cloneElement;
 
 if ('development' !== 'production') {
+  var lowPriorityWarning = require('./lowPriorityWarning');
   var canDefineProperty = require('./canDefineProperty');
   var ReactElementValidator = require('./ReactElementValidator');
   var didWarnPropTypesDeprecated = false;
@@ -38443,18 +42242,27 @@ if ('development' !== 'production') {
 }
 
 var __spread = _assign;
+var createMixin = function (mixin) {
+  return mixin;
+};
 
 if ('development' !== 'production') {
-  var warned = false;
+  var warnedForSpread = false;
+  var warnedForCreateMixin = false;
   __spread = function () {
-    'development' !== 'production' ? warning(warned, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.') : void 0;
-    warned = true;
+    lowPriorityWarning(warnedForSpread, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.');
+    warnedForSpread = true;
     return _assign.apply(null, arguments);
+  };
+
+  createMixin = function (mixin) {
+    lowPriorityWarning(warnedForCreateMixin, 'React.createMixin is deprecated and should not be used. ' + 'In React v16.0, it will be removed. ' + 'You can use this mixin directly instead. ' + 'See https://fb.me/createmixin-was-never-implemented for more info.');
+    warnedForCreateMixin = true;
+    return mixin;
   };
 }
 
 var React = {
-
   // Modern
 
   Children: {
@@ -38465,8 +42273,8 @@ var React = {
     only: onlyChild
   },
 
-  Component: ReactComponent,
-  PureComponent: ReactPureComponent,
+  Component: ReactBaseClasses.Component,
+  PureComponent: ReactBaseClasses.PureComponent,
 
   createElement: createElement,
   cloneElement: cloneElement,
@@ -38475,12 +42283,9 @@ var React = {
   // Classic
 
   PropTypes: ReactPropTypes,
-  createClass: ReactClass.createClass,
+  createClass: createReactClass,
   createFactory: createFactory,
-  createMixin: function (mixin) {
-    // Currently a noop. Will be used to validate and trace mixins.
-    return mixin;
-  },
+  createMixin: createMixin,
 
   // This looks DOM specific but these are actually isomorphic helpers
   // since they are just generating DOM strings.
@@ -38492,20 +42297,191 @@ var React = {
   __spread: __spread
 };
 
-// TODO: Fix tests so that this deprecation warning doesn't cause failures.
 if ('development' !== 'production') {
+  var warnedForCreateClass = false;
   if (canDefineProperty) {
     Object.defineProperty(React, 'PropTypes', {
       get: function () {
-        'development' !== 'production' ? warning(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated. Use ' + 'the prop-types package from npm instead.') : void 0;
+        lowPriorityWarning(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated,' + ' and will be removed in  React v16.0.' + ' Use the latest available v15.* prop-types package from npm instead.' + ' For info on usage, compatibility, migration and more, see ' + 'https://fb.me/prop-types-docs');
         didWarnPropTypesDeprecated = true;
         return ReactPropTypes;
       }
     });
+
+    Object.defineProperty(React, 'createClass', {
+      get: function () {
+        lowPriorityWarning(warnedForCreateClass, 'Accessing createClass via the main React package is deprecated,' + ' and will be removed in React v16.0.' + " Use a plain JavaScript class instead. If you're not yet " + 'ready to migrate, create-react-class v15.* is available ' + 'on npm as a temporary, drop-in replacement. ' + 'For more info see https://fb.me/react-create-class');
+        warnedForCreateClass = true;
+        return createReactClass;
+      }
+    });
   }
+
+  // React.DOM factories are deprecated. Wrap these methods so that
+  // invocations of the React.DOM namespace and alert users to switch
+  // to the `react-dom-factories` package.
+  React.DOM = {};
+  var warnedForFactories = false;
+  Object.keys(ReactDOMFactories).forEach(function (factory) {
+    React.DOM[factory] = function () {
+      if (!warnedForFactories) {
+        lowPriorityWarning(false, 'Accessing factories like React.DOM.%s has been deprecated ' + 'and will be removed in v16.0+. Use the ' + 'react-dom-factories package instead. ' + ' Version 1.0 provides a drop-in replacement.' + ' For more info, see https://fb.me/react-dom-factories', factory);
+        warnedForFactories = true;
+      }
+      return ReactDOMFactories[factory].apply(ReactDOMFactories, arguments);
+    };
+  });
 }
 
 module.exports = React;
+  })();
+});
+
+require.register("react/lib/ReactBaseClasses.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var _prodInvariant = require('./reactProdInvariant'),
+    _assign = require('object-assign');
+
+var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
+
+var canDefineProperty = require('./canDefineProperty');
+var emptyObject = require('fbjs/lib/emptyObject');
+var invariant = require('fbjs/lib/invariant');
+var lowPriorityWarning = require('./lowPriorityWarning');
+
+/**
+ * Base class helpers for the updating state of a component.
+ */
+function ReactComponent(props, context, updater) {
+  this.props = props;
+  this.context = context;
+  this.refs = emptyObject;
+  // We initialize the default updater but the real one gets injected by the
+  // renderer.
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+ReactComponent.prototype.isReactComponent = {};
+
+/**
+ * Sets a subset of the state. Always use this to mutate
+ * state. You should treat `this.state` as immutable.
+ *
+ * There is no guarantee that `this.state` will be immediately updated, so
+ * accessing `this.state` after calling this method may return the old value.
+ *
+ * There is no guarantee that calls to `setState` will run synchronously,
+ * as they may eventually be batched together.  You can provide an optional
+ * callback that will be executed when the call to setState is actually
+ * completed.
+ *
+ * When a function is provided to setState, it will be called at some point in
+ * the future (not synchronously). It will be called with the up to date
+ * component arguments (state, props, context). These values can be different
+ * from this.* because your function may be called after receiveProps but before
+ * shouldComponentUpdate, and this new state, props, and context will not yet be
+ * assigned to this.
+ *
+ * @param {object|function} partialState Next partial state or function to
+ *        produce next partial state to be merged with current state.
+ * @param {?function} callback Called after state is updated.
+ * @final
+ * @protected
+ */
+ReactComponent.prototype.setState = function (partialState, callback) {
+  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? 'development' !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : _prodInvariant('85') : void 0;
+  this.updater.enqueueSetState(this, partialState);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'setState');
+  }
+};
+
+/**
+ * Forces an update. This should only be invoked when it is known with
+ * certainty that we are **not** in a DOM transaction.
+ *
+ * You may want to call this when you know that some deeper aspect of the
+ * component's state has changed but `setState` was not called.
+ *
+ * This will not invoke `shouldComponentUpdate`, but it will invoke
+ * `componentWillUpdate` and `componentDidUpdate`.
+ *
+ * @param {?function} callback Called after update is complete.
+ * @final
+ * @protected
+ */
+ReactComponent.prototype.forceUpdate = function (callback) {
+  this.updater.enqueueForceUpdate(this);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'forceUpdate');
+  }
+};
+
+/**
+ * Deprecated APIs. These APIs used to exist on classic React classes but since
+ * we would like to deprecate them, we're not going to move them over to this
+ * modern base class. Instead, we define a getter that warns if it's accessed.
+ */
+if ('development' !== 'production') {
+  var deprecatedAPIs = {
+    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
+    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
+  };
+  var defineDeprecationWarning = function (methodName, info) {
+    if (canDefineProperty) {
+      Object.defineProperty(ReactComponent.prototype, methodName, {
+        get: function () {
+          lowPriorityWarning(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
+          return undefined;
+        }
+      });
+    }
+  };
+  for (var fnName in deprecatedAPIs) {
+    if (deprecatedAPIs.hasOwnProperty(fnName)) {
+      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
+    }
+  }
+}
+
+/**
+ * Base class helpers for the updating state of a component.
+ */
+function ReactPureComponent(props, context, updater) {
+  // Duplicated from ReactComponent.
+  this.props = props;
+  this.context = context;
+  this.refs = emptyObject;
+  // We initialize the default updater but the real one gets injected by the
+  // renderer.
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+function ComponentDummy() {}
+ComponentDummy.prototype = ReactComponent.prototype;
+ReactPureComponent.prototype = new ComponentDummy();
+ReactPureComponent.prototype.constructor = ReactPureComponent;
+// Avoid an extra prototype jump for these methods.
+_assign(ReactPureComponent.prototype, ReactComponent.prototype);
+ReactPureComponent.prototype.isPureReactComponent = true;
+
+module.exports = {
+  Component: ReactComponent,
+  PureComponent: ReactPureComponent
+};
   })();
 });
 
@@ -38705,857 +42681,6 @@ module.exports = ReactChildren;
   })();
 });
 
-require.register("react/lib/ReactClass.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
-  (function() {
-    /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var _prodInvariant = require('./reactProdInvariant'),
-    _assign = require('object-assign');
-
-var ReactComponent = require('./ReactComponent');
-var ReactElement = require('./ReactElement');
-var ReactPropTypeLocationNames = require('./ReactPropTypeLocationNames');
-var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
-
-var emptyObject = require('fbjs/lib/emptyObject');
-var invariant = require('fbjs/lib/invariant');
-var warning = require('fbjs/lib/warning');
-
-var MIXINS_KEY = 'mixins';
-
-// Helper function to allow the creation of anonymous functions which do not
-// have .name set to the name of the variable being assigned to.
-function identity(fn) {
-  return fn;
-}
-
-/**
- * Policies that describe methods in `ReactClassInterface`.
- */
-
-
-var injectedMixins = [];
-
-/**
- * Composite components are higher-level components that compose other composite
- * or host components.
- *
- * To create a new type of `ReactClass`, pass a specification of
- * your new class to `React.createClass`. The only requirement of your class
- * specification is that you implement a `render` method.
- *
- *   var MyComponent = React.createClass({
- *     render: function() {
- *       return <div>Hello World</div>;
- *     }
- *   });
- *
- * The class specification supports a specific protocol of methods that have
- * special meaning (e.g. `render`). See `ReactClassInterface` for
- * more the comprehensive protocol. Any other properties and methods in the
- * class specification will be available on the prototype.
- *
- * @interface ReactClassInterface
- * @internal
- */
-var ReactClassInterface = {
-
-  /**
-   * An array of Mixin objects to include when defining your component.
-   *
-   * @type {array}
-   * @optional
-   */
-  mixins: 'DEFINE_MANY',
-
-  /**
-   * An object containing properties and methods that should be defined on
-   * the component's constructor instead of its prototype (static methods).
-   *
-   * @type {object}
-   * @optional
-   */
-  statics: 'DEFINE_MANY',
-
-  /**
-   * Definition of prop types for this component.
-   *
-   * @type {object}
-   * @optional
-   */
-  propTypes: 'DEFINE_MANY',
-
-  /**
-   * Definition of context types for this component.
-   *
-   * @type {object}
-   * @optional
-   */
-  contextTypes: 'DEFINE_MANY',
-
-  /**
-   * Definition of context types this component sets for its children.
-   *
-   * @type {object}
-   * @optional
-   */
-  childContextTypes: 'DEFINE_MANY',
-
-  // ==== Definition methods ====
-
-  /**
-   * Invoked when the component is mounted. Values in the mapping will be set on
-   * `this.props` if that prop is not specified (i.e. using an `in` check).
-   *
-   * This method is invoked before `getInitialState` and therefore cannot rely
-   * on `this.state` or use `this.setState`.
-   *
-   * @return {object}
-   * @optional
-   */
-  getDefaultProps: 'DEFINE_MANY_MERGED',
-
-  /**
-   * Invoked once before the component is mounted. The return value will be used
-   * as the initial value of `this.state`.
-   *
-   *   getInitialState: function() {
-   *     return {
-   *       isOn: false,
-   *       fooBaz: new BazFoo()
-   *     }
-   *   }
-   *
-   * @return {object}
-   * @optional
-   */
-  getInitialState: 'DEFINE_MANY_MERGED',
-
-  /**
-   * @return {object}
-   * @optional
-   */
-  getChildContext: 'DEFINE_MANY_MERGED',
-
-  /**
-   * Uses props from `this.props` and state from `this.state` to render the
-   * structure of the component.
-   *
-   * No guarantees are made about when or how often this method is invoked, so
-   * it must not have side effects.
-   *
-   *   render: function() {
-   *     var name = this.props.name;
-   *     return <div>Hello, {name}!</div>;
-   *   }
-   *
-   * @return {ReactComponent}
-   * @required
-   */
-  render: 'DEFINE_ONCE',
-
-  // ==== Delegate methods ====
-
-  /**
-   * Invoked when the component is initially created and about to be mounted.
-   * This may have side effects, but any external subscriptions or data created
-   * by this method must be cleaned up in `componentWillUnmount`.
-   *
-   * @optional
-   */
-  componentWillMount: 'DEFINE_MANY',
-
-  /**
-   * Invoked when the component has been mounted and has a DOM representation.
-   * However, there is no guarantee that the DOM node is in the document.
-   *
-   * Use this as an opportunity to operate on the DOM when the component has
-   * been mounted (initialized and rendered) for the first time.
-   *
-   * @param {DOMElement} rootNode DOM element representing the component.
-   * @optional
-   */
-  componentDidMount: 'DEFINE_MANY',
-
-  /**
-   * Invoked before the component receives new props.
-   *
-   * Use this as an opportunity to react to a prop transition by updating the
-   * state using `this.setState`. Current props are accessed via `this.props`.
-   *
-   *   componentWillReceiveProps: function(nextProps, nextContext) {
-   *     this.setState({
-   *       likesIncreasing: nextProps.likeCount > this.props.likeCount
-   *     });
-   *   }
-   *
-   * NOTE: There is no equivalent `componentWillReceiveState`. An incoming prop
-   * transition may cause a state change, but the opposite is not true. If you
-   * need it, you are probably looking for `componentWillUpdate`.
-   *
-   * @param {object} nextProps
-   * @optional
-   */
-  componentWillReceiveProps: 'DEFINE_MANY',
-
-  /**
-   * Invoked while deciding if the component should be updated as a result of
-   * receiving new props, state and/or context.
-   *
-   * Use this as an opportunity to `return false` when you're certain that the
-   * transition to the new props/state/context will not require a component
-   * update.
-   *
-   *   shouldComponentUpdate: function(nextProps, nextState, nextContext) {
-   *     return !equal(nextProps, this.props) ||
-   *       !equal(nextState, this.state) ||
-   *       !equal(nextContext, this.context);
-   *   }
-   *
-   * @param {object} nextProps
-   * @param {?object} nextState
-   * @param {?object} nextContext
-   * @return {boolean} True if the component should update.
-   * @optional
-   */
-  shouldComponentUpdate: 'DEFINE_ONCE',
-
-  /**
-   * Invoked when the component is about to update due to a transition from
-   * `this.props`, `this.state` and `this.context` to `nextProps`, `nextState`
-   * and `nextContext`.
-   *
-   * Use this as an opportunity to perform preparation before an update occurs.
-   *
-   * NOTE: You **cannot** use `this.setState()` in this method.
-   *
-   * @param {object} nextProps
-   * @param {?object} nextState
-   * @param {?object} nextContext
-   * @param {ReactReconcileTransaction} transaction
-   * @optional
-   */
-  componentWillUpdate: 'DEFINE_MANY',
-
-  /**
-   * Invoked when the component's DOM representation has been updated.
-   *
-   * Use this as an opportunity to operate on the DOM when the component has
-   * been updated.
-   *
-   * @param {object} prevProps
-   * @param {?object} prevState
-   * @param {?object} prevContext
-   * @param {DOMElement} rootNode DOM element representing the component.
-   * @optional
-   */
-  componentDidUpdate: 'DEFINE_MANY',
-
-  /**
-   * Invoked when the component is about to be removed from its parent and have
-   * its DOM representation destroyed.
-   *
-   * Use this as an opportunity to deallocate any external resources.
-   *
-   * NOTE: There is no `componentDidUnmount` since your component will have been
-   * destroyed by that point.
-   *
-   * @optional
-   */
-  componentWillUnmount: 'DEFINE_MANY',
-
-  // ==== Advanced methods ====
-
-  /**
-   * Updates the component's currently mounted DOM representation.
-   *
-   * By default, this implements React's rendering and reconciliation algorithm.
-   * Sophisticated clients may wish to override this.
-   *
-   * @param {ReactReconcileTransaction} transaction
-   * @internal
-   * @overridable
-   */
-  updateComponent: 'OVERRIDE_BASE'
-
-};
-
-/**
- * Mapping from class specification keys to special processing functions.
- *
- * Although these are declared like instance properties in the specification
- * when defining classes using `React.createClass`, they are actually static
- * and are accessible on the constructor instead of the prototype. Despite
- * being static, they must be defined outside of the "statics" key under
- * which all other static methods are defined.
- */
-var RESERVED_SPEC_KEYS = {
-  displayName: function (Constructor, displayName) {
-    Constructor.displayName = displayName;
-  },
-  mixins: function (Constructor, mixins) {
-    if (mixins) {
-      for (var i = 0; i < mixins.length; i++) {
-        mixSpecIntoComponent(Constructor, mixins[i]);
-      }
-    }
-  },
-  childContextTypes: function (Constructor, childContextTypes) {
-    if ('development' !== 'production') {
-      validateTypeDef(Constructor, childContextTypes, 'childContext');
-    }
-    Constructor.childContextTypes = _assign({}, Constructor.childContextTypes, childContextTypes);
-  },
-  contextTypes: function (Constructor, contextTypes) {
-    if ('development' !== 'production') {
-      validateTypeDef(Constructor, contextTypes, 'context');
-    }
-    Constructor.contextTypes = _assign({}, Constructor.contextTypes, contextTypes);
-  },
-  /**
-   * Special case getDefaultProps which should move into statics but requires
-   * automatic merging.
-   */
-  getDefaultProps: function (Constructor, getDefaultProps) {
-    if (Constructor.getDefaultProps) {
-      Constructor.getDefaultProps = createMergedResultFunction(Constructor.getDefaultProps, getDefaultProps);
-    } else {
-      Constructor.getDefaultProps = getDefaultProps;
-    }
-  },
-  propTypes: function (Constructor, propTypes) {
-    if ('development' !== 'production') {
-      validateTypeDef(Constructor, propTypes, 'prop');
-    }
-    Constructor.propTypes = _assign({}, Constructor.propTypes, propTypes);
-  },
-  statics: function (Constructor, statics) {
-    mixStaticSpecIntoComponent(Constructor, statics);
-  },
-  autobind: function () {} };
-
-function validateTypeDef(Constructor, typeDef, location) {
-  for (var propName in typeDef) {
-    if (typeDef.hasOwnProperty(propName)) {
-      // use a warning instead of an invariant so components
-      // don't show up in prod but only in __DEV__
-      'development' !== 'production' ? warning(typeof typeDef[propName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', Constructor.displayName || 'ReactClass', ReactPropTypeLocationNames[location], propName) : void 0;
-    }
-  }
-}
-
-function validateMethodOverride(isAlreadyDefined, name) {
-  var specPolicy = ReactClassInterface.hasOwnProperty(name) ? ReactClassInterface[name] : null;
-
-  // Disallow overriding of base class methods unless explicitly allowed.
-  if (ReactClassMixin.hasOwnProperty(name)) {
-    !(specPolicy === 'OVERRIDE_BASE') ? 'development' !== 'production' ? invariant(false, 'ReactClassInterface: You are attempting to override `%s` from your class specification. Ensure that your method names do not overlap with React methods.', name) : _prodInvariant('73', name) : void 0;
-  }
-
-  // Disallow defining methods more than once unless explicitly allowed.
-  if (isAlreadyDefined) {
-    !(specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED') ? 'development' !== 'production' ? invariant(false, 'ReactClassInterface: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('74', name) : void 0;
-  }
-}
-
-/**
- * Mixin helper which handles policy validation and reserved
- * specification keys when building React classes.
- */
-function mixSpecIntoComponent(Constructor, spec) {
-  if (!spec) {
-    if ('development' !== 'production') {
-      var typeofSpec = typeof spec;
-      var isMixinValid = typeofSpec === 'object' && spec !== null;
-
-      'development' !== 'production' ? warning(isMixinValid, '%s: You\'re attempting to include a mixin that is either null ' + 'or not an object. Check the mixins included by the component, ' + 'as well as any mixins they include themselves. ' + 'Expected object but got %s.', Constructor.displayName || 'ReactClass', spec === null ? null : typeofSpec) : void 0;
-    }
-
-    return;
-  }
-
-  !(typeof spec !== 'function') ? 'development' !== 'production' ? invariant(false, 'ReactClass: You\'re attempting to use a component class or function as a mixin. Instead, just use a regular object.') : _prodInvariant('75') : void 0;
-  !!ReactElement.isValidElement(spec) ? 'development' !== 'production' ? invariant(false, 'ReactClass: You\'re attempting to use a component as a mixin. Instead, just use a regular object.') : _prodInvariant('76') : void 0;
-
-  var proto = Constructor.prototype;
-  var autoBindPairs = proto.__reactAutoBindPairs;
-
-  // By handling mixins before any other properties, we ensure the same
-  // chaining order is applied to methods with DEFINE_MANY policy, whether
-  // mixins are listed before or after these methods in the spec.
-  if (spec.hasOwnProperty(MIXINS_KEY)) {
-    RESERVED_SPEC_KEYS.mixins(Constructor, spec.mixins);
-  }
-
-  for (var name in spec) {
-    if (!spec.hasOwnProperty(name)) {
-      continue;
-    }
-
-    if (name === MIXINS_KEY) {
-      // We have already handled mixins in a special case above.
-      continue;
-    }
-
-    var property = spec[name];
-    var isAlreadyDefined = proto.hasOwnProperty(name);
-    validateMethodOverride(isAlreadyDefined, name);
-
-    if (RESERVED_SPEC_KEYS.hasOwnProperty(name)) {
-      RESERVED_SPEC_KEYS[name](Constructor, property);
-    } else {
-      // Setup methods on prototype:
-      // The following member methods should not be automatically bound:
-      // 1. Expected ReactClass methods (in the "interface").
-      // 2. Overridden methods (that were mixed in).
-      var isReactClassMethod = ReactClassInterface.hasOwnProperty(name);
-      var isFunction = typeof property === 'function';
-      var shouldAutoBind = isFunction && !isReactClassMethod && !isAlreadyDefined && spec.autobind !== false;
-
-      if (shouldAutoBind) {
-        autoBindPairs.push(name, property);
-        proto[name] = property;
-      } else {
-        if (isAlreadyDefined) {
-          var specPolicy = ReactClassInterface[name];
-
-          // These cases should already be caught by validateMethodOverride.
-          !(isReactClassMethod && (specPolicy === 'DEFINE_MANY_MERGED' || specPolicy === 'DEFINE_MANY')) ? 'development' !== 'production' ? invariant(false, 'ReactClass: Unexpected spec policy %s for key %s when mixing in component specs.', specPolicy, name) : _prodInvariant('77', specPolicy, name) : void 0;
-
-          // For methods which are defined more than once, call the existing
-          // methods before calling the new property, merging if appropriate.
-          if (specPolicy === 'DEFINE_MANY_MERGED') {
-            proto[name] = createMergedResultFunction(proto[name], property);
-          } else if (specPolicy === 'DEFINE_MANY') {
-            proto[name] = createChainedFunction(proto[name], property);
-          }
-        } else {
-          proto[name] = property;
-          if ('development' !== 'production') {
-            // Add verbose displayName to the function, which helps when looking
-            // at profiling tools.
-            if (typeof property === 'function' && spec.displayName) {
-              proto[name].displayName = spec.displayName + '_' + name;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-function mixStaticSpecIntoComponent(Constructor, statics) {
-  if (!statics) {
-    return;
-  }
-  for (var name in statics) {
-    var property = statics[name];
-    if (!statics.hasOwnProperty(name)) {
-      continue;
-    }
-
-    var isReserved = name in RESERVED_SPEC_KEYS;
-    !!isReserved ? 'development' !== 'production' ? invariant(false, 'ReactClass: You are attempting to define a reserved property, `%s`, that shouldn\'t be on the "statics" key. Define it as an instance property instead; it will still be accessible on the constructor.', name) : _prodInvariant('78', name) : void 0;
-
-    var isInherited = name in Constructor;
-    !!isInherited ? 'development' !== 'production' ? invariant(false, 'ReactClass: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('79', name) : void 0;
-    Constructor[name] = property;
-  }
-}
-
-/**
- * Merge two objects, but throw if both contain the same key.
- *
- * @param {object} one The first object, which is mutated.
- * @param {object} two The second object
- * @return {object} one after it has been mutated to contain everything in two.
- */
-function mergeIntoWithNoDuplicateKeys(one, two) {
-  !(one && two && typeof one === 'object' && typeof two === 'object') ? 'development' !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.') : _prodInvariant('80') : void 0;
-
-  for (var key in two) {
-    if (two.hasOwnProperty(key)) {
-      !(one[key] === undefined) ? 'development' !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Tried to merge two objects with the same key: `%s`. This conflict may be due to a mixin; in particular, this may be caused by two getInitialState() or getDefaultProps() methods returning objects with clashing keys.', key) : _prodInvariant('81', key) : void 0;
-      one[key] = two[key];
-    }
-  }
-  return one;
-}
-
-/**
- * Creates a function that invokes two functions and merges their return values.
- *
- * @param {function} one Function to invoke first.
- * @param {function} two Function to invoke second.
- * @return {function} Function that invokes the two argument functions.
- * @private
- */
-function createMergedResultFunction(one, two) {
-  return function mergedResult() {
-    var a = one.apply(this, arguments);
-    var b = two.apply(this, arguments);
-    if (a == null) {
-      return b;
-    } else if (b == null) {
-      return a;
-    }
-    var c = {};
-    mergeIntoWithNoDuplicateKeys(c, a);
-    mergeIntoWithNoDuplicateKeys(c, b);
-    return c;
-  };
-}
-
-/**
- * Creates a function that invokes two functions and ignores their return vales.
- *
- * @param {function} one Function to invoke first.
- * @param {function} two Function to invoke second.
- * @return {function} Function that invokes the two argument functions.
- * @private
- */
-function createChainedFunction(one, two) {
-  return function chainedFunction() {
-    one.apply(this, arguments);
-    two.apply(this, arguments);
-  };
-}
-
-/**
- * Binds a method to the component.
- *
- * @param {object} component Component whose method is going to be bound.
- * @param {function} method Method to be bound.
- * @return {function} The bound method.
- */
-function bindAutoBindMethod(component, method) {
-  var boundMethod = method.bind(component);
-  if ('development' !== 'production') {
-    boundMethod.__reactBoundContext = component;
-    boundMethod.__reactBoundMethod = method;
-    boundMethod.__reactBoundArguments = null;
-    var componentName = component.constructor.displayName;
-    var _bind = boundMethod.bind;
-    boundMethod.bind = function (newThis) {
-      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-
-      // User is trying to bind() an autobound method; we effectively will
-      // ignore the value of "this" that the user is trying to use, so
-      // let's warn.
-      if (newThis !== component && newThis !== null) {
-        'development' !== 'production' ? warning(false, 'bind(): React component methods may only be bound to the ' + 'component instance. See %s', componentName) : void 0;
-      } else if (!args.length) {
-        'development' !== 'production' ? warning(false, 'bind(): You are binding a component method to the component. ' + 'React does this for you automatically in a high-performance ' + 'way, so you can safely remove this call. See %s', componentName) : void 0;
-        return boundMethod;
-      }
-      var reboundMethod = _bind.apply(boundMethod, arguments);
-      reboundMethod.__reactBoundContext = component;
-      reboundMethod.__reactBoundMethod = method;
-      reboundMethod.__reactBoundArguments = args;
-      return reboundMethod;
-    };
-  }
-  return boundMethod;
-}
-
-/**
- * Binds all auto-bound methods in a component.
- *
- * @param {object} component Component whose method is going to be bound.
- */
-function bindAutoBindMethods(component) {
-  var pairs = component.__reactAutoBindPairs;
-  for (var i = 0; i < pairs.length; i += 2) {
-    var autoBindKey = pairs[i];
-    var method = pairs[i + 1];
-    component[autoBindKey] = bindAutoBindMethod(component, method);
-  }
-}
-
-/**
- * Add more to the ReactClass base class. These are all legacy features and
- * therefore not already part of the modern ReactComponent.
- */
-var ReactClassMixin = {
-
-  /**
-   * TODO: This will be deprecated because state should always keep a consistent
-   * type signature and the only use case for this, is to avoid that.
-   */
-  replaceState: function (newState, callback) {
-    this.updater.enqueueReplaceState(this, newState);
-    if (callback) {
-      this.updater.enqueueCallback(this, callback, 'replaceState');
-    }
-  },
-
-  /**
-   * Checks whether or not this composite component is mounted.
-   * @return {boolean} True if mounted, false otherwise.
-   * @protected
-   * @final
-   */
-  isMounted: function () {
-    return this.updater.isMounted(this);
-  }
-};
-
-var ReactClassComponent = function () {};
-_assign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
-
-var didWarnDeprecated = false;
-
-/**
- * Module for creating composite components.
- *
- * @class ReactClass
- */
-var ReactClass = {
-
-  /**
-   * Creates a composite component class given a class specification.
-   * See https://facebook.github.io/react/docs/top-level-api.html#react.createclass
-   *
-   * @param {object} spec Class specification (which must define `render`).
-   * @return {function} Component constructor function.
-   * @public
-   */
-  createClass: function (spec) {
-    if ('development' !== 'production') {
-      'development' !== 'production' ? warning(didWarnDeprecated, '%s: React.createClass is deprecated and will be removed in version 16. ' + 'Use plain JavaScript classes instead. If you\'re not yet ready to ' + 'migrate, create-react-class is available on npm as a ' + 'drop-in replacement.', spec && spec.displayName || 'A Component') : void 0;
-      didWarnDeprecated = true;
-    }
-
-    // To keep our warnings more understandable, we'll use a little hack here to
-    // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
-    // unnecessarily identify a class without displayName as 'Constructor'.
-    var Constructor = identity(function (props, context, updater) {
-      // This constructor gets overridden by mocks. The argument is used
-      // by mocks to assert on what gets mounted.
-
-      if ('development' !== 'production') {
-        'development' !== 'production' ? warning(this instanceof Constructor, 'Something is calling a React component directly. Use a factory or ' + 'JSX instead. See: https://fb.me/react-legacyfactory') : void 0;
-      }
-
-      // Wire up auto-binding
-      if (this.__reactAutoBindPairs.length) {
-        bindAutoBindMethods(this);
-      }
-
-      this.props = props;
-      this.context = context;
-      this.refs = emptyObject;
-      this.updater = updater || ReactNoopUpdateQueue;
-
-      this.state = null;
-
-      // ReactClasses doesn't have constructors. Instead, they use the
-      // getInitialState and componentWillMount methods for initialization.
-
-      var initialState = this.getInitialState ? this.getInitialState() : null;
-      if ('development' !== 'production') {
-        // We allow auto-mocks to proceed as if they're returning null.
-        if (initialState === undefined && this.getInitialState._isMockFunction) {
-          // This is probably bad practice. Consider warning here and
-          // deprecating this convenience.
-          initialState = null;
-        }
-      }
-      !(typeof initialState === 'object' && !Array.isArray(initialState)) ? 'development' !== 'production' ? invariant(false, '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent') : _prodInvariant('82', Constructor.displayName || 'ReactCompositeComponent') : void 0;
-
-      this.state = initialState;
-    });
-    Constructor.prototype = new ReactClassComponent();
-    Constructor.prototype.constructor = Constructor;
-    Constructor.prototype.__reactAutoBindPairs = [];
-
-    injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
-
-    mixSpecIntoComponent(Constructor, spec);
-
-    // Initialize the defaultProps property after all mixins have been merged.
-    if (Constructor.getDefaultProps) {
-      Constructor.defaultProps = Constructor.getDefaultProps();
-    }
-
-    if ('development' !== 'production') {
-      // This is a tag to indicate that the use of these method names is ok,
-      // since it's used with createClass. If it's not, then it's likely a
-      // mistake so we'll warn you to use the static property, property
-      // initializer or constructor respectively.
-      if (Constructor.getDefaultProps) {
-        Constructor.getDefaultProps.isReactClassApproved = {};
-      }
-      if (Constructor.prototype.getInitialState) {
-        Constructor.prototype.getInitialState.isReactClassApproved = {};
-      }
-    }
-
-    !Constructor.prototype.render ? 'development' !== 'production' ? invariant(false, 'createClass(...): Class specification must implement a `render` method.') : _prodInvariant('83') : void 0;
-
-    if ('development' !== 'production') {
-      'development' !== 'production' ? warning(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component') : void 0;
-      'development' !== 'production' ? warning(!Constructor.prototype.componentWillRecieveProps, '%s has a method called ' + 'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?', spec.displayName || 'A component') : void 0;
-    }
-
-    // Reduce time spent doing lookups by setting these on the prototype.
-    for (var methodName in ReactClassInterface) {
-      if (!Constructor.prototype[methodName]) {
-        Constructor.prototype[methodName] = null;
-      }
-    }
-
-    return Constructor;
-  },
-
-  injection: {
-    injectMixin: function (mixin) {
-      injectedMixins.push(mixin);
-    }
-  }
-
-};
-
-module.exports = ReactClass;
-  })();
-});
-
-require.register("react/lib/ReactComponent.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
-  (function() {
-    /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var _prodInvariant = require('./reactProdInvariant');
-
-var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
-
-var canDefineProperty = require('./canDefineProperty');
-var emptyObject = require('fbjs/lib/emptyObject');
-var invariant = require('fbjs/lib/invariant');
-var warning = require('fbjs/lib/warning');
-
-/**
- * Base class helpers for the updating state of a component.
- */
-function ReactComponent(props, context, updater) {
-  this.props = props;
-  this.context = context;
-  this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
-  this.updater = updater || ReactNoopUpdateQueue;
-}
-
-ReactComponent.prototype.isReactComponent = {};
-
-/**
- * Sets a subset of the state. Always use this to mutate
- * state. You should treat `this.state` as immutable.
- *
- * There is no guarantee that `this.state` will be immediately updated, so
- * accessing `this.state` after calling this method may return the old value.
- *
- * There is no guarantee that calls to `setState` will run synchronously,
- * as they may eventually be batched together.  You can provide an optional
- * callback that will be executed when the call to setState is actually
- * completed.
- *
- * When a function is provided to setState, it will be called at some point in
- * the future (not synchronously). It will be called with the up to date
- * component arguments (state, props, context). These values can be different
- * from this.* because your function may be called after receiveProps but before
- * shouldComponentUpdate, and this new state, props, and context will not yet be
- * assigned to this.
- *
- * @param {object|function} partialState Next partial state or function to
- *        produce next partial state to be merged with current state.
- * @param {?function} callback Called after state is updated.
- * @final
- * @protected
- */
-ReactComponent.prototype.setState = function (partialState, callback) {
-  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? 'development' !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : _prodInvariant('85') : void 0;
-  this.updater.enqueueSetState(this, partialState);
-  if (callback) {
-    this.updater.enqueueCallback(this, callback, 'setState');
-  }
-};
-
-/**
- * Forces an update. This should only be invoked when it is known with
- * certainty that we are **not** in a DOM transaction.
- *
- * You may want to call this when you know that some deeper aspect of the
- * component's state has changed but `setState` was not called.
- *
- * This will not invoke `shouldComponentUpdate`, but it will invoke
- * `componentWillUpdate` and `componentDidUpdate`.
- *
- * @param {?function} callback Called after update is complete.
- * @final
- * @protected
- */
-ReactComponent.prototype.forceUpdate = function (callback) {
-  this.updater.enqueueForceUpdate(this);
-  if (callback) {
-    this.updater.enqueueCallback(this, callback, 'forceUpdate');
-  }
-};
-
-/**
- * Deprecated APIs. These APIs used to exist on classic React classes but since
- * we would like to deprecate them, we're not going to move them over to this
- * modern base class. Instead, we define a getter that warns if it's accessed.
- */
-if ('development' !== 'production') {
-  var deprecatedAPIs = {
-    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
-    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
-  };
-  var defineDeprecationWarning = function (methodName, info) {
-    if (canDefineProperty) {
-      Object.defineProperty(ReactComponent.prototype, methodName, {
-        get: function () {
-          'development' !== 'production' ? warning(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]) : void 0;
-          return undefined;
-        }
-      });
-    }
-  };
-  for (var fnName in deprecatedAPIs) {
-    if (deprecatedAPIs.hasOwnProperty(fnName)) {
-      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
-    }
-  }
-}
-
-module.exports = ReactComponent;
-  })();
-});
-
 require.register("react/lib/ReactComponentTreeHook.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
   (function() {
@@ -39585,11 +42710,11 @@ function isNative(fn) {
   var hasOwnProperty = Object.prototype.hasOwnProperty;
   var reIsNative = RegExp('^' + funcToString
   // Take an example native function source for comparison
-  .call(hasOwnProperty)
+  .call(hasOwnProperty
   // Strip regex characters so we can use it for regex
-  .replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+  ).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'
   // Remove hasOwnProperty from the template to make it generic
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
+  ).replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
   try {
     var source = funcToString.call(fn);
     return reIsNative.test(source);
@@ -39888,7 +43013,52 @@ var ReactComponentTreeHook = {
 
 
   getRootIDs: getRootIDs,
-  getRegisteredIDs: getItemIDs
+  getRegisteredIDs: getItemIDs,
+
+  pushNonStandardWarningStack: function (isCreatingElement, currentSource) {
+    if (typeof console.reactStack !== 'function') {
+      return;
+    }
+
+    var stack = [];
+    var currentOwner = ReactCurrentOwner.current;
+    var id = currentOwner && currentOwner._debugID;
+
+    try {
+      if (isCreatingElement) {
+        stack.push({
+          name: id ? ReactComponentTreeHook.getDisplayName(id) : null,
+          fileName: currentSource ? currentSource.fileName : null,
+          lineNumber: currentSource ? currentSource.lineNumber : null
+        });
+      }
+
+      while (id) {
+        var element = ReactComponentTreeHook.getElement(id);
+        var parentID = ReactComponentTreeHook.getParentID(id);
+        var ownerID = ReactComponentTreeHook.getOwnerID(id);
+        var ownerName = ownerID ? ReactComponentTreeHook.getDisplayName(ownerID) : null;
+        var source = element && element._source;
+        stack.push({
+          name: ownerName,
+          fileName: source ? source.fileName : null,
+          lineNumber: source ? source.lineNumber : null
+        });
+        id = parentID;
+      }
+    } catch (err) {
+      // Internal state is messed up.
+      // Stop building the stack (it's just a nice to have).
+    }
+
+    console.reactStack(stack);
+  },
+  popNonStandardWarningStack: function () {
+    if (typeof console.reactStackEnd !== 'function') {
+      return;
+    }
+    console.reactStackEnd();
+  }
 };
 
 module.exports = ReactComponentTreeHook;
@@ -39918,13 +43088,11 @@ require.register("react/lib/ReactCurrentOwner.js", function(exports, require, mo
  * currently being constructed.
  */
 var ReactCurrentOwner = {
-
   /**
    * @internal
    * @type {ReactComponent}
    */
   current: null
-
 };
 
 module.exports = ReactCurrentOwner;
@@ -39961,7 +43129,6 @@ if ('development' !== 'production') {
 
 /**
  * Creates a mapping from supported HTML tags to `ReactDOMComponent` classes.
- * This is also accessible via `React.DOM`.
  *
  * @public
  */
@@ -40508,6 +43675,7 @@ var checkReactTypeSpec = require('./checkReactTypeSpec');
 var canDefineProperty = require('./canDefineProperty');
 var getIteratorFn = require('./getIteratorFn');
 var warning = require('fbjs/lib/warning');
+var lowPriorityWarning = require('./lowPriorityWarning');
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner.current) {
@@ -40648,7 +43816,6 @@ function validatePropTypes(element) {
 }
 
 var ReactElementValidator = {
-
   createElement: function (type, props, children) {
     var validType = typeof type === 'string' || typeof type === 'function';
     // We warn in this case but don't throw. We expect the element creation to
@@ -40657,7 +43824,7 @@ var ReactElementValidator = {
       if (typeof type !== 'function' && typeof type !== 'string') {
         var info = '';
         if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
-          info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
+          info += ' You likely forgot to export your component from the file ' + "it's defined in.";
         }
 
         var sourceInfo = getSourceInfoErrorAddendum(props);
@@ -40669,7 +43836,10 @@ var ReactElementValidator = {
 
         info += ReactComponentTreeHook.getCurrentStackAddendum();
 
+        var currentSource = props !== null && props !== undefined && props.__source !== undefined ? props.__source : null;
+        ReactComponentTreeHook.pushNonStandardWarningStack(true, currentSource);
         'development' !== 'production' ? warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type, info) : void 0;
+        ReactComponentTreeHook.popNonStandardWarningStack();
       }
     }
 
@@ -40707,7 +43877,7 @@ var ReactElementValidator = {
         Object.defineProperty(validatedFactory, 'type', {
           enumerable: false,
           get: function () {
-            'development' !== 'production' ? warning(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.') : void 0;
+            lowPriorityWarning(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
             Object.defineProperty(this, 'type', {
               value: type
             });
@@ -40728,7 +43898,6 @@ var ReactElementValidator = {
     validatePropTypes(newElement);
     return newElement;
   }
-
 };
 
 module.exports = ReactElementValidator;
@@ -40763,7 +43932,6 @@ function warnNoop(publicInstance, callerName) {
  * This is the abstract API for an update queue.
  */
 var ReactNoopUpdateQueue = {
-
   /**
    * Checks whether or not this composite component is mounted.
    * @param {ReactClass} publicInstance The instance we want to test.
@@ -40912,53 +44080,6 @@ module.exports = ReactPropTypesSecret;
   })();
 });
 
-require.register("react/lib/ReactPureComponent.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
-  (function() {
-    /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var _assign = require('object-assign');
-
-var ReactComponent = require('./ReactComponent');
-var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
-
-var emptyObject = require('fbjs/lib/emptyObject');
-
-/**
- * Base class helpers for the updating state of a component.
- */
-function ReactPureComponent(props, context, updater) {
-  // Duplicated from ReactComponent.
-  this.props = props;
-  this.context = context;
-  this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
-  this.updater = updater || ReactNoopUpdateQueue;
-}
-
-function ComponentDummy() {}
-ComponentDummy.prototype = ReactComponent.prototype;
-ReactPureComponent.prototype = new ComponentDummy();
-ReactPureComponent.prototype.constructor = ReactPureComponent;
-// Avoid an extra prototype jump for these methods.
-_assign(ReactPureComponent.prototype, ReactComponent.prototype);
-ReactPureComponent.prototype.isPureReactComponent = true;
-
-module.exports = ReactPureComponent;
-  })();
-});
-
 require.register("react/lib/ReactVersion.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
   (function() {
@@ -40974,7 +44095,7 @@ require.register("react/lib/ReactVersion.js", function(exports, require, module)
 
 'use strict';
 
-module.exports = '15.5.4';
+module.exports = '15.6.1';
   })();
 });
 
@@ -41101,6 +44222,34 @@ module.exports = checkReactTypeSpec;
   })();
 });
 
+require.register("react/lib/createClass.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
+  (function() {
+    /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var _require = require('./ReactBaseClasses'),
+    Component = _require.Component;
+
+var _require2 = require('./ReactElement'),
+    isValidElement = _require2.isValidElement;
+
+var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
+var factory = require('create-react-class/factory');
+
+module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
+  })();
+});
+
 require.register("react/lib/getIteratorFn.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
   (function() {
@@ -41170,6 +44319,76 @@ function getNextDebugID() {
 }
 
 module.exports = getNextDebugID;
+  })();
+});
+
+require.register("react/lib/lowPriorityWarning.js", function(exports, require, module) {
+  require = __makeRelativeRequire(require, {"transform":["loose-envify"]}, "react");
+  (function() {
+    /**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+/**
+ * Forked from fbjs/warning:
+ * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+ *
+ * Only change is we use console.warn instead of console.error,
+ * and do nothing when 'console' is not supported.
+ * This really simplifies the code.
+ * ---
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var lowPriorityWarning = function () {};
+
+if ('development' !== 'production') {
+  var printWarning = function (format) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+    if (typeof console !== 'undefined') {
+      console.warn(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  lowPriorityWarning = function (condition, format) {
+    if (format === undefined) {
+      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+    if (!condition) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(undefined, [format].concat(args));
+    }
+  };
+}
+
+module.exports = lowPriorityWarning;
   })();
 });
 
@@ -41396,7 +44615,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
       if ('development' !== 'production') {
         addendum = ' If you meant to render a collection of children, use an array ' + 'instead or wrap the object using createFragment(object) from the ' + 'React add-ons.';
         if (children._isReactElement) {
-          addendum = ' It looks like you\'re using an element created by a different ' + 'version of React. Make sure to use only one copy of React.';
+          addendum = " It looks like you're using an element created by a different " + 'version of React. Make sure to use only one copy of React.';
         }
         if (ReactCurrentOwner.current) {
           var name = ReactCurrentOwner.current.getName();
@@ -41595,7 +44814,7 @@ function getUndefinedStateErrorMessage(key, action) {
   var actionType = action && action.type;
   var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
 
-  return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state.';
+  return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state. ' + 'If you want this reducer to hold no value, you can return null instead of undefined.';
 }
 
 function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
@@ -41623,18 +44842,18 @@ function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, une
   }
 }
 
-function assertReducerSanity(reducers) {
+function assertReducerShape(reducers) {
   Object.keys(reducers).forEach(function (key) {
     var reducer = reducers[key];
     var initialState = reducer(undefined, { type: _createStore.ActionTypes.INIT });
 
     if (typeof initialState === 'undefined') {
-      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined.');
+      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined. If you don\'t want to set a value for this reducer, ' + 'you can use null instead of undefined.');
     }
 
     var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
     if (typeof reducer(undefined, { type: type }) === 'undefined') {
-      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + _createStore.ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined.');
+      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + _createStore.ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined, but can be null.');
     }
   });
 }
@@ -41673,23 +44892,24 @@ function combineReducers(reducers) {
   }
   var finalReducerKeys = Object.keys(finalReducers);
 
+  var unexpectedKeyCache = void 0;
   if ('development' !== 'production') {
-    var unexpectedKeyCache = {};
+    unexpectedKeyCache = {};
   }
 
-  var sanityError;
+  var shapeAssertionError = void 0;
   try {
-    assertReducerSanity(finalReducers);
+    assertReducerShape(finalReducers);
   } catch (e) {
-    sanityError = e;
+    shapeAssertionError = e;
   }
 
   return function combination() {
-    var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
-    if (sanityError) {
-      throw sanityError;
+    if (shapeAssertionError) {
+      throw shapeAssertionError;
     }
 
     if ('development' !== 'production') {
@@ -41701,16 +44921,16 @@ function combineReducers(reducers) {
 
     var hasChanged = false;
     var nextState = {};
-    for (var i = 0; i < finalReducerKeys.length; i++) {
-      var key = finalReducerKeys[i];
-      var reducer = finalReducers[key];
-      var previousStateForKey = state[key];
+    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+      var _key = finalReducerKeys[_i];
+      var reducer = finalReducers[_key];
+      var previousStateForKey = state[_key];
       var nextStateForKey = reducer(previousStateForKey, action);
       if (typeof nextStateForKey === 'undefined') {
-        var errorMessage = getUndefinedStateErrorMessage(key, action);
+        var errorMessage = getUndefinedStateErrorMessage(_key, action);
         throw new Error(errorMessage);
       }
-      nextState[key] = nextStateForKey;
+      nextState[_key] = nextStateForKey;
       hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
     }
     return hasChanged ? nextState : state;
@@ -41752,13 +44972,11 @@ function compose() {
     return funcs[0];
   }
 
-  var last = funcs[funcs.length - 1];
-  var rest = funcs.slice(0, -1);
-  return function () {
-    return rest.reduceRight(function (composed, f) {
-      return f(composed);
-    }, last.apply(undefined, arguments));
-  };
+  return funcs.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(undefined, arguments));
+    };
+  });
 }
   })();
 });
@@ -41790,34 +45008,33 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
  */
 var ActionTypes = exports.ActionTypes = {
   INIT: '@@redux/INIT'
-};
 
-/**
- * Creates a Redux store that holds the state tree.
- * The only way to change the data in the store is to call `dispatch()` on it.
- *
- * There should only be a single store in your app. To specify how different
- * parts of the state tree respond to actions, you may combine several reducers
- * into a single reducer function by using `combineReducers`.
- *
- * @param {Function} reducer A function that returns the next state tree, given
- * the current state tree and the action to handle.
- *
- * @param {any} [preloadedState] The initial state. You may optionally specify it
- * to hydrate the state from the server in universal apps, or to restore a
- * previously serialized user session.
- * If you use `combineReducers` to produce the root reducer function, this must be
- * an object with the same shape as `combineReducers` keys.
- *
- * @param {Function} enhancer The store enhancer. You may optionally specify it
- * to enhance the store with third-party capabilities such as middleware,
- * time travel, persistence, etc. The only store enhancer that ships with Redux
- * is `applyMiddleware()`.
- *
- * @returns {Store} A Redux store that lets you read the state, dispatch actions
- * and subscribe to changes.
- */
-function createStore(reducer, preloadedState, enhancer) {
+  /**
+   * Creates a Redux store that holds the state tree.
+   * The only way to change the data in the store is to call `dispatch()` on it.
+   *
+   * There should only be a single store in your app. To specify how different
+   * parts of the state tree respond to actions, you may combine several reducers
+   * into a single reducer function by using `combineReducers`.
+   *
+   * @param {Function} reducer A function that returns the next state tree, given
+   * the current state tree and the action to handle.
+   *
+   * @param {any} [preloadedState] The initial state. You may optionally specify it
+   * to hydrate the state from the server in universal apps, or to restore a
+   * previously serialized user session.
+   * If you use `combineReducers` to produce the root reducer function, this must be
+   * an object with the same shape as `combineReducers` keys.
+   *
+   * @param {Function} [enhancer] The store enhancer. You may optionally specify it
+   * to enhance the store with third-party capabilities such as middleware,
+   * time travel, persistence, etc. The only store enhancer that ships with Redux
+   * is `applyMiddleware()`.
+   *
+   * @returns {Store} A Redux store that lets you read the state, dispatch actions
+   * and subscribe to changes.
+   */
+};function createStore(reducer, preloadedState, enhancer) {
   var _ref2;
 
   if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
@@ -41951,7 +45168,8 @@ function createStore(reducer, preloadedState, enhancer) {
 
     var listeners = currentListeners = nextListeners;
     for (var i = 0; i < listeners.length; i++) {
-      listeners[i]();
+      var listener = listeners[i];
+      listener();
     }
 
     return action;
@@ -41980,7 +45198,7 @@ function createStore(reducer, preloadedState, enhancer) {
    * Interoperability point for observable/reactive libraries.
    * @returns {observable} A minimal observable of state changes.
    * For more information, see the observable proposal:
-   * https://github.com/zenparsing/es-observable
+   * https://github.com/tc39/proposal-observable
    */
   function observable() {
     var _ref;
@@ -42113,753 +45331,27 @@ function warning(message) {
   })();
 });
 
-require.register("regenerator-runtime/runtime.js", function(exports, require, module) {
-  require = __makeRelativeRequire(require, {}, "regenerator-runtime");
-  (function() {
-    /**
- * Copyright (c) 2014, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * https://raw.github.com/facebook/regenerator/master/LICENSE file. An
- * additional grant of patent rights can be found in the PATENTS file in
- * the same directory.
- */
-
-!(function(global) {
-  "use strict";
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var undefined; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  var inModule = typeof module === "object";
-  var runtime = global.regeneratorRuntime;
-  if (runtime) {
-    if (inModule) {
-      // If regeneratorRuntime is defined globally and we're in a module,
-      // make the exports object identical to regeneratorRuntime.
-      module.exports = runtime;
-    }
-    // Don't bother evaluating the rest of this file if the runtime was
-    // already defined globally.
-    return;
-  }
-
-  // Define the runtime globally (as expected by generated code) as either
-  // module.exports (if we're in a module) or a new, empty object.
-  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    generator._invoke = makeInvokeMethod(innerFn, self, context);
-
-    return generator;
-  }
-  runtime.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
-    }
-  }
-
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
-
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
-
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
-    return this;
-  };
-
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
-  }
-
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunctionPrototype[toStringTagSymbol] =
-    GeneratorFunction.displayName = "GeneratorFunction";
-
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      prototype[method] = function(arg) {
-        return this._invoke(method, arg);
-      };
-    });
-  }
-
-  runtime.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  runtime.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-    } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      if (!(toStringTagSymbol in genFun)) {
-        genFun[toStringTagSymbol] = "GeneratorFunction";
-      }
-    }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
-
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  runtime.awrap = function(arg) {
-    return { __await: arg };
-  };
-
-  function AsyncIterator(generator) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
-      } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return Promise.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
-          });
-        }
-
-        return Promise.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration. If the Promise is rejected, however, the
-          // result for this iteration will be rejected with the same
-          // reason. Note that rejections of yielded Promises are not
-          // thrown back into the generator function, as is the case
-          // when an awaited Promise is rejected. This difference in
-          // behavior between yield and await is important, because it
-          // allows the consumer to decide what to do with the yielded
-          // rejection (swallow it and continue, manually .throw it back
-          // into the generator, abandon iteration, whatever). With
-          // await, by contrast, there is no opportunity to examine the
-          // rejection reason outside the generator function, so the
-          // only option is to throw it from the await expression, and
-          // let the generator function handle the exception.
-          result.value = unwrapped;
-          resolve(result);
-        }, reject);
-      }
-    }
-
-    if (typeof process === "object" && process.domain) {
-      invoke = process.domain.bind(invoke);
-    }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new Promise(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    this._invoke = enqueue;
-  }
-
-  defineIteratorMethods(AsyncIterator.prototype);
-  runtime.AsyncIterator = AsyncIterator;
-
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList)
-    );
-
-    return runtime.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
-        });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
-      }
-
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
-        }
-
-        // Be forgiving, per 25.3.3.3.3 of the spec:
-        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-        return doneResult();
-      }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
-          }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
-        }
-
-        state = GenStateExecuting;
-
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
-
-          if (record.arg === ContinueSentinel) {
-            continue;
-          }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
-  }
-
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (method === undefined) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method always terminates the yield* loop.
-      context.delegate = null;
-
-      if (context.method === "throw") {
-        if (delegate.iterator.return) {
-          // If the delegate iterator has a return method, give it a
-          // chance to clean up.
-          context.method = "return";
-          context.arg = undefined;
-          maybeInvokeDelegate(delegate, context);
-
-          if (context.method === "throw") {
-            // If maybeInvokeDelegate(context) changed context.method from
-            // "return" to "throw", let that override the TypeError below.
-            return ContinueSentinel;
-          }
-        }
-
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined;
-      }
-
-    } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
-    }
-
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
-  }
-
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  Gp[toStringTagSymbol] = "Generator";
-
-  Gp.toString = function() {
-    return "[object Generator]";
-  };
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
-  }
-
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
-  }
-
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
-  }
-
-  runtime.keys = function(object) {
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    // Return an iterator with no values.
-    return { next: doneResult };
-  }
-  runtime.values = values;
-
-  function doneResult() {
-    return { value: undefined, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined;
-          }
-        }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined;
-      }
-
-      return ContinueSentinel;
-    }
-  };
-})(
-  // Among the various tricks for obtaining a reference to the global
-  // object, this seems to be the most reliable technique that does not
-  // use indirect eval (which violates Content Security Policy).
-  typeof global === "object" ? global :
-  typeof window === "object" ? window :
-  typeof self === "object" ? self : this
-);
-  })();
-});
-
-require.register("resolve-pathname/index.js", function(exports, require, module) {
+require.register("resolve-pathname/cjs/index.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {}, "resolve-pathname");
   (function() {
     'use strict';
 
-var isAbsolute = function isAbsolute(pathname) {
+exports.__esModule = true;
+function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
-};
+}
 
 // About 1.5x faster than the two-arg version of Array#splice()
-var spliceOne = function spliceOne(list, index) {
+function spliceOne(list, index) {
   for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
     list[i] = list[k];
-  }list.pop();
-};
+  }
+
+  list.pop();
+}
 
 // This implementation is based heavily on node's url.parse
-var resolvePathname = function resolvePathname(to) {
+function resolvePathname(to) {
   var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
   var toParts = to && to.split('/') || [];
@@ -42912,9 +45404,10 @@ var resolvePathname = function resolvePathname(to) {
   if (hasTrailingSlash && result.substr(-1) !== '/') result += '/';
 
   return result;
-};
+}
 
-module.exports = resolvePathname;
+exports.default = resolvePathname;
+module.exports = exports['default'];
   })();
 });
 
@@ -42989,7 +45482,7 @@ function symbolObservablePonyfill(root) {
   })();
 });
 
-require.register("value-equal/index.js", function(exports, require, module) {
+require.register("value-equal/cjs/index.js", function(exports, require, module) {
   require = __makeRelativeRequire(require, {}, "value-equal");
   (function() {
     'use strict';
@@ -42998,14 +45491,16 @@ exports.__esModule = true;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var valueEqual = function valueEqual(a, b) {
+function valueEqual(a, b) {
   if (a === b) return true;
 
   if (a == null || b == null) return false;
 
-  if (Array.isArray(a)) return Array.isArray(b) && a.length === b.length && a.every(function (item, index) {
-    return valueEqual(item, b[index]);
-  });
+  if (Array.isArray(a)) {
+    return Array.isArray(b) && a.length === b.length && a.every(function (item, index) {
+      return valueEqual(item, b[index]);
+    });
+  }
 
   var aType = typeof a === 'undefined' ? 'undefined' : _typeof(a);
   var bType = typeof b === 'undefined' ? 'undefined' : _typeof(b);
@@ -43029,9 +45524,10 @@ var valueEqual = function valueEqual(a, b) {
   }
 
   return false;
-};
+}
 
 exports.default = valueEqual;
+module.exports = exports['default'];
   })();
 });
 
@@ -43889,7 +46385,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.activity
+                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.activity_id
                 },
                 notif.message
               ),
@@ -44706,11 +47202,14 @@ var createMiddleware = function createMiddleware(store) {
             var _path = '';
             if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
               _CheminComplet += '/';
+              console.info('yo');
             }
             if (_CheminComplet.substr(_CheminComplet.length - 5, 5) === '.php/') {
-              _path += 'lesson/' + action.id + '/presence/edit';
+              _path = _CheminComplet + ('lesson/' + action.id + '/presence/edit');
+              console.info('yo2');
+              console.log(_path);
             } else {
-              _path += '../../lesson/' + action.id + '/presence/edit';
+              _path = _CheminComplet + ('../../lesson/' + action.id + '/presence/edit');
             }
             var _params2 = new URLSearchParams();
             _params2.append('id_activity', action.id);
@@ -45052,103 +47551,11 @@ require.alias("react/react.js", "react");
 require.alias("react-datepicker/dist/react-datepicker.min.js", "react-datepicker");
 require.alias("react-redux/lib/index.js", "react-redux");
 require.alias("redux/lib/index.js", "redux");
+require.alias("resolve-pathname/cjs/index.js", "resolve-pathname");
+require.alias("value-equal/cjs/index.js", "value-equal");
 require.alias("warning/browser.js", "warning");process = require('process');require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');
 
-'use strict';
 
-/* jshint ignore:start */
-(function () {
-  var WebSocket = window.WebSocket || window.MozWebSocket;
-  var br = window.brunch = window.brunch || {};
-  var ar = br['auto-reload'] = br['auto-reload'] || {};
-  if (!WebSocket || ar.disabled) return;
-  if (window._ar) return;
-  window._ar = true;
-
-  var cacheBuster = function cacheBuster(url) {
-    var date = Math.round(Date.now() / 1000).toString();
-    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
-    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
-  };
-
-  var browser = navigator.userAgent.toLowerCase();
-  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
-
-  var reloaders = {
-    page: function page() {
-      window.location.reload(true);
-    },
-
-    stylesheet: function stylesheet() {
-      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
-        var val = link.getAttribute('data-autoreload');
-        return link.href && val != 'false';
-      }).forEach(function (link) {
-        link.href = cacheBuster(link.href);
-      });
-
-      // Hack to force page repaint after 25ms.
-      if (forceRepaint) setTimeout(function () {
-        document.body.offsetHeight;
-      }, 25);
-    },
-
-    javascript: function javascript() {
-      var scripts = [].slice.call(document.querySelectorAll('script'));
-      var textScripts = scripts.map(function (script) {
-        return script.text;
-      }).filter(function (text) {
-        return text.length > 0;
-      });
-      var srcScripts = scripts.filter(function (script) {
-        return script.src;
-      });
-
-      var loaded = 0;
-      var all = srcScripts.length;
-      var onLoad = function onLoad() {
-        loaded = loaded + 1;
-        if (loaded === all) {
-          textScripts.forEach(function (script) {
-            eval(script);
-          });
-        }
-      };
-
-      srcScripts.forEach(function (script) {
-        var src = script.src;
-        script.remove();
-        var newScript = document.createElement('script');
-        newScript.src = cacheBuster(src);
-        newScript.async = true;
-        newScript.onload = onLoad;
-        document.head.appendChild(newScript);
-      });
-    }
-  };
-  var port = ar.port || 9485;
-  var host = br.server || window.location.hostname || 'localhost';
-
-  var connect = function connect() {
-    var connection = new WebSocket('ws://' + host + ':' + port);
-    connection.onmessage = function (event) {
-      if (ar.disabled) return;
-      var message = event.data;
-      var reloader = reloaders[message] || reloaders.page;
-      reloader();
-    };
-    connection.onerror = function () {
-      if (connection.readyState) connection.close();
-    };
-    connection.onclose = function () {
-      window.setTimeout(connect, 1000);
-    };
-  };
-  connect();
-})();
-/* jshint ignore:end */
-
-;
 //# sourceMappingURL=app.js.map

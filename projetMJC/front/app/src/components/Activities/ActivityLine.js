@@ -31,7 +31,7 @@ const ActivityLine = ({ startHour, finishHour, activity_id: id,
         {startHour} - {finishHour} {speciality} avec {interlocuteur}
         <Link
           className="activity-link"
-          to={`/ProjectMJC/projetMJC/web/app_dev.php/activity/${id}`}
+          to={`/ProjectMJC/projetMJC/web/activity/${id}`}
         >
           <button className="show-activity-button">Voir</button>
         </Link>
