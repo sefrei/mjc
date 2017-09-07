@@ -37,7 +37,7 @@ const ActivityLine = ({ startHour, finishHour, activity_id: id,
         </Link>
       </div>
       <Presence
-        presenceTeacher={presenceTeacher}
+        presenceTeacher={presenceTeacher} 
         presenceStudent={presenceStudent}
         stateActivity={stateActivity}
         id={id}
