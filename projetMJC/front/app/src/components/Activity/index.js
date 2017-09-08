@@ -52,7 +52,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
-        <label id="observation-label" htmlFor="observation-input">Observation :</label>
+        <label id="observation-label" htmlFor="observation-input">Observation : {user.user_role}</label>
         {(user.user_role === 'ROLE_TEACHER') ?
           <form id="form" onSubmit={onSubmit}>
             <textarea rows="3" onChange={onChange} placeholder="Votre observation...">{appreciation}</textarea>

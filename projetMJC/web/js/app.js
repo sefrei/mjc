@@ -45873,7 +45873,8 @@ var Activity = function Activity(_ref) {
       _react2.default.createElement(
         'label',
         { id: 'observation-label', htmlFor: 'observation-input' },
-        'Observation :'
+        'Observation : ',
+        user.user_role
       ),
       user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
         'form',
