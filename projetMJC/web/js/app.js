@@ -45662,7 +45662,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + id
+          to: '/activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -45873,14 +45873,15 @@ var Activity = function Activity(_ref) {
       _react2.default.createElement(
         'label',
         { id: 'observation-label', htmlFor: 'observation-input' },
-        'Observation :'
+        'Observation : ',
+        user.user_role
       ),
       user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
         'form',
         { id: 'form', onSubmit: onSubmit },
         _react2.default.createElement(
           'textarea',
-          { rows: '3', onChange: onChange, placeholder: 'Votre observation...' },
+          { rows: '3', onChange: onChange, value: 'Votre observation...' },
           appreciation
         ),
         _react2.default.createElement(
@@ -45935,7 +45936,7 @@ var Activity = function Activity(_ref) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { className: 'agenda-home-link', to: '/ProjectMJC/projetMJC/web/app_dev.php' },
+      { className: 'agenda-home-link', to: '/' },
       'Retour Agenda'
     )
   );
@@ -46007,7 +46008,7 @@ var App = function App() {
     _reactRouterDom.Switch,
     null,
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/ProjectMJC/projetMJC/web/app_dev.php/activity/:id',
+      path: '/activity/:id',
       component: _Activity2.default
     }),
     _react2.default.createElement(_reactRouterDom.Route, {
@@ -46385,7 +46386,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.activity_id
+                  to: '/activity/' + notif.activity_id
                 },
                 notif.message
               ),
@@ -47225,7 +47226,7 @@ var createMiddleware = function createMiddleware(store) {
         case _reducer.CHANGE_STATE_NOTIFICATION:
           {
             console.error(action);
-            var _path2 = window.location.origin + '/ProjectMJC/projetMJC/web/app_dev.php';
+            var _path2 = window.location.origin;
             console.info(window.location.origin);
             _path2 += '/reading_notification/is_read/' + action.idNotification;
             _axios2.default.post(_path2).then(function (response) {

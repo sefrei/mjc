@@ -120,7 +120,7 @@ const createMiddleware = store => next => (action) => {
     case CHANGE_STATE_NOTIFICATION:
       {
         console.error(action);
-        let path = window.location.origin + '/ProjectMJC/projetMJC/web'
+        let path = window.location.origin;
         console.info(window.location.origin);
         path += `/reading_notification/is_read/${action.idNotification}`;
         axios.post(path)
