@@ -1,0 +1,21 @@
+firstname,lastname,pseudo,email,password,role,birthday
+Patrick,Mano,Patman,patman@hotmail.com,Patman428,ROLE_TEACHER,1980-02-22 00:00:00
+Vivine,Coyer,Vivcoy,vivcoy@hotmail.com,Vivcoy254,ROLE_STUDENT,1995-05-30 00:00:01
+Robert,Michon,Robmic,robmic@hotmail.com,Robmic442,ROLE_STUDENT,2000-01-24 00:00:02
+Marguerite,Cassepied,Marcas,marcas@hotmail.com,Marcas159,ROLE_STUDENT,2002-08-12 00:00:03
+Véronique,Louison,Vérlou,vérlou@hotmail.com,Vérlou137,ROLE_STUDENT,1988-06-28 00:00:04
+Monique,Poirier,Monpoi,monpoi@hotmail.com,Monpoi112,ROLE_STUDENT,2009-05-01 00:00:05
+Isabelle,Debranche,Isadeb,isadeb@hotmail.com,Isadeb539,ROLE_STUDENT,2001-01-22 00:00:06
+Caroline,Jupiter,Carjup,carjup@hotmail.com,Carjup249,ROLE_STUDENT,2002-05-05 00:00:07
+Boris,Doublon,Bordou,bordou@hotmail.com,Bordou710,ROLE_STUDENT,1999-06-10 00:00:08
+Adéle,Blanc,Adébla,adébla@hotmail.com,Adébla163,ROLE_STUDENT,2003-11-13 00:00:09
+Florian,Jacquart,Flojac,flojac@hotmail.com,Flojac914,ROLE_STUDENT,2004-08-06 00:00:10
+Léa,Bonnet,Léabon,léabon@hotmail.com,Léabon450,ROLE_STUDENT,2009-07-08 00:00:11
+Blandine,Volage,Blavol,blavol@hotmail.com,Blavol17,ROLE_STUDENT,2001-08-08 00:00:12
+Hervé,Maudin,Hermau,hermau@hotmail.com,Hermau606,ROLE_STUDENT,2003-04-20 00:00:13
+Geoffray,Houssaie,Geohou,geohou@hotmail.com,Geohou767,ROLE_STUDENT,1995-03-30 00:00:14
+Valentin,Carmin,Valcar,valcar@hotmail.com,Valcar823,ROLE_STUDENT,1996-05-25 00:00:15
+Tanneguy,Allaire,Tanall,tanall@hotmail.com,Tanall463,ROLE_STUDENT,2000-02-14 00:00:16
+Dorian,Perchet,Dorper,dorper@hotmail.com,Dorper579,ROLE_STUDENT,1999-10-12 00:00:17
+Elise,Bordini,Elibor,elibor@hotmail.com,Elibor451,ROLE_STUDENT,2001-06-06 00:00:18
+Max,Filou,Maxfil,maxfil@hotmail.com,Maxfil33,ROLE_STUDENT,2003-12-23 00:00:19
