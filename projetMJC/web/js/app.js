@@ -46385,7 +46385,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/ProjectMJC/projetMJC/web/app_dev.php/activity/' + notif.activity_id
+                  to: '/activity/' + notif.activity_id
                 },
                 notif.message
               ),
