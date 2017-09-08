@@ -45935,7 +45935,7 @@ var Activity = function Activity(_ref) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { className: 'agenda-home-link', to: '/ProjectMJC/projetMJC/web/app_dev.php' },
+      { className: 'agenda-home-link', to: '/' },
       'Retour Agenda'
     )
   );

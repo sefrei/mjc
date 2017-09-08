@@ -94,7 +94,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         />
       </div>
 
-      <Link className="agenda-home-link" to="/ProjectMJC/projetMJC/web/app_dev.php" >
+      <Link className="agenda-home-link" to="/" >
         Retour Agenda
       </Link>
     </div>
