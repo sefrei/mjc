@@ -45881,7 +45881,7 @@ var Activity = function Activity(_ref) {
         { id: 'form', onSubmit: onSubmit },
         _react2.default.createElement(
           'textarea',
-          { rows: '3', onChange: onChange, placeholder: 'Votre observation...' },
+          { rows: '3', onChange: onChange, value: 'Votre observation...' },
           appreciation
         ),
         _react2.default.createElement(
@@ -47226,7 +47226,7 @@ var createMiddleware = function createMiddleware(store) {
         case _reducer.CHANGE_STATE_NOTIFICATION:
           {
             console.error(action);
-            var _path2 = window.location.origin + '/ProjectMJC/projetMJC/web';
+            var _path2 = window.location.origin;
             console.info(window.location.origin);
             _path2 += '/reading_notification/is_read/' + action.idNotification;
             _axios2.default.post(_path2).then(function (response) {
