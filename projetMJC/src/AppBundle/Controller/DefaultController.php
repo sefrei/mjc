@@ -26,6 +26,86 @@ class DefaultController extends Controller
     }
 
     /**
+    * Pour prof ou eleve, montre toutes les leçons qu'il a pour une date donnée
+    * @Route("planning/{date}", name="planning_date")
+    */
+    public function userDateAction(Request $request)
+    {
+        $dateRequest = $request->get('date');
+        $id = $this->getUser()->getId();
+
+        $date = new \DateTime($dateRequest);
+        $em = $this->getDoctrine()->getManager();
+        $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDateAndId($date, $id);
+
+        return $this->render('default/planning.json.twig', [
+            'lessons' => $lessons,
+        ],
+        new JsonResponse()
+          );
+    }
+
+    /**
+    * Pour l'administrateur, montre toutes les lessons d'une journée
+    * @Route("/date/{date}", name="date")
+    */
+    public function dateAction(Request $request)
+    {
+        $dateRequest = $request->get('date');
+
+        $date = new \DateTime($dateRequest);
+        $em = $this->getDoctrine()->getManager();
+        $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDate($date);
+
+        return $this->render('default/date.json.twig', [
+            'lessons' => $lessons,
+        ],
+        new JsonResponse()
+          );
+    }
+
+
+    /**
+    * @Route("/next", name="next")
+    */
+    public function nextAction()
+    {
+       $em = $this->getDoctrine()->getManager();
+       $id = $this->getUser()->getId();
+       $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfter($id);
+
+       return $this->render('default/next.json.twig', [
+           'result' => $result,
+       ],
+       new JsonResponse()
+         );
+    }
+
+    /**
+    * @Route("notifications", name="notifications")
+    **/
+    public function notificationsAction(){
+        $em = $this->getDoctrine()->getManager();
+        $id = $this->getUser()->getId();
+        $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser2($id);
+
+        return $this->render('default/notifications.json.twig', [
+            'result' => $result,
+        ],
+        new JsonResponse()
+          );
+    }
+
+
+    /**
+     * @Route("/activity/{id}", name="activity")
+     */
+    public function showActivityAction(Request $request, Lesson $lesson)
+    {
+       return $this->redirectToRoute('homepage');
+    }
+
+    /**
      * Finds and displays a subscription entity.
      *
      * @Route("/test", name="test")
@@ -138,44 +218,6 @@ class DefaultController extends Controller
     }
 
 
-
-    /**
-    * @Route("/date/{date}", name="date")
-    */
-    public function dateAction(Request $request)
-    {
-        $dateRequest = $request->get('date');
-
-        $date = new \DateTime($dateRequest);
-        $em = $this->getDoctrine()->getManager();
-        $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDate($date);
-
-        return $this->render('default/test.json.twig', [
-            'lessons' => $lessons,
-        ],
-        new JsonResponse()
-          );
-    }
-
-    /**
-    * @Route("planning/{date}", name="planning_date")
-    */
-    public function userDateAction(Request $request)
-    {
-        $dateRequest = $request->get('date');
-        $id = $this->getUser()->getId();
-
-        $date = new \DateTime($dateRequest);
-        $em = $this->getDoctrine()->getManager();
-        $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDateAndId($date, $id);
-
-        return $this->render('default/test.json.twig', [
-            'lessons' => $lessons,
-        ],
-        new JsonResponse()
-          );
-    }
-
     /**
      * @Route("showTeachers", name="show_teachers")
      */
@@ -187,29 +229,7 @@ class DefaultController extends Controller
          exit;
      }
 
-     /**
-      * @Route("/activity/{id}", name="activity")
-      */
-    public function showActivityAction(Request $request, Lesson $lesson)
-    {
-        return $this->redirectToRoute('homepage');
-    }
 
-    /**
-     * @Route("/next", name="next")
-     */
-     public function nextAction()
-     {
-        $em = $this->getDoctrine()->getManager();
-        $id = $this->getUser()->getId();
-        $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfter($id);
-
-        return $this->render('default/next.json.twig', [
-            'result' => $result,
-        ],
-        new JsonResponse()
-          );
-     }
 
      /**
       * @Route("/all/observations/{id}/{student}/{teacher}/{speciality}", name="all_observations")
@@ -231,19 +251,5 @@ class DefaultController extends Controller
         ]);
       }
 
-      /**
-      * @Route("notifications", name="notifications")
-      **/
-      public function notificationsAction(){
-          $em = $this->getDoctrine()->getManager();
-          $id = $this->getUser()->getId();
-          $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser($id);
-
-          return $this->render('default/notifications.json.twig', [
-              'result' => $result,
-          ],
-          new JsonResponse()
-            );
-      }
 
 }
