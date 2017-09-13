@@ -45876,7 +45876,7 @@ var Activity = function Activity(_ref) {
         'Observation : ',
         user.user_role
       ),
-      user.user_role === 'ROLE_STUDENT' ? _react2.default.createElement(
+      user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
         'form',
         { id: 'form', onSubmit: onSubmit },
         _react2.default.createElement(
