@@ -45881,7 +45881,7 @@ var Activity = function Activity(_ref) {
         { id: 'form', onSubmit: onSubmit },
         _react2.default.createElement(
           'textarea',
-          { rows: '3', onChange: onChange, value: 'Votre observation...' },
+          { rows: '3', onChange: onChange, placeholder: 'Votre observation...' },
           appreciation
         ),
         _react2.default.createElement(

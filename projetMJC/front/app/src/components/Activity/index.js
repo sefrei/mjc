@@ -55,7 +55,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         <label id="observation-label" htmlFor="observation-input">Observation : {user.user_role}</label>
         {(user.user_role === 'ROLE_TEACHER') ?
           <form id="form" onSubmit={onSubmit}>
-            <textarea rows="3" onChange={onChange} value="Votre observation...">{appreciation}</textarea>
+            <textarea rows="3" onChange={onChange} placeholder="Votre observation...">{appreciation}</textarea>
             <button type="submit" id="observation-submit"><span>Valider</span></button>
           </form>
         :
