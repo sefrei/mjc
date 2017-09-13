@@ -49,6 +49,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
   const interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   return (
     <div id="activity-view">
+      <p>{user.user_role}</p>
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
