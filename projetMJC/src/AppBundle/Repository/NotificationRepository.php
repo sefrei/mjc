@@ -45,7 +45,11 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
       return $query;
   }
 
-
+/*Equivalent SQL :
+SELECT * FROM `notification` as `n` JOIN `reading_notification` as `r`
+ON r.notification_id = n.id
+WHERE r.notified_user_id = 20
+*/
   public function findAllNotificationsForOneUser($userId)
   {
       $query = $this->createQueryBuilder('n')
@@ -59,12 +63,41 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
       return $query;
   }
 
+/*
+SELECT * FROM `notification` as `n` JOIN `reading_notification` as `r`
+ON r.notification_id = n.id JOIN `lesson` as `l` ON n.id_entityType = l.id
+WHERE r.notified_user_id = 20
+*/
+  public function findAllNotificationsForOneUser2($userId)
+  {
+$query = $this->getEntityManager()->createQuery(
+'SELECT n, r, l FROM AppBundle:Notification n , AppBundle:Reading_notification as r , AppBundle:Lesson as l WHERE r.notification_id = n.id AND n.entityTypeId = l.id AND r.notifiedUser = :id)')
+->setParameter('id', $userId);
+}
 
 
+/*
+SELECT * FROM `notification` as `n`, `reading_notification` as `r`, `lesson` as `l` where r.notification_id = n.id and n.id_entityType = l.id and r.notified_user_id = :id
+
+    --   $query = $this->createQueryBuilder('n')
+    --   ->select('n.id, n.idEntityType, n.message, n.createdAt, n.entityType')
+    --   ->join('AppBundle:Reading_notification' ,'r')
+    --   ->join('AppBundle:Lesson', 'l')
+    --   ->addSelect('r.isRead, r.id')
+    --   ->where('r.notifiedUser = ?1')
+    --   ->andWhere('l.id = n.idEntityType')
+    --   ->andWhere('n.id = r.notification')
+    --   ->setParameter(1, $userId)
+    --   ->getQuery()->getResult();
+    --   return $query;
+  }
+
+*/
   //Ce qu'il me faut
   // l'id de la notif ->(n)
 // l'id de l'activité (n)
 // le message (n)
 // Letat de la notif : Lu / pas lu
 //la date (n)
+
 }

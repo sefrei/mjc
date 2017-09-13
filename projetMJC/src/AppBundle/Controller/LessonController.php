@@ -112,6 +112,8 @@ class LessonController extends Controller
         $entityType = "Lesson";
         // Je crée une notification d'absence
         $lessonId = $lesson->getId();
+        // dump($lessonDate);
+        // exit;
         $entityTypeId = $lessonId;
         $specification = 'absence';
 
@@ -227,7 +229,7 @@ class LessonController extends Controller
         $em->flush();
         return $this->render('default/presence.html.twig', [
             'message' => 'modification effectuée',
-            'lesson' => $lesson
+            'lesson' => $lesson,
         ]);
     }
 

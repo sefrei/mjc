@@ -88,9 +88,28 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $id = $this->getUser()->getId();
         $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser2($id);
+    //     print_r($result);s
+    //     for ($ligne=0 ; $ligne < ; $ligne++) {
+    //     $n = $ligne +1
+    //     echo "Enregistrement N°". $n ."<br>"
+    // }
+    // for ($col=0; $col < ; $col++) {
+    //     echo $result[$ligne][$col];
+    // }
+// foreach ($result as $number =>$key) {
+//     echo $number['entityType'];
+//     // echo $number['entityType'];
+//     // $this->$result[$entityType]->name();
+//     // foreach ($number as $subkey =>$value) {
+//     //     echo $subkey['entityType'];
+//     // }
+// }
+    dump($result);
+        exit;
 
         return $this->render('default/notifications.json.twig', [
             'result' => $result,
+            // 'type' => $type,
         ],
         new JsonResponse()
           );
