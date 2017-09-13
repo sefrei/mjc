@@ -244,10 +244,11 @@ class LessonController extends Controller
     {
         //Je récupère la requete et ses attributs
         $observation = $request->get('appreciation');
+        $clearObservation = strip_tags($observation);
         $em = $this->getDoctrine()->getManager();
 
         //Je modifie l'observation
-        $lesson->setAppreciation($observation);
+        $lesson->setAppreciation($clearObservation);
         // J'enregistre dans la base
         $em->persist($lesson);
         $em->flush();
