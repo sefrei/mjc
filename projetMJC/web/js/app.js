@@ -45962,6 +45962,7 @@ var Activity = function Activity(_ref) {
 
 Activity.propTypes = {
   currentDate: _propTypes2.default.object.isRequired,
+  startDate: _propTypes2.default.string.isRequired,
   startHour: _propTypes2.default.string.isRequired,
   finishHour: _propTypes2.default.string.isRequired,
   activity_id: _propTypes2.default.number.isRequired,

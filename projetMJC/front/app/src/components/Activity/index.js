@@ -108,6 +108,7 @@ const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeach
 
 Activity.propTypes = {
   currentDate: PropTypes.object.isRequired,
+  startDate: PropTypes.string.isRequired,
   startHour: PropTypes.string.isRequired,
   finishHour: PropTypes.string.isRequired,
   activity_id: PropTypes.number.isRequired,
