@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import axios from 'axios';
-import moment from 'moment';
 
 /*
  * Local import
@@ -48,7 +47,6 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
   const stateActivity = (presenceTeacher && presenceStudent);
   // Check type user and get his interlocutor
   const interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
-
   return (
     <div id="activity-view">
       <p>{user.user_role}</p>

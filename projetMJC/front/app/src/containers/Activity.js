@@ -13,7 +13,6 @@ import { selectActivity, changeInputObservation, resetObservation } from 'src/st
  */
 const mapStateToProps = (state, ownProps) => {
   const activity = selectActivity(state, ownProps.match.params.id);
-  console.info(activity);
   return ({
     currentDate: state.currentDate,
     ...activity,

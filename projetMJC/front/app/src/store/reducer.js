@@ -59,7 +59,6 @@ export default (state = initialState, action = {}) => {
         };
       }
     case ADD_ACTIVITIES:
-      {
         return {
           ...state,
           activitiesNotif: state.activitiesNotif.concat(action.activities),
