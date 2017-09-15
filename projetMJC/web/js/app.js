@@ -47315,7 +47315,7 @@ exports.default = function () {
         console.error(state.activities);
         console.info(action.activities);
         return _extends({}, state, {
-          activities: state.activities.contact(action.activities)
+          activities: state.activities.concat(action.activities)
         });
       }
     case SET_USER:

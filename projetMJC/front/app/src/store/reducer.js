@@ -64,7 +64,7 @@ export default (state = initialState, action = {}) => {
         console.info(action.activities);
         return {
           ...state,
-          activities: state.activities.contact(action.activities),
+          activities: state.activities.concat(action.activities),
         };
       }
     case SET_USER:
