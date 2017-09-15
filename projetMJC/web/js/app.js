@@ -47115,7 +47115,7 @@ var createMiddleware = function createMiddleware(store) {
                 _axios2.default.post(path, params).then(function (response) {
                   console.log("infos notif");
                   console.error(response);
-                  store.dispatch((0, _reducer.setActivities)(response.data.activities));
+                  store.dispatch((0, _reducer.addActivities)(response.data.activities));
                 }).catch(function (error) {
                   console.log(error);
                 });
