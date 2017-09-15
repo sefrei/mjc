@@ -68,7 +68,7 @@ class DefaultController extends Controller
      * Finds and displays informations about notification entity.
      *
      * @Route("notification/infos/{entity}/{id}", name="notification_infos")
-     * @Method("GET")
+     * 
      */
     public function notificationInfosAction(Request $request)
     {
@@ -76,9 +76,9 @@ class DefaultController extends Controller
         $id = $request->get('id');
         $em = $this->getDoctrine()->getManager();
         $result = $em->getRepository('AppBundle:' .  $entity)->findOneById($id);
-        dump($result);
-        exit;
-        return $this->render('default/next.json.twig', [
+        // dump($result);
+        // exit;
+        return $this->render('default/infosnotif.json.twig', [
             'activity' => $result,
         ],
         new JsonResponse()
