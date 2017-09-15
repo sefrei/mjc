@@ -50,7 +50,7 @@ const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeach
   return (
     <div id="activity-view">
       <p>{user.user_role}</p>
-      <h1 id="date-title">{startDate.format('dddd D MMMM YYYY')}</h1>
+      <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
         <label id="observation-label" htmlFor="observation-input">Observation : {user.user_role}</label>

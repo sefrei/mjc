@@ -45859,7 +45859,7 @@ var Activity = function Activity(_ref) {
     _react2.default.createElement(
       'h1',
       { id: 'date-title' },
-      startDate.format('dddd D MMMM YYYY')
+      currentDate.format('dddd D MMMM YYYY')
     ),
     _react2.default.createElement(
       'h2',
