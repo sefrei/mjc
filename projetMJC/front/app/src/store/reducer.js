@@ -65,7 +65,7 @@ export default (state = initialState, action = {}) => {
         console.info(action.activities);
         return {
           ...state,
-          activitiesNotif: action.activities,
+          activitiesNotif: state.activitiesNotif.concat(action.activities),
         };
       }
     case SET_USER:
