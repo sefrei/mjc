@@ -75,7 +75,7 @@ class DefaultController extends Controller
         $entity = $request->get('entity');
         $id = $request->get('id');
         $em = $this->getDoctrine()->getManager();
-        $result = $em->getRepository("AppBundle:'.$entity")->findOneById($id);
+        $result = $em->getRepository('AppBundle:' .  $entity)->findOneById($id);
         dump($result);
         exit;
         return $this->render('default/next.json.twig', [
@@ -109,7 +109,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $id = $this->getUser()->getId();
         $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser($id);
-        dump($result);
+        // dump($result);
         // echo "Resultats :";
         // exit;
     //     for ($ligne=0 ; $ligne < ; $ligne++) {
@@ -129,11 +129,11 @@ class DefaultController extends Controller
 
 // exit;
     // Pour chaque résultat
-    dump($result);
-foreach ($result as $number =>$key) {
-    dump($key);
-$push = array_push($key, "apple", "raspberry");
-dump($push);
+    // dump($result);
+// foreach ($result as $number =>$key) {
+//     dump($key);
+// $push = array_push($key, "apple", "raspberry");
+// dump($push);
 // $number['laLessonDate'] = "date de la leçon : ";
     // echo $number['entityType'];
     // Je check si il y a des leçons et j'affiche l'id de la leçon
@@ -166,7 +166,7 @@ dump($push);
 
     // }
     //  dump($resutlatFinalkey);
-}
+// }
 
     // dump($result);
     // // dump($resutlatFinal);
