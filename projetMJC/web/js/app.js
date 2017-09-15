@@ -47299,6 +47299,7 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
+        console.error(state);
         return _extends({}, state, {
           currentDate: action.date
         });

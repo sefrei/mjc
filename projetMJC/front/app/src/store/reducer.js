@@ -45,6 +45,7 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_DATE:
       {
+        console.error(state);
         return {
           ...state,
           currentDate: action.date,
