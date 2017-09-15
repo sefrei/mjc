@@ -46669,6 +46669,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var activity = (0, _reducer.selectActivity)(state, ownProps.match.params.id);
+  console.info(activity);
   return _extends({
     currentDate: state.currentDate
   }, activity, {
@@ -47375,7 +47376,6 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.error(state);
         return _extends({}, state, {
           currentDate: action.date
         });
@@ -47476,7 +47476,6 @@ exports.default = function () {
 
         var notifications = [].concat(_toConsumableArray(state.notifications));
         notifications.forEach(function (notif) {
-          console.error(notif);
           if (notif.notification_id === idNotification) {
             notif.is_read = true;
           }
@@ -47598,7 +47597,7 @@ var selectActivity = exports.selectActivity = function selectActivity(state, pro
     activitySelected = state.activitiesNotif.filter(function (activity) {
       return activity.activity_id === id;
     });
-    console.info(activitySelected[0]);
+    console.log(activitySelected[0]);
     if (activitySelected.length) {
       return activitySelected[0];
     }

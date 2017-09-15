@@ -46,7 +46,6 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.error(state);
         return {
           ...state,
           currentDate: action.date,
@@ -152,7 +151,6 @@ export default (state = initialState, action = {}) => {
         const { idActivity, idNotification, date } = action;
         const notifications = [...state.notifications];
         notifications.forEach((notif) => {
-          console.error(notif);
           if (notif.notification_id === idNotification) {
             notif.is_read = true;
           }
@@ -246,7 +244,7 @@ export const selectActivity = (state, props) => {
     activitySelected = state.activitiesNotif.filter(activity => (
       activity.activity_id === id
     ));
-    console.info(activitySelected[0]);
+    console.log(activitySelected[0]);
     if (activitySelected.length) {
       return activitySelected[0];
     }
