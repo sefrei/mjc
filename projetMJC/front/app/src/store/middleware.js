@@ -67,7 +67,7 @@ const createMiddleware = store => next => (action) => {
             .then((response) => {
               console.log("infos notif");
               console.error(response);
-              store.dispatch(setActivities(response.data.activities));
+              store.dispatch(addActivities(response.data.activities));
             })
             .catch((error) => {
               console.log(error);

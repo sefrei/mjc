@@ -31,6 +31,7 @@ export const initialState = {
   currentDate: moment(),
   user: {},
   activities: [],
+  activitiesNotif: [],
   notifications: [],
   nextDayActivities: [],
   inputObservation: '',
@@ -60,9 +61,11 @@ export default (state = initialState, action = {}) => {
       }
     case ADD_ACTIVITIES:
       {
+        console.error(state.activitiesNotif);
+        console.info(action.activities);
         return {
           ...state,
-          activities: state.activities.contact(action.activities),
+          activitiesNotif: state.activitiesNotif.concat(action.activities),
         };
       }
     case SET_USER:
