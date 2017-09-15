@@ -47180,7 +47180,7 @@ var createMiddleware = function createMiddleware(store) {
               store.dispatch((0, _reducer.setNotifications)(response.data.notifications));
               //On va ensuite récupérer les infos des activités notifiées
               response.data.notifications.map(function (notif) {
-                path = cheminComplet + 'notifications/infos/' + notif.activity_type + '/' + notif.activity_id;
+                path = cheminComplet + 'notification/infos/' + notif.activity_type + '/' + notif.activity_id;
                 _axios2.default.post(path, params).then(function (response) {
                   console.log("infos notif");
                   console.info(response);
