@@ -45819,7 +45819,6 @@ var Activity = function Activity(_ref) {
       appreciation = _ref.appreciation,
       actions = _ref.actions;
 
-  console.log(startDate);
   // Change observation input
   var onChange = function onChange(evt) {
     var value = evt.target.value;
@@ -47597,7 +47596,6 @@ var selectActivity = exports.selectActivity = function selectActivity(state, pro
     activitySelected = state.activitiesNotif.filter(function (activity) {
       return activity.activity_id === id;
     });
-    console.log(activitySelected[0]);
     if (activitySelected.length) {
       return activitySelected[0];
     }

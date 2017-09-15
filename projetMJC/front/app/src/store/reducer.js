@@ -244,7 +244,6 @@ export const selectActivity = (state, props) => {
     activitySelected = state.activitiesNotif.filter(activity => (
       activity.activity_id === id
     ));
-    console.log(activitySelected[0]);
     if (activitySelected.length) {
       return activitySelected[0];
     }

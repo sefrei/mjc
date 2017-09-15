@@ -22,7 +22,6 @@ import Presence from 'src/containers/Presence';
  */
 const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenceStudent,
   student, teacher, user, speciality, activity_id: id, appreciation, actions }) => {
-  console.log(startDate);
   // Change observation input
   const onChange = (evt) => {
     const { value } = evt.target;
