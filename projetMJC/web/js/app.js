@@ -47385,7 +47385,7 @@ exports.default = function () {
         console.error(state.activities);
         console.info(action.activities);
         return _extends({}, state, {
-          activitiesNotif: action.activities
+          activitiesNotif: state.activitiesNotif.concat(action.activities)
         });
       }
     case SET_USER:
