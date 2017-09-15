@@ -46339,8 +46339,9 @@ var Notifications = function Notifications(_ref) {
       actions = _ref.actions;
 
   // Go on the activity of the notification
-  var _onClick = function _onClick(idActivity, idNotification) {
-    actions.changeNotificationState(idActivity, idNotification);
+  var _onClick = function _onClick(idActivity, idNotification, date) {
+
+    actions.changeNotificationState(idActivity, idNotification, date);
   };
   // Get only notif which are active (notif.state === true)
   var notificationsNotRead = notifications.filter(function (notif) {
@@ -46386,7 +46387,7 @@ var Notifications = function Notifications(_ref) {
             return _react2.default.createElement(
               'p',
               { className: 'notif', key: notif.activity_id, onClick: function onClick() {
-                  return _onClick(notif.activity_id, notif.notification_id);
+                  return _onClick(notif.activity_id, notif.notification_id, notif.date);
                 } },
               _react2.default.createElement(
                 _reactRouterDom.Link,
@@ -47177,9 +47178,20 @@ var createMiddleware = function createMiddleware(store) {
             _axios2.default.post(path, params).then(function (response) {
               console.info(response);
               store.dispatch((0, _reducer.setNotifications)(response.data.notifications));
+              //On va ensuite récupérer les infos des activités notifiées
+              response.data.notifications.map(function (notif) {
+                path = cheminComplet + 'notifications/infos/' + notif.activity_type + '/' + notif.activity_id;
+                _axios2.default.post(path, params).then(function (response) {
+                  console.log("infos notif");
+                  console.info(response);
+                }).catch(function (error) {
+                  console.log(error);
+                });
+              });
             }).catch(function (error) {
               console.log(error);
             });
+
             break;
           }
         case _reducer.CHANGE_DATE:
@@ -47231,6 +47243,27 @@ var createMiddleware = function createMiddleware(store) {
         case _reducer.CHANGE_STATE_NOTIFICATION:
           {
             console.error(action);
+
+            /*  //On va chercher les infos des activités à la date de la notifications (pour pouvoir afficher les infos )
+            let CheminComplet = document.location.href;
+            if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+              CheminComplet += '/';
+            }
+            CheminComplet += `planning/${action.date}`;
+            const params = new URLSearchParams();
+            params.append('date', action.date);
+            axios.post(CheminComplet, params)
+            .then((response) => {
+              console.log(response);
+              // Dispatch pour enregistré les nouvelles données des activités
+              // de la date selectionnée dans le state
+              store.dispatch(setActivities(response.data.activities));
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+            */
+
             var _path2 = window.location.origin;
             console.info(window.location.origin);
             _path2 += '/reading_notification/is_read/' + action.idNotification;
@@ -47426,7 +47459,8 @@ exports.default = function () {
     case CHANGE_STATE_NOTIFICATION:
       {
         var idActivity = action.idActivity,
-            idNotification = action.idNotification;
+            idNotification = action.idNotification,
+            date = action.date;
 
         var notifications = [].concat(_toConsumableArray(state.notifications));
         notifications.forEach(function (notif) {
@@ -47523,11 +47557,12 @@ var displayNotifications = exports.displayNotifications = function displayNotifi
     type: DISPLAY_NOTIFICATIONS
   };
 };
-var changeNotificationState = exports.changeNotificationState = function changeNotificationState(idActivity, idNotification) {
+var changeNotificationState = exports.changeNotificationState = function changeNotificationState(idActivity, idNotification, date) {
   return {
     type: CHANGE_STATE_NOTIFICATION,
     idActivity: idActivity,
-    idNotification: idNotification
+    idNotification: idNotification,
+    date: date
   };
 };
 

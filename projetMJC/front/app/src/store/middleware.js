@@ -60,10 +60,23 @@ const createMiddleware = store => next => (action) => {
         .then((response) => {
           console.info(response);
           store.dispatch(setNotifications(response.data.notifications));
+          //On va ensuite récupérer les infos des activités notifiées
+          response.data.notifications.map(notif => {
+            path = `${cheminComplet}notifications/infos/${notif.activity_type}/${notif.activity_id}`;
+            axios.post(path, params)
+            .then((response) => {
+              console.log("infos notif");
+              console.info(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          })
         })
         .catch((error) => {
           console.log(error);
         });
+
         break;
       }
     case CHANGE_DATE:
@@ -120,6 +133,28 @@ const createMiddleware = store => next => (action) => {
     case CHANGE_STATE_NOTIFICATION:
       {
         console.error(action);
+
+        /*  //On va chercher les infos des activités à la date de la notifications (pour pouvoir afficher les infos )
+        let CheminComplet = document.location.href;
+        if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
+          CheminComplet += '/';
+        }
+        CheminComplet += `planning/${action.date}`;
+        const params = new URLSearchParams();
+        params.append('date', action.date);
+        axios.post(CheminComplet, params)
+        .then((response) => {
+          console.log(response);
+          // Dispatch pour enregistré les nouvelles données des activités
+          // de la date selectionnée dans le state
+          store.dispatch(setActivities(response.data.activities));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        */
+
+
         let path = window.location.origin;
         console.info(window.location.origin);
         path += `/reading_notification/is_read/${action.idNotification}`;

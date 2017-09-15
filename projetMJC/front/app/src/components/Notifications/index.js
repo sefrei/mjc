@@ -19,8 +19,9 @@ import { Link } from 'react-router-dom';
  */
 const Notifications = ({ notifications, displayNotifications, actions }) => {
   // Go on the activity of the notification
-  const onClick = (idActivity, idNotification) => {
-    actions.changeNotificationState(idActivity, idNotification);
+  const onClick = (idActivity, idNotification, date) => {
+
+    actions.changeNotificationState(idActivity, idNotification, date);
   };
   // Get only notif which are active (notif.state === true)
   const notificationsNotRead = notifications.filter((notif) => {
@@ -56,7 +57,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
           {notifications.map((notif) => {
             if (!notif.is_read) {
               return (
-                <p className="notif" key={notif.activity_id} onClick={() => onClick(notif.activity_id, notif.notification_id)} >
+                <p className="notif" key={notif.activity_id} onClick={() => onClick(notif.activity_id, notif.notification_id, notif.date)} >
                   <Link
                     to={`/activity/${notif.activity_id}`}
                   >

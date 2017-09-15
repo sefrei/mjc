@@ -139,7 +139,7 @@ export default (state = initialState, action = {}) => {
       }
     case CHANGE_STATE_NOTIFICATION:
       {
-        const { idActivity, idNotification } = action;
+        const { idActivity, idNotification, date } = action;
         const notifications = [...state.notifications];
         notifications.forEach((notif) => {
           console.error(notif);
@@ -210,10 +210,11 @@ export const resetObservation = id => ({
 export const displayNotifications = () => ({
   type: DISPLAY_NOTIFICATIONS,
 });
-export const changeNotificationState = (idActivity, idNotification) => ({
+export const changeNotificationState = (idActivity, idNotification, date) => ({
   type: CHANGE_STATE_NOTIFICATION,
   idActivity,
   idNotification,
+  date,
 });
 
 
