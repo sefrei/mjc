@@ -47183,7 +47183,7 @@ var createMiddleware = function createMiddleware(store) {
                 path = cheminComplet + 'notification/infos/' + notif.activity_type + '/' + notif.activity_id;
                 _axios2.default.post(path, params).then(function (response) {
                   console.log("infos notif");
-                  console.error(response);
+                  console.info(response);
                   store.dispatch((0, _reducer.addActivities)(response.data.activities));
                 }).catch(function (error) {
                   console.log(error);
@@ -47301,7 +47301,301 @@ exports.default = createMiddleware;
 });
 
 require.register("src/store/reducer.js", function(exports, require, module) {
-"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNotifications = exports.setNextDays = exports.setUser = exports.addActivities = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.CHANGE_STATE_NOTIFICATION = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
+                                                                                                                                                                                                                                                                   * Npm Import
+                                                                                                                                                                                                                                                                   */
+
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+require('moment/locale/fr');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+/*
+ * Local import
+ */
+//import datas from 'src/datas';
+/*
+ * Types
+ */
+var CHANGE_DATE = exports.CHANGE_DATE = 'CHANGE_DATE';
+var UP_DAY = exports.UP_DAY = 'UP_DAY';
+var DOWN_DAY = exports.DOWN_DAY = 'DOWN_DAY';
+var SET_ACTIVITIES = 'SET_ACTIVITIES';
+var ADD_ACTIVITIES = 'ADD_ACTIVITIES';
+var SET_USER = 'SET_USER';
+var SET_NEXTDAYS = 'SET_NEXTDAYS';
+var SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
+var SWITCH_PRESENCE = exports.SWITCH_PRESENCE = 'SWITCH_PRESENCE';
+var INPUT_OBSERVATION_CHANGE = 'INPUT_OBSERVATION_CHANGE';
+var RESET_OBSERVATION = exports.RESET_OBSERVATION = 'RESET_OBSERVATION';
+var DISPLAY_NOTIFICATIONS = 'DISPLAY_NOTIFICATIONS';
+var CHANGE_STATE_NOTIFICATION = exports.CHANGE_STATE_NOTIFICATION = 'CHANGE_STATE_NOTIFICATIONS';
+
+/*
+ * initialState
+ */
+var initialState = exports.initialState = {
+  currentDate: (0, _moment2.default)(),
+  user: {},
+  activities: [],
+  activitiesNotif: [],
+  notifications: [],
+  nextDayActivities: [],
+  inputObservation: '',
+  displayNotifications: false
+};
+
+/*
+ * Reducer
+ */
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  switch (action.type) {
+    case CHANGE_DATE:
+      {
+        return _extends({}, state, {
+          currentDate: action.date
+        });
+      }
+    case SET_ACTIVITIES:
+      {
+        return _extends({}, state, {
+          activities: action.activities
+        });
+      }
+    case ADD_ACTIVITIES:
+      {
+        return _extends({}, state, {
+          activitiesNotif: state.activitiesNotif.concat(action.activities)
+        });
+      }
+    case SET_USER:
+      {
+        return _extends({}, state, {
+          user: action.user
+        });
+      }
+    case SET_NEXTDAYS:
+      {
+        return _extends({}, state, {
+          nextDayActivities: action.nextDayActivities
+        });
+      }
+    case SET_NOTIFICATIONS:
+      {
+        return _extends({}, state, {
+          notifications: action.notifications
+        });
+      }
+    case SWITCH_PRESENCE:
+      {
+        var id = action.id;
+
+        id = parseInt(id, 10);
+        var activities = [].concat(_toConsumableArray(state.activities));
+        activities.forEach(function (activity) {
+          if (activity.activity_id === id) {
+            if (action.userType === 'ROLE_TEACHER') {
+              activity.presenceTeacher = !activity.presenceTeacher;
+            } else {
+              activity.presenceStudent = !activity.presenceStudent;
+            }
+          }
+        });
+        return _extends({}, state, {
+          activities: activities
+        });
+      }
+    case INPUT_OBSERVATION_CHANGE:
+      {
+        var _id = action.id;
+        var input = action.input;
+
+        _id = parseInt(_id, 10);
+        var _activities = [].concat(_toConsumableArray(state.activities));
+        _activities.forEach(function (activity) {
+          if (activity.activity_id === _id) {
+            activity.appreciation = input;
+          }
+        });
+        return _extends({}, state, {
+          activities: _activities
+        });
+      }
+    case RESET_OBSERVATION:
+      {
+        var _id2 = action.id;
+
+        _id2 = parseInt(_id2, 10);
+        var _activities2 = [].concat(_toConsumableArray(state.activities));
+        _activities2.forEach(function (activity) {
+          if (activity.activity_id === _id2) {
+            console.info('action : Axios récupérer lobservation en bdd pour cette activité');
+            // activity.appreciation = activity.observation;
+          }
+        });
+        return _extends({}, state, {
+          activities: _activities2
+        });
+      }
+    case DISPLAY_NOTIFICATIONS:
+      {
+        var display = !state.displayNotifications;
+        return _extends({}, state, {
+          displayNotifications: display
+        });
+      }
+    case CHANGE_STATE_NOTIFICATION:
+      {
+        var idActivity = action.idActivity,
+            idNotification = action.idNotification,
+            date = action.date;
+
+        var notifications = [].concat(_toConsumableArray(state.notifications));
+        notifications.forEach(function (notif) {
+          if (notif.notification_id === idNotification) {
+            notif.is_read = true;
+          }
+        });
+        return _extends({}, state, {
+          notifications: notifications
+        });
+      }
+    default:
+      return state;
+  }
+};
+
+/*
+ * Action creators
+ */
+
+
+var changeDate = exports.changeDate = function changeDate(date) {
+  return {
+    type: CHANGE_DATE,
+    date: date
+  };
+};
+var upDay = exports.upDay = function upDay() {
+  return {
+    type: UP_DAY
+  };
+};
+var downDay = exports.downDay = function downDay() {
+  return {
+    type: DOWN_DAY
+  };
+};
+var switchPresenceTeacher = exports.switchPresenceTeacher = function switchPresenceTeacher(id, presenceTeacher) {
+  return {
+    type: SWITCH_PRESENCE,
+    userType: 'ROLE_TEACHER',
+    presence: presenceTeacher,
+    id: id
+  };
+};
+var switchPresenceStudent = exports.switchPresenceStudent = function switchPresenceStudent(id, presenceStudent) {
+  return {
+    type: SWITCH_PRESENCE,
+    userType: 'ROLE_STUDENT',
+    presence: presenceStudent,
+    id: id
+  };
+};
+var setActivities = exports.setActivities = function setActivities(activities) {
+  return {
+    type: SET_ACTIVITIES,
+    activities: activities
+  };
+};
+var addActivities = exports.addActivities = function addActivities(activities) {
+  return {
+    type: ADD_ACTIVITIES,
+    activities: activities
+  };
+};
+var setUser = exports.setUser = function setUser(user) {
+  return {
+    type: SET_USER,
+    user: user
+  };
+};
+var setNextDays = exports.setNextDays = function setNextDays(nextDayActivities) {
+  return {
+    type: SET_NEXTDAYS,
+    nextDayActivities: nextDayActivities
+  };
+};
+var setNotifications = exports.setNotifications = function setNotifications(notifications) {
+  return {
+    type: SET_NOTIFICATIONS,
+    notifications: notifications
+  };
+};
+var changeInputObservation = exports.changeInputObservation = function changeInputObservation(input, id) {
+  return {
+    type: INPUT_OBSERVATION_CHANGE,
+    input: input,
+    id: id
+  };
+};
+var resetObservation = exports.resetObservation = function resetObservation(id) {
+  return {
+    type: RESET_OBSERVATION,
+    id: id
+  };
+};
+var displayNotifications = exports.displayNotifications = function displayNotifications() {
+  return {
+    type: DISPLAY_NOTIFICATIONS
+  };
+};
+var changeNotificationState = exports.changeNotificationState = function changeNotificationState(idActivity, idNotification, date) {
+  return {
+    type: CHANGE_STATE_NOTIFICATION,
+    idActivity: idActivity,
+    idNotification: idNotification,
+    date: date
+  };
+};
+
+/*
+ * Action Selectors
+ */
+var selectActivity = exports.selectActivity = function selectActivity(state, props) {
+  var id = parseInt(props, 10);
+  var activitySelected = state.activities.filter(function (activity) {
+    return activity.activity_id === id;
+  });
+  if (activitySelected.length) {
+    return activitySelected[0];
+  } else {
+    activitySelected = state.activitiesNotif.filter(function (activity) {
+      return activity.activity_id === id;
+    });
+    if (activitySelected.length) {
+      return activitySelected[0];
+    }
+  }
+  return null;
+};
 
 });
 
