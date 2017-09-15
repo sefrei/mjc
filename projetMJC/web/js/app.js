@@ -45810,6 +45810,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
+      startDate = _ref.startDate,
       startHour = _ref.startHour,
       finishHour = _ref.finishHour,
       presenceTeacher = _ref.presenceTeacher,
@@ -45858,7 +45859,7 @@ var Activity = function Activity(_ref) {
     _react2.default.createElement(
       'h1',
       { id: 'date-title' },
-      currentDate.format('dddd D MMMM YYYY')
+      startDate.format('dddd D MMMM YYYY')
     ),
     _react2.default.createElement(
       'h2',

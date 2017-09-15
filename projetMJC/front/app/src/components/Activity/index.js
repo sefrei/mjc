@@ -19,7 +19,7 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenceStudent,
+const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeacher, presenceStudent,
   student, teacher, user, speciality, activity_id: id, appreciation, actions }) => {
   // Change observation input
   const onChange = (evt) => {
@@ -50,7 +50,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
   return (
     <div id="activity-view">
       <p>{user.user_role}</p>
-      <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
+      <h1 id="date-title">{startDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
         <label id="observation-label" htmlFor="observation-input">Observation : {user.user_role}</label>
