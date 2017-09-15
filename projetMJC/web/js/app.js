@@ -47590,6 +47590,13 @@ var selectActivity = exports.selectActivity = function selectActivity(state, pro
   });
   if (activitySelected.length) {
     return activitySelected[0];
+  } else {
+    activitySelected = state.activitiesNotif.filter(function (activity) {
+      return activity.activity_id === id;
+    });
+    if (activitySelected.length) {
+      return activitySelected[0];
+    }
   }
   return null;
 };

@@ -239,11 +239,18 @@ export const changeNotificationState = (idActivity, idNotification, date) => ({
  */
 export const selectActivity = (state, props) => {
   const id = parseInt(props, 10);
-  const activitySelected = state.activities.filter(activity => (
+  let activitySelected = state.activities.filter(activity => (
     activity.activity_id === id
   ));
   if (activitySelected.length) {
     return activitySelected[0];
+  }else {
+    activitySelected = state.activitiesNotif.filter(activity => (
+      activity.activity_id === id
+    ));
+    if (activitySelected.length) {
+      return activitySelected[0];
+    }
   }
   return null;
 };
