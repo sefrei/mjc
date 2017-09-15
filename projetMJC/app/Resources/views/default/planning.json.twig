@@ -22,7 +22,7 @@
             "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}",
             "student_id" : {{ lesson.subscription.student.id }},
             "duration": "30 minutes",
-            "appreciation" : "{{lesson.appreciation}}",
+            "appreciation" : "{{lesson.appreciation| raw | convert_encoding('UTF-8', 'ISO-8859-1')}}",
             {% if lesson.teacherIsPresent %}
               "presenceTeacher" : true,
             {% else %}
