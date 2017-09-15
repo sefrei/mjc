@@ -46922,6 +46922,75 @@ exports.default = PresenceContainer;
 
 });
 
+require.register("src/datas.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  user: {
+    id: 1,
+    name: 'Julien',
+    type: 'student'
+  },
+  activity: [{
+    id: 1,
+    startDate: '2017-05-23 09:00:00',
+    endDate: '2017-05-23 10:00:00',
+    duration: '1h',
+    speciality: 'guitare',
+    studentName: 'Yves',
+    teacher: true,
+    student: true,
+    observation: ''
+  }, {
+    id: 2,
+    startDate: '2017-05-23 11:00:00',
+    endDate: '2017-05-23 12:00:00',
+    duration: '1h',
+    speciality: 'guitare',
+    studentName: 'Séverine',
+    teacher: true,
+    student: true,
+    observation: ''
+  }, {
+    id: 3,
+    startDate: '2017-05-23 14:00:00',
+    endDate: '2017-05-23 15:00:00',
+    duration: '1h',
+    speciality: 'guitare',
+    studentName: 'Julien',
+    teacher: true,
+    student: false,
+    observation: ''
+  }],
+  nextDayActivities: [{
+    id: 1,
+    date: '19-06-2017 11:00:00',
+    nbActivity: '3'
+  }, {
+    id: 2,
+    date: '26-06-2017 11:00:00',
+    nbActivity: '1'
+  }],
+  notifications: [{
+    id: 1,
+    id_activity: 1,
+    id_user: 1,
+    message: 'Vous avez un nouveau cours',
+    state: true
+  }, {
+    id: 2,
+    id_activity: 2,
+    id_user: 1,
+    message: 'Un cours est annulé',
+    state: true
+  }]
+};
+
+});
+
 require.register("src/index.js", function(exports, require, module) {
 'use strict';
 
@@ -47282,6 +47351,7 @@ var initialState = exports.initialState = {
   currentDate: (0, _moment2.default)(),
   user: {},
   activities: [],
+  activitiesNotif: [],
   notifications: [],
   nextDayActivities: [],
   inputObservation: '',
@@ -47315,7 +47385,7 @@ exports.default = function () {
         console.error(state.activities);
         console.info(action.activities);
         return _extends({}, state, {
-          activities: state.activities.concat(action.activities)
+          activitiesNotif: action.activities
         });
       }
     case SET_USER:
@@ -47542,99 +47612,5 @@ require.alias("warning/browser.js", "warning");process = require('process');requ
   
 });})();require('___globals___');
 
-'use strict';
 
-/* jshint ignore:start */
-(function () {
-  var WebSocket = window.WebSocket || window.MozWebSocket;
-  var br = window.brunch = window.brunch || {};
-  var ar = br['auto-reload'] = br['auto-reload'] || {};
-  if (!WebSocket || ar.disabled) return;
-  if (window._ar) return;
-  window._ar = true;
-
-  var cacheBuster = function cacheBuster(url) {
-    var date = Math.round(Date.now() / 1000).toString();
-    url = url.replace(/(\&|\\?)cacheBuster=\d*/, '');
-    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'cacheBuster=' + date;
-  };
-
-  var browser = navigator.userAgent.toLowerCase();
-  var forceRepaint = ar.forceRepaint || browser.indexOf('chrome') > -1;
-
-  var reloaders = {
-    page: function page() {
-      window.location.reload(true);
-    },
-
-    stylesheet: function stylesheet() {
-      [].slice.call(document.querySelectorAll('link[rel=stylesheet]')).filter(function (link) {
-        var val = link.getAttribute('data-autoreload');
-        return link.href && val != 'false';
-      }).forEach(function (link) {
-        link.href = cacheBuster(link.href);
-      });
-
-      // Hack to force page repaint after 25ms.
-      if (forceRepaint) setTimeout(function () {
-        document.body.offsetHeight;
-      }, 25);
-    },
-
-    javascript: function javascript() {
-      var scripts = [].slice.call(document.querySelectorAll('script'));
-      var textScripts = scripts.map(function (script) {
-        return script.text;
-      }).filter(function (text) {
-        return text.length > 0;
-      });
-      var srcScripts = scripts.filter(function (script) {
-        return script.src;
-      });
-
-      var loaded = 0;
-      var all = srcScripts.length;
-      var onLoad = function onLoad() {
-        loaded = loaded + 1;
-        if (loaded === all) {
-          textScripts.forEach(function (script) {
-            eval(script);
-          });
-        }
-      };
-
-      srcScripts.forEach(function (script) {
-        var src = script.src;
-        script.remove();
-        var newScript = document.createElement('script');
-        newScript.src = cacheBuster(src);
-        newScript.async = true;
-        newScript.onload = onLoad;
-        document.head.appendChild(newScript);
-      });
-    }
-  };
-  var port = ar.port || 9485;
-  var host = br.server || window.location.hostname || 'localhost';
-
-  var connect = function connect() {
-    var connection = new WebSocket('ws://' + host + ':' + port);
-    connection.onmessage = function (event) {
-      if (ar.disabled) return;
-      var message = event.data;
-      var reloader = reloaders[message] || reloaders.page;
-      reloader();
-    };
-    connection.onerror = function () {
-      if (connection.readyState) connection.close();
-    };
-    connection.onclose = function () {
-      window.setTimeout(connect, 1000);
-    };
-  };
-  connect();
-})();
-/* jshint ignore:end */
-
-;
 //# sourceMappingURL=app.js.map
