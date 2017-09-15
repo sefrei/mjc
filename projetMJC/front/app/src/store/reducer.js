@@ -60,6 +60,8 @@ export default (state = initialState, action = {}) => {
       }
     case ADD_ACTIVITIES:
       {
+        console.error(state.activities);
+        console.info(action.activities);
         return {
           ...state,
           activities: state.activities.contact(action.activities),

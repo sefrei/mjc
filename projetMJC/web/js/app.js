@@ -47312,6 +47312,8 @@ exports.default = function () {
       }
     case ADD_ACTIVITIES:
       {
+        console.error(state.activities);
+        console.info(action.activities);
         return _extends({}, state, {
           activities: state.activities.contact(action.activities)
         });
