@@ -45851,6 +45851,11 @@ var Activity = function Activity(_ref) {
     'div',
     { id: 'activity-view' },
     _react2.default.createElement(
+      'p',
+      null,
+      user.user_role
+    ),
+    _react2.default.createElement(
       'h1',
       { id: 'date-title' },
       currentDate.format('dddd D MMMM YYYY')
@@ -45881,7 +45886,7 @@ var Activity = function Activity(_ref) {
         { id: 'form', onSubmit: onSubmit },
         _react2.default.createElement(
           'textarea',
-          { rows: '3', onChange: onChange, value: 'Votre observation...' },
+          { rows: '3', onChange: onChange, placeholder: 'Votre observation...' },
           appreciation
         ),
         _react2.default.createElement(
