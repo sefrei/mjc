@@ -46922,75 +46922,6 @@ exports.default = PresenceContainer;
 
 });
 
-require.register("src/datas.js", function(exports, require, module) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  user: {
-    id: 1,
-    name: 'Julien',
-    type: 'student'
-  },
-  activity: [{
-    id: 1,
-    startDate: '2017-05-23 09:00:00',
-    endDate: '2017-05-23 10:00:00',
-    duration: '1h',
-    speciality: 'guitare',
-    studentName: 'Yves',
-    teacher: true,
-    student: true,
-    observation: ''
-  }, {
-    id: 2,
-    startDate: '2017-05-23 11:00:00',
-    endDate: '2017-05-23 12:00:00',
-    duration: '1h',
-    speciality: 'guitare',
-    studentName: 'Séverine',
-    teacher: true,
-    student: true,
-    observation: ''
-  }, {
-    id: 3,
-    startDate: '2017-05-23 14:00:00',
-    endDate: '2017-05-23 15:00:00',
-    duration: '1h',
-    speciality: 'guitare',
-    studentName: 'Julien',
-    teacher: true,
-    student: false,
-    observation: ''
-  }],
-  nextDayActivities: [{
-    id: 1,
-    date: '19-06-2017 11:00:00',
-    nbActivity: '3'
-  }, {
-    id: 2,
-    date: '26-06-2017 11:00:00',
-    nbActivity: '1'
-  }],
-  notifications: [{
-    id: 1,
-    id_activity: 1,
-    id_user: 1,
-    message: 'Vous avez un nouveau cours',
-    state: true
-  }, {
-    id: 2,
-    id_activity: 2,
-    id_user: 1,
-    message: 'Un cours est annulé',
-    state: true
-  }]
-};
-
-});
-
 require.register("src/index.js", function(exports, require, module) {
 'use strict';
 
@@ -47184,6 +47115,7 @@ var createMiddleware = function createMiddleware(store) {
                 _axios2.default.post(path, params).then(function (response) {
                   console.log("infos notif");
                   console.error(response);
+                  store.dispatch((0, _reducer.setActivities)(response.data.activities));
                 }).catch(function (error) {
                   console.log(error);
                 });
@@ -47305,15 +47237,11 @@ require.register("src/store/reducer.js", function(exports, require, module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNotifications = exports.setNextDays = exports.setUser = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.CHANGE_STATE_NOTIFICATION = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
+exports.selectActivity = exports.changeNotificationState = exports.displayNotifications = exports.resetObservation = exports.changeInputObservation = exports.setNotifications = exports.setNextDays = exports.setUser = exports.addActivities = exports.setActivities = exports.switchPresenceStudent = exports.switchPresenceTeacher = exports.downDay = exports.upDay = exports.changeDate = exports.initialState = exports.CHANGE_STATE_NOTIFICATION = exports.RESET_OBSERVATION = exports.SWITCH_PRESENCE = exports.DOWN_DAY = exports.UP_DAY = exports.CHANGE_DATE = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
                                                                                                                                                                                                                                                                    * Npm Import
                                                                                                                                                                                                                                                                    */
-
-/*
- * Local import
- */
 
 
 var _moment = require('moment');
@@ -47322,14 +47250,14 @@ var _moment2 = _interopRequireDefault(_moment);
 
 require('moment/locale/fr');
 
-var _datas = require('src/datas');
-
-var _datas2 = _interopRequireDefault(_datas);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+/*
+ * Local import
+ */
+//import datas from 'src/datas';
 /*
  * Types
  */
@@ -47337,6 +47265,7 @@ var CHANGE_DATE = exports.CHANGE_DATE = 'CHANGE_DATE';
 var UP_DAY = exports.UP_DAY = 'UP_DAY';
 var DOWN_DAY = exports.DOWN_DAY = 'DOWN_DAY';
 var SET_ACTIVITIES = 'SET_ACTIVITIES';
+var ADD_ACTIVITIES = 'ADD_ACTIVITIES';
 var SET_USER = 'SET_USER';
 var SET_NEXTDAYS = 'SET_NEXTDAYS';
 var SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
@@ -47370,7 +47299,6 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.error(state.activities);
         return _extends({}, state, {
           currentDate: action.date
         });
@@ -47379,6 +47307,12 @@ exports.default = function () {
       {
         return _extends({}, state, {
           activities: action.activities
+        });
+      }
+    case ADD_ACTIVITIES:
+      {
+        return _extends({}, state, {
+          activities: state.activities.contact(action.activities)
         });
       }
     case SET_USER:
@@ -47519,6 +47453,12 @@ var switchPresenceStudent = exports.switchPresenceStudent = function switchPrese
 var setActivities = exports.setActivities = function setActivities(activities) {
   return {
     type: SET_ACTIVITIES,
+    activities: activities
+  };
+};
+var addActivities = exports.addActivities = function addActivities(activities) {
+  return {
+    type: ADD_ACTIVITIES,
     activities: activities
   };
 };

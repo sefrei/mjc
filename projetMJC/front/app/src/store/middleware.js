@@ -8,7 +8,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import { CHANGE_DATE, SWITCH_PRESENCE, CHANGE_STATE_NOTIFICATION, setActivities, setUser, setNextDays, setNotifications } from './reducer';
+import { CHANGE_DATE, SWITCH_PRESENCE, CHANGE_STATE_NOTIFICATION, setActivities, addActivities, setUser, setNextDays, setNotifications } from './reducer';
 /*
  * Types
  */
@@ -67,6 +67,7 @@ const createMiddleware = store => next => (action) => {
             .then((response) => {
               console.log("infos notif");
               console.error(response);
+              store.dispatch(setActivities(response.data.activities));
             })
             .catch((error) => {
               console.log(error);
