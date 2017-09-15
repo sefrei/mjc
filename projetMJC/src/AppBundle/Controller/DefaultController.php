@@ -64,6 +64,27 @@ class DefaultController extends Controller
           );
     }
 
+    /**
+     * Finds and displays informations about notification entity.
+     *
+     * @Route("notification/infos/{entity}/{id}", name="notification_infos")
+     * @Method("GET")
+     */
+    public function notificationInfosAction(Request $request)
+    {
+        $entity = $request->get('entity');
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $result = $em->getRepository("AppBundle:'.$entity")->findOneById($id);
+        dump($result);
+        exit;
+        return $this->render('default/next.json.twig', [
+            'activity' => $result,
+        ],
+        new JsonResponse()
+          );
+    }
+
 
     /**
     * @Route("/next", name="next")
@@ -87,8 +108,10 @@ class DefaultController extends Controller
     public function notificationsAction(){
         $em = $this->getDoctrine()->getManager();
         $id = $this->getUser()->getId();
-        $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser2($id);
-    //     print_r($result);s
+        $result = $em->getRepository('AppBundle:Notification')->findAllNotificationsForOneUser($id);
+        dump($result);
+        // echo "Resultats :";
+        // exit;
     //     for ($ligne=0 ; $ligne < ; $ligne++) {
     //     $n = $ligne +1
     //     echo "Enregistrement N°". $n ."<br>"
@@ -96,16 +119,58 @@ class DefaultController extends Controller
     // for ($col=0; $col < ; $col++) {
     //     echo $result[$ligne][$col];
     // }
-// foreach ($result as $number =>$key) {
-//     echo $number['entityType'];
-//     // echo $number['entityType'];
-//     // $this->$result[$entityType]->name();
-//     // foreach ($number as $subkey =>$value) {
-//     //     echo $subkey['entityType'];
-//     // }
+// Tester ajout clé tableau multidimensionnel
+// $test= array('results'=>array(array('a'=>'','b'=>'', 'c'=>''),array('a'=>'','b'=>'','c'=>'')));
+// var_dump($test);
+// foreach($test as $key => $value){
+//     $test = array_merge($test, $key], array('d' => 'val'));
 // }
+// var_dump($test);
+
+// exit;
+    // Pour chaque résultat
     dump($result);
-        exit;
+foreach ($result as $number =>$key) {
+    dump($key);
+$push = array_push($key, "apple", "raspberry");
+dump($push);
+// $number['laLessonDate'] = "date de la leçon : ";
+    // echo $number['entityType'];
+    // Je check si il y a des leçons et j'affiche l'id de la leçon
+    // foreach ($key as $subkey) {
+    //     //J'ajoute une clé à mes objets
+    //     $bla['datedelObjetnotif'] = 'date inconnue';
+    //     $resutlatFinalkey = array_merge($key, $bla);
+    //
+    //     if ($subkey==='Lesson') {
+    //         echo "C'est une leçon";
+    //     // dump($subkey);
+    //     $idLesson = $key['idEntityType'];
+    //     dump($idLesson);
+        // Je fais la requête pour trouver la date de la lesson
+        // dump($key['idEntityType']);
+
+        //J'ajoute la date à ma nouvelle clé
+        // Un truc dans le genre
+        // $test['LessonDate'] = 'DateTime Récupéré';
+        // // $resutlatFinal = array_merge($key, $test);
+        //
+        // $resutlatFinalkey = array_merge($key, $test);
+        //     dump($resutlatFinalkey);
+        //     $resutlatFinalResult = array_merge($result, $test);
+        //     dump($resutlatFinal);
+    // }
+    //  dump($resutlatFinalkey);
+    //  dump($resultatFinalKey['datedelObjetnotif']);
+
+
+    // }
+    //  dump($resutlatFinalkey);
+}
+
+    // dump($result);
+    // // dump($resutlatFinal);
+    //     exit;
 
         return $this->render('default/notifications.json.twig', [
             'result' => $result,
