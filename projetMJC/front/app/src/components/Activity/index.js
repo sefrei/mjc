@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import axios from 'axios';
+import moment from 'moment';
 
 /*
  * Local import
@@ -21,7 +22,7 @@ import Presence from 'src/containers/Presence';
  */
 const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeacher, presenceStudent,
   student, teacher, user, speciality, activity_id: id, appreciation, actions }) => {
-  //console.info(startDate);
+  console.log(startDate);
   // Change observation input
   const onChange = (evt) => {
     const { value } = evt.target;
@@ -48,10 +49,11 @@ const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeach
   const stateActivity = (presenceTeacher && presenceStudent);
   // Check type user and get his interlocutor
   const interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+  const date = moment(startDate);
   return (
     <div id="activity-view">
       <p>{user.user_role}</p>
-      <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
+      <h1 id="date-title">{date.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
         <label id="observation-label" htmlFor="observation-input">Observation : {user.user_role}</label>

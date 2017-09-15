@@ -45792,6 +45792,10 @@ var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
 var _Presence = require('src/containers/Presence');
 
 var _Presence2 = _interopRequireDefault(_Presence);
@@ -45800,13 +45804,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /*
  * Code
- */
-/*
- * View of 1 activity with more details.
- */
-
-/*
- * Npm import
  */
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
@@ -45823,7 +45820,7 @@ var Activity = function Activity(_ref) {
       appreciation = _ref.appreciation,
       actions = _ref.actions;
 
-  //console.info(startDate);
+  console.log(startDate);
   // Change observation input
   var onChange = function onChange(evt) {
     var value = evt.target.value;
@@ -45849,6 +45846,7 @@ var Activity = function Activity(_ref) {
   var stateActivity = presenceTeacher && presenceStudent;
   // Check type user and get his interlocutor
   var interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+  var date = (0, _moment2.default)(startDate);
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -45860,7 +45858,7 @@ var Activity = function Activity(_ref) {
     _react2.default.createElement(
       'h1',
       { id: 'date-title' },
-      currentDate.format('dddd D MMMM YYYY')
+      date.format('dddd D MMMM YYYY')
     ),
     _react2.default.createElement(
       'h2',
@@ -45951,6 +45949,13 @@ var Activity = function Activity(_ref) {
 
 /*
  * Local import
+ */
+/*
+ * View of 1 activity with more details.
+ */
+
+/*
+ * Npm import
  */
 
 
