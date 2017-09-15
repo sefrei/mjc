@@ -61,8 +61,6 @@ export default (state = initialState, action = {}) => {
       }
     case ADD_ACTIVITIES:
       {
-        console.error(state.activitiesNotif);
-        console.info(action.activities);
         return {
           ...state,
           activitiesNotif: state.activitiesNotif.concat(action.activities),

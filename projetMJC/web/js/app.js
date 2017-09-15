@@ -47388,8 +47388,6 @@ exports.default = function () {
       }
     case ADD_ACTIVITIES:
       {
-        console.error(state.activitiesNotif);
-        console.info(action.activities);
         return _extends({}, state, {
           activitiesNotif: state.activitiesNotif.concat(action.activities)
         });
