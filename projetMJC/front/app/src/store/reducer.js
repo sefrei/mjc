@@ -6,7 +6,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-import datas from 'src/datas';
+//import datas from 'src/datas';
 /*
  * Types
  */
@@ -14,6 +14,7 @@ export const CHANGE_DATE = 'CHANGE_DATE';
 export const UP_DAY = 'UP_DAY';
 export const DOWN_DAY = 'DOWN_DAY';
 const SET_ACTIVITIES = 'SET_ACTIVITIES';
+const ADD_ACTIVITIES = 'ADD_ACTIVITIES';
 const SET_USER = 'SET_USER';
 const SET_NEXTDAYS = 'SET_NEXTDAYS';
 const SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
@@ -44,6 +45,7 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_DATE:
       {
+        console.error(state);
         return {
           ...state,
           currentDate: action.date,
@@ -54,6 +56,13 @@ export default (state = initialState, action = {}) => {
         return {
           ...state,
           activities: action.activities,
+        };
+      }
+    case ADD_ACTIVITIES:
+      {
+        return {
+          ...state,
+          activities: state.activities.contact(action.activities),
         };
       }
     case SET_USER:
@@ -184,6 +193,10 @@ export const switchPresenceStudent = (id, presenceStudent) => ({
 });
 export const setActivities = activities => ({
   type: SET_ACTIVITIES,
+  activities,
+});
+export const addActivities = activities => ({
+  type: ADD_ACTIVITIES,
   activities,
 });
 export const setUser = user => ({
