@@ -50,10 +50,11 @@ const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeach
   // Check type user and get his interlocutor
   const interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   const date = moment(startDate);
+  console.log(date);
   return (
     <div id="activity-view">
       <p>{user.user_role}</p>
-      <h1 id="date-title">{date.format('dddd D MMMM YYYY')}</h1>
+      <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
         <label id="observation-label" htmlFor="observation-input">Observation : {user.user_role}</label>

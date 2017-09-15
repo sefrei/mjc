@@ -45847,6 +45847,7 @@ var Activity = function Activity(_ref) {
   // Check type user and get his interlocutor
   var interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
   var date = (0, _moment2.default)(startDate);
+  console.log(date);
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -45858,7 +45859,7 @@ var Activity = function Activity(_ref) {
     _react2.default.createElement(
       'h1',
       { id: 'date-title' },
-      date.format('dddd D MMMM YYYY')
+      currentDate.format('dddd D MMMM YYYY')
     ),
     _react2.default.createElement(
       'h2',
