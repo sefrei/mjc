@@ -20,7 +20,7 @@ import Presence from 'src/containers/Presence';
 /*
  * Code
  */
-const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeacher, presenceStudent,
+const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenceStudent,
   student, teacher, user, speciality, activity_id: id, appreciation, actions }) => {
   console.log(startDate);
   // Change observation input
@@ -49,8 +49,7 @@ const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeach
   const stateActivity = (presenceTeacher && presenceStudent);
   // Check type user and get his interlocutor
   const interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
-  const date = moment(startDate);
-  console.log(date);
+
   return (
     <div id="activity-view">
       <p>{user.user_role}</p>
@@ -108,7 +107,6 @@ const Activity = ({ currentDate, startDate, startHour, finishHour, presenceTeach
 
 Activity.propTypes = {
   currentDate: PropTypes.object.isRequired,
-  startDate: PropTypes.string.isRequired,
   startHour: PropTypes.string.isRequired,
   finishHour: PropTypes.string.isRequired,
   activity_id: PropTypes.number.isRequired,

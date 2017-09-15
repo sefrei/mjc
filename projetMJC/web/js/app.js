@@ -45807,7 +45807,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
-      startDate = _ref.startDate,
       startHour = _ref.startHour,
       finishHour = _ref.finishHour,
       presenceTeacher = _ref.presenceTeacher,
@@ -45846,8 +45845,7 @@ var Activity = function Activity(_ref) {
   var stateActivity = presenceTeacher && presenceStudent;
   // Check type user and get his interlocutor
   var interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
-  var date = (0, _moment2.default)(startDate);
-  console.log(date);
+
   return _react2.default.createElement(
     'div',
     { id: 'activity-view' },
@@ -45962,7 +45960,6 @@ var Activity = function Activity(_ref) {
 
 Activity.propTypes = {
   currentDate: _propTypes2.default.object.isRequired,
-  startDate: _propTypes2.default.string.isRequired,
   startHour: _propTypes2.default.string.isRequired,
   finishHour: _propTypes2.default.string.isRequired,
   activity_id: _propTypes2.default.number.isRequired,
@@ -47603,6 +47600,7 @@ var selectActivity = exports.selectActivity = function selectActivity(state, pro
     activitySelected = state.activitiesNotif.filter(function (activity) {
       return activity.activity_id === id;
     });
+    console.info(activitySelected[0]);
     if (activitySelected.length) {
       return activitySelected[0];
     }
