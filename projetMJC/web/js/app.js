@@ -47183,7 +47183,7 @@ var createMiddleware = function createMiddleware(store) {
                 path = cheminComplet + 'notification/infos/' + notif.activity_type + '/' + notif.activity_id;
                 _axios2.default.post(path, params).then(function (response) {
                   console.log("infos notif");
-                  console.error(response);
+                  console.info(response);
                   store.dispatch((0, _reducer.addActivities)(response.data.activities));
                 }).catch(function (error) {
                   console.log(error);
@@ -47369,7 +47369,6 @@ exports.default = function () {
   switch (action.type) {
     case CHANGE_DATE:
       {
-        console.error(state);
         return _extends({}, state, {
           currentDate: action.date
         });
@@ -47382,8 +47381,6 @@ exports.default = function () {
       }
     case ADD_ACTIVITIES:
       {
-        console.error(state.activitiesNotif);
-        console.info(action.activities);
         return _extends({}, state, {
           activitiesNotif: state.activitiesNotif.concat(action.activities)
         });
@@ -47472,7 +47469,6 @@ exports.default = function () {
 
         var notifications = [].concat(_toConsumableArray(state.notifications));
         notifications.forEach(function (notif) {
-          console.error(notif);
           if (notif.notification_id === idNotification) {
             notif.is_read = true;
           }
@@ -47590,6 +47586,13 @@ var selectActivity = exports.selectActivity = function selectActivity(state, pro
   });
   if (activitySelected.length) {
     return activitySelected[0];
+  } else {
+    activitySelected = state.activitiesNotif.filter(function (activity) {
+      return activity.activity_id === id;
+    });
+    if (activitySelected.length) {
+      return activitySelected[0];
+    }
   }
   return null;
 };

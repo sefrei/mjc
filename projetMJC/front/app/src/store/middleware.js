@@ -66,7 +66,7 @@ const createMiddleware = store => next => (action) => {
             axios.post(path, params)
             .then((response) => {
               console.log("infos notif");
-              console.error(response);
+              console.info(response);
               store.dispatch(addActivities(response.data.activities));
             })
             .catch((error) => {
