@@ -91,7 +91,8 @@ class SubscriptionController extends Controller
              // La première leçon aura la même startAt que l'inscription
              $lesson = new Lesson();
              $lesson->setStartAt($startDate);
-             $lesson->setAppreciation($appreciation);
+             // Même si je mets le setter de l'appréciation à null, ça affiche null dans le textarea
+            //  $lesson->setAppreciation(null);
              $lesson->setTeacherIsPresent(true);
              $lesson->setStudentIsPresent(true);
              $lesson->setSubscription($subscription);
@@ -157,7 +158,8 @@ if ($date < $holidayDate) {
 
                 $lesson->setTeacherIsPresent(true);
                 $lesson->setStudentIsPresent(true);
-                $lesson->setAppreciation($appreciation);
+                // Mettre null au lieu de $appreciation si l'on veut que ça marque null
+                // $lesson->setAppreciation($appreciation);
                 $lesson->setSubscription($subscription);
                 // Je lie la lesson à la subscription
                 $subscription->addLesson($lesson);

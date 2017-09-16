@@ -22,7 +22,11 @@
             "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}",
             "student_id" : {{ lesson.subscription.student.id }},
             "duration": "30 minutes",
-            "appreciation" : "{{ lesson.appreciation| json_encode() }}",
+            {% if lesson.appreciation is null %}
+              "appreciation" : "",
+            {% else %}
+                "appreciation" : "{{ lesson.appreciation| json_encode() }}",
+            {% endif %}
             {% if lesson.teacherIsPresent %}
               "presenceTeacher" : true,
             {% else %}
