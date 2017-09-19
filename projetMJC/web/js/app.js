@@ -43885,15 +43885,18 @@ var Activity = function Activity(_ref) {
         'Votre',
         user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
           'span',
-          null,
+          {
+            className: (0, _classnames2.default)('activity-state', { absent: !presenceStudent }, { present: presenceStudent })
+          },
           '\xE9l\xE8ve est  ',
-          presenceStudent ? ' présent ' : ' absent',
-          ' '
+          presenceStudent ? ' présent ' : ' absent'
         ) : _react2.default.createElement(
           'span',
-          null,
+          {
+            className: (0, _classnames2.default)('activity-state', { absent: !presenceTeacher }, { present: presenceTeacher })
+          },
           'professeur est ',
-          presenceStudent ? ' présent ' : ' absent'
+          presenceTeacher ? ' présent ' : ' absent'
         )
       ),
       _react2.default.createElement(
