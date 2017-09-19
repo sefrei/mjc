@@ -41,7 +41,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
       console.log(error);
     });
   };
-  appreciation = appreciation.replace(/&quot;/g,'"');
+  appreciation = appreciation.replace(/&quot;/g,'');
   // Check type user and get his presence state
   const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -76,6 +76,14 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
             {presenceType ? ' présent ' : ' absent '}
           </span>
           pour ce cours
+        </p>
+        <p>Votre
+            {if(user.user_role === 'ROLE_TEACHER') {
+              ' élève est ' presenceStudent ? ' présent ' : ' absent '
+            } else {
+              ' professeur est ' presenceStudent ? ' présent ' : ' absent '
+            }
+            }
         </p>
         <p>Le cours
           <span
