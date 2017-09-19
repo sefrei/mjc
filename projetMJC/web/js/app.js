@@ -43814,11 +43814,6 @@ var Activity = function Activity(_ref) {
     'div',
     { id: 'activity-view' },
     _react2.default.createElement(
-      'p',
-      null,
-      user.user_role
-    ),
-    _react2.default.createElement(
       'h1',
       { id: 'date-title' },
       currentDate.format('dddd D MMMM YYYY')
