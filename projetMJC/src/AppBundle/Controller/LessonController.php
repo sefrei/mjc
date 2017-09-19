@@ -47,6 +47,7 @@ class LessonController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $lesson->setAppreciation(null);
             $em->persist($lesson);
             $em->flush();
 
@@ -246,6 +247,7 @@ class LessonController extends Controller
         $observation = $request->get('appreciation');
     //    $clearObservation = strip_tags($observation);
     // $clearObservation = nl2br($observation);
+    //   $clearObservation =
         $em = $this->getDoctrine()->getManager();
 
         //Je modifie l'observation
