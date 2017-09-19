@@ -78,12 +78,12 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
           pour ce cours
         </p>
         <p>Votre
-            {if(user.user_role === 'ROLE_TEACHER') {
-              ' élève est ' presenceStudent ? ' présent ' : ' absent '
-            } else {
-              ' professeur est ' presenceStudent ? ' présent ' : ' absent '
-            }
-            }
+          {(user.user_role === 'ROLE_TEACHER') ?
+            <span>élève est  {presenceStudent ? ' présent ' : ' absent'} </span>
+          :
+             <span>professeur est {presenceStudent ? ' présent ' : ' absent'}</span>
+          }
+
         </p>
         <p>Le cours
           <span

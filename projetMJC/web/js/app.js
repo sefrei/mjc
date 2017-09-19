@@ -43729,6 +43729,227 @@ exports.default = Activities;
 
 });
 
+require.register("src/components/Activity/index.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _Presence = require('src/containers/Presence');
+
+var _Presence2 = _interopRequireDefault(_Presence);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Code
+ */
+/*
+ * View of 1 activity with more details.
+ */
+
+/*
+ * Npm import
+ */
+var Activity = function Activity(_ref) {
+  var currentDate = _ref.currentDate,
+      startHour = _ref.startHour,
+      finishHour = _ref.finishHour,
+      presenceTeacher = _ref.presenceTeacher,
+      presenceStudent = _ref.presenceStudent,
+      student = _ref.student,
+      teacher = _ref.teacher,
+      user = _ref.user,
+      speciality = _ref.speciality,
+      id = _ref.activity_id,
+      appreciation = _ref.appreciation,
+      actions = _ref.actions;
+
+  // Change observation input
+  var onChange = function onChange(evt) {
+    var value = evt.target.value;
+
+    actions.changeInputObservation(value);
+  };
+  // Save observation in db
+  var onSubmit = function onSubmit(evt) {
+    evt.preventDefault();
+    var path = '../lesson/' + id + '/observation/edit';
+    var params = new URLSearchParams();
+    params.append('id_activity', id);
+    params.append('appreciation', appreciation);
+    _axios2.default.post(path, params).then(function (response) {
+      console.log(response);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  };
+  appreciation = appreciation.replace(/&quot;/g, '');
+  // Check type user and get his presence state
+  var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
+  // Check the state of the activity with the presenceState of both users
+  var stateActivity = presenceTeacher && presenceStudent;
+  // Check type user and get his interlocutor
+  var interlocutor = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+  return _react2.default.createElement(
+    'div',
+    { id: 'activity-view' },
+    _react2.default.createElement(
+      'p',
+      null,
+      user.user_role
+    ),
+    _react2.default.createElement(
+      'h1',
+      { id: 'date-title' },
+      currentDate.format('dddd D MMMM YYYY')
+    ),
+    _react2.default.createElement(
+      'h2',
+      { id: 'activity-title' },
+      'Cours de ',
+      speciality,
+      ' de ',
+      startHour,
+      ' \xE0 ',
+      finishHour,
+      ' avec ',
+      interlocutor
+    ),
+    _react2.default.createElement(
+      'div',
+      { id: 'observation' },
+      _react2.default.createElement(
+        'label',
+        { id: 'observation-label', htmlFor: 'observation-input' },
+        'Observation : ',
+        user.user_role
+      ),
+      user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
+        'form',
+        { id: 'form', onSubmit: onSubmit },
+        _react2.default.createElement('textarea', { rows: '3', onChange: onChange, placeholder: 'Votre observation...', defaultValue: appreciation }),
+        _react2.default.createElement(
+          'button',
+          { type: 'submit', id: 'observation-submit' },
+          _react2.default.createElement(
+            'span',
+            null,
+            'Valider'
+          )
+        )
+      ) : _react2.default.createElement(
+        'div',
+        { id: 'appreciation' },
+        appreciation
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { id: 'infos-presence' },
+      _react2.default.createElement(
+        'p',
+        null,
+        'Vous \xEAtes actuellement',
+        _react2.default.createElement(
+          'span',
+          {
+            className: (0, _classnames2.default)('activity-state', { absent: !presenceType }, { present: presenceType })
+          },
+          presenceType ? ' présent ' : ' absent '
+        ),
+        'pour ce cours'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Votre',
+        user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
+          'span',
+          null,
+          '\xE9l\xE8ve est  ',
+          presenceStudent ? ' présent ' : ' absent',
+          ' '
+        ) : _react2.default.createElement(
+          'span',
+          null,
+          'professeur est ',
+          presenceStudent ? ' présent ' : ' absent'
+        )
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Le cours',
+        _react2.default.createElement(
+          'span',
+          {
+            className: (0, _classnames2.default)('activity-state', { absent: !stateActivity }, { present: stateActivity })
+          },
+          stateActivity ? ' n\'est pas annulé' : ' est annulé'
+        )
+      ),
+      _react2.default.createElement(_Presence2.default, {
+        presenceTeacher: presenceTeacher,
+        presenceStudent: presenceStudent,
+        stateActivity: stateActivity,
+        id: id
+      })
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { className: 'agenda-home-link', to: '/' },
+      'Retour Agenda'
+    )
+  );
+};
+
+/*
+ * Local import
+ */
+
+
+Activity.propTypes = {
+  currentDate: _propTypes2.default.object.isRequired,
+  startHour: _propTypes2.default.string.isRequired,
+  finishHour: _propTypes2.default.string.isRequired,
+  activity_id: _propTypes2.default.number.isRequired,
+  presenceTeacher: _propTypes2.default.bool.isRequired,
+  presenceStudent: _propTypes2.default.bool.isRequired,
+  student: _propTypes2.default.string.isRequired,
+  speciality: _propTypes2.default.string.isRequired,
+  appreciation: _propTypes2.default.string.isRequired,
+  teacher: _propTypes2.default.string.isRequired,
+  user: _propTypes2.default.object.isRequired,
+  actions: _propTypes2.default.objectOf(_propTypes2.default.func.isRequired).isRequired
+};
+
+/*
+ * Export default
+ */
+exports.default = Activity;
+
+});
+
 require.register("src/components/App/index.js", function(exports, require, module) {
 'use strict';
 
