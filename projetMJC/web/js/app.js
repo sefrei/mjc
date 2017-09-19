@@ -43803,6 +43803,7 @@ var Activity = function Activity(_ref) {
       console.log(error);
     });
   };
+  appreciation = appreciation.replace(/&quot;/g, '"');
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -45118,8 +45119,7 @@ var createMiddleware = function createMiddleware(store) {
               console.info(response);
               // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
               //  state activités + un dispatch pour enregistrer infos utilisateur
-              var activities = JSON.parse(response.data.activities.toString().replace(/&quot;/g, '"'));
-              store.dispatch((0, _reducer.setActivities)(activities));
+              store.dispatch((0, _reducer.setActivities)(response.data.activities));
               store.dispatch((0, _reducer.setUser)(response.data.user));
             }).catch(function (error) {
               console.log(error);
