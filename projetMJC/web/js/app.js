@@ -45884,11 +45884,7 @@ var Activity = function Activity(_ref) {
       user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
         'form',
         { id: 'form', onSubmit: onSubmit },
-        _react2.default.createElement(
-          'textarea',
-          { rows: '3', onChange: onChange, placeholder: 'Votre observation...' },
-          appreciation
-        ),
+        _react2.default.createElement('textarea', { rows: '3', onChange: onChange, placeholder: 'Votre observation...', defaultValue: appreciation }),
         _react2.default.createElement(
           'button',
           { type: 'submit', id: 'observation-submit' },
