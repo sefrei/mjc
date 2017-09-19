@@ -79,8 +79,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         </p>
         <p>Votre
           {(user.user_role === 'ROLE_TEACHER') ?
-            <span>
-              élève est  <span
+            <span> élève est  <span
                           className={classNames(
                             'activity-state',
                             { absent: !presenceStudent },
@@ -91,8 +90,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
                           </span>
             </span>
           :
-            <span>
-                professeur est <span
+            <span> professeur est <span
                                 className={classNames(
                                   'activity-state',
                                   { absent: !presenceTeacher },
