@@ -79,9 +79,25 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         </p>
         <p>Votre
           {(user.user_role === 'ROLE_TEACHER') ?
-            <span>élève est  {presenceStudent ? ' présent ' : ' absent'} </span>
+            <span
+              className={classNames(
+                'activity-state',
+                { absent: !presenceStudent },
+                { present: presenceStudent },
+              )}
+            >
+                élève est  {presenceStudent ? ' présent ' : ' absent'}
+            </span>
           :
-             <span>professeur est {presenceStudent ? ' présent ' : ' absent'}</span>
+            <span
+               className={classNames(
+                 'activity-state',
+                 { absent: !presenceTeacher },
+                 { present: presenceTeacher },
+               )}
+              >
+              professeur est {presenceTeacher ? ' présent ' : ' absent'}
+            </span>
           }
 
         </p>
