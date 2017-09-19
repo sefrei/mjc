@@ -45118,7 +45118,8 @@ var createMiddleware = function createMiddleware(store) {
               console.info(response);
               // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
               //  state activités + un dispatch pour enregistrer infos utilisateur
-              store.dispatch((0, _reducer.setActivities)(response.data.activities));
+              var activities = JSON.parse(response.data.activities.replace(/&quot;/g, '"'));
+              store.dispatch((0, _reducer.setActivities)(activities));
               store.dispatch((0, _reducer.setUser)(response.data.user));
             }).catch(function (error) {
               console.log(error);
