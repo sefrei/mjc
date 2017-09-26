@@ -56,7 +56,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         <label id="observation-label" htmlFor="observation-input">Observation : </label>
         {(user.user_role === 'ROLE_TEACHER') ?
           <form id="form" onSubmit={onSubmit}>
-            <textarea rows="3" onChange={onChange} placeholder="Votre observation..." defaultValue={appreciation}></textarea>
+            <textarea rows="3" onChange={onChange} placeholder="Votre observation..." defaultValue={appreciation} />
             <button type="submit" id="observation-submit"><span>Valider</span></button>
           </form>
         :
@@ -78,26 +78,28 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         </p>
         <p>Votre
           {(user.user_role === 'ROLE_TEACHER') ?
-            <span> élève est  <span
-                          className={classNames(
-                            'activity-state',
-                            { absent: !presenceStudent },
-                            { present: presenceStudent },
-                          )}
-                          >
-                            {presenceStudent ? ' présent ' : ' absent'}
-                          </span>
+            <span> élève est
+              <span
+                className={classNames(
+                'activity-state',
+                { absent: !presenceStudent },
+                { present: presenceStudent },
+              )}
+              >
+                {presenceStudent ? ' présent ' : ' absent'}
+              </span>
             </span>
           :
-            <span> professeur est <span
-                                className={classNames(
-                                  'activity-state',
-                                  { absent: !presenceTeacher },
-                                  { present: presenceTeacher },
-                                )}
-                                >
-                                  {presenceTeacher ? ' présent ' : ' absent'}
-                                </span>
+            <span> professeur est
+              <span
+                className={classNames(
+                  'activity-state',
+                  { absent: !presenceTeacher },
+                  { present: presenceTeacher },
+                )}
+              >
+                {presenceTeacher ? ' présent ' : ' absent'}
+              </span>
             </span>
           }
 

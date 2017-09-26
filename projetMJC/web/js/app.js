@@ -43880,7 +43880,7 @@ var Activity = function Activity(_ref) {
         user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
           'span',
           null,
-          ' \xE9l\xE8ve est  ',
+          ' \xE9l\xE8ve est',
           _react2.default.createElement(
             'span',
             {
@@ -43891,7 +43891,7 @@ var Activity = function Activity(_ref) {
         ) : _react2.default.createElement(
           'span',
           null,
-          ' professeur est ',
+          ' professeur est',
           _react2.default.createElement(
             'span',
             {
