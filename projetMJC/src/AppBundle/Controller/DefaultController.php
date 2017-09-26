@@ -37,7 +37,10 @@ class DefaultController extends Controller
         $date = new \DateTime($dateRequest);
         $em = $this->getDoctrine()->getManager();
         $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDateAndId($date, $id);
-
+        // Tu peux tapper les enter sur ta textaera. ensuite tu stockes dans ta base avec un htmlentities[$tontexte) et tu réaffiches tout dans un style tres pur avec un html_entity_decode($tontexte);
+        // $esscape = htmlentities($lessons);
+        // dump($esscape);
+        // exit;
         return $this->render('default/planning.json.twig', [
             'lessons' => $lessons,
         ],
@@ -68,7 +71,7 @@ class DefaultController extends Controller
      * Finds and displays informations about notification entity.
      *
      * @Route("notification/infos/{entity}/{id}", name="notification_infos")
-     * 
+     *
      */
     public function notificationInfosAction(Request $request)
     {
@@ -326,7 +329,8 @@ class DefaultController extends Controller
         $id = $request->get('id');
         $em = $this->getDoctrine()->getManager();
         $result = $em->getRepository('AppBundle:Lesson')->showAllObservations($id);
-
+        // dump($result);
+        // exit;
         return $this->render('default/observation.html.twig', [
             'result' => $result,
             'student'=>$student,

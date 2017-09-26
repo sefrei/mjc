@@ -16,10 +16,10 @@
 		<tr>
 			<td><h2><span class="label label-default btn-lg">{{subscription.teacher.firstname}} {{subscription.teacher.lastname}}</span></h2></td>
 
-		<td>{{ subscription.specialties.name }}</td>
+		<td>{{ subscription.specialties.name | capitalize}}</td>
 
 		<td><a href="{{path('all_observations', {'id':subscription.id, 'student':student, 'teacher':teacher, 'speciality':speciality})}}" class="btn btn-primary">Observations</a>
-	
+
 	</tr>
 		{% endfor %}
 

@@ -19,7 +19,7 @@
 		<td>{{ subscription.specialties.name }}</td>
 
 		<td><a href="{{path('all_observations', {'id':subscription.id, 'student':student, 'teacher':teacher, 'speciality':speciality})}}" class="btn btn-primary">Observations</a>
-		<a href="{{path('user_show', {'id':subscription.student.id})}}" class="btn btn-warning">Infos sur l'élève</a></td>
+		{#<a href="path('user_show', {'id':subscription.student.id})" class="btn btn-warning">Infos sur l'élève</a></td>#}
 	</tr>
 		{% endfor %}
 
