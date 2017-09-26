@@ -60,7 +60,7 @@ const createMiddleware = store => next => (action) => {
         .then((response) => {
           console.info(response);
           store.dispatch(setNotifications(response.data.notifications));
-          //On va ensuite récupérer les infos des activités notifiées
+          // On va ensuite récupérer les infos des activités notifiées
           response.data.notifications.map(notif => {
             path = `${cheminComplet}notification/infos/${notif.activity_type}/${notif.activity_id}`;
             axios.post(path, params)

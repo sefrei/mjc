@@ -43803,7 +43803,7 @@ var Activity = function Activity(_ref) {
       console.log(error);
     });
   };
-  appreciation = appreciation.replace(/&quot;/g, '');
+  appreciation.replace(/&quot;/g, '');
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -43836,8 +43836,7 @@ var Activity = function Activity(_ref) {
       _react2.default.createElement(
         'label',
         { id: 'observation-label', htmlFor: 'observation-input' },
-        'Observation : ',
-        user.user_role
+        'Observation : '
       ),
       user.user_role === 'ROLE_TEACHER' ? _react2.default.createElement(
         'form',
@@ -45160,7 +45159,7 @@ var createMiddleware = function createMiddleware(store) {
             _axios2.default.post(path, params).then(function (response) {
               console.info(response);
               store.dispatch((0, _reducer.setNotifications)(response.data.notifications));
-              //On va ensuite récupérer les infos des activités notifiées
+              // On va ensuite récupérer les infos des activités notifiées
               response.data.notifications.map(function (notif) {
                 path = cheminComplet + 'notification/infos/' + notif.activity_type + '/' + notif.activity_id;
                 _axios2.default.post(path, params).then(function (response) {
@@ -45308,7 +45307,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /*
  * Local import
  */
-//import datas from 'src/datas';
+// import datas from 'src/datas';
 /*
  * Types
  */
@@ -45568,13 +45567,12 @@ var selectActivity = exports.selectActivity = function selectActivity(state, pro
   });
   if (activitySelected.length) {
     return activitySelected[0];
-  } else {
-    activitySelected = state.activitiesNotif.filter(function (activity) {
-      return activity.activity_id === id;
-    });
-    if (activitySelected.length) {
-      return activitySelected[0];
-    }
+  }
+  activitySelected = state.activitiesNotif.filter(function (activity) {
+    return activity.activity_id === id;
+  });
+  if (activitySelected.length) {
+    return activitySelected[0];
   }
   return null;
 };

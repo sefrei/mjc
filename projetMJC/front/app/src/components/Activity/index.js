@@ -41,7 +41,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
       console.log(error);
     });
   };
-  appreciation = appreciation.replace(/&quot;/g,'');
+  appreciation.replace(/&quot;/g, '');
   // Check type user and get his presence state
   const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -53,7 +53,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
       <h1 id="date-title">{currentDate.format('dddd D MMMM YYYY')}</h1>
       <h2 id="activity-title">Cours de {speciality} de {startHour} à {finishHour} avec {interlocutor}</h2>
       <div id="observation">
-        <label id="observation-label" htmlFor="observation-input">Observation : {user.user_role}</label>
+        <label id="observation-label" htmlFor="observation-input">Observation : </label>
         {(user.user_role === 'ROLE_TEACHER') ?
           <form id="form" onSubmit={onSubmit}>
             <textarea rows="3" onChange={onChange} placeholder="Votre observation..." defaultValue={appreciation}></textarea>

@@ -6,7 +6,7 @@ import 'moment/locale/fr';
 /*
  * Local import
  */
-//import datas from 'src/datas';
+// import datas from 'src/datas';
 /*
  * Types
  */
@@ -240,13 +240,12 @@ export const selectActivity = (state, props) => {
   ));
   if (activitySelected.length) {
     return activitySelected[0];
-  }else {
-    activitySelected = state.activitiesNotif.filter(activity => (
-      activity.activity_id === id
-    ));
-    if (activitySelected.length) {
-      return activitySelected[0];
-    }
+  }
+  activitySelected = state.activitiesNotif.filter(activity => (
+    activity.activity_id === id
+  ));
+  if (activitySelected.length) {
+    return activitySelected[0];
   }
   return null;
 };
