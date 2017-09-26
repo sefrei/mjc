@@ -4,7 +4,12 @@
 
 <div id="observations">
 	<h1 class="student"> {{student}} </h1>
-	<h2><span class="label label-default">   Cour de {{speciality}}  avec {{teacher}}</span></h2>
+	<h2><span class="label label-default">  {{speciality|capitalize}}  avec {{teacher}} tous les {{result.0.startAt | localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc") }}s à
+{{result.0.startAt| date('H:i')}}</span></h2>
+
+{# Pour avoir la date entière en français à partir d'un dateTime #}
+{# "now"|localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") #}
+
 	<table>
 		<th>Date</th>
 		<th>Observations</th>
@@ -14,7 +19,7 @@
 				<td>{{  item.startAt | date('d/m/Y')}}</td>
 
 				{% if item.appreciation is defined %}
-					<td>{{item.appreciation}}</td>
+					<td>{{item.appreciation|nl2br}}</td>
 			</tr>
 			{% endif %}
 				{% endif %}
