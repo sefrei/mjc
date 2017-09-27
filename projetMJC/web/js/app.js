@@ -43804,8 +43804,9 @@ var Activity = function Activity(_ref) {
       console.log(error);
     });
   };
-  appreciation.replace('&quot;', '');
-  console.info(appreciation);
+  /* eslint-disable no-param-reassign */
+  appreciation = appreciation.replace(/&quot;/g, '');
+  /* eslint-enable no-param-reassign */
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
