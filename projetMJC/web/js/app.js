@@ -43607,6 +43607,7 @@ var ActivityLine = function ActivityLine(_ref) {
   // Get the good name of the second user who doing the activity with the current user,
   // ex: If it's the student then we pick the teacher name.
   var interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
@@ -43624,7 +43625,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: '/activity/' + id
+          to: 'activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -43804,6 +43805,7 @@ var Activity = function Activity(_ref) {
     });
   };
   appreciation.replace(/&quot;/g, '');
+  console.info(appreciation);
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
