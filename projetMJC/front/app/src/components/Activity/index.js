@@ -41,7 +41,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
       console.log(error);
     });
   };
-  appreciation.replace(/&quot;/g, '');
+  appreciation.replace('&quot;', '');
   console.info(appreciation);
   // Check type user and get his presence state
   const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;

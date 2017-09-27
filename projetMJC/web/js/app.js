@@ -43804,7 +43804,7 @@ var Activity = function Activity(_ref) {
       console.log(error);
     });
   };
-  appreciation.replace(/&quot;/g, '');
+  appreciation.replace('&quot;', '');
   console.info(appreciation);
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
