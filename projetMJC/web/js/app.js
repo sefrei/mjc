@@ -43625,7 +43625,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: 'activity/' + id
+          to: '/ProjectMJC/projetMJC/web/app.php/activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -43925,7 +43925,7 @@ var Activity = function Activity(_ref) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { className: 'agenda-home-link', to: '/' },
+      { className: 'agenda-home-link', to: '/ProjectMJC/projetMJC/web/app.php/' },
       'Retour Agenda'
     )
   );
@@ -43997,11 +43997,11 @@ var App = function App() {
     _reactRouterDom.Switch,
     null,
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/activity/:id',
+      path: '/ProjectMJC/projetMJC/web/app.php/activity/:id',
       component: _Activity2.default
     }),
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/',
+      path: '/ProjectMJC/projetMJC/web/app.php/',
       component: _Notebook2.default
     })
   );
