@@ -43607,6 +43607,7 @@ var ActivityLine = function ActivityLine(_ref) {
   // Get the good name of the second user who doing the activity with the current user,
   // ex: If it's the student then we pick the teacher name.
   var interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+
   return _react2.default.createElement(
     'div',
     { className: 'activity' },
@@ -43624,7 +43625,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: '/activity/' + id
+          to: '/ProjectMJC/projetMJC/web/app.php/activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -43803,7 +43804,9 @@ var Activity = function Activity(_ref) {
       console.log(error);
     });
   };
-  appreciation.replace(/&quot;/g, '');
+  /* eslint-disable no-param-reassign */
+  appreciation = appreciation.replace(/&quot;/g, '');
+  /* eslint-enable no-param-reassign */
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -43922,7 +43925,7 @@ var Activity = function Activity(_ref) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { className: 'agenda-home-link', to: '/' },
+      { className: 'agenda-home-link', to: '/ProjectMJC/projetMJC/web/app.php/' },
       'Retour Agenda'
     )
   );
@@ -43994,11 +43997,11 @@ var App = function App() {
     _reactRouterDom.Switch,
     null,
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/activity/:id',
+      path: '/ProjectMJC/projetMJC/web/app.php/activity/:id',
       component: _Activity2.default
     }),
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/',
+      path: '/ProjectMJC/projetMJC/web/app.php/',
       component: _Notebook2.default
     })
   );

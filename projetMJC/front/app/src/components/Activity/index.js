@@ -41,7 +41,9 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
       console.log(error);
     });
   };
-  appreciation.replace(/&quot;/g, '');
+  /* eslint-disable no-param-reassign */
+  appreciation = appreciation.replace(/&quot;/g, '');
+  /* eslint-enable no-param-reassign */
   // Check type user and get his presence state
   const presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -123,7 +125,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         />
       </div>
 
-      <Link className="agenda-home-link" to="/" >
+      <Link className="agenda-home-link" to="/ProjectMJC/projetMJC/web/app.php/" >
         Retour Agenda
       </Link>
     </div>

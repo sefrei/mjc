@@ -25,13 +25,14 @@ const ActivityLine = ({ startHour, finishHour, activity_id: id,
   // Get the good name of the second user who doing the activity with the current user,
   // ex: If it's the student then we pick the teacher name.
   const interlocuteur = user.user_role === 'ROLE_STUDENT' ? teacher : student;
+
   return (
     <div className="activity">
       <div className="activity-infos">
         {startHour} - {finishHour} {speciality} avec {interlocuteur}
         <Link
           className="activity-link"
-          to={`/activity/${id}`}
+          to={`/ProjectMJC/projetMJC/web/app.php/activity/${id}`}
         >
           <button className="show-activity-button">Voir</button>
         </Link>
