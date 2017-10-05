@@ -62,7 +62,7 @@ class ImportCommand extends ContainerAwareCommand
         foreach($data as $row) {
 
             $user = $em->getRepository('AppBundle:User')
-                       ->findOneByEmail($row['email']);
+                       ->findOneByUsername($row['pseudo']);
 
 			// If the user doest not exist we create one
             if(!is_object($user)){
@@ -73,7 +73,7 @@ class ImportCommand extends ContainerAwareCommand
     	// Updating info
         $user->setLastName($row['lastname']);
         $user->setFirstName($row['firstname']);
-    	$user->setUsername($row['pseudo']);
+        $user->setUsername($row['pseudo']);
 
         //J'encode le mot de passe
         // $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
@@ -133,7 +133,7 @@ class ImportCommand extends ContainerAwareCommand
     protected function get(InputInterface $input, OutputInterface $output)
     {
         // Getting the CSV from filesystem
-        $fileName = 'web/uploads/import/users2.csv';
+        $fileName = 'web/uploads/import/usersFabriqque001.csv';
 
         // Using service for converting CSV to PHP Array
         $converter = $this->getContainer()->get('import.csvtoarray');
