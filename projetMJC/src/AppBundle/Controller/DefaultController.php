@@ -12,11 +12,13 @@ use AppBundle\Entity\Subscription;
 use AppBundle\Entity\Lesson;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
     public function indexAction(Request $request)
     {
@@ -28,6 +30,7 @@ class DefaultController extends Controller
     /**
     * Pour prof ou eleve, montre toutes les leçons qu'il a pour une date donnée
     * @Route("planning/{date}", name="planning_date")
+    * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
     */
     public function userDateAction(Request $request)
     {
@@ -51,6 +54,7 @@ class DefaultController extends Controller
     /**
     * Pour l'administrateur, montre toutes les lessons d'une journée
     * @Route("/date/{date}", name="date")
+    * @Security("has_role('ROLE_ADMIN')")
     */
     public function dateAction(Request $request)
     {
@@ -91,6 +95,7 @@ class DefaultController extends Controller
 
     /**
     * @Route("/next", name="next")
+    * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
     */
     public function nextAction()
     {
@@ -107,6 +112,7 @@ class DefaultController extends Controller
 
     /**
     * @Route("notifications", name="notifications")
+    * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
     **/
     public function notificationsAction(){
         $em = $this->getDoctrine()->getManager();
@@ -186,6 +192,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/activity/{id}", name="activity")
+     * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
     public function showActivityAction(Request $request, Lesson $lesson)
     {
@@ -276,6 +283,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/show/myStudents", name="show_myStudents")
+     * @Security("has_role('ROLE_TEACHER')")
      */
      public function showMyStudentsAction()
      {
@@ -291,6 +299,7 @@ class DefaultController extends Controller
 
     /**
     * @Route("/show/mySubscriptions", name="show_mySubscriptions")
+    * @Security("has_role('ROLE_STUDENT')")
     */
     public function showMymySubscriptionsAction()
     {
@@ -320,6 +329,7 @@ class DefaultController extends Controller
 
      /**
       * @Route("/all/observations/{id}/{student}/{teacher}/{speciality}", name="all_observations")
+      * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
       */
       public function allObservationAction(Request $request, $id)
       {
