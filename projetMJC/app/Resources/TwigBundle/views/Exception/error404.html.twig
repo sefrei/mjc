@@ -1,0 +1,14 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Page non trouvée</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        Désolé {{ app.user.firstname }},
+    {% endif %}
+
+    <p>
+        La page ne peut être localisée.  <a href="{{ path('homepage') }}">Retourner à la page d'accueil</a>.
+    </p>
+{% endblock %}

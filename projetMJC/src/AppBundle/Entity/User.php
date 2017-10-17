@@ -49,7 +49,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=60, unique=true)
+     * @ORM\Column(name="email", type="string", length=60)
      * @Assert\NotBlank()
      */
     private $email;

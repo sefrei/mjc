@@ -55,7 +55,12 @@
 				{% endif %}
                 {# Si l'user est authentifié #}
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-				<li><a href="{{path('user_edit',  { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li>
+				{# On ne donne pas pour l'instant à l'user la possibilité de modifier son profil,
+	             seul l'admin peut le faire #}
+
+					<!-- <li><a href="
+	        {# path('user_edit',  { 'id': app.user.id }) #}
+	        "><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li> -->
                 <li><a href="{{ path('logout')}}">Déconnexion</a></li>
 
 				{% else %}

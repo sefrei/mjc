@@ -1,0 +1,93 @@
+firstname,lastname,pseudo,email,password,role,birthday
+William,DUROY,Wildur,williamduroy@gmail.com,Wildur913,ROLE_STUDENT,1991-06-16
+Virgile,BOURDIN,Virbou,aurelieberger@ymail.com,Virbou346,ROLE_STUDENT,2008-03-25
+Véronique,ECCIDIO,Vérecc,V.ECCIDIO@nexter-group.fr,Vérecc757,ROLE_STUDENT,1962-01-18
+Vasco,MARTIN,Vasmar,vasco.martin@icloud.com,Vasmar298,ROLE_STUDENT,2004-05-26
+Valentine,DETOURNAY,Valdet,aude.detournay@gmail.com,Valdet380,ROLE_STUDENT,2003-08-17
+Timéa,NAPOLI,Timnap,i.napoli@yahoo.fr,Timnap503,ROLE_STUDENT,2009-05-14
+Thomas,BIGNOLAS,Thobig,helene.bignolas@gmail.com,Thobig105,ROLE_STUDENT,2004-10-13
+Téophile,DEVEZE,Téodev,annedev@free.fr,Téodev783,ROLE_STUDENT,2000-08-18
+Tanneguy,ALLAIRE,Tanall,dominique.allaire.services@gmail.com,Tanall187,ROLE_STUDENT,1998-08-10
+Swann,KENTZEL,Swaken,coswgi@gmail.com,Swaken292,ROLE_STUDENT,2006-06-15
+Sixtine,EULER,Sixeul,euler78@free.fr,Sixeul573,ROLE_STUDENT,2009-04-29
+Sabrina,LIPNICKI,Sablip,sabrina.lipnicki@gmail.com,Sablip272,ROLE_STUDENT,1975-03-31
+Romain,CAVAGNAC,Romcav,laurent.cavagnac@wanadoo.fr,Romcav609,ROLE_STUDENT,2004-09-25
+Romain,VALADON,Romval,romainvaladon@gmail.com,Romval225,ROLE_STUDENT,1996-11-02
+Robin,MARGERIE,Robmar,natacha.margerie@numericable.fr,Robmar516,ROLE_STUDENT,2006-07-03
+Raphaëlle,CONVERS-DOMART,Rapcon,raph.convers@gmail.com,Rapcon496,ROLE_STUDENT,1970-01-01
+Pierre,COUSTAING,Piecou,julie.coustaing@hotmail.com,Piecou626,ROLE_STUDENT,2008-08-24
+Pierre,DUCREUX,Pieduc,lesducreux@gmail.com,Pieduc576,ROLE_STUDENT,2004-01-09
+Olivier,HAGENLOCHER,Olihag,hagenlocher@orange.fr,Olihag639,ROLE_STUDENT,1966-08-19
+Olivia,VANHALST,Olivan,valerie.vanhalst@wanadoo.fr,Olivan322,ROLE_STUDENT,2003-03-13
+Octave,ROGER-MACHART,Octrog,paulrogermachart@hotmail.com,Octrog840,ROLE_STUDENT,2009-10-14
+Nina,CHOUMEURTHE,Nincho,delphine.rocher97@gmail.com,Nincho720,ROLE_STUDENT,2002-06-14
+Nathan,CHEYNET,Natche,joellecheynet@free.fr,Natche257,ROLE_STUDENT,2004-04-02
+Nathalie,LANDREIN,Natlan,nat.landrein@orange.fr,Natlan523,ROLE_STUDENT,1962-09-27
+Michel,EULER,Miceul,euler78@free.fr,Miceul435,ROLE_STUDENT,2001-07-18
+Maxime,ISOARD,Maxiso,isoard.maxime@gmail.com,Maxiso806,ROLE_STUDENT,1996-10-15
+Maxime,LOZET,Maxloz,sophie.durand_gasselin@yahoo.fr,Maxloz652,ROLE_STUDENT,2004-12-12
+Maxence,LIEBEL,Maxlie,t.liebel@free.fr,Maxlie96,ROLE_STUDENT,2004-04-20
+Mathis,THION,Matthi,celine_peltier@yahoo.fr,Matthi142,ROLE_STUDENT,2007-10-24
+Marion,MIGNON,Marmig,mignon.machecourt@free.fr,Marmig620,ROLE_STUDENT,2007-11-17
+Marie Pia,D'HAUTEFEUILLE,Mard'h,monique.dhautefeuille@gmail.com,Mard'h436,ROLE_STUDENT,2001-05-24
+Marie,BERGER,Marber,casaberger@free.fr,Marber606,ROLE_STUDENT,2001-08-15
+Marie,VIARD,Marvia,aclvc@orange.fr,Marvia5,ROLE_STUDENT,2003-09-19
+Marc,LAMOTTE,Marlam,lamotte3@free.fr,Marlam270,ROLE_STUDENT,2006-01-23
+Lucie,GRILLER,Lucgri,grillersophie@gmail.com,Lucgri112,ROLE_STUDENT,2010-03-06
+Luca,BARGUIL,Lucbar,sa.78@hotmail.fr,Lucbar339,ROLE_STUDENT,2007-06-25
+Lou,COUSIN,Loucou,stefbrice@hotmail.com,Loucou998,ROLE_STUDENT,2004-12-27
+Lena,LOPEZ,Lenlop,manuepottier@hotmail.com,Lenlop730,ROLE_STUDENT,2006-08-18
+Joséphine,LIEBEL,Joslie,t.liebel@free.fr,Joslie433,ROLE_STUDENT,2006-12-13
+Joaquim,DEBIENASSIS,Joadeb,magali.debienassis@gmail.com,Joadeb226,ROLE_STUDENT,2009-04-22
+Joachim,NAPOLI,Joanap,i.napoli@yahoo.fr,Joanap686,ROLE_STUDENT,2011-09-09
+Jean-Baptiste,RIZK,Jeariz,cecile.rizk@hotmail.fr,Jeariz73,ROLE_STUDENT,2001-06-14
+Jean Philippe,BRILLAND,Jeabri,jpv.brilland@wanadoo.fr,Jeabri209,ROLE_STUDENT,1965-08-07
+Hugo,ALLAIRE,Hugall,dominique.allaire.services@gmail.com,Hugall180,ROLE_STUDENT,2001-11-19
+Helena,TERRIERE,Helter,terriere.nadia@neuf.fr,Helter544,ROLE_STUDENT,2009-02-10
+Guillermo,RODRIGUEZ,Guirod,carmenelisa.briceno@gmail.com,Guirod791,ROLE_STUDENT,2004-11-19
+Gilliane,NEVEU,Gilnev,gilliane.neveu@orange.fr,Gilnev46,ROLE_STUDENT,1968-10-30
+Gaspard,NAUDIN,Gasnau,sebzabnaudin@gmail.com,Gasnau610,ROLE_STUDENT,2005-05-27
+Gaël,BIGOT,Gaëbig,mraingeard@yahoo.com,Gaëbig850,ROLE_STUDENT,2003-10-23
+Gabrielle,BARBE LEFRANC,Gabbar,slefranc@dbmail.com,Gabbar957,ROLE_STUDENT,2006-09-19
+Gabriel,CONVERS,Gabcon,raph.convers@gmail.com,Gabcon46,ROLE_STUDENT,2006-12-20
+gabriel,DOUSA,gabdou,ony.ram@hotmail.fr,gabdou107,ROLE_STUDENT,2006-10-03
+Gabriel,SANGLE FERRIERE,Gabsan,msferriere@gmail.com,Gabsan383,ROLE_STUDENT,2010-01-11
+Florence,VIDAL,Flovid,florence-vidal@hotmail.com,Flovid466,ROLE_STUDENT,1992-07-09
+Ernest,HARRANG,Ernhar,clepeltier72@gmail.com,Ernhar11,ROLE_STUDENT,2006-08-22
+Eric,ECCIDIO,Eriecc,eric.eccidio@gfi.fr,Eriecc673,ROLE_STUDENT,1964-05-28
+Emilie,JACQUET,Emijac,dorothee.jacquet@aliceadsl.fr,Emijac102,ROLE_STUDENT,2000-09-28
+Elise,HAGENLOCHER,Elihag,gilliane.neveu@orange.fr,Elihag426,ROLE_STUDENT,2002-10-13
+Elena,KARNEFF,Elekar,aj.karneff@orange.fr,Elekar321,ROLE_STUDENT,2007-08-27
+Edouard,PEPIN,Edopep,pepin.virginie@gmail.com,Edopep617,ROLE_STUDENT,2008-10-06
+Diego,RODRIGUEZ,Dierod,carmenelisa.briceno@gmail.com,Dierod730,ROLE_STUDENT,2007-04-06
+David,KENTZEL,Davken,dkentzel@free.fr,Davken325,ROLE_STUDENT,2001-01-24
+Cyril,GIRARD,Cyrgir,beatrice.marc@wanadoo.fr,Cyrgir511,ROLE_STUDENT,2002-01-07
+Clément,MASSERON,Clémas,clement.masseron@wanadoo.fr,Clémas437,ROLE_STUDENT,2001-03-26
+Clément,ROUMILHAC,Clérou,roumilhac2@orange.fr,Clérou440,ROLE_STUDENT,2003-12-11
+Clémence,CONVERS,Clécon,raph.convers@gmail.com,Clécon171,ROLE_STUDENT,2009-06-17
+Clara,ALBA SANCHEZ,Claalb,martina.albasanchez@free.fr,Claalb720,ROLE_STUDENT,2005-02-17
+Catherine,SERRUAU,Catser,c.salmon@agefi-societe.fr,Catser218,ROLE_STUDENT,1959-12-28
+Camille,CONVERS,Camcon,raph.convers@gmail.com,Camcon238,ROLE_STUDENT,2009-06-17
+Basile,GERMAIN,Basger,bmpgermain@gmail.com,Basger399,ROLE_STUDENT,2003-08-21
+Axelle,RATEAUD,Axerat,l.lelegard@neuf.fr,Axerat445,ROLE_STUDENT,2001-10-18
+Axel,JOANNY,Axejoa,christophe.joanny@gmail.com,Axejoa456,ROLE_STUDENT,2006-05-13
+Aude,ROUCOU,Audrou,aude.roucou@hotmail.fr,Audrou404,ROLE_STUDENT,2001-10-22
+Arthur,HUSSON,Arthus,annesophie.defour@yahoo.fr,Arthus396,ROLE_STUDENT,2006-09-18
+Arthur,MARADOUR,Artmar,david.emilie@laposte.net,Artmar990,ROLE_STUDENT,2007-11-06
+Aniselme,BLANCHARD,Anibla,aymechan@club-internet.fr,Anibla176,ROLE_STUDENT,2009-06-19
+Angela,NAPOLI,Angnap,i.napoli@yahoo.fr,Angnap666,ROLE_STUDENT,2007-09-25
+Andréa,CASALA,Andcas,sebastien.casala@free.fr,Andcas195,ROLE_STUDENT,2008-06-05
+Anaïs,RENONCIAT,Anaren,jennifer_renonciat@yahoo.com,Anaren866,ROLE_STUDENT,2005-08-26
+Amaury,NGUYEN,Amangu,maud.brevet@mpsa.com,Amangu72,ROLE_STUDENT,2010-09-02
+Alice,MERIGAY,Alimer,annemerigay@gmail.com,Alimer301,ROLE_STUDENT,2001-07-19
+Alfred,COURTOIS,Alfcou,marielle.courtois@orange.fr,Alfcou340,ROLE_STUDENT,2006-04-23
+Adrien,NGUYEN,Adrngu,franck_nguyen@yahoo.fr,Adrngu185,ROLE_STUDENT,2010-09-02
+Adrien,SAAVEDRA,Adrsaa,ibe_molina@hotmail.com,Adrsaa477,ROLE_STUDENT,2005-09-11
+Benoît,RENAUD,Benren,renaudbenoit23@gmail.com,Benren368,ROLE_TEACHER,1970-01-01
+Maya,DE ROBIEN,Mayde ,mayaderobien@gmail.com,Mayde 650,ROLE_TEACHER,1970-01-02
+Emilie,TRAN,Emitra,maihome78@gmail.com,Emitra984,ROLE_TEACHER,1970-01-03
+Mathieu,TERROY,Matter,mathieuterroy@gmail.com,Matter714,ROLE_TEACHER,1970-01-04
+Valdir,LIMA,Vallim,vadilima@gmail.com,Vallim297,ROLE_TEACHER,1970-01-05
+Fernando,DE ALMEIDA,Ferdea,fernzicos@bbox.fr,Ferdea617,ROLE_TEACHER,1970-01-06
+Christophe,LIRA,Chtovao,chtovao@gmx.fr,Armando1936,ROLE_TEACHER,1980-02-22
+Fernando,DE ALMEIDA,AdminFab,fernzicos@bbox.fr,AdminFab,ROLE_ADMIN,1970-01-06
