@@ -39,6 +39,7 @@ class LessonController extends Controller
      * Creates a new lesson entity.
      *
      * @Route("/new", name="lesson_new")
+     * @Security("has_role('ROLE_ADMIN')")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
