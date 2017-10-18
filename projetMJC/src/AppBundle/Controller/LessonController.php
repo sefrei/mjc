@@ -8,13 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Lesson controller.
  *
  * @Route("lesson")
- * @Security("has_role('ROLE_ADMIN')")
  */
 class LessonController extends Controller
 {
@@ -67,7 +65,6 @@ class LessonController extends Controller
      *
      * @Route("/{id}", name="lesson_show")
      * @Method("GET")
-     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
     public function showAction(Lesson $lesson)
     {
@@ -103,7 +100,6 @@ class LessonController extends Controller
      *
      * @Route("/{id}/presence/edit", name="lesson_presence_edit")
      * @Method({"GET", "POST"})
-     * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
     public function presenceEditAction(Request $request, Lesson $lesson)
     {
@@ -244,7 +240,6 @@ class LessonController extends Controller
      *
      * @Route("/{id}/observation/edit", name="lesson_observation_edit")
      * @Method({"GET", "POST"})
-     * @Security("has_role('ROLE_TEACHER')")
      */
     public function observationEditAction(Request $request, Lesson $lesson)
     {
