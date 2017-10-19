@@ -43624,7 +43624,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: '/activity/' + id
+          to: '/ProjectMJC/projetMJC/web/app.php/activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -43803,7 +43803,7 @@ var Activity = function Activity(_ref) {
       console.log(error);
     });
   };
-  appreciation.replace(/&quot;/g, '');
+  appreciation = appreciation.replace(/&quot;/g, '');
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -43922,7 +43922,7 @@ var Activity = function Activity(_ref) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { className: 'agenda-home-link', to: '/' },
+      { className: 'agenda-home-link', to: '/ProjectMJC/projetMJC/web/app.php/' },
       'Retour Agenda'
     )
   );
@@ -43994,7 +43994,7 @@ var App = function App() {
     _reactRouterDom.Switch,
     null,
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/activity/:id',
+      path: '/ProjectMJC/projetMJC/web/app.php/activity/:id',
       component: _Activity2.default
     }),
     _react2.default.createElement(_reactRouterDom.Route, {
@@ -44373,7 +44373,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/activity/' + notif.activity_id
+                  to: '/ProjectMJC/projetMJC/web/app.php/activity/' + notif.activity_id
                 },
                 notif.message
               ),
@@ -45202,12 +45202,9 @@ var createMiddleware = function createMiddleware(store) {
             var _path = '';
             if (_CheminComplet.substr(_CheminComplet.length - 1, 1) !== '/') {
               _CheminComplet += '/';
-              console.info('yo');
             }
             if (_CheminComplet.substr(_CheminComplet.length - 5, 5) === '.php/') {
               _path = _CheminComplet + ('lesson/' + action.id + '/presence/edit');
-              console.info('yo2');
-              console.log(_path);
             } else {
               _path = _CheminComplet + ('../../lesson/' + action.id + '/presence/edit');
             }
@@ -45226,7 +45223,7 @@ var createMiddleware = function createMiddleware(store) {
           {
             console.error(action);
 
-            /*  //On va chercher les infos des activités à la date de la notifications (pour pouvoir afficher les infos )
+            /* On va chercher les infos des activités à la date de la notifications (pour pouvoir afficher les infos )
             let CheminComplet = document.location.href;
             if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
               CheminComplet += '/';
@@ -45248,7 +45245,7 @@ var createMiddleware = function createMiddleware(store) {
 
             var _path2 = window.location.origin;
             console.info(window.location.origin);
-            _path2 += '/reading_notification/is_read/' + action.idNotification;
+            _path2 += '/ProjectMJC/projetMJC/web/app.php/reading_notification/is_read/' + action.idNotification;
             _axios2.default.post(_path2).then(function (response) {
               console.log(response);
             }).catch(function (error) {

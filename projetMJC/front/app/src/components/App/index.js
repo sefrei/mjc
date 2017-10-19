@@ -15,7 +15,7 @@ import Activity from 'src/containers/Activity';
 const App = () => (
   <Switch>
     <Route
-      path="/activity/:id"
+      path="/ProjectMJC/projetMJC/web/app.php/activity/:id"
       component={Activity}
     />
     <Route

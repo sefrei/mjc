@@ -61,7 +61,7 @@ const createMiddleware = store => next => (action) => {
           console.info(response);
           store.dispatch(setNotifications(response.data.notifications));
           // On va ensuite récupérer les infos des activités notifiées
-          response.data.notifications.map(notif => {
+          response.data.notifications.map((notif) => {
             path = `${cheminComplet}notification/infos/${notif.activity_type}/${notif.activity_id}`;
             axios.post(path, params)
             .then((response) => {
@@ -108,12 +108,9 @@ const createMiddleware = store => next => (action) => {
         let path = '';
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
-          console.info('yo');
         }
         if (CheminComplet.substr(CheminComplet.length - 5, 5) === '.php/') {
           path = CheminComplet + `lesson/${action.id}/presence/edit`;
-          console.info('yo2');
-          console.log(path);
         }
         else {
           path = CheminComplet + `../../lesson/${action.id}/presence/edit`;
@@ -135,7 +132,7 @@ const createMiddleware = store => next => (action) => {
       {
         console.error(action);
 
-        /*  //On va chercher les infos des activités à la date de la notifications (pour pouvoir afficher les infos )
+        /* On va chercher les infos des activités à la date de la notifications (pour pouvoir afficher les infos )
         let CheminComplet = document.location.href;
         if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
           CheminComplet += '/';
@@ -158,7 +155,7 @@ const createMiddleware = store => next => (action) => {
 
         let path = window.location.origin;
         console.info(window.location.origin);
-        path += `/reading_notification/is_read/${action.idNotification}`;
+        path += `/ProjectMJC/projetMJC/web/app.php/reading_notification/is_read/${action.idNotification}`;
         axios.post(path)
         .then((response) => {
           console.log(response);
