@@ -37,11 +37,16 @@
 				<th>Actions</th>
 				<td>
                     <ul>
+                    {# note: disabled because we no longer use this
                         <li>
                             <a class="btn btn-warning"  href="{{ path('subscription_show', { 'id': subscription.id }) }}">modifier</a>
                         </li>
                         <li>
                             <a class="btn btn-delete"  href="{{ path('subscription_edit', { 'id': subscription.id }) }}">effacer</a>
+                        </li>
+                    #}
+                        <li>
+                            <a class="btn btn-warning"  href="{{ path('subscription_edit', { 'id': subscription.id }) }}">modifier</a>
                         </li>
                     </ul>
                 </td>
