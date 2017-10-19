@@ -137,7 +137,7 @@ class Reading_notificationController extends Controller
     }
     /**
            * @Route("/is_read/{id}", name="notification_is_read")
-           * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
+
            */
            public function notificationIsReadAction(Request $request, Reading_notification $reading_notification)
            {
