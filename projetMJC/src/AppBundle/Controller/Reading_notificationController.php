@@ -8,11 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 /**
  * Reading_notification controller.
  *
  * @Route("reading_notification")
+ * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
  */
 class Reading_notificationController extends Controller
 {
@@ -55,7 +58,7 @@ class Reading_notificationController extends Controller
 
         return $this->render('reading_notification/new.html.twig', array(
             'reading_notification' => $reading_notification,
-            'form' => $form->createVnotification_is_readiew(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -137,6 +140,7 @@ class Reading_notificationController extends Controller
     }
     /**
            * @Route("/is_read/{id}", name="notification_is_read")
+           * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
 
            */
            public function notificationIsReadAction(Request $request, Reading_notification $reading_notification)

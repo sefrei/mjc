@@ -12,11 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 /**
  * Subscription controller.
  *
  * @Route("subscription")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class SubscriptionController extends Controller
 {

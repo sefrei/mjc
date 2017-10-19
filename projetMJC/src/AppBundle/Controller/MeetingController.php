@@ -7,11 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 /**
  * Meeting controller.
  *
  * @Route("meeting")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class MeetingController extends Controller
 {
@@ -62,6 +65,7 @@ class MeetingController extends Controller
      * Finds and displays a meeting entity.
      *
      * @Route("/{id}", name="meeting_show")
+     * @Security("has_role('ROLE_TEACHER')")
      * @Method("GET")
      */
     public function showAction(Meeting $meeting)
