@@ -4,13 +4,11 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class SecurityController extends Controller
 {
     /**
      * @Route("/login", name="login")
-     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
     public function loginAction(Request $request)
     {

@@ -8,13 +8,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Reading_notification controller.
  *
  * @Route("reading_notification")
- * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
  */
 class Reading_notificationController extends Controller
 {
