@@ -37,6 +37,7 @@
 				 {% if is_granted('ROLE_ADMIN') %}
         <li><a href="{{ path('specialty_index')}}">Activités</a></li>
         <li><a href="{{ path('event_index')}}">Evénements</a></li>
+        <li><a href="{{ path('lesson_index')}}">Leçons</a></li>
 				<li><a href="{{ path('user_index')}}">Utilisateurs</a></li>
 				<li><a href="{{ path('subscription_index')}}">Inscriptions</a></li>
 				<li><a href="{{path ('user_new')}}" alt="nouvel utilisateur" data-toggle="tooltip" title="créer un nouvel utilisateur"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
