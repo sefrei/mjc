@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Liste des utilisateurs</h1>
-
+    <ul>
+        <li>
+            <a class="btn btn-new" href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
+        </li>
+    </ul>
     <table>
         <thead>
             <tr>
@@ -42,10 +46,11 @@
         {% endfor %}
         </tbody>
     </table>
-
+<!--
     <ul>
         <li>
             <a class="btn btn-new" href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
         </li>
     </ul>
+-->    
 {% endblock %}
