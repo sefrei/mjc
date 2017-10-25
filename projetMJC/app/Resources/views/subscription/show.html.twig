@@ -48,6 +48,9 @@
                         <li>
                             <a class="btn btn-warning"  href="{{ path('subscription_edit', { 'id': subscription.id }) }}">modifier</a>
                         </li>
+                        <li>
+                            <a href="{{ path('subscription_index') }}">Retour à la liste</a>
+                        </li>
                     </ul>
                 </td>
 			</tr>
@@ -57,7 +60,7 @@
     <ul>
         <li>
             {{ form_start(delete_form) }}
-                <input class="btn btn-delete"  type="submit" value="Delete">
+                <input class="btn btn-delete"  type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

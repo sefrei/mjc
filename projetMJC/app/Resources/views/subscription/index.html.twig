@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Liste d'inscriptions</h1>
-
+    <ul>
+        <li>
+            <a  class="btn btn-new"href="{{ path('subscription_new') }}">Créer une nouvelle inscription</a>
+        </li>
+    </ul>
     <table>
         <thead>
             <tr>
@@ -41,10 +45,11 @@
         {% endfor %}
         </tbody>
     </table>
-
+<!--
     <ul>
         <li>
             <a  class="btn btn-new"href="{{ path('subscription_new') }}">Nouvelle inscription</a>
         </li>
     </ul>
+-->
 {% endblock %}

@@ -97,6 +97,12 @@ class LessonController extends Controller
 
             return $this->redirectToRoute('lesson_edit', array('id' => $lesson->getId()));
         }
+
+        return $this->render('lesson/edit.html.twig', array(
+            'lesson' => $lesson,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**

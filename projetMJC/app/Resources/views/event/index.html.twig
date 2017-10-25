@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Liste des événements</h1>
-
+    <ul>
+        <li>
+            <a class="btn btn-new" href="{{ path('event_new') }}">Créer un nouvel évènement</a>
+        </li>
+    </ul>
     <table>
         <thead>
             <tr>
@@ -32,10 +36,11 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <!--
     <ul>
         <li>
             <a class="btn btn-new" href="{{ path('event_new') }}">Créer un nouvel évènement</a>
         </li>
     </ul>
+    -->
 {% endblock %}
