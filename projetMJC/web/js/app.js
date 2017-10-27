@@ -45222,31 +45222,17 @@ var createMiddleware = function createMiddleware(store) {
         case _reducer.CHANGE_STATE_NOTIFICATION:
           {
             console.error(action);
-
-            /* On va chercher les infos des activités à la date de la notifications (pour pouvoir afficher les infos )
-            let CheminComplet = document.location.href;
-            if (CheminComplet.substr(CheminComplet.length - 1, 1) !== '/') {
-              CheminComplet += '/';
+            var _path2 = document.location.href;
+            var newPath = '';
+            var pathtab = _path2.split('/');
+            console.info(pathtab);
+            for (var iter = 0; iter < pathtab.length - 2; iter += 1) {
+              newPath += pathtab[iter] + '/';
+              console.error(newPath);
             }
-            CheminComplet += `planning/${action.date}`;
-            const params = new URLSearchParams();
-            params.append('date', action.date);
-            axios.post(CheminComplet, params)
-            .then((response) => {
-              console.log(response);
-              // Dispatch pour enregistré les nouvelles données des activités
-              // de la date selectionnée dans le state
-              store.dispatch(setActivities(response.data.activities));
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-            */
-
-            var _path2 = window.location.origin;
-            console.info(window.location.origin);
-            _path2 += '/ProjectMJC/projetMJC/web/app.php/reading_notification/is_read/' + action.idNotification;
-            _axios2.default.post(_path2).then(function (response) {
+            console.info(newPath);
+            newPath += 'reading_notification/is_read/' + action.idNotification;
+            _axios2.default.post(newPath).then(function (response) {
               console.log(response);
             }).catch(function (error) {
               console.log(error);

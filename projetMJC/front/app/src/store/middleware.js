@@ -131,10 +131,17 @@ const createMiddleware = store => next => (action) => {
     case CHANGE_STATE_NOTIFICATION:
       {
         console.error(action);
-        let path = window.location.origin;
-        console.info(window.location.origin);
-        path += `/reading_notification/is_read/${action.idNotification}`;
-        axios.post(path)
+        let path = document.location.href;
+        let newPath = '';
+        const pathtab = path.split('/');
+        console.info(pathtab);
+        for (let iter = 0; iter < pathtab.length - 2; iter += 1) {
+          newPath += `${pathtab[iter]}/`;
+          console.error(newPath);
+        }
+        console.info(newPath);
+        newPath += `reading_notification/is_read/${action.idNotification}`;
+        axios.post(newPath)
         .then((response) => {
           console.log(response);
         })
