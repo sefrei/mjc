@@ -36,7 +36,7 @@ const NextActivities = ({ days, actions, displayNotifications }) => {
       {days.map((day) => {
         idDay += 1;
         return (
-          <p
+          <p // eslint-disable-line
             key={idDay}
             onClick={() => onChange(day.date)}
           >

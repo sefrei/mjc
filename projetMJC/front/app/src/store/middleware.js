@@ -38,7 +38,7 @@ const createMiddleware = store => next => (action) => {
           console.info(response);
           // Je dispatche mon action pour enregistrer ces nouvelles données dans mon
           //  state activités + un dispatch pour enregistrer infos utilisateur
-          store.dispatch(setActivities(response.data.activities));
+          store.dispatch(setActivities(JSON.parse(response.data.activities)));
           store.dispatch(setUser(response.data.user));
         })
         .catch((error) => {
