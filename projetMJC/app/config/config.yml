@@ -85,3 +85,5 @@ services:
             - { name: twig.extension }
     import.csvtoarray:
         class: AppBundle\Services\ConvertCsvToArray
+    import.subtoarray:
+        class: AppBundle\Services\ConvertSubToArray
