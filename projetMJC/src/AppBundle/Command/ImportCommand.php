@@ -133,7 +133,7 @@ class ImportCommand extends ContainerAwareCommand
     protected function get(InputInterface $input, OutputInterface $output)
     {
         // Getting the CSV from filesystem
-        $fileName = 'web/uploads/import/users2.csv';
+        $fileName = 'web/uploads/import/nouveaux.csv';
 
         // Using service for converting CSV to PHP Array
         $converter = $this->getContainer()->get('import.csvtoarray');

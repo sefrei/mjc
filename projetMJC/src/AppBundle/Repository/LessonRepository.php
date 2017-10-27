@@ -47,6 +47,7 @@ class LessonRepository extends \Doctrine\ORM\EntityRepository
         AND l.startAt< ?2
         AND l.subscription = s.id
         AND (s.teacher = ?3 OR s.student = ?3)
+        ORDER BY l.startAt
         ');
         $query->setParameter(1, $date->format('Y-m-d 00:00:00'));
         $query->setParameter(2, $date->format('Y-m-d 23:59:59'));
