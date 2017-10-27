@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}La fabrique{% endblock %}</title>
+        <title>{% block title %}LA FABRIQUE{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link href="https://fonts.googleapis.com/css?family=Hind+Madurai:400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -26,7 +26,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-			</button> <a href="{{ path('homepage') }}" class="navbar-brand">La FABRIQUE</a>
+			</button> <a href="{{ path('homepage') }}" class="navbar-brand">LA FABRIQUE</a>
             </div>
             <div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
               <ul class="nav navbar-nav">
@@ -47,12 +47,16 @@
 				{# Si l'user est teacher #}
 				 {% if is_granted('ROLE_TEACHER') %}
 				<li><a href="{{ path('show_myStudents')}}">Mes élèves</a></li>
+        <li><a href="{{ path('meeting_index')}}">Mes réunions</a></li>
+        <li><a href="{{ path('event_index')}}">Evénements</a></li>
 
 
 				{% endif %}
 				{# Si l'user est student #}
 				 {% if is_granted('ROLE_STUDENT') %}
 				 <li><a href="{{ path('show_mySubscriptions')}}">Mes activités</a></li>
+         <li><a href="{{ path('event_index')}}">Evénements</a></li>
+
 
 				{% endif %}
                 {# Si l'user est authentifié #}
