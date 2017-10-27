@@ -1,0 +1,13 @@
+firstname,lastname,pseudo,email,password,role,birthday
+Pauline,BOISARD,Pauboi,pauline.boisard@gmail.com,Pauboi123,ROLE_STUDENT,03-07-1980
+Maeylis,LOZET,Maeloz,sophie.durand_gasselin@yahoo.fr,Maeloz433,ROLE_STUDENT,12-12-2004
+Lucile,ROCHER,Lucroc,lucile.rocher@gmail.com,Lucroc909,ROLE_STUDENT,04-12-1993
+Lucie,LAMOTTE,Luclam,lamotte3@free.fr,Luclam966,ROLE_STUDENT,28-02-2004
+Céline,AMAURY,Célama,celine.amaury@vedecom.fr,Célama467,ROLE_STUDENT,20-03-1970
+Antoine,DEVERA,Antdev,vdevera@noos.fr,Antdev350,ROLE_STUDENT,15-04-2005
+Anne,LEMOINE,Annlem,anne.lemoine22@gmail.com,Annlem188,ROLE_STUDENT,08-11-1995
+Jade,YRIBARREN,Jadyri,helene.yribarren@gmail.com,Jadyri900,ROLE_STUDENT,19-08-2004
+Pavel,ALBA SANCHEZ,Pavalb,martina.albasanchez@free.fr,Pavalb52,ROLE_STUDENT,31-03-2005
+Virgile,GUILLAUMIN,Virgui,sandrine.guillaumin@laposte.net,Virgui338,ROLE_STUDENT,21-10-1997
+Khadra,CHOUTRI,Khacho,souad.benfredj@yahoo.com,Khacho947,ROLE_STUDENT,05-05-2004
+Anais,SIMON,Anasim,leeloub@free.fr,Anasim899,ROLE_STUDENT,28-12-2006
