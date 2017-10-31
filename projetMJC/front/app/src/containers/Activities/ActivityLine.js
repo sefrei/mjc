@@ -12,6 +12,7 @@ import Activity from 'src/components/Activities/ActivityLine';
  */
 const mapStateToProps = state => ({
   user: state.user,
+  baseSite: state.baseSite,
 });
 
 const mapDispatchToProps = null;

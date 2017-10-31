@@ -43922,7 +43922,7 @@ var Activity = function Activity(_ref) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { className: 'agenda-home-link', to: '/ProjectMJC/projetMJC/web/app.php/' },
+      { className: 'agenda-home-link', to: '/' },
       'Retour Agenda'
     )
   );
@@ -44543,7 +44543,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    baseSite: state.baseSite
   };
 };
 /*
@@ -45322,7 +45323,8 @@ var initialState = exports.initialState = {
   notifications: [],
   nextDayActivities: [],
   inputObservation: '',
-  displayNotifications: false
+  displayNotifications: false,
+  baseSite: 'http://localhost/ProjectMJC/projetMJC/web/app.php/'
 };
 
 /*

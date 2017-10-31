@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom';
  */
 import Presence from 'src/containers/Presence';
 
-
 /*
  * Code
  */
