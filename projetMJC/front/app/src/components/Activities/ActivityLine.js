@@ -13,12 +13,13 @@ import { Link } from 'react-router-dom';
  * Local import
  */
 import Presence from 'src/containers/Presence';
+import baseSite from 'src/siteUrl';
 
 /*
  * Code
  */
 const ActivityLine = ({ startHour, finishHour, activity_id: id,
-  speciality, presenceStudent, presenceTeacher, student, teacher, user, baseSite }) => {
+  speciality, presenceStudent, presenceTeacher, student, teacher, user }) => {
   // Get the state of the activity in depend of the presence of the 2 users (teacher / student).
   const stateActivity = (presenceTeacher && presenceStudent);
   // Get the good name of the second user who doing the activity with the current user,
@@ -30,7 +31,7 @@ const ActivityLine = ({ startHour, finishHour, activity_id: id,
         {startHour} - {finishHour} {speciality} avec {interlocuteur}
         <Link
           className="activity-link"
-          to={`${baseSite}activity/${id}`}
+          to={`${baseSite.baseSite}activity/${id}`}
         >
           <button className="show-activity-button">Voir</button>
         </Link>

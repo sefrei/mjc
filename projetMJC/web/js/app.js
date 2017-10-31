@@ -43579,17 +43579,19 @@ var _Presence = require('src/containers/Presence');
 
 var _Presence2 = _interopRequireDefault(_Presence);
 
+var _siteUrl = require('src/siteUrl');
+
+var _siteUrl2 = _interopRequireDefault(_siteUrl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * Code
  */
-/*
- * Line of one activity of the notebook.
- */
+
 
 /*
- * Npm import
+ * Local import
  */
 var ActivityLine = function ActivityLine(_ref) {
   var startHour = _ref.startHour,
@@ -43600,8 +43602,7 @@ var ActivityLine = function ActivityLine(_ref) {
       presenceTeacher = _ref.presenceTeacher,
       student = _ref.student,
       teacher = _ref.teacher,
-      user = _ref.user,
-      baseSite = _ref.baseSite;
+      user = _ref.user;
 
   // Get the state of the activity in depend of the presence of the 2 users (teacher / student).
   var stateActivity = presenceTeacher && presenceStudent;
@@ -43625,7 +43626,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: baseSite + 'activity/' + id
+          to: _siteUrl2.default.baseSite + 'activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -43641,10 +43642,12 @@ var ActivityLine = function ActivityLine(_ref) {
       id: id
     })
   );
-};
+}; /*
+    * Line of one activity of the notebook.
+    */
 
 /*
- * Local import
+ * Npm import
  */
 
 
@@ -43977,12 +43980,16 @@ var _Activity = require('src/containers/Activity');
 
 var _Activity2 = _interopRequireDefault(_Activity);
 
+var _siteUrl = require('src/siteUrl');
+
+var _siteUrl2 = _interopRequireDefault(_siteUrl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * Code
  */
-
+var url = _siteUrl2.default.baseSite;
 
 /*
  * Local import
@@ -43990,12 +43997,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*
  * Npm import
  */
+
 var App = function App() {
   return _react2.default.createElement(
     _reactRouterDom.Switch,
     null,
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/activity/:id',
+      path: url + 'activity/:id',
       component: _Activity2.default
     }),
     _react2.default.createElement(_reactRouterDom.Route, {
@@ -45034,7 +45042,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-;require.register("src/store/index.js", function(exports, require, module) {
+;require.register("src/siteUrl.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  // baseSite: '/ProjectMJC/projetMJC/web/app.php/', // Local
+  baseSite: '' // en ligne
+};
+
+});
+
+require.register("src/store/index.js", function(exports, require, module) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45324,8 +45345,7 @@ var initialState = exports.initialState = {
   notifications: [],
   nextDayActivities: [],
   inputObservation: '',
-  displayNotifications: false,
-  baseSite: '/ProjectMJC/projetMJC/web/app.php/'
+  displayNotifications: false
 };
 
 /*

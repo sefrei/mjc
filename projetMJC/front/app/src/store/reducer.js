@@ -36,7 +36,6 @@ export const initialState = {
   nextDayActivities: [],
   inputObservation: '',
   displayNotifications: false,
-  baseSite: '/ProjectMJC/projetMJC/web/app.php/',
 };
 
 
