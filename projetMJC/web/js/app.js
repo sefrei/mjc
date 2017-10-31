@@ -43793,7 +43793,7 @@ var Activity = function Activity(_ref) {
   // Save observation in db
   var onSubmit = function onSubmit(evt) {
     evt.preventDefault();
-    var path = '../lesson/' + id + '/observation/edit';
+    var path = '../lesson2/' + id + '/observation/edit';
     var params = new URLSearchParams();
     params.append('id_activity', id);
     params.append('appreciation', appreciation);
@@ -43803,7 +43803,7 @@ var Activity = function Activity(_ref) {
       console.log(error);
     });
   };
-  appreciation = appreciation.replace(/&quot;/g, '');
+  appreciation = appreciation.replace(/&quot;/g, ''); // eslint-disable-line
   // Check type user and get his presence state
   var presenceType = user.user_role === 'ROLE_STUDENT' ? presenceStudent : presenceTeacher;
   // Check the state of the activity with the presenceState of both users
@@ -44179,7 +44179,7 @@ var NextActivities = function NextActivities(_ref) {
       idDay += 1;
       return _react2.default.createElement(
         'p',
-        {
+        { // eslint-disable-line
           key: idDay,
           onClick: function onClick() {
             return onChange(day.date);
@@ -44321,7 +44321,6 @@ var Notifications = function Notifications(_ref) {
 
   // Go on the activity of the notification
   var _onClick = function _onClick(idActivity, idNotification, date) {
-
     actions.changeNotificationState(idActivity, idNotification, date);
   };
   // Get only notif which are active (notif.state === true)
@@ -44367,9 +44366,13 @@ var Notifications = function Notifications(_ref) {
           if (!notif.is_read) {
             return _react2.default.createElement(
               'p',
-              { className: 'notif', key: notif.activity_id, onClick: function onClick() {
+              { // eslint-disable-line
+                className: 'notif',
+                key: notif.activity_id,
+                onClick: function onClick() {
                   return _onClick(notif.activity_id, notif.notification_id, notif.date);
-                } },
+                }
+              },
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
