@@ -45050,7 +45050,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
   // baseSite: '/ProjectMJC/projetMJC/web/app.php/', // Local
-  baseSite: '' // en ligne
+  baseSite: '/' // en ligne
 };
 
 });
