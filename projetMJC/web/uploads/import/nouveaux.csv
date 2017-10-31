@@ -1,6 +1,6 @@
 firstname,lastname,pseudo,email,password,role,birthday
 Pauline,BOISARD,Pauboi,pauline.boisard@gmail.com,Pauboi123,ROLE_STUDENT,03-07-1980
-Maeylis,LOZET,Maeloz,sophie.durand_gasselin@yahoo.fr,Maeloz433,ROLE_STUDENT,12-12-2004
+Maeylis,LOZET,Maeloz,sophie.durand_gasselin@yahoo.fr,Maeloz433,ROLE_STUDENT,18-11-2002
 Lucile,ROCHER,Lucroc,lucile.rocher@gmail.com,Lucroc909,ROLE_STUDENT,04-12-1993
 Lucie,LAMOTTE,Luclam,lamotte3@free.fr,Luclam966,ROLE_STUDENT,28-02-2004
 Céline,AMAURY,Célama,celine.amaury@vedecom.fr,Célama467,ROLE_STUDENT,20-03-1970
