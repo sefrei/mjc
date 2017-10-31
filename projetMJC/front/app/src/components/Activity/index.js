@@ -15,6 +15,7 @@ import axios from 'axios';
  * Local import
  */
 import Presence from 'src/containers/Presence';
+import baseSite from 'src/siteUrl';
 
 /*
  * Code
@@ -123,7 +124,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
         />
       </div>
 
-      <Link className="agenda-home-link" to="/" >
+      <Link className="agenda-home-link" to={`${baseSite.baseSite}`} >
         Retour Agenda
       </Link>
     </div>

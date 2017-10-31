@@ -43762,17 +43762,19 @@ var _Presence = require('src/containers/Presence');
 
 var _Presence2 = _interopRequireDefault(_Presence);
 
+var _siteUrl = require('src/siteUrl');
+
+var _siteUrl2 = _interopRequireDefault(_siteUrl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * Code
  */
-/*
- * View of 1 activity with more details.
- */
+
 
 /*
- * Npm import
+ * Local import
  */
 var Activity = function Activity(_ref) {
   var currentDate = _ref.currentDate,
@@ -43926,14 +43928,16 @@ var Activity = function Activity(_ref) {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { className: 'agenda-home-link', to: '/' },
+      { className: 'agenda-home-link', to: '' + _siteUrl2.default.baseSite },
       'Retour Agenda'
     )
   );
-};
+}; /*
+    * View of 1 activity with more details.
+    */
 
 /*
- * Local import
+ * Npm import
  */
 
 
@@ -44307,21 +44311,14 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _reactRouterDom = require('react-router-dom');
 
+var _siteUrl = require('src/siteUrl');
+
+var _siteUrl2 = _interopRequireDefault(_siteUrl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
- * Local import
- */
-
-/*
  * Code
- */
-/*
- * Show notifications
- */
-
-/*
- * Npm import
  */
 var Notifications = function Notifications(_ref) {
   var notifications = _ref.notifications,
@@ -44385,7 +44382,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/activity/' + notif.activity_id
+                  to: _siteUrl2.default.baseSite + 'activity/' + notif.activity_id
                 },
                 notif.message
               ),
@@ -44401,6 +44398,18 @@ var Notifications = function Notifications(_ref) {
 
 /*
  * PropTypes
+ */
+
+
+/*
+ * Local import
+ */
+/*
+ * Show notifications
+ */
+
+/*
+ * Npm import
  */
 Notifications.propTypes = {
   notifications: _propTypes2.default.arrayOf(_propTypes2.default.object.isRequired).isRequired,
@@ -45049,7 +45058,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  // baseSite: '/ProjectMJC/projetMJC/web/app.php/', // Local
+  //  baseSite: '/ProjectMJC/projetMJC/web/app.php/', // Local
   baseSite: '/' // en ligne
 };
 
@@ -45189,7 +45198,6 @@ var createMiddleware = function createMiddleware(store) {
               response.data.notifications.map(function (notif) {
                 path = cheminComplet + 'notification/infos/' + notif.activity_type + '/' + notif.activity_id;
                 _axios2.default.post(path, params).then(function (response) {
-                  console.log("infos notif");
                   console.info(response);
                   store.dispatch((0, _reducer.addActivities)(response.data.activities));
                 }).catch(function (error) {
@@ -45230,9 +45238,9 @@ var createMiddleware = function createMiddleware(store) {
               _CheminComplet += '/';
             }
             if (_CheminComplet.substr(_CheminComplet.length - 5, 5) === '.php/') {
-              _path = _CheminComplet + ('lesson/' + action.id + '/presence/edit');
+              _path = _CheminComplet + 'lesson/' + action.id + '/presence/edit';
             } else {
-              _path = _CheminComplet + ('../../lesson/' + action.id + '/presence/edit');
+              _path = _CheminComplet + '../../lesson/' + action.id + '/presence/edit';
             }
             var _params2 = new URLSearchParams();
             _params2.append('id_activity', action.id);
@@ -45247,16 +45255,12 @@ var createMiddleware = function createMiddleware(store) {
           }
         case _reducer.CHANGE_STATE_NOTIFICATION:
           {
-            console.error(action);
             var _path2 = document.location.href;
             var newPath = '';
             var pathtab = _path2.split('/');
-            console.info(pathtab);
             for (var iter = 0; iter < pathtab.length - 2; iter += 1) {
               newPath += pathtab[iter] + '/';
-              console.error(newPath);
             }
-            console.info(newPath);
             newPath += 'reading_notification/is_read/' + action.idNotification;
             _axios2.default.post(newPath).then(function (response) {
               console.log(response);

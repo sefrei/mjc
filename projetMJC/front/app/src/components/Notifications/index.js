@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 /*
  * Local import
  */
-
+import baseSite from 'src/siteUrl';
 /*
  * Code
  */
@@ -62,7 +62,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
                   onClick={() => onClick(notif.activity_id, notif.notification_id, notif.date)}
                 >
                   <Link
-                    to={`/activity/${notif.activity_id}`}
+                    to={`${baseSite.baseSite}activity/${notif.activity_id}`}
                   >
                     {notif.message}
                   </Link>

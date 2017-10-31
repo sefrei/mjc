@@ -65,14 +65,13 @@ const createMiddleware = store => next => (action) => {
             path = `${cheminComplet}notification/infos/${notif.activity_type}/${notif.activity_id}`;
             axios.post(path, params)
             .then((response) => {
-              console.log("infos notif");
               console.info(response);
               store.dispatch(addActivities(response.data.activities));
             })
             .catch((error) => {
               console.log(error);
             });
-          })
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -110,10 +109,10 @@ const createMiddleware = store => next => (action) => {
           CheminComplet += '/';
         }
         if (CheminComplet.substr(CheminComplet.length - 5, 5) === '.php/') {
-          path = CheminComplet + `lesson/${action.id}/presence/edit`;
+          path = `${CheminComplet}lesson/${action.id}/presence/edit`;
         }
         else {
-          path = CheminComplet + `../../lesson/${action.id}/presence/edit`;
+          path = `${CheminComplet}../../lesson/${action.id}/presence/edit`;
         }
         const params = new URLSearchParams();
         params.append('id_activity', action.id);
@@ -130,16 +129,12 @@ const createMiddleware = store => next => (action) => {
       }
     case CHANGE_STATE_NOTIFICATION:
       {
-        console.error(action);
-        let path = document.location.href;
+        const path = document.location.href;
         let newPath = '';
         const pathtab = path.split('/');
-        console.info(pathtab);
         for (let iter = 0; iter < pathtab.length - 2; iter += 1) {
           newPath += `${pathtab[iter]}/`;
-          console.error(newPath);
         }
-        console.info(newPath);
         newPath += `reading_notification/is_read/${action.idNotification}`;
         axios.post(newPath)
         .then((response) => {
