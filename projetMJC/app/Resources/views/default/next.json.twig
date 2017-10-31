@@ -1,3 +1,4 @@
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 {
   "nextDayActivities" : [
   {% for item in result %}
@@ -7,5 +8,6 @@
     }
     {% if (loop.length == loop.index ) or (loop.last == true)  %} {% else %},{% endif %}
   {% endfor %}
+      {% endif %}
   ]
 }

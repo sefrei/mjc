@@ -13,11 +13,15 @@
 
           {
             "activity_id" : {{ lesson.id }},
+            {% if app.user.role == 'ROLE_ADMIN' %}
+            "speciality" : "{{ lesson.subscription.specialties.name }} ({{ lesson.subscription.teacher.firstname }} {{ lesson.subscription.teacher.lastname |raw }})",
+            {% else %}
             "speciality" : "{{ lesson.subscription.specialties.name }}",
+            {% endif %}
             "startDate" : "{{ lesson.startAt | date("d-m-Y") }}",
             "startHour" : "{{ lesson.subscription.startAt | date("H\\hi") }}",
             "finishHour" : "{{ lesson.subscription.finishAt | date("H\\hi") }}",
-            "teacher" : "{{ lesson.subscription.teacher.firstname }} {{ lesson.subscription.teacher.lastname }}",
+            "teacher" : "{{ lesson.subscription.teacher.firstname }} {{ lesson.subscription.teacher.lastname |raw }}",
             "teacher_id" : {{ lesson.subscription.teacher.id }},
             "student" : "{{ lesson.subscription.student.firstname }} {{ lesson.subscription.student.lastname }}",
             "student_id" : {{ lesson.subscription.student.id }},

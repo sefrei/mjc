@@ -22,6 +22,7 @@ class EventController extends Controller
      *
      * @Route("/", name="event_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
     public function indexAction()
     {
