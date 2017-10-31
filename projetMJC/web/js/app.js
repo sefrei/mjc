@@ -43600,7 +43600,8 @@ var ActivityLine = function ActivityLine(_ref) {
       presenceTeacher = _ref.presenceTeacher,
       student = _ref.student,
       teacher = _ref.teacher,
-      user = _ref.user;
+      user = _ref.user,
+      baseSite = _ref.baseSite;
 
   // Get the state of the activity in depend of the presence of the 2 users (teacher / student).
   var stateActivity = presenceTeacher && presenceStudent;
@@ -43624,7 +43625,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: '/activity/' + id
+          to: baseSite + 'activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -44376,7 +44377,7 @@ var Notifications = function Notifications(_ref) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 {
-                  to: '/ProjectMJC/projetMJC/web/app.php/activity/' + notif.activity_id
+                  to: '/activity/' + notif.activity_id
                 },
                 notif.message
               ),
@@ -45324,7 +45325,7 @@ var initialState = exports.initialState = {
   nextDayActivities: [],
   inputObservation: '',
   displayNotifications: false,
-  baseSite: 'http://localhost/ProjectMJC/projetMJC/web/app.php/'
+  baseSite: '/ProjectMJC/projetMJC/web/app.php/'
 };
 
 /*

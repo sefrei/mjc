@@ -18,7 +18,7 @@ import Presence from 'src/containers/Presence';
  * Code
  */
 const ActivityLine = ({ startHour, finishHour, activity_id: id,
-  speciality, presenceStudent, presenceTeacher, student, teacher, user }) => {
+  speciality, presenceStudent, presenceTeacher, student, teacher, user, baseSite }) => {
   // Get the state of the activity in depend of the presence of the 2 users (teacher / student).
   const stateActivity = (presenceTeacher && presenceStudent);
   // Get the good name of the second user who doing the activity with the current user,
@@ -30,7 +30,7 @@ const ActivityLine = ({ startHour, finishHour, activity_id: id,
         {startHour} - {finishHour} {speciality} avec {interlocuteur}
         <Link
           className="activity-link"
-          to={`/activity/${id}`}
+          to={`${baseSite}activity/${id}`}
         >
           <button className="show-activity-button">Voir</button>
         </Link>

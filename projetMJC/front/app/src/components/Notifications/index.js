@@ -62,7 +62,7 @@ const Notifications = ({ notifications, displayNotifications, actions }) => {
                   onClick={() => onClick(notif.activity_id, notif.notification_id, notif.date)}
                 >
                   <Link
-                    to={`/ProjectMJC/projetMJC/web/app.php/activity/${notif.activity_id}`}
+                    to={`/activity/${notif.activity_id}`}
                   >
                     {notif.message}
                   </Link>
