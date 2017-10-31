@@ -106,6 +106,24 @@ class LessonRepository extends \Doctrine\ORM\EntityRepository
           //  SELECT DATE(lesson.startAt), count(DISTINCT(lesson.id)) FROM lesson inner join subscription on subscription.id = lesson.subscription_id where lesson.startAt > DATE(Now()) and (subscription.teacher_id = 5 or subscription.student_id = 5) group by DATE(lesson.startAt) ORDER BY DATE(lesson.startAt) ASC LIMIT 3
         }
 
+        //NowAfter for admin
+        public function lessonsNowAfterAdmin()
+        {
+            $today = new \DateTime();
+          $query = $this->createQueryBuilder('l')
+            ->select('count(DISTINCT(l.id)) as nblesson, SUBSTRING(l.startAt, 1, 10) as date')
+            ->join('AppBundle:Subscription' ,'s')
+            ->andwhere('l.subscription = s.id')
+            ->andwhere('l.startAt > ?1')
+            ->groupBy('date')
+            // ->orderBy('l.startAt')
+            ->setMaxResults(3)
+            ->setParameter(1, $today->format('Y-m-d 23:59:59'))
+            ->getQuery()->getResult();
+
+            return $query;
+        }
+
         public function showAllObservations($id){
             $query = $this->createQueryBuilder('l')
             ->select('l.startAt')

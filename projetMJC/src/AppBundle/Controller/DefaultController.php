@@ -30,8 +30,8 @@ class DefaultController extends Controller
 
     /**
     * Pour prof ou eleve, montre toutes les leçons qu'il a pour une date donnée
+    * Pour admin, les leçons de tous les profs à une date donnée
     * @Route("planning/{date}", name="planning_date")
-    * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
     */
     public function userDateAction(Request $request)
     {
@@ -40,7 +40,15 @@ class DefaultController extends Controller
 
         $date = new \DateTime($dateRequest);
         $em = $this->getDoctrine()->getManager();
+
+        $role = $this->getUser()->getRole();
+        //If Role admin, change the request
+        if ($role = "ROLE_ADMIN") {
+        $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDate($date);
+
+    } else {
         $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDateAndId($date, $id);
+        }
         // Tu peux tapper les enter sur ta textaera. ensuite tu stockes dans ta base avec un htmlentities[$tontexte) et tu réaffiches tout dans un style tres pur avec un html_entity_decode($tontexte);
         // $esscape = htmlentities($lessons);
         // dump($esscape);
@@ -96,13 +104,19 @@ class DefaultController extends Controller
 
     /**
     * @Route("/next", name="next")
-    * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
+    *
     */
     public function nextAction()
     {
        $em = $this->getDoctrine()->getManager();
        $id = $this->getUser()->getId();
+       //Pour l'admin
+       if ($role = "ROLE_ADMIN") {
+           $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfterAdmin();
+        } else {
        $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfter($id);
+   }
+
 
        return $this->render('default/next.json.twig', [
            'result' => $result,
