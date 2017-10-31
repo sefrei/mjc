@@ -29,7 +29,7 @@ const Activity = ({ currentDate, startHour, finishHour, presenceTeacher, presenc
   // Save observation in db
   const onSubmit = (evt) => {
     evt.preventDefault();
-    const path = `../lesson2/${id}/observation/edit`;
+    const path = `../lesson/${id}/observation/edit`;
     const params = new URLSearchParams();
     params.append('id_activity', id);
     params.append('appreciation', appreciation);

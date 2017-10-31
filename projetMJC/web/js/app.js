@@ -43624,7 +43624,7 @@ var ActivityLine = function ActivityLine(_ref) {
         _reactRouterDom.Link,
         {
           className: 'activity-link',
-          to: '/ProjectMJC/projetMJC/web/app.php/activity/' + id
+          to: '/activity/' + id
         },
         _react2.default.createElement(
           'button',
@@ -43793,7 +43793,7 @@ var Activity = function Activity(_ref) {
   // Save observation in db
   var onSubmit = function onSubmit(evt) {
     evt.preventDefault();
-    var path = '../lesson2/' + id + '/observation/edit';
+    var path = '../lesson/' + id + '/observation/edit';
     var params = new URLSearchParams();
     params.append('id_activity', id);
     params.append('appreciation', appreciation);
@@ -43994,7 +43994,7 @@ var App = function App() {
     _reactRouterDom.Switch,
     null,
     _react2.default.createElement(_reactRouterDom.Route, {
-      path: '/ProjectMJC/projetMJC/web/app.php/activity/:id',
+      path: '/activity/:id',
       component: _Activity2.default
     }),
     _react2.default.createElement(_reactRouterDom.Route, {
