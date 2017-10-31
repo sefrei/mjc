@@ -110,7 +110,7 @@ class SubscriptionController extends Controller
             //  dump($beginingDate);
 
              $format = 'Y-m-d';
-             $holidayDate = \DateTime::createFromFormat($format, '2018-07-10');
+             $holidayDate = \DateTime::createFromFormat($format, '2018-06-16');
              // Et j'enregistre l'inscription
              $em->persist($subscription);
              $em->flush();
