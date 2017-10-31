@@ -42,14 +42,15 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $role = $this->getUser()->getRole();
-        //If Role admin, change the request
-        if ($role = "ROLE_ADMIN") {
+    //    If Role admin, change the request
+        if ($role === "ROLE_ADMIN") {
         $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDate($date);
 
     } else {
         $lessons = $em->getRepository('AppBundle:Lesson')->getLessonsFromDateAndId($date, $id);
         }
-        // Tu peux tapper les enter sur ta textaera. ensuite tu stockes dans ta base avec un htmlentities[$tontexte) et tu réaffiches tout dans un style tres pur avec un html_entity_decode($tontexte);
+        // dump($lessons);
+        // Tu peux taper les enter sur ta textaera. ensuite tu stockes dans ta base avec un htmlentities[$tontexte) et tu réaffiches tout dans un style tres pur avec un html_entity_decode($tontexte);
         // $esscape = htmlentities($lessons);
         // dump($esscape);
         // exit;
@@ -110,8 +111,9 @@ class DefaultController extends Controller
     {
        $em = $this->getDoctrine()->getManager();
        $id = $this->getUser()->getId();
+       $role = $this->getUser()->getRole();
        //Pour l'admin
-       if ($role = "ROLE_ADMIN") {
+       if ($role === "ROLE_ADMIN") {
            $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfterAdmin();
         } else {
        $result = $em->getRepository('AppBundle:Lesson')->lessonsNowAfter($id);
