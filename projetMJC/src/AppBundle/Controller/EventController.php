@@ -17,10 +17,26 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  */
 class EventController extends Controller
 {
+  /**
+   * Lists all subscription entities.
+   *
+   * @Route("/", name="event_index")
+   * @Method("GET")
+   */
+  public function indexAction()
+  {
+      $em = $this->getDoctrine()->getManager();
+
+      $events = $em->getRepository('AppBundle:Event')->findAll();
+      //dump($subscriptions);
+      return $this->render('event/index.html.twig', array(
+          'events' => $events,
+      ));
+  }
     /**
      * Lists all next event entities.
      *
-     * @Route("/next", name="event_index")
+     * @Route("/next", name="event_next")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
