@@ -20,7 +20,7 @@ class EventController extends Controller
     /**
      * Lists all next event entities.
      *
-     * @Route("/next", name="event_next")
+     * @Route("/next", name="event_index")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
