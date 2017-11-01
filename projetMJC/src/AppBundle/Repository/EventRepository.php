@@ -14,8 +14,8 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
   {
     $today = new \DateTime();
       $query = $this->createQueryBuilder('e')
+      ->setMaxResults(3)
       ->select('e')
-
       // ->addSelect('l.startAt')
       ->where('e.date >= ?1')
       ->setParameter(1, $today->format('Y-m-d 23:59:59'))
