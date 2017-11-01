@@ -10,4 +10,20 @@ namespace AppBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function showNextEvents()
+  {
+    $query = $this->getEntityManager()->createQuery(
+        "SELECT e FROM AppBundle:Event e
+        WHERE e.date > NOW()limit 3"
+  );
+  return $query;
+  }
+  public function showPreviousEvents()
+  {
+    $query = $this->getEntityManager()->createQuery(
+        "SELECT e FROM AppBundle:Event e
+        WHERE date < NOW() ORDERBY e.date DESC"
+  );
+  return $query;
+  }
 }
