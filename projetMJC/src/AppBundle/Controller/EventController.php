@@ -18,13 +18,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class EventController extends Controller
 {
     /**
-     * Lists all event entities.
+     * Lists all next event entities.
      *
-     * @Route("/", name="event_index")
+     * @Route("/next", name="event_next")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
      */
-    public function indexAction()
+    public function nextAction()
     {
         $em = $this->getDoctrine()->getManager();
         $events = $em->getRepository('AppBundle:Event')->showNextEvents();
@@ -38,7 +38,27 @@ class EventController extends Controller
             'events' => $events,
         ));
     }
+    /**
+     * Lists all previous event entities.
+     *
+     * @Route("/previous", name="event_previous")
+     * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
+     */
+    public function previousAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Event')->showPreviousEvents();
+        /*
+        dump($events);
+        exit;
+        */
+        // $events = $em->getRepository('AppBundle:Event')->findAll();
 
+        return $this->render('event/index.html.twig', array(
+            'events' => $events,
+        ));
+    }
     /**
      * Creates a new event entity.
      *
