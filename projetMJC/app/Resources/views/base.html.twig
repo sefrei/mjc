@@ -55,7 +55,7 @@
 				{# Si l'user est student #}
 				 {% if is_granted('ROLE_STUDENT') %}
 				 <li><a href="{{ path('show_mySubscriptions')}}">Mes activités</a></li>
-         <li><a href="{{ path('event_index')}}">Evénements</a></li>
+         <li><a href="{{ path('event_next')}}">Evénements</a></li>
 
 
 				{% endif %}
