@@ -12,12 +12,18 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
 {
   public function showNextEvents()
   {
-    $query = $this->getEntityManager()->createQuery(
-        "SELECT e FROM AppBundle:Event e
-        WHERE e.date > NOW()limit 3"
-  );
-  return $query;
+    $today = new \DateTime();
+      $query = $this->createQueryBuilder('e')
+      ->select('e')
+
+      // ->addSelect('l.startAt')
+      ->where('e.date >= ?1')
+      ->setParameter(1, $today->format('Y-m-d 23:59:59'))
+      ->getQuery()->getResult();
+      return $query;
   }
+
+
   public function showPreviousEvents()
   {
     $query = $this->getEntityManager()->createQuery(
