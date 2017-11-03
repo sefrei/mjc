@@ -19,7 +19,7 @@
               </div>
               <!-- Faire une div ronde pour l'heure  -->
               <div class="hour_event">
-                {% if event.date %}{{ event.date|date('H:i') }}{% endif %}
+                {% if event.date %}{{ event.date|date('H') }}h{{ event.date|date('i') }}{% endif %}
               </div>
             <!--Et on ferme la div event  -->
           </div>
