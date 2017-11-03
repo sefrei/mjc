@@ -1,32 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
   <!--Ici, il faut envoyer le title depuis le controller, on va changer en fonction de nex et de previous  -->
-    <h1>{{title}}</h1>
+    <h1>{{ title }}</h1>
+	<div class="container-fluid">
         {% for event in events %}
         <!-- event = Div générale  qui contient tout pour un événement (wagon en entier) -->
-            <div class="event">
+
+			<div class="event">
               <!--La Div pour le date, il faudra plus tard la marquer en entier style vendredi 10 novembre 2017-->
               <div class="date">
                 {% if event.date %}{{ event.date|date('Y-m-d') }}{% endif %}
               </div>
               <!--title = event name  -->
-              <div class="title.event">
+              <div class="title_event">
                   {{ event.name }}
               </div>
               <!-- Faire une div ronde pour l'heure  -->
-              <div class="hour.event">
+              <div class="hour_event">
                 {% if event.date %}{{ event.date|date('H:i') }}{% endif %}
               </div>
             <!--Et on ferme la div event  -->
           </div>
         {% endfor %}
+	</div>
 
-    <!--
     <ul>
         <li>
             <a class="btn btn-new" href="{{ path('event_previous') }}">Voir les événements passés</a>
         </li>
     </ul>
-    -->
+
 {% endblock %}

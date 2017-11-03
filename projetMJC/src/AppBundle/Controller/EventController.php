@@ -1,14 +1,10 @@
 <?php
-
 namespace AppBundle\Controller;
-
 use AppBundle\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-
-
 /**
  * Event controller.
  *
@@ -26,7 +22,6 @@ class EventController extends Controller
   public function indexAction()
   {
       $em = $this->getDoctrine()->getManager();
-
       $events = $em->getRepository('AppBundle:Event')->findAll();
       //dump($subscriptions);
       return $this->render('event/index.html.twig', array(
@@ -48,10 +43,11 @@ class EventController extends Controller
         dump($events);
         exit;
         */
+        $title = "Les prochains événements";
         // $events = $em->getRepository('AppBundle:Event')->findAll();
-
-        return $this->render('event/index.html.twig', array(
+        return $this->render('event/next.html.twig', array(
             'events' => $events,
+            'title' => $title,
         ));
     }
     /**
@@ -65,14 +61,11 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $events = $em->getRepository('AppBundle:Event')->showPreviousEvents();
-        /*
-        dump($events);
-        exit;
-        */
+        $title = "Les événements passés";
         // $events = $em->getRepository('AppBundle:Event')->findAll();
-
-        return $this->render('event/index.html.twig', array(
+        return $this->render('event/next.html.twig', array(
             'events' => $events,
+            'title' => $title,
         ));
     }
     /**
@@ -86,21 +79,17 @@ class EventController extends Controller
         $event = new Event();
         $form = $this->createForm('AppBundle\Form\EventType', $event);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);
             $em->flush();
-
             return $this->redirectToRoute('event_show', array('id' => $event->getId()));
         }
-
         return $this->render('event/new.html.twig', array(
             'event' => $event,
             'form' => $form->createView(),
         ));
     }
-
     /**
      * Finds and displays a event entity.
      *
@@ -111,13 +100,11 @@ class EventController extends Controller
     public function showAction(Event $event)
     {
         $deleteForm = $this->createDeleteForm($event);
-
         return $this->render('event/show.html.twig', array(
             'event' => $event,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Displays a form to edit an existing event entity.
      *
@@ -129,20 +116,16 @@ class EventController extends Controller
         $deleteForm = $this->createDeleteForm($event);
         $editForm = $this->createForm('AppBundle\Form\EventType', $event);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('event_edit', array('id' => $event->getId()));
         }
-
         return $this->render('event/edit.html.twig', array(
             'event' => $event,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a event entity.
      *
@@ -153,16 +136,13 @@ class EventController extends Controller
     {
         $form = $this->createDeleteForm($event);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($event);
             $em->flush();
         }
-
         return $this->redirectToRoute('event_index');
     }
-
     /**
      * Creates a form to delete a event entity.
      *
