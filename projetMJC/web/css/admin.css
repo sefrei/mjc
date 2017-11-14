@@ -210,6 +210,7 @@ border-style: solid;
   width : 100%;
   align-items: center;
 }
+
 .event {
 	/*display: flex;*/
 	box-shadow: 4px 10px 20px 3px;
@@ -235,11 +236,14 @@ border-style: solid;
 	width:100%;
 }
 
+.date_meeting {
+	background-color: #334258;
+}
+
 .title_event {
 	/*border: 1px solid #457896;*/
 	font-size: 1.5em;
-	padding: 1em 0 1em 0 ;
-
+	padding: 1em 0.5em 1em 0.5em ;
 }
 
 
@@ -259,6 +263,9 @@ border-style: solid;
 	bottom: -2em;
 	margin: 0 auto;
 	/*display: inline-flex;*/
+}
+.hour_meeting {
+	color : white;
 }
 @media screen and (min-width: 750px) {
   .container_event {

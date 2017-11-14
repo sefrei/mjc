@@ -10,4 +10,28 @@ namespace AppBundle\Repository;
  */
 class MeetingRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function showNextMeetings()
+  {
+    $today = new \DateTime();
+      $query = $this->createQueryBuilder('m')
+      ->setMaxResults(3)
+      ->select('m')
+      // ->addSelect('l.startAt')
+      ->where('m.date >= ?1')
+      ->setParameter(1, $today->format('Y-m-d 23:59:59'))
+      ->getQuery()->getResult();
+      return $query;
+  }
+
+  public function showPreviousMeetings()
+  {
+    $today = new \DateTime();
+      $query = $this->createQueryBuilder('e')
+      ->select('e')
+      // ->addSelect('l.startAt')
+      ->where('e.date < ?1')
+      ->setParameter(1, $today->format('Y-m-d 23:59:59'))
+      ->getQuery()->getResult();
+      return $query;
+  }
 }

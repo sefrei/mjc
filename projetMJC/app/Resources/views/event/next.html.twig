@@ -8,9 +8,14 @@
         {% for event in events %}
         <!-- event = Div générale  qui contient tout pour un événement (wagon en entier) -->
 
+
 			<div class="event">
               <!--La Div pour le date, il faudra plus tard la marquer en entier style vendredi 10 novembre 2017-->
+			  {% if type == 'event' %}
               <div class="date">
+				  {% else %}
+				<div class="date date_meeting">
+			{% endif %}
                 {% if event.date %} {{ event.date|date('d M Y') }}{% endif %}
               </div>
               <!--title = event name  -->
@@ -18,7 +23,11 @@
                   {{ event.name }}
               </div>
               <!-- Faire une div ronde pour l'heure  -->
+			  {% if type == 'event' %}
               <div class="hour_event">
+				  {% else %}
+			<div class="hour_event hour_meeting">
+				{% endif %}
                 {% if event.date %}{{ event.date|date('H') }}h{{ event.date|date('i') }}{% endif %}
               </div>
             <!--Et on ferme la div event  -->
@@ -29,10 +38,17 @@
     <ul>
         <li>
 			{% if status == "next" %}
-            <a class="btn btn-warning" href="{{ path('event_previous') }}">Voir les événements passés</a>
+			{# 'bla bla' ~ rayon.nom ~ 'bli bli' #}
+            <a class="btn btn-new" href="{{ path(type ~ '_previous') }}">{{showprevious}}</a>
 			{% elseif status == "previous" %}
-			<a class="btn btn-new" href="{{ path('event_next') }}">Voir les événements futurs</a>
+			<a class="btn btn-new" href="{{ path(type~'_next') }}">{{shownext}}</a>
 
+			{% endif %}
+        </li>
+        <li>
+            {% if is_granted('ROLE_ADMIN') %}
+			<a class="btn btn-warning" href="{{ path(type~'_index') }}">Voir tout / modifier</a>
+			<a class="btn btn-primary" href="{{ path(type~'_new') }}">Créer</a>
 			{% endif %}
         </li>
     </ul>

@@ -6,26 +6,24 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
+				<th>Date</th>
                 <th>Nom</th>
-                <th>Date</th>
-                <th>Actions</th>
+				<th>Action</th>
             </tr>
         </thead>
         <tbody>
         {% for meeting in meetings %}
             <tr>
-                <td><a href="{{ path('meeting_show', { 'id': meeting.id }) }}">{{ meeting.id }}</a></td>
+				<td>{% if meeting.date %}{{ meeting.date|date('d-m-Y à  H\\hi') }}{% endif %}</td>
                 <td>{{ meeting.name }}</td>
-                <td>{% if meeting.date %}{{ meeting.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+
                 <td>
                     <ul>
-                        <li>
-                            <a class="btn btn-primary" href="{{ path('meeting_show', { 'id': meeting.id }) }}">voir</a>
-                        </li>
+                    {% if is_granted('ROLE_ADMIN') %}
                         <li>
                             <a class="btn btn-warning" href="{{ path('meeting_edit', { 'id': meeting.id }) }}">modifier</a>
                         </li>
+					{% endif %}
                     </ul>
                 </td>
             </tr>
@@ -35,7 +33,9 @@
 
     <ul>
         <li>
-            <a class="btn btn-new" href="{{ path('meeting_new') }}">Créer un nouveau meeting</a>
+			 {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-new" href="{{ path('meeting_new') }}">Créer une nouvelle réunion</a>
+			{% endif %}
         </li>
     </ul>
 {% endblock %}

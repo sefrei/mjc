@@ -43,13 +43,19 @@ class EventController extends Controller
         dump($events);
         exit;
         */
+        $type = "event";
+        $shownext = "Voir les prochains événements";
+        $showprevious = "Voir les événements passés";
         $status = "next";
         $title = "Les prochains événements";
         // $events = $em->getRepository('AppBundle:Event')->findAll();
         return $this->render('event/next.html.twig', array(
+            'shownext' => $shownext,
+            'showprevious' => $showprevious,
             'events' => $events,
             'title' => $title,
             'status' => $status,
+            'type' => $type,
         ));
     }
     /**
@@ -63,13 +69,19 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $events = $em->getRepository('AppBundle:Event')->showPreviousEvents();
+        $shownext = "Voir les prochains événements";
+        $showprevious = "Voir les événements passés";
         $title = "Les événements passés";
         $status = "previous";
+        $type = "event";
         // $events = $em->getRepository('AppBundle:Event')->findAll();
         return $this->render('event/next.html.twig', array(
+            'shownext' => $shownext,
+            'showprevious' => $showprevious,
             'events' => $events,
             'title' => $title,
             'status' => $status,
+            'type' => $type,
         ));
     }
     /**

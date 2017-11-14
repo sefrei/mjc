@@ -37,6 +37,59 @@ class MeetingController extends Controller
     }
 
     /**
+     * Lists all next meetings.
+     *
+     * @Route("/next", name="meeting_next")
+     * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
+     */
+    public function nextAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $meeting = $em->getRepository('AppBundle:Meeting')->showNextMeetings();
+        $shownext = "Voir les prochaines réunions";
+        $showprevious = "Voir les réunions passées";
+        $status = "next";
+        $title = "Les prochaines réunions";
+        $type = "meeting";
+
+        return $this->render('event/next.html.twig', array(
+            'type' => $type,
+            'shownext' => $shownext,
+            'showprevious' => $showprevious,
+            'events' => $meeting,
+            'title' => $title,
+            'status' => $status,
+        ));
+    }
+
+    /**
+     * Lists all previous event entities.
+     *
+     * @Route("/previous", name="meeting_previous")
+     * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER') or has_role('ROLE_STUDENT')")
+     */
+    public function previousAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Meeting')->showPreviousMeetings();
+        $title = "Les Réunions passées";
+        $status = "previous";
+        $shownext = "Voir les prochaines réunions";
+        $showprevious = "Voir les réunions passées";
+        $type = "meeting";
+        
+        return $this->render('event/next.html.twig', array(
+            'type' => $type,
+            'shownext' => $shownext,
+            'showprevious' => $showprevious,
+            'events' => $events,
+            'title' => $title,
+            'status' => $status,
+        ));
+    }
+    /**
      * Creates a new meeting entity.
      *
      * @Route("/new", name="meeting_new")
@@ -66,7 +119,7 @@ class MeetingController extends Controller
      * Finds and displays a meeting entity.
      *
      * @Route("/{id}", name="meeting_show")
-     * @Security("has_role('ROLE_TEACHER')")
+     * @Security("has_role('ROLE_TEACHER') or has_role('ROLE_ADMIN')")
      * @Method("GET")
      */
     public function showAction(Meeting $meeting)

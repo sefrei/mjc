@@ -10,7 +10,6 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Date</th>
                 <th>Actions</th>
@@ -19,9 +18,8 @@
         <tbody>
         {% for event in events %}
             <tr>
-                <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.id }}</a></td>
                 <td>{{ event.name }}</td>
-                <td>{% if event.date %}{{ event.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if event.date %}{{ event.date|date('d-m-Y à  H\\hi') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>

@@ -25,15 +25,6 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
 
 
   public function showPreviousEvents()
-  /*
-  {
-    $query = $this->getEntityManager()->createQuery(
-        "SELECT e FROM AppBundle:Event e
-        WHERE date < NOW() ORDERBY e.date DESC"
-  );
-  return $query;
-  }
-  */
   {
     $today = new \DateTime();
       $query = $this->createQueryBuilder('e')
