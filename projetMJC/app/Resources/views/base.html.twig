@@ -11,72 +11,68 @@
         <link rel="stylesheet" href="{{ asset('css/admin.css')}}">
     </head>
     <body>
-      <header>
-		  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-		<div class="user btn btn-lg">
-			  <span class="glyphicon glyphicon-user disable  "></span>
-			{{ app.user.firstname }} {{ app.user.lastname }}
-		</div>
-		{% endif %}
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="true">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-			</button> <a href="{{ path('homepage') }}" class="navbar-brand">LA FABRIQUE</a>
-            </div>
-            <div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
-              <ul class="nav navbar-nav">
-                {# Pout tout le monde #}
+		<header>
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<div class="user btn btn-lg">
+					<span class="glyphicon glyphicon-user disable  "></span>
+					{{ app.user.firstname }}
+					{{ app.user.lastname }}
+				</div>
+			{% endif %}
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="true">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="{{ path('homepage') }}" class="navbar-brand">LA FABRIQUE</a>
+					</div>
+					<div class="collapse navbar-collapse menu nav-justified" id="bs-example-navbar-collapse-9">
+						<ul class="nav navbar-nav">
+							{# Pout tout le monde #}
 
+							{# Si l'user est admin #} {% if is_granted('ROLE_ADMIN') %} <li><a href="{{ path('specialty_index')}}">Activités</a></li> <li><a href="{{path ('specialty_new')}}" alt="nouvelle activité" data-toggle="tooltip" title="créer une nouvelle activité"><span
+							class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-music" aria-hidden="true"></span></a></li> <li><a href="{{ path('event_next')}}">Evénements</a></li> <li><a href="{{path ('specialty_new')}}" alt="nouvelle
+							spécialité" data-toggle="tooltip" title="créer un nouvel événement"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></a></li> <li><a href="{{
+							path('meeting_index')}}">Réunions</a></li> <li><a href="{{path ('meeting_new')}}" alt="nouvelle réunion" data-toggle="tooltip" title="créer une nouvelle réunion prof"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span
+							class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></li> <li><a href="{{ path('user_index')}}">Utilisateurs</a></li> <li><a href="{{path ('user_new')}}" alt="nouvel utilisateur" data-toggle="tooltip" title="créer un nouvel
+							utilisateur"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li> <li><a href="{{ path('subscription_index')}}">Inscriptions</a></li> <li><a href="{{path
+							('subscription_new')}}" alt="nouvelle inscription" data-toggle="tooltip" title="créer une nouvelle inscription"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></a></li>
+							{% endif %} {# Si l'user est teacher #}
+							{% if is_granted('ROLE_TEACHER') %}
+								<li>
+									<a href="{{ path('show_myStudents')}}">Mes élèves</a>
+								</li>
+								<li>
+									<a href="{{ path('meeting_index')}}">Mes réunions</a>
+								</li>
+								<li>
+									<a href="{{ path('event_next')}}">Evénements</a>
+								</li>
 
-				{# Si l'user est admin #}
-				 {% if is_granted('ROLE_ADMIN') %}
-        <li><a href="{{ path('specialty_index')}}">Activités</a></li>
-        <li><a href="{{ path('event_next')}}">Evénements</a></li>
-				<li><a href="{{ path('user_index')}}">Utilisateurs</a></li>
-				<li><a href="{{ path('subscription_index')}}">Inscriptions</a></li>
-				<li><a href="{{path ('user_new')}}" alt="nouvel utilisateur" data-toggle="tooltip" title="créer un nouvel utilisateur"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
-				<li><a href="{{path ('subscription_new')}}" alt="nouvelle inscription" data-toggle="tooltip" title="créer une nouvelle inscription"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></a></li>
+							{% endif %}
+							{# Si l'user est student #} {% if is_granted('ROLE_STUDENT') %} <li><a href="{{ path('show_mySubscriptions')}}">Mes inscriptions</a></li> <li><a href="{{ path('event_next')}}">Evénements</a></li> {% endif %} {# Si l'user est authentifié #}
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							{# On ne donne pas pour l'instant à l'user la possibilité de modifier son profil,
+			 seul l'admin peut le faire #}
 
-				{% endif %}
-				{# Si l'user est teacher #}
-				 {% if is_granted('ROLE_TEACHER') %}
-				<li><a href="{{ path('show_myStudents')}}">Mes élèves</a></li>
-        <li><a href="{{ path('meeting_index')}}">Mes réunions</a></li>
-        <li><a href="{{ path('event_next')}}">Evénements</a></li>
-
-
-				{% endif %}
-				{# Si l'user est student #}
-				 {% if is_granted('ROLE_STUDENT') %}
-				 <li><a href="{{ path('show_mySubscriptions')}}">Mes activités</a></li>
-         <li><a href="{{ path('event_next')}}">Evénements</a></li>
-
-
-				{% endif %}
-                {# Si l'user est authentifié #}
-				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-				{# On ne donne pas pour l'instant à l'user la possibilité de modifier son profil,
-	             seul l'admin peut le faire #}
-
-					<!-- <li><a href="
-	        {# path('user_edit',  { 'id': app.user.id }) #}
-	        "><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li> -->
-                <li><a href="{{ path('logout')}}">Déconnexion</a></li>
+				<!-- <li><a href="
+		{# path('user_edit',  { 'id': app.user.id }) #}
+		"><span class="glyphicon glyphicon-wrench"></span> Modifier mon profil</a></li> -->
+				<li><a href="{{ path('logout')}}">Déconnexion</a></li>
 
 				{% else %}
 
 				<li><a href="{{ path('login')}}">Se connecter</a></li>
 				{% endif %}
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+		</header>
 	  <div class="background">
         <div class="container admin">
 	            {#<div class="row">
