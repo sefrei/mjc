@@ -19,6 +19,7 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
       // ->addSelect('l.startAt')
       ->where('e.date >= ?1')
       ->setParameter(1, $today->format('Y-m-d 23:59:59'))
+      ->orderBy('e.date', 'ASC')
       ->getQuery()->getResult();
       return $query;
   }

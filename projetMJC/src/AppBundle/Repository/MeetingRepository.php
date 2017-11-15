@@ -19,6 +19,7 @@ class MeetingRepository extends \Doctrine\ORM\EntityRepository
       // ->addSelect('l.startAt')
       ->where('m.date >= ?1')
       ->setParameter(1, $today->format('Y-m-d 23:59:59'))
+      ->orderBy('m.date', 'ASC')
       ->getQuery()->getResult();
       return $query;
   }
