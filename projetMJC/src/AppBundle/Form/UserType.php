@@ -43,6 +43,7 @@ class UserType extends AbstractType
         ->add('birthAt', BirthdayType::class, [
            'format' => 'dd-MM-yyyy',
            'label'  => 'date de naissance',
+           'years' => range(date('Y'), date('Y') -80),
            'placeholder' => [
                'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année'
            ]

@@ -13,9 +13,25 @@ class EventType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('date');
+        $builder->add('name', null, [
+            'label' => 'Nom'
+        ])
+        // ->add('date')
+        ->add('date', null, [
+          'label' => 'Date',
+          'format' => 'dd-MM-yyyy HH:mm',
+          'years' => range(date('Y'), date('Y') + 2),
+        //   'months' => range(date('m'), date('m') + 12),
+        //   'days' => range(1,31),
+        //   'hours' => range(1, 24),
+          'placeholder' => [
+              'day'=> 'Jour', 'month'=>'Mois', 'year'=>'Année', 'hour'=>'heure', 'minute'=>'Minute'
+          ],
+          // 'html5' => true,
+        ])
+        ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
